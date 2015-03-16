@@ -1,0 +1,20 @@
+
+skeleton.png
+size: 256,32
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Silver_arrow
+  rotate: false
+  xy: 2, 2
+  size: 113, 21
+  orig: 113, 21
+  offset: 0, 0
+  index: -1
+Silver_s
+  rotate: false
+  xy: 117, 2
+  size: 65, 21
+  orig: 65, 21
+  offset: 0, 0
+  index: -1

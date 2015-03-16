@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{fc5cb953-2953-4968-83b3-39e3ff951754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win32">
+      <UniqueIdentifier>{037a9a02-b906-4cc5-ad98-304acd4e25ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{2d1d0979-58cd-4ab6-b91c-13650158f1fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\auto">
+      <UniqueIdentifier>{38e517b5-5d28-4ad0-9928-d43d293cf0ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\AI">
+      <UniqueIdentifier>{29fc73ab-0260-4c1a-89a2-d0a14c79cede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tmxParser">
+      <UniqueIdentifier>{f9a72e0f-fd14-441c-b207-d89945f1c61b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tmxParser\base64">
+      <UniqueIdentifier>{d85217eb-d05a-48ed-bced-180ed4a3c3ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tmxParser\tinyxml">
+      <UniqueIdentifier>{a0ef4327-d4d4-4b77-b5c9-e9b621b5cd24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tmxParser\zlib">
+      <UniqueIdentifier>{f6cc286d-0c2c-4c4f-988e-9c1b4cce3968}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Editor">
+      <UniqueIdentifier>{ad4a167b-b258-46e3-8915-cea874571874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Editor\UI">
+      <UniqueIdentifier>{a3d30c4e-8ad0-476a-a8ac-ee7445e1200d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\manual">
+      <UniqueIdentifier>{69f61f58-3ee4-4bc3-9062-e263be1c7ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ini">
+      <UniqueIdentifier>{83c17011-d453-424b-9e98-131c418615ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\lua_cjson">
+      <UniqueIdentifier>{56a43652-28f0-48a1-b6a8-248db1e0d511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\net">
+      <UniqueIdentifier>{be1891c4-6fc5-4cd0-9a6a-928c184798b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\message">
+      <UniqueIdentifier>{4e3bb250-2251-4983-8907-0f42ffeee73b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ArmatureManager.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_module_register.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\AI.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\AIUnit.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\BoidsPolygon.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\Terrain.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Singleton.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxPoint.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxPolygon.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxPolyline.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxPropertySet.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxTile.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxTileset.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxUtil.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\Tmx.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxEllipse.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxImage.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxImageLayer.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxLayer.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxMap.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxMapTile.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxObject.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\TmxObjectGroup.h">
+      <Filter>Classes\tmxParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\base64\base64.h">
+      <Filter>Classes\tmxParser\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\trees.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\zconf.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\zlib.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\zutil.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\crc32.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\deflate.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\gzguts.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\inffast.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\inffixed.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\inflate.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\zlib\inftrees.h">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\tinyxml\tinyxml.h">
+      <Filter>Classes\tmxParser\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TmxParser\tinyxml\tinystr.h">
+      <Filter>Classes\tmxParser\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LuaFunc.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BoidsMath.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\NavMesh.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Constants.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\BoidsPolygonEx.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CycledList.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\BoostGeometryDef.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Trace.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\Path.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\Collidable.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Editor\BEHeaders.h">
+      <Filter>Classes\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Editor\EditMode.h">
+      <Filter>Classes\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Editor\EditorHelper.h">
+      <Filter>Classes\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Editor\EditorModel.h">
+      <Filter>Classes\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Editor\EditorModelDefines.h">
+      <Filter>Classes\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Editor\EditorPositionNode.h">
+      <Filter>Classes\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Editor\UI\BEUI.h">
+      <Filter>Classes\Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Editor\UI\BEUIBase.h">
+      <Filter>Classes\Editor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\manual\lua_boids_manual.h">
+      <Filter>Classes\manual</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LuaPlatform.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MapData.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CmdLineDebugger.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Editor\BETypes.h">
+      <Filter>Classes\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\GrassMonitor.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\AITest.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\Border.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Macro.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ini\SimpleIni.h">
+      <Filter>Classes\ini</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LuaUtils.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CmdLineDebuggerLua.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\auto\lua_boids_auto.hpp">
+      <Filter>Classes\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Replay.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_cjson\dtoa_config.h">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_cjson\fpconv.h">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_cjson\lua_cjson.h">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_cjson\strbuf.h">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MapDebugger.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Counter.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\UdpClient.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\NetworkAdapter.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\NetworkAdapterInternal.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\TcpClient.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\Net.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EngineRelated.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\NetForExport.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\NetDef.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\manual\ArgCheck.h">
+      <Filter>Classes\manual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Profile.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Random.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\message\Battle.pb.h">
+      <Filter>Classes\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\message\boids.pb.h">
+      <Filter>Classes\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\message\pvp.pb.h">
+      <Filter>Classes\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ReplayComparer.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\auto\lua_boids_auto.cpp">
+      <Filter>Classes\auto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ArmatureManager.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Utils.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\AI.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\AIUnit.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxPolygon.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxPolyline.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxPropertySet.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxTile.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxTileset.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxUtil.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxEllipse.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxImage.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxImageLayer.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxLayer.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxMap.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxObject.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\TmxObjectGroup.cpp">
+      <Filter>Classes\tmxParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\base64\base64.cpp">
+      <Filter>Classes\tmxParser\base64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\trees.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\uncompr.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\zutil.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\adler32.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\compress.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\crc32.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\deflate.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\gzclose.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\gzlib.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\gzread.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\gzwrite.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\infback.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\inffast.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\inflate.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\zlib\inftrees.c">
+      <Filter>Classes\tmxParser\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\tinyxml\tinyxml.cpp">
+      <Filter>Classes\tmxParser\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\tinyxml\tinyxmlerror.cpp">
+      <Filter>Classes\tmxParser\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\tinyxml\tinyxmlparser.cpp">
+      <Filter>Classes\tmxParser\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TmxParser\tinyxml\tinystr.cpp">
+      <Filter>Classes\tmxParser\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\BoidsPolygon.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LuaFunc.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BoidsMath.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\NavMesh.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\BoidsPolygonEx.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CycledList.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Trace.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\Path.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\Collidable.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Editor\EditMode.cpp">
+      <Filter>Classes\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Editor\EditorHelper.cpp">
+      <Filter>Classes\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Editor\EditorModel.cpp">
+      <Filter>Classes\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Editor\EditorPositionNode.cpp">
+      <Filter>Classes\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Editor\UI\BEUI.cpp">
+      <Filter>Classes\Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Editor\UI\BEUIBase.cpp">
+      <Filter>Classes\Editor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\manual\lua_boids_manual.cpp">
+      <Filter>Classes\manual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LuaPlatform.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MapData.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Editor\BETypes.cpp">
+      <Filter>Classes\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\GrassMonitor.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\AITest.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\Border.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LuaUtils.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CmdLineDebuggerLua.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CmdLineDebugger.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\Terrain.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Replay.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\lua_cjson\fpconv.c">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\lua_cjson\strbuf.c">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\lua_cjson\lua_cjson.c">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MapDebugger.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Counter.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\UdpClient.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\NetworkAdapter.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\TcpClient.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\Net.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EngineRelated.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Profile.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\message\Battle.pb.cc">
+      <Filter>Classes\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\message\boids.pb.cc">
+      <Filter>Classes\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\message\pvp.pb.cc">
+      <Filter>Classes\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ReplayComparer.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\game.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\LaluneCommon\protobuf\protos\pvp.proto">
+      <Filter>Classes\message</Filter>
+    </None>
+    <None Include="..\..\..\..\LaluneCommon\protobuf\protos\battle.proto">
+      <Filter>Classes\message</Filter>
+    </None>
+    <None Include="..\..\..\..\LaluneCommon\protobuf\protos\boids.proto">
+      <Filter>Classes\message</Filter>
+    </None>
+  </ItemGroup>
+</Project>

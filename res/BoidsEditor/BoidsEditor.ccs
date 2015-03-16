@@ -1,0 +1,11 @@
+<Solution>
+  <PropertyGroup Name="BoidsEditor" Version="2.0.2.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Project Name="EditMode.csd" />
+        <Project Name="Main.csd" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

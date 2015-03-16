@@ -1,0 +1,579 @@
+{
+    "tasks": [], 
+    "positions": [
+        {
+            "name": "shelter9_exit", 
+            "rect": {
+                "y": 402.665, 
+                "x": 2136.42, 
+                "height": 117.065, 
+                "width": 196.583
+            }
+        }, 
+        {
+            "name": "shelter8_exit", 
+            "rect": {
+                "y": 1610.68, 
+                "x": 3435.75, 
+                "height": 89.3888, 
+                "width": 132.153
+            }
+        }, 
+        {
+            "name": "shelter10_exit", 
+            "rect": {
+                "y": 204.891, 
+                "x": 3371.57, 
+                "height": 90.4979, 
+                "width": 135.727
+            }
+        }, 
+        {
+            "name": "shelter7_exit", 
+            "rect": {
+                "y": 1502.04, 
+                "x": 2920.58, 
+                "height": 90.2119, 
+                "width": 182.608
+            }
+        }, 
+        {
+            "name": "vampire_refuge", 
+            "rect": {
+                "y": 2478.32, 
+                "x": 2106.8, 
+                "height": 88.2839, 
+                "width": 146.955
+            }
+        }, 
+        {
+            "name": "shelter6_exit", 
+            "rect": {
+                "y": 1351.66, 
+                "x": 2010.16, 
+                "height": 98.8004, 
+                "width": 159.369
+            }
+        }, 
+        {
+            "tag": "area2_exit", 
+            "name": "shelter4_exit", 
+            "rect": {
+                "y": 2248.9, 
+                "x": 3121.78, 
+                "height": 105.266, 
+                "width": 172.2
+            }
+        }, 
+        {
+            "name": "shelter3_exit", 
+            "rect": {
+                "y": 1874.97, 
+                "x": 1388.55, 
+                "height": 94.0381, 
+                "width": 189.718
+            }
+        }, 
+        {
+            "name": "shelter2_exit", 
+            "rect": {
+                "y": 1597.47, 
+                "x": 441.795, 
+                "height": 96.0054, 
+                "width": 178.452
+            }
+        }, 
+        {
+            "tag": "area3_exit", 
+            "name": "shelter1_exit", 
+            "rect": {
+                "y": 2164.19, 
+                "x": 856.218, 
+                "height": 97.8992, 
+                "width": 180.385
+            }
+        }, 
+        {
+            "tag": "yellow", 
+            "name": "yellow1", 
+            "rect": {
+                "y": 539.289, 
+                "x": 1214.51, 
+                "height": 111.882, 
+                "width": 201.808
+            }
+        }, 
+        {
+            "tag": "yellow", 
+            "name": "yellow4", 
+            "rect": {
+                "y": 1761.77, 
+                "x": 1686.67, 
+                "height": 138.449, 
+                "width": 233.059
+            }
+        }, 
+        {
+            "tag": "hp", 
+            "name": "hp_4", 
+            "rect": {
+                "y": 2419.94, 
+                "x": 1235.92, 
+                "height": 62.5361, 
+                "width": 92.9679
+            }
+        }, 
+        {
+            "tag": "hp", 
+            "name": "hp_1", 
+            "rect": {
+                "y": 713.88, 
+                "x": 2742.61, 
+                "height": 90.7103, 
+                "width": 168.049
+            }
+        }, 
+        {
+            "tag": "hp", 
+            "name": "hp_2", 
+            "rect": {
+                "y": 1276.38, 
+                "x": 821.748, 
+                "height": 83.7079, 
+                "width": 135.481
+            }
+        }, 
+        {
+            "name": "player_start", 
+            "rect": {
+                "y": 49.0009, 
+                "x": 1034.67, 
+                "height": 90.7492, 
+                "width": 197.943
+            }
+        }, 
+        {
+            "name": "vanhelsing_pos", 
+            "rect": {
+                "y": 1709.72, 
+                "x": 3186.9, 
+                "height": 61.7996, 
+                "width": 60.9761
+            }
+        }, 
+        {
+            "name": "area1_entry", 
+            "rect": {
+                "y": 1589.59, 
+                "x": 3102.55, 
+                "height": 224.982, 
+                "width": 243.913
+            }
+        }, 
+        {
+            "name": "hook_pos", 
+            "rect": {
+                "y": 1683.87, 
+                "x": 254.225, 
+                "height": 62.1852, 
+                "width": 64.4037
+            }
+        }, 
+        {
+            "name": "area2_entry", 
+            "rect": {
+                "y": 1556.87, 
+                "x": 141.048, 
+                "height": 280.745, 
+                "width": 309.465
+            }
+        }, 
+        {
+            "name": "peterpan_pos", 
+            "rect": {
+                "y": 2415.01, 
+                "x": 1674.88, 
+                "height": 59.0957, 
+                "width": 58.8962
+            }
+        }, 
+        {
+            "name": "area3_entry", 
+            "rect": {
+                "y": 2334.51, 
+                "x": 1583.27, 
+                "height": 212.186, 
+                "width": 242.509
+            }
+        }, 
+        {
+            "tag": "yellow", 
+            "name": "yellow3", 
+            "rect": {
+                "y": 879.611, 
+                "x": 3309.24, 
+                "height": 146.573, 
+                "width": 210.548
+            }
+        }, 
+        {
+            "tag": "yellow", 
+            "name": "yellow5", 
+            "rect": {
+                "y": 2213.45, 
+                "x": 1092.04, 
+                "height": 108.385, 
+                "width": 165.973
+            }
+        }, 
+        {
+            "tag": "yellow", 
+            "name": "yellow2", 
+            "rect": {
+                "y": 998.443, 
+                "x": 2287.66, 
+                "height": 94.1942, 
+                "width": 174.184
+            }
+        }, 
+        {
+            "tag": "yellow", 
+            "name": "yellow6", 
+            "rect": {
+                "y": 2045.5, 
+                "x": 2457.91, 
+                "height": 101.435, 
+                "width": 151.405
+            }
+        }, 
+        {
+            "tag": "yellow", 
+            "name": "yellow7", 
+            "rect": {
+                "y": 1440.0, 
+                "x": 850.0, 
+                "height": 105.681, 
+                "width": 111.323
+            }
+        }, 
+        {
+            "tag": "area1_exit", 
+            "name": "shelter5_exit", 
+            "rect": {
+                "y": 815.458, 
+                "x": 1615.94, 
+                "height": 223.73, 
+                "width": 429.485
+            }
+        }
+    ], 
+    "plist": [
+        "maps/forest02/vision0.plist", 
+        "maps/forest02/vision1.plist"
+    ], 
+    "custom_data": {
+        "big_church_bonus": 5, 
+        "time_limit": 240, 
+        "big_church_count": 30, 
+        "small_church_count": 15, 
+        "small_church_bonus": 2, 
+        "max_escape": 30, 
+        "min_kill": 150
+    }, 
+    "units": [
+        "axe_orc", 
+        "vanhelsing", 
+        "wild_wolf", 
+        "skeleton_king"
+    ], 
+    "events": [
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "area1_fire", 
+            "actions": [
+                {
+                    "position_tag": "area1_exit", 
+                    "waves": [
+                        {
+                            "units": [
+                                {
+                                    "lv": 1, 
+                                    "count": 10, 
+                                    "name": "thin_vampire"
+                                }
+                            ], 
+                            "next_collapse": 5.0
+                        }, 
+                        {
+                            "units": [
+                                {
+                                    "lv": 1, 
+                                    "count": 10, 
+                                    "name": "fat_vampire"
+                                }
+                            ], 
+                            "next_collapse": 30.0
+                        }, 
+                        {
+                            "units": [
+                                {
+                                    "lv": 1, 
+                                    "count": 8, 
+                                    "name": "thin_vampire"
+                                }, 
+                                {
+                                    "lv": 1, 
+                                    "count": 7, 
+                                    "name": "fat_vampire"
+                                }
+                            ], 
+                            "next_collapse": 30.0
+                        }
+                    ], 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "custom", 
+                    "action_name": "enter_area1"
+                }
+            ], 
+            "triggers": [
+                {
+                    "unit_state": "unit_move", 
+                    "trigger_type": "unit_change", 
+                    "trigger_count": 1, 
+                    "source_type": "type_source", 
+                    "position_name": "area1_entry", 
+                    "source_value": "player"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "area2_fire", 
+            "actions": [
+                {
+                    "position_tag": "area2_exit", 
+                    "waves": [
+                        {
+                            "units": [
+                                {
+                                    "lv": 1, 
+                                    "count": 10, 
+                                    "name": "thin_vampire"
+                                }
+                            ], 
+                            "next_collapse": 5.0
+                        }, 
+                        {
+                            "units": [
+                                {
+                                    "lv": 1, 
+                                    "count": 10, 
+                                    "name": "fat_vampire"
+                                }
+                            ], 
+                            "next_collapse": 30.0
+                        }, 
+                        {
+                            "units": [
+                                {
+                                    "lv": 1, 
+                                    "count": 8, 
+                                    "name": "thin_vampire"
+                                }, 
+                                {
+                                    "lv": 1, 
+                                    "count": 7, 
+                                    "name": "fat_vampire"
+                                }
+                            ], 
+                            "next_collapse": 30.0
+                        }
+                    ], 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "custom", 
+                    "action_name": "enter_area2"
+                }
+            ], 
+            "triggers": [
+                {
+                    "unit_state": "unit_move", 
+                    "trigger_type": "unit_change", 
+                    "trigger_count": 1, 
+                    "source_type": "type_source", 
+                    "position_name": "area2_entry", 
+                    "source_value": "player"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "area3_fire", 
+            "actions": [
+                {
+                    "position_tag": "area3_exit", 
+                    "waves": [
+                        {
+                            "units": [
+                                {
+                                    "lv": 1, 
+                                    "count": 1, 
+                                    "is_boss": true, 
+                                    "name": "skeleton_king"
+                                }
+                            ], 
+                            "next_collapse": 5.0
+                        }
+                    ], 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "custom", 
+                    "action_name": "enter_area3"
+                }
+            ], 
+            "triggers": [
+                {
+                    "unit_state": "unit_move", 
+                    "trigger_type": "unit_change", 
+                    "trigger_count": 1, 
+                    "source_type": "type_source", 
+                    "position_name": "area3_entry", 
+                    "source_value": "player"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": true
+            }, 
+            "name": "fat_vampire_disappear", 
+            "actions": [
+                {
+                    "source_type": "trigger_source", 
+                    "meta": "0,0.00,0.00", 
+                    "unit_state": "unit_disappear", 
+                    "action_type": "unit_change", 
+                    "source_value": "trigger_unit"
+                }
+            ], 
+            "triggers": [
+                {
+                    "unit_state": "unit_move", 
+                    "trigger_type": "unit_change", 
+                    "trigger_count": 1, 
+                    "source_type": "name_source", 
+                    "position_name": "vampire_refuge", 
+                    "source_value": "fat_vampire"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": true
+            }, 
+            "name": "thin_vampire_disappear", 
+            "actions": [
+                {
+                    "source_type": "trigger_source", 
+                    "meta": "0,0.00,0.00", 
+                    "unit_state": "unit_disappear", 
+                    "action_type": "unit_change", 
+                    "source_value": "trigger_unit"
+                }
+            ], 
+            "triggers": [
+                {
+                    "unit_state": "unit_move", 
+                    "trigger_type": "unit_change", 
+                    "trigger_count": 1, 
+                    "source_type": "name_source", 
+                    "position_name": "vampire_refuge", 
+                    "source_value": "thin_vampire"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "yellow_enemy_appear", 
+            "actions": [
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_tag": "yellow", 
+                    "source_value": "axe_orc", 
+                    "unit_count": 1
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_tag": "yellow", 
+                    "source_value": "wild_wolf", 
+                    "unit_count": 2
+                }
+            ], 
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "vanhelsing_appear", 
+            "actions": [
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "ally", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "vanhelsing_pos", 
+                    "source_value": "vanhelsing", 
+                    "unit_count": 1
+                }
+            ], 
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "healthpack_appear", 
+            "actions": [
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "item", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_tag": "hp", 
+                    "source_value": "healthpack", 
+                    "unit_count": 1
+                }
+            ], 
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ]
+        }
+    ]
+}

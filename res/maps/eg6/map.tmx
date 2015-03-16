@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="3" height="3" tilewidth="1920" tileheight="1080">
+ <tileset firstgid="1" name="bg" tilewidth="1920" tileheight="1080">
+  <tile id="0">
+   <image width="1920" height="1080" source="whiteblock.jpg"/>
+  </tile>
+  <tile id="1">
+   <image width="1920" height="1080" source="blackblock.jpg"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="3" name="vision" tilewidth="290" tileheight="242">
+  <tile id="0">
+   <image width="290" height="242" source="mumen01_normal.png"/>
+  </tile>
+  <tile id="1">
+   <image width="290" height="242" source="mumen02_normal.png"/>
+  </tile>
+  <tile id="2">
+   <image width="290" height="242" source="mumen01_unnormal.png"/>
+  </tile>
+  <tile id="3">
+   <image width="290" height="242" source="mumen02_unnormal.png"/>
+  </tile>
+ </tileset>
+ <objectgroup name="background" visible="0">
+  <object gid="1" x="0" y="1080"/>
+  <object gid="2" x="1920" y="1080"/>
+  <object gid="2" x="0" y="2160"/>
+  <object gid="2" x="1920" y="3240"/>
+  <object gid="2" x="3840" y="2153.79"/>
+  <object gid="1" x="3840" y="1080"/>
+  <object gid="1" x="1920" y="2160"/>
+  <object gid="1" x="0" y="3240"/>
+  <object gid="1" x="3840" y="3240"/>
+ </objectgroup>
+ <objectgroup name="vision">
+  <object name="door1" gid="3" x="343" y="329">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door1"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door4" gid="3" x="1159" y="889">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door4"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door7" gid="3" x="2071" y="1377">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door7"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door10" gid="3" x="2807" y="1817">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door10"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door13" gid="3" x="3855" y="2361">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door13"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door8" gid="4" x="2047" y="1865">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door8"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door9" gid="4" x="2775" y="1369">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door9"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door11" gid="4" x="2944" y="2336">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door11"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door12" gid="4" x="3552" y="1832">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door12"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door5" gid="4" x="1200" y="1336">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door5"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door6" gid="4" x="2024" y="920">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door6"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door3" gid="4" x="1032" y="320">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door3"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door2" gid="4" x="264" y="832">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door2"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door14" gid="4" x="3888" y="2776">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door14"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door15" gid="4" x="4536" y="2376">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door15"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="door16" gid="3" x="4680" y="2864">
+   <properties>
+    <property name="camp" value="wild"/>
+    <property name="collide" value="door16"/>
+    <property name="data" value="door"/>
+    <property name="is_target" value="1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="physics">
+  <object name="door1" type="dynamic" x="344" y="320">
+   <polygon points="0,0 40,16 308,-124 284,-144"/>
+  </object>
+  <object name="door4" type="dynamic" x="1156" y="880">
+   <polygon points="0,0 40,16 308,-124 284,-144"/>
+  </object>
+  <object name="door7" type="dynamic" x="2072" y="1364">
+   <polygon points="0,0 40,16 308,-124 284,-144"/>
+  </object>
+  <object name="door10" type="dynamic" x="2800" y="1800">
+   <polygon points="0,0 40,16 308,-124 284,-144"/>
+  </object>
+  <object name="door13" type="dynamic" x="3856" y="2348">
+   <polygon points="0,0 40,16 308,-124 284,-144"/>
+  </object>
+  <object name="door16" type="dynamic" x="4684" y="2856">
+   <polygon points="0,0 40,16 308,-124 284,-144"/>
+  </object>
+  <object name="door12" type="dynamic" x="3552" y="1700">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="door11" type="dynamic" x="2932" y="2204">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="door14" type="dynamic" x="3876" y="2644">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="door15" type="dynamic" x="4524" y="2240">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="door8" type="dynamic" x="2040" y="1728">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="door9" type="dynamic" x="2760" y="1232">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="door6" type="dynamic" x="2012" y="784">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="door5" type="dynamic" x="1184" y="1208">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="door2" type="dynamic" x="252" y="700">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="door3" type="dynamic" x="1024" y="180">
+   <polygon points="0,0 268,140 296,120 24,-24"/>
+  </object>
+  <object name="c1" type="collide" x="532" y="848">
+   <polygon points="0,0 643.758,358.182 664.121,327.03 24,-24"/>
+  </object>
+  <object name="c2" type="collide" x="1306.06" y="330.303">
+   <polygon points="0,0 689.213,446.061 712.606,417.939 24,-24"/>
+  </object>
+  <object name="c3" type="collide" x="2290.91" y="927.273">
+   <polygon points="0,0 464.971,303.637 485.333,275.515 24,-24"/>
+  </object>
+  <object name="c4" type="collide" x="3036.36" y="1372.73">
+   <polygon points="0,0 507.395,327.879 521.697,299.757 24,-24"/>
+  </object>
+  <object name="c5" type="collide" x="1463.64" y="1357.58">
+   <polygon points="0,0 561.941,364.243 591.394,345.212 24,-24"/>
+  </object>
+  <object name="c6" type="collide" x="2315.15" y="1875.76">
+   <polygon points="0,0 613.456,330.909 618.667,299.757 24,-24"/>
+  </object>
+  <object name="c7" type="collide" x="3218.18" y="2345.45">
+   <polygon points="0,0 652.85,303.636 667.152,269.454 24,-24"/>
+  </object>
+  <object name="c8" type="collide" x="3830.3" y="1848.48">
+   <polygon points="0,0 683.153,391.515 706.545,363.393 24,-24"/>
+  </object>
+  <object name="c9" type="collide" x="4154.55" y="2796.97">
+   <polygon points="0,0 357.576,187.879 569.697,84.8485 530.303,69.697 357.576,157.576 24.2424,-21.2121"/>
+  </object>
+  <object name="c10" type="collide" x="4800" y="2390.91">
+   <polygon points="0,0 306.061,209.091 178.788,318.182 206.061,342.424 366.667,203.03 30.303,-18.1818"/>
+  </object>
+  <object name="c11" type="collide" x="339.394" y="330.303">
+   <polygon points="0,0 -278.788,233.333 -96.9697,360.606 -72.7273,336.364 -233.333,227.273 33.3333,12.1212"/>
+  </object>
+  <object name="c12" type="collide" x="663.636" y="193.939">
+   <polygon points="0,0 209.091,-93.9394 357.576,-18.1818 384.848,-48.4848 212.121,-127.273 -27.2727,-24.2424"/>
+  </object>
+  <object name="c13" type="collide" x="1154.55" y="887.879">
+   <polygon points="0,0 -227.273,127.273 -184.848,148.485 27.2727,15.1515"/>
+  </object>
+  <object name="c14" type="collide" x="1457.58" y="730.303">
+   <polygon points="0,0 215.152,-148.485 254.545,-127.273 21.2121,21.2121"/>
+  </object>
+  <object name="c15" type="collide" x="2063.64" y="1369.7">
+   <polygon points="0,0 -263.636,151.515 -227.273,172.727 39.3939,15.1515"/>
+  </object>
+  <object name="c16" type="collide" x="2366.67" y="1215.15">
+   <polygon points="0,0 160.606,-124.242 190.909,-100 27.2727,18.1818"/>
+  </object>
+  <object name="c17" type="collide" x="2800" y="1809.09">
+   <polygon points="0,0 -236.364,142.424 -196.97,166.667 27.2727,9.09091"/>
+  </object>
+  <object name="c18" type="collide" x="3096.97" y="1651.52">
+   <polygon points="0,0 169.697,-121.212 190.909,-103.03 27.2727,24.2424"/>
+  </object>
+  <object name="c19" type="collide" x="3857.58" y="2360.61">
+   <polygon points="0,0 -224.242,127.273 -178.788,145.455 21.2121,12.1212"/>
+  </object>
+  <object name="c20" type="collide" x="4154.55" y="2196.97">
+   <polygon points="0,0 127.273,-78.7879 160.606,-57.5758 24.2424,21.2121"/>
+  </object>
+  <object name="c21" type="collide" x="47.8261" y="578.261">
+   <polygon points="0,0 -47.8261,30.4348 -13.0435,939.13 886.957,526.087 800,504.348 13.0435,878.261"/>
+  </object>
+  <object name="c22" type="collide" x="973.913" y="1334.78">
+   <polygon points="-882.609,191.304 -930.435,221.739 -247.826,756.521 813.044,247.826 726.087,226.087 -221.739,695.652"/>
+  </object>
+  <object name="c23" type="collide" x="1669.57" y="1882.61">
+   <polygon points="-882.609,191.304 -930.435,221.739 -247.826,756.521 891.305,143.478 804.348,121.739 -221.739,695.652"/>
+  </object>
+  <object name="c24" type="collide" x="2369.57" y="2434.78">
+   <polygon points="-882.609,191.304 -930.435,221.739 -147.826,821.738 1252.17,117.391 1165.22,95.652 -121.739,760.869"/>
+  </object>
+  <object name="c25" type="collide" x="3169.57" y="3052.17">
+   <polygon points="-882.609,191.304 -930.435,221.739 -247.826,756.521 1330.44,-65.2177 1243.48,-86.9567 -221.739,695.652"/>
+  </object>
+  <object name="c26" type="collide" x="891.304" y="56.5217">
+   <polygon points="0,0 143.478,-56.5217 1434.78,-56.5217 878.261,517.391 821.739,456.522 1269.57,17.3913"/>
+  </object>
+  <object name="c27" type="collide" x="2082.61" y="60.8696">
+   <polygon points="182.609,21.7391 265.217,-34.7826 1117.39,404.348 543.478,1021.74 486.956,960.87 1030.43,421.739"/>
+  </object>
+  <object name="c28" type="collide" x="2969.57" y="517.391">
+   <polygon points="204.348,-3.04348e-05 247.826,-30.4348 1117.39,404.348 391.304,1008.7 347.826,978.261 1030.43,421.739"/>
+  </object>
+  <object name="c29" type="collide" x="3847.83" y="978.261">
+   <polygon points="213.044,-4.34786 265.217,-47.8261 1152.17,456.522 530.435,1134.78 482.608,1086.96 1056.52,456.522"/>
+  </object>
+  <object name="c30" type="collide" x="4747.83" y="1504.35">
+   <polygon points="213.044,-4.34786 265.217,-47.8261 1100,491.305 443.478,1060.87 395.651,1013.05 1004.35,491.305"/>
+  </object>
+ </objectgroup>
+</map>

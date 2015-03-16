@@ -1,0 +1,1747 @@
+{
+    "desc": "林地深处，是被哥布林侵占的昔日人类居住地。英雄们需要找到，并护送被囚禁的平民逃离此地。",
+    "tasks": [
+        {
+            "name": "1",
+            "desc": "护送1名村民到达"
+        },
+        {
+            "name": "2",
+            "desc": "全员不死"
+        },
+        {
+            "name": "3",
+            "desc": "护送3名村民到达"
+        }
+    ],
+    "positions": [
+        {
+            "name": "village",
+            "rect": {
+                "x": 2342.18,
+                "y": 1167.86,
+                "width": 90.9609,
+                "height": 75.432
+            }
+        },
+        {
+            "name": "comehere02",
+            "rect": {
+                "x": 1673.28,
+                "y": 924.921,
+                "width": 104.272,
+                "height": 79.8704
+            }
+        },
+        {
+            "name": "comehere03",
+            "rect": {
+                "x": 1292.79,
+                "y": 219.414,
+                "width": 106.491,
+                "height": 86.5243
+            }
+        },
+        {
+            "name": "comehere04",
+            "rect": {
+                "x": 546.245,
+                "y": 256.021,
+                "width": 92.0686,
+                "height": 73.2128
+            }
+        },
+        {
+            "name": "comehere05",
+            "rect": {
+                "x": 311.071,
+                "y": 990.37,
+                "width": 95.3991,
+                "height": 84.3051
+            }
+        },
+        {
+            "name": "comehere07",
+            "rect": {
+                "x": 886.782,
+                "y": 101.827,
+                "width": 108.711,
+                "height": 84.3051
+            }
+        },
+        {
+            "name": "1",
+            "rect": {
+                "x": 2090.36,
+                "y": 1225.54,
+                "width": 89.853,
+                "height": 69.8859
+            }
+        },
+        {
+            "name": "2",
+            "rect": {
+                "x": 2402.07,
+                "y": 1034.74,
+                "width": 92.0723,
+                "height": 65.4475
+            }
+        },
+        {
+            "name": "3",
+            "rect": {
+                "x": 1847.42,
+                "y": 989.261,
+                "width": 116.476,
+                "height": 89.853
+            }
+        },
+        {
+            "name": "4",
+            "rect": {
+                "x": 2028.24,
+                "y": 467.896,
+                "width": 132.003,
+                "height": 95.3973
+            }
+        },
+        {
+            "name": "5",
+            "rect": {
+                "x": 1226.22,
+                "y": 440.162,
+                "width": 110.93,
+                "height": 94.2895
+            }
+        },
+        {
+            "name": "6",
+            "rect": {
+                "x": 1835.22,
+                "y": 156.184,
+                "width": 117.584,
+                "height": 93.1799
+            }
+        },
+        {
+            "name": "7",
+            "rect": {
+                "x": 1683.25,
+                "y": 687.531,
+                "width": 117.583,
+                "height": 89.8512
+            }
+        },
+        {
+            "name": "8",
+            "rect": {
+                "x": 700.412,
+                "y": 238.268,
+                "width": 110.93,
+                "height": 82.0859
+            }
+        },
+        {
+            "name": "9",
+            "rect": {
+                "x": 176.828,
+                "y": 541.104,
+                "width": 104.272,
+                "height": 95.3991
+            }
+        },
+        {
+            "name": "10",
+            "rect": {
+                "x": 656.039,
+                "y": 987.038,
+                "width": 112.041,
+                "height": 84.3051
+            }
+        },
+        {
+            "name": "11",
+            "rect": {
+                "x": 579.501,
+                "y": 1304.29,
+                "width": 97.6183,
+                "height": 87.6339
+            }
+        },
+        {
+            "name": "99",
+            "rect": {
+                "x": 1987.2,
+                "y": 1194.48,
+                "width": 56.5728,
+                "height": 63.2301
+            }
+        },
+        {
+            "name": "98",
+            "rect": {
+                "x": 2037.11,
+                "y": 1087.99,
+                "width": 55.4647,
+                "height": 62.1206
+            }
+        },
+        {
+            "name": "97",
+            "rect": {
+                "x": 2163.57,
+                "y": 1010.34,
+                "width": 77.6494,
+                "height": 52.1361
+            }
+        },
+        {
+            "name": "96",
+            "rect": {
+                "x": 2272.28,
+                "y": 1297.65,
+                "width": 69.8877,
+                "height": 53.2457
+            }
+        },
+        {
+            "name": "95",
+            "rect": {
+                "x": 2504.13,
+                "y": 1133.47,
+                "width": 62.1189,
+                "height": 54.3553
+            }
+        },
+        {
+            "name": "add01",
+            "rect": {
+                "x": 1464.72,
+                "y": 1021.43,
+                "width": 104.276,
+                "height": 83.1973
+            }
+        },
+        {
+            "name": "add02",
+            "rect": {
+                "x": 1999.4,
+                "y": 648.708,
+                "width": 123.13,
+                "height": 89.853
+            }
+        },
+        {
+            "name": "93",
+            "rect": {
+                "x": 1411.47,
+                "y": 623.193,
+                "width": 96.507,
+                "height": 76.5416
+            }
+        },
+        {
+            "name": "92",
+            "rect": {
+                "x": 711.511,
+                "y": 332.561,
+                "width": 87.6339,
+                "height": 64.338
+            }
+        },
+        {
+            "name": "91",
+            "rect": {
+                "x": 1916.2,
+                "y": 34.1619,
+                "width": 99.834,
+                "height": 79.8685
+            }
+        },
+        {
+            "name": "90",
+            "rect": {
+                "x": 1120.84,
+                "y": 301.5,
+                "width": 87.6339,
+                "height": 68.7763
+            }
+        },
+        {
+            "name": "89",
+            "rect": {
+                "x": 1138.59,
+                "y": 109.594,
+                "width": 93.1799,
+                "height": 77.6494
+            }
+        },
+        {
+            "name": "88",
+            "rect": {
+                "x": 1422.57,
+                "y": 285.971,
+                "width": 105.38,
+                "height": 77.6494
+            }
+        },
+        {
+            "name": "79",
+            "rect": {
+                "x": 420.886,
+                "y": 1469.59,
+                "width": 107.603,
+                "height": 73.2128
+            }
+        },
+        {
+            "name": "78",
+            "rect": {
+                "x": 1146.36,
+                "y": 1313.17,
+                "width": 92.0686,
+                "height": 68.7762
+            }
+        },
+        {
+            "name": "77",
+            "rect": {
+                "x": 568.42,
+                "y": 483.429,
+                "width": 136.445,
+                "height": 95.3973
+            }
+        },
+        {
+            "name": "76",
+            "rect": {
+                "x": 49.2705,
+                "y": 944.892,
+                "width": 100.945,
+                "height": 86.5244
+            }
+        },
+        {
+            "name": "75",
+            "rect": {
+                "x": 475.236,
+                "y": 1130.14,
+                "width": 89.8529,
+                "height": 67.6666
+            }
+        },
+        {
+            "name": "74",
+            "rect": {
+                "x": 389.821,
+                "y": 822.87,
+                "width": 95.3991,
+                "height": 78.759
+            }
+        },
+        {
+            "name": "006",
+            "rect": {
+                "x": 1838.55,
+                "y": 310.377,
+                "width": 112.038,
+                "height": 78.7589
+            }
+        },
+        {
+            "name": "comehere01",
+            "rect": {
+                "x": 2296.69,
+                "y": 1113.5,
+                "width": 194.125,
+                "height": 170.831
+            }
+        },
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 2260.08,
+                "y": 167.28,
+                "width": 150.864,
+                "height": 67.6667
+            }
+        },
+        {
+            "name": "endshere",
+            "rect": {
+                "x": 925.059,
+                "y": 1334.09,
+                "width": 216.32,
+                "height": 132.404
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "village",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "neutral",
+                    "unit_state": "unit_hold_appear",
+                    "show_hp": true,
+                    "tag_name": "village01,ally_01",
+                    "position_name": "village",
+                    "unit_count": 1,
+                    "custom_change": "movespeed:60",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "rescue_token",
+                    "unit_type": "item",
+                    "unit_state": "unit_appear",
+                    "tag_name": "item:01",
+                    "position_name": "village",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "another two",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "neutral",
+                    "unit_state": "unit_hold_appear",
+                    "show_hp": true,
+                    "tag_name": "village02,ally_02",
+                    "position_name": "village",
+                    "unit_count": 1,
+                    "custom_change": "movespeed:60",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "neutral",
+                    "unit_state": "unit_hold_appear",
+                    "show_hp": true,
+                    "tag_name": "village03,ally_03",
+                    "position_name": "village",
+                    "unit_count": 1,
+                    "custom_change": "movespeed:60",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "comehere01",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere01",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_appear",
+                    "speeches": [
+                        {
+                            "source_type": "tag_source",
+                            "source": "village01",
+                            "content": "请保护我们走出哥布林的领地...",
+                            "camera_move": true,
+                            "duration": 2
+                        }
+                    ],
+                    "name": "duihua01"
+                }
+            ]
+        },
+        {
+            "name": "conversation_ends01",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "conversation_change",
+                    "name": "duihua01",
+                    "state": "conversation_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village01",
+                    "unit_type": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere02",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village02",
+                    "unit_type": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere02",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village03",
+                    "unit_type": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere02",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "comehere02_03",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere02",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village01",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere03",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village02",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere03",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village03",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere03",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "comehere03_04",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere03",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village01",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere07",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village02",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere07",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village03",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere07",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "comehere07_04",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere07",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village01",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere04",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village02",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere04",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village03",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere04",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "comehere04_05",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere04",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village01",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere05",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village02",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere05",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village03",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere05",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "comehere05_06",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere05",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village01",
+                    "unit_state": "unit_move",
+                    "position_name": "endshere",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village02",
+                    "unit_state": "unit_move",
+                    "position_name": "endshere",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "village03",
+                    "unit_state": "unit_move",
+                    "position_name": "endshere",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "conversation02",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "ally_01",
+                    "unit_state": "unit_move",
+                    "position_name": "endshere",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_appear",
+                    "speeches": [
+                        {
+                            "source_type": "tag_source",
+                            "source": "village01",
+                            "content": "大恩不言谢，咱们就此别过",
+                            "camera_move": true,
+                            "duration": 2
+                        }
+                    ],
+                    "name": "duihua02"
+                }
+            ]
+        },
+        {
+            "name": "conversation03",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "ally_02",
+                    "unit_state": "unit_move",
+                    "position_name": "endshere",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_appear",
+                    "speeches": [
+                        {
+                            "source_type": "tag_source",
+                            "source": "village02",
+                            "content": "太感谢了!",
+                            "camera_move": true,
+                            "duration": 2
+                        }
+                    ],
+                    "name": "duihua03"
+                }
+            ]
+        },
+        {
+            "name": "conversation04",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "ally_03",
+                    "unit_state": "unit_move",
+                    "position_name": "endshere",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_appear",
+                    "speeches": [
+                        {
+                            "source_type": "tag_source",
+                            "source": "village03",
+                            "content": "你们也快点逃命吧",
+                            "camera_move": true,
+                            "duration": 2
+                        }
+                    ],
+                    "name": "duihua03"
+                }
+            ]
+        },
+        {
+            "name": "123",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "1",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "2",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "3",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "746",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "006",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "4",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "7",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "589",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "5",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "8",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "9",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "9",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "1011",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "10",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "11",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "98979596",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                },
+                {
+                    "trigger_type": "conversation_change",
+                    "name": "duihua01",
+                    "state": "conversation_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "96",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "98",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "97",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "95",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "1",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "bomb_01",
+                    "position_name": "99",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "bomb_01",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "bomb_01",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_appear",
+                    "speeches": [
+                        {
+                            "source_type": "tag_source",
+                            "source": "bomb_01",
+                            "content": "想溜，没那么容易！小子们，都给我上！",
+                            "camera_move": false,
+                            "duration": 3
+                        }
+                    ],
+                    "name": "bomb_01shuohua"
+                }
+            ]
+        },
+        {
+            "name": "add01",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "conversation_change",
+                    "name": "bomb_01shuohua",
+                    "state": "conversation_start"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "add_0102",
+                    "position_name": "add01",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "add_0102",
+                    "position_name": "add02",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "add_0102",
+                    "position_name": "add02",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "add0102come",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "add_0102",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "add_0102",
+                    "unit_state": "unit_patrol",
+                    "position_name": "comehere01",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "888990",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere03",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "90",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "89",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "goblin_88",
+                    "position_name": "88",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "9293",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere03",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "bomb_02,come0304",
+                    "position_name": "92",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "come0304",
+                    "position_name": "8",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "come0304",
+                    "position_name": "91",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "come0304",
+                    "position_name": "6",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "bombconver_02",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "bomb_02",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_appear",
+                    "speeches": [
+                        {
+                            "source_type": "tag_source",
+                            "source": "bomb_02",
+                            "content": "杀了他们！",
+                            "camera_move": true,
+                            "duration": 2
+                        }
+                    ],
+                    "name": "bomb_02duihua"
+                }
+            ]
+        },
+        {
+            "name": "comehere0304",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "come0304",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "come0304",
+                    "unit_state": "unit_patrol",
+                    "position_name": "comehere03",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "healthpack_02",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "bomb_02",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "healthpack",
+                    "unit_type": "item",
+                    "unit_state": "unit_appear",
+                    "position_name": "90",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "797877",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere05",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "come_0506",
+                    "position_name": "79",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "come_0506",
+                    "position_name": "78",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "come_0506",
+                    "position_name": "77",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "comehere_0506",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "come_0506",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "come_0506",
+                    "unit_state": "unit_patrol",
+                    "position_name": "comehere05",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "747576",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere05",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "bomb_03",
+                    "position_name": "76",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "74",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "75",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "bomb_03convers",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "bomb_03",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_appear",
+                    "speeches": [
+                        {
+                            "source_type": "tag_source",
+                            "source": "bomb_03",
+                            "content": "一个活口也别留！",
+                            "camera_move": true,
+                            "duration": 2
+                        }
+                    ],
+                    "name": "bomb_03duihua"
+                }
+            ]
+        },
+        {
+            "name": "rescuexiaoshi",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_move",
+                    "position_name": "comehere01",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "item:01",
+                    "unit_state": "unit_disappear",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "healthpack_01",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "bomb_01",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "healthpack",
+                    "unit_type": "item",
+                    "unit_state": "unit_appear",
+                    "position_name": "1",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "game_lose",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 3
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "game_change",
+                    "game_state": "game_lose"
+                }
+            ]
+        },
+        {
+            "name": "game_win",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_move",
+                    "position_name": "endshere",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,5.00,0.00",
+                    "action_type": "game_change",
+                    "game_state": "game_win"
+                }
+            ]
+        },
+        {
+            "name": "player_speak01",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_appear",
+                    "speeches": [
+                        {
+                            "source_type": "player_source",
+                            "source": "player",
+                            "content": "前面有人喊救命呢，去右上方看看~",
+                            "camera_move": false,
+                            "duration": 4
+                        }
+                    ],
+                    "name": "player_speak01"
+                }
+            ]
+        }
+    ],
+    "units": [
+        "bomb_goblin",
+        "goblin"
+    ]
+}

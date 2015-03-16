@@ -1,0 +1,507 @@
+{
+    "tasks": [
+        {
+            "name": "\u6740\u6b7b\u6240\u6709\u70b8\u5f39\u54e5\u5e03\u6797", 
+            "desc": ""
+        }, 
+        {
+            "name": "\u6740\u6b7b\u9ab7\u9ac5\u738b", 
+            "desc": ""
+        }, 
+        {
+            "name": "\u6740\u6b7b\u517d\u4eba\u548c\u90aa\u6076\u6cd5\u5e08", 
+            "desc": ""
+        }
+    ], 
+    "positions": [
+        {
+            "name": "goblin_born_1", 
+            "rect": {
+                "y": 3611.48, 
+                "x": 470.524, 
+                "height": 235.607, 
+                "width": 360.35
+            }
+        }, 
+        {
+            "name": "goblin_born_2", 
+            "rect": {
+                "y": 3707.1, 
+                "x": 1795.96, 
+                "height": 178.825, 
+                "width": 289.143
+            }
+        }, 
+        {
+            "name": "goblin_born_3", 
+            "rect": {
+                "y": 3233.85, 
+                "x": 3287.98, 
+                "height": 196.743, 
+                "width": 164.825
+            }
+        }, 
+        {
+            "name": "goblin_born_4", 
+            "rect": {
+                "y": 3803.82, 
+                "x": 3802.15, 
+                "height": 201.032, 
+                "width": 298.164
+            }
+        }, 
+        {
+            "name": "goblin_born_5", 
+            "rect": {
+                "y": 3632.21, 
+                "x": 5049.24, 
+                "height": 252.549, 
+                "width": 380.729
+            }
+        }, 
+        {
+            "name": "vampire_born_1", 
+            "rect": {
+                "y": 1615.33, 
+                "x": 4721.51, 
+                "height": 178.145, 
+                "width": 233.328
+            }
+        }, 
+        {
+            "name": "vampire_born_2", 
+            "rect": {
+                "y": 163.623, 
+                "x": 4632.65, 
+                "height": 206.752, 
+                "width": 309.738
+            }
+        }, 
+        {
+            "name": "vampire_born_3", 
+            "rect": {
+                "y": 654.344, 
+                "x": 5315.64, 
+                "height": 187.227, 
+                "width": 168.153
+            }
+        }, 
+        {
+            "name": "orc_born_1", 
+            "rect": {
+                "y": 1491.13, 
+                "x": 1189.51, 
+                "height": 247.146, 
+                "width": 404.245
+            }
+        }, 
+        {
+            "name": "orc_born_2", 
+            "rect": {
+                "y": 334.401, 
+                "x": 779.75, 
+                "height": 254.096, 
+                "width": 233.288
+            }
+        }, 
+        {
+            "name": "wild_1", 
+            "rect": {
+                "y": 3113.59, 
+                "x": 987.612, 
+                "height": 136.677, 
+                "width": 146.287
+            }
+        }, 
+        {
+            "name": "wild_2", 
+            "rect": {
+                "y": 2853.17, 
+                "x": 2235.18, 
+                "height": 134.896, 
+                "width": 143.731
+            }
+        }, 
+        {
+            "name": "wild_3", 
+            "rect": {
+                "y": 2980.68, 
+                "x": 4654.47, 
+                "height": 127.408, 
+                "width": 139.766
+            }
+        }, 
+        {
+            "name": "wild_4", 
+            "rect": {
+                "y": 1321.93, 
+                "x": 2440.21, 
+                "height": 134.649, 
+                "width": 141.889
+            }
+        }, 
+        {
+            "name": "wild_5", 
+            "rect": {
+                "y": 663.843, 
+                "x": 1785.53, 
+                "height": 154.057, 
+                "width": 155.994
+            }
+        }, 
+        {
+            "name": "wild_6", 
+            "rect": {
+                "y": 1114.08, 
+                "x": 4234.05, 
+                "height": 121.515, 
+                "width": 146.872
+            }
+        }, 
+        {
+            "name": "player_start", 
+            "rect": {
+                "y": 2253.34, 
+                "x": 3069.62, 
+                "height": 206.874, 
+                "width": 216.68
+            }
+        }, 
+        {
+            "name": "boss_born", 
+            "rect": {
+                "y": 2286.04, 
+                "x": 3389.03, 
+                "height": 175.107, 
+                "width": 168.577
+            }
+        }, 
+        {
+            "tag": "hp", 
+            "name": "hp_pos_1", 
+            "rect": {
+                "y": 911.052, 
+                "x": 2556.5, 
+                "height": 53.2979, 
+                "width": 56.8293
+            }
+        }, 
+        {
+            "tag": "hp", 
+            "name": "hp_pos_2", 
+            "rect": {
+                "y": 4008.15, 
+                "x": 1541.17, 
+                "height": 45.9617, 
+                "width": 47.071
+            }
+        }, 
+        {
+            "tag": "hp", 
+            "name": "hp_pos_3", 
+            "rect": {
+                "y": 3123.83, 
+                "x": 5251.52, 
+                "height": 42.1008, 
+                "width": 43.834
+            }
+        }, 
+        {
+            "tag": "hp", 
+            "name": "hp_pos_4", 
+            "rect": {
+                "y": 1226.5, 
+                "x": 4070.17, 
+                "height": 43.5439, 
+                "width": 39.7827
+            }
+        }
+    ], 
+    "events": [
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "hp_appear", 
+            "actions": [
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "item", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_tag": "hp", 
+                    "source_value": "healthpack", 
+                    "unit_count": 1
+                }
+            ], 
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "unit_born", 
+            "actions": [
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "orc_born_2", 
+                    "source_value": "red_axe_orc", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "orc_born_1", 
+                    "source_value": "axe_orc", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "vampire_born_1", 
+                    "source_value": "fat_vampire", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "vampire_born_3", 
+                    "source_value": "thin_vampire", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "class_name": "evil_wizard", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "vampire_born_2", 
+                    "source_value": "evil_wizard", 
+                    "unit_count": 2
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "goblin_born_1", 
+                    "source_value": "bomb_goblin", 
+                    "unit_count": 3, 
+                    "is_boss": true
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "goblin_born_2", 
+                    "source_value": "goblin", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "goblin_born_3", 
+                    "source_value": "goblin", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "goblin_born_4", 
+                    "source_value": "bomb_goblin", 
+                    "unit_count": 3, 
+                    "is_boss": true
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "goblin_born_5", 
+                    "source_value": "bomb_goblin", 
+                    "unit_count": 2, 
+                    "is_boss": true
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "goblin_born_5", 
+                    "source_value": "goblin", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "wild_1", 
+                    "source_value": "wild_wolf", 
+                    "unit_count": 4
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "wild_2", 
+                    "source_value": "wild_wolf", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "wild_3", 
+                    "source_value": "wild_wolf", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "wild_4", 
+                    "source_value": "werewolf", 
+                    "unit_count": 2
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "wild_5", 
+                    "source_value": "wild_wolf", 
+                    "unit_count": 3
+                }, 
+                {
+                    "unit_state": "unit_appear", 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "wild_6", 
+                    "source_value": "zombie", 
+                    "unit_count": 4
+                }
+            ], 
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "skeleton_king_appear", 
+            "actions": [
+                {
+                    "unit_state": "unit_appear", 
+                    "class_name": "skeleton_king", 
+                    "show_hp": true, 
+                    "unit_type": "enemy", 
+                    "source_type": "name_source", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "unit_change", 
+                    "position_name": "boss_born", 
+                    "source_value": "skeleton_king", 
+                    "unit_count": 1, 
+                    "is_boss": true
+                }
+            ], 
+            "triggers": [
+                {
+                    "unit_state": "unit_disappear", 
+                    "trigger_type": "unit_change", 
+                    "trigger_count": 0, 
+                    "source_type": "name_source", 
+                    "source_value": "bomb_goblin"
+                }
+            ]
+        }, 
+        {
+            "trigger_meta": {
+                "is_repeated": false
+            }, 
+            "name": "game_win", 
+            "actions": [
+                {
+                    "game_state": "game_win", 
+                    "meta": "0,0.00,0.00", 
+                    "action_type": "game_change"
+                }
+            ], 
+            "triggers": [
+                {
+                    "unit_state": "unit_disappear", 
+                    "trigger_type": "unit_change", 
+                    "trigger_count": 0, 
+                    "source_type": "name_source", 
+                    "source_value": "skeleton_king"
+                }
+            ]
+        }
+    ], 
+    "units": [
+        "axe_orc", 
+        "bomb_goblin", 
+        "evil_wizard", 
+        "fat_vampire", 
+        "goblin", 
+        "red_axe_orc", 
+        "thin_vampire", 
+        "werewolf", 
+        "wild_wolf", 
+        "zombie"
+    ], 
+    "conditions": [
+        {
+            "type": "primary_win", 
+            "name": "skeleton_king", 
+            "condition": "unit_die", 
+            "number": 1
+        }
+    ], 
+    "plist": [
+        "maps/forest08/vision.plist"
+    ]
+}

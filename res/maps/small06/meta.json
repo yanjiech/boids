@@ -1,0 +1,16 @@
+{
+    "tasks": [],
+    "positions": [
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 2250.1,
+                "y": 2435.78,
+                "width": 170.833,
+                "height": 100.945
+            }
+        }
+    ],
+    "events": [],
+    "units": []
+}

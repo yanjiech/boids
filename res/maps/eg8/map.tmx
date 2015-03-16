@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="2" height="2" tilewidth="1920" tileheight="1080">
+ <tileset firstgid="1" name="bg" tilewidth="1920" tileheight="1080">
+  <tile id="0">
+   <image width="1920" height="1080" source="whiteblock.jpg"/>
+  </tile>
+  <tile id="1">
+   <image width="1920" height="1080" source="blackblock.jpg"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="3" name="vision" tilewidth="445" tileheight="485">
+  <tile id="0">
+   <image width="314" height="338" source="caowu_01.png"/>
+  </tile>
+  <tile id="1">
+   <image width="314" height="338" source="caowu_02.png"/>
+  </tile>
+  <tile id="2">
+   <image width="390" height="470" source="goutourenmuwu_01.png"/>
+  </tile>
+  <tile id="3">
+   <image width="395" height="485" source="goutourenmuwu_02.png"/>
+  </tile>
+  <tile id="4">
+   <image width="307" height="417" source="shuwu_01.png"/>
+  </tile>
+  <tile id="5">
+   <image width="307" height="417" source="shuwu_02.png"/>
+  </tile>
+  <tile id="6">
+   <image width="208" height="113" source="guanmu.png"/>
+  </tile>
+  <tile id="7">
+   <image width="173" height="179" source="fengshu.png"/>
+  </tile>
+  <tile id="8">
+   <image width="44" height="55" source="guanzi_01.png"/>
+  </tile>
+  <tile id="9">
+   <image width="445" height="235" source="daotian_01.png"/>
+  </tile>
+  <tile id="10">
+   <image width="445" height="235" source="daotian_02.png"/>
+  </tile>
+  <tile id="11">
+   <image width="114" height="129" source="daocaodui_01.png"/>
+  </tile>
+  <tile id="12">
+   <image width="133" height="129" source="caoche_01.png"/>
+  </tile>
+ </tileset>
+ <objectgroup name="background">
+  <object gid="1" x="0" y="1080"/>
+  <object gid="2" x="1920" y="1080"/>
+  <object gid="2" x="0" y="2160"/>
+  <object gid="1" x="1920" y="2160"/>
+ </objectgroup>
+ <objectgroup name="onground">
+  <object gid="13" x="1483.26" y="1169.63"/>
+  <object gid="13" x="1741.16" y="1306.47"/>
+  <object gid="13" x="1420.11" y="1343.32"/>
+  <object gid="13" x="1814.84" y="1117"/>
+ </objectgroup>
+ <objectgroup name="vision">
+  <object gid="6" x="3392.34" y="503.233"/>
+  <object gid="5" x="419.25" y="607.375"/>
+  <object gid="7" x="1896.03" y="1848.17"/>
+  <object gid="5" x="600.188" y="1322.61"/>
+  <object gid="5" x="1472.31" y="763.999"/>
+  <object gid="6" x="2963.92" y="1642.21"/>
+  <object gid="6" x="2299.9" y="1097.52"/>
+  <object gid="10" x="2808.74" y="262.684"/>
+  <object gid="10" x="2950.84" y="178.474"/>
+  <object gid="10" x="2803.47" y="131.105"/>
+  <object gid="10" x="2935.06" y="304.791"/>
+  <object gid="10" x="3061.37" y="204.793"/>
+  <object gid="10" x="1187.68" y="173.211"/>
+  <object gid="10" x="1250.85" y="267.948"/>
+  <object gid="10" x="1282.43" y="115.316"/>
+  <object gid="10" x="1366.64" y="210.053"/>
+  <object gid="10" x="1424.53" y="131.106"/>
+  <object gid="9" x="696" y="1987.58"/>
+  <object gid="9" x="780.211" y="1919.16"/>
+  <object gid="9" x="848.632" y="1966.53"/>
+  <object gid="10" x="3029.79" y="1936.37"/>
+  <object gid="10" x="2882.42" y="2041.63"/>
+  <object gid="10" x="2982.42" y="2120.58"/>
+  <object gid="10" x="3477.16" y="1867.95"/>
+  <object gid="10" x="3550.84" y="1931.11"/>
+  <object gid="10" x="3608.74" y="2141.63"/>
+  <object gid="10" x="3098.21" y="2162.68"/>
+  <object gid="10" x="3187.68" y="2173.21"/>
+  <object gid="10" x="3024.53" y="2041.63"/>
+  <object gid="10" x="3614" y="1983.74"/>
+  <object gid="10" x="3624.53" y="1783.74"/>
+  <object gid="10" x="3724.53" y="1946.89"/>
+  <object gid="10" x="3661.37" y="1678.47"/>
+  <object gid="10" x="3529.79" y="1546.89"/>
+  <object gid="10" x="3529.79" y="1683.74"/>
+  <object gid="10" x="3698.21" y="1383.74"/>
+  <object gid="10" x="3603.47" y="1320.58"/>
+  <object gid="10" x="3661.37" y="1489"/>
+  <object gid="10" x="3166.63" y="2031.11"/>
+  <object gid="10" x="2724.53" y="2157.42"/>
+  <object gid="10" x="3735.05" y="1289"/>
+  <object gid="10" x="3656.11" y="1178.47"/>
+  <object gid="10" x="3566.63" y="1415.32"/>
+  <object gid="10" x="3750.84" y="1141.63"/>
+  <object gid="10" x="2798.21" y="2120.58"/>
+  <object gid="10" x="2508.74" y="2052.16"/>
+  <object gid="10" x="2824.53" y="1931.11"/>
+  <object gid="10" x="2503.47" y="2199.53"/>
+  <object gid="10" x="2624.53" y="2178.47"/>
+  <object gid="10" x="3440.32" y="1425.84"/>
+  <object gid="10" x="3640.32" y="1031.11"/>
+  <object gid="10" x="2919.26" y="2189"/>
+  <object gid="10" x="2682.42" y="2020.58"/>
+  <object gid="9" x="2764.42" y="929.686"/>
+  <object gid="9" x="2885.48" y="892.846"/>
+  <object gid="9" x="2832.85" y="1008.64"/>
+  <object gid="9" x="2927.58" y="961.266"/>
+  <object gid="9" x="580.21" y="1371.79"/>
+  <object gid="9" x="759.158" y="1377.05"/>
+  <object gid="8" x="1099.63" y="1871.16"/>
+  <object gid="10" x="40.3158" y="1941.63"/>
+  <object gid="10" x="135.053" y="2094.26"/>
+  <object gid="10" x="-38.6316" y="2089"/>
+  <object gid="10" x="40.3158" y="2178.47"/>
+  <object gid="10" x="361.368" y="2178.47"/>
+  <object gid="10" x="156.105" y="2173.21"/>
+  <object gid="10" x="261.368" y="2052.16"/>
+  <object gid="10" x="261.368" y="2136.37"/>
+  <object gid="10" x="166.632" y="1904.79"/>
+  <object gid="10" x="503.474" y="2178.47"/>
+  <object gid="10" x="156.105" y="1994.26"/>
+  <object gid="10" x="629.789" y="2210.05"/>
+  <object gid="10" x="408.737" y="1962.68"/>
+  <object gid="10" x="814" y="2152.16"/>
+  <object gid="10" x="3308.74" y="2178.47"/>
+  <object gid="10" x="3350.84" y="1994.26"/>
+  <object gid="10" x="3471.89" y="2146.89"/>
+  <object gid="10" x="3466.63" y="1999.53"/>
+  <object gid="10" x="3277.16" y="2004.79"/>
+  <object gid="10" x="945.579" y="2241.63"/>
+  <object gid="10" x="1187.68" y="2215.32"/>
+  <object gid="10" x="724.526" y="2257.42"/>
+  <object gid="10" x="966.632" y="2125.84"/>
+  <object gid="10" x="987.684" y="2215.32"/>
+  <object gid="10" x="2366.63" y="2178.47"/>
+  <object gid="10" x="2124.53" y="2178.47"/>
+  <object gid="10" x="2256.1" y="2178.47"/>
+  <object gid="10" x="2550.84" y="2052.16"/>
+  <object gid="10" x="-96.5263" y="367.947"/>
+  <object gid="10" x="45.5789" y="257.421"/>
+  <object gid="10" x="235.053" y="115.316"/>
+  <object gid="10" x="3.47368" y="152.158"/>
+  <object gid="10" x="-70.2105" y="252.158"/>
+  <object gid="10" x="156.105" y="89"/>
+  <object gid="10" x="71.8947" y="1520.58"/>
+  <object gid="10" x="29.7895" y="1873.21"/>
+  <object gid="10" x="-17.5789" y="1683.74"/>
+  <object gid="10" x="82.4211" y="1773.21"/>
+  <object gid="10" x="-54.4211" y="1815.32"/>
+  <object gid="10" x="-1.78947" y="1262.68"/>
+  <object gid="10" x="-12.3158" y="1446.89"/>
+  <object gid="10" x="-49.1579" y="1620.58"/>
+  <object gid="10" x="24.5263" y="1331.11"/>
+  <object gid="10" x="-101.789" y="904.789"/>
+  <object gid="10" x="14" y="1083.74"/>
+  <object gid="10" x="-91.2632" y="1067.95"/>
+  <object gid="10" x="-59.6842" y="1152.16"/>
+  <object gid="10" x="-49.1579" y="773.211"/>
+  <object gid="10" x="-12.3158" y="604.789"/>
+  <object gid="10" x="-22.8421" y="510.053"/>
+  <object gid="10" x="19.2632" y="383.737"/>
+  <object gid="10" x="135.053" y="283.737"/>
+  <object gid="10" x="124.526" y="194.263"/>
+  <object gid="10" x="350.842" y="183.737"/>
+  <object gid="10" x="177.158" y="231.105"/>
+  <object gid="10" x="271.895" y="152.158"/>
+  <object gid="10" x="124.526" y="1246.89"/>
+  <object gid="10" x="140.316" y="1441.63"/>
+  <object gid="10" x="177.158" y="1725.84"/>
+  <object gid="10" x="1529.79" y="162.686"/>
+  <object gid="11" x="620.105" y="1674.37"/>
+  <object gid="14" x="1590.37" y="785.053"/>
+  <object gid="14" x="1500.89" y="748.211"/>
+  <object gid="15" x="1449.79" y="816.632"/>
+  <object gid="10" x="1115.79" y="2184.21"/>
+  <object gid="10" x="2373.68" y="2057.89"/>
+ </objectgroup>
+ <objectgroup name="physics">
+  <object name="c2" type="collide" x="3401.25" y="423.197">
+   <polygon points="0,0 94.0439,47.0219 350.052,-47.0219 250.784,-104.493"/>
+  </object>
+  <object name="c3" type="collide" x="1907.96" y="1786.46">
+   <polygon points="0,0 62.6959,31.348 188.088,47.0219 261.233,5.22466 161.964,-31.348 99.2685,-41.7973"/>
+  </object>
+  <object name="c4" type="collide" x="659.346" y="1244.35">
+   <polygon points="0,0 151.515,67.9206 313.48,36.5726 146.29,-57.4713"/>
+  </object>
+  <object name="c5" type="collide" x="452.208" y="502.799">
+   <polygon points="0,0 235.11,99.2685 339.603,41.7973 99.2685,-78.3699"/>
+  </object>
+  <object name="c6" type="collide" x="2329.71" y="1043.61">
+   <polygon points="0,0 73.1452,41.7973 313.48,-78.3699 224.66,-130.617"/>
+  </object>
+  <object name="c7" type="collide" x="2983.28" y="1588.3">
+   <polygon points="0,0 83.5946,36.5726 323.929,-62.6959 235.11,-125.392"/>
+  </object>
+  <object name="c8" type="collide" x="1136.84" y="1810.53">
+   <polygon points="0,0 100,36.8421 200,47.3684 273.684,-5.26316 210.526,-42.1053 47.3684,-42.1053 15.7895,-36.8421"/>
+  </object>
+  <object name="c9" type="collide" x="1542.11" y="636.842">
+   <polygon points="0,0 -36.8421,68.4211 -68.4211,136.842 -31.5789,173.684 63.1579,142.105 221.053,110.526 315.789,63.1579 105.263,-57.8947"/>
+  </object>
+  <object name="c10" type="collide" x="357.895" y="15.7895">
+   <polygon points="0,0 126.316,121.053 -68.4211,210.526 -105.263,257.895 -210.526,284.211 -242.105,547.368 -310.526,847.368 -215.789,1031.58 -110.526,1215.79 -89.4737,1378.95 -226.316,1584.21 -52.6316,1657.89 -47.3684,1836.84 94.7368,1857.89 184.211,1889.47 68.4211,1978.95 342.105,2052.63 515.789,2073.68 705.263,2073.68 873.684,2084.21 984.211,2126.32 978.947,2189.47 -368.421,2173.68 -363.158,-42.1053"/>
+  </object>
+  <object name="c11" type="collide" x="2136.84" y="2142.11">
+   <polygon points="0,0 1689.47,0 1700,-1231.58 1584.21,-1136.84 1521.05,-947.368 1378.95,-778.947 1431.58,-689.474 1436.84,-515.789 1400,-336.842 1168.42,-273.684 968.421,-273.684 763.158,-268.421 589.474,-178.947 289.474,-147.368 68.4211,-47.3684"/>
+  </object>
+  <object name="c12" type="collide" x="1215.79" y="168.421">
+   <polygon points="0,0 84.2105,78.9474 289.474,5.26316 468.421,-68.4211 189.474,-136.842 31.5789,-73.6842"/>
+  </object>
+  <object name="c13" type="collide" x="2857.89" y="226.316">
+   <polygon points="0,0 152.632,63.1579 347.368,-52.6316 210.526,-131.579 36.8421,-136.842"/>
+  </object>
+ </objectgroup>
+</map>

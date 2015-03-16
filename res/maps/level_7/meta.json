@@ -1,0 +1,419 @@
+{	
+	"desc": "击败骷髅王！",
+    "tasks": [
+        {
+            "name": "1",
+            "desc": "击败骷髅王"
+        },
+        {
+            "name": "2",
+            "desc": "杀死所有敌人"
+        },
+        {
+            "name": "3",
+            "desc": "全员不死"
+        }
+    ],
+    "plist": [],
+    "positions": [
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 1263.9,
+                "y": 13.8115,
+                "width": 275.823,
+                "height": 131.329
+            }
+        },
+        {
+            "name": "yellow1",
+            "rect": {
+                "x": 588.203,
+                "y": 916.98,
+                "width": 209.989,
+                "height": 101.153
+            }
+        },
+        {
+            "name": "yellow2",
+            "rect": {
+                "x": 1096.09,
+                "y": 3063.37,
+                "width": 231.087,
+                "height": 143.094
+            }
+        },
+        {
+            "name": "yellow3",
+            "rect": {
+                "x": 2597.45,
+                "y": 1442.43,
+                "width": 274.137,
+                "height": 177.347
+            }
+        },
+        {
+            "name": "yellow4",
+            "rect": {
+                "x": 4261.47,
+                "y": 848.641,
+                "width": 296.054,
+                "height": 164.478
+            }
+        },
+        {
+            "name": "yellow5",
+            "rect": {
+                "x": 4484.7,
+                "y": 2485.7,
+                "width": 423.271,
+                "height": 219.609
+            }
+        },
+        {
+            "name": "yellow6",
+            "rect": {
+                "x": 2934.79,
+                "y": 3319.33,
+                "width": 522.24,
+                "height": 291.652
+            }
+        },
+        {
+            "name": "hp1",
+            "rect": {
+                "x": 4316.02,
+                "y": 2788.09,
+                "width": 140.914,
+                "height": 69.1182
+            },
+            "tag": "hp"
+        },
+        {
+            "name": "hp2",
+            "rect": {
+                "x": 3668.56,
+                "y": 3367.78,
+                "width": 83.3484,
+                "height": 37.0486
+            },
+            "tag": "hp"
+        },
+        {
+            "name": "monster1",
+            "rect": {
+                "x": 798.023,
+                "y": 2044.2,
+                "width": 196.344,
+                "height": 102.055
+            }
+        },
+        {
+            "name": "monster2",
+            "rect": {
+                "x": 2321.07,
+                "y": 2741.95,
+                "width": 237.39,
+                "height": 140.88
+            }
+        },
+        {
+            "name": "monster5",
+            "rect": {
+                "x": 3373.82,
+                "y": 1923.28,
+                "width": 220.748,
+                "height": 160.847
+            }
+        },
+        {
+            "name": "monster3",
+            "rect": {
+                "x": 2968.93,
+                "y": 321.467,
+                "width": 273.994,
+                "height": 205.219
+            }
+        },
+        {
+            "name": "monster6",
+            "rect": {
+                "x": 4325.59,
+                "y": 1884.45,
+                "width": 138.661,
+                "height": 98.7261
+            }
+        },
+        {
+            "name": "monster4",
+            "rect": {
+                "x": 1214.03,
+                "y": 1445.18,
+                "width": 195.233,
+                "height": 116.476
+            }
+        },
+        {
+            "name": "boss",
+            "rect": {
+                "x": 3208.53,
+                "y": 3575.01,
+                "width": 132.006,
+                "height": 73.2129
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "yellow_init",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "yellow1",
+                    "unit_count": 5,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "kobold",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "yellow2",
+                    "unit_count": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "yellow3",
+                    "unit_count": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "red_axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "yellow5",
+                    "unit_count": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "yellow5",
+                    "unit_count": 3,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "evil_wizard",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "yellow6",
+                    "unit_count": 2,
+                    "class_name": "evil_wizard",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_king",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_hold_appear",
+                    "tag_name": "boss",
+                    "position_name": "boss",
+                    "unit_count": 1,
+                    "is_boss": true,
+                    "class_name": "skeleton_king",
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "yellow4",
+                    "unit_count": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster1",
+                    "unit_count": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster2",
+                    "unit_count": 5,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster3",
+                    "unit_count": 3,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster3",
+                    "unit_count": 3,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster4",
+                    "unit_count": 3,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster5",
+                    "unit_count": 3,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster5",
+                    "unit_count": 3,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster6",
+                    "unit_count": 5,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "hp_appear",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "healthpack",
+                    "unit_type": "item",
+                    "unit_state": "unit_appear",
+                    "position_tag": "hp",
+                    "unit_count": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "gamewin",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,1.00,0.00",
+                    "action_type": "game_change",
+                    "game_state": "game_win"
+                }
+            ]
+        }
+    ],
+    "units": [
+        "axe_orc",
+        "bomb_goblin",
+        "evil_wizard",
+        "goblin",
+        "kobold",
+        "red_axe_orc",
+        "wild_wolf"
+    ]
+}

@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+goldenblade_04
+  rotate: false
+  xy: 2, 3
+  size: 231, 83
+  orig: 231, 83
+  offset: 0, 0
+  index: -1
+goldenblade_05
+  rotate: false
+  xy: 235, 2
+  size: 181, 84
+  orig: 181, 84
+  offset: 0, 0
+  index: -1
+goldenblade_07
+  rotate: false
+  xy: 418, 2
+  size: 181, 84
+  orig: 181, 84
+  offset: 0, 0
+  index: -1

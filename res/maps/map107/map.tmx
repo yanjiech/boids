@@ -1,0 +1,1584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="130" height="100" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="vision" tilewidth="1029" tileheight="761">
+  <tile id="0">
+   <image width="323" height="226" source="baisezhangpeng_01.png"/>
+  </tile>
+  <tile id="1">
+   <image width="90" height="81" source="baoxiang_01.png"/>
+  </tile>
+  <tile id="2">
+   <image width="90" height="81" source="baoxiang_02.png"/>
+  </tile>
+  <tile id="3">
+   <image width="752" height="698" source="binansuo1_normal.png"/>
+  </tile>
+  <tile id="4">
+   <image width="752" height="698" source="binansuo1_unnormal.png"/>
+  </tile>
+  <tile id="5">
+   <image width="560" height="420" source="binansuo2_normal.png"/>
+  </tile>
+  <tile id="6">
+   <image width="560" height="420" source="binansuo2_unnormal.png"/>
+  </tile>
+  <tile id="7">
+   <image width="400" height="336" source="binansuo3_normal.png"/>
+  </tile>
+  <tile id="8">
+   <image width="400" height="336" source="binansuo3_unnormal.png"/>
+  </tile>
+  <tile id="9">
+   <image width="400" height="336" source="binansuo4_normal.png"/>
+  </tile>
+  <tile id="10">
+   <image width="400" height="336" source="binansuo4_unnormal.png"/>
+  </tile>
+  <tile id="11">
+   <image width="520" height="668" source="binansuo5_normal.png"/>
+  </tile>
+  <tile id="12">
+   <image width="520" height="668" source="binansuo5_unnormal.png"/>
+  </tile>
+  <tile id="13">
+   <image width="700" height="668" source="binansuo6_normal.png"/>
+  </tile>
+  <tile id="14">
+   <image width="700" height="668" source="binansuo6_unnormal.png"/>
+  </tile>
+  <tile id="15">
+   <image width="133" height="129" source="caoche_01.png"/>
+  </tile>
+  <tile id="16">
+   <image width="151" height="127" source="caocong_01.png"/>
+  </tile>
+  <tile id="17">
+   <image width="121" height="97" source="caocong_02.png"/>
+  </tile>
+  <tile id="18">
+   <image width="91" height="73" source="caocong_03.png"/>
+  </tile>
+  <tile id="19">
+   <image width="314" height="338" source="caowu_01.png"/>
+  </tile>
+  <tile id="20">
+   <image width="314" height="338" source="caowu_02.png"/>
+  </tile>
+  <tile id="21">
+   <image width="116" height="87" source="chaihuodui_01.png"/>
+  </tile>
+  <tile id="22">
+   <image width="116" height="87" source="chaihuodui_02.png"/>
+  </tile>
+  <tile id="23">
+   <image width="400" height="534" source="church_left_normal.png"/>
+  </tile>
+  <tile id="24">
+   <image width="400" height="534" source="church_left_unnormal.png"/>
+  </tile>
+  <tile id="25">
+   <image width="400" height="534" source="church_right_normal.png"/>
+  </tile>
+  <tile id="26">
+   <image width="400" height="534" source="church_right_unnormal.png"/>
+  </tile>
+  <tile id="27">
+   <image width="114" height="129" source="daocaodui_01.png"/>
+  </tile>
+  <tile id="28">
+   <image width="92" height="107" source="daocaodui_02.png"/>
+  </tile>
+  <tile id="29">
+   <image width="445" height="235" source="daotian_01.png"/>
+  </tile>
+  <tile id="30">
+   <image width="445" height="235" source="daotian_02.png"/>
+  </tile>
+  <tile id="31">
+   <image width="335" height="662" source="diaoxiang_01.png"/>
+  </tile>
+  <tile id="32">
+   <image width="161" height="200" source="diaoxiang_02.png"/>
+  </tile>
+  <tile id="33">
+   <image width="161" height="200" source="diaoxiang_03.png"/>
+  </tile>
+  <tile id="34">
+   <image width="143" height="149" source="diaoxiang_04.png"/>
+  </tile>
+  <tile id="35">
+   <image width="143" height="149" source="diaoxiang_05.png"/>
+  </tile>
+  <tile id="36">
+   <image width="684" height="426" source="dixiamuxue.png"/>
+  </tile>
+  <tile id="37">
+   <image width="142" height="131" source="ganguo_01.png"/>
+  </tile>
+  <tile id="38">
+   <image width="765" height="541" source="gaodi_01.png"/>
+  </tile>
+  <tile id="39">
+   <image width="480" height="357" source="gaodi_02.png"/>
+  </tile>
+  <tile id="40">
+   <image width="877" height="376" source="gaodi_03.png"/>
+  </tile>
+  <tile id="41">
+   <image width="495" height="303" source="gaodi_04.png"/>
+  </tile>
+  <tile id="42">
+   <image width="765" height="541" source="gaodi_05.png"/>
+  </tile>
+  <tile id="43">
+   <image width="669" height="335" source="gaodi_06.png"/>
+  </tile>
+  <tile id="44">
+   <image width="869" height="373" source="gaodi_07.png"/>
+  </tile>
+  <tile id="45">
+   <image width="390" height="470" source="goutourenmuwu_01.png"/>
+  </tile>
+  <tile id="46">
+   <image width="395" height="485" source="goutourenmuwu_02.png"/>
+  </tile>
+  <tile id="47">
+   <image width="208" height="113" source="guanmu.png"/>
+  </tile>
+  <tile id="48">
+   <image width="44" height="55" source="guanzi_01.png"/>
+  </tile>
+  <tile id="49">
+   <image width="1029" height="479" source="hu_01.png"/>
+  </tile>
+  <tile id="50">
+   <image width="57" height="31" source="kulou_01.png"/>
+  </tile>
+  <tile id="51">
+   <image width="57" height="31" source="kulou_02.png"/>
+  </tile>
+  <tile id="52">
+   <image width="73" height="49" source="kulou_03.png"/>
+  </tile>
+  <tile id="53">
+   <image width="73" height="49" source="kulou_04.png"/>
+  </tile>
+  <tile id="54">
+   <image width="440" height="185" source="kuloudui_01.png"/>
+  </tile>
+  <tile id="55">
+   <image width="125" height="105" source="kuloudui_02.png"/>
+  </tile>
+  <tile id="56">
+   <image width="59" height="48" source="kuloutou_01.png"/>
+  </tile>
+  <tile id="57">
+   <image width="88" height="60" source="kuloutou_02.png"/>
+  </tile>
+  <tile id="58">
+   <image width="176" height="215" source="kushu_01.png"/>
+  </tile>
+  <tile id="59">
+   <image width="199" height="225" source="kushu_02.png"/>
+  </tile>
+  <tile id="60">
+   <image width="171" height="130" source="kuteng.png"/>
+  </tile>
+  <tile id="61">
+   <image width="89" height="111" source="langan_01.png"/>
+  </tile>
+  <tile id="62">
+   <image width="89" height="111" source="langan_02.png"/>
+  </tile>
+  <tile id="63">
+   <image width="119" height="117" source="langan_03.png"/>
+  </tile>
+  <tile id="64">
+   <image width="119" height="117" source="langan_04.png"/>
+  </tile>
+  <tile id="65">
+   <image width="440" height="433" source="langtuteng_01.png"/>
+  </tile>
+  <tile id="66">
+   <image width="68" height="100" source="lazhu_01.png"/>
+  </tile>
+  <tile id="67">
+   <image width="35" height="71" source="lazhu_02.png"/>
+  </tile>
+  <tile id="68">
+   <image width="421" height="250" source="longgu_01.png"/>
+  </tile>
+  <tile id="69">
+   <image width="63" height="126" source="ludeng_01.png"/>
+  </tile>
+  <tile id="70">
+   <image width="63" height="126" source="ludeng_02.png"/>
+  </tile>
+  <tile id="71">
+   <image width="103" height="178" source="ludeng.png"/>
+  </tile>
+  <tile id="72">
+   <image width="98" height="105" source="lupai_01 (2).png"/>
+  </tile>
+  <tile id="73">
+   <image width="98" height="105" source="lupai_01 (3).png"/>
+  </tile>
+  <tile id="74">
+   <image width="55" height="106" source="lupai_01.png"/>
+  </tile>
+  <tile id="75">
+   <image width="89" height="109" source="lupai_02.png"/>
+  </tile>
+  <tile id="76">
+   <image width="89" height="109" source="lupai_03.png"/>
+  </tile>
+  <tile id="77">
+   <image width="81" height="151" source="maotouying_01.png"/>
+  </tile>
+  <tile id="78">
+   <image width="81" height="151" source="maotouying_02.png"/>
+  </tile>
+  <tile id="79">
+   <image width="352" height="371" source="minju_01.png"/>
+  </tile>
+  <tile id="80">
+   <image width="352" height="371" source="minju_02.png"/>
+  </tile>
+  <tile id="81">
+   <image width="259" height="408" source="minju_03.png"/>
+  </tile>
+  <tile id="82">
+   <image width="114" height="64" source="muban_01.png"/>
+  </tile>
+  <tile id="83">
+   <image width="79" height="72" source="mubei_01.png"/>
+  </tile>
+  <tile id="84">
+   <image width="94" height="86" source="mubei_02.png"/>
+  </tile>
+  <tile id="85">
+   <image width="72" height="71" source="mubei_03.png"/>
+  </tile>
+  <tile id="86">
+   <image width="75" height="83" source="mubei_04.png"/>
+  </tile>
+  <tile id="87">
+   <image width="84" height="100" source="mubei_05.png"/>
+  </tile>
+  <tile id="88">
+   <image width="102" height="129" source="mubei_06.png"/>
+  </tile>
+  <tile id="89">
+   <image width="104" height="87" source="mubei_07.png"/>
+  </tile>
+  <tile id="90">
+   <image width="87" height="72" source="mubei_10.png"/>
+  </tile>
+  <tile id="91">
+   <image width="102" height="129" source="mubei_11.png"/>
+  </tile>
+  <tile id="92">
+   <image width="290" height="242" source="mumen01_normal.png"/>
+  </tile>
+  <tile id="93">
+   <image width="290" height="242" source="mumen01_unnormal.png"/>
+  </tile>
+  <tile id="94">
+   <image width="290" height="242" source="mumen02_normal.png"/>
+  </tile>
+  <tile id="95">
+   <image width="290" height="242" source="mumen02_unnormal.png"/>
+  </tile>
+  <tile id="96">
+   <image width="473" height="291" source="muwu_01.png"/>
+  </tile>
+  <tile id="97">
+   <image width="95" height="86" source="nangua_01.png"/>
+  </tile>
+  <tile id="98">
+   <image width="67" height="60" source="nangua_02.png"/>
+  </tile>
+  <tile id="99">
+   <image width="56" height="47" source="nangua_03.png"/>
+  </tile>
+  <tile id="100">
+   <image width="137" height="144" source="penquan.png"/>
+  </tile>
+  <tile id="101">
+   <image width="180" height="185" source="qiang_01.png"/>
+  </tile>
+  <tile id="102">
+   <image width="180" height="185" source="qiang_02.png"/>
+  </tile>
+  <tile id="103">
+   <image width="107" height="78" source="qiang_03.png"/>
+  </tile>
+  <tile id="104">
+   <image width="107" height="78" source="qiang_04.png"/>
+  </tile>
+  <tile id="105">
+   <image width="220" height="198" source="qiang_05.png"/>
+  </tile>
+  <tile id="106">
+   <image width="166" height="308" source="shaota_01.png"/>
+  </tile>
+  <tile id="107">
+   <image width="391" height="255" source="shiqiao.png"/>
+  </tile>
+  <tile id="108">
+   <image width="107" height="145" source="shiti_01.png"/>
+  </tile>
+  <tile id="109">
+   <image width="107" height="145" source="shiti_02.png"/>
+  </tile>
+  <tile id="110">
+   <image width="109" height="70" source="shiti_03.png"/>
+  </tile>
+  <tile id="111">
+   <image width="109" height="70" source="shiti_04.png"/>
+  </tile>
+  <tile id="112">
+   <image width="118" height="73" source="shiti_05.png"/>
+  </tile>
+  <tile id="113">
+   <image width="118" height="73" source="shiti_06.png"/>
+  </tile>
+  <tile id="114">
+   <image width="42" height="28" source="shitou_01.png"/>
+  </tile>
+  <tile id="115">
+   <image width="755" height="761" source="shourenbingying_01.png"/>
+  </tile>
+  <tile id="116">
+   <image width="162" height="210" source="shuijing_01.png"/>
+  </tile>
+  <tile id="117">
+   <image width="162" height="210" source="shuijing_02.png"/>
+  </tile>
+  <tile id="118">
+   <image width="307" height="417" source="shuwu_01.png"/>
+  </tile>
+  <tile id="119">
+   <image width="307" height="417" source="shuwu_02.png"/>
+  </tile>
+  <tile id="120">
+   <image width="148" height="103" source="shuzhuang_01.png"/>
+  </tile>
+  <tile id="121">
+   <image width="78" height="61" source="shuzhuang_02.png"/>
+  </tile>
+  <tile id="122">
+   <image width="98" height="75" source="shuzhuang_03.png"/>
+  </tile>
+  <tile id="123">
+   <image width="101" height="126" source="shuzhuang_04.png"/>
+  </tile>
+  <tile id="124">
+   <image width="135" height="219" source="songshu_01.png"/>
+  </tile>
+  <tile id="125">
+   <image width="135" height="219" source="songshu_02.png"/>
+  </tile>
+  <tile id="126">
+   <image width="185" height="224" source="xiangshu.png"/>
+  </tile>
+  <tile id="127">
+   <image width="64" height="62" source="xiaocao_01.png"/>
+  </tile>
+  <tile id="128">
+   <image width="64" height="71" source="xiaocao_02.png"/>
+  </tile>
+  <tile id="129">
+   <image width="35" height="41" source="xiaocao_04.png"/>
+  </tile>
+  <tile id="130">
+   <image width="347" height="271" source="zahuopu_01.png"/>
+  </tile>
+  <tile id="131">
+   <image width="88" height="119" source="zhalan_01.png"/>
+  </tile>
+  <tile id="132">
+   <image width="88" height="119" source="zhalan_02.png"/>
+  </tile>
+  <tile id="133">
+   <image width="66" height="67" source="zhalan_03.png"/>
+  </tile>
+  <tile id="134">
+   <image width="74" height="90" source="zhalan_04.png"/>
+  </tile>
+  <tile id="135">
+   <image width="66" height="67" source="zhalan_05.png"/>
+  </tile>
+  <tile id="136">
+   <image width="74" height="90" source="zhalan_06.png"/>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="130" height="100" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgyyyAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="background"/>
+ <objectgroup name="vision">
+  <object name="base1" type="base" gid="4" x="1019" y="5178">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="400"/>
+    <property name="center_y" value="160"/>
+    <property name="hp" value="2000"/>
+    <property name="radius" value="200"/>
+    <property name="res" value="binansuo1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="abase1" type="base" gid="116" x="6567" y="1648">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="400"/>
+    <property name="center_y" value="160"/>
+    <property name="hp" value="2000"/>
+    <property name="radius" value="200"/>
+    <property name="res" value="binansuo1"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object gid="32" x="2449.48" y="1506.76"/>
+  <object gid="37" x="5930" y="3989"/>
+  <object gid="126" x="2901" y="3801"/>
+  <object gid="126" x="2853" y="4265"/>
+  <object gid="126" x="3344.11" y="3375.59"/>
+  <object gid="126" x="2835" y="4049"/>
+  <object gid="126" x="3005" y="3621"/>
+  <object gid="126" x="3486.8" y="3309.77"/>
+  <object gid="126" x="3109" y="3453"/>
+  <object gid="126" x="4029" y="3509"/>
+  <object gid="126" x="3557" y="2245"/>
+  <object gid="126" x="709" y="5597"/>
+  <object gid="126" x="893" y="5869"/>
+  <object gid="126" x="571.667" y="5759.67"/>
+  <object gid="126" x="1090.33" y="6290.33"/>
+  <object gid="126" x="357" y="4005"/>
+  <object gid="126" x="3093.67" y="4938.33"/>
+  <object gid="126" x="77" y="4637"/>
+  <object gid="126" x="291.667" y="3689"/>
+  <object gid="126" x="158.333" y="5102.33"/>
+  <object gid="126" x="437" y="4581"/>
+  <object gid="126" x="259.667" y="5914.33"/>
+  <object gid="126" x="62.3333" y="6093"/>
+  <object gid="126" x="1861" y="3125"/>
+  <object gid="126" x="2069" y="3133"/>
+  <object gid="126" x="2205" y="2973"/>
+  <object gid="126" x="2333" y="2693"/>
+  <object gid="126" x="2680.88" y="2373"/>
+  <object gid="126" x="3002.68" y="2239.07"/>
+  <object gid="126" x="3330.93" y="2226.16"/>
+  <object gid="126" x="3159.32" y="2174.8"/>
+  <object gid="126" x="651.667" y="5997"/>
+  <object gid="126" x="2965" y="4629"/>
+  <object gid="126" x="433" y="6059.67"/>
+  <object gid="126" x="3885" y="3517"/>
+  <object gid="126" x="517" y="5453"/>
+  <object gid="126" x="81" y="5829"/>
+  <object gid="126" x="189" y="4581"/>
+  <object gid="126" x="1685" y="2677"/>
+  <object gid="126" x="1637" y="2229"/>
+  <object gid="126" x="1677" y="1989"/>
+  <object gid="126" x="1773" y="1861"/>
+  <object gid="126" x="1789" y="1669"/>
+  <object gid="126" x="1917" y="1461"/>
+  <object gid="126" x="2130.33" y="1199.18"/>
+  <object gid="126" x="2321.73" y="1150.58"/>
+  <object gid="126" x="3545" y="875"/>
+  <object gid="126" x="3373" y="853"/>
+  <object gid="126" x="3851" y="887"/>
+  <object gid="126" x="3701" y="837"/>
+  <object gid="126" x="1877" y="2725"/>
+  <object gid="126" x="2050.45" y="1377.61"/>
+  <object gid="126" x="2828.48" y="2229.25"/>
+  <object gid="126" x="101" y="4077"/>
+  <object gid="126" x="403.667" y="6354.33"/>
+  <object gid="126" x="279.667" y="5111.67"/>
+  <object gid="126" x="361" y="3434.33"/>
+  <object gid="126" x="65" y="3149"/>
+  <object gid="126" x="101" y="2901"/>
+  <object gid="126" x="365" y="4277"/>
+  <object gid="126" x="2085" y="2861"/>
+  <object gid="126" x="3869" y="3381"/>
+  <object gid="126" x="906.333" y="6191.67"/>
+  <object gid="126" x="1741" y="2925"/>
+  <object gid="126" x="893" y="1317"/>
+  <object gid="126" x="3647.57" y="3393.91"/>
+  <object gid="126" x="67.6667" y="3542.33"/>
+  <object gid="126" x="525" y="1925"/>
+  <object gid="126" x="303.667" y="5703.67"/>
+  <object gid="126" x="185" y="3323.67"/>
+  <object gid="126" x="349" y="3029"/>
+  <object gid="126" x="245" y="2677"/>
+  <object gid="126" x="461" y="1773"/>
+  <object gid="126" x="589" y="1493"/>
+  <object gid="126" x="845" y="1165"/>
+  <object gid="126" x="1989" y="421"/>
+  <object gid="126" x="2941" y="189"/>
+  <object gid="126" x="2733" y="229"/>
+  <object gid="126" x="3115.3" y="140.394"/>
+  <object gid="126" x="2669" y="981"/>
+  <object gid="126" x="2449.24" y="994.576"/>
+  <object gid="126" x="1805" y="453"/>
+  <object gid="126" x="1653" y="2469"/>
+  <object gid="126" x="1925" y="2909"/>
+  <object gid="126" x="365" y="4821"/>
+  <object gid="126" x="2793" y="4473"/>
+  <object gid="126" x="3323" y="5045.67"/>
+  <object gid="126" x="3607.67" y="5293"/>
+  <object gid="126" x="4131" y="5367"/>
+  <object gid="126" x="4557" y="5397"/>
+  <object gid="126" x="5" y="4845"/>
+  <object gid="126" x="526.333" y="5135.67"/>
+  <object gid="126" x="1131.67" y="6002.33"/>
+  <object gid="126" x="1341" y="5933"/>
+  <object gid="126" x="2317" y="6101"/>
+  <object gid="126" x="3330" y="6361"/>
+  <object gid="126" x="3373" y="6189"/>
+  <object gid="126" x="2821" y="6157"/>
+  <object gid="126" x="3152" y="6222"/>
+  <object gid="126" x="501" y="3565"/>
+  <object gid="126" x="3789.24" y="6344.73"/>
+  <object gid="126" x="1402.33" y="6347.67"/>
+  <object gid="126" x="3507" y="6373"/>
+  <object gid="126" x="1445" y="6157"/>
+  <object gid="126" x="789" y="6357"/>
+  <object gid="126" x="586.333" y="6177"/>
+  <object gid="126" x="189" y="6302.33"/>
+  <object gid="126" x="2461" y="6181"/>
+  <object gid="126" x="3638" y="6289"/>
+  <object gid="126" x="2993" y="6296"/>
+  <object gid="126" x="2149" y="6165"/>
+  <object gid="126" x="1629" y="5981"/>
+  <object gid="126" x="445" y="2333"/>
+  <object gid="126" x="645" y="1661"/>
+  <object gid="126" x="725" y="1389"/>
+  <object gid="126" x="1029" y="1165"/>
+  <object name="t111" type="tower" gid="107" x="741" y="3258">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at121" type="tower" gid="119" x="4081.85" y="396.03">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object gid="127" x="8052" y="912"/>
+  <object gid="127" x="7852" y="976"/>
+  <object gid="127" x="7716" y="752"/>
+  <object gid="127" x="8140" y="2568"/>
+  <object gid="127" x="7940.12" y="2662.42"/>
+  <object gid="127" x="7955.88" y="2280.36"/>
+  <object gid="127" x="5796" y="3664"/>
+  <object gid="127" x="6228" y="2920"/>
+  <object gid="127" x="6356" y="3104"/>
+  <object gid="127" x="6140" y="3120"/>
+  <object gid="127" x="6436" y="2864"/>
+  <object gid="127" x="5980" y="3512"/>
+  <object gid="127" x="6036" y="3288"/>
+  <object gid="127" x="6764" y="3904"/>
+  <object gid="127" x="6668" y="4336"/>
+  <object gid="127" x="5572" y="5312"/>
+  <object gid="127" x="8150.18" y="2894.42"/>
+  <object gid="127" x="8007.76" y="3569.94"/>
+  <object gid="127" x="8068" y="4376"/>
+  <object gid="127" x="7699.64" y="4847.03"/>
+  <object gid="127" x="7629.94" y="5023.39"/>
+  <object gid="127" x="7576.48" y="5198.18"/>
+  <object gid="127" x="7358.79" y="5249.21"/>
+  <object gid="127" x="5548" y="3840"/>
+  <object gid="127" x="5036" y="3800"/>
+  <object gid="127" x="6612" y="3024"/>
+  <object gid="127" x="6740" y="3248"/>
+  <object gid="127" x="6748" y="3464"/>
+  <object gid="127" x="6772" y="3664"/>
+  <object gid="127" x="4748" y="2552"/>
+  <object gid="127" x="4956" y="2536"/>
+  <object gid="127" x="5316" y="3872"/>
+  <object gid="127" x="4820" y="3672"/>
+  <object gid="127" x="4662" y="1028"/>
+  <object gid="127" x="4284" y="2440"/>
+  <object gid="127" x="4524" y="2488"/>
+  <object gid="127" x="5108" y="2360"/>
+  <object gid="127" x="7196" y="200"/>
+  <object gid="127" x="8068" y="592"/>
+  <object gid="127" x="7620" y="440"/>
+  <object gid="127" x="7828" y="248"/>
+  <object gid="127" x="7924" y="440"/>
+  <object gid="127" x="7548" y="672"/>
+  <object gid="127" x="8084" y="264"/>
+  <object gid="127" x="7964" y="664"/>
+  <object gid="127" x="7620" y="184"/>
+  <object gid="127" x="7396" y="280"/>
+  <object gid="127" x="7196" y="488"/>
+  <object gid="127" x="6297" y="355"/>
+  <object gid="127" x="5185.82" y="222.788"/>
+  <object gid="127" x="4932" y="136"/>
+  <object gid="127" x="4636.36" y="135.455"/>
+  <object gid="127" x="4117.45" y="204.485"/>
+  <object gid="127" x="3814.18" y="213.576"/>
+  <object gid="127" x="3972.85" y="155.273"/>
+  <object gid="127" x="4700" y="6224"/>
+  <object gid="127" x="5030" y="6236"/>
+  <object gid="127" x="5379" y="6246"/>
+  <object gid="127" x="6482.18" y="6031.15"/>
+  <object gid="127" x="6706.42" y="5990.3"/>
+  <object gid="127" x="6540" y="3208"/>
+  <object gid="127" x="6893.33" y="5657.82"/>
+  <object gid="127" x="6814.3" y="5814.06"/>
+  <object gid="127" x="4820" y="5464"/>
+  <object gid="127" x="5028" y="5432"/>
+  <object gid="127" x="5340" y="5384"/>
+  <object gid="127" x="6292" y="4896"/>
+  <object gid="127" x="6412" y="4736"/>
+  <object gid="127" x="6748" y="4112"/>
+  <object gid="127" x="6540" y="4584"/>
+  <object gid="34" x="3720" y="2284"/>
+  <object gid="34" x="4152" y="2372"/>
+  <object gid="59" x="5976" y="3635"/>
+  <object gid="59" x="6608" y="3579"/>
+  <object gid="59" x="6512" y="4395"/>
+  <object gid="59" x="5752" y="3811"/>
+  <object gid="59" x="6568" y="4163"/>
+  <object gid="59" x="6600" y="3803"/>
+  <object gid="59" x="6424" y="3667"/>
+  <object gid="59" x="6264" y="3251"/>
+  <object gid="59" x="6288" y="3459"/>
+  <object gid="59" x="6144" y="3563"/>
+  <object gid="59" x="6432" y="3339"/>
+  <object gid="59" x="6448" y="3491"/>
+  <object gid="59" x="1952" y="2291"/>
+  <object gid="59" x="1968" y="2083"/>
+  <object gid="59" x="2032" y="1731"/>
+  <object gid="59" x="1920" y="1611"/>
+  <object gid="59" x="1880" y="1803"/>
+  <object gid="59" x="1864" y="1955"/>
+  <object gid="59" x="2208" y="2531"/>
+  <object gid="59" x="1792" y="2219"/>
+  <object gid="59" x="2040" y="2699"/>
+  <object gid="59" x="1816" y="2507"/>
+  <object gid="118" x="7813.91" y="4958.58"/>
+  <object gid="78" x="4224" y="1288.33"/>
+  <object gid="78" x="3176" y="1843"/>
+  <object gid="58" x="948" y="110"/>
+  <object gid="58" x="828" y="622"/>
+  <object gid="57" x="1965.79" y="192.848"/>
+  <object gid="57" x="1252.58" y="89.0909"/>
+  <object gid="57" x="635.364" y="308.364"/>
+  <object gid="52" x="870.788" y="949.909"/>
+  <object gid="52" x="1541.7" y="88.3333"/>
+  <object gid="52" x="366.909" y="826.152"/>
+  <object gid="52" x="1267.27" y="150.152"/>
+  <object gid="69" x="93.6364" y="669.848"/>
+  <object gid="55" x="3.18182" y="2203.52"/>
+  <object type="collide" gid="41" x="-6.60606" y="359.273"/>
+  <object gid="126" x="126.333" y="5489"/>
+  <object gid="126" x="325" y="5365"/>
+  <object gid="126" x="41" y="5210.33"/>
+  <object gid="126" x="69" y="4381"/>
+  <object gid="126" x="79.6667" y="3811.67"/>
+  <object name="b1" type="barracks" gid="8" x="1024" y="4000">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="190"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="800"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo3"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="ab1" type="barracks" gid="66" x="5932" y="792">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="190"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="800"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo3"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object gid="123" x="8015" y="1085"/>
+  <object gid="123" x="7823" y="493"/>
+  <object gid="123" x="7415" y="493"/>
+  <object gid="123" x="7559" y="837"/>
+  <object gid="123" x="2159" y="397"/>
+  <object gid="123" x="2567" y="285"/>
+  <object gid="122" x="2177" y="6334"/>
+  <object gid="122" x="3065" y="4734"/>
+  <object gid="122" x="249" y="4878"/>
+  <object gid="122" x="217" y="4734"/>
+  <object gid="122" x="881" y="6014"/>
+  <object gid="122" x="449" y="5814"/>
+  <object gid="122" x="265" y="4150"/>
+  <object gid="122" x="1713" y="6382"/>
+  <object gid="122" x="2489" y="2446"/>
+  <object gid="121" x="6582" y="3979"/>
+  <object gid="121" x="6174" y="3363"/>
+  <object gid="121" x="2498" y="2355"/>
+  <object gid="121" x="2030" y="2419"/>
+  <object gid="72" x="4135.67" y="3546.33"/>
+  <object gid="72" x="4693" y="3665"/>
+  <object gid="72" x="5869" y="5177"/>
+  <object gid="53" x="98.6667" y="612.606"/>
+  <object gid="53" x="312.121" y="417.333"/>
+  <object gid="53" x="226.545" y="702.788"/>
+  <object gid="127" x="7340" y="736"/>
+  <object gid="127" x="6956" y="344"/>
+  <object gid="127" x="6884" y="176"/>
+  <object gid="127" x="6652" y="200"/>
+  <object gid="127" x="6420" y="224"/>
+  <object gid="127" x="6716" y="392"/>
+  <object gid="127" x="6188" y="120"/>
+  <object gid="127" x="5700" y="152"/>
+  <object gid="127" x="5948" y="144"/>
+  <object gid="127" x="5484" y="136"/>
+  <object gid="127" x="7708" y="1120"/>
+  <object gid="127" x="8084" y="1376"/>
+  <object gid="127" x="7916" y="1520"/>
+  <object gid="127" x="8092" y="1656"/>
+  <object gid="127" x="8022.42" y="1910.55"/>
+  <object gid="127" x="8132" y="2144"/>
+  <object gid="127" x="8140" y="3168"/>
+  <object gid="127" x="8140" y="3392"/>
+  <object gid="127" x="8076" y="3816"/>
+  <object gid="127" x="8076" y="4064"/>
+  <object gid="127" x="8044" y="4568"/>
+  <object gid="126" x="1723.67" y="6226.33"/>
+  <object gid="126" x="1955.67" y="6403.67"/>
+  <object gid="126" x="1921" y="6129"/>
+  <object gid="126" x="2353" y="6387.67"/>
+  <object gid="126" x="2667.67" y="6385"/>
+  <object gid="127" x="5228" y="2144"/>
+  <object gid="127" x="5340" y="1912"/>
+  <object gid="127" x="5508" y="1648"/>
+  <object gid="127" x="5540" y="1416"/>
+  <object gid="127" x="5428" y="1192"/>
+  <object gid="127" x="5220" y="1096"/>
+  <object gid="127" x="4936" y="1044"/>
+  <object gid="126" x="3381" y="5165"/>
+  <object gid="126" x="3546.33" y="5181"/>
+  <object gid="126" x="4249" y="5415"/>
+  <object gid="127" x="7915.52" y="2077.33"/>
+  <object gid="127" x="8101.7" y="2405.45"/>
+  <object gid="127" x="7956.48" y="2869.58"/>
+  <object gid="127" x="7996" y="3104"/>
+  <object gid="127" x="7908" y="3336"/>
+  <object gid="127" x="7932" y="3928"/>
+  <object gid="127" x="7924" y="4272"/>
+  <object gid="127" x="7812" y="1376"/>
+  <object gid="127" x="7892" y="1760"/>
+  <object gid="72" x="6165" y="4961"/>
+  <object gid="44" x="4482" y="2247"/>
+  <object gid="44" x="3218" y="3719"/>
+  <object gid="34" x="2816" y="948"/>
+  <object gid="34" x="3208" y="860"/>
+  <object gid="127" x="4476" y="960"/>
+  <object gid="127" x="4036" y="904"/>
+  <object gid="127" x="4228" y="944"/>
+  <object gid="127" x="6290.45" y="6028.09"/>
+  <object gid="127" x="6159" y="6182"/>
+  <object gid="127" x="5965" y="6184"/>
+  <object gid="127" x="5791" y="6355"/>
+  <object gid="127" x="5540" y="6357"/>
+  <object gid="127" x="4836" y="6328"/>
+  <object gid="127" x="5128" y="6372"/>
+  <object gid="126" x="3956.52" y="6276.88"/>
+  <object gid="126" x="4094.21" y="6360.27"/>
+  <object gid="126" x="4267.67" y="6252.27"/>
+  <object gid="126" x="4444.88" y="6325"/>
+  <object gid="118" x="6971.24" y="5890.45"/>
+  <object gid="101" x="7525.45" y="5972.97"/>
+  <object gid="126" x="341" y="2493"/>
+  <object gid="126" x="533" y="2125"/>
+  <object gid="59" x="5984" y="4835"/>
+  <object gid="59" x="5800" y="4787"/>
+  <object gid="59" x="5676" y="5197.67"/>
+  <object gid="59" x="5181.33" y="5315"/>
+  <object gid="59" x="4946.67" y="5375"/>
+  <object gid="59" x="5616" y="4739"/>
+  <object gid="59" x="5376" y="4611"/>
+  <object gid="59" x="5208" y="4627"/>
+  <object gid="59" x="5056" y="4691"/>
+  <object gid="59" x="4550" y="3781"/>
+  <object gid="59" x="4494" y="3903"/>
+  <object gid="59" x="4248" y="4059"/>
+  <object gid="59" x="4334" y="4165"/>
+  <object gid="59" x="4344" y="4275"/>
+  <object gid="59" x="4532" y="4215"/>
+  <object gid="59" x="4712" y="4739"/>
+  <object gid="59" x="4450" y="4675.67"/>
+  <object gid="59" x="4285.33" y="4734.33"/>
+  <object gid="59" x="4143.33" y="4598.33"/>
+  <object gid="59" x="4712" y="5337.67"/>
+  <object gid="59" x="4426" y="5319"/>
+  <object gid="59" x="3902.67" y="5209.67"/>
+  <object gid="59" x="3436" y="5037.67"/>
+  <object gid="59" x="3226.67" y="4962.33"/>
+  <object gid="59" x="3830.67" y="3727"/>
+  <object gid="59" x="3705.33" y="3476.33"/>
+  <object gid="59" x="3232" y="3445"/>
+  <object gid="59" x="3136.67" y="4770.33"/>
+  <object gid="59" x="3090.67" y="3737.67"/>
+  <object gid="59" x="2946" y="4311.67"/>
+  <object gid="59" x="2972" y="4463"/>
+  <object gid="59" x="3980" y="4567.67"/>
+  <object gid="59" x="3896" y="4451"/>
+  <object gid="59" x="4702" y="4281"/>
+  <object gid="59" x="4868" y="4205"/>
+  <object gid="59" x="4872" y="3835"/>
+  <object gid="59" x="4296" y="2172.33"/>
+  <object gid="59" x="4401.33" y="2265.67"/>
+  <object gid="59" x="4933.33" y="2313.67"/>
+  <object gid="59" x="5165.33" y="1920.33"/>
+  <object gid="59" x="5082.67" y="2071"/>
+  <object gid="59" x="2784" y="1123"/>
+  <object gid="59" x="2940" y="1175"/>
+  <object gid="59" x="3184" y="1291"/>
+  <object gid="59" x="3021.33" y="1289.67"/>
+  <object gid="59" x="3274" y="929"/>
+  <object gid="59" x="3436" y="959"/>
+  <object gid="59" x="3466.67" y="1387"/>
+  <object gid="59" x="3608" y="1353.67"/>
+  <object gid="59" x="3841.33" y="1368.33"/>
+  <object gid="59" x="3632" y="919"/>
+  <object gid="59" x="3774" y="963"/>
+  <object gid="59" x="3922" y="929"/>
+  <object gid="59" x="4106" y="971"/>
+  <object gid="59" x="4338" y="1005"/>
+  <object gid="59" x="4672" y="1129"/>
+  <object gid="59" x="4832" y="1119"/>
+  <object gid="59" x="5016" y="1143"/>
+  <object gid="59" x="3712" y="2107"/>
+  <object gid="59" x="3734.67" y="1993.67"/>
+  <object gid="59" x="3862.67" y="1769.67"/>
+  <object gid="59" x="4002.67" y="1792.33"/>
+  <object gid="59" x="3730.67" y="1749.67"/>
+  <object gid="59" x="3681.33" y="1857.67"/>
+  <object gid="59" x="3557.33" y="1805.67"/>
+  <object gid="59" x="3461.33" y="2133.67"/>
+  <object gid="59" x="3288" y="1851"/>
+  <object gid="59" x="3408" y="1797.67"/>
+  <object gid="59" x="3354.67" y="1333.67"/>
+  <object gid="59" x="3216" y="1431"/>
+  <object gid="59" x="3070.67" y="1540.33"/>
+  <object gid="59" x="4508" y="1041"/>
+  <object gid="59" x="5300" y="1217"/>
+  <object gid="59" x="5150" y="1195"/>
+  <object gid="59" x="5398" y="1487"/>
+  <object gid="59" x="5370" y="1703"/>
+  <object gid="59" x="5382" y="1323"/>
+  <object gid="59" x="4138.67" y="1740.33"/>
+  <object gid="59" x="3754.67" y="1307"/>
+  <object gid="59" x="3990.67" y="1319"/>
+  <object gid="59" x="4585.33" y="4804.33"/>
+  <object gid="126" x="3269.24" y="237.727"/>
+  <object gid="126" x="3485" y="244.03"/>
+  <object gid="126" x="3677" y="229.97"/>
+  <object gid="126" x="37" y="2717"/>
+  <object gid="126" x="13" y="2493"/>
+  <object gid="126" x="197" y="2485"/>
+  <object gid="48" x="6464" y="6256"/>
+  <object gid="48" x="6280" y="6240"/>
+  <object gid="48" x="6040" y="6296"/>
+  <object gid="48" x="6512" y="6144"/>
+  <object gid="73" x="7306.52" y="5290.18"/>
+  <object gid="73" x="7033.42" y="5536"/>
+  <object gid="124" x="6462" y="4151"/>
+  <object gid="124" x="2246" y="2767"/>
+  <object gid="124" x="2732.67" y="2219"/>
+  <object gid="128" x="872" y="5679"/>
+  <object gid="128" x="784" y="5735"/>
+  <object gid="128" x="480" y="4943"/>
+  <object gid="128" x="304" y="4343"/>
+  <object gid="128" x="312" y="3807"/>
+  <object gid="128" x="376" y="3111"/>
+  <object gid="128" x="464" y="3223"/>
+  <object gid="128" x="240" y="2751"/>
+  <object gid="128" x="7032" y="431"/>
+  <object gid="128" x="7168" y="535"/>
+  <object gid="128" x="7496" y="319"/>
+  <object gid="128" x="7168" y="279"/>
+  <object gid="128" x="6216" y="223"/>
+  <object gid="128" x="5928" y="151"/>
+  <object gid="128" x="7888" y="1519"/>
+  <object gid="128" x="7640" y="959"/>
+  <object gid="128" x="7952" y="1183"/>
+  <object gid="128" x="8200" y="1735"/>
+  <object gid="128" x="7952" y="1871"/>
+  <object gid="128" x="8048" y="2367"/>
+  <object gid="128" x="8128" y="2703"/>
+  <object gid="128" x="7960" y="3079"/>
+  <object gid="128" x="7960" y="4023"/>
+  <object gid="128" x="1336" y="6031"/>
+  <object gid="128" x="1256" y="6111"/>
+  <object gid="128" x="1624" y="6295"/>
+  <object gid="128" x="2096" y="6231"/>
+  <object gid="129" x="7536" y="451"/>
+  <object gid="129" x="7688" y="891"/>
+  <object gid="129" x="7944" y="1099"/>
+  <object gid="129" x="6160" y="171"/>
+  <object gid="129" x="6632" y="323"/>
+  <object gid="129" x="7976" y="2451"/>
+  <object gid="129" x="7920" y="4459"/>
+  <object gid="129" x="1096" y="5819"/>
+  <object gid="129" x="512" y="5259"/>
+  <object gid="129" x="664" y="5419"/>
+  <object gid="129" x="440" y="5571"/>
+  <object gid="129" x="224" y="3995"/>
+  <object gid="129" x="232" y="3499"/>
+  <object gid="129" x="1288" y="6187"/>
+  <object gid="129" x="1744" y="6067"/>
+  <object gid="129" x="184" y="5651"/>
+  <object gid="70" x="5079" y="4173"/>
+  <object gid="70" x="3849" y="4364.33"/>
+  <object gid="80" x="7839.88" y="5166.33"/>
+  <object gid="80" x="6760" y="6185"/>
+  <object gid="24" x="7827.27" y="5721.91"/>
+  <object gid="61" x="5231" y="1321"/>
+  <object gid="61" x="5280.33" y="1778.33"/>
+  <object gid="61" x="4224.33" y="1649"/>
+  <object gid="60" x="4201" y="1578.67"/>
+  <object gid="127" x="5340" y="2056"/>
+  <object gid="127" x="5452" y="1800"/>
+  <object gid="121" x="4880.67" y="4723"/>
+  <object gid="121" x="5471.33" y="5264.33"/>
+  <object gid="121" x="6166" y="4857.67"/>
+  <object gid="121" x="2966" y="3875"/>
+  <object gid="124" x="3118" y="4575"/>
+  <object gid="60" x="2951" y="4104"/>
+  <object gid="60" x="4165" y="5296"/>
+  <object gid="60" x="3693" y="5224"/>
+  <object gid="126" x="3837" y="5259"/>
+  <object gid="126" x="4029" y="5323"/>
+  <object gid="61" x="4327" y="3927"/>
+  <object gid="126" x="1205" y="1021"/>
+  <object gid="126" x="1197" y="861"/>
+  <object gid="126" x="1461" y="669"/>
+  <object gid="126" x="1437" y="837"/>
+  <object gid="126" x="2613" y="189"/>
+  <object gid="126" x="1637" y="589"/>
+  <object gid="126" x="2821" y="117"/>
+  <object gid="126" x="1789" y="589"/>
+  <object gid="126" x="3377.36" y="172.879"/>
+  <object gid="126" x="3569.12" y="147.545"/>
+  <object gid="127" x="4428.67" y="182.212"/>
+  <object gid="127" x="4267.39" y="144.727"/>
+  <object gid="128" x="4824" y="167"/>
+  <object gid="128" x="5096" y="159"/>
+  <object gid="128" x="4848" y="95"/>
+  <object gid="128" x="5664" y="191"/>
+  <object gid="128" x="3144" y="191"/>
+  <object gid="128" x="1760" y="671"/>
+  <object gid="128" x="1376" y="903"/>
+  <object gid="128" x="1128" y="1055"/>
+  <object gid="128" x="1032" y="1231"/>
+  <object gid="128" x="824" y="1455"/>
+  <object gid="128" x="888" y="1335"/>
+  <object gid="128" x="640" y="1743"/>
+  <object gid="128" x="640" y="1879"/>
+  <object gid="128" x="560" y="1591"/>
+  <object gid="128" x="456" y="1991"/>
+  <object gid="128" x="472" y="2127"/>
+  <object gid="129" x="1704" y="659"/>
+  <object gid="129" x="1472" y="875"/>
+  <object gid="129" x="784" y="1547"/>
+  <object gid="129" x="416" y="2611"/>
+  <object gid="129" x="5712" y="6171"/>
+  <object gid="129" x="4680" y="6315"/>
+  <object gid="129" x="4584" y="6179"/>
+  <object gid="129" x="3240" y="6347"/>
+  <object gid="129" x="2880" y="6259"/>
+  <object gid="128" x="5296" y="6207"/>
+  <object gid="128" x="5448" y="6319"/>
+  <object gid="128" x="2904" y="6359"/>
+  <object gid="128" x="2664" y="6191"/>
+  <object gid="128" x="2552" y="6303"/>
+  <object gid="128" x="3804.36" y="5309.79"/>
+  <object gid="128" x="3252.85" y="5027.97"/>
+  <object gid="129" x="2901.33" y="4568.33"/>
+  <object gid="129" x="4486.18" y="5438.03"/>
+  <object gid="128" x="4716.48" y="5458.27"/>
+  <object gid="128" x="3949.82" y="5346.15"/>
+  <object gid="128" x="2983.15" y="4715.85"/>
+  <object gid="129" x="5264.97" y="5410.76"/>
+  <object gid="122" x="3139.79" y="6333.03"/>
+  <object gid="122" x="3554.94" y="6187.58"/>
+  <object gid="122" x="3954.94" y="6366.36"/>
+  <object gid="122" x="361" y="2808.79"/>
+  <object gid="122" x="1364.03" y="772.424"/>
+  <object gid="122" x="1097.36" y="963.333"/>
+  <object gid="122" x="982.212" y="1054.24"/>
+  <object gid="122" x="1609.48" y="681.515"/>
+  <object gid="122" x="1564.03" y="754.242"/>
+  <object gid="122" x="1942.82" y="493.636"/>
+  <object gid="127" x="7850.42" y="4818.06"/>
+  <object gid="127" x="7829.21" y="4615.03"/>
+  <object gid="133" x="2172" y="1403"/>
+  <object gid="133" x="2268" y="1355"/>
+  <object gid="133" x="2367.88" y="1280.82"/>
+  <object gid="132" x="2716" y="1147"/>
+  <object gid="132" x="2836" y="1235"/>
+  <object gid="132" x="2948" y="1323"/>
+  <object gid="132" x="3020" y="1395"/>
+  <object gid="132" x="2076" y="1531"/>
+  <object gid="132" x="2140" y="1619"/>
+  <object gid="132" x="2220" y="1707"/>
+  <object gid="133" x="2474.18" y="1198.39"/>
+  <object gid="133" x="2583.27" y="1110.52"/>
+  <object type="collide" gid="109" x="2189.42" y="1868.97"/>
+  <object gid="113" x="2165.24" y="1490.55"/>
+  <object gid="98" x="6313" y="4035"/>
+  <object gid="84" x="6241" y="4636"/>
+  <object gid="90" x="6340" y="4587"/>
+  <object gid="90" x="6220" y="4739"/>
+  <object gid="90" x="6116" y="4635"/>
+  <object gid="90" x="6228" y="4539"/>
+  <object gid="84" x="6337" y="4484"/>
+  <object gid="84" x="6113" y="4564"/>
+  <object gid="128" x="2776" y="4199"/>
+  <object gid="128" x="2848" y="3839"/>
+  <object gid="128" x="2032" y="2975"/>
+  <object gid="128" x="1768" y="3039"/>
+  <object gid="128" x="1816" y="2727"/>
+  <object gid="128" x="1656" y="2319"/>
+  <object gid="128" x="5320" y="2255"/>
+  <object gid="128" x="5408" y="2135"/>
+  <object gid="128" x="5992" y="3311"/>
+  <object gid="128" x="5912" y="3511"/>
+  <object gid="129" x="5720" y="3683"/>
+  <object gid="129" x="1696" y="2747"/>
+  <object gid="129" x="5224" y="3867"/>
+  <object gid="123" x="5239" y="3805"/>
+  <object gid="123" x="5487" y="3901"/>
+  <object gid="136" x="8167" y="5129"/>
+  <object gid="137" x="8219" y="5213"/>
+  <object gid="134" x="8143" y="5257"/>
+  <object gid="134" x="8075" y="5297"/>
+  <object gid="134" x="8003" y="5333"/>
+  <object gid="137" x="8243" y="5629"/>
+  <object gid="136" x="8007" y="5401"/>
+  <object gid="136" x="8075" y="5457"/>
+  <object gid="136" x="8135" y="5497"/>
+  <object gid="136" x="8191" y="5545"/>
+  <object gid="134" x="8183" y="5673"/>
+  <object gid="134" x="8115" y="5713"/>
+  <object gid="134" x="8067" y="5837"/>
+  <object gid="134" x="7999" y="5877"/>
+  <object gid="137" x="8131" y="5793"/>
+  <object gid="127" x="8132" y="6196"/>
+  <object gid="127" x="8008" y="6372"/>
+  <object gid="127" x="7660" y="6420"/>
+  <object gid="127" x="5972" y="6436"/>
+  <object gid="127" x="6336" y="6408"/>
+  <object gid="127" x="6668" y="6416"/>
+  <object gid="127" x="7936" y="6000"/>
+  <object gid="127" x="7856" y="6252"/>
+  <object gid="127" x="8180" y="5920"/>
+  <object gid="48" x="7992" y="4716"/>
+  <object gid="48" x="7972" y="4876"/>
+  <object gid="48" x="8136" y="4796"/>
+  <object gid="48" x="8120" y="5384"/>
+  <object gid="48" x="8172" y="5484"/>
+  <object gid="77" x="6852" y="6342"/>
+  <object gid="77" x="7472" y="6362"/>
+  <object gid="128" x="7892" y="6027"/>
+  <object gid="128" x="7776" y="6183"/>
+  <object gid="128" x="8096" y="6139"/>
+  <object gid="128" x="8152" y="5959"/>
+  <object gid="128" x="6576" y="6379"/>
+  <object gid="128" x="6248" y="6383"/>
+  <object gid="128" x="7916" y="6359"/>
+  <object gid="128" x="7744" y="5195"/>
+  <object gid="128" x="7984" y="5287"/>
+  <object gid="128" x="7108" y="5959"/>
+  <object gid="128" x="7088" y="6211"/>
+  <object name="b2" type="barracks" gid="8" x="2184" y="5544">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="190"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="800"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo3"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="ab2" type="barracks" gid="66" x="7176" y="2256">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="190"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="800"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo3"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t112" type="tower" gid="107" x="1384" y="3232">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t121" type="tower" gid="107" x="736" y="2384">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t122" type="tower" gid="107" x="1304" y="2384">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t211" type="tower" gid="107" x="2056" y="3440">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t212" type="tower" gid="107" x="2520" y="3744">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t221" type="tower" gid="107" x="2496" y="2864">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t222" type="tower" gid="107" x="3000" y="3152">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t1" type="tower" gid="107" x="1480" y="4520">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t2" type="tower" gid="107" x="1912" y="4888">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t311" type="tower" gid="107" x="2976" y="5304">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t312" type="tower" gid="107" x="2912" y="5848">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t321" type="tower" gid="107" x="4192" y="5608">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="t322" type="tower" gid="107" x="4184" y="6024">
+   <properties>
+    <property name="camp" value="ally"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at122" type="tower" gid="119" x="4096" y="728">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at111" type="tower" gid="119" x="5288" y="448">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at112" type="tower" gid="119" x="5272" y="912">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at1" type="tower" gid="119" x="6232" y="1488">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at2" type="tower" gid="119" x="6632" y="1880">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at211" type="tower" gid="119" x="5504" y="2280">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at212" type="tower" gid="119" x="6064" y="2680">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at221" type="tower" gid="119" x="4984" y="2832">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at222" type="tower" gid="119" x="5496" y="3384">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at311" type="tower" gid="119" x="6968" y="2896">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at312" type="tower" gid="119" x="7552" y="2904">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at321" type="tower" gid="119" x="6960" y="3944">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+  <object name="at322" type="tower" gid="119" x="7592" y="3952">
+   <properties>
+    <property name="camp" value="enemy"/>
+    <property name="center_x" value="100"/>
+    <property name="center_y" value="70"/>
+    <property name="hp" value="500"/>
+    <property name="radius" value="100"/>
+    <property name="res" value="binansuo4"/>
+    <property name="state" value="normal"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="physics">
+  <object type="collide" x="44" y="6376">
+   <polygon points="0,0 4,-3964 248,-3952 394,-3954 396,-3898 300,-3718 390,-3590 402,-3370 246,-3080 416,-2978 554,-2850 352,-2702 420,-2396 424,-2124 504,-1822 428,-1578 590,-1268 582,-946 774,-808 948,-544 1156,-430 1356,-502 1484,42"/>
+  </object>
+  <object type="collide" x="1410" y="5878">
+   <polygon points="0,0 128,540 5398,546 5508,444 5508,412 4998,458 4656,488 4522,442 4674,300 4858,298 4986,148 5172,144 5396,100 5530,-82 5612,-240 5694,-374 5632,-402 5536,-262 5444,-102 5362,42 5152,88 4970,84 4804,238 4644,236 4466,388 4234,406 4066,292 3708,286 3376,282 3102,382 2934,306 2612,336 2306,336 2192,248 2024,244 1474,214 1116,230 992,156 592,186 304,56"/>
+  </object>
+  <object type="collide" x="10" y="2078">
+   <polygon points="0,0 200,-92 552,60 524,248 440,346 14,330"/>
+  </object>
+  <object type="collide" x="590" y="2136">
+   <polygon points="0,0 75.5537,-36.8393 66.7144,-236.321 52.4645,-389.482 162,-498 136.714,-671.482 242,-764 408,-842 546,-992 726,-1140 950,-1310 1068,-1408 1145.48,-1525.61 1296,-1550 1492,-1724 1668,-1760 1644,-1826 1464,-1788 1266,-1756 1100,-1614 922,-1526 788,-1416 652,-1320 524,-1222 418,-1138 290,-1012 157.286,-820.196 32,-690 -90,-412 -71.7501,-236 -62,-20"/>
+  </object>
+  <object type="collide" x="86" y="492">
+   <polygon points="0,0 368,224 468,118 322,-14 46,-54"/>
+  </object>
+  <object type="collide" x="0" y="328">
+   <polygon points="0,0 278,40 518,-106 752,-128 862,-238 842,-334 -8,-338"/>
+  </object>
+  <object type="collide" x="2574" y="272">
+   <polygon points="0,0 76,-124 284,-268 5758,-262 5770,608 5026,562 4824,448 4686,200 4470,62 4224,118 3786,76 3446,-116 3210,-120 3006,-142 2704,-54 2438,-136 2152,-134 1940,-84 1784,-128 1496,-120 1330,-50 766,-32 594,-122 432,-76 240,-40"/>
+  </object>
+  <object type="collide" x="4216" y="256">
+   <polygon points="0,0 -122,84 -28,130 84,144 180,46"/>
+  </object>
+  <object type="collide" x="4164" y="572">
+   <polygon points="0,0 -94,98 88,152 224,72"/>
+  </object>
+  <object type="collide" x="5380" y="320">
+   <polygon points="0,0 -114,74 60,142 200,48"/>
+  </object>
+  <object type="collide" x="5382" y="762">
+   <polygon points="0,0 -122,80 6,148 196,62"/>
+  </object>
+  <object type="collide" x="6114" y="512">
+   <polygon points="0,0 -236,138 114,294 288,116"/>
+  </object>
+  <object type="collide" x="6372" y="1330">
+   <polygon points="0,0 -174,100 14,194 154,82"/>
+  </object>
+  <object type="collide" x="6942" y="1116">
+   <polygon points="0,0 -384,294 16,528 438,244"/>
+  </object>
+  <object type="collide" x="6724" y="1696">
+   <polygon points="0,0 -128,114 66,228 210,106"/>
+  </object>
+  <object type="collide" x="7432" y="1976">
+   <polygon points="0,0 -280,184 92,292 220,124"/>
+  </object>
+  <object type="collide" x="7854" y="862">
+   <polygon points="0,0 -118,230 8,500 106,644 78,876 110,1196 154,1404 294,1536 130,1770 148,1984 184,2210 92,2442 210,2686 274,2916 114,3034 260,3176 108,3382 240,3490 220,3660 44,3696 -112,3934 -184,4126 -230,4282 -418,4330 -546,4390 -512,4442 -184,4322 56,4292 128,4302 288,4226 356,4292 134,4414 176,4506 -48,4716 150,4868 206,4918 124,5098 58,5344 -162,5530 -162,5562 488,5564 488,24"/>
+  </object>
+  <object type="collide" x="840" y="2252">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="1393.33" y="2252">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="840" y="3124">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="1476" y="3098.67">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="1580" y="4377.33">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="2010.67" y="4740">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="1029.33" y="3928">
+   <polygon points="0,0 186.667,90.6667 356,-5.33333 157.333,-138.667"/>
+  </object>
+  <object type="collide" x="1008" y="5048">
+   <polygon points="0,0 402.667,166.667 781.333,-34.6667 424,-286.667"/>
+  </object>
+  <object type="collide" x="2197.33" y="5481.33">
+   <polygon points="0,0 164,88 333.333,-2.66667 177.333,-112"/>
+  </object>
+  <object type="collide" x="2969.33" y="5257.33">
+   <polygon points="0,0 85.3333,54.6667 186.667,0 90.6667,-68"/>
+  </object>
+  <object type="collide" x="2897.33" y="5794.67">
+   <polygon points="0,0 89.3333,56 194.667,-4 102.667,-73.3333"/>
+  </object>
+  <object type="collide" x="4174.67" y="5558.67">
+   <polygon points="0,0 92,61.3333 198.667,1.33333 114.667,-74.6667"/>
+  </object>
+  <object type="collide" x="4177.33" y="5978.67">
+   <polygon points="0,0 81.3333,54.6667 186.667,6.66667 98.6667,-72"/>
+  </object>
+  <object type="collide" x="6740" y="6108">
+   <polygon points="0,0 140,92 384,-16 136,-188"/>
+  </object>
+  <object type="collide" x="6964" y="5832">
+   <polygon points="0,0 108,72 176,0 68,-56"/>
+  </object>
+  <object type="collide" x="7496" y="5936">
+   <polygon points="0,0 108,80 224,-16 100,-68"/>
+  </object>
+  <object type="collide" x="7488" y="6312">
+   <polygon points="0,0 12,64 72,52 60,-4"/>
+  </object>
+  <object type="collide" x="6928" y="3872">
+   <polygon points="0,0 136,104 344,0 176,-88"/>
+  </object>
+  <object type="collide" x="7564" y="3872">
+   <polygon points="0,0 136,104 344,0 176,-88"/>
+  </object>
+  <object type="collide" x="6944" y="2824">
+   <polygon points="0,0 136,104 344,0 176,-88"/>
+  </object>
+  <object type="collide" x="7520" y="2836">
+   <polygon points="0,0 136,104 344,0 176,-88"/>
+  </object>
+  <object type="collide" x="6036" y="2604">
+   <polygon points="0,0 136,104 344,0 176,-88"/>
+  </object>
+  <object type="collide" x="4948" y="2756">
+   <polygon points="0,0 136,104 344,0 176,-88"/>
+  </object>
+  <object type="collide" x="5472" y="3312">
+   <polygon points="0,0 136,104 344,0 176,-88"/>
+  </object>
+  <object type="collide" x="5524" y="2024">
+   <polygon points="0,0 136,104 344,0 176,-88"/>
+  </object>
+  <object type="collide" x="2143.88" y="3307.15">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="2618.79" y="3600.12">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="3093.33" y="3017.09">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="2582.55" y="2723.03">
+   <polygon points="-21.3333,5.33333 -107.333,93.3333 0.666667,150.667 94,82"/>
+  </object>
+  <object type="collide" x="1912" y="3120">
+   <polygon points="0,0 -140,-204 -200,-456 -220,-680 -244,-920 -200,-1160 -96,-1312 -92,-1492 52,-1712 192,-1788 248,-1968 448,-2020 580,-2188 828,-2208 968,-2248 1020,-2076 1168,-2012 1252,-1904 1384,-1904 1560,-1876 1668,-1824 1796,-1860 1920,-1904 2168,-1880 2380,-1912 2400,-1864 2176,-1796 2040,-1768 1900,-1820 1796,-1772 1652,-1740 1524,-1788 1416,-1692 1240,-1592 1168,-1608 1184,-1696 792,-2008 232,-1672 412,-1456 388,-1400 296,-1480 224,-1396 100,-1332 92,-1224 208,-1084 188,-876 256,-764 368,-680 522.696,-700.125 620,-820 852,-960 1148,-1012 1310.45,-1029.55 1517.16,-987.875 1600,-1064 1712,-884 1521.16,-881.286 1326.32,-926.964 1158.84,-906.964 999.482,-838.964 828,-760 632,-680 500,-440 368,-172 232,-4"/>
+  </object>
+  <object type="collide" x="3518" y="2060">
+   <polygon points="0,0 116,178 258,218 310,206 338,0 343.875,-108.25 338.072,-192.053 341.357,-282.25 445.875,-281.482 582,-274 762.518,-307.928 872,-440 874,-556 770,-576 704,-526 652.768,-427.875 552.964,-386.072 427.804,-397.554 298,-392 117.161,-365.554 -26,-352 -161.161,-319.554 -325.875,-304.393 -348,-252 -280.125,-211.804 -138,-214 0.517888,-255.804 120,-258 220,-220 234.446,-106.125 205.607,4.51789"/>
+  </object>
+  <object type="collide" x="2238" y="1794">
+   <polygon points="0,0 -44,46 2,82 48,54"/>
+  </object>
+  <object type="collide" x="2620" y="1298">
+   <polygon points="0,0 -134,48 -172,128 -90,208 74,202 176,130 116,36"/>
+  </object>
+  <object type="collide" x="4190" y="2374">
+   <polygon points="-32,-32 168,60 414,106 650,164 870,146 1022,-24 1160,-244 1262,-340 1282,-516 1372,-588 1438,-758 1470,-992 1358,-1246 1134,-1362 844,-1408 570,-1434 380,-1488 126,-1522 -66,-1546 -188,-1522 -280,-1574 -418,-1616 -578,-1582 -734,-1616 -962,-1572 -966,-1538 -854,-1446 -676,-1428 -472,-1462 -342,-1414 -160,-1464 384,-1340 554,-1270 896,-1260 1086,-1160 1058,-1058 1256,-1060 1224,-714 1040,-522 972,-364 616,-432 316,-336 124,-254"/>
+  </object>
+  <object type="collide" x="4236.36" y="3524.24">
+   <polygon points="0,0 -287.879,-212.121 -487.879,-254.545 -900,-266.667 -1090.91,-112.121 -1206.06,72.7273 -1303.03,251.515 -1366.67,493.939 -1345.45,703.03 -1403.03,927.273 -1233.33,1103.03 -1106.06,1403.03 -942.424,1448.48 -800,1651.52 -560.606,1772.73 -315.152,1733.33 -27.2727,1851.52 90.9091,1906.06 400,1863.64 678.788,1930.3 900,1906.06 1218.18,1863.64 1466.67,1778.79 1578.79,1660.61 1715.15,1654.55 1706.06,1618.18 1530.3,1566.67 1300,1642.42 1024.24,1706.06 781.818,1751.52 563.636,1730.3 272.727,1712.12 21.2121,1672.73 -245.455,1596.97 -451.515,1609.09 -606.061,1557.58 -675.758,1433.33 -906.061,1345.45 -957.576,1178.79 -1030.3,981.818 -1115.15,878.788 -1133.33,724.242 -1130.3,533.333 -1118.18,321.212 -1024.24,193.939 -742.424,196.97 -433.333,157.576 -296.97,212.121 -227.273,139.394 -230.303,-9.09091"/>
+  </object>
+  <object type="collide" x="3857.58" y="4378.79">
+   <polygon points="0,0 172.727,184.848 360.606,224.242 487.879,354.545 681.818,309.091 800,433.333 972.727,363.636 1139.39,342.424 1327.27,306.061 1463.64,242.424 1596.97,236.364 1809.09,360.606 2006.06,415.152 2196.97,457.576 2351.52,590.909 2566.67,515.152 2690.91,345.455 2809.09,190.909 2812.12,-12.1212 2945.45,-51.5152 3030.3,-303.03 3051.52,-515.152 3060.61,-733.333 3030.3,-930.303 3024.24,-1172.73 2884.85,-1409.09 2672.73,-1593.94 2427.27,-1515.15 2333.33,-1309.09 2242.42,-1154.55 2181.82,-942.424 2012.12,-778.788 1936.36,-642.424 1784.85,-618.182 1569.7,-581.818 1448.48,-651.515 1272.73,-669.697 1133.33,-642.424 1072.73,-787.879 881.818,-769.697 754.545,-684.848 678.788,-560.606 545.455,-524.242 436.364,-387.879 512.121,-248.485 518.182,-115.152 763.636,-169.697 921.212,-106.061 1124.24,-172.727 1266.67,-203.03 1248.48,-306.061 1109.09,-254.545 936.364,-187.879 851.515,-215.152 784.848,-275.758 606.061,-324.242 600,-454.545 751.515,-500 906.061,-696.97 1084.85,-548.485 1303.03,-593.939 1536.36,-515.152 1712.12,-478.788 1827.27,-539.394 1975.76,-606.061 2069.7,-478.788 2230.3,-384.848 2475.76,-490.909 2584.85,-451.515 2778.79,-554.545 2615.15,-290.909 2681.82,-27.2727 2700,145.455 2572.73,254.545 2475.76,384.848 2233.33,354.545 2024.24,303.03 1851.52,248.485 1621.21,130.303 1418.18,151.515 1263.64,215.152 1100,248.485 933.333,248.485 687.879,206.061 512.121,230.303 403.03,148.485"/>
+  </object>
+ </objectgroup>
+</map>

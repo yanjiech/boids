@@ -1,0 +1,46 @@
+<Solution>
+  <PropertyGroup Name="boids" Version="2.0.2.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="day_and_night">
+          <Image Name="zhouye_daytime01.png" />
+          <Image Name="zhouye_daytime02.png" />
+          <Image Name="zhouye_night01.png" />
+          <Image Name="zhouye_night02.png" />
+          <Image Name="Circularframe_big.png" />
+          <Project Name="day_and_night.csd" />
+        </Folder>
+        <Folder Name="level_choose">
+          <Folder Name="main">
+            <Image Name="bg.jpg" />
+            <Project Name="main.csd" />
+            <Image Name="check_normal.png" />
+            <Image Name="check_push.png" />
+            <Image Name="point.png" />
+            <Image Name="bg4.jpg" />
+            <Image Name="bg1.jpg" />
+            <Image Name="bg3.jpg" />
+            <Image Name="bg2.jpg" />
+          </Folder>
+          <Folder Name="level">
+            <Image Name="bg.jpg" />
+            <Project Name="level.csd" />
+            <Image Name="boss_avatar_01.png" />
+            <Image Name="boss_avatar_02.png" />
+            <Image Name="button_close_normal.png" />
+            <Image Name="button_close_push.png" />
+            <Image Name="button_fight_normal.png" />
+            <Image Name="button_fight_push.png" />
+            <Image Name="difficulty_hard.png" />
+            <Image Name="difficulty_normal.png" />
+            <Image Name="fangdajing.png" />
+            <Image Name="juanzhou.png" />
+            <Image Name="kulouwang_avatar.png" />
+            <Image Name="star.png" />
+          </Folder>
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

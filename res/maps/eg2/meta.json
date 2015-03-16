@@ -1,0 +1,785 @@
+{
+    "tasks": [],
+    "positions": [
+        {
+            "name": "monster2",
+            "rect": {
+                "x": 1449.19,
+                "y": 3164.58,
+                "width": 205.221,
+                "height": 179.704
+            }
+        },
+        {
+            "name": "monster3",
+            "rect": {
+                "x": 512.958,
+                "y": 1865.6,
+                "width": 288.413,
+                "height": 268.448
+            }
+        },
+        {
+            "name": "monster5",
+            "rect": {
+                "x": 2697.14,
+                "y": 2777.43,
+                "width": 327.243,
+                "height": 224.075
+            }
+        },
+        {
+            "name": "monster4",
+            "rect": {
+                "x": 1299.43,
+                "y": 1824.57,
+                "width": 212.983,
+                "height": 200.781
+            }
+        },
+        {
+            "name": "monster1",
+            "rect": {
+                "x": 1032.1,
+                "y": 2595.51,
+                "width": 134.222,
+                "height": 109.82
+            }
+        },
+        {
+            "name": "monster1_1",
+            "rect": {
+                "x": 871.248,
+                "y": 2499.01,
+                "width": 432.623,
+                "height": 302.836
+            }
+        },
+        {
+            "name": "monster73",
+            "rect": {
+                "x": 1128.61,
+                "y": 900.518,
+                "width": 224.075,
+                "height": 137.551
+            }
+        },
+        {
+            "name": "monster7",
+            "rect": {
+                "x": 1550.15,
+                "y": 474.552,
+                "width": 241.825,
+                "height": 145.318
+            }
+        },
+        {
+            "name": "monster71",
+            "rect": {
+                "x": 2033.79,
+                "y": 358.078,
+                "width": 268.448,
+                "height": 187.47
+            }
+        },
+        {
+            "name": "monster72",
+            "rect": {
+                "x": 1446.97,
+                "y": 478.987,
+                "width": 242.936,
+                "height": 156.41
+            }
+        },
+        {
+            "name": "final",
+            "rect": {
+                "x": 4083.77,
+                "y": 1584.95,
+                "width": 805.343,
+                "height": 807.56
+            }
+        },
+        {
+            "name": "monster9",
+            "rect": {
+                "x": 2361.03,
+                "y": 749.66,
+                "width": 283.978,
+                "height": 157.518
+            }
+        },
+        {
+            "name": "monster11",
+            "rect": {
+                "x": 1080.91,
+                "y": 1195.6,
+                "width": 272.886,
+                "height": 265.121
+            }
+        },
+        {
+            "name": "monster12",
+            "rect": {
+                "x": 2879.06,
+                "y": 1381.95,
+                "width": 550.207,
+                "height": 520.257
+            }
+        },
+        {
+            "name": "monster13",
+            "rect": {
+                "x": 1978.31,
+                "y": 1388.6,
+                "width": 481.43,
+                "height": 419.31
+            }
+        },
+        {
+            "name": "monster10",
+            "rect": {
+                "x": 2664.97,
+                "y": 335.89,
+                "width": 696.636,
+                "height": 719.928
+            }
+        },
+        {
+            "name": "monster51",
+            "rect": {
+                "x": 2395.41,
+                "y": 2534.5,
+                "width": 197.456,
+                "height": 141.987
+            }
+        },
+        {
+            "name": "monster81",
+            "rect": {
+                "x": 3144.18,
+                "y": 2282.69,
+                "width": 268.448,
+                "height": 207.437
+            }
+        },
+        {
+            "name": "monster8",
+            "rect": {
+                "x": 3571.25,
+                "y": 2270.49,
+                "width": 310.601,
+                "height": 226.296
+            }
+        },
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 579.512,
+                "y": 3750.28,
+                "width": 241.825,
+                "height": 180.814
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "monster1",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster1",
+                    "unit_count": 1
+                }
+            ]
+        },
+        {
+            "name": "monster1_1",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_move",
+                    "position_name": "monster1_1",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster1_1",
+                    "unit_count": 10
+                }
+            ]
+        },
+        {
+            "name": "monster3",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster3",
+                    "unit_count": 3
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster3",
+                    "unit_count": 2
+                }
+            ]
+        },
+        {
+            "name": "monster11",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "player",
+                    "unit_state": "unit_appear",
+                    "unit_count": 1
+                }
+            ]
+        },
+        {
+            "name": "monster11",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "neutral",
+                    "unit_state": "unit_appear",
+                    "tag_name": "v1",
+                    "position_name": "monster11",
+                    "unit_count": 1
+                }
+            ]
+        },
+        {
+            "name": "monster11_1",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_move",
+                    "position_name": "monster11",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "v1",
+                    "unit_state": "unit_disappear"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster11",
+                    "unit_count": 6
+                }
+            ]
+        },
+        {
+            "name": "m71",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "neutral",
+                    "unit_state": "unit_appear",
+                    "tag_name": "m7",
+                    "position_name": "monster7",
+                    "unit_count": 5
+                }
+            ]
+        },
+        {
+            "name": "m72",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_move",
+                    "position_name": "monster73",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m7",
+                    "unit_state": "unit_move",
+                    "position_name": "monster71"
+                }
+            ]
+        },
+        {
+            "name": "m73",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_move",
+                    "position_name": "monster7",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m7",
+                    "unit_state": "unit_disappear"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "m72",
+                    "position_name": "monster72",
+                    "unit_count": 5
+                }
+            ]
+        },
+        {
+            "name": "f1",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_move",
+                    "position_name": "final",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "f1",
+                    "position_name": "final",
+                    "unit_count": 3
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "f1",
+                    "position_name": "final",
+                    "unit_count": 2
+                }
+            ]
+        },
+        {
+            "name": "f2",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "f1",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "f2",
+                    "position_name": "final",
+                    "unit_count": 5
+                }
+            ]
+        },
+        {
+            "name": "f3",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "f2",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_king",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "boss",
+                    "position_name": "final",
+                    "unit_count": 1,
+                    "is_boss": true
+                }
+            ]
+        },
+        {
+            "name": "m91",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "m91",
+                    "position_name": "monster9",
+                    "unit_count": 10
+                }
+            ]
+        },
+        {
+            "name": "m92",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m91",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m91",
+                    "unit_state": "unit_move",
+                    "position_name": "monster10"
+                }
+            ]
+        },
+        {
+            "name": "m93",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m91",
+                    "unit_state": "unit_move",
+                    "position_name": "monster10",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m91",
+                    "tag_name": "m92"
+                }
+            ]
+        },
+        {
+            "name": "m94",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m92",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m92",
+                    "unit_state": "unit_move",
+                    "position_name": "monster12"
+                }
+            ]
+        },
+        {
+            "name": "m95",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m92",
+                    "unit_state": "unit_move",
+                    "position_name": "monster12",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m92",
+                    "tag_name": "m93"
+                }
+            ]
+        },
+        {
+            "name": "m96",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m93",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m93",
+                    "unit_state": "unit_move",
+                    "position_name": "monster13"
+                }
+            ]
+        },
+        {
+            "name": "m5",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "neutral",
+                    "unit_state": "unit_appear",
+                    "tag_name": "m5",
+                    "position_name": "monster5",
+                    "unit_count": 10
+                }
+            ]
+        },
+        {
+            "name": "m51",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_move",
+                    "position_name": "monster51",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m5",
+                    "unit_state": "unit_move",
+                    "position_name": "monster8"
+                }
+            ]
+        },
+        {
+            "name": "m52",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_move",
+                    "position_name": "monster81",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "m5",
+                    "unit_state": "unit_disappear"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "zombie",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "monster81",
+                    "unit_count": 10
+                }
+            ]
+        }
+    ],
+    "units": [
+        "dead_archer",
+        "skeleton_king",
+        "skeleton_warrior",
+        "villager",
+        "white_ghost",
+        "zombie"
+    ],
+    "conditions": [
+        {
+            "condition": "unit_die",
+            "type": "primary_win",
+            "name": "skeleton_king",
+            "number": 1
+        }
+    ]
+}

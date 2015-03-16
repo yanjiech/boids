@@ -1,0 +1,90 @@
+
+skeleton.png
+size: 2048,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dici02
+  rotate: true
+  xy: 1190, 39
+  size: 39, 87
+  orig: 39, 87
+  offset: 0, 0
+  index: -1
+gm
+  rotate: true
+  xy: 2, 2
+  size: 12, 128
+  orig: 12, 128
+  offset: 0, 0
+  index: -1
+jiantou
+  rotate: true
+  xy: 1190, 80
+  size: 46, 116
+  orig: 46, 116
+  offset: 0, 0
+  index: -1
+smo0001
+  rotate: false
+  xy: 2, 16
+  size: 130, 110
+  orig: 130, 110
+  offset: 0, 0
+  index: -1
+smo0002
+  rotate: false
+  xy: 134, 16
+  size: 130, 110
+  orig: 130, 110
+  offset: 0, 0
+  index: -1
+smo0003
+  rotate: false
+  xy: 266, 16
+  size: 130, 110
+  orig: 130, 110
+  offset: 0, 0
+  index: -1
+smo0004
+  rotate: false
+  xy: 398, 16
+  size: 130, 110
+  orig: 130, 110
+  offset: 0, 0
+  index: -1
+smo0005
+  rotate: false
+  xy: 530, 16
+  size: 130, 110
+  orig: 130, 110
+  offset: 0, 0
+  index: -1
+smo0006
+  rotate: false
+  xy: 662, 16
+  size: 130, 110
+  orig: 130, 110
+  offset: 0, 0
+  index: -1
+smo0007
+  rotate: false
+  xy: 794, 16
+  size: 130, 110
+  orig: 130, 110
+  offset: 0, 0
+  index: -1
+smo0008
+  rotate: false
+  xy: 926, 16
+  size: 130, 110
+  orig: 130, 110
+  offset: 0, 0
+  index: -1
+smo0009
+  rotate: false
+  xy: 1058, 16
+  size: 130, 110
+  orig: 130, 110
+  offset: 0, 0
+  index: -1

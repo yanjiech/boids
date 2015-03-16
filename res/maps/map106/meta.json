@@ -1,0 +1,145 @@
+{
+    "plist": [
+        "maps/map107/vision1.plist",
+        "maps/map107/vision2.plist",
+        "maps/map107/vision3.plist",
+        "maps/map107/vision4.plist",
+        "maps/map107/vision5.plist"
+    ],
+    "tasks": [
+        {
+            "name": "摧毁对方主基地",
+            "desc": ""
+        }
+    ],
+    "positions": [
+        {
+            "name": "pos_1",
+            "rect": {
+                "x": 2305.16,
+                "y": 1053.41,
+                "width": 44.3152,
+                "height": 43.5481
+            }
+        },
+        {
+            "name": "pos_0",
+            "rect": {
+                "x": 1621.51,
+                "y": 966.867,
+                "width": 38.0884,
+                "height": 39.0114
+            }
+        },
+        {
+            "name": "pos_2",
+            "rect": {
+                "x": 3602.12,
+                "y": 1041.11,
+                "width": 42.7725,
+                "height": 42.0012
+            }
+        },
+        {
+            "name": "pos_3",
+            "rect": {
+                "x": 4306.88,
+                "y": 882.748,
+                "width": 44.4189,
+                "height": 44.8049
+            }
+        },
+        {
+            "name": "home_born",
+            "rect": {
+                "x": 1624.39,
+                "y": 823.843,
+                "width": 123.833,
+                "height": 121.229
+            }
+        },
+        {
+            "name": "away_born",
+            "rect": {
+                "x": 4392.73,
+                "y": 791.83,
+                "width": 113.507,
+                "height": 102.787
+            }
+        },
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 1770.47,
+                "y": 1068.38,
+                "width": 165.982,
+                "height": 143.965
+            }
+        },
+        {
+            "name": "player_start2",
+            "rect": {
+                "x": 4030.51,
+                "y": 1071.35,
+                "width": 143.099,
+                "height": 127.568
+            }
+        },
+        {
+            "name": "player_start2_test",
+            "rect": {
+                "x": 2141.39,
+                "y": 291.517,
+                "width": 197.456,
+                "height": 177.487
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "unit_born",
+            "trigger_meta": {
+                "is_repeated": false
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "-1,5.00,15.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "footman",
+                    "unit_type": "ally",
+                    "unit_state": "unit_appear",
+                    "position_name": "home_born",
+                    "unit_count": 3
+                },
+                {
+                    "meta": "-1,5.00,15.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "away_born",
+                    "unit_count": 3
+                }
+            ]
+        }
+    ],
+    "units": [
+        "axe_orc",
+        "footman"
+    ],
+    "conditions": [
+        {
+            "condition": "unit_die",
+            "type": "primary_win",
+            "name": "away_base",
+            "number": 1
+        }
+    ]
+}
