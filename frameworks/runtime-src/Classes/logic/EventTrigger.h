@@ -52,7 +52,9 @@ public:
     
     bool moveOn();
     
-    std::vector<int> getTriggerIndexesForTest();
+    void activateTriggerByConditions( const cocos2d::ValueMap& conditions, class MapLogic* map_logic, class UnitNode* unit_node );
+    
+    void activateTriggerByUnit( class MapLogic* map_logic, class UnitNode* unit, const std::string& unit_state, const cocos2d::ValueMap& area );
     
     void onSingleTriggerPass( int index, class MapLogic* map_logic, class UnitNode* unit_node );
     

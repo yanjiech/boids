@@ -51,6 +51,13 @@ private:
     
     cocos2d::Map<std::string, EventAction*> _event_actions;
     
+    cocos2d::ValueMap _unit_appear_count_by_camp;
+    cocos2d::ValueMap _unit_disappear_count_by_camp;
+    cocos2d::ValueMap _unit_appear_count_by_tag;
+    cocos2d::ValueMap _unit_disappear_count_by_tag;
+    cocos2d::ValueMap _unit_appear_count_by_name;
+    cocos2d::ValueMap _unit_disappear_count_by_name;
+    
 public:
     MapLogic();
     ~MapLogic();
@@ -60,6 +67,8 @@ public:
     virtual bool init( BattleLayer* battle_layer );
     
     virtual void updateFrame( float delta );
+    
+    BattleLayer* getBattleLayer() { return _battle_layer; }
     
     void deployPlayerUnits();
     
@@ -76,6 +85,8 @@ public:
     void onTaskStateChanged( const std::string& task_name, const std::string& task_state );
     void onGameStateChanged( const std::string& game_state );
     void onVisionChanged( const cocos2d::ValueMap& action_data );
+    void onCustomTrigger( const std::string& trigger_name );
+    void onConversationStateChanged( const std::string& trigger_name, const std::string& trigger_state );
     
     void addEventAction( EventAction* action, const std::string& key );
     void removeEventAction( const std::string& key );
@@ -83,6 +94,20 @@ public:
     void updateEventActions( float delta );
     
     void setTriggersEnabledOfName( const std::string& name, bool b );
+    
+    void checkGameState();
+    
+    void onTargetNodeAppear( class TargetNode* target_node );
+    void onTargetNodeDisappear( class TargetNode* target_node );
+    
+    int getUnitAppearCountByCamp( const std::string& camp );
+    int getUnitDisappearCountByCamp( const std::string& camp );
+    
+    int getUnitAppearCountByTag( const std::string& tag );
+    int getUnitDisappearCountByTag( const std::string& tag );
+    
+    int getUnitAppearCountByName( const std::string& name );
+    int getUnitDisappearCountByName( const std::string& name );
 };
 
 #endif /* defined(__Boids__MapLogic__) */

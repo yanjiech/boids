@@ -3,7 +3,11 @@
     [
         {
             "name" : "vanhelsing",
-            "level" : 40
+            "level" : 10
+        },
+        {
+            "name" : "zeus",
+            "level" : 10
         }
     ]
 }

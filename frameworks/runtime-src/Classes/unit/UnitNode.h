@@ -18,6 +18,7 @@
 #include "UnitNodeComponent.h"
 #include "../AI/Collidable.h"
 #include "../behavior/BehaviorBase.h"
+#include "HpBar.h"
 
 #define DEFAULT_RELAX_FRAMES 45
 
@@ -38,7 +39,8 @@ enum eUnitState {
     Casting = 4,
     UnderControl = 5,
     Dying = 6,
-    Dead = 7
+    Disappear = 7,
+    Dead = 8
 };
 
 enum eUnitFace {
@@ -152,6 +154,8 @@ private:
     
     float _wander_radius;
     
+    HpBar* _hp_bar;
+    
 private:
     void updateComponents( float delta );
     
@@ -211,7 +215,9 @@ public:
     cocos2d::Point getLocalHeadPos();
     
     void appear();
-    void fadeout();
+    void disappear();
+    void onDisappearEnd();
+    void onDying();
     
     UnitData* getUnitData() { return _unit_data; }
     

@@ -213,6 +213,8 @@
 		98E3B6881A73A77A00B5BEBB /* wire_format.cc in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B6421A73A77A00B5BEBB /* wire_format.cc */; };
 		98E3B6891A73A77A00B5BEBB /* wire_format_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B6441A73A77A00B5BEBB /* wire_format_lite.cc */; };
 		98E3B68A1A73A77A00B5BEBB /* wire_format_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B6441A73A77A00B5BEBB /* wire_format_lite.cc */; };
+		98E61DD21AB6A674005DE093 /* HpBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E61DD01AB6A674005DE093 /* HpBar.cpp */; };
+		98E61DD31AB6A674005DE093 /* HpBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E61DD01AB6A674005DE093 /* HpBar.cpp */; };
 		98EBBEF51AABF73B00ADB84A /* UIBattleFloatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */; };
 		98EBBEF61AABF73B00ADB84A /* UIBattleFloatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */; };
 		98EBBEFB1AAC3CF400ADB84A /* UnitNodeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98EBBEF91AAC3CF400ADB84A /* UnitNodeComponent.cpp */; };
@@ -656,6 +658,8 @@
 		98E3B6441A73A77A00B5BEBB /* wire_format_lite.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wire_format_lite.cc; sourceTree = "<group>"; };
 		98E3B6451A73A77A00B5BEBB /* wire_format_lite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wire_format_lite.h; sourceTree = "<group>"; };
 		98E3B6461A73A77A00B5BEBB /* wire_format_lite_inl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wire_format_lite_inl.h; sourceTree = "<group>"; };
+		98E61DD01AB6A674005DE093 /* HpBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HpBar.cpp; sourceTree = "<group>"; };
+		98E61DD11AB6A674005DE093 /* HpBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HpBar.h; sourceTree = "<group>"; };
 		98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBattleFloatLayer.cpp; sourceTree = "<group>"; };
 		98EBBEF41AABF73B00ADB84A /* UIBattleFloatLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBattleFloatLayer.h; sourceTree = "<group>"; };
 		98EBBEF91AAC3CF400ADB84A /* UnitNodeComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UnitNodeComponent.cpp; sourceTree = "<group>"; };
@@ -962,6 +966,8 @@
 				9868BBA41AB2DE57002ED7A1 /* BulletNode.h */,
 				987336121AB6840200694B53 /* JumpText.cpp */,
 				987336131AB6840200694B53 /* JumpText.h */,
+				98E61DD01AB6A674005DE093 /* HpBar.cpp */,
+				98E61DD11AB6A674005DE093 /* HpBar.h */,
 			);
 			name = unit;
 			path = ../Classes/unit;
@@ -1771,6 +1777,7 @@
 				E87413491A0BBB39003EBD0B /* EditorModel.cpp in Sources */,
 				987336151AB6840200694B53 /* JumpText.cpp in Sources */,
 				98BF19CA1AB5C455000E2942 /* lua_boids_manual.cpp in Sources */,
+				98E61DD31AB6A674005DE093 /* HpBar.cpp in Sources */,
 				E87412F71A0B55DF003EBD0B /* BoidsPolygon.cpp in Sources */,
 				988B52E71AA4461700FB7B21 /* UIControlLayer.cpp in Sources */,
 				98E3B67C1A73A77A00B5BEBB /* stringprintf.cc in Sources */,
@@ -1878,6 +1885,7 @@
 				986A55701AA565430051B0B9 /* BoidsConstant.cpp in Sources */,
 				98E3B66B1A73A77A00B5BEBB /* message_lite.cc in Sources */,
 				98E3B6871A73A77A00B5BEBB /* wire_format.cc in Sources */,
+				98E61DD21AB6A674005DE093 /* HpBar.cpp in Sources */,
 				98E3B6711A73A77A00B5BEBB /* service.cc in Sources */,
 				9859D1CA1A7B4B6000FF6D82 /* Net.cpp in Sources */,
 				9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */,

@@ -91,3 +91,40 @@ void UnitNodeSpineComponent::onSkeletonAnimationEnded( int track_index ) {
         _should_recycle = true;
     }
 }
+
+UnitNodeFadeoutComponent::UnitNodeFadeoutComponent() {
+    
+}
+
+UnitNodeFadeoutComponent::~UnitNodeFadeoutComponent() {
+    
+}
+
+UnitNodeFadeoutComponent* UnitNodeFadeoutComponent::create( cocos2d::Node* node, const std::string& name, float duration, int fadeto, bool auto_recycle ) {
+    UnitNodeFadeoutComponent* ret = new UnitNodeFadeoutComponent();
+    if( ret && ret->init( node, name, duration, fadeto, auto_recycle ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitNodeFadeoutComponent::init( cocos2d::Node* node, const std::string& name, float duration, int fadeto, bool auto_recycle ) {
+    if( !UnitNodeComponent::init( node, name, auto_recycle ) ) {
+        return false;
+    }
+    
+    FadeTo* fade_action = FadeTo::create( duration, fadeto );
+    CallFunc* callback = CallFunc::create( CC_CALLBACK_0( UnitNodeFadeoutComponent::onFadeoutEnd, this ) );
+    Sequence* seq = Sequence::create( fade_action, callback, nullptr );
+    node->runAction( seq );
+    
+    return true;
+}
+
+void UnitNodeFadeoutComponent::onFadeoutEnd() {
+    this->setShouldRecycle( true );
+}

@@ -170,7 +170,11 @@ void BattleLayer::updateFrame( float delta ) {
         //handle alive units
         for( auto pair : _alive_units ) {
             UnitNode* unit = pair.second;
-            
+            unit->updateFrame( delta );
+        }
+        
+        for( auto pair : _dead_units ) {
+            UnitNode* unit = pair.second;
             unit->updateFrame( delta );
         }
         
@@ -277,6 +281,19 @@ std::list<UnitNode*> BattleLayer::getAliveUnitsByTag( const std::string& tag ) {
     return ret;
 }
 
+std::list<UnitNode*> BattleLayer::getAliveUnitsByName( const std::string& name ) {
+    std::list<UnitNode*> ret;
+    
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        if( unit->getUnitData()->name == name ) {
+            ret.push_back( unit );
+        }
+    }
+    
+    return ret;
+}
+
 std::list<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& center, float radius ) {
     std::list<UnitNode*> ret;
     for( auto pair : _alive_units ) {
@@ -286,6 +303,17 @@ std::list<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp, cons
             if( unit_pos.distance( center ) <= radius ) {
                 ret.push_back( unit );
             }
+        }
+    }
+    return ret;
+}
+
+std::list<UnitNode*> BattleLayer::getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group ) {
+    std::list<UnitNode*> ret;
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        if( unit->getUnitCamp() == camp && unit->getSightGroup() == sight_group ) {
+            ret.push_back( unit );
         }
     }
     return ret;
@@ -325,6 +353,7 @@ void BattleLayer::onUnitAppear( UnitNode* unit ) {
     }
     _alive_units.insert( std::make_pair( unit->getDeployId(), unit ) );
     
+    _map_logic->onTargetNodeAppear( unit );
     unit->appear();
 }
 
@@ -339,15 +368,13 @@ void BattleLayer::onUnitDying( UnitNode* unit ) {
     }
     _alive_units.erase( unit->getDeployId() );
     _dead_units.insert( std::make_pair( unit->getDeployId(), unit ) );
+    this->clearChasingTarget(  unit );
 }
 
 void BattleLayer::onUnitDead( UnitNode* unit ) {
     _dead_units.erase( unit->getDeployId() );
+    _map_logic->onTargetNodeDisappear( unit );
     unit->removeFromParent();
-}
-
-void BattleLayer::removeDeadUnit( UnitNode* unit ) {
-    _dead_units.erase( unit->getDeployId() );
 }
 
 bool BattleLayer::isPositionInVision( const cocos2d::Point& pos ) {
@@ -397,8 +424,8 @@ void BattleLayer::deployUnit( UnitNode* unit, const cocos2d::Point& pos, const s
 }
 
 void BattleLayer::deployUnits( const std::list<UnitNode*>& units, const cocos2d::Rect& area, const std::string& sight_group ) {
-    Point pos = Point( area.origin.x + area.size.width / 2, area.origin.y + area.size.height / 2 );
     for( auto unit : units ) {
+        Point pos = this->getAvailablePosition( unit->getUnitData()->collide, area );
         this->deployUnit( unit, pos, sight_group );
     }
 }
@@ -495,6 +522,15 @@ bool BattleLayer::isPositionOK( cocos2d::Point pos, float radius ) {
         return true;
     }
     return false;
+}
+
+void BattleLayer::clearChasingTarget( TargetNode* unit ) {
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        if( unit->getChasingTarget() == unit ) {
+            unit->setChasingTarget( nullptr );
+        }
+    }
 }
 
 //private methods

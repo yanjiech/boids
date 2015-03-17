@@ -130,8 +130,11 @@ public:
     std::list<UnitNode*> getAliveOpponents( eUnitCamp camp );
     std::list<UnitNode*> getAliveUnitsByCamp( eUnitCamp camp );
     std::list<UnitNode*> getAliveUnitsByTag( const std::string& tag );
+    std::list<UnitNode*> getAliveUnitsByName( const std::string& name );
     
     std::list<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );
+    
+    std::list<UnitNode*> getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group );
     
     UnitNode* getAliveUnitByDeployId( int deploy_id );
     
@@ -141,7 +144,6 @@ public:
     void onUnitAppear( UnitNode* unit );
     void onUnitDying( UnitNode* unit );
     void onUnitDead( UnitNode* unit );
-    void removeDeadUnit( UnitNode* unit );
     
     bool isPositionInVision( const cocos2d::Point& pos );
     
@@ -166,6 +168,8 @@ public:
     
     cocos2d::Point getAvailablePosition( float radius, const cocos2d::Rect& region );
     bool isPositionOK( cocos2d::Point pos, float radius );
+    
+    void clearChasingTarget( TargetNode* unit );
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

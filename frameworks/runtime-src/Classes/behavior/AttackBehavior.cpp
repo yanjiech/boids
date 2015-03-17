@@ -39,31 +39,38 @@ bool AttackBehavior::init() {
 }
 
 bool AttackBehavior::behave( float delta ) {
-    do {
-        if( _unit_node->isDying() ) {
-            return true;
-        }
-        if( _unit_node->isUnderControl() ) {
-            return true;
-        }
-        if( _unit_node->isHarmless() ) {
-            break;
-        }
-        if( _unit_node->isAttacking() || _unit_node->isCasting() ) {
-            return true;
-        }
-        TargetNode* attack_target = _unit_node->getAttackTarget();
-        if( attack_target == nullptr ) {
-            break;
-        }
-        if( !_unit_node->canAttack( attack_target ) ) {
-            _unit_node->setChasingTarget( attack_target );
-            break;
-        }
-        
-        _unit_node->attack( attack_target );
+    if( _unit_node->isDying() ) {
         return true;
-    } while( true );
+    }
+    if( _unit_node->isUnderControl() ) {
+        return true;
+    }
+    if( _unit_node->isHarmless() ) {
+        return false;
+    }
+    if( _unit_node->isAttacking() || _unit_node->isCasting() ) {
+        return true;
+    }
+    TargetNode* attack_target = _unit_node->getAttackTarget();
+    if( attack_target != nullptr ) {
+        if( _unit_node->canAttack( attack_target ) ) {
+            _unit_node->attack( attack_target );
+            return true;
+        }
+        else {
+            _unit_node->setChasingTarget( attack_target );
+            return false;
+        }
+    }
+    else if( _unit_node->getChasingTarget() == nullptr && _unit_node->getSightGroup() != "" ) {
+        std::list<UnitNode*> same_sight_group_units = _unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( _unit_node->getUnitCamp(), _unit_node->getSightGroup() );
+        for( auto u : same_sight_group_units ) {
+            if( u->getChasingTarget() != nullptr ) {
+                _unit_node->setChasingTarget( u->getChasingTarget() );
+                return false;
+            }
+        }
+    }
     
     return false;
 }

@@ -25,6 +25,9 @@
 #define DEFAULT_CATCH_UP_START_DISTANCE 300.0
 #define DEFAULT_WANDER_RADIUS 200.0
 
+#define DEFAULT_HP_BAR_WIDTH 100.0
+#define DEFAULT_HP_BAR_HEIGHT 10.0
+
 using namespace cocos2d;
 
 UnitData::UnitData() {
@@ -151,7 +154,7 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
     }
 }
 
-UnitNode::UnitNode() {
+UnitNode::UnitNode() : _state( eUnitState::Unknown_Unit_State ) {
 }
 
 UnitNode::~UnitNode() {
@@ -218,16 +221,6 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         this->setBoss( itr->second.asBool() );
     }
     
-    itr = unit_data.find( "show_hp" );
-    if( itr != unit_data.end() ) {
-        if( itr->second.asBool() ) {
-            this->showHP();
-        }
-        else {
-            this->hideHP();
-        }
-    }
-    
     itr = unit_data.find( "tag_string" );
     if( itr != unit_data.end() ) {
         this->setUnitTags( itr->second.asString() );
@@ -288,6 +281,25 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     this->setWanderRadius( DEFAULT_WANDER_RADIUS );
     _relax_frames = 0;
     
+    Rect bounding_box = _current_skeleton->getBoundingBox();
+    
+    float hpbar_width = DEFAULT_HP_BAR_WIDTH;
+    float hpbar_height = DEFAULT_HP_BAR_HEIGHT;
+    
+    _hp_bar = HpBar::create( Size( hpbar_width, hpbar_height ) );
+    _hp_bar->setPosition( Point( bounding_box.size.width / 2, bounding_box.size.height * ( 1.0f - _current_skeleton->getAnchorPoint().y ) + 10.0f ) );
+    this->addChild( _hp_bar, eComponentLayer::OverObject );
+    
+    itr = unit_data.find( "show_hp" );
+    if( itr != unit_data.end() ) {
+        if( itr->second.asBool() ) {
+            this->showHP();
+        }
+        else {
+            this->hideHP();
+        }
+    }
+    
     return true;
 }
 
@@ -298,36 +310,40 @@ void UnitNode::updateFrame( float delta ) {
         }
         ++_same_dir_frame_count;
         this->applyUnitState();
-        //skill
-        auto itr = _behaviors.find( BEHAVIOR_NAME_SKILL );
-        if( itr != _behaviors.end() ) {
-            if( itr->second->behave( delta ) ) {
-                break;
+        
+        if( _state != eUnitState::Dying && _state != eUnitState::Dead && _state != eUnitState::Disappear ) {
+            //skill
+            auto itr = _behaviors.find( BEHAVIOR_NAME_SKILL );
+            if( itr != _behaviors.end() ) {
+                if( itr->second->behave( delta ) ) {
+                    break;
+                }
             }
-        }
-        //attack
-        itr = _behaviors.find( BEHAVIOR_NAME_ATTACK );
-        if( itr != _behaviors.end() ) {
-            if( itr->second->behave( delta ) ) {
-                break;
+            //attack
+            itr = _behaviors.find( BEHAVIOR_NAME_ATTACK );
+            if( itr != _behaviors.end() ) {
+                if( itr->second->behave( delta ) ) {
+                    break;
+                }
             }
-        }
-        itr = _behaviors.find( BEHAVIOR_NAME_MOVE );
-        if( itr != _behaviors.end() ) {
-            if( itr->second->behave( delta ) ) {
-                break;
+            itr = _behaviors.find( BEHAVIOR_NAME_MOVE );
+            if( itr != _behaviors.end() ) {
+                if( itr->second->behave( delta ) ) {
+                    break;
+                }
             }
-        }
-        itr = _behaviors.find( BEHAVIOR_NAME_IDLE );
-        if( itr != _behaviors.end() ) {
-            if( itr->second->behave( delta ) ) {
-                break;
+            itr = _behaviors.find( BEHAVIOR_NAME_IDLE );
+            if( itr != _behaviors.end() ) {
+                if( itr->second->behave( delta ) ) {
+                    break;
+                }
             }
+            
+            this->evaluateCatchUp();
         }
     }while( false );
     
     this->updateComponents( delta );
-    this->evaluateCatchUp();
 }
 
 void UnitNode::onSkeletonAnimationStart( int track_index ) {
@@ -354,7 +370,7 @@ void UnitNode::onSkeletonAnimationEnded( int track_index ) {
         this->changeUnitState( eUnitState::Idle );
     }
     else if( animation_name == "Die" ) {
-        
+        this->changeUnitState( eUnitState::Disappear );
     }
 }
 
@@ -381,6 +397,9 @@ void UnitNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
 
 void UnitNode::changeUnitState( eUnitState new_state ) {
     if( _state != new_state ) {
+        if( _state >= eUnitState::Dying && new_state < _state ) {
+            return;
+        }
         _state = new_state;
         _unit_state_changed = true;
     }
@@ -398,6 +417,13 @@ void UnitNode::applyUnitState() {
                 break;
             case eUnitState::Attacking:
                 _current_skeleton->setAnimation( 0, "Attack", false );
+                break;
+            case eUnitState::Dying:
+                _current_skeleton->setAnimation( 0, "Die", false );
+                this->onDying();
+                break;
+            case eUnitState::Disappear:
+                this->disappear();
                 break;
             default:
                 break;
@@ -479,31 +505,57 @@ cocos2d::Point UnitNode::getLocalHeadPos() {
 }
 
 void UnitNode::appear() {
-    
+    std::string resource = "effects/unit_appear";
+    spine::SkeletonAnimation* appear_effect = ArmatureManager::getInstance()->createArmature( resource );
+    UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( appear_effect, "unit_appear_effect", true );
+    component->setPosition( this->getLocalHitPos() );
+    this->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
+    component->setAnimation( 0, "animation", false );
 }
 
-void UnitNode::fadeout() {
-    
+void UnitNode::disappear() {
+    FadeTo* fadeout = FadeTo::create( 1.2f, 0 );
+    CallFunc* callback = CallFunc::create( CC_CALLBACK_0( UnitNode::onDisappearEnd, this ) );
+    Sequence* seq = Sequence::create( fadeout, callback, nullptr );
+    _current_skeleton->runAction( seq );
+}
+
+void UnitNode::onDisappearEnd() {
+    this->changeUnitState( eUnitState::Dead );
+}
+
+void UnitNode::onDying() {
+    Sprite* blood = Sprite::createWithSpriteFrameName( "unit_deadblood.png" );
+    UnitNodeFadeoutComponent* component = UnitNodeFadeoutComponent::create( blood, "dead_blood", 3.0f, 0, true );
+    component->setPosition( Point::ZERO );
+    this->addUnitComponent( component, component->getName(), eComponentLayer::BelowObject );
 }
 
 void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_id ) {
-    _unit_data->current_hp -= amount;
-    
-    if( _unit_data->current_hp <= 0 ) {
-        _unit_data->current_hp = 0;
-    }
-    
-    //jump damage number
-    std::string jump_text_name = Utils::stringFormat( "damage_from_%d_%f_jump_text", source_id, _battle_layer->getGameTime() );
-    this->jumpNumber( amount, "damage", is_cri, jump_text_name );
-    
-    //update blood bar
-    
-    
-    //dying
-    if( _unit_data->current_hp == 0 ) {
-        _unit_data->current_hp = 0;
-        this->changeUnitState( eUnitState::Dying );
+    if( _unit_data->current_hp > 0 ) {
+        _unit_data->current_hp -= amount;
+        
+        if( _unit_data->current_hp <= 0 ) {
+            _unit_data->current_hp = 0;
+        }
+        
+        //jump damage number
+        std::string jump_text_name = Utils::stringFormat( "damage_from_%d_%f_jump_text", source_id, _battle_layer->getGameTime() );
+        this->jumpNumber( amount, "damage", is_cri, jump_text_name );
+        
+        //update blood bar
+        _hp_bar->setPercentage( _unit_data->current_hp / _unit_data->hp * 100.0f );
+        
+        //dying
+        if( _unit_data->current_hp == 0 ) {
+            this->changeUnitState( eUnitState::Dying );
+        }
+        else if( _chasing_target == nullptr ) {
+            UnitNode* atker = _battle_layer->getAliveUnitByDeployId( source_id );
+            if( atker ) {
+                this->setChasingTarget( atker );
+            }
+        }
     }
 }
 
@@ -523,6 +575,7 @@ void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
     component->setAnimation( 0, "animation", false );
     
     //update blood bar
+    _hp_bar->setPercentage( _unit_data->current_hp / _unit_data->hp * 100.0f );
     
     //jump number
     std::string jump_text_name = component_name + "_jump_text";
@@ -577,11 +630,17 @@ void UnitNode::removeAllUnitComponents() {
 }
 
 void UnitNode::showHP() {
-    
+    _show_hp = true;
+    if( _hp_bar ) {
+        _hp_bar->setVisible( true );
+    }
 }
 
 void UnitNode::hideHP() {
-    
+    _show_hp = false;
+    if( _hp_bar ) {
+        _hp_bar->setVisible( false );
+    }
 }
 
 void UnitNode::applyCustomChange( const std::string& content_string ) {
@@ -789,21 +848,18 @@ bool UnitNode::isHarmless() {
 }
 
 TargetNode* UnitNode::getAttackTarget() {
-    TargetNode* ret = nullptr;
+    TargetNode* ret = _chasing_target;
+    float min_distance = ( _chasing_target == nullptr ) ? 10000.0f : _chasing_target->getPosition().distance( this->getPosition() );
     std::list<UnitNode*> candidates = _battle_layer->getAliveOpponents( _camp );
-    float min_distance = 9999999.0f;
     for( auto unit : candidates ) {
         if( unit->isAttackable() && this->isUnitInDirectView( unit ) ) {
-            float distance = this->getPosition().distance( unit->getPosition() ) < min_distance;
+            float distance = this->getPosition().distance( unit->getPosition() );
             if( distance < min_distance ) {
                 ret = unit;
                 min_distance = distance;
             }
         }
         
-    }
-    if( ret == nullptr ) {
-        ret = _chasing_target;
     }
     return ret;
 }

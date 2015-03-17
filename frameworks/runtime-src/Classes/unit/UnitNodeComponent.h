@@ -16,10 +16,11 @@ enum eComponentLayer {
     MostBelow = 0,
     SelfBelow = 1,
     SelfAbove = 2,
-    Object = 3,
-    OverObject = 4,
-    Stencil = 5,
-    Float = 6
+    BelowObject = 3,
+    Object = 4,
+    OverObject = 5,
+    Stencil = 6,
+    Float = 7
 };
 
 class UnitNodeComponent : public cocos2d::Node {
@@ -53,6 +54,17 @@ public:
     
     bool setAnimation( int track_index, const std::string& name, bool loop );
     void onSkeletonAnimationEnded( int track_index );
+};
+
+class UnitNodeFadeoutComponent : public UnitNodeComponent {
+public:
+    UnitNodeFadeoutComponent();
+    virtual ~UnitNodeFadeoutComponent();
+    
+    static UnitNodeFadeoutComponent* create( cocos2d::Node* node, const std::string& name, float duration, int fadeto, bool auto_recycle );
+    virtual bool init( cocos2d::Node* node, const std::string& name, float duration, int fadeto, bool auto_recycle );
+    
+    void onFadeoutEnd();
 };
 
 #endif /* defined(__Boids__UnitNodeComponent__) */

@@ -119,17 +119,6 @@ void MapLogic::deployPlayerUnits() {
     }
 }
 
-void MapLogic::onMapInit() {
-    for( auto trigger : _triggers ) {
-        if( trigger->isValid() ) {
-            std::vector<int> trigger_indexes = trigger->getTriggerIndexesForTest();
-            for( int i : trigger_indexes ) {
-                trigger->onSingleTriggerPass( i, this, nullptr );
-            }
-        }
-    }
-}
-
 void MapLogic::executeLogicEvent( EventTrigger* trigger, UnitNode* unit_node ) {
     const cocos2d::ValueMap& event = trigger->getLogicEvent();
     const cocos2d::ValueVector& actions = event.at( "actions" ).asValueVector();
@@ -346,7 +335,25 @@ void MapLogic::executeCustomAction( const cocos2d::ValueMap& action_data ) {
 }
 
 void MapLogic::onEventChanged( const std::string& event_name, const std::string& event_state ) {
-    
+    for( auto trigger : _triggers ) {
+        if( trigger->isValid() ) {
+            ValueMap conditions;
+            conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_EVENT_CHANGE );
+            conditions["event_name"] = Value( event_name );
+            conditions["event_state"] = Value( event_state );
+            trigger->activateTriggerByConditions( conditions, this, nullptr );
+        }
+    }
+}
+
+void MapLogic::onMapInit() {
+    for( auto trigger : _triggers ) {
+        if( trigger->isValid() ) {
+            ValueMap conditions;
+            conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_MAP_INIT );
+            trigger->activateTriggerByConditions( conditions, this, nullptr );
+        }
+    }
 }
 
 void MapLogic::onTaskStateChanged( const std::string& task_name, const std::string& task_state ) {
@@ -354,11 +361,44 @@ void MapLogic::onTaskStateChanged( const std::string& task_name, const std::stri
 }
 
 void MapLogic::onGameStateChanged( const std::string& game_state ) {
+    //todo
     
+    //triggers
+    for( auto trigger : _triggers ) {
+        if( trigger->isValid() ) {
+            ValueMap conditions;
+            conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_GAME_CHANGE );
+            conditions["game_state"] = Value( game_state );
+            trigger->activateTriggerByConditions( conditions, this, nullptr );
+        }
+    }
 }
 
 void MapLogic::onVisionChanged( const cocos2d::ValueMap& action_data ) {
     
+}
+
+void MapLogic::onCustomTrigger( const std::string& trigger_name ) {
+    for( auto trigger : _triggers ) {
+        if( trigger->isValid() ) {
+            ValueMap conditions;
+            conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_CUSTOM );
+            conditions["trigger_name"] = Value( trigger_name );
+            trigger->activateTriggerByConditions( conditions, this, nullptr );
+        }
+    }
+}
+
+void MapLogic::onConversationStateChanged( const std::string& trigger_name, const std::string& trigger_state ) {
+    for( auto trigger : _triggers ) {
+        if( trigger->isValid() ) {
+            ValueMap conditions;
+            conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_CONVERSATION_CHANGE );
+            conditions["name"] = Value( trigger_name );
+            conditions["state"] = Value( trigger_state );
+            trigger->activateTriggerByConditions( conditions, this, nullptr );
+        }
+    }
 }
 
 void MapLogic::addEventAction( EventAction* action, const std::string& key ) {
@@ -388,4 +428,40 @@ void MapLogic::setTriggersEnabledOfName( const std::string& name, bool b ) {
             trigger->setEnabled( b );
         }
     }
+}
+
+void MapLogic::checkGameState() {
+    
+}
+
+void MapLogic::onTargetNodeAppear( class TargetNode* target_node ) {
+    
+}
+
+void MapLogic::onTargetNodeDisappear( class TargetNode* target_node ) {
+    
+}
+
+int MapLogic::getUnitAppearCountByCamp( const std::string& camp ) {
+    return _unit_appear_count_by_camp[camp].asInt();
+}
+
+int MapLogic::getUnitDisappearCountByCamp( const std::string& camp ) {
+    return _unit_disappear_count_by_camp[camp].asInt();
+}
+
+int MapLogic::getUnitAppearCountByTag( const std::string& tag ) {
+    return _unit_appear_count_by_tag[tag].asInt();
+}
+
+int MapLogic::getUnitDisappearCountByTag( const std::string& tag ) {
+    return _unit_disappear_count_by_tag[tag].asInt();
+}
+
+int MapLogic::getUnitAppearCountByName( const std::string& name ) {
+    return _unit_appear_count_by_name[name].asInt();
+}
+
+int MapLogic::getUnitDisappearCountByName( const std::string& name ) {
+    return _unit_disappear_count_by_name[name].asInt();
 }

@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../Classes/unit/UnitNode.cpp"
-            timestampString = "448174177.111063"
+            filePath = "../../cocos2d-x/cocos/2d/CCRenderTexture.cpp"
+            timestampString = "448185309.019711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "UnitData::init( const cocos2d::ValueMap&amp; data )"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "RenderTexture::initWithWidthAndHeight(int w, int h, Texture2D::PixelFormat format, GLuint depthStencilFormat)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

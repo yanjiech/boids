@@ -60,12 +60,23 @@ bool PlayerMoveBehavior::behave( float delta ) {
         _unit_node->walkAlongPath( move_speed * DEFAULT_CATCH_UP_SPEED_FACTOR * delta );
         return true;
     }
-    else if( control_dir.x != 0 || control_dir.y != 0 ) {
+    if( control_dir.x != 0 || control_dir.y != 0 ) {
         Point new_pos = _unit_node->getPosition() + control_dir * delta * move_speed;
         _unit_node->walkTo( new_pos );
         return true;
     }
-    else if( _unit_node->getChasingTarget() ) {
+    if( _unit_node->getChasingTarget() == nullptr ) {
+        if( _unit_node->getSightGroup() != "" ) {
+            std::list<UnitNode*> same_sight_group_units = _unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( _unit_node->getUnitCamp(), _unit_node->getSightGroup() );
+            for( auto u : same_sight_group_units ) {
+                if( u->getChasingTarget() != nullptr ) {
+                    _unit_node->setChasingTarget( u->getChasingTarget() );
+                    break;
+                }
+            }
+        }
+    }
+    if( _unit_node->getChasingTarget() ) {
         Point last_pos = _unit_node->getPosition();
         _unit_node->findPathToPosition( _unit_node->getChasingTarget()->getPosition() );
         _unit_node->walkAlongPath( move_speed * delta );
