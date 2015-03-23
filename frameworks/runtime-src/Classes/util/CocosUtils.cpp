@@ -71,6 +71,18 @@ cocos2d::Value CocosUtils::jsonValueToValue( const rapidjson::Value& value ) {
     else if( value.IsString() ) {
         return Value( value.GetString() );
     }
+    else if( value.IsUint() ) {
+        return Value( (int)value.GetUint() );
+    }
+    else if( value.IsInt64() ) {
+        return Value( (int)value.GetInt64() );
+    }
+    else if( value.IsUint64() ) {
+        return Value( (int)value.GetUint64() );
+    }
+    else if( value.IsNumber() ) {
+        return Value( (int)value.GetInt() );
+    }
     else {
         log( "unknown json value type detected!" );
         return Value();

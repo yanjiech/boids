@@ -38,8 +38,6 @@ THE SOFTWARE.
 #include "platform/CCGL.h"
 #include "platform/CCGLView.h"
 
-#include "NetworkInterface.h"
-
 NS_CC_BEGIN
 
 /**
@@ -92,26 +90,11 @@ enum class MATRIX_STACK_TYPE
 
 class CC_DLL Director : public Ref
 {
-private:
-    std::stack<Mat4> _modelViewMatrixStack;
-    std::stack<Mat4> _projectionMatrixStack;
-    std::stack<Mat4> _textureMatrixStack;
-protected:
-    void initMatrixStack();
-public:
-    void pushMatrix(MATRIX_STACK_TYPE type);
-    void popMatrix(MATRIX_STACK_TYPE type);
-    void loadIdentityMatrix(MATRIX_STACK_TYPE type);
-    void loadMatrix(MATRIX_STACK_TYPE type, const Mat4& mat);
-    void multiplyMatrix(MATRIX_STACK_TYPE type, const Mat4& mat);
-    Mat4 getMatrix(MATRIX_STACK_TYPE type);
-    void resetMatrixStack();
 public:
     static const char *EVENT_PROJECTION_CHANGED;
     static const char* EVENT_AFTER_UPDATE;
     static const char* EVENT_AFTER_VISIT;
     static const char* EVENT_AFTER_DRAW;
-
 
     /** @typedef ccDirectorProjection
      Possible OpenGL projections used by director
@@ -304,6 +287,10 @@ public:
      The "delta time" will be 0 (as if the game wasn't paused)
      */
     void resume();
+    
+    /** Restart the director
+     */
+    void restart();
 
     /** Stops the animation. Nothing will be drawn. The main loop won't be triggered anymore.
      If you don't want to pause your animation call [pause] instead.
@@ -319,20 +306,7 @@ public:
     /** Draw the scene.
     This method is called every frame. Don't call it manually.
     */
-	void _drawScene(bool enable_update);
-
-	void drawScene(); //weiyuemin: integreted with network module. may call zero to serveral _drawScene() per frame
-
-	void set_battle_irrelevant_update(std::function<void(float)> _update)
-	{
-		_battle_irrelevant_update = _update;
-	}
-
-	//add by weiyuemin
-	inline void setNetworkInterface(class NetworkInterface* net)
-	{
-		_net = net;
-	}
+    void drawScene();
 
     // Memory Helper
 
@@ -352,6 +326,9 @@ public:
 
     /** enables/disables OpenGL alpha blending */
     void setAlphaBlending(bool on);
+    
+    /** set clear values for the color buffers, value range of each element is [0.0, 1.0] */
+    void setClearColor(const Color4F& clearColor);
 
     /** enables/disables OpenGL depth test */
     void setDepthTest(bool on);
@@ -414,9 +391,22 @@ public:
      */
     float getFrameRate() const { return _frameRate; }
 
+    void pushMatrix(MATRIX_STACK_TYPE type);
+    void popMatrix(MATRIX_STACK_TYPE type);
+    void loadIdentityMatrix(MATRIX_STACK_TYPE type);
+    void loadMatrix(MATRIX_STACK_TYPE type, const Mat4& mat);
+    void multiplyMatrix(MATRIX_STACK_TYPE type, const Mat4& mat);
+    const Mat4& getMatrix(MATRIX_STACK_TYPE type);
+    void resetMatrixStack();
+
 protected:
+    void reset();
+    
     void purgeDirector();
     bool _purgeDirectorInNextLoop; // this flag will be set to true in end()
+    
+    void restartDirector();
+    bool _restartDirectorInNextLoop; // this flag will be set to true in restart()
     
     void setNextScene();
     
@@ -431,6 +421,12 @@ protected:
     //textureCache creation or release
     void initTextureCache();
     void destroyTextureCache();
+
+    void initMatrixStack();
+
+    std::stack<Mat4> _modelViewMatrixStack;
+    std::stack<Mat4> _projectionMatrixStack;
+    std::stack<Mat4> _textureMatrixStack;
 
     /** Scheduler associated with this director
      @since v2.0
@@ -449,8 +445,7 @@ protected:
     EventCustom *_eventProjectionChanged, *_eventAfterDraw, *_eventAfterVisit, *_eventAfterUpdate;
         
     /* delta time since last tick to main loop */
-	float _deltaTime; //modified by WeiYuemin: I set this to fixed
-	float _real_deltaTime; //this is not fixed
+	float _deltaTime;
     
     /* The _openGLView, where everything is rendered, GLView is a abstract class,cocos2d-x provide GLViewImpl
      which inherit from it as default renderer context,you can have your own by inherit from it*/
@@ -478,7 +473,6 @@ protected:
 
     /* How many frames were called since the director started */
     unsigned int _totalFrames;
-    unsigned int _frames;
     float _secondsPerFrame;
     
     /* The running scene */
@@ -520,10 +514,6 @@ protected:
 
     // GLView will recreate stats labels to fit visible rect
     friend class GLView;
-
-	NetworkInterface* _net;
-
-	std::function<void(float)> _battle_irrelevant_update;
 };
 
 /** 

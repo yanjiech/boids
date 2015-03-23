@@ -19,6 +19,7 @@
 -- 
 -- @function [parent=#TextureCache] unbindAllImageAsync 
 -- @param self
+-- @return TextureCache#TextureCache self (return value: cc.TextureCache)
         
 --------------------------------
 --  Deletes a texture from the cache given a its key name<br>
@@ -26,6 +27,7 @@
 -- @function [parent=#TextureCache] removeTextureForKey 
 -- @param self
 -- @param #string key
+-- @return TextureCache#TextureCache self (return value: cc.TextureCache)
         
 --------------------------------
 --  Purges the dictionary of loaded textures.<br>
@@ -35,6 +37,7 @@
 -- In the long term: it will be the same
 -- @function [parent=#TextureCache] removeAllTextures 
 -- @param self
+-- @return TextureCache#TextureCache self (return value: cc.TextureCache)
         
 --------------------------------
 -- js NA<br>
@@ -44,11 +47,12 @@
 -- @return string#string ret (return value: string)
         
 --------------------------------
--- 
--- @function [parent=#TextureCache] addTexture 
+--  Output to CCLOG the current contents of this TextureCache<br>
+-- This will attempt to calculate the size of each texture, and the total texture memory in use<br>
+-- since v1.0
+-- @function [parent=#TextureCache] getCachedTextureInfo 
 -- @param self
--- @param #cc.Texture2D tex
--- @param #string key
+-- @return string#string ret (return value: string)
         
 --------------------------------
 -- @overload self, cc.Image, string         
@@ -64,6 +68,7 @@
 -- @function [parent=#TextureCache] unbindImageAsync 
 -- @param self
 -- @param #string filename
+-- @return TextureCache#TextureCache self (return value: cc.TextureCache)
         
 --------------------------------
 --  Returns an already created texture. Returns nil if the texture doesn't exist.<br>
@@ -80,29 +85,25 @@
 -- since v0.8
 -- @function [parent=#TextureCache] removeUnusedTextures 
 -- @param self
-        
---------------------------------
---  Output to CCLOG the current contents of this TextureCache<br>
--- This will attempt to calculate the size of each texture, and the total texture memory in use<br>
--- since v1.0
--- @function [parent=#TextureCache] getCachedTextureInfo 
--- @param self
--- @return string#string ret (return value: string)
+-- @return TextureCache#TextureCache self (return value: cc.TextureCache)
         
 --------------------------------
 --  Deletes a texture from the cache given a texture
 -- @function [parent=#TextureCache] removeTexture 
 -- @param self
 -- @param #cc.Texture2D texture
+-- @return TextureCache#TextureCache self (return value: cc.TextureCache)
         
 --------------------------------
 -- 
 -- @function [parent=#TextureCache] waitForQuit 
 -- @param self
+-- @return TextureCache#TextureCache self (return value: cc.TextureCache)
         
 --------------------------------
 -- js ctor
 -- @function [parent=#TextureCache] TextureCache 
 -- @param self
+-- @return TextureCache#TextureCache self (return value: cc.TextureCache)
         
 return nil

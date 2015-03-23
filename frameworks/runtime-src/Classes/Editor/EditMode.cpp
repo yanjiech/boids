@@ -55,7 +55,7 @@ void EditMode::enterEdit(const std::string& mapFolder) {
     loadUnits();
 	cocos2d::log("loadUnits");
     _mapData = std::shared_ptr<MapData>(new MapData(mapFolder));
-    _mapData->loadImagesToCache();
+//    _mapData->loadImagesToCache();
     _map = _mapData->generateTiledMapWithFlags(7);
 	cocos2d::log("newMap");
     loadVisionObjects();
@@ -272,9 +272,9 @@ EditorPositionPtr EditMode::getPositionForTouch(Touch *touch) {
 }
 
 void EditMode::setMapPosition(Point position) {
-    float minX = Director::getInstance()->getWinSize().width - _map->getContentSize().width;
+    /*float minX = Director::getInstance()->getWinSize().width - _map->getContentSize().width;
     float minY = Director::getInstance()->getWinSize().height - _map->getContentSize().height;
-    /*float x = position.x < minX ? minX : (position.x < 0 ? position.x : 0);
+    float x = position.x < minX ? minX : (position.x < 0 ? position.x : 0);
     float y = position.y < minY ? minY : (position.y < 0 ? position.y : 0);
     _map->setPosition(x, y);*/
 	//modified by weiyuemin, allow move outside map
@@ -554,7 +554,7 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
 void EditMode::onMainCommand(MainCommandType ct, const std::string& mapFolder, Ref *sender) {
     _mainUI->setVisible(false);
     if (ct == MainCommandType::PlayMap) {
-        LuaFunc::runBattleSceneWithMapPath(mapFolder);
+//        LuaFunc::runBattleSceneWithMapPath(mapFolder);
     } else if (ct == MainCommandType::EditMap) {
         enterEdit(mapFolder);
     } else if (ct == MainCommandType::Exit) {

@@ -5,580 +5,187 @@
    <image width="2600" height="1900" source="small03_newback.jpg"/>
   </tile>
  </tileset>
- <tileset firstgid="2" name="vision" tilewidth="1029" tileheight="761">
+ <tileset firstgid="2" name="vision" tilewidth="1029" tileheight="485">
   <tile id="0">
-   <image width="323" height="226" source="baisezhangpeng_01.png"/>
-  </tile>
-  <tile id="1">
-   <image width="90" height="81" source="baoxiang_01.png"/>
-  </tile>
-  <tile id="2">
-   <image width="90" height="81" source="baoxiang_02.png"/>
-  </tile>
-  <tile id="3">
-   <image width="752" height="698" source="binansuo1_normal.png"/>
-  </tile>
-  <tile id="4">
-   <image width="752" height="698" source="binansuo1_unnormal.png"/>
-  </tile>
-  <tile id="5">
-   <image width="560" height="420" source="binansuo2_normal.png"/>
-  </tile>
-  <tile id="6">
-   <image width="560" height="420" source="binansuo2_unnormal.png"/>
-  </tile>
-  <tile id="7">
-   <image width="400" height="336" source="binansuo3_normal.png"/>
-  </tile>
-  <tile id="8">
-   <image width="400" height="336" source="binansuo3_unnormal.png"/>
-  </tile>
-  <tile id="9">
-   <image width="400" height="336" source="binansuo4_normal.png"/>
-  </tile>
-  <tile id="10">
-   <image width="400" height="336" source="binansuo4_unnormal.png"/>
-  </tile>
-  <tile id="11">
-   <image width="520" height="668" source="binansuo5_normal.png"/>
-  </tile>
-  <tile id="12">
-   <image width="520" height="668" source="binansuo5_unnormal.png"/>
-  </tile>
-  <tile id="13">
-   <image width="700" height="668" source="binansuo6_normal.png"/>
-  </tile>
-  <tile id="14">
-   <image width="700" height="668" source="binansuo6_unnormal.png"/>
-  </tile>
-  <tile id="15">
-   <image width="133" height="129" source="caoche_01.png"/>
-  </tile>
-  <tile id="16">
-   <image width="151" height="127" source="caocong_01.png"/>
-  </tile>
-  <tile id="17">
-   <image width="121" height="97" source="caocong_02.png"/>
-  </tile>
-  <tile id="18">
-   <image width="91" height="73" source="caocong_03.png"/>
-  </tile>
-  <tile id="19">
-   <image width="314" height="338" source="caowu_01.png"/>
-  </tile>
-  <tile id="20">
-   <image width="314" height="338" source="caowu_02.png"/>
-  </tile>
-  <tile id="21">
    <image width="116" height="87" source="chaihuodui_01.png"/>
   </tile>
-  <tile id="22">
-   <image width="116" height="87" source="chaihuodui_02.png"/>
-  </tile>
-  <tile id="23">
-   <image width="400" height="534" source="church_left_normal.png"/>
-  </tile>
-  <tile id="24">
-   <image width="400" height="534" source="church_left_unnormal.png"/>
-  </tile>
-  <tile id="25">
-   <image width="400" height="534" source="church_right_normal.png"/>
-  </tile>
-  <tile id="26">
-   <image width="400" height="534" source="church_right_unnormal.png"/>
-  </tile>
-  <tile id="27">
-   <image width="114" height="129" source="daocaodui_01.png"/>
-  </tile>
-  <tile id="28">
-   <image width="92" height="107" source="daocaodui_02.png"/>
-  </tile>
-  <tile id="29">
-   <image width="445" height="235" source="daotian_01.png"/>
-  </tile>
-  <tile id="30">
-   <image width="445" height="235" source="daotian_02.png"/>
-  </tile>
-  <tile id="31">
-   <image width="335" height="662" source="diaoxiang_01.png"/>
-  </tile>
-  <tile id="32">
-   <image width="161" height="200" source="diaoxiang_02.png"/>
-  </tile>
-  <tile id="33">
-   <image width="161" height="200" source="diaoxiang_03.png"/>
-  </tile>
-  <tile id="34">
-   <image width="143" height="149" source="diaoxiang_04.png"/>
-  </tile>
-  <tile id="35">
-   <image width="143" height="149" source="diaoxiang_05.png"/>
-  </tile>
-  <tile id="36">
-   <image width="684" height="426" source="dixiamuxue.png"/>
-  </tile>
-  <tile id="37">
-   <image width="502" height="512" source="fashiyanjiusuo (1).png"/>
-  </tile>
-  <tile id="38">
-   <image width="414" height="565" source="fengche.png"/>
-  </tile>
-  <tile id="39">
+  <tile id="1">
    <image width="142" height="131" source="ganguo_01.png"/>
   </tile>
-  <tile id="40">
-   <image width="765" height="541" source="gaodi_01.png"/>
+  <tile id="2">
+   <image width="423" height="485" source="goutourenmuwu_01.png"/>
   </tile>
-  <tile id="41">
-   <image width="480" height="357" source="gaodi_02.png"/>
-  </tile>
-  <tile id="42">
-   <image width="877" height="376" source="gaodi_03.png"/>
-  </tile>
-  <tile id="43">
-   <image width="495" height="303" source="gaodi_04.png"/>
-  </tile>
-  <tile id="44">
-   <image width="765" height="541" source="gaodi_05.png"/>
-  </tile>
-  <tile id="45">
-   <image width="669" height="335" source="gaodi_06.png"/>
-  </tile>
-  <tile id="46">
-   <image width="869" height="373" source="gaodi_07.png"/>
-  </tile>
-  <tile id="47">
-   <image width="390" height="470" source="goutourenmuwu_01.png"/>
-  </tile>
-  <tile id="48">
-   <image width="395" height="485" source="goutourenmuwu_02.png"/>
-  </tile>
-  <tile id="49">
+  <tile id="3">
    <image width="208" height="113" source="guanmu.png"/>
   </tile>
-  <tile id="50">
-   <image width="44" height="55" source="guanzi_01.png"/>
-  </tile>
-  <tile id="51">
+  <tile id="4">
    <image width="1029" height="479" source="hu_01.png"/>
   </tile>
-  <tile id="52">
-   <image width="515" height="386" source="jinglingxiaowu.png"/>
-  </tile>
-  <tile id="53">
-   <image width="477" height="500" source="jiuguan.png"/>
-  </tile>
-  <tile id="54">
+  <tile id="5">
    <image width="57" height="31" source="kulou_01.png"/>
   </tile>
-  <tile id="55">
-   <image width="57" height="31" source="kulou_02.png"/>
-  </tile>
-  <tile id="56">
+  <tile id="6">
    <image width="73" height="49" source="kulou_03.png"/>
   </tile>
-  <tile id="57">
-   <image width="73" height="49" source="kulou_04.png"/>
-  </tile>
-  <tile id="58">
+  <tile id="7">
    <image width="440" height="185" source="kuloudui_01.png"/>
   </tile>
-  <tile id="59">
-   <image width="125" height="105" source="kuloudui_02.png"/>
-  </tile>
-  <tile id="60">
+  <tile id="8">
    <image width="59" height="48" source="kuloutou_01.png"/>
   </tile>
-  <tile id="61">
+  <tile id="9">
    <image width="88" height="60" source="kuloutou_02.png"/>
   </tile>
-  <tile id="62">
-   <image width="176" height="215" source="kushu_01.png"/>
-  </tile>
-  <tile id="63">
-   <image width="199" height="225" source="kushu_02.png"/>
-  </tile>
-  <tile id="64">
-   <image width="171" height="130" source="kuteng.png"/>
-  </tile>
-  <tile id="65">
-   <image width="89" height="111" source="langan_01.png"/>
-  </tile>
-  <tile id="66">
-   <image width="89" height="111" source="langan_02.png"/>
-  </tile>
-  <tile id="67">
-   <image width="119" height="117" source="langan_03.png"/>
-  </tile>
-  <tile id="68">
-   <image width="119" height="117" source="langan_04.png"/>
-  </tile>
-  <tile id="69">
-   <image width="440" height="433" source="langtuteng_01.png"/>
-  </tile>
-  <tile id="70">
-   <image width="68" height="100" source="lazhu_01.png"/>
-  </tile>
-  <tile id="71">
-   <image width="35" height="71" source="lazhu_02.png"/>
-  </tile>
-  <tile id="72">
-   <image width="421" height="250" source="longgu_01.png"/>
-  </tile>
-  <tile id="73">
-   <image width="103" height="178" source="ludeng.png"/>
-  </tile>
-  <tile id="74">
-   <image width="63" height="126" source="ludeng_01.png"/>
-  </tile>
-  <tile id="75">
-   <image width="63" height="126" source="ludeng_02.png"/>
-  </tile>
-  <tile id="76">
-   <image width="98" height="105" source="lupai_01 (2).png"/>
-  </tile>
-  <tile id="77">
-   <image width="98" height="105" source="lupai_01 (3).png"/>
-  </tile>
-  <tile id="78">
-   <image width="55" height="106" source="lupai_01.png"/>
-  </tile>
-  <tile id="79">
-   <image width="89" height="109" source="lupai_02.png"/>
-  </tile>
-  <tile id="80">
-   <image width="89" height="109" source="lupai_03.png"/>
-  </tile>
-  <tile id="81">
-   <image width="81" height="151" source="maotouying_01.png"/>
-  </tile>
-  <tile id="82">
-   <image width="81" height="151" source="maotouying_02.png"/>
-  </tile>
-  <tile id="83">
-   <image width="421" height="189" source="matou_01.png"/>
-  </tile>
-  <tile id="84">
-   <image width="397" height="405" source="matou_02.png"/>
-  </tile>
-  <tile id="85">
-   <image width="352" height="371" source="minju_01.png"/>
-  </tile>
-  <tile id="86">
-   <image width="352" height="371" source="minju_02.png"/>
-  </tile>
-  <tile id="87">
-   <image width="259" height="408" source="minju_03.png"/>
-  </tile>
-  <tile id="88">
-   <image width="114" height="64" source="muban_01.png"/>
-  </tile>
-  <tile id="89">
-   <image width="103" height="59" source="muban_02.png"/>
-  </tile>
-  <tile id="90">
-   <image width="79" height="72" source="mubei_01.png"/>
-  </tile>
-  <tile id="91">
-   <image width="94" height="86" source="mubei_02.png"/>
-  </tile>
-  <tile id="92">
-   <image width="72" height="71" source="mubei_03.png"/>
-  </tile>
-  <tile id="93">
-   <image width="75" height="83" source="mubei_04.png"/>
-  </tile>
-  <tile id="94">
-   <image width="84" height="100" source="mubei_05.png"/>
-  </tile>
-  <tile id="95">
-   <image width="102" height="129" source="mubei_06.png"/>
-  </tile>
-  <tile id="96">
-   <image width="104" height="87" source="mubei_07.png"/>
-  </tile>
-  <tile id="97">
-   <image width="87" height="72" source="mubei_10.png"/>
-  </tile>
-  <tile id="98">
-   <image width="102" height="129" source="mubei_11.png"/>
-  </tile>
-  <tile id="99">
-   <image width="290" height="242" source="mumen01_normal.png"/>
-  </tile>
-  <tile id="100">
-   <image width="290" height="242" source="mumen01_unnormal.png"/>
-  </tile>
-  <tile id="101">
-   <image width="290" height="242" source="mumen02_normal.png"/>
-  </tile>
-  <tile id="102">
-   <image width="290" height="242" source="mumen02_unnormal.png"/>
-  </tile>
-  <tile id="103">
-   <image width="473" height="291" source="muwu_01.png"/>
-  </tile>
-  <tile id="104">
-   <image width="95" height="86" source="nangua_01.png"/>
-  </tile>
-  <tile id="105">
-   <image width="67" height="60" source="nangua_02.png"/>
-  </tile>
-  <tile id="106">
-   <image width="56" height="47" source="nangua_03.png"/>
-  </tile>
-  <tile id="107">
-   <image width="137" height="144" source="penquan.png"/>
-  </tile>
-  <tile id="108">
-   <image width="180" height="185" source="qiang_01.png"/>
-  </tile>
-  <tile id="109">
-   <image width="180" height="185" source="qiang_02.png"/>
-  </tile>
-  <tile id="110">
-   <image width="107" height="78" source="qiang_03.png"/>
-  </tile>
-  <tile id="111">
-   <image width="107" height="78" source="qiang_04.png"/>
-  </tile>
-  <tile id="112">
-   <image width="220" height="198" source="qiang_05.png"/>
-  </tile>
-  <tile id="113">
-   <image width="664" height="606" source="renleibingying.png"/>
-  </tile>
-  <tile id="114">
-   <image width="166" height="308" source="shaota_01.png"/>
-  </tile>
-  <tile id="115">
-   <image width="391" height="255" source="shiqiao.png"/>
-  </tile>
-  <tile id="116">
-   <image width="391" height="255" source="shiqiao2.png"/>
-  </tile>
-  <tile id="117">
-   <image width="107" height="145" source="shiti_01.png"/>
-  </tile>
-  <tile id="118">
-   <image width="107" height="145" source="shiti_02.png"/>
-  </tile>
-  <tile id="119">
-   <image width="109" height="70" source="shiti_03.png"/>
-  </tile>
-  <tile id="120">
-   <image width="109" height="70" source="shiti_04.png"/>
-  </tile>
-  <tile id="121">
-   <image width="118" height="73" source="shiti_05.png"/>
-  </tile>
-  <tile id="122">
-   <image width="118" height="73" source="shiti_06.png"/>
-  </tile>
-  <tile id="123">
+  <tile id="10">
    <image width="42" height="28" source="shitou_01.png"/>
   </tile>
-  <tile id="124">
-   <image width="755" height="761" source="shourenbingying_01.png"/>
-  </tile>
-  <tile id="125">
-   <image width="162" height="210" source="shuijing_01.png"/>
-  </tile>
-  <tile id="126">
-   <image width="162" height="210" source="shuijing_02.png"/>
-  </tile>
-  <tile id="127">
-   <image width="307" height="417" source="shuwu_01.png"/>
-  </tile>
-  <tile id="128">
-   <image width="307" height="417" source="shuwu_02.png"/>
-  </tile>
-  <tile id="129">
-   <image width="148" height="103" source="shuzhuang_01.png"/>
-  </tile>
-  <tile id="130">
-   <image width="78" height="61" source="shuzhuang_02.png"/>
-  </tile>
-  <tile id="131">
+  <tile id="11">
    <image width="98" height="75" source="shuzhuang_03.png"/>
   </tile>
-  <tile id="132">
-   <image width="101" height="126" source="shuzhuang_04.png"/>
+  <tile id="12">
+   <image width="185" height="224" source="xiangshu_01.png"/>
   </tile>
-  <tile id="133">
-   <image width="135" height="219" source="songshu_01.png"/>
-  </tile>
-  <tile id="134">
-   <image width="135" height="219" source="songshu_02.png"/>
-  </tile>
-  <tile id="135">
-   <image width="185" height="224" source="xiangshu.png"/>
-  </tile>
-  <tile id="136">
+  <tile id="13">
    <image width="64" height="62" source="xiaocao_01.png"/>
   </tile>
-  <tile id="137">
+  <tile id="14">
    <image width="64" height="71" source="xiaocao_02.png"/>
   </tile>
-  <tile id="138">
+  <tile id="15">
    <image width="35" height="41" source="xiaocao_04.png"/>
-  </tile>
-  <tile id="139">
-   <image width="347" height="271" source="zahuopu_01.png"/>
-  </tile>
-  <tile id="140">
-   <image width="88" height="119" source="zhalan_01.png"/>
-  </tile>
-  <tile id="141">
-   <image width="88" height="119" source="zhalan_02.png"/>
-  </tile>
-  <tile id="142">
-   <image width="66" height="67" source="zhalan_03.png"/>
-  </tile>
-  <tile id="143">
-   <image width="74" height="90" source="zhalan_04.png"/>
-  </tile>
-  <tile id="144">
-   <image width="66" height="67" source="zhalan_05.png"/>
-  </tile>
-  <tile id="145">
-   <image width="74" height="90" source="zhalan_06.png"/>
   </tile>
  </tileset>
  <objectgroup name="background">
   <object gid="1" x="-0.151515" y="1900.48"/>
  </objectgroup>
  <objectgroup name="vision">
-  <object gid="58" x="980" y="838.667"/>
-  <object gid="137" x="678.667" y="922.667"/>
-  <object gid="137" x="906.667" y="914.667"/>
-  <object gid="137" x="826.667" y="1076"/>
-  <object gid="137" x="561.333" y="1016"/>
-  <object gid="137" x="836" y="597.333"/>
-  <object gid="137" x="645.397" y="1309.76"/>
-  <object gid="59" x="897.337" y="990"/>
-  <object gid="58" x="555.337" y="1146.67"/>
-  <object gid="137" x="2462" y="1947.33"/>
-  <object gid="140" x="535.185" y="238.061"/>
-  <object gid="139" x="171.67" y="1497"/>
-  <object gid="137" x="1806.73" y="596.848"/>
-  <object gid="140" x="167.337" y="1426"/>
-  <object gid="51" x="2063.67" y="46"/>
-  <object gid="137" x="2550" y="489.333"/>
-  <object gid="137" x="-32.6633" y="436.242"/>
-  <object gid="137" x="103.7" y="221.091"/>
-  <object gid="57" x="800.67" y="978.667"/>
-  <object gid="133" x="1552.37" y="1302.03"/>
-  <object gid="51" x="1434" y="48"/>
-  <object gid="138" x="2506.67" y="898"/>
-  <object gid="49" x="126.882" y="537.909"/>
-  <object gid="51" x="1721.88" y="887.758"/>
-  <object gid="133" x="-11.33" y="1546"/>
-  <object gid="137" x="1609.76" y="512"/>
-  <object gid="125" x="843.67" y="754"/>
-  <object gid="137" x="2422" y="218.667"/>
-  <object gid="137" x="1843.09" y="963.515"/>
-  <object gid="51" x="2339.34" y="1967.33"/>
-  <object gid="41" x="798.397" y="961.606"/>
-  <object gid="125" x="2476.67" y="857.333"/>
-  <object gid="137" x="1887.34" y="2064.67"/>
-  <object gid="137" x="291.579" y="181.697"/>
-  <object gid="51" x="668.67" y="45.3333"/>
-  <object gid="58" x="684.67" y="974"/>
-  <object gid="63" x="766.67" y="1066"/>
-  <object gid="137" x="1527.94" y="672.606"/>
-  <object gid="138" x="626.003" y="1115.67"/>
-  <object gid="137" x="1738.79" y="1179.33"/>
-  <object gid="51" x="2150.67" y="144"/>
-  <object gid="51" x="2282" y="156"/>
-  <object gid="137" x="285.397" y="1313.33"/>
-  <object gid="137" x="2560.67" y="1244"/>
-  <object gid="125" x="1552.4" y="1304.79"/>
-  <object gid="137" x="19.9124" y="1625.82"/>
-  <object gid="59" x="296.67" y="1418"/>
-  <object gid="137" x="2495.34" y="657.333"/>
-  <object gid="57" x="774.67" y="1002.33"/>
-  <object gid="51" x="577.67" y="83.6667"/>
-  <object gid="137" x="2517.7" y="1376.03"/>
-  <object gid="138" x="1463.34" y="1927.33"/>
-  <object gid="140" x="1750.67" y="146"/>
-  <object gid="23" x="2011.28" y="809.545"/>
-  <object gid="137" x="2560.67" y="869.333"/>
-  <object gid="78" x="2080.28" y="146.182"/>
-  <object gid="140" x="1884.67" y="64"/>
-  <object gid="137" x="308.67" y="1442.36"/>
-  <object gid="125" x="2476.67" y="1407"/>
-  <object gid="133" x="586.488" y="1111.21"/>
-  <object gid="51" x="1588.67" y="69.3333"/>
-  <object gid="137" x="1250" y="2100.42"/>
-  <object gid="139" x="530.67" y="754"/>
-  <object gid="125" x="2458.67" y="1394"/>
-  <object gid="137" x="-41.7542" y="715.03"/>
-  <object gid="137" x="2472.67" y="446.667"/>
-  <object gid="137" x="-41.7542" y="263.515"/>
-  <object gid="50" x="1670.34" y="863.091"/>
-  <object gid="51" x="735.337" y="100"/>
-  <object gid="58" x="893.337" y="848.667"/>
-  <object gid="140" x="1949" y="1049.33"/>
-  <object gid="137" x="1673.19" y="1273.76"/>
-  <object gid="51" x="2183.34" y="1951.33"/>
-  <object gid="133" x="764.67" y="1087.09"/>
-  <object gid="51" x="2112.67" y="90"/>
-  <object gid="51" x="1074" y="33.3333"/>
-  <object gid="133" x="1882.67" y="1158"/>
-  <object gid="137" x="1664.31" y="678.667"/>
-  <object gid="137" x="150.791" y="1428.61"/>
-  <object gid="57" x="604.67" y="1157"/>
-  <object gid="137" x="2462" y="1141.33"/>
-  <object gid="62" x="687.003" y="1007.33"/>
-  <object gid="51" x="2210.67" y="130"/>
-  <object gid="51" x="423.67" y="104"/>
-  <object gid="133" x="1485" y="1382.33"/>
-  <object gid="137" x="2442" y="857.333"/>
-  <object gid="137" x="1909.19" y="1043.79"/>
-  <object gid="138" x="1495.34" y="1912.67"/>
-  <object gid="133" x="2522.67" y="942"/>
-  <object gid="53" x="803.943" y="842.939"/>
-  <object gid="137" x="2523.34" y="773.333"/>
-  <object gid="137" x="394.609" y="1190.55"/>
-  <object gid="60" x="334.67" y="1300"/>
-  <object gid="63" x="832.67" y="1016.67"/>
-  <object gid="51" x="1727.34" y="40"/>
-  <object gid="138" x="153.518" y="603.606"/>
-  <object gid="138" x="1484.67" y="858"/>
-  <object gid="137" x="1958.25" y="657.455"/>
-  <object gid="137" x="2534" y="354.667"/>
-  <object gid="137" x="24.9124" y="327.152"/>
-  <object gid="138" x="1554" y="485.333"/>
-  <object gid="137" x="79.4579" y="554.424"/>
-  <object gid="57" x="896.67" y="804"/>
-  <object gid="51" x="985.518" y="590.788"/>
-  <object gid="133" x="2021.88" y="733.212"/>
-  <object gid="51" x="990.003" y="16"/>
-  <object gid="51" x="768.549" y="1955.88"/>
-  <object gid="137" x="635.882" y="2031.82"/>
-  <object gid="133" x="216.67" y="1504"/>
-  <object gid="140" x="1848.34" y="1152.67"/>
-  <object gid="137" x="475.094" y="217.576"/>
-  <object gid="137" x="2347.34" y="174.667"/>
-  <object gid="51" x="1903.67" y="86"/>
-  <object gid="137" x="1365.94" y="1369.64"/>
-  <object gid="138" x="1863.34" y="1920.67"/>
-  <object gid="139" x="1902.85" y="1089.06"/>
-  <object gid="125" x="2382" y="1004"/>
-  <object gid="51" x="-46.66" y="1948"/>
-  <object gid="51" x="109.34" y="1964"/>
-  <object gid="137" x="-56" y="1784"/>
-  <object gid="139" x="-30.3333" y="1810.33"/>
-  <object gid="133" x="37.3333" y="1886.67"/>
-  <object gid="139" x="838.667" y="813.333"/>
-  <object gid="62" x="702.667" y="1052"/>
-  <object gid="133" x="722.667" y="1134.67"/>
-  <object gid="133" x="1634" y="1316"/>
-  <object gid="137" x="2484" y="1850"/>
-  <object gid="133" x="2424" y="1894"/>
-  <object gid="133" x="2328" y="1856"/>
-  <object gid="125" x="2298" y="1866"/>
+  <object gid="8" x="980" y="838.667"/>
+  <object gid="14" x="678.667" y="922.667"/>
+  <object gid="14" x="906.667" y="914.667"/>
+  <object gid="14" x="826.667" y="1076"/>
+  <object gid="14" x="561.333" y="1016"/>
+  <object gid="14" x="836" y="597.333"/>
+  <object gid="14" x="645.397" y="1309.76"/>
+  <object gid="8" x="555.337" y="1146.67"/>
+  <object gid="14" x="2462" y="1947.33"/>
+  <object gid="17" x="535.185" y="238.061"/>
+  <object gid="16" x="171.67" y="1497"/>
+  <object gid="14" x="1806.73" y="596.848"/>
+  <object gid="17" x="167.337" y="1426"/>
+  <object gid="5" x="2063.67" y="46"/>
+  <object gid="14" x="2550" y="489.333"/>
+  <object gid="14" x="-32.6633" y="436.242"/>
+  <object gid="14" x="103.7" y="221.091"/>
+  <object gid="13" x="1552.37" y="1302.03"/>
+  <object gid="5" x="1434" y="48"/>
+  <object gid="15" x="2506.67" y="898"/>
+  <object gid="4" x="1636.23" y="859.027"/>
+  <object gid="5" x="1721.88" y="887.758"/>
+  <object gid="13" x="-11.33" y="1546"/>
+  <object gid="14" x="1609.76" y="512"/>
+  <object gid="12" x="843.67" y="754"/>
+  <object gid="14" x="2422" y="218.667"/>
+  <object gid="14" x="1843.09" y="963.515"/>
+  <object gid="5" x="2339.34" y="1967.33"/>
+  <object gid="3" x="798.397" y="961.606"/>
+  <object gid="12" x="2476.67" y="857.333"/>
+  <object gid="14" x="1887.34" y="2064.67"/>
+  <object gid="14" x="291.579" y="181.697"/>
+  <object gid="5" x="668.67" y="45.3333"/>
+  <object gid="8" x="684.67" y="974"/>
+  <object gid="11" x="766.67" y="1066"/>
+  <object gid="14" x="1527.94" y="672.606"/>
+  <object gid="15" x="626.003" y="1115.67"/>
+  <object gid="14" x="1738.79" y="1179.33"/>
+  <object gid="5" x="2150.67" y="144"/>
+  <object gid="5" x="2282" y="156"/>
+  <object gid="14" x="285.397" y="1313.33"/>
+  <object gid="14" x="2560.67" y="1244"/>
+  <object gid="12" x="1552.4" y="1304.79"/>
+  <object gid="14" x="19.9124" y="1625.82"/>
+  <object gid="14" x="2495.34" y="657.333"/>
+  <object gid="5" x="577.67" y="83.6667"/>
+  <object gid="14" x="2517.7" y="1376.03"/>
+  <object gid="15" x="1463.34" y="1927.33"/>
+  <object gid="17" x="1750.67" y="146"/>
+  <object gid="2" x="2011.28" y="809.545"/>
+  <object gid="14" x="2560.67" y="869.333"/>
+  <object gid="17" x="1884.67" y="64"/>
+  <object gid="14" x="322.67" y="1442.36"/>
+  <object gid="12" x="2476.67" y="1407"/>
+  <object gid="13" x="586.488" y="1111.21"/>
+  <object gid="5" x="1588.67" y="69.3333"/>
+  <object gid="14" x="1250" y="2100.42"/>
+  <object gid="16" x="530.67" y="754"/>
+  <object gid="12" x="2458.67" y="1394"/>
+  <object gid="14" x="-41.7542" y="715.03"/>
+  <object gid="14" x="2472.67" y="446.667"/>
+  <object gid="14" x="-41.7542" y="263.515"/>
+  <object gid="5" x="735.337" y="100"/>
+  <object gid="8" x="893.337" y="848.667"/>
+  <object gid="17" x="1949" y="1049.33"/>
+  <object gid="14" x="1673.19" y="1273.76"/>
+  <object gid="5" x="2183.34" y="1951.33"/>
+  <object gid="13" x="764.67" y="1087.09"/>
+  <object gid="5" x="2112.67" y="90"/>
+  <object gid="5" x="1074" y="33.3333"/>
+  <object gid="13" x="1882.67" y="1158"/>
+  <object gid="14" x="1664.31" y="678.667"/>
+  <object gid="14" x="150.791" y="1428.61"/>
+  <object gid="14" x="2462" y="1141.33"/>
+  <object gid="10" x="687.003" y="1007.33"/>
+  <object gid="5" x="2210.67" y="130"/>
+  <object gid="5" x="423.67" y="104"/>
+  <object gid="13" x="1485" y="1382.33"/>
+  <object gid="14" x="2442" y="857.333"/>
+  <object gid="14" x="1909.19" y="1043.79"/>
+  <object gid="15" x="1495.34" y="1912.67"/>
+  <object gid="13" x="2522.67" y="942"/>
+  <object gid="6" x="803.943" y="842.939"/>
+  <object gid="14" x="2523.34" y="773.333"/>
+  <object gid="14" x="394.609" y="1190.55"/>
+  <object gid="9" x="334.67" y="1300"/>
+  <object gid="11" x="832.67" y="1016.67"/>
+  <object gid="5" x="1727.34" y="40"/>
+  <object gid="15" x="153.518" y="603.606"/>
+  <object gid="15" x="1484.67" y="858"/>
+  <object gid="14" x="1958.25" y="657.455"/>
+  <object gid="14" x="2534" y="354.667"/>
+  <object gid="14" x="24.9124" y="327.152"/>
+  <object gid="15" x="1554" y="485.333"/>
+  <object gid="14" x="79.4579" y="554.424"/>
+  <object gid="5" x="985.518" y="590.788"/>
+  <object gid="13" x="2021.88" y="733.212"/>
+  <object gid="5" x="990.003" y="16"/>
+  <object gid="5" x="768.549" y="1955.88"/>
+  <object gid="14" x="635.882" y="2031.82"/>
+  <object gid="13" x="216.67" y="1504"/>
+  <object gid="17" x="1848.34" y="1152.67"/>
+  <object gid="14" x="475.094" y="217.576"/>
+  <object gid="14" x="2347.34" y="174.667"/>
+  <object gid="5" x="1903.67" y="86"/>
+  <object gid="14" x="1365.94" y="1369.64"/>
+  <object gid="15" x="1863.34" y="1920.67"/>
+  <object gid="16" x="1902.85" y="1089.06"/>
+  <object gid="12" x="2382" y="1004"/>
+  <object gid="5" x="-46.66" y="1948"/>
+  <object gid="5" x="109.34" y="1964"/>
+  <object gid="14" x="-56" y="1784"/>
+  <object gid="16" x="-30.3333" y="1810.33"/>
+  <object gid="13" x="37.3333" y="1886.67"/>
+  <object gid="16" x="838.667" y="813.333"/>
+  <object gid="10" x="702.667" y="1052"/>
+  <object gid="13" x="722.667" y="1134.67"/>
+  <object gid="13" x="1634" y="1316"/>
+  <object gid="14" x="2484" y="1850"/>
+  <object gid="13" x="2424" y="1894"/>
+  <object gid="13" x="2328" y="1856"/>
+  <object gid="12" x="2298" y="1866"/>
+  <object gid="2147483652" x="78.165" y="541.431"/>
+  <object gid="2147483655" x="774" y="993"/>
+  <object gid="2147483655" x="784" y="964"/>
+  <object gid="2147483655" x="616" y="1160"/>
+  <object gid="2147483656" x="312" y="1418"/>
  </objectgroup>
  <objectgroup name="physics">
   <object name="c11" type="collide" x="1481.85" y="1906.85">

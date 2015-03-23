@@ -90,8 +90,6 @@ public:
      */
     void setItemModel(Widget* model);
     
-    Widget *getItemModel() { return _model; }
-    
     /**
      * Push back a default item(create by a cloned model) into listview.
      */
@@ -164,6 +162,8 @@ public:
     
     float getItemsMargin()const;
     
+    virtual void forceDoLayout()override;
+
     virtual void doLayout() override;
     
     virtual void addChild(Node* child)override;
@@ -201,6 +201,9 @@ protected:
     
     void updateInnerContainerSize();
     void remedyLayoutParameter(Widget* item);
+    void remedyVerticalLayoutParameter(LinearLayoutParameter* layoutParameter, ssize_t itemIndex);
+    void remedyHorizontalLayoutParameter(LinearLayoutParameter* layoutParameter,ssize_t itemIndex);
+    
     virtual void onSizeChanged() override;
     virtual Widget* createCloneInstance() override;
     virtual void copySpecialProperties(Widget* model) override;

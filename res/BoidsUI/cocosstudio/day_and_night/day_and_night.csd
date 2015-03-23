@@ -1,47 +1,47 @@
 <GameProjectFile>
-  <PropertyGroup Type="Layer" Name="day_and_night" ID="82dc2976-2142-4367-8446-2f29cf0f615e" Version="2.0.2.0" />
+  <PropertyGroup Type="Layer" Name="day_and_night" ID="82dc2976-2142-4367-8446-2f29cf0f615e" Version="2.1.5.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="60" Speed="1.0000">
-        <Timeline ActionTag="954877282" FrameType="PositionFrame">
+        <Timeline ActionTag="954877282" FrameType="PositionFrame" Property="Position">
           <PointFrame FrameIndex="0" X="64.0000" Y="61.6250" />
           <PointFrame FrameIndex="30" X="64.0000" Y="61.6250" />
           <PointFrame FrameIndex="60" X="64.0000" Y="61.6250" />
         </Timeline>
-        <Timeline ActionTag="954877282" FrameType="ScaleFrame">
+        <Timeline ActionTag="954877282" FrameType="ScaleFrame" Property="Scale">
           <PointFrame FrameIndex="0" X="1.0000" Y="1.0000" />
           <PointFrame FrameIndex="30" X="1.0000" Y="1.0000" />
           <PointFrame FrameIndex="60" X="1.0000" Y="1.0000" />
         </Timeline>
-        <Timeline ActionTag="954877282" FrameType="RotationSkewFrame">
+        <Timeline ActionTag="954877282" FrameType="RotationSkewFrame" Property="RotationSkew">
           <PointFrame FrameIndex="0" X="0.0000" Y="0.0000" />
           <PointFrame FrameIndex="30" X="0.0000" Y="0.0000" />
           <PointFrame FrameIndex="60" X="0.0000" Y="0.0000" />
         </Timeline>
-        <Timeline ActionTag="-1355424157" FrameType="PositionFrame">
+        <Timeline ActionTag="-1355424157" FrameType="PositionFrame" Property="Position">
           <PointFrame FrameIndex="0" X="68.0000" Y="65.6250" />
           <PointFrame FrameIndex="30" X="68.0000" Y="65.6250" />
           <PointFrame FrameIndex="60" X="68.0000" Y="65.6250" />
         </Timeline>
-        <Timeline ActionTag="-1355424157" FrameType="ScaleFrame">
+        <Timeline ActionTag="-1355424157" FrameType="ScaleFrame" Property="Scale">
           <PointFrame FrameIndex="0" X="1.0000" Y="1.0000" />
           <PointFrame FrameIndex="30" X="1.0000" Y="1.0000" />
           <PointFrame FrameIndex="60" X="1.0000" Y="1.0000" />
         </Timeline>
-        <Timeline ActionTag="-1355424157" FrameType="RotationSkewFrame">
+        <Timeline ActionTag="-1355424157" FrameType="RotationSkewFrame" Property="RotationSkew">
           <PointFrame FrameIndex="0" X="0.0000" Y="0.0000" />
           <PointFrame FrameIndex="30" X="0.0000" Y="0.0000" />
           <PointFrame FrameIndex="60" X="0.0000" Y="0.0000" />
         </Timeline>
-        <Timeline ActionTag="-425728100" FrameType="PositionFrame">
+        <Timeline ActionTag="-425728100" FrameType="PositionFrame" Property="Position">
           <PointFrame FrameIndex="0" X="147.5000" Y="60.0000" />
           <PointFrame FrameIndex="60" X="-18.5000" Y="61.0000" />
         </Timeline>
-        <Timeline ActionTag="-425728100" FrameType="ScaleFrame">
+        <Timeline ActionTag="-425728100" FrameType="ScaleFrame" Property="Scale">
           <PointFrame FrameIndex="0" X="1.0000" Y="1.0000" />
           <PointFrame FrameIndex="60" X="1.0000" Y="1.0000" />
         </Timeline>
-        <Timeline ActionTag="-425728100" FrameType="RotationSkewFrame">
+        <Timeline ActionTag="-425728100" FrameType="RotationSkewFrame" Property="RotationSkew">
           <PointFrame FrameIndex="0" X="0.0000" Y="0.0000" />
           <PointFrame FrameIndex="60" X="0.0000" Y="0.0000" />
         </Timeline>
@@ -99,7 +99,7 @@
         <SingleColor A="255" R="0" G="0" B="0" />
         <FirstColor A="255" R="0" G="0" B="0" />
         <EndColor A="255" R="255" G="255" B="255" />
-        <ColorVector ScaleX="1.0000" ScaleY="0.0000" />
+        <ColorVector ScaleX="1.0000" />
       </ObjectData>
     </Content>
   </Content>

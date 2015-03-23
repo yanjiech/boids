@@ -30,24 +30,6 @@ THE SOFTWARE.
 
 NS_CC_BEGIN
 //
-#include "shader_burn.frag"
-#include "shader_burn.vert"
-
-#include "shader_ice.frag"
-#include "shader_ice.vert"
-
-#include "shader_poison.frag"
-#include "shader_poison.vert"
-
-#include "shader_burn_noMVP.frag"
-#include "shader_burn_noMVP.vert"
-
-#include "shader_ice_noMVP.frag"
-#include "shader_ice_noMVP.vert"
-
-#include "shader_poison_noMVP.frag"
-#include "shader_poison_noMVP.vert"
-
 #include "ccShader_Position_uColor.frag"
 
 #ifdef CC_NO_GL_POINTSIZE
@@ -59,6 +41,14 @@ NS_CC_BEGIN
 //
 #include "ccShader_PositionColor.frag"
 #include "ccShader_PositionColor.vert"
+
+//
+
+#ifdef CC_NO_GL_POINTSIZE
+#include "ccShader_PositionColorPointsize-no-gl_PointSize.vert"
+#else
+#include "ccShader_PositionColorTextureAsPointsize.vert"
+#endif
 
 //
 #include "ccShader_PositionTexture.frag"

@@ -25,10 +25,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-//modified a lot by WeiYuemin
-//all void* target are changed to void* hash_key
-//and the actual key is target->_ID (the Ref id which is unique), not the target's pointer value
-
 #ifndef __CCSCHEDULER_H__
 #define __CCSCHEDULER_H__
 
@@ -111,7 +107,7 @@ public:
     TimerTargetCallback();
     
     /** Initializes a timer with a target, a lambda and an interval in seconds, repeat in number of times to repeat, delay in seconds. */
-    bool initWithCallback(Scheduler* scheduler, const ccSchedulerFunc& callback, void *hash_key, const std::string& key, float seconds, unsigned int repeat, float delay);
+    bool initWithCallback(Scheduler* scheduler, const ccSchedulerFunc& callback, void *target, const std::string& key, float seconds, unsigned int repeat, float delay);
     
     /**
      * @js NA
@@ -124,7 +120,7 @@ public:
     virtual void cancel() override;
     
 protected:
-    void* _hash_key;
+    void* _target;
     ccSchedulerFunc _callback;
     std::string _key;
 };
@@ -134,7 +130,7 @@ protected:
 class CC_DLL TimerScriptHandler : public Timer
 {
 public:
-    bool initWithScriptHandler(int handler, float seconds, unsigned int repeat, float delay);
+    bool initWithScriptHandler(int handler, float seconds);
     inline int getScriptHandler() const { return _scriptHandler; };
     
     virtual void trigger() override;
@@ -170,8 +166,6 @@ The 'custom selectors' should be avoided when possible. It is faster, and consum
 */
 class CC_DLL Scheduler : public Ref
 {
-	friend class TimerTargetCallback;
-
 public:
     // Priority level reserved for system services.
     static const int PRIORITY_SYSTEM;
@@ -218,18 +212,12 @@ public:
      @param key The key to identify the callback
      @since v3.0
      */
-	inline void schedule(const ccSchedulerFunc& callback, cocos2d::Ref *target, float interval, unsigned int repeat, float delay, bool paused, const std::string& key)
-	{
-		_schedule(callback, (void*)target->_ID, interval, repeat, delay, paused, key);
-	}
+    void schedule(const ccSchedulerFunc& callback, void *target, float interval, unsigned int repeat, float delay, bool paused, const std::string& key);
 
     /** Calls scheduleCallback with CC_REPEAT_FOREVER and a 0 delay
      @since v3.0
      */
-	inline void schedule(const ccSchedulerFunc& callback, cocos2d::Ref *target, float interval, bool paused, const std::string& key)
-	{
-		this->_schedule(callback, (void*)target->_ID, interval, CC_REPEAT_FOREVER, 0.0f, paused, key);
-	}
+    void schedule(const ccSchedulerFunc& callback, void *target, float interval, bool paused, const std::string& key);
     
     
     /** The scheduled method will be called every 'interval' seconds.
@@ -257,7 +245,7 @@ public:
     {
         this->schedulePerFrame([target](float dt){
             target->update(dt);
-        }, (void*)target->_ID, priority, paused);
+        }, target, priority, paused);
     }
 
 #if CC_ENABLE_SCRIPT_BINDING
@@ -267,7 +255,7 @@ public:
      If 'interval' is 0, it will be called every frame.
      return schedule script entry ID, used for unscheduleScriptFunc().
      */
-    unsigned int scheduleScriptFunc(unsigned int handler, float interval, unsigned int repeat, float delay, bool paused);
+    unsigned int scheduleScriptFunc(unsigned int handler, float interval, bool paused);
 #endif
     /////////////////////////////////////
     
@@ -277,10 +265,7 @@ public:
      If you want to unschedule the 'callbackPerFrame', use unscheduleUpdate.
      @since v3.0
      */
-	inline void unschedule(const std::string& key, cocos2d::Ref *target)
-	{
-		_unschedule(key, (void*)target->_ID);
-	}
+    void unschedule(const std::string& key, void *target);
 
     /** Unschedule a selector for a given target.
      If you want to unschedule the "update", use unscheudleUpdate.
@@ -291,10 +276,7 @@ public:
     /** Unschedules the update selector for a given target
      @since v0.99.3
      */
-	inline void unscheduleUpdate(cocos2d::Ref *target)
-	{
-		_unscheduleUpdate((void*)target->_ID);
-	}
+    void unscheduleUpdate(void *target);
     
     /** Unschedules all selectors for a given target.
      This also includes the "update" selector.
@@ -302,10 +284,7 @@ public:
      @js  unscheduleCallbackForTarget
      @lua NA
      */
-	inline void unscheduleAllForTarget(cocos2d::Ref *target)
-	{
-		_unscheduleAllForTarget((void*)target->_ID);
-	}
+    void unscheduleAllForTarget(void *target);
     
     /** Unschedules all selectors from all targets.
      You should NEVER call this method, unless you know what you are doing.
@@ -331,10 +310,7 @@ public:
     /** Checks whether a callback associated with 'key' and 'target' is scheduled.
      @since v3.0.0
      */
-	inline bool isScheduled(const std::string& key, cocos2d::Ref *target)
-	{
-		return _isScheduled(key, (void*)target->_ID);
-	}
+    bool isScheduled(const std::string& key, void *target);
     
     /** Checks whether a selector for a given taget is scheduled.
      @since v3.0
@@ -348,30 +324,21 @@ public:
      If the target is not present, nothing happens.
      @since v0.99.3
      */
-	inline void pauseTarget(cocos2d::Ref *target)
-	{
-		_pauseTarget((void*)target->_ID);
-	}
+    void pauseTarget(void *target);
 
     /** Resumes the target.
      The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again.
      If the target is not present, nothing happens.
      @since v0.99.3
      */
-	inline void resumeTarget(cocos2d::Ref *target)
-	{
-		_resumeTarget((void*)target->_ID);
-	}
+    void resumeTarget(void *target);
 
     /** Returns whether or not the target is paused
     @since v1.0.0
     * In js: var isTargetPaused(var jsObject)
     * @lua NA 
     */
-	inline bool _isTargetPaused(cocos2d::Ref *target)
-	{
-		return _isTargetPaused((void*)target->_ID);
-	}
+    bool isTargetPaused(void *target);
 
     /** Pause all selectors from all targets.
       You should NEVER call this method, unless you know what you are doing.
@@ -389,7 +356,7 @@ public:
      This can be useful for undoing a call to pauseAllSelectors.
      @since v2.0.0
       */
-    void resumeTargets(const std::set<void*>& hash_keysToResume);
+    void resumeTargets(const std::set<void*>& targetsToResume);
 
     /** calls a function on the cocos2d thread. Useful when you need to call a cocos2d function from another thread.
      This function is thread safe.
@@ -452,37 +419,22 @@ public:
     CC_DEPRECATED_ATTRIBUTE void unscheduleUpdateForTarget(Ref *target) { return unscheduleUpdate(target); };
     
 protected:
-	void _schedule(const ccSchedulerFunc& callback, void *hash_key, float interval, unsigned int repeat, float delay, bool paused, const std::string& key);
-
-	void _unschedule(const std::string& key, void *hash_key);
-
-	void _unscheduleUpdate(void *hash_key);
-
-	void _unscheduleAllForTarget(void *hash_key);
-
-	bool _isScheduled(const std::string& key, void *hash_key);
-
-	void _pauseTarget(void *hash_key);
-	void _resumeTarget(void *hash_key);
-	bool _isTargetPaused(void *hash_key);
-
-	//==original protected functions==
-
+    
     /** Schedules the 'callback' function for a given target with a given priority.
      The 'callback' selector will be called every frame.
      The lower the priority, the earlier it is called.
      @note This method is only for internal use.
      @since v3.0
      */
-    void schedulePerFrame(const ccSchedulerFunc& callback, void *hash_key, int priority, bool paused);
+    void schedulePerFrame(const ccSchedulerFunc& callback, void *target, int priority, bool paused);
     
     void removeHashElement(struct _hashSelectorEntry *element);
     void removeUpdateFromHash(struct _listEntry *entry);
 
     // update specific
 
-	void priorityIn(struct _listEntry **list, const ccSchedulerFunc& callback, void *hash_key, int priority, bool paused);
-	void appendIn(struct _listEntry **list, const ccSchedulerFunc& callback, void *hash_key, bool paused);
+    void priorityIn(struct _listEntry **list, const ccSchedulerFunc& callback, void *target, int priority, bool paused);
+    void appendIn(struct _listEntry **list, const ccSchedulerFunc& callback, void *target, bool paused);
 
 
     float _timeScale;

@@ -7,7 +7,8 @@
 //
 
 #include "PlayerInfo.h"
-#include "cocos2d.h"
+#include "external/json/Document.h"
+#include "../util/CocosUtils.h"
 
 using namespace cocos2d;
 
@@ -30,9 +31,20 @@ PlayerInfo* PlayerInfo::getInstance() {
 
 void PlayerInfo::loadPlayerInfo() {
     std::string data_string = FileUtils::getInstance()->getStringFromFile( "player_info.json" );
-    _player_info.Parse<0>( data_string.c_str() );
+    rapidjson::Document player_info_json;
+    player_info_json.Parse<0>( data_string.c_str() );
+    _player_info = CocosUtils::jsonObjectToValueMap( player_info_json );
 }
 
-const rapidjson::Value& PlayerInfo::getPlayerUnitsInfo() {
-    return _player_info["units"];
+const cocos2d::ValueVector& PlayerInfo::getPlayerUnitsInfo() {
+    return _player_info.at( "units" ).asValueVector();
+}
+
+cocos2d::ValueVector PlayerInfo::getPlayerUnitNames() {
+    ValueVector ret;
+    const ValueVector& units = _player_info.at( "units" ).asValueVector();
+    for( auto itr = units.begin(); itr != units.end(); ++itr ) {
+        ret.push_back( Value( itr->asValueMap().at( "name" ).asString() ) );
+    }
+    return ret;
 }

@@ -218,7 +218,8 @@ void ClippingNode::drawFullScreenQuadClearStencil()
     glProgram->use();
     glProgram->setUniformsForBuiltins();
     glProgram->setUniformLocationWith4fv(colorLocation, (GLfloat*) &color.r, 1);
-    
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
     GL::enableVertexAttribs( GL::VERTEX_ATTRIB_FLAG_POSITION );
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, vertices);
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
@@ -231,7 +232,7 @@ void ClippingNode::drawFullScreenQuadClearStencil()
 
 void ClippingNode::visit(Renderer *renderer, const Mat4 &parentTransform, uint32_t parentFlags)
 {
-    if(!_visible)
+    if (!_visible || !hasContent())
         return;
     
     uint32_t flags = processParentFlags(parentTransform, parentFlags);
@@ -325,6 +326,11 @@ void ClippingNode::setStencil(Node *stencil)
     CC_SAFE_RETAIN(stencil);
     CC_SAFE_RELEASE(_stencil);
     _stencil = stencil;
+}
+
+bool ClippingNode::hasContent() const
+{
+    return _children.size() > 0;
 }
 
 GLfloat ClippingNode::getAlphaThreshold() const

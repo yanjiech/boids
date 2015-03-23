@@ -6,10 +6,8 @@
 
 class Path
 {
-protected:
-	int validity_frame;
-
 public:
+    int validity_frame;
 	std::vector<cocos2d::Point> steps;
 
 	void paint(cocos2d::Point from, cocos2d::DrawNode* node, cocos2d::Color4F c);
@@ -17,6 +15,7 @@ public:
 	Path(const std::string& steps_serialization); //只会对steps进行赋值，主要是为了便于调试
 	std::string serialize();
 	bool operator == (const class Path& other); //只判断steps。主要是为了便于调试
+    const Path& operator = ( const Path& other );
 
 	cocos2d::Point walkFrame(cocos2d::Point current_pos, int max_walk_length); //返回的是新位置
 
@@ -28,6 +27,7 @@ public:
 
 	bool can_reach_final_destination;
 
+    Path();
 	Path(int _validity_frame);
 
 	virtual ~Path();

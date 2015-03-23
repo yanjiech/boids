@@ -10,7 +10,6 @@
 #define __Boids__EventTrigger__
 
 #include "cocos2d.h"
-#include "external/json/Document.h"
 
 #define EVENT_TRIGGER_TYPE_MAP_INIT "map_init"
 #define EVENT_TRIGGER_TYPE_UNIT_CHANGE "unit_change"
@@ -39,8 +38,8 @@ public:
     EventTrigger();
     virtual ~EventTrigger();
     
-    static EventTrigger* create( const rapidjson::Value& event );
-    virtual bool init( const rapidjson::Value& event );
+    static EventTrigger* create( const cocos2d::ValueMap& event );
+    virtual bool init( const cocos2d::ValueMap& event );
     
     int getTotalTriggerCount() { return _total_trigger_count; }
     

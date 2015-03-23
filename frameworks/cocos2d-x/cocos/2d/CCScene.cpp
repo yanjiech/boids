@@ -111,12 +111,6 @@ std::string Scene::getDescription() const
     return StringUtils::format("<Scene | tag = %d>", _tag);
 }
 
-Scene* Scene::getScene() const
-{
-    // FIX ME: should use const_case<> to fix compiling error
-    return const_cast<Scene*>(this);
-}
-
 void Scene::onProjectionChanged(EventCustom* event)
 {
     if (_defaultCamera)
@@ -129,8 +123,12 @@ void Scene::render(Renderer* renderer)
 {
     auto director = Director::getInstance();
     Camera* defaultCamera = nullptr;
+    const auto& transform = getNodeToParentTransform();
     for (const auto& camera : _cameras)
     {
+        if (!camera->isVisible())
+            continue;
+        
         Camera::_visitingCamera = camera;
         if (Camera::_visitingCamera->getCameraFlag() == CameraFlag::DEFAULT)
         {
@@ -142,7 +140,7 @@ void Scene::render(Renderer* renderer)
         director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_PROJECTION, Camera::_visitingCamera->getViewProjectionMatrix());
         
         //visit the scene
-        visit(renderer, Mat4::IDENTITY, 0);
+        visit(renderer, transform, 0);
         renderer->render();
         
         director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_PROJECTION);
@@ -155,7 +153,7 @@ void Scene::render(Renderer* renderer)
         director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_PROJECTION, Camera::_visitingCamera->getViewProjectionMatrix());
         
         //visit the scene
-        visit(renderer, Mat4::IDENTITY, 0);
+        visit(renderer, transform, 0);
         renderer->render();
         
         director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_PROJECTION);
@@ -174,15 +172,6 @@ void Scene::addChild(Node* child, int zOrder, const std::string &name)
 {
     Node::addChild(child, zOrder, name);
     addChildToPhysicsWorld(child);
-}
-
-void Scene::update(float delta)
-{
-    Node::update(delta);
-    if (nullptr != _physicsWorld && _physicsWorld->isAutoStep())
-    {
-        _physicsWorld->update(delta);
-    }
 }
 
 Scene* Scene::createWithPhysics()
@@ -211,7 +200,6 @@ bool Scene::initWithPhysics()
         this->setContentSize(director->getWinSize());
         CC_BREAK_IF(! (_physicsWorld = PhysicsWorld::construct(*this)));
         
-        this->scheduleUpdate();
         // success
         ret = true;
     } while (0);

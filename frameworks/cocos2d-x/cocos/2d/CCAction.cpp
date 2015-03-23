@@ -108,7 +108,7 @@ Speed* Speed::create(ActionInterval* action, float speed)
 
 bool Speed::initWithAction(ActionInterval *action, float speed)
 {
-    CCASSERT(action != nullptr, "");
+    CCASSERT(action != nullptr, "action must not be NULL");
     action->retain();
     _innerAction = action;
     _speed = speed;
@@ -117,11 +117,11 @@ bool Speed::initWithAction(ActionInterval *action, float speed)
 
 Speed *Speed::clone() const
 {
-	// no copy constructor
-	auto a = new (std::nothrow) Speed();
-	a->initWithAction(_innerAction->clone(), _speed);
-	a->autorelease();
-	return  a;
+    // no copy constructor
+    auto a = new (std::nothrow) Speed();
+    a->initWithAction(_innerAction->clone(), _speed);
+    a->autorelease();
+    return a;
 }
 
 void Speed::startWithTarget(Node* target)
@@ -148,8 +148,7 @@ bool Speed::isDone() const
 
 Speed *Speed::reverse() const
 {
-
-	return Speed::create(_innerAction->reverse(), _speed);
+    return Speed::create(_innerAction->reverse(), _speed);
 }
 
 void Speed::setInnerAction(ActionInterval *action)
@@ -184,11 +183,11 @@ Follow* Follow::create(Node *followedNode, const Rect& rect/* = Rect::ZERO*/)
 
 Follow* Follow::clone() const
 {
-	// no copy constructor
-	auto a = new (std::nothrow) Follow();
-	a->initWithTarget(_followedNode, _worldRect);
-	a->autorelease();
-	return a;
+    // no copy constructor
+    auto a = new (std::nothrow) Follow();
+    a->initWithTarget(_followedNode, _worldRect);
+    a->autorelease();
+    return a;
 }
 
 Follow* Follow::reverse() const
@@ -198,7 +197,7 @@ Follow* Follow::reverse() const
 
 bool Follow::initWithTarget(Node *followedNode, const Rect& rect/* = Rect::ZERO*/)
 {
-    CCASSERT(followedNode != nullptr, "");
+    CCASSERT(followedNode != nullptr, "FollowedNode can't be NULL");
  
     followedNode->retain();
     _followedNode = followedNode;

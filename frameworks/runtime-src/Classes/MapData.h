@@ -10,7 +10,6 @@
 #define __Boids__MapData__
 
 #include "cocos2d.h"
-#include "external/json/document.h"
 
 enum class TMXObjectLayerFlag {
     Background = 1,
@@ -29,18 +28,16 @@ public:
     void loadImagesToCache();
     void removeImagesFromCache();
     
-    const rapidjson::Document& getMapJson() { return _map_json; }
-    const rapidjson::Document& getMetaJson() { return _meta_json; }
-    
-    const rapidjson::Value& getAreaByName( const std::string& name );
+    const cocos2d::ValueMap& getMapJson() { return _map_json; }
+    const cocos2d::ValueMap& getMetaJson() { return _meta_json; }
     
     cocos2d::ValueMap getAreaMapByName( const std::string& name );
     cocos2d::ValueVector getAreasVectorByTag( const std::string& tag_name );
     cocos2d::ValueMap getAreaMapByPosition( const cocos2d::Point& pos );
     
 private:
-    rapidjson::Document _map_json;
-    rapidjson::Document _meta_json;
+    cocos2d::ValueMap _map_json;
+    cocos2d::ValueMap _meta_json;
     
     std::string _mapData;
     std::string _metaData;

@@ -49,7 +49,7 @@ int BulletNode::getNextBulletId() {
     return _global_bullet_id;
 }
 
-BulletNode* BulletNode::create( class UnitNode* unit_node, const rapidjson::Value& bullet_data, DamageCalculate* damage_calculator, Buff* buff ) {
+BulletNode* BulletNode::create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, Buff* buff ) {
     BulletNode* ret = new BulletNode();
     if( ret && ret->init( unit_node, bullet_data, damage_calculator, buff ) ) {
         ret->autorelease();
@@ -61,17 +61,18 @@ BulletNode* BulletNode::create( class UnitNode* unit_node, const rapidjson::Valu
     }
 }
 
-bool BulletNode::init( class UnitNode* unit_node, const rapidjson::Value& bullet_data, DamageCalculate* damage_calculator, Buff* buff ) {
+bool BulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, Buff* buff ) {
     if( !Node::init() ) {
         return false;
     }
     
-    _bullet_data = CocosUtils::jsonObjectToValueMap( bullet_data );
+    _bullet_data = bullet_data;
     
     this->setBulletId( BulletNode::getNextBulletId() );
     _battle_layer = unit_node->getBattleLayer();
     this->setSourceId( unit_node->getDeployId() );
     this->setTargetId( -1 );
+    _source_camp = (int)unit_node->getUnitCamp();
     
     if( _bullet_data.find( "speed" ) != _bullet_data.end() ) {
         _speed = _bullet_data.at( "speed" ).asFloat();
@@ -147,14 +148,14 @@ void BulletNode::updateFrame( float delta ) {
     if( this->doesHitTarget( last_pos, _target_pos, delta ) ) {
         //does hit target
         
-        std::list<UnitNode*> hit_targets;
+        cocos2d::Vector<UnitNode*> hit_targets;
         
         if( _damage_radius > 0 ) {
             hit_targets = _battle_layer->getAliveOpponentsInRange( (eUnitCamp)_source_camp, _target_pos, _damage_radius );
         }
         else {
             if( target_unit ) {
-                hit_targets.push_back( target_unit );
+                hit_targets.pushBack( target_unit );
             }
         }
         
@@ -191,7 +192,7 @@ void BulletNode::updateFrame( float delta ) {
         
         for( UnitNode* u : hit_targets ) {
             //take damage
-            ValueMap result = _damage_calculator->calculateDamage( 0, _unit_data, u->getUnitData() );
+            ValueMap result = _damage_calculator->calculateDamage( _unit_data, u->getUnitData() );
             u->takeDamage( result.at( "damage" ).asFloat(), result.at( "miss" ).asBool(), result.at( "cri" ).asBool(), _source_id );
             
             //show hit effect

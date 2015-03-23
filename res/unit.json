@@ -1750,7 +1750,7 @@
         "recgr": 0.2, 
         "scale": 1.0, 
         "skills": [
-            "BarrageOfArrow", 
+            "BarrageOfArrow",
             "CrazyShoot"
         ], 
         "ten": 2.0, 

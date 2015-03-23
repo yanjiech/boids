@@ -139,8 +139,6 @@ public:
     */
     Texture2D* addImage(Image *image, const std::string &key);
     CC_DEPRECATED_ATTRIBUTE Texture2D* addUIImage(Image *image, const std::string& key) { return addImage(image,key); }
-    
-    void addTexture(Texture2D *tex, const std::string& key);
 
     /** Returns an already created texture. Returns nil if the texture doesn't exist.
     @since v0.99.5

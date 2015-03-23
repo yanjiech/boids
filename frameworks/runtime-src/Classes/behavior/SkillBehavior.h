@@ -12,6 +12,9 @@
 #include "BehaviorBase.h"
 
 class SkillBehavior : public BehaviorBase {
+private:
+    float _elapse;
+    
 public:
     SkillBehavior( UnitNode* unit_node );
     virtual ~SkillBehavior();

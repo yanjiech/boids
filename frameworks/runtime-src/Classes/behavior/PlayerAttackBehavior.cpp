@@ -45,11 +45,11 @@ bool PlayerAttackBehavior::behave( float delta ) {
         if( _unit_node->isUnderControl() ) {
             return true;
         }
-        if( _unit_node->isHarmless() ) {
-            break;
-        }
         if( _unit_node->isAttacking() || _unit_node->isCasting() ) {
             return true;
+        }
+        if( _unit_node->isHarmless() ) {
+            break;
         }
         BattleLayer* battle_layer = _unit_node->getBattleLayer();
         cocos2d::Point control_dir = battle_layer->getControlLayer()->getJoyStickDirection();
@@ -67,7 +67,7 @@ bool PlayerAttackBehavior::behave( float delta ) {
         
         _unit_node->attack( attack_target );
         return true;
-    } while( true );
+    } while( false );
     
     return false;
 }

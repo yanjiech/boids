@@ -19,6 +19,7 @@
 #include "../unit/BuildingNode.h"
 #include "../unit/BulletNode.h"
 #include <map>
+#include "../unit/skill/SkillNode.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,
@@ -29,9 +30,9 @@ enum eBattleSubLayer {
     EffectLayer = 6,
     FloatLayer = 7,
     ToastLayer = 8,
-    BattleUILayer = 9,
-    BattleMenuLayer = 10,
-    ControlLayer = 11
+    ControlLayer = 9,
+    BattleUILayer = 10,
+    BattleMenuLayer = 11
 };
 
 enum eBattleState {
@@ -48,8 +49,8 @@ enum eCameraMode {
     CameraModeFixed = 3
 };
 
-typedef std::map<int, UnitNode*> UnitMap;
-typedef std::map<int, BulletNode*> BulletMap;
+typedef cocos2d::Map<std::string, UnitNode*> UnitMap;
+typedef cocos2d::Map<std::string, BulletNode*> BulletMap;
 
 class BattleLayer : public cocos2d::Layer, public boids::Updatable {
 private:
@@ -68,7 +69,7 @@ private:
     cocos2d::Layer* _effect_layer;
     UIBattleFloatLayer* _float_layer;
     cocos2d::Layer* _toast_layer;
-    UIBattleLayer* _ui_layer;
+    UIBattleLayer* _skill_ui_layer;
     UIBattleMenuLayer* _battle_menu_layer;
     UIControlLayer* _control_layer;
     cocos2d::TMXTiledMap* _tmx_map;
@@ -81,6 +82,8 @@ private:
     
     BulletMap _bullets;
     
+    cocos2d::Vector<SkillNode*> _skill_nodes;
+    
     int _next_deploy_id;
     
     float _game_time;
@@ -90,6 +93,8 @@ private:
     int zorderForPositionOnObjectLayer( const cocos2d::Point& pos );
     
     void reorderObjectLayer();
+    
+    void updateSkillNodes( float delta );
     
 public:
     BattleLayer();
@@ -121,25 +126,27 @@ public:
     
     UIControlLayer* getControlLayer() { return _control_layer; }
     
-    const UnitMap& getPlayerUnits() { return _player_units; }
-    const UnitMap& getAliveUnits() { return _alive_units; }
-    const UnitMap& getDeadUnits() { return _dead_units; }
+    const UnitMap& getPlayerUnits() const { return _player_units; }
+    const UnitMap& getAliveUnits() const { return _alive_units; }
+    const UnitMap& getDeadUnits() const { return _dead_units; }
     
     UnitNode* getLeaderUnit();
     
-    std::list<UnitNode*> getAliveOpponents( eUnitCamp camp );
-    std::list<UnitNode*> getAliveUnitsByCamp( eUnitCamp camp );
-    std::list<UnitNode*> getAliveUnitsByTag( const std::string& tag );
-    std::list<UnitNode*> getAliveUnitsByName( const std::string& name );
-    
-    std::list<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );
-    
-    std::list<UnitNode*> getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group );
+    cocos2d::Vector<UnitNode*> getAliveOpponents( eUnitCamp camp );
+    cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eUnitCamp camp );
+    cocos2d::Vector<UnitNode*> getAliveUnitsByTag( const std::string& tag );
+    cocos2d::Vector<UnitNode*> getAliveUnitsByName( const std::string& name );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eUnitCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle );
+    cocos2d::Vector<UnitNode*> getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group );
     
     UnitNode* getAliveUnitByDeployId( int deploy_id );
     
     bool addBullet( int key, BulletNode* bullet );
     void removeBullet( int key );
+    
+    void addSkillNode( SkillNode* skill_node );
+    void removeSkillNode( SkillNode* skill_node );
     
     void onUnitAppear( UnitNode* unit );
     void onUnitDying( UnitNode* unit );
@@ -156,7 +163,7 @@ public:
     void addToFloatLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder );
     
     void deployUnit( UnitNode* unit, const cocos2d::Point& pos, const std::string& sight_group );
-    void deployUnits( const std::list<UnitNode*>& units, const cocos2d::Rect& area, const std::string& sight_group );
+    void deployUnits( const cocos2d::Vector<UnitNode*>& units, const cocos2d::Rect& area, const std::string& sight_group );
     
     void adjustCamera();
     void centerCameraToPosition( const cocos2d::Point& pos );

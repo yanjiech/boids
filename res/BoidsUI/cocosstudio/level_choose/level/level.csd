@@ -1,5 +1,5 @@
 <GameProjectFile>
-  <PropertyGroup Type="Layer" Name="level" ID="582a3784-fa76-4ffd-a834-97dfcd2c293f" Version="2.0.2.0" />
+  <PropertyGroup Type="Layer" Name="level" ID="582a3784-fa76-4ffd-a834-97dfcd2c293f" Version="2.1.5.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />
@@ -31,7 +31,7 @@
                 <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="level_choose/level/juanzhou.png" />
               </NodeObjectData>
-              <NodeObjectData Name="missionText" ActionTag="-913513568" Rotation="5.9135" RotationSkewX="5.9135" RotationSkewY="5.9347" FrameEvent="" Tag="60" ObjectIndex="1" FontSize="36" LabelText="任务描述" IsCustomSize="True" ctype="TextObjectData">
+              <NodeObjectData Name="missionText" ActionTag="-913513568" Rotation="5.9135" RotationSkewX="5.9135" RotationSkewY="5.9347" FrameEvent="" Tag="60" IsCustomSize="True" FontSize="36" LabelText="任务描述" ObjectIndex="1" ctype="TextObjectData">
                 <Position X="1326.1094" Y="732.7705" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -40,7 +40,7 @@
                 <PrePosition X="0.6907" Y="0.6785" />
                 <PreSize X="0.3646" Y="0.1852" />
               </NodeObjectData>
-              <NodeObjectData Name="battleButton" ActionTag="2126296591" FrameEvent="" Tag="61" ObjectIndex="1" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="233" Scale9Height="207" ctype="ButtonObjectData">
+              <NodeObjectData Name="battleButton" ActionTag="2126296591" FrameEvent="" Tag="61" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="233" Scale9Height="207" ObjectIndex="1" ctype="ButtonObjectData">
                 <Position X="1562.3418" Y="130.4046" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -113,7 +113,7 @@
                 <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="level_choose/level/kulouwang_avatar.png" />
               </NodeObjectData>
-              <NodeObjectData Name="backButton" ActionTag="-509079174" FrameEvent="" Tag="69" ObjectIndex="2" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="94" Scale9Height="92" ctype="ButtonObjectData">
+              <NodeObjectData Name="backButton" ActionTag="-509079174" FrameEvent="" Tag="69" TouchEnable="True" FontSize="14" ButtonText="" Scale9Width="94" Scale9Height="92" ObjectIndex="2" ctype="ButtonObjectData">
                 <Position X="1760.4293" Y="940.2864" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -126,7 +126,7 @@
                 <PressedFileData Type="Normal" Path="level_choose/level/button_close_push.png" />
                 <NormalFileData Type="Normal" Path="level_choose/level/button_close_normal.png" />
               </NodeObjectData>
-              <NodeObjectData Name="bonusNumber1" ActionTag="-398174735" FrameEvent="" Tag="70" ObjectIndex="2" FontSize="36" LabelText="999999" ctype="TextObjectData">
+              <NodeObjectData Name="bonusNumber1" ActionTag="-398174735" FrameEvent="" Tag="70" FontSize="36" LabelText="999999" ObjectIndex="2" ctype="TextObjectData">
                 <Position X="1634.7297" Y="445.7103" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -135,7 +135,7 @@
                 <PrePosition X="0.8514" Y="0.4127" />
                 <PreSize X="0.0000" Y="0.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="bonusNumber2" ActionTag="645581901" FrameEvent="" Tag="71" ObjectIndex="3" FontSize="36" LabelText="999999" ctype="TextObjectData">
+              <NodeObjectData Name="bonusNumber2" ActionTag="645581901" FrameEvent="" Tag="71" FontSize="36" LabelText="999999" ObjectIndex="3" ctype="TextObjectData">
                 <Position X="1633.1516" Y="369.0193" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -144,7 +144,7 @@
                 <PrePosition X="0.8506" Y="0.3417" />
                 <PreSize X="0.0000" Y="0.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="bonusNumber3" ActionTag="1327330184" FrameEvent="" Tag="72" ObjectIndex="4" FontSize="36" LabelText="999999" ctype="TextObjectData">
+              <NodeObjectData Name="bonusNumber3" ActionTag="1327330184" FrameEvent="" Tag="72" FontSize="36" LabelText="999999" ObjectIndex="4" ctype="TextObjectData">
                 <Position X="1632.1517" Y="275.0449" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -153,7 +153,7 @@
                 <PrePosition X="0.8501" Y="0.2547" />
                 <PreSize X="0.0000" Y="0.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="mission1" ActionTag="-328082776" Rotation="10.6718" RotationSkewX="10.6718" RotationSkewY="10.6858" FrameEvent="" Tag="73" ObjectIndex="5" FontSize="30" LabelText="Text Label" IsCustomSize="True" VerticalAlignmentType="VT_Center" ctype="TextObjectData">
+              <NodeObjectData Name="mission1" ActionTag="-328082776" Rotation="10.6718" RotationSkewX="10.6718" RotationSkewY="10.6858" FrameEvent="" Tag="73" IsCustomSize="True" FontSize="30" LabelText="Text Label" VerticalAlignmentType="VT_Center" ObjectIndex="5" ctype="TextObjectData">
                 <Position X="1145.7356" Y="450.6714" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -162,7 +162,7 @@
                 <PrePosition X="0.5967" Y="0.4173" />
                 <PreSize X="0.1458" Y="0.0389" />
               </NodeObjectData>
-              <NodeObjectData Name="mission2" ActionTag="-536297133" Rotation="10.6718" RotationSkewX="10.6718" RotationSkewY="10.6858" FrameEvent="" Tag="74" ObjectIndex="6" FontSize="30" LabelText="Text Label" IsCustomSize="True" VerticalAlignmentType="VT_Center" ctype="TextObjectData">
+              <NodeObjectData Name="mission2" ActionTag="-536297133" Rotation="10.6718" RotationSkewX="10.6718" RotationSkewY="10.6858" FrameEvent="" Tag="74" IsCustomSize="True" FontSize="30" LabelText="Text Label" VerticalAlignmentType="VT_Center" ObjectIndex="6" ctype="TextObjectData">
                 <Position X="1129.6752" Y="336.8607" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -171,7 +171,7 @@
                 <PrePosition X="0.5884" Y="0.3119" />
                 <PreSize X="0.1458" Y="0.0389" />
               </NodeObjectData>
-              <NodeObjectData Name="mission3" ActionTag="1850003379" Rotation="10.6718" RotationSkewX="10.6718" RotationSkewY="10.6858" FrameEvent="" Tag="75" ObjectIndex="7" FontSize="30" LabelText="Text Label" IsCustomSize="True" VerticalAlignmentType="VT_Center" ctype="TextObjectData">
+              <NodeObjectData Name="mission3" ActionTag="1850003379" Rotation="10.6718" RotationSkewX="10.6718" RotationSkewY="10.6858" FrameEvent="" Tag="75" IsCustomSize="True" FontSize="30" LabelText="Text Label" VerticalAlignmentType="VT_Center" ObjectIndex="7" ctype="TextObjectData">
                 <Position X="1114.3020" Y="216.8002" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -187,7 +187,7 @@
         <SingleColor A="255" R="0" G="0" B="0" />
         <FirstColor A="255" R="0" G="0" B="0" />
         <EndColor A="255" R="255" G="255" B="255" />
-        <ColorVector ScaleX="1.0000" ScaleY="0.0000" />
+        <ColorVector ScaleX="1.0000" />
       </ObjectData>
     </Content>
   </Content>

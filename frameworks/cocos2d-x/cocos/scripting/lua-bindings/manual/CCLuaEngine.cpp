@@ -32,7 +32,6 @@
 #include "lua_cocos2dx_extension_manual.h"
 #include "lua_cocos2dx_coco_studio_manual.hpp"
 #include "lua_cocos2dx_ui_manual.hpp"
-#include "spine/spine-cocos2dx.h"
 
 NS_CC_BEGIN
 

@@ -67,7 +67,7 @@ bool PlayerMoveBehavior::behave( float delta ) {
     }
     if( _unit_node->getChasingTarget() == nullptr ) {
         if( _unit_node->getSightGroup() != "" ) {
-            std::list<UnitNode*> same_sight_group_units = _unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( _unit_node->getUnitCamp(), _unit_node->getSightGroup() );
+            cocos2d::Vector<UnitNode*> same_sight_group_units = _unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( _unit_node->getUnitCamp(), _unit_node->getSightGroup() );
             for( auto u : same_sight_group_units ) {
                 if( u->getChasingTarget() != nullptr ) {
                     _unit_node->setChasingTarget( u->getChasingTarget() );

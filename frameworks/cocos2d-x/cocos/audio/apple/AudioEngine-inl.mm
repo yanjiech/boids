@@ -128,11 +128,10 @@ namespace cocos2d {
 }
 
 AudioEngineImpl::AudioEngineImpl()
-: _lazyInitLoop(true)
+: _threadPool(nullptr)
+, _lazyInitLoop(true)
 , _currentAudioID(0)
-, _threadPool(nullptr)
 {
-    
 }
 
 AudioEngineImpl::~AudioEngineImpl()
@@ -188,7 +187,7 @@ bool AudioEngineImpl::init()
 int AudioEngineImpl::play2d(const std::string &filePath ,bool loop ,float volume)
 {
     if (s_ALDevice == nullptr) {
-        return AudioEngine::INVAILD_AUDIO_ID;
+        return AudioEngine::INVALID_AUDIO_ID;
     }
     
     bool sourceFlag = false;
@@ -202,7 +201,7 @@ int AudioEngineImpl::play2d(const std::string &filePath ,bool loop ,float volume
         }
     }
     if(!sourceFlag){
-        return AudioEngine::INVAILD_AUDIO_ID;
+        return AudioEngine::INVALID_AUDIO_ID;
     }
     
     AudioCache* audioCache = nullptr;
@@ -340,7 +339,7 @@ bool AudioEngineImpl::stop(int audioID)
         }
     }
     
-    alSourcei(player._alSource, AL_BUFFER, NULL);
+    alSourcei(player._alSource, AL_BUFFER, 0);
     
     _alSourceUsed[player._alSource] = false;
     _audioPlayers.erase(audioID);
@@ -353,7 +352,7 @@ void AudioEngineImpl::stopAll()
     for(int index = 0; index < MAX_AUDIOINSTANCES; ++index)
     {
         alSourceStop(_alSources[index]);
-        alSourcei(_alSources[index], AL_BUFFER, NULL);
+        alSourcei(_alSources[index], AL_BUFFER, 0);
         _alSourceUsed[_alSources[index]] = false;
     }
     

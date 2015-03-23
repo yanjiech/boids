@@ -1,5 +1,5 @@
 <Solution>
-  <PropertyGroup Name="boids" Version="2.0.2.0" Type="CocosStudio" />
+  <PropertyGroup Name="boids" Version="2.1.5.0" Type="CocosStudio" />
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
@@ -9,12 +9,12 @@
           <Image Name="zhouye_night01.png" />
           <Image Name="zhouye_night02.png" />
           <Image Name="Circularframe_big.png" />
-          <Project Name="day_and_night.csd" />
+          <Project Name="day_and_night.csd" Type="Layer" />
         </Folder>
         <Folder Name="level_choose">
           <Folder Name="main">
             <Image Name="bg.jpg" />
-            <Project Name="main.csd" />
+            <Project Name="main.csd" Type="Layer" />
             <Image Name="check_normal.png" />
             <Image Name="check_push.png" />
             <Image Name="point.png" />
@@ -25,7 +25,7 @@
           </Folder>
           <Folder Name="level">
             <Image Name="bg.jpg" />
-            <Project Name="level.csd" />
+            <Project Name="level.csd" Type="Layer" />
             <Image Name="boss_avatar_01.png" />
             <Image Name="boss_avatar_02.png" />
             <Image Name="button_close_normal.png" />

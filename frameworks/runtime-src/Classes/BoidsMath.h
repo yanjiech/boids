@@ -10,9 +10,9 @@ class Fuzzy
 public:
 //#define FUZZY_THRESHOLD (2e-4f)
 #define FUZZY_THRESHOLD (1e-2f)
-	//Ö®ËùÒÔÓĞÒ»´Î¸Ä´óÁË£¬ÊÇÓĞÒ»´ÎÓ¦¸ÃËãÊÇÆ½ĞĞµÄÁ½ÌõÏß£¬À´»ØËãÁË¼¸ÏÂ²æ»ı½á¹û-0.008»¹ÊÇ-0.0008ÁË
+	//Ã·Ã†Ã€Ë˜â€œâ€˜â€â€“â€œÂªÂ¥Å’âˆÆ’Â¥Ã›Â¡Ã€Â£Â¨Â Â«â€â€“â€œÂªÂ¥Å’â€Â¶âˆâˆšÃ€â€Â Â«âˆ†Î©â€“â€“ÂµÆ’Â¡Î©ÃƒÄ±Å“ï¬‚Â£Â¨Â¿Â¥ÂªÃ¿Ã€â€Â¡Ã€ÂºâˆÅ“Â¬â‰¤ÃŠÂªËÎ©Â·Ï€Ëš-0.008ÂªÏ€Â Â«-0.0008Â¡Ã€
 
-	inline static int side(float v) //fuzzyEqual·µ»Ø0£¬fuzzyGreater·µ»Ø1£¬·ñÔò·µ»Ø-1
+	inline static int side(float v) //fuzzyEqualâˆ‘ÂµÂªÃ¿0Â£Â¨fuzzyGreaterâˆ‘ÂµÂªÃ¿1Â£Â¨âˆ‘Ã’â€˜Ãšâˆ‘ÂµÂªÃ¿-1
 	{
 		if (_equal(v, 0.0f))
 		{
@@ -27,7 +27,7 @@ public:
 
 	inline static bool _equal(float x, float y)
 	{
-		return fabs(x - y) <= FUZZY_THRESHOLD; //macÉÏÃæÖ±½ÓÓÃabs»á×ª³Éint£¬Ì«¿ÓÁË¡£¡£
+		return fabs(x - y) <= FUZZY_THRESHOLD; //macâ€¦Å“âˆšÃŠÃ·Â±Î©â€â€âˆšabsÂªÂ·â—Šâ„¢â‰¥â€¦intÂ£Â¨ÃƒÂ´Ã¸â€Â¡Ã€Â°Â£Â°Â£
 	}
 
 	inline static bool _greater(float x, float y)
@@ -94,6 +94,7 @@ public:
 	}
 };
 
+#define DISTANCE_Y_FACTOR 1.74f
 class Math
 {
 public:
@@ -103,9 +104,28 @@ public:
 	}
     
     static cocos2d::Point bezierTo( float t, const cocos2d::Point& p1, const cocos2d::Point& cp1, const cocos2d::Point& cp2, const cocos2d::Point& p2 ) {
-        float x = p1.x * powf( ( 1.0f - t ), 3.0f ) + 3 * t * cp1.x * pow( ( 1.0f - t ), 2.0f ) + 3 * cp2.x * powf( t, 2.0f ) * ( 1.0f - t ) + p2.x * powf( t, 3.0f );
-        float y = p1.y * powf( ( 1.0f - t ), 3.0f ) + 3 * t * cp1.y * pow( ( 1.0f - t ), 2.0f ) + 3 * cp2.y * powf( t, 2.0f ) * ( 1.0f - t ) + p2.y * powf( t, 3.0f );
+        float x = p1.x * powf( ( 1.0f - t ), 3.0f ) + 3 * t * cp1.x * powf( ( 1.0f - t ), 2.0f ) + 3 * cp2.x * powf( t, 2.0f ) * ( 1.0f - t ) + p2.x * powf( t, 3.0f );
+        float y = p1.y * powf( ( 1.0f - t ), 3.0f ) + 3 * t * cp1.y * powf( ( 1.0f - t ), 2.0f ) + 3 * cp2.y * powf( t, 2.0f ) * ( 1.0f - t ) + p2.y * powf( t, 3.0f );
         return cocos2d::Point( x, y );
+    }
+    
+    static bool deviateMoreThan( const cocos2d::Point& vec, const cocos2d::Point& dir, float angle ) {
+        return CC_RADIANS_TO_DEGREES( acosf( ( vec.x * dir.x + vec.y * dir.y ) / dir.length() / vec.length() ) ) > angle;
+    }
+    
+    static bool isPointInSector( const cocos2d::Point& pos, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle ) {
+        if( pos.distance( center ) > radius ) {
+            return false;
+        }
+        cocos2d::Point bias = pos - center;
+        
+        return !Math::deviateMoreThan( bias, dir, angle / 2 );
+    }
+    
+    static bool isPositionInRange( const cocos2d::Point& pos, const cocos2d::Point& center, float range ) {
+        float dx = pos.x - center.x;
+        float dy = ( pos.y - center.y ) * DISTANCE_Y_FACTOR;
+        return dx * dx + dy + dy <= range * range;
     }
 };
 
@@ -145,7 +165,7 @@ public:
 				{
 					return perpendicular_vec * t;
 				}
-				else //´¹Ïß½»ÔÚÔ­ÏòÁ¿µÄÑÓ³¤ÏßÉÏÁË£¬·µ»Øµ½¶ËµãµÄ¾àÀë
+				else //Â¥Ï€Å“ï¬‚Î©Âªâ€˜â„â€˜â‰ Å“ÃšÂ¡Ã¸ÂµÆ’â€”â€â‰¥Â§Å“ï¬‚â€¦Å“Â¡Ã€Â£Â¨âˆ‘ÂµÂªÃ¿ÂµÎ©âˆ‚Ã€Âµâ€ÂµÆ’Ã¦â€¡Â¿Ã
 				{
 					if (Fuzzy::_less(s, 0.0f))
 					{
@@ -157,7 +177,7 @@ public:
 					}
 				}
 			}
-			else //ÒÑ¾­ÔÚÕÏ°­µÄÁíÒ»²àÁË£¬¾Í²»ÓÃ¿¼ÂÇÁË
+			else //â€œâ€”Ã¦â‰ â€˜â„â€™Å“âˆâ‰ ÂµÆ’Â¡ÃŒâ€œÂªâ‰¤â€¡Â¡Ã€Â£Â¨Ã¦Ã•â‰¤Âªâ€âˆšÃ¸ÂºÂ¬Â«Â¡Ã€
 			{
 				return -cocos2d::Vec2::ONE;
 			}
@@ -286,24 +306,24 @@ public:
 		return true;
 	}
 
-	//Èç¹ûÔÚË³Ê±ÕëÉÏ£¬x±ÈyÀëbase¸ü½ü£¬ÄÇÃ´·µ»Øtrue
+	//Â»ÃÏ€Ëšâ€˜â„Ã€â‰¥Â Â±â€™Ãâ€¦Å“Â£Â¨xÂ±Â»yÂ¿ÃbaseâˆÂ¸Î©Â¸Â£Â¨Æ’Â«âˆšÂ¥âˆ‘ÂµÂªÃ¿true
 	static bool clockwiseCloser(cocos2d::Point origin, cocos2d::Point base, cocos2d::Point x, cocos2d::Point y)
 	{
 		cocos2d::Vec2 base_vec(origin, base);
 		cocos2d::Vec2 vec_x(origin, x);
 		cocos2d::Vec2 vec_y(origin, y);
 
-		//ÏÈ¿´ÊÇ²»ÊÇÍ¬²à£¬ÔÚ(origin, base)ÓÒ²àµÄÒ»¶¨Òª±ÈÔÚ×ó²àµÄË³Ê±Õë¸ü½ü
+		//Å“Â»Ã¸Â¥Â Â«â‰¤ÂªÂ Â«Ã•Â¨â‰¤â€¡Â£Â¨â€˜â„(origin, base)â€â€œâ‰¤â€¡ÂµÆ’â€œÂªâˆ‚Â®â€œâ„¢Â±Â»â€˜â„â—ŠÃ›â‰¤â€¡ÂµÆ’Ã€â‰¥Â Â±â€™ÃâˆÂ¸Î©Â¸
 		int side_x = Fuzzy::side(base_vec.cross(vec_x));
 		int side_y = Fuzzy::side(base_vec.cross(vec_y));
 
-		//ÆäÊµÏÂÃæÕâÁ½ÖÖÌØÊâÇé¿öÔÚÎÒÊ¹ÓÃÕâ¸ö·½·¨µÄµØ·½ÕÕÀíÊÇ²»»á½øµÄ¡£¡£
-		if (side_y == 0 && base_vec.dot(vec_y) > 0) //Èç¹ûvec_yºÍbase_vecÍêÈ«Í¬Ïò£¬ÄÇx¿Ï¶¨²»¿ÉÄÜ¸ü½üÁË
+		//âˆ†â€°Â ÂµÅ“Â¬âˆšÃŠâ€™â€šÂ¡Î©Ã·Ã·ÃƒÃ¿Â â€šÂ«ÃˆÃ¸Ë†â€˜â„Å’â€œÂ Ï€â€âˆšâ€™â€šâˆË†âˆ‘Î©âˆ‘Â®ÂµÆ’ÂµÃ¿âˆ‘Î©â€™â€™Â¿ÃŒÂ Â«â‰¤ÂªÂªÂ·Î©Â¯ÂµÆ’Â°Â£Â°Â£
+		if (side_y == 0 && base_vec.dot(vec_y) > 0) //Â»ÃÏ€Ëšvec_yâˆ«Ã•base_vecÃ•ÃÂ»Â´Ã•Â¨Å“ÃšÂ£Â¨Æ’Â«xÃ¸Å“âˆ‚Â®â‰¤ÂªÃ¸â€¦Æ’â€¹âˆÂ¸Î©Â¸Â¡Ã€
 		{
 			return false;
 		}
 
-		if (side_x == 0 && base_vec.dot(vec_x) > 0) //Èç¹ûvec_yÃ»ÓĞÍ¬Ïò¶øvec_xÍ¬ÏòÁË£¬ÄÇ¿Ï¶¨ÊÇx×î½üÁË
+		if (side_x == 0 && base_vec.dot(vec_x) > 0) //Â»ÃÏ€Ëšvec_yâˆšÂªâ€â€“Ã•Â¨Å“Ãšâˆ‚Â¯vec_xÃ•Â¨Å“ÃšÂ¡Ã€Â£Â¨Æ’Â«Ã¸Å“âˆ‚Â®Â Â«xâ—ŠÃ“Î©Â¸Â¡Ã€
 		{
 			return true;
 		}

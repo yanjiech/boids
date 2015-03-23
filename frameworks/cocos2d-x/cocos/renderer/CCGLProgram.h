@@ -46,10 +46,10 @@ NS_CC_BEGIN
  */
 
 class GLProgram;
-
+class Director;
+//FIXME: these two typedefs would be deprecated or removed in version 4.0
 typedef void (*GLInfoFunction)(GLuint program, GLenum pname, GLint* params);
 typedef void (*GLLogFunction) (GLuint program, GLsizei bufsize, GLsizei* length, GLchar* infolog);
-
 
 struct VertexAttrib
 {
@@ -114,20 +114,16 @@ public:
         UNIFORM_MAX,
     };
     
-    static const char* SHADER_NAME_POSITION_TEXTURE_COLOR_ICE;
-    static const char* SHADER_NAME_POSITION_TEXTURE_COLOR_BURN;
-    static const char* SHADER_NAME_POSITION_TEXTURE_COLOR_POISON;
-    
-    static const char* SHADER_NAME_POSITION_TEXTURE_COLOR_ICE_NO_MVP;
-    static const char* SHADER_NAME_POSITION_TEXTURE_COLOR_BURN_NO_MVP;
-    static const char* SHADER_NAME_POSITION_TEXTURE_COLOR_POISON_NO_MVP;
-    
     static const char* SHADER_NAME_POSITION_TEXTURE_COLOR;
     static const char* SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP;
     static const char* SHADER_NAME_POSITION_TEXTURE_ALPHA_TEST;
     static const char* SHADER_NAME_POSITION_TEXTURE_ALPHA_TEST_NO_MV;
     static const char* SHADER_NAME_POSITION_COLOR;
+    static const char* SHADER_NAME_POSITION_COLOR_TEXASPOINTSIZE;
     static const char* SHADER_NAME_POSITION_COLOR_NO_MVP;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WP8 || defined(WP8_SHADER_COMPILER)
+    static const char* SHADER_NAME_POSITION_COLOR_NO_MVP_GRAYSCALE;
+#endif
     static const char* SHADER_NAME_POSITION_TEXTURE;
     static const char* SHADER_NAME_POSITION_TEXTURE_U_COLOR;
     static const char* SHADER_NAME_POSITION_TEXTURE_A8_COLOR;
@@ -341,8 +337,7 @@ protected:
     void parseUniforms();
 
     bool compileShader(GLuint * shader, GLenum type, const GLchar* source);
-    std::string logForOpenGLObject(GLuint object, GLInfoFunction infoFunc, GLLogFunction logFunc) const;
-
+    
     GLuint            _program;
     GLuint            _vertShader;
     GLuint            _fragShader;
@@ -366,7 +361,9 @@ protected:
 
     std::unordered_map<std::string, Uniform> _userUniforms;
     std::unordered_map<std::string, VertexAttrib> _vertexAttribs;
-    std::unordered_map<GLint, GLvoid*> _hashForUniforms;
+    std::unordered_map<GLint, std::pair<GLvoid*, unsigned int>> _hashForUniforms;
+    //cached director pointer for calling
+    Director* _director;
 };
 
 NS_CC_END

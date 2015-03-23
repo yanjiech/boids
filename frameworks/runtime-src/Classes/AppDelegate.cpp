@@ -9,6 +9,7 @@
 #include "./manager/SceneManager.h"
 #include "./manager/ResourceManager.h"
 #include "./data/PlayerInfo.h"
+#include "./Editor/EditMode.h"
 
 #undef CC_USE_PHYSICS
 
@@ -57,7 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect( "My Game", cocos2d::Rect( 0, 0, 1280, 720 ) );
+        glview = GLViewImpl::createWithRect( "My Game", cocos2d::Rect( 0, 0, 1440, 800 ) );
         director->setOpenGLView(glview);
     }
     glview->setDesignResolutionSize( 1920.0f, 1080.0f, ResolutionPolicy::NO_BORDER );
@@ -70,6 +71,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     FileUtils* file_utils = FileUtils::getInstance();
     file_utils->addSearchPath( "res" );
     file_utils->addSearchPath( "res/BoidsUI/res" );
+    file_utils->addSearchPath( "res/BoidsEditor/res" );
 
     // If you want to use Quick-Cocos2d-X, please uncomment below code
     // register_all_quick_manual(L);
@@ -79,11 +81,21 @@ bool AppDelegate::applicationDidFinishLaunching()
 //    }
     
     ResourceManager::getInstance()->loadAllData();
+    
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    EditMode::getInstance()->enterMain( CC_CALLBACK_0( AppDelegate::onEditModeExit, this ) );
+    
+#else
     PlayerInfo::getInstance()->loadPlayerInfo();
-
     SceneManager::getInstance()->transitToScene( eSceneName::LevelChoose );
+#endif
     
     return true;
+}
+
+void AppDelegate::onEditModeExit() {
+    PlayerInfo::getInstance()->loadPlayerInfo();
+    SceneManager::getInstance()->transitToScene( eSceneName::LevelChoose );
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too

@@ -3,11 +3,18 @@
     [
         {
             "name" : "vanhelsing",
-            "level" : 10
-        },
-        {
-            "name" : "zeus",
-            "level" : 10
+            "level" : 10,
+            "skills" :
+            [
+                {
+                    "name" : "BarrageOfArrow",
+                    "level" : 1
+                },
+                {
+                    "name" : "CrazyShoot",
+                    "level" : 1
+                }
+            ]
         }
     ]
 }

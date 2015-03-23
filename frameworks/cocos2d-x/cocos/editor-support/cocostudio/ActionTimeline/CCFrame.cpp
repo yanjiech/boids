@@ -27,6 +27,8 @@ THE SOFTWARE.
 #include "CCActionTimeline.h"
 #include "2d/CCSpriteFrameCache.h"
 #include "2d/CCSpriteFrame.h"
+#include <exception>
+#include <iostream>
 
 USING_NS_CC;
 
@@ -79,7 +81,7 @@ VisibleFrame::VisibleFrame()
 {
 }
 
-void VisibleFrame::onEnter(Frame *nextFrame)
+void VisibleFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     _node->setVisible(_visible);
 }
@@ -122,7 +124,7 @@ void TextureFrame::setNode(Node* node)
     _sprite = dynamic_cast<Sprite*>(node);
 }
 
-void TextureFrame::onEnter(Frame *nextFrame)
+void TextureFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     if(_sprite)
     {
@@ -166,10 +168,10 @@ RotationFrame::RotationFrame()
 {
 }
 
-void RotationFrame::onEnter(Frame *nextFrame)
+void RotationFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     _node->setRotation(_rotation);
-    
+
     if(_tween)
     {
         _betwennRotation = static_cast<RotationFrame*>(nextFrame)->_rotation - _rotation;
@@ -216,11 +218,11 @@ SkewFrame::SkewFrame()
 {
 }
 
-void SkewFrame::onEnter(Frame *nextFrame)
+void SkewFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     _node->setSkewX(_skewX);
     _node->setSkewY(_skewY);
-    
+
     if(_tween)
     {
         _betweenSkewX = static_cast<SkewFrame*>(nextFrame)->_skewX - _skewX;
@@ -271,11 +273,11 @@ RotationSkewFrame::RotationSkewFrame()
 {
 }
 
-void RotationSkewFrame::onEnter(Frame *nextFrame)
+void RotationSkewFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     _node->setRotationSkewX(_skewX);
     _node->setRotationSkewY(_skewY);
-    
+
     if (_tween)
     {
         _betweenSkewX = static_cast<RotationSkewFrame*>(nextFrame)->_skewX - _skewX;
@@ -325,7 +327,7 @@ PositionFrame::PositionFrame()
 {
 }
 
-void PositionFrame::onEnter(Frame *nextFrame)
+void PositionFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     _node->setPosition(_position);
 
@@ -378,11 +380,11 @@ ScaleFrame::ScaleFrame()
 {
 }
 
-void ScaleFrame::onEnter(Frame *nextFrame)
+void ScaleFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     _node->setScaleX(_scaleX);
     _node->setScaleY(_scaleY);
-    
+
     if(_tween)
     {
         _betweenScaleX = static_cast<ScaleFrame*>(nextFrame)->_scaleX - _scaleX;
@@ -432,7 +434,7 @@ AnchorPointFrame::AnchorPointFrame()
 {
 }
 
-void AnchorPointFrame::onEnter(Frame *nextFrame)
+void AnchorPointFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     _node->setAnchorPoint(_anchorPoint);
 }
@@ -451,6 +453,8 @@ Frame* AnchorPointFrame::clone()
 
 
 // InnerActionFrame
+const std::string InnerActionFrame::AnimationAllName = "-- ALL --";
+
 InnerActionFrame* InnerActionFrame::create()
 {
     InnerActionFrame* frame = new (std::nothrow) InnerActionFrame();
@@ -464,22 +468,113 @@ InnerActionFrame* InnerActionFrame::create()
 }
 
 InnerActionFrame::InnerActionFrame()
-    : _innerActionType(LoopAction)
-    , _startFrameIndex(0)
+: _innerActionType(InnerActionType::SingleFrame)
+, _startFrameIndex(0)
+, _endFrameIndex(0)
+, _singleFrameIndex(0)
+, _enterWithName(false)
+, _animationName("")
 {
+
 }
 
-void InnerActionFrame::onEnter(Frame *nextFrame)
+void InnerActionFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
+    auto innerActiontimeline = static_cast<ActionTimeline*>(_node->getActionByTag(_node->getTag()));
+    if( nullptr == innerActiontimeline)
+        return;
+    
+    if (InnerActionType::SingleFrame == _innerActionType)
+    {
+        innerActiontimeline->gotoFrameAndPause(_singleFrameIndex);
+        return;
+    }
+    
+    int innerStart = _startFrameIndex;
+    int innerEnd = _endFrameIndex;
+    if (_enterWithName)
+    {
+        if (_animationName == AnimationAllName)
+        {
+            innerStart = 0;
+            innerEnd = innerActiontimeline->getDuration();
+        }
+        else if(innerActiontimeline->IsAnimationInfoExists(_animationName))
+        {
+            AnimationInfo info = innerActiontimeline->getAnimationInfo(_animationName);
+            innerStart = info.startIndex;
+            innerEnd = info.endIndex;
+        }
+        else
+        {
+            CCLOG("Animation %s not exists!", _animationName.c_str());
+        }
+    }
+    
+    int duration = _timeline->getActionTimeline()->getDuration();
+    int odddiff = duration - _frameIndex - innerEnd + innerStart;
+    if (odddiff < 0)
+    {
+       innerEnd += odddiff;
+    }
+    
+    if (InnerActionType::NoLoopAction == _innerActionType)
+    {
+        innerActiontimeline->gotoFrameAndPlay(innerStart, innerEnd, false);
+    }
+    else if (InnerActionType::LoopAction == _innerActionType)
+    {
+        innerActiontimeline->gotoFrameAndPlay(innerStart, innerEnd, true);
+    }
 }
 
+void InnerActionFrame::setStartFrameIndex(int frameIndex)
+{
+    if(_enterWithName)
+    {
+        CCLOG(" cannot set start when enter frame with name. setEnterWithName false firstly!");
+        throw std::exception();
+    }
+    _startFrameIndex = frameIndex;
+}
+
+
+void InnerActionFrame::setEndFrameIndex(int frameIndex)
+{
+    if(_enterWithName)
+    {
+         CCLOG(" cannot set end when enter frame with name. setEnterWithName false firstly!");
+        throw std::exception();
+    }
+    _endFrameIndex = frameIndex;
+}
+
+void InnerActionFrame::setAnimationName(const std::string& animationName)
+{
+    if(!_enterWithName)
+    {
+         CCLOG(" cannot set aniamtioname when enter frame with index. setEnterWithName true firstly!");
+        throw std::exception();
+    }
+    _animationName = animationName;
+   
+}
 
 Frame* InnerActionFrame::clone()
 {
     InnerActionFrame* frame = InnerActionFrame::create();
     frame->setInnerActionType(_innerActionType);
-    frame->setStartFrameIndex(_startFrameIndex);
-
+    frame->setSingleFrameIndex(_singleFrameIndex);
+    if(_enterWithName)
+    {
+        frame->setEnterWithName(true);
+        frame->setAnimationName(_animationName);
+    }
+    else
+    {
+        frame->setStartFrameIndex(_startFrameIndex);
+        frame->setEndFrameIndex(_endFrameIndex);
+    }
     frame->cloneProperty(this);
 
     return frame;
@@ -505,11 +600,11 @@ ColorFrame::ColorFrame()
 {
 }
 
-void ColorFrame::onEnter(Frame *nextFrame)
+void ColorFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     _node->setOpacity(_alpha);
     _node->setColor(_color);
-    
+
     if(_tween)
     {
         _betweenAlpha = static_cast<ColorFrame*>(nextFrame)->_alpha - _alpha;
@@ -548,6 +643,51 @@ Frame* ColorFrame::clone()
     return frame;
 }
 
+// AlphaFrame
+AlphaFrame* AlphaFrame::create()
+{
+    AlphaFrame* frame = new (std::nothrow) AlphaFrame();
+    if (frame)
+    {
+        frame->autorelease();
+        return frame;
+    }
+    CC_SAFE_DELETE(frame);
+    return nullptr;
+}
+
+AlphaFrame::AlphaFrame()
+    : _alpha(255)
+{
+}
+
+void AlphaFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
+{
+    _node->setOpacity(_alpha);
+
+    if (_tween)
+    {
+        _betweenAlpha = static_cast<AlphaFrame*>(nextFrame)->_alpha - _alpha;
+    }
+}
+
+void AlphaFrame::apply(float percent)
+{
+    if (_tween)
+    {
+        GLubyte alpha = _alpha + _betweenAlpha * percent;
+        _node->setOpacity(alpha);
+    }
+}
+
+Frame* AlphaFrame::clone()
+{
+    AlphaFrame* frame = AlphaFrame::create();
+    frame->setAlpha(_alpha);
+    frame->cloneProperty(this);
+
+    return frame;
+}
 
 // EventFrame
 EventFrame* EventFrame::create()
@@ -570,12 +710,23 @@ void EventFrame::init()
 
 EventFrame::EventFrame()
     : _event("")
+    , _action(nullptr)
 {
 }
 
-void EventFrame::onEnter(Frame *nextFrame)
+void EventFrame::setNode(cocos2d::Node* node)
 {
-    emitEvent();
+    Frame::setNode(node);
+    _action = _timeline->getActionTimeline();
+}
+
+void EventFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
+{
+    if(_frameIndex < _action->getStartFrame() || _frameIndex > _action->getEndFrame())
+        return;
+
+    if(currentFrameIndex >= _frameIndex)
+        emitEvent();
 }
 
 
@@ -608,7 +759,7 @@ ZOrderFrame::ZOrderFrame()
 {
 }
 
-void ZOrderFrame::onEnter(Frame *nextFrame)
+void ZOrderFrame::onEnter(Frame *nextFrame, int currentFrameIndex)
 {
     if(_node)
         _node->setLocalZOrder(_zorder);

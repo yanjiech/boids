@@ -50,18 +50,14 @@
 		521A8E6B19F0C3AC00D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6919F0C3AC00D177D7 /* Default-736h@3x.png */; };
 		98531A761AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
 		98531A771AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
-		9859D1CA1A7B4B6000FF6D82 /* Net.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C41A7B4B6000FF6D82 /* Net.cpp */; };
 		9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
 		9859D1CC1A7B4B8700FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
-		9859D1CD1A7B4B9F00FF6D82 /* Net.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C41A7B4B6000FF6D82 /* Net.cpp */; };
 		9859D1D21A7B4C0300FF6D82 /* Battle.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1CE1A7B4C0300FF6D82 /* Battle.pb.cc */; };
 		9859D1D31A7B4C0300FF6D82 /* Battle.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1CE1A7B4C0300FF6D82 /* Battle.pb.cc */; };
 		9859D1D41A7B4C0300FF6D82 /* boids.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1D01A7B4C0300FF6D82 /* boids.pb.cc */; };
 		9859D1D51A7B4C0300FF6D82 /* boids.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1D01A7B4C0300FF6D82 /* boids.pb.cc */; };
 		9859D1DB1A7B4E8400FF6D82 /* Counter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1D71A7B4E8400FF6D82 /* Counter.cpp */; };
 		9859D1DC1A7B4E8400FF6D82 /* Counter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1D71A7B4E8400FF6D82 /* Counter.cpp */; };
-		9859D1DD1A7B4E8400FF6D82 /* EngineRelated.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1D91A7B4E8400FF6D82 /* EngineRelated.cpp */; };
-		9859D1DE1A7B4E8400FF6D82 /* EngineRelated.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1D91A7B4E8400FF6D82 /* EngineRelated.cpp */; };
 		985F4D201AAD49E4008D2EF8 /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 985F4D1E1AAD49E4008D2EF8 /* Skill.cpp */; };
 		985F4D211AAD49E4008D2EF8 /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 985F4D1E1AAD49E4008D2EF8 /* Skill.cpp */; };
 		985F4D241AAD532E008D2EF8 /* AudioManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 985F4D221AAD532E008D2EF8 /* AudioManager.cpp */; };
@@ -79,8 +75,6 @@
 		986A553F1AA559F70051B0B9 /* TargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A553C1AA559F70051B0B9 /* TargetNode.cpp */; };
 		986A55421AA55A390051B0B9 /* BuildingNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55401AA55A390051B0B9 /* BuildingNode.cpp */; };
 		986A55431AA55A390051B0B9 /* BuildingNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55401AA55A390051B0B9 /* BuildingNode.cpp */; };
-		986A55561AA55E830051B0B9 /* UnitSkill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55541AA55E830051B0B9 /* UnitSkill.cpp */; };
-		986A55571AA55E830051B0B9 /* UnitSkill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55541AA55E830051B0B9 /* UnitSkill.cpp */; };
 		986A555A1AA561730051B0B9 /* UILevelChooseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55581AA561730051B0B9 /* UILevelChooseLayer.cpp */; };
 		986A555B1AA561730051B0B9 /* UILevelChooseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55581AA561730051B0B9 /* UILevelChooseLayer.cpp */; };
 		986A555E1AA561E30051B0B9 /* SceneBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A555C1AA561E30051B0B9 /* SceneBase.cpp */; };
@@ -109,8 +103,20 @@
 		987185931AAFF19D00533C3E /* PlayerAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987185901AAFF19D00533C3E /* PlayerAttackBehavior.cpp */; };
 		987185961AAFF1BC00533C3E /* PlayerSkillBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987185941AAFF1BC00533C3E /* PlayerSkillBehavior.cpp */; };
 		987185971AAFF1BC00533C3E /* PlayerSkillBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987185941AAFF1BC00533C3E /* PlayerSkillBehavior.cpp */; };
+		9871DBEE1ABADCEF009B8EC9 /* SkillNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9871DBEC1ABADCEF009B8EC9 /* SkillNode.cpp */; };
+		9871DBEF1ABADCEF009B8EC9 /* SkillNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9871DBEC1ABADCEF009B8EC9 /* SkillNode.cpp */; };
+		9871DBF21ABADF68009B8EC9 /* WrathOfThunder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9871DBF01ABADF68009B8EC9 /* WrathOfThunder.cpp */; };
+		9871DBF31ABADF68009B8EC9 /* WrathOfThunder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9871DBF01ABADF68009B8EC9 /* WrathOfThunder.cpp */; };
+		9871DBF61ABADF7F009B8EC9 /* LightningChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9871DBF41ABADF7F009B8EC9 /* LightningChain.cpp */; };
+		9871DBF71ABADF7F009B8EC9 /* LightningChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9871DBF41ABADF7F009B8EC9 /* LightningChain.cpp */; };
+		9871DBFA1ABAE1F5009B8EC9 /* SkillNodeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9871DBF81ABAE1F5009B8EC9 /* SkillNodeFactory.cpp */; };
+		9871DBFB1ABAE1F5009B8EC9 /* SkillNodeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9871DBF81ABAE1F5009B8EC9 /* SkillNodeFactory.cpp */; };
 		987336141AB6840200694B53 /* JumpText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987336121AB6840200694B53 /* JumpText.cpp */; };
 		987336151AB6840200694B53 /* JumpText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987336121AB6840200694B53 /* JumpText.cpp */; };
+		98742E661ABBD31B0087D13D /* BarrageOfArrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98742E641ABBD31B0087D13D /* BarrageOfArrow.cpp */; };
+		98742E671ABBD31B0087D13D /* BarrageOfArrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98742E641ABBD31B0087D13D /* BarrageOfArrow.cpp */; };
+		987A83721ABBE1540093940D /* CrazyShoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987A83701ABBE1540093940D /* CrazyShoot.cpp */; };
+		987A83731ABBE1540093940D /* CrazyShoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987A83701ABBE1540093940D /* CrazyShoot.cpp */; };
 		9880121A1A36A3140096D1EC /* CycledList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98598B151A10BF7F0075D0EC /* CycledList.cpp */; };
 		9880121E1A36A3490096D1EC /* CmdLineDebugger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9880121B1A36A3490096D1EC /* CmdLineDebugger.cpp */; };
 		9880121F1A36A3490096D1EC /* CmdLineDebuggerLua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9880121C1A36A3490096D1EC /* CmdLineDebuggerLua.cpp */; };
@@ -136,15 +142,8 @@
 		98B402501AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98B4024E1AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp */; };
 		98B402511AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98B4024E1AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp */; };
 		98BD48741A245241004F4A90 /* Trace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98BD48721A245241004F4A90 /* Trace.cpp */; };
-		98BF19C91AB5C455000E2942 /* lua_boids_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98BF19C71AB5C455000E2942 /* lua_boids_manual.cpp */; };
-		98BF19CA1AB5C455000E2942 /* lua_boids_manual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98BF19C71AB5C455000E2942 /* lua_boids_manual.cpp */; };
-		98C9A9ED1A353D8B00693748 /* LuaUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98C9A9EB1A353D8B00693748 /* LuaUtils.cpp */; };
-		98E3B5DA1A73938600B5BEBB /* NetworkAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B5D51A73938600B5BEBB /* NetworkAdapter.cpp */; };
-		98E3B5DB1A73938600B5BEBB /* UdpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B5D81A73938600B5BEBB /* UdpClient.cpp */; };
 		98E3B5E31A73963300B5BEBB /* pvp.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B5E11A73963300B5BEBB /* pvp.pb.cc */; };
 		98E3B5E41A739AF800B5BEBB /* pvp.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B5E11A73963300B5BEBB /* pvp.pb.cc */; };
-		98E3B5E51A739AF800B5BEBB /* NetworkAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B5D51A73938600B5BEBB /* NetworkAdapter.cpp */; };
-		98E3B5E61A739AF800B5BEBB /* UdpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B5D81A73938600B5BEBB /* UdpClient.cpp */; };
 		98E3B6471A73A77A00B5BEBB /* descriptor.cc in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B5EE1A73A77A00B5BEBB /* descriptor.cc */; };
 		98E3B6481A73A77A00B5BEBB /* descriptor.cc in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B5EE1A73A77A00B5BEBB /* descriptor.cc */; };
 		98E3B6491A73A77A00B5BEBB /* descriptor.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B5F01A73A77A00B5BEBB /* descriptor.pb.cc */; };
@@ -215,6 +214,8 @@
 		98E3B68A1A73A77A00B5BEBB /* wire_format_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = 98E3B6441A73A77A00B5BEBB /* wire_format_lite.cc */; };
 		98E61DD21AB6A674005DE093 /* HpBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E61DD01AB6A674005DE093 /* HpBar.cpp */; };
 		98E61DD31AB6A674005DE093 /* HpBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E61DD01AB6A674005DE093 /* HpBar.cpp */; };
+		98E67E201ABFB01C00076CE1 /* GameTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E67E1E1ABFB01C00076CE1 /* GameTask.cpp */; };
+		98E67E211ABFB01C00076CE1 /* GameTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98E67E1E1ABFB01C00076CE1 /* GameTask.cpp */; };
 		98EBBEF51AABF73B00ADB84A /* UIBattleFloatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */; };
 		98EBBEF61AABF73B00ADB84A /* UIBattleFloatLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */; };
 		98EBBEFB1AAC3CF400ADB84A /* UnitNodeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98EBBEF91AAC3CF400ADB84A /* UnitNodeComponent.cpp */; };
@@ -232,7 +233,6 @@
 		E807DF301A4BDFE6004F76DA /* Replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E807DF2E1A4BDFE6004F76DA /* Replay.cpp */; };
 		E807DF311A4BDFE6004F76DA /* Replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E807DF2E1A4BDFE6004F76DA /* Replay.cpp */; };
 		E807DF601A4D642B004F76DA /* CycledList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98598B151A10BF7F0075D0EC /* CycledList.cpp */; };
-		E810E4F31A0784C100DA269F /* LuaFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E810E4F11A0784C100DA269F /* LuaFunc.cpp */; };
 		E822BAD41A14C8CC00C4C05E /* EditorPositionNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E822BAD21A14C8CC00C4C05E /* EditorPositionNode.cpp */; };
 		E822BAD51A14C8CC00C4C05E /* EditorPositionNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E822BAD21A14C8CC00C4C05E /* EditorPositionNode.cpp */; };
 		E829419E1A5D68C00076E856 /* EditorVisionNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E829419C1A5D68C00076E856 /* EditorVisionNode.cpp */; };
@@ -282,7 +282,6 @@
 		E8676E411A7B734000F927E5 /* Profile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8676E3E1A7B734000F927E5 /* Profile.cpp */; };
 		E867B1B61A36EDA900EF8088 /* CmdLineDebugger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9880121B1A36A3490096D1EC /* CmdLineDebugger.cpp */; };
 		E867B1B71A36EDAC00EF8088 /* CmdLineDebuggerLua.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9880121C1A36A3490096D1EC /* CmdLineDebuggerLua.cpp */; };
-		E867B1B81A36EDB000EF8088 /* LuaUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98C9A9EB1A353D8B00693748 /* LuaUtils.cpp */; };
 		E867B1BA1A36EDCD00EF8088 /* Border.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 988282FD1A3019EA0071D233 /* Border.cpp */; };
 		E86CDE881A1E00DA004FBDA2 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9865FF1F1A15F87000487EB1 /* Path.cpp */; };
 		E86CDE931A1F3D21004FBDA2 /* Collidable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E86CDE911A1F3D21004FBDA2 /* Collidable.cpp */; };
@@ -293,7 +292,6 @@
 		E87412F91A0B55E7003EBD0B /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E84197E51A09228000F5DF36 /* Terrain.cpp */; };
 		E87412FC1A0B55F5003EBD0B /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E88DE6B91A0103FC005E1ABA /* Utils.cpp */; };
 		E87412FD1A0B55FB003EBD0B /* ArmatureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8EC9E051A00EF1000365A55 /* ArmatureManager.cpp */; };
-		E87412FE1A0B55FE003EBD0B /* LuaFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E810E4F11A0784C100DA269F /* LuaFunc.cpp */; };
 		E87412FF1A0B5601003EBD0B /* BoidsMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E84197EA1A09E73200F5DF36 /* BoidsMath.cpp */; };
 		E87413001A0B5629003EBD0B /* TmxEllipse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E84197891A09226300F5DF36 /* TmxEllipse.cpp */; };
 		E87413011A0B5629003EBD0B /* TmxImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E841978B1A09226300F5DF36 /* TmxImage.cpp */; };
@@ -339,8 +337,6 @@
 		E87739451A11D6D4007A8EC3 /* BEUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E87739431A11D6D4007A8EC3 /* BEUI.cpp */; };
 		E87739461A11D6D4007A8EC3 /* BEUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E87739431A11D6D4007A8EC3 /* BEUI.cpp */; };
 		E88DE6BB1A0103FC005E1ABA /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E88DE6B91A0103FC005E1ABA /* Utils.cpp */; };
-		E893DB3E1A1B1D2C00B74590 /* LuaPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E893DB3C1A1B1D2C00B74590 /* LuaPlatform.cpp */; };
-		E893DB3F1A1B1D2C00B74590 /* LuaPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E893DB3C1A1B1D2C00B74590 /* LuaPlatform.cpp */; };
 		E893DB4F1A1B74BA00B74590 /* MapData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E893DB4D1A1B74BA00B74590 /* MapData.cpp */; };
 		E893DB501A1B74BA00B74590 /* MapData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E893DB4D1A1B74BA00B74590 /* MapData.cpp */; };
 		E898E7521A529393001189FF /* MapDebugger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E898E7501A529393001189FF /* MapDebugger.cpp */; };
@@ -417,7 +413,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		15427C7E198F201A00DC375D /* lua_module_register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua_module_register.h; path = ../Classes/lua_module_register.h; sourceTree = "<group>"; };
 		15A8A4031834BDA200142BE0 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = "../../cocos2d-x/build/cocos2d_libs.xcodeproj"; sourceTree = "<group>"; };
 		15A8A4871834C90E00142BE0 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		15AECE28195D482800907DB0 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
@@ -462,10 +457,6 @@
 		98598B151A10BF7F0075D0EC /* CycledList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CycledList.cpp; path = ../Classes/CycledList.cpp; sourceTree = "<group>"; };
 		98598B161A10BF7F0075D0EC /* CycledList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycledList.h; path = ../Classes/CycledList.h; sourceTree = "<group>"; };
 		98598B171A10BF7F0075D0EC /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Singleton.h; path = ../Classes/Singleton.h; sourceTree = "<group>"; };
-		9859D1C41A7B4B6000FF6D82 /* Net.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Net.cpp; sourceTree = "<group>"; };
-		9859D1C51A7B4B6000FF6D82 /* Net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Net.h; sourceTree = "<group>"; };
-		9859D1C61A7B4B6000FF6D82 /* NetDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetDef.h; sourceTree = "<group>"; };
-		9859D1C71A7B4B6000FF6D82 /* NetForExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetForExport.h; sourceTree = "<group>"; };
 		9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TcpClient.cpp; sourceTree = "<group>"; };
 		9859D1C91A7B4B6000FF6D82 /* TcpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpClient.h; sourceTree = "<group>"; };
 		9859D1CE1A7B4C0300FF6D82 /* Battle.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Battle.pb.cc; sourceTree = "<group>"; };
@@ -474,8 +465,6 @@
 		9859D1D11A7B4C0300FF6D82 /* boids.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boids.pb.h; sourceTree = "<group>"; };
 		9859D1D71A7B4E8400FF6D82 /* Counter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Counter.cpp; path = ../Classes/Counter.cpp; sourceTree = "<group>"; };
 		9859D1D81A7B4E8400FF6D82 /* Counter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Counter.h; path = ../Classes/Counter.h; sourceTree = "<group>"; };
-		9859D1D91A7B4E8400FF6D82 /* EngineRelated.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EngineRelated.cpp; path = ../Classes/EngineRelated.cpp; sourceTree = "<group>"; };
-		9859D1DA1A7B4E8400FF6D82 /* EngineRelated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EngineRelated.h; path = ../Classes/EngineRelated.h; sourceTree = "<group>"; };
 		985BB8741A1F4E920018F4FC /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../../../../Development/Lib/Boost/lib/libboost_filesystem.a; sourceTree = "<group>"; };
 		985F4D1E1AAD49E4008D2EF8 /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Skill.cpp; sourceTree = "<group>"; };
 		985F4D1F1AAD49E4008D2EF8 /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
@@ -496,8 +485,6 @@
 		986A553D1AA559F70051B0B9 /* TargetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetNode.h; sourceTree = "<group>"; };
 		986A55401AA55A390051B0B9 /* BuildingNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BuildingNode.cpp; sourceTree = "<group>"; };
 		986A55411AA55A390051B0B9 /* BuildingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingNode.h; sourceTree = "<group>"; };
-		986A55541AA55E830051B0B9 /* UnitSkill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UnitSkill.cpp; sourceTree = "<group>"; };
-		986A55551AA55E830051B0B9 /* UnitSkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitSkill.h; sourceTree = "<group>"; };
 		986A55581AA561730051B0B9 /* UILevelChooseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UILevelChooseLayer.cpp; sourceTree = "<group>"; };
 		986A55591AA561730051B0B9 /* UILevelChooseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILevelChooseLayer.h; sourceTree = "<group>"; };
 		986A555C1AA561E30051B0B9 /* SceneBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneBase.cpp; sourceTree = "<group>"; };
@@ -526,8 +513,20 @@
 		987185941AAFF1BC00533C3E /* PlayerSkillBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerSkillBehavior.cpp; sourceTree = "<group>"; };
 		987185951AAFF1BC00533C3E /* PlayerSkillBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSkillBehavior.h; sourceTree = "<group>"; };
 		987185981AB0506000533C3E /* BehaviorHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BehaviorHeader.h; sourceTree = "<group>"; };
+		9871DBEC1ABADCEF009B8EC9 /* SkillNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkillNode.cpp; sourceTree = "<group>"; };
+		9871DBED1ABADCEF009B8EC9 /* SkillNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillNode.h; sourceTree = "<group>"; };
+		9871DBF01ABADF68009B8EC9 /* WrathOfThunder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WrathOfThunder.cpp; sourceTree = "<group>"; };
+		9871DBF11ABADF68009B8EC9 /* WrathOfThunder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrathOfThunder.h; sourceTree = "<group>"; };
+		9871DBF41ABADF7F009B8EC9 /* LightningChain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightningChain.cpp; sourceTree = "<group>"; };
+		9871DBF51ABADF7F009B8EC9 /* LightningChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightningChain.h; sourceTree = "<group>"; };
+		9871DBF81ABAE1F5009B8EC9 /* SkillNodeFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkillNodeFactory.cpp; sourceTree = "<group>"; };
+		9871DBF91ABAE1F5009B8EC9 /* SkillNodeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillNodeFactory.h; sourceTree = "<group>"; };
 		987336121AB6840200694B53 /* JumpText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JumpText.cpp; sourceTree = "<group>"; };
 		987336131AB6840200694B53 /* JumpText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpText.h; sourceTree = "<group>"; };
+		98742E641ABBD31B0087D13D /* BarrageOfArrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BarrageOfArrow.cpp; sourceTree = "<group>"; };
+		98742E651ABBD31B0087D13D /* BarrageOfArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageOfArrow.h; sourceTree = "<group>"; };
+		987A83701ABBE1540093940D /* CrazyShoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CrazyShoot.cpp; sourceTree = "<group>"; };
+		987A83711ABBE1540093940D /* CrazyShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrazyShoot.h; sourceTree = "<group>"; };
 		9880121B1A36A3490096D1EC /* CmdLineDebugger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CmdLineDebugger.cpp; path = ../Classes/CmdLineDebugger.cpp; sourceTree = "<group>"; };
 		9880121C1A36A3490096D1EC /* CmdLineDebuggerLua.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CmdLineDebuggerLua.cpp; path = ../Classes/CmdLineDebuggerLua.cpp; sourceTree = "<group>"; };
 		9880121D1A36A3490096D1EC /* CmdLineDebuggerLua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CmdLineDebuggerLua.h; path = ../Classes/CmdLineDebuggerLua.h; sourceTree = "<group>"; };
@@ -557,16 +556,6 @@
 		98BD48711A245203004F4A90 /* CmdLineDebugger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CmdLineDebugger.h; path = ../Classes/CmdLineDebugger.h; sourceTree = "<group>"; };
 		98BD48721A245241004F4A90 /* Trace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Trace.cpp; path = ../Classes/Trace.cpp; sourceTree = "<group>"; };
 		98BD48731A245241004F4A90 /* Trace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trace.h; path = ../Classes/Trace.h; sourceTree = "<group>"; };
-		98BF19C61AB5C455000E2942 /* ArgCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArgCheck.h; sourceTree = "<group>"; };
-		98BF19C71AB5C455000E2942 /* lua_boids_manual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_boids_manual.cpp; sourceTree = "<group>"; };
-		98BF19C81AB5C455000E2942 /* lua_boids_manual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua_boids_manual.h; sourceTree = "<group>"; };
-		98C9A9EB1A353D8B00693748 /* LuaUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaUtils.cpp; path = ../Classes/LuaUtils.cpp; sourceTree = "<group>"; };
-		98C9A9EC1A353D8B00693748 /* LuaUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaUtils.h; path = ../Classes/LuaUtils.h; sourceTree = "<group>"; };
-		98E3B5D51A73938600B5BEBB /* NetworkAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkAdapter.cpp; sourceTree = "<group>"; };
-		98E3B5D61A73938600B5BEBB /* NetworkAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkAdapter.h; sourceTree = "<group>"; };
-		98E3B5D71A73938600B5BEBB /* NetworkAdapterInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkAdapterInternal.h; sourceTree = "<group>"; };
-		98E3B5D81A73938600B5BEBB /* UdpClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UdpClient.cpp; sourceTree = "<group>"; };
-		98E3B5D91A73938600B5BEBB /* UdpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdpClient.h; sourceTree = "<group>"; };
 		98E3B5E11A73963300B5BEBB /* pvp.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pvp.pb.cc; sourceTree = "<group>"; };
 		98E3B5E21A73963300B5BEBB /* pvp.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pvp.pb.h; sourceTree = "<group>"; };
 		98E3B5E71A739B6500B5BEBB /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../Protobuf/lib/libprotobuf.a; sourceTree = "<group>"; };
@@ -660,6 +649,8 @@
 		98E3B6461A73A77A00B5BEBB /* wire_format_lite_inl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wire_format_lite_inl.h; sourceTree = "<group>"; };
 		98E61DD01AB6A674005DE093 /* HpBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HpBar.cpp; sourceTree = "<group>"; };
 		98E61DD11AB6A674005DE093 /* HpBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HpBar.h; sourceTree = "<group>"; };
+		98E67E1E1ABFB01C00076CE1 /* GameTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameTask.cpp; sourceTree = "<group>"; };
+		98E67E1F1ABFB01C00076CE1 /* GameTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameTask.h; sourceTree = "<group>"; };
 		98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBattleFloatLayer.cpp; sourceTree = "<group>"; };
 		98EBBEF41AABF73B00ADB84A /* UIBattleFloatLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBattleFloatLayer.h; sourceTree = "<group>"; };
 		98EBBEF91AAC3CF400ADB84A /* UnitNodeComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UnitNodeComponent.cpp; sourceTree = "<group>"; };
@@ -678,8 +669,6 @@
 		E807502D1A14856200AD920F /* EditorModelDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorModelDefines.h; sourceTree = "<group>"; };
 		E807DF2E1A4BDFE6004F76DA /* Replay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Replay.cpp; path = ../Classes/Replay.cpp; sourceTree = "<group>"; };
 		E807DF2F1A4BDFE6004F76DA /* Replay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Replay.h; path = ../Classes/Replay.h; sourceTree = "<group>"; };
-		E810E4F11A0784C100DA269F /* LuaFunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaFunc.cpp; path = ../Classes/LuaFunc.cpp; sourceTree = "<group>"; };
-		E810E4F21A0784C100DA269F /* LuaFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaFunc.h; path = ../Classes/LuaFunc.h; sourceTree = "<group>"; };
 		E822BAD21A14C8CC00C4C05E /* EditorPositionNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditorPositionNode.cpp; sourceTree = "<group>"; };
 		E822BAD31A14C8CC00C4C05E /* EditorPositionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorPositionNode.h; sourceTree = "<group>"; };
 		E829419C1A5D68C00076E856 /* EditorVisionNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditorVisionNode.cpp; sourceTree = "<group>"; };
@@ -775,8 +764,6 @@
 		E87739441A11D6D4007A8EC3 /* BEUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEUI.h; sourceTree = "<group>"; };
 		E88DE6B91A0103FC005E1ABA /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Utils.cpp; path = ../Classes/Utils.cpp; sourceTree = "<group>"; };
 		E88DE6BA1A0103FC005E1ABA /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ../Classes/Utils.h; sourceTree = "<group>"; };
-		E893DB3C1A1B1D2C00B74590 /* LuaPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaPlatform.cpp; path = ../Classes/LuaPlatform.cpp; sourceTree = "<group>"; };
-		E893DB3D1A1B1D2C00B74590 /* LuaPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaPlatform.h; path = ../Classes/LuaPlatform.h; sourceTree = "<group>"; };
 		E893DB4D1A1B74BA00B74590 /* MapData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapData.cpp; path = ../Classes/MapData.cpp; sourceTree = "<group>"; };
 		E893DB4E1A1B74BA00B74590 /* MapData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapData.h; path = ../Classes/MapData.h; sourceTree = "<group>"; };
 		E898E7501A529393001189FF /* MapDebugger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapDebugger.cpp; path = ../Classes/MapDebugger.cpp; sourceTree = "<group>"; };
@@ -945,17 +932,35 @@
 			path = ../Classes/base;
 			sourceTree = "<group>";
 		};
+		9871DBEB1ABADCD6009B8EC9 /* skill */ = {
+			isa = PBXGroup;
+			children = (
+				9871DBEC1ABADCEF009B8EC9 /* SkillNode.cpp */,
+				9871DBED1ABADCEF009B8EC9 /* SkillNode.h */,
+				9871DBF01ABADF68009B8EC9 /* WrathOfThunder.cpp */,
+				9871DBF11ABADF68009B8EC9 /* WrathOfThunder.h */,
+				9871DBF41ABADF7F009B8EC9 /* LightningChain.cpp */,
+				9871DBF51ABADF7F009B8EC9 /* LightningChain.h */,
+				9871DBF81ABAE1F5009B8EC9 /* SkillNodeFactory.cpp */,
+				9871DBF91ABAE1F5009B8EC9 /* SkillNodeFactory.h */,
+				98742E641ABBD31B0087D13D /* BarrageOfArrow.cpp */,
+				98742E651ABBD31B0087D13D /* BarrageOfArrow.h */,
+				987A83701ABBE1540093940D /* CrazyShoot.cpp */,
+				987A83711ABBE1540093940D /* CrazyShoot.h */,
+			);
+			path = skill;
+			sourceTree = "<group>";
+		};
 		988B52A51AA4185900FB7B21 /* unit */ = {
 			isa = PBXGroup;
 			children = (
+				9871DBEB1ABADCD6009B8EC9 /* skill */,
 				988B52A61AA42C7A00FB7B21 /* UnitNode.cpp */,
 				988B52A71AA42C7A00FB7B21 /* UnitNode.h */,
 				986A553C1AA559F70051B0B9 /* TargetNode.cpp */,
 				986A553D1AA559F70051B0B9 /* TargetNode.h */,
 				986A55401AA55A390051B0B9 /* BuildingNode.cpp */,
 				986A55411AA55A390051B0B9 /* BuildingNode.h */,
-				986A55541AA55E830051B0B9 /* UnitSkill.cpp */,
-				986A55551AA55E830051B0B9 /* UnitSkill.h */,
 				98EBBEF91AAC3CF400ADB84A /* UnitNodeComponent.cpp */,
 				98EBBEFA1AAC3CF400ADB84A /* UnitNodeComponent.h */,
 				985F4D1E1AAD49E4008D2EF8 /* Skill.cpp */,
@@ -1044,31 +1049,11 @@
 			path = ../Classes/manager;
 			sourceTree = "<group>";
 		};
-		98BF19C51AB5C455000E2942 /* manual */ = {
-			isa = PBXGroup;
-			children = (
-				98BF19C61AB5C455000E2942 /* ArgCheck.h */,
-				98BF19C71AB5C455000E2942 /* lua_boids_manual.cpp */,
-				98BF19C81AB5C455000E2942 /* lua_boids_manual.h */,
-			);
-			name = manual;
-			path = ../Classes/manual;
-			sourceTree = "<group>";
-		};
 		98E3B5D41A73938600B5BEBB /* net */ = {
 			isa = PBXGroup;
 			children = (
-				9859D1C41A7B4B6000FF6D82 /* Net.cpp */,
-				9859D1C51A7B4B6000FF6D82 /* Net.h */,
-				9859D1C61A7B4B6000FF6D82 /* NetDef.h */,
-				9859D1C71A7B4B6000FF6D82 /* NetForExport.h */,
 				9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */,
 				9859D1C91A7B4B6000FF6D82 /* TcpClient.h */,
-				98E3B5D51A73938600B5BEBB /* NetworkAdapter.cpp */,
-				98E3B5D61A73938600B5BEBB /* NetworkAdapter.h */,
-				98E3B5D71A73938600B5BEBB /* NetworkAdapterInternal.h */,
-				98E3B5D81A73938600B5BEBB /* UdpClient.cpp */,
-				98E3B5D91A73938600B5BEBB /* UdpClient.h */,
 			);
 			name = net;
 			path = ../Classes/net;
@@ -1227,6 +1212,8 @@
 				98EBBF071AAC866A00ADB84A /* EventTrigger.h */,
 				98690F2A1AB15B6600E9AFFE /* WaveAction.cpp */,
 				98690F2B1AB15B6600E9AFFE /* WaveAction.h */,
+				98E67E1E1ABFB01C00076CE1 /* GameTask.cpp */,
+				98E67E1F1ABFB01C00076CE1 /* GameTask.h */,
 			);
 			name = logic;
 			path = ../Classes/logic;
@@ -1459,7 +1446,6 @@
 		F293BB7C15EB830F00256477 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				98BF19C51AB5C455000E2942 /* manual */,
 				98EBBEFD1AAC85F800ADB84A /* logic */,
 				986A55771AA566210051B0B9 /* base */,
 				986A55721AA5659B0051B0B9 /* data */,
@@ -1476,8 +1462,6 @@
 				E8676E3F1A7B734000F927E5 /* Profile.h */,
 				9859D1D71A7B4E8400FF6D82 /* Counter.cpp */,
 				9859D1D81A7B4E8400FF6D82 /* Counter.h */,
-				9859D1D91A7B4E8400FF6D82 /* EngineRelated.cpp */,
-				9859D1DA1A7B4E8400FF6D82 /* EngineRelated.h */,
 				98E3B5EA1A73A77A00B5BEBB /* Protobuf */,
 				98E3B5E01A73963300B5BEBB /* message */,
 				98E3B5D41A73938600B5BEBB /* net */,
@@ -1489,8 +1473,6 @@
 				9880121B1A36A3490096D1EC /* CmdLineDebugger.cpp */,
 				9880121C1A36A3490096D1EC /* CmdLineDebuggerLua.cpp */,
 				9880121D1A36A3490096D1EC /* CmdLineDebuggerLua.h */,
-				98C9A9EB1A353D8B00693748 /* LuaUtils.cpp */,
-				98C9A9EC1A353D8B00693748 /* LuaUtils.h */,
 				988283031A301A0C0071D233 /* Macro.h */,
 				98BD48721A245241004F4A90 /* Trace.cpp */,
 				98BD48731A245241004F4A90 /* Trace.h */,
@@ -1502,19 +1484,14 @@
 				98598B171A10BF7F0075D0EC /* Singleton.h */,
 				E841977D1A09226300F5DF36 /* TmxParser */,
 				E810E4DC1A0770C900DA269F /* AI */,
-				15427C7E198F201A00DC375D /* lua_module_register.h */,
 				E88DE6B91A0103FC005E1ABA /* Utils.cpp */,
 				E88DE6BA1A0103FC005E1ABA /* Utils.h */,
 				F293BB7E15EB831F00256477 /* AppDelegate.cpp */,
 				F293BB7F15EB831F00256477 /* AppDelegate.h */,
 				E8EC9E051A00EF1000365A55 /* ArmatureManager.cpp */,
 				E8EC9E061A00EF1000365A55 /* ArmatureManager.h */,
-				E810E4F11A0784C100DA269F /* LuaFunc.cpp */,
-				E810E4F21A0784C100DA269F /* LuaFunc.h */,
 				E84197EA1A09E73200F5DF36 /* BoidsMath.cpp */,
 				E84197EB1A09E73200F5DF36 /* BoidsMath.h */,
-				E893DB3C1A1B1D2C00B74590 /* LuaPlatform.cpp */,
-				E893DB3D1A1B1D2C00B74590 /* LuaPlatform.h */,
 				E893DB4D1A1B74BA00B74590 /* MapData.cpp */,
 				E893DB4E1A1B74BA00B74590 /* MapData.h */,
 			);
@@ -1729,14 +1706,13 @@
 			files = (
 				98E3B6781A73A77A00B5BEBB /* common.cc in Sources */,
 				98E3B6481A73A77A00B5BEBB /* descriptor.cc in Sources */,
+				9871DBF71ABADF7F009B8EC9 /* LightningChain.cpp in Sources */,
 				98EBBF051AAC865C00ADB84A /* EventAction.cpp in Sources */,
 				98E3B5E41A739AF800B5BEBB /* pvp.pb.cc in Sources */,
 				986A55711AA565430051B0B9 /* BoidsConstant.cpp in Sources */,
-				98E3B5E51A739AF800B5BEBB /* NetworkAdapter.cpp in Sources */,
 				98E3B6861A73A77A00B5BEBB /* unknown_field_set.cc in Sources */,
 				98EBBF091AAC866A00ADB84A /* EventTrigger.cpp in Sources */,
 				988B52EC1AA4491600FB7B21 /* BehaviorBase.cpp in Sources */,
-				98E3B5E61A739AF800B5BEBB /* UdpClient.cpp in Sources */,
 				988B52F11AA44ABD00FB7B21 /* ResourceManager.cpp in Sources */,
 				98E3B6761A73A77A00B5BEBB /* atomicops_internals_x86_msvc.cc in Sources */,
 				98E3B65E1A73A77A00B5BEBB /* printer.cc in Sources */,
@@ -1772,16 +1748,17 @@
 				986A55431AA55A390051B0B9 /* BuildingNode.cpp in Sources */,
 				E874131E1A0B5647003EBD0B /* trees.c in Sources */,
 				E87413091A0B5629003EBD0B /* TmxPropertySet.cpp in Sources */,
+				98E67E211ABFB01C00076CE1 /* GameTask.cpp in Sources */,
 				98E3B66C1A73A77A00B5BEBB /* message_lite.cc in Sources */,
 				E87412F91A0B55E7003EBD0B /* Terrain.cpp in Sources */,
 				E87413491A0BBB39003EBD0B /* EditorModel.cpp in Sources */,
 				987336151AB6840200694B53 /* JumpText.cpp in Sources */,
-				98BF19CA1AB5C455000E2942 /* lua_boids_manual.cpp in Sources */,
 				98E61DD31AB6A674005DE093 /* HpBar.cpp in Sources */,
 				E87412F71A0B55DF003EBD0B /* BoidsPolygon.cpp in Sources */,
 				988B52E71AA4461700FB7B21 /* UIControlLayer.cpp in Sources */,
 				98E3B67C1A73A77A00B5BEBB /* stringprintf.cc in Sources */,
 				E874130B1A0B5629003EBD0B /* TmxTileset.cpp in Sources */,
+				9871DBEF1ABADCEF009B8EC9 /* SkillNode.cpp in Sources */,
 				E87413001A0B5629003EBD0B /* TmxEllipse.cpp in Sources */,
 				E86CDE881A1E00DA004FBDA2 /* Path.cpp in Sources */,
 				986A556C1AA5641C0051B0B9 /* CocosUtils.cpp in Sources */,
@@ -1803,7 +1780,6 @@
 				E87413081A0B5629003EBD0B /* TmxPolyline.cpp in Sources */,
 				98E3B6541A73A77A00B5BEBB /* extension_set_heavy.cc in Sources */,
 				98E3B6641A73A77A00B5BEBB /* zero_copy_stream.cc in Sources */,
-				9859D1CD1A7B4B9F00FF6D82 /* Net.cpp in Sources */,
 				E874131B1A0B5647003EBD0B /* inffast.c in Sources */,
 				E87412FF1A0B5601003EBD0B /* BoidsMath.cpp in Sources */,
 				987185931AAFF19D00533C3E /* PlayerAttackBehavior.cpp in Sources */,
@@ -1816,14 +1792,15 @@
 				E87413031A0B5629003EBD0B /* TmxLayer.cpp in Sources */,
 				98E3B6821A73A77A00B5BEBB /* substitute.cc in Sources */,
 				E87413201A0B5647003EBD0B /* zutil.c in Sources */,
+				9871DBFB1ABAE1F5009B8EC9 /* SkillNodeFactory.cpp in Sources */,
+				9871DBF31ABADF68009B8EC9 /* WrathOfThunder.cpp in Sources */,
 				9859D1D31A7B4C0300FF6D82 /* Battle.pb.cc in Sources */,
+				987A83731ABBE1540093940D /* CrazyShoot.cpp in Sources */,
 				98690F2D1AB15B6600E9AFFE /* WaveAction.cpp in Sources */,
 				985F4D211AAD49E4008D2EF8 /* Skill.cpp in Sources */,
-				E87412FE1A0B55FE003EBD0B /* LuaFunc.cpp in Sources */,
 				E87413011A0B5629003EBD0B /* TmxImage.cpp in Sources */,
 				98B402511AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp in Sources */,
 				98E3B6681A73A77A00B5BEBB /* zero_copy_stream_impl_lite.cc in Sources */,
-				E893DB3F1A1B1D2C00B74590 /* LuaPlatform.cpp in Sources */,
 				E867B1B61A36EDA900EF8088 /* CmdLineDebugger.cpp in Sources */,
 				98E3B68A1A73A77A00B5BEBB /* wire_format_lite.cc in Sources */,
 				9868BBAA1AB2F64D002ED7A1 /* DamageCalculate.cpp in Sources */,
@@ -1834,7 +1811,6 @@
 				98E3B65C1A73A77A00B5BEBB /* gzip_stream.cc in Sources */,
 				E87412FD1A0B55FB003EBD0B /* ArmatureManager.cpp in Sources */,
 				E87413021A0B5629003EBD0B /* TmxImageLayer.cpp in Sources */,
-				E867B1B81A36EDB000EF8088 /* LuaUtils.cpp in Sources */,
 				98E3B65A1A73A77A00B5BEBB /* coded_stream.cc in Sources */,
 				98E3B6521A73A77A00B5BEBB /* extension_set.cc in Sources */,
 				988B52BF1AA42FB700FB7B21 /* Updatable.cpp in Sources */,
@@ -1842,9 +1818,9 @@
 				E874130A1A0B5629003EBD0B /* TmxTile.cpp in Sources */,
 				E874131C1A0B5647003EBD0B /* inflate.c in Sources */,
 				986A555F1AA561E30051B0B9 /* SceneBase.cpp in Sources */,
-				9859D1DE1A7B4E8400FF6D82 /* EngineRelated.cpp in Sources */,
 				E867B1BA1A36EDCD00EF8088 /* Border.cpp in Sources */,
 				E874130E1A0B5630003EBD0B /* tinyxml.cpp in Sources */,
+				98742E671ABBD31B0087D13D /* BarrageOfArrow.cpp in Sources */,
 				98E3B6721A73A77A00B5BEBB /* service.cc in Sources */,
 				E87413431A0BBB02003EBD0B /* EditMode.cpp in Sources */,
 				E874131D1A0B5647003EBD0B /* inftrees.c in Sources */,
@@ -1869,7 +1845,6 @@
 				98E3B6561A73A77A00B5BEBB /* generated_message_reflection.cc in Sources */,
 				98E3B6881A73A77A00B5BEBB /* wire_format.cc in Sources */,
 				9859D1DC1A7B4E8400FF6D82 /* Counter.cpp in Sources */,
-				986A55571AA55E830051B0B9 /* UnitSkill.cpp in Sources */,
 				98E3B6741A73A77A00B5BEBB /* atomicops_internals_x86_gcc.cc in Sources */,
 				98E3B6801A73A77A00B5BEBB /* strutil.cc in Sources */,
 				98E3B6581A73A77A00B5BEBB /* generated_message_util.cc in Sources */,
@@ -1887,8 +1862,8 @@
 				98E3B6871A73A77A00B5BEBB /* wire_format.cc in Sources */,
 				98E61DD21AB6A674005DE093 /* HpBar.cpp in Sources */,
 				98E3B6711A73A77A00B5BEBB /* service.cc in Sources */,
-				9859D1CA1A7B4B6000FF6D82 /* Net.cpp in Sources */,
 				9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */,
+				987A83721ABBE1540093940D /* CrazyShoot.cpp in Sources */,
 				98E3B6731A73A77A00B5BEBB /* atomicops_internals_x86_gcc.cc in Sources */,
 				9880121A1A36A3140096D1EC /* CycledList.cpp in Sources */,
 				98EBBF001AAC863500ADB84A /* MapLogic.cpp in Sources */,
@@ -1901,13 +1876,11 @@
 				9859D1D41A7B4C0300FF6D82 /* boids.pb.cc in Sources */,
 				E8676E401A7B734000F927E5 /* Profile.cpp in Sources */,
 				5023812517EBBCAC00990C9B /* RootViewController.mm in Sources */,
-				98C9A9ED1A353D8B00693748 /* LuaUtils.cpp in Sources */,
 				9865FF211A15F87000487EB1 /* Path.cpp in Sources */,
 				E84197C11A09226300F5DF36 /* tinystr.cpp in Sources */,
 				E84197C01A09226300F5DF36 /* base64.cpp in Sources */,
 				98E3B65D1A73A77A00B5BEBB /* printer.cc in Sources */,
 				E84197CF1A09226300F5DF36 /* TmxTile.cpp in Sources */,
-				9859D1DD1A7B4E8400FF6D82 /* EngineRelated.cpp in Sources */,
 				985F4D241AAD532E008D2EF8 /* AudioManager.cpp in Sources */,
 				E84197CD1A09226300F5DF36 /* TmxPolyline.cpp in Sources */,
 				98E3B6751A73A77A00B5BEBB /* atomicops_internals_x86_msvc.cc in Sources */,
@@ -1917,7 +1890,7 @@
 				F293BB9C15EB831F00256477 /* AppDelegate.cpp in Sources */,
 				987185961AAFF1BC00533C3E /* PlayerSkillBehavior.cpp in Sources */,
 				986A555A1AA561730051B0B9 /* UILevelChooseLayer.cpp in Sources */,
-				E810E4F31A0784C100DA269F /* LuaFunc.cpp in Sources */,
+				9871DBF21ABADF68009B8EC9 /* WrathOfThunder.cpp in Sources */,
 				98A366CB1AA84E8400393B8E /* UIBattleMenuLayer.cpp in Sources */,
 				986A553E1AA559F70051B0B9 /* TargetNode.cpp in Sources */,
 				E822BAD41A14C8CC00C4C05E /* EditorPositionNode.cpp in Sources */,
@@ -1935,11 +1908,11 @@
 				98E3B65F1A73A77A00B5BEBB /* strtod.cc in Sources */,
 				988B52E21AA445EF00FB7B21 /* UIBattleLayer.cpp in Sources */,
 				986A55861AA57D950051B0B9 /* MoveBehavior.cpp in Sources */,
+				98742E661ABBD31B0087D13D /* BarrageOfArrow.cpp in Sources */,
 				98E3B6891A73A77A00B5BEBB /* wire_format_lite.cc in Sources */,
 				986A55671AA5640D0051B0B9 /* CommonUtils.cpp in Sources */,
 				E84197DB1A09226300F5DF36 /* inffast.c in Sources */,
 				986A557E1AA57D730051B0B9 /* SkillBehavior.cpp in Sources */,
-				98E3B5DA1A73938600B5BEBB /* NetworkAdapter.cpp in Sources */,
 				98E3B67D1A73A77A00B5BEBB /* structurally_valid.cc in Sources */,
 				E84197C91A09226300F5DF36 /* TmxMap.cpp in Sources */,
 				E84197C71A09226300F5DF36 /* TmxImageLayer.cpp in Sources */,
@@ -1947,7 +1920,6 @@
 				E87413541A0BD01D003EBD0B /* EditorHelper.cpp in Sources */,
 				E87739451A11D6D4007A8EC3 /* BEUI.cpp in Sources */,
 				98E3B6651A73A77A00B5BEBB /* zero_copy_stream_impl.cc in Sources */,
-				986A55561AA55E830051B0B9 /* UnitSkill.cpp in Sources */,
 				E84197D51A09226300F5DF36 /* deflate.c in Sources */,
 				E84197DC1A09226300F5DF36 /* inflate.c in Sources */,
 				9859D1DB1A7B4E8400FF6D82 /* Counter.cpp in Sources */,
@@ -1959,6 +1931,7 @@
 				986A55821AA57D850051B0B9 /* AttackBehavior.cpp in Sources */,
 				988B52A81AA42C7A00FB7B21 /* UnitNode.cpp in Sources */,
 				989143711A81D15E007A5D45 /* ReplayComparer.cpp in Sources */,
+				9871DBF61ABADF7F009B8EC9 /* LightningChain.cpp in Sources */,
 				E84197D21A09226300F5DF36 /* adler32.c in Sources */,
 				E84197CB1A09226300F5DF36 /* TmxObjectGroup.cpp in Sources */,
 				98EBBEFB1AAC3CF400ADB84A /* UnitNodeComponent.cpp in Sources */,
@@ -1982,14 +1955,13 @@
 				986A55751AA565A60051B0B9 /* PlayerInfo.cpp in Sources */,
 				98E3B6591A73A77A00B5BEBB /* coded_stream.cc in Sources */,
 				E87412CA1A0B1F80003EBD0B /* NavMesh.cpp in Sources */,
+				9871DBFA1ABAE1F5009B8EC9 /* SkillNodeFactory.cpp in Sources */,
 				98E3B6471A73A77A00B5BEBB /* descriptor.cc in Sources */,
 				98E3B6691A73A77A00B5BEBB /* message.cc in Sources */,
 				E84197CE1A09226300F5DF36 /* TmxPropertySet.cpp in Sources */,
-				98BF19C91AB5C455000E2942 /* lua_boids_manual.cpp in Sources */,
 				E8EC9E071A00EF1000365A55 /* ArmatureManager.cpp in Sources */,
 				98E3B66D1A73A77A00B5BEBB /* reflection_ops.cc in Sources */,
 				E84197C31A09226300F5DF36 /* tinyxmlerror.cpp in Sources */,
-				E893DB3E1A1B1D2C00B74590 /* LuaPlatform.cpp in Sources */,
 				E84197E91A09228000F5DF36 /* Terrain.cpp in Sources */,
 				E84197CA1A09226300F5DF36 /* TmxObject.cpp in Sources */,
 				98E3B65B1A73A77A00B5BEBB /* gzip_stream.cc in Sources */,
@@ -2000,11 +1972,13 @@
 				98E3B6511A73A77A00B5BEBB /* extension_set.cc in Sources */,
 				E84197D61A09226300F5DF36 /* gzclose.c in Sources */,
 				98EBBF041AAC865C00ADB84A /* EventAction.cpp in Sources */,
+				9871DBEE1ABADCEF009B8EC9 /* SkillNode.cpp in Sources */,
 				98EBBF081AAC866A00ADB84A /* EventTrigger.cpp in Sources */,
 				98EBBEF51AABF73B00ADB84A /* UIBattleFloatLayer.cpp in Sources */,
 				988B52F01AA44ABD00FB7B21 /* ResourceManager.cpp in Sources */,
 				E80750191A1369D500AD920F /* BoidsPolygonEx.cpp in Sources */,
 				98E3B64D1A73A77A00B5BEBB /* descriptor_database.cc in Sources */,
+				98E67E201ABFB01C00076CE1 /* GameTask.cpp in Sources */,
 				E89FE29F1A2708670099E36A /* BETypes.cpp in Sources */,
 				E84197C41A09226300F5DF36 /* tinyxmlparser.cpp in Sources */,
 				987185921AAFF19D00533C3E /* PlayerAttackBehavior.cpp in Sources */,
@@ -2014,7 +1988,6 @@
 				E84197DE1A09226300F5DF36 /* trees.c in Sources */,
 				E84197DA1A09226300F5DF36 /* infback.c in Sources */,
 				E84197EC1A09E73200F5DF36 /* BoidsMath.cpp in Sources */,
-				98E3B5DB1A73938600B5BEBB /* UdpClient.cpp in Sources */,
 				E84197D91A09226300F5DF36 /* gzwrite.c in Sources */,
 				E84197D01A09226300F5DF36 /* TmxTileset.cpp in Sources */,
 				E84197DD1A09226300F5DF36 /* inftrees.c in Sources */,

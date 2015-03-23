@@ -12,6 +12,8 @@
 #include "../ArmatureManager.h"
 #include "cocostudio/CocoStudio.h"
 #include "../data/PlayerInfo.h"
+#include "external/json/document.h"
+#include "../util/CocosUtils.h"
 
 using namespace cocos2d;
 
@@ -41,23 +43,23 @@ void ResourceManager::destroy() {
 
 void ResourceManager::loadMap( MapData* map_data ) {
     map_data->loadImagesToCache();
-    const rapidjson::Document& map_json = map_data->getMapJson();
+    const ValueMap& meta_json = map_data->getMetaJson();
     
-    const rapidjson::Value& unit_names = map_json["units"];
+    const ValueVector& unit_names = meta_json.at( "units" ).asValueVector();
     this->loadUnitArmatures( unit_names );
     
-    const rapidjson::Value& player_unit_names = PlayerInfo::getInstance()->getPlayerUnitsInfo();
+    const ValueVector& player_unit_names = PlayerInfo::getInstance()->getPlayerUnitNames();
     this->loadUnitArmatures( player_unit_names );
 }
 
 void ResourceManager::purgeMap( MapData* map_data ) {
     map_data->removeImagesFromCache();
-    const rapidjson::Document& map_json = map_data->getMapJson();
+    const ValueMap& meta_json = map_data->getMetaJson();
     
-    const rapidjson::Value& unit_names = map_json["units"];
+    const ValueVector& unit_names = meta_json.at( "units" ).asValueVector();
     this->purgeUnitArmatures( unit_names );
     
-    const rapidjson::Value& player_unit_names = PlayerInfo::getInstance()->getPlayerUnitsInfo();
+    const ValueVector& player_unit_names = PlayerInfo::getInstance()->getPlayerUnitNames();
     this->purgeUnitArmatures( player_unit_names );
 }
 
@@ -69,6 +71,7 @@ void ResourceManager::loadAllData() {
     this->loadBuildingData();
     this->loadBattleUIData();
     this->loadLevelData();
+    this->loadSkillData();
 }
 
 void ResourceManager::loadDefaultData() {
@@ -88,27 +91,44 @@ void ResourceManager::loadDefaultData() {
 
 void ResourceManager::loadUnitData() {
     std::string data_string = FileUtils::getInstance()->getStringFromFile( "unit.json" );
-    _unit_config.Parse<0>( data_string.c_str() );
+    rapidjson::Document unit_config_json;
+    unit_config_json.Parse<0>( data_string.c_str() );
+    _unit_config = CocosUtils::jsonObjectToValueMap( unit_config_json );
 }
 
 void ResourceManager::loadBulletData() {
     std::string data_string = FileUtils::getInstance()->getStringFromFile( "bullet.json" );
-    _bullet_config.Parse<0>( data_string.c_str() );
+    rapidjson::Document bullet_config_json;
+    bullet_config_json.Parse<0>( data_string.c_str() );
+    _bullet_config = CocosUtils::jsonObjectToValueMap( bullet_config_json );
 }
 
 void ResourceManager::loadCenterData() {
     std::string data_string = FileUtils::getInstance()->getStringFromFile( "vision_center.json" );
-    _vision_config.Parse<0>( data_string.c_str() );
+    rapidjson::Document vision_config_json;
+    vision_config_json.Parse<0>( data_string.c_str() );
+    _vision_config = CocosUtils::jsonObjectToValueMap( vision_config_json );
 }
 
 void ResourceManager::loadBuildingData() {
     std::string data_string = FileUtils::getInstance()->getStringFromFile( "building.json" );
-    _building_config.Parse<0>( data_string.c_str() );
+    rapidjson::Document building_config_json;
+    building_config_json.Parse<0>( data_string.c_str() );
+    _building_config = CocosUtils::jsonObjectToValueMap( building_config_json );
 }
 
 void ResourceManager::loadBattleUIData() {
     std::string data_string = FileUtils::getInstance()->getStringFromFile( "item.json" );
-    _battle_ui_config.Parse<0>( data_string.c_str() );
+    rapidjson::Document battle_ui_config_json;
+    battle_ui_config_json.Parse<0>( data_string.c_str() );
+    _battle_ui_config = CocosUtils::jsonObjectToValueMap( battle_ui_config_json );
+}
+
+void ResourceManager::loadSkillData() {
+    std::string data_string = FileUtils::getInstance()->getStringFromFile( "skill_conf.json" );
+    rapidjson::Document skill_config_json;
+    skill_config_json.Parse<0>( data_string.c_str() );
+    _skill_config = CocosUtils::jsonObjectToValueMap( skill_config_json );
 }
 
 void ResourceManager::loadUnitEffects() {
@@ -119,7 +139,9 @@ void ResourceManager::loadUnitEffects() {
 
 void ResourceManager::loadLevelData() {
     std::string data_string = FileUtils::getInstance()->getStringFromFile( "level.json" );
-    _level_config.Parse<0>( data_string.c_str() );
+    rapidjson::Document level_config_json;
+    level_config_json.Parse<0>( data_string.c_str() );
+    _level_config = CocosUtils::jsonObjectToValueMap( level_config_json );
 }
 
 void ResourceManager::loadBulletArmature( const std::string& name, const std::string& type ) {
@@ -144,19 +166,23 @@ void ResourceManager::purgeBulletArmature( const std::string& name, const std::s
     }
 }
 
-const rapidjson::Value& ResourceManager::getUnitData( const std::string& name ) {
-    return _unit_config[name.c_str()];
+const cocos2d::ValueMap& ResourceManager::getUnitData( const std::string& name ) {
+    return _unit_config.at( name ).asValueMap();
 }
 
-const rapidjson::Value& ResourceManager::getBulletData( const std::string& name ) {
-    return _bullet_config[name.c_str()];
+const cocos2d::ValueMap& ResourceManager::getBulletData( const std::string& name ) {
+    return _bullet_config.at( name ).asValueMap();
 }
 
-void ResourceManager::loadUnitArmatures( const rapidjson::Value& armature_names ) {
-    for( rapidjson::Value::ConstMemberIterator itr = armature_names.MemberonBegin(); itr != armature_names.MemberonEnd(); ++itr ) {
-        std::string unit_name = std::string( itr->value.GetString(), itr->value.GetStringLength() );
-        const rapidjson::Value& unit_config = this->getUnitData( unit_name );
-        bool is_double_face = unit_config["double_face"].GetBool();
+const ValueMap& ResourceManager::getSkillData( const std::string& name ) {
+    return _skill_config.at( name ).asValueMap();
+}
+
+void ResourceManager::loadUnitArmatures( const cocos2d::ValueVector& armature_names ) {
+    for( auto itr = armature_names.begin(); itr != armature_names.end(); ++itr ) {
+        std::string unit_name = itr->asString();
+        const ValueMap& unit_config = this->getUnitData( unit_name );
+        bool is_double_face = unit_config.at( "double_face" ).asBool();
         if( is_double_face ) {
             std::string path = Utils::stringFormat( "characters/%s", unit_name.c_str() );
             ArmatureManager::getInstance()->loadArmatureData( path );
@@ -167,25 +193,29 @@ void ResourceManager::loadUnitArmatures( const rapidjson::Value& armature_names 
             std::string back_path = Utils::stringFormat( "chacaters/%s/%s_b", unit_name.c_str() );
             ArmatureManager::getInstance()->loadArmatureData( back_path );
         }
-        bool is_melee = unit_config["is_melee"].GetBool();
+        bool is_melee = unit_config.at( "is_melee" ).asBool();
         if( !is_melee ) {
-            if( unit_config.HasMember( "bullet_name" ) ) {
-                std::string bullet_name = std::string( unit_config["bullet_name"].GetString(), unit_config["bullet_name"].GetStringLength() );
+            auto itr = unit_config.find( "bullet_name" );
+            if( itr != unit_config.end() ) {
+                std::string bullet_name = itr->second.asString();
                 if( bullet_name != "" ) {
-                    const rapidjson::Value& single_bullet_config = this->getBulletData( bullet_name );
-                    if( single_bullet_config.HasMember( "body_type" ) ) {
-                        std::string resource_name = Utils::stringFormat( "%s_body", single_bullet_config["name"].GetString() );
-                        std::string type = std::string( single_bullet_config["body_type"].GetString() );
+                    const cocos2d::ValueMap& single_bullet_config = this->getBulletData( bullet_name );
+                    itr = single_bullet_config.find( "body_type" );
+                    if( itr != single_bullet_config.end() ) {
+                        std::string resource_name = single_bullet_config.at( "name" ).asString() + "_body";
+                        std::string type = single_bullet_config.at( "body_type" ).asString();
                         this->loadBulletArmature( resource_name, type );
                     }
-                    if( single_bullet_config.HasMember( "start_type" ) ) {
-                        std::string resource_name = Utils::stringFormat( "%s_start", single_bullet_config["name"].GetString() );
-                        std::string type = std::string( single_bullet_config["start_type"].GetString() );
+                    itr = single_bullet_config.find( "start_type" );
+                    if( itr != single_bullet_config.end() ) {
+                        std::string resource_name = single_bullet_config.at( "name" ).asString() + "_start";
+                        std::string type = itr->second.asString();
                         this->loadBulletArmature( resource_name, type );
                     }
-                    if( single_bullet_config.HasMember( "hit_type" ) ) {
-                        std::string resource_name = Utils::stringFormat( "%s_hit", single_bullet_config["hit_name"].GetString() );
-                        std::string type = std::string( single_bullet_config["hit_type"].GetString() );
+                    itr = single_bullet_config.find( "hit_type" );
+                    if( itr != single_bullet_config.end() ) {
+                        std::string resource_name = single_bullet_config.at( "hit_name" ).asString() + "_hit";
+                        std::string type = single_bullet_config.at( "hit_type" ).asString();
                         this->loadBulletArmature( resource_name, type );
                     }
                 }
@@ -194,43 +224,45 @@ void ResourceManager::loadUnitArmatures( const rapidjson::Value& armature_names 
     }
 }
 
-void ResourceManager::purgeUnitArmatures( const rapidjson::Value& armature_names ) {
-    for( rapidjson::Value::ConstMemberIterator itr = armature_names.MemberonBegin(); itr != armature_names.MemberonEnd(); ++itr ) {
-        for( rapidjson::Value::ConstMemberIterator itr = armature_names.MemberonBegin(); itr != armature_names.MemberonEnd(); ++itr ) {
-            std::string unit_name = std::string( itr->value.GetString(), itr->value.GetStringLength() );
-            const rapidjson::Value& unit_config = this->getUnitData( unit_name );
-            bool is_double_face = unit_config["double_face"].GetBool();
-            if( is_double_face ) {
-                std::string path = Utils::stringFormat( "characters/%s", unit_name.c_str() );
-                ArmatureManager::getInstance()->unloadArmatureData( path );
-            }
-            else {
-                std::string front_path = Utils::stringFormat( "characters/%s/%s_f", unit_name.c_str() );
-                ArmatureManager::getInstance()->unloadArmatureData( front_path );
-                std::string back_path = Utils::stringFormat( "chacaters/%s/%s_b", unit_name.c_str() );
-                ArmatureManager::getInstance()->unloadArmatureData( back_path );
-            }
-            bool is_melee = unit_config["is_melee"].GetBool();
-            if( !is_melee ) {
-                if( unit_config.HasMember( "bullet_name" ) ) {
-                    std::string bullet_name = std::string( unit_config["bullet_name"].GetString(), unit_config["bullet_name"].GetStringLength() );
-                    if( bullet_name != "" ) {
-                        const rapidjson::Value& single_bullet_config = this->getBulletData( bullet_name );
-                        if( single_bullet_config.HasMember( "body_type" ) ) {
-                            std::string resource_name = Utils::stringFormat( "%s_body", single_bullet_config["name"].GetString() );
-                            std::string type = std::string( single_bullet_config["body_type"].GetString() );
-                            this->purgeBulletArmature( resource_name, type );
-                        }
-                        if( single_bullet_config.HasMember( "start_type" ) ) {
-                            std::string resource_name = Utils::stringFormat( "%s_start", single_bullet_config["name"].GetString() );
-                            std::string type = std::string( single_bullet_config["start_type"].GetString() );
-                            this->purgeBulletArmature( resource_name, type );
-                        }
-                        if( single_bullet_config.HasMember( "hit_type" ) ) {
-                            std::string resource_name = Utils::stringFormat( "%s_hit", single_bullet_config["hit_name"].GetString() );
-                            std::string type = std::string( single_bullet_config["hit_type"].GetString() );
-                            this->purgeBulletArmature( resource_name, type );
-                        }
+void ResourceManager::purgeUnitArmatures( const cocos2d::ValueVector& armature_names ) {
+    for( auto itr = armature_names.begin(); itr != armature_names.end(); ++itr ) {
+        std::string unit_name = itr->asString();
+        const ValueMap& unit_config = this->getUnitData( unit_name );
+        bool is_double_face = unit_config.at( "double_face" ).asBool();
+        if( is_double_face ) {
+            std::string path = Utils::stringFormat( "characters/%s", unit_name.c_str() );
+            ArmatureManager::getInstance()->unloadArmatureData( path );
+        }
+        else {
+            std::string front_path = Utils::stringFormat( "characters/%s/%s_f", unit_name.c_str() );
+            ArmatureManager::getInstance()->unloadArmatureData( front_path );
+            std::string back_path = Utils::stringFormat( "chacaters/%s/%s_b", unit_name.c_str() );
+            ArmatureManager::getInstance()->unloadArmatureData( back_path );
+        }
+        bool is_melee = unit_config.at( "is_melee" ).asBool();
+        if( !is_melee ) {
+            auto itr = unit_config.find( "bullet_name" );
+            if( itr != unit_config.end() ) {
+                std::string bullet_name = itr->second.asString();
+                if( bullet_name != "" ) {
+                    const ValueMap& single_bullet_config = this->getBulletData( bullet_name );
+                    itr = single_bullet_config.find( "body_type" );
+                    if( itr != single_bullet_config.end() ) {
+                        std::string resource_name = single_bullet_config.at( "name" ).asString() + "_body";
+                        std::string type = itr->second.asString();
+                        this->purgeBulletArmature( resource_name, type );
+                    }
+                    itr = single_bullet_config.find( "start_type" );
+                    if( itr != single_bullet_config.end() ) {
+                        std::string resource_name = single_bullet_config.at( "name" ).asString() + "_start";
+                        std::string type = itr->second.asString();
+                        this->purgeBulletArmature( resource_name, type );
+                    }
+                    itr = single_bullet_config.find( "hit_type" );
+                    if( itr != single_bullet_config.end() ) {
+                        std::string resource_name = single_bullet_config.at( "hit_name" ).asString() + "_hit";
+                        std::string type = itr->second.asString();
+                        this->purgeBulletArmature( resource_name, type );
                     }
                 }
             }

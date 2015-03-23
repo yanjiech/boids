@@ -21,8 +21,8 @@
 
 #define DEFAULT_SHADOW_RADIUS 30.0
 #define DEFAULT_HESITATE_FRAMES 5
-#define DEFAULT_CATCH_UP_STOP_DISTANCE 180.0
-#define DEFAULT_CATCH_UP_START_DISTANCE 300.0
+#define DEFAULT_CATCH_UP_STOP_DISTANCE 150.0
+#define DEFAULT_CATCH_UP_START_DISTANCE 250.0
 #define DEFAULT_WANDER_RADIUS 200.0
 
 #define DEFAULT_HP_BAR_WIDTH 100.0
@@ -54,48 +54,48 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
     this->name = data.at( "name" ).asString();
     this->level = data.at( "level" ).asInt();
     
-    const rapidjson::Value& unit_config = ResourceManager::getInstance()->getUnitData( name );
+    const ValueMap& unit_config = ResourceManager::getInstance()->getUnitData( name );
     
-    this->unit_id = unit_config["id"].GetInt();
-    this->display_name = std::string( unit_config["displayname"].GetString(), unit_config["displayname"].GetStringLength() );
-    this->hp = (float)unit_config["hp"].GetDouble() + this->level * (float)unit_config["hpgr"].GetDouble();
+    this->unit_id = unit_config.at( "id" ).asInt();
+    this->display_name = unit_config.at( "displayname" ).asString();
+    this->hp = unit_config.at( "hp" ).asFloat() + this->level * (float)unit_config.at( "hpgr" ).asFloat();
     this->current_hp = this->hp;
-    this->atk = (float)unit_config["atk"].GetDouble() + this->level * (float)unit_config["atkgr"].GetDouble();
-    this->def = (float)unit_config["def"].GetDouble() + this->level * (float)unit_config["defgr"].GetDouble();
-    this->move_speed = (float)unit_config["movespeed"].GetDouble();
-    this->atk_speed = (float)unit_config["attackspeed"].GetDouble();
-    this->collide = (float)unit_config["collide"].GetDouble();
-    this->critical = (float)unit_config["cri"].GetDouble() + this->level * (float)unit_config["crigr"].GetDouble();
-    this->tenacity = (float)unit_config["ten"].GetDouble() + this->level * (float)unit_config["tengr"].GetDouble();
-    this->hit = (float)unit_config["hit"].GetDouble() + this->level * (float)unit_config["hitgr"].GetDouble();
-    this->dodge = (float)unit_config["dodge"].GetDouble() + this->level * (float)unit_config["dodge"].GetDouble();
+    this->atk = unit_config.at( "atk" ).asFloat() + this->level * unit_config.at( "atkgr" ).asFloat();
+    this->def = unit_config.at( "def" ).asFloat() + this->level * unit_config.at( "defgr" ).asFloat();
+    this->move_speed = unit_config.at( "movespeed" ).asFloat();
+    this->atk_speed = unit_config.at( "attackspeed" ).asFloat();
+    this->collide = unit_config.at( "collide" ).asFloat();
+    this->critical = unit_config.at( "cri" ).asFloat() + this->level * unit_config.at( "crigr" ).asFloat();
+    this->tenacity = unit_config.at( "ten" ).asFloat() + this->level * unit_config.at( "tengr" ).asFloat();
+    this->hit = unit_config.at( "hit" ).asFloat() + this->level * unit_config.at( "hitgr" ).asFloat();
+    this->dodge = unit_config.at( "dodge" ).asFloat() + this->level * unit_config.at( "dodge" ).asFloat();
     
-    this->guard_radius = (float)unit_config["guard_radius"].GetDouble();
-    this->atk_range = (float)unit_config["range"].GetDouble();
+    this->guard_radius = unit_config.at( "guard_radius" ).asFloat();
+    this->atk_range = unit_config.at( "range" ).asFloat();
     
-    this->recover = (float)unit_config["rec"].GetDouble() + this->level * (float)unit_config["recgr"].GetDouble();
-    this->scale = (float)unit_config["scale"].GetDouble();
+    this->recover = unit_config.at( "rec" ).asFloat() + this->level * unit_config.at( "recgr" ).asFloat();
+    this->scale = unit_config.at( "scale" ).asFloat();
     
-    this->role = std::string( unit_config["position"].GetString(), unit_config["position"].GetStringLength() );
+    this->role = unit_config.at( "position" ).asString();
+                                
+    this->is_melee = unit_config.at( "is_melee" ).asBool();
+    this->is_double_face = unit_config.at( "double_face" ).asBool();
+    this->default_face_dir = unit_config.at( "faceleft" ).asInt();
     
-    this->is_melee = unit_config["is_melee"].GetBool();
-    this->is_double_face = unit_config["double_face"].GetBool();
-    this->default_face_dir = unit_config["faceleft"].GetInt();
-    
-    if( unit_config.HasMember( "bullet_name" ) ) {
-        this->bullet_name = std::string( unit_config["bullet_name"].GetString(), unit_config["bullet_name"].GetStringLength() );
+    auto itr = unit_config.find( "bullet_name" );
+    if( itr != unit_config.end() ) {
+        this->bullet_name = itr->second.asString();
     }
     else {
         this->bullet_name = "";
     }
     
-    for( rapidjson::Value::ConstValueIterator itr = unit_config["skills"].onBegin(); itr != unit_config["skills"].onEnd(); ++itr ) {
-        std::string skl_name = std::string( itr->GetString(), itr->GetStringLength() );
+    const ValueVector& skill_vector = unit_config.at( "skills" ).asValueVector();
+    for( auto itr = skill_vector.begin(); itr != skill_vector.end(); ++itr ) {
+        std::string skl_name = itr->asString();
         skill_names.push_back( skl_name );
     }
     
-    //todo
-//    cocos2d::Vector<Skill*> skills;
     return true;
 }
 
@@ -234,6 +234,16 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         this->setMovable( true );
     }
     
+    itr = unit_data.find( "skills" );
+    if( itr != unit_data.end() ) {
+        const cocos2d::ValueVector& skill_vector = itr->second.asValueVector();
+        for( auto sk_itr = skill_vector.begin(); sk_itr != skill_vector.end(); ++sk_itr ) {
+            const cocos2d::ValueMap& sk_data = sk_itr->asValueMap();
+            Skill* skill = Skill::create( this, sk_data );
+            _skills.pushBack( skill );
+        }
+    }
+    
     if( _unit_data->is_double_face ) {
         std::string resource = res_manager->getPathForResource( _unit_data->name, eResourceType::Character_Double_Face );
         _front = ArmatureManager::getInstance()->createArmature( resource );
@@ -249,7 +259,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     if( _front ) {
         _front->setScale( _unit_data->scale );
         _front->setStartListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationStart, this ) );
-        _front->setEndListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationEnded, this ) );
+        _front->setCompleteListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationCompleted, this ) );
         _front->setEventListener( CC_CALLBACK_2( UnitNode::onSkeletonAnimationEvent, this ) );
         this->addChild( _front, eComponentLayer::Object );
     }
@@ -257,7 +267,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     if( _back ) {
         _back->setScale( _unit_data->scale );
         _back->setStartListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationStart, this ) );
-        _back->setEndListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationEnded, this ) );
+        _back->setCompleteListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationCompleted, this ) );
         _back->setEventListener( CC_CALLBACK_2( UnitNode::onSkeletonAnimationEvent, this ) );
         this->addChild( _back, eComponentLayer::Object );
     }
@@ -274,8 +284,10 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     this->setShouldCatchUp( false );
     this->setConcentrateOnWalk( false );
     
+    _face = eUnitFace::Back;
     this->setCurrentSkeleton( _front );
     this->changeFace( eUnitFace::Front );
+    this->setNextUnitState( eUnitState::Unknown_Unit_State );
     this->changeUnitState( eUnitState::Idle );
     
     this->setWanderRadius( DEFAULT_WANDER_RADIUS );
@@ -311,7 +323,7 @@ void UnitNode::updateFrame( float delta ) {
         ++_same_dir_frame_count;
         this->applyUnitState();
         
-        if( _state != eUnitState::Dying && _state != eUnitState::Dead && _state != eUnitState::Disappear ) {
+        if( !this->isDying() ) {
             //skill
             auto itr = _behaviors.find( BEHAVIOR_NAME_SKILL );
             if( itr != _behaviors.end() ) {
@@ -343,6 +355,7 @@ void UnitNode::updateFrame( float delta ) {
         }
     }while( false );
     
+    this->updateSkills( delta );
     this->updateComponents( delta );
 }
 
@@ -361,13 +374,34 @@ void UnitNode::onSkeletonAnimationStart( int track_index ) {
 }
 
 void UnitNode::onSkeletonAnimationEnded( int track_index ) {
+}
+
+void UnitNode::onSkeletonAnimationCompleted( int track_index ) {
     spTrackEntry* entry = this->getCurrentSkeleton()->getCurrent();
     std::string animation_name = std::string( entry->animation->name );
-    if( animation_name == "Attack" || animation_name == "Cast_2" || animation_name == "Cast2_2" ) {
+    if( animation_name == "Attack" ) {
+        this->changeUnitState( eUnitState::Idle );
+    }
+    else if( animation_name == "Cast_2" || animation_name == "Cast2_2" ) {
+        this->endSkill();
         this->changeUnitState( eUnitState::Idle );
     }
     else if( animation_name == "Cast" || animation_name == "Cast2" ) {
-        this->changeUnitState( eUnitState::Idle );
+        if( _using_skill_params["multi_action"].asBool() ) {
+            _unit_state_changed = true;
+            this->setNextUnitState( eUnitState::Casting );
+            _using_skill_params["state"] = Value( "continue" );
+        }
+        else {
+            this->endSkill();
+            this->changeUnitState( eUnitState::Idle );
+        }
+    }
+    else if( animation_name == "Cast_1" || animation_name == "Cast2_1" ) {
+        if( _using_skill_params["state"].asString() == "end" ) {
+            _unit_state_changed = true;
+            this->setNextUnitState( eUnitState::Casting );
+        }
     }
     else if( animation_name == "Die" ) {
         this->changeUnitState( eUnitState::Disappear );
@@ -378,14 +412,14 @@ void UnitNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
     spTrackEntry* entry = this->getCurrentSkeleton()->getCurrent();
     std::string animation_name = std::string( entry->animation->name );
     std::string event_name = std::string( event->data->name );
-    if( ( animation_name == "Cast" || animation_name == "Cast2") && event_name == "OnCasting" ) {
-        
+    if( ( animation_name == "Cast" || animation_name == "Cast2" ) && event_name == "OnCasting" ) {
+        this->onCasting();
     }
     else if( animation_name == "Attack" && event_name == "OnAttacking" ) {
         this->onAttacking();
     }
     else if( animation_name == "Attack" && event_name == "OnAttackBegan" ) {
-        
+        this->onAttackBegan();
     }
     else if( animation_name == "Cast" && event_name == "OnJuneng" ) {
         
@@ -395,12 +429,12 @@ void UnitNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
     }
 }
 
-void UnitNode::changeUnitState( eUnitState new_state ) {
-    if( _state != new_state ) {
-        if( _state >= eUnitState::Dying && new_state < _state ) {
-            return;
-        }
-        _state = new_state;
+void UnitNode::changeUnitState( eUnitState new_state, bool force ) {
+    if( _state >= eUnitState::Dying && new_state < _state ) {
+        return;
+    }
+    if( force || ( ( _next_state == eUnitState::Unknown_Unit_State && new_state != _state ) || new_state >= eUnitState::Dying ) ) {
+        _next_state = new_state;
         _unit_state_changed = true;
     }
 }
@@ -408,7 +442,41 @@ void UnitNode::changeUnitState( eUnitState new_state ) {
 void UnitNode::applyUnitState() {
     if( _unit_state_changed ) {
         _unit_state_changed = false;
+        _state = _next_state;
+        _next_state = eUnitState::Unknown_Unit_State;
         switch( _state ) {
+            case eUnitState::Casting:
+            {
+                std::string state = _using_skill_params["state"].asString();
+                int sk_id = _using_skill_params.at( "skill_id" ).asInt();
+                if( state == "start" ) {
+                    if( sk_id == 0 ) {
+                        _current_skeleton->setAnimation( 0, "Cast", false );
+                    }
+                    else if( sk_id == 1 ) {
+                        if( _current_skeleton->setAnimation( 0, "Cast2", false ) == nullptr ) {
+                            _current_skeleton->setAnimation( 0, "Cast", false );
+                        }
+                    }
+                }
+                else if( state == "end" ) {
+                    if( sk_id == 0 ) {
+                        _current_skeleton->setAnimation( 0, "Cast_2", false );
+                    }
+                    else if( sk_id == 1 ) {
+                        _current_skeleton->setAnimation( 0, "Cast2_2", false );
+                    }
+                }
+                else if( _using_skill_params["multi_action"].asBool() ) {
+                    if( sk_id == 0 ) {
+                        _current_skeleton->setAnimation( 0, "Cast_1", true );
+                    }
+                    else if( sk_id == 1 ) {
+                        _current_skeleton->setAnimation( 0, "Cast2_1", true );
+                    }
+                }
+            }
+                break;
             case eUnitState::Walking:
                 _current_skeleton->setAnimation( 0, "Walk", true );
                 break;
@@ -463,22 +531,23 @@ void UnitNode::changeUnitDirection( const cocos2d::Point& new_dir ) {
 
 void UnitNode::changeFace( eUnitFace face ) {
     if( !_unit_data->is_double_face ) {
-        if( face == eUnitFace::Front ) {
-            _front->setVisible( true );
-            _back->setVisible( false );
-            this->setCurrentSkeleton( _front );
+        if( _face != face ) {
+            if( face == eUnitFace::Front ) {
+                _front->setVisible( true );
+                _back->setVisible( false );
+                _back->clearTrack();
+                this->setCurrentSkeleton( _front );
+            }
+            else {
+                _front->setVisible( false );
+                _back->setVisible( true );
+                _front->clearTrack();
+                this->setCurrentSkeleton( _back );
+            }
+            _face = face;
+            this->changeUnitState( _state, true );
+            _same_dir_frame_count = 0;
         }
-        else {
-            _front->setVisible( false );
-            _back->setVisible( true );
-            this->setCurrentSkeleton( _back );
-        }
-    }
-    if( _face != face ) {
-        _face = face;
-        _unit_state_changed = true;
-        _same_dir_frame_count = 0;
-        this->applyUnitState();
     }
 }
 
@@ -675,8 +744,35 @@ void UnitNode::removeAllBuffs() {
     
 }
 
-void UnitNode::useSkill( int skill_id, cocos2d::Point& dir, float range ) {
-    
+void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_per ) {
+    if( !this->isDying() && !this->isCasting() ) {
+        _using_skill_params["multi_action"] = Value( _skills.at( skill_id )->shouldContinue() );
+        _using_skill_params["skill_id"] = Value( skill_id );
+        _using_skill_params["dir_x"] = Value( dir.x );
+        _using_skill_params["dir_y"] = Value( dir.y );
+        _using_skill_params["range_per"] = Value( range_per );
+        _using_skill_params["state"] = Value( "start" );
+        if( dir.x != 0 || dir.y != 0 ) {
+            this->changeUnitDirection( dir );
+        }
+        this->changeUnitState( eUnitState::Casting, true );
+    }
+}
+
+void UnitNode::endSkill() {
+    if( this->isCasting() ) {
+        int sk_id = _using_skill_params.at( "skill_id" ).asInt();
+        _skills.at( sk_id )->reload();
+        _using_skill_params.clear();
+    }
+}
+
+void UnitNode::endCast() {
+    if( this->isCasting() ) {
+        _using_skill_params["state"] = Value( "end" );
+        _unit_state_changed = true;
+        this->setNextUnitState( eUnitState::Casting );
+    }
 }
 
 bool UnitNode::willCollide( cocos2d::Point pos, float radius ) {
@@ -811,7 +907,7 @@ bool UnitNode::isWalking() {
 }
 
 bool UnitNode::isDying() {
-    return _state == eUnitState::Dying;
+    return _state >= eUnitState::Dying;
 }
 
 bool UnitNode::isOscillate( const cocos2d::Point& new_dir ) {
@@ -850,7 +946,7 @@ bool UnitNode::isHarmless() {
 TargetNode* UnitNode::getAttackTarget() {
     TargetNode* ret = _chasing_target;
     float min_distance = ( _chasing_target == nullptr ) ? 10000.0f : _chasing_target->getPosition().distance( this->getPosition() );
-    std::list<UnitNode*> candidates = _battle_layer->getAliveOpponents( _camp );
+    cocos2d::Vector<UnitNode*> candidates = _battle_layer->getAliveOpponents( _camp );
     for( auto unit : candidates ) {
         if( unit->isAttackable() && this->isUnitInDirectView( unit ) ) {
             float distance = this->getPosition().distance( unit->getPosition() );
@@ -899,13 +995,13 @@ void UnitNode::onAttacking() {
         if( _unit_data->is_melee ) {
             UnitNode* target_unit = dynamic_cast<UnitNode*>( _chasing_target );
             if( target_unit ) {
-                DamageCalculate* damage_calculator = DamageCalculate::create( "normal" );
-                ValueMap result = damage_calculator->calculateDamage( 0, _unit_data, target_unit->getUnitData() );
+                DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
+                ValueMap result = damage_calculator->calculateDamage( _unit_data, target_unit->getUnitData() );
                 target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), _deploy_id );
             }
         }
         else {
-            DamageCalculate* damage_calculator = DamageCalculate::create( "normal" );
+            DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
             BulletNode* bullet = BulletNode::create( this, ResourceManager::getInstance()->getBulletData( _unit_data->bullet_name ), damage_calculator, nullptr );
             bullet->shootAt( this, _chasing_target );
         }
@@ -913,7 +1009,8 @@ void UnitNode::onAttacking() {
 }
 
 void UnitNode::onCasting() {
-    
+    int sk_id = _using_skill_params["skill_id"].asInt();
+    _skills.at( sk_id )->activate( _using_skill_params );
 }
 
 bool UnitNode::isUnitInDirectView( UnitNode* unit ) {
@@ -927,12 +1024,17 @@ bool UnitNode::isUnitInDirectView( UnitNode* unit ) {
 }
 
 void UnitNode::setUnitTags( const std::string& tag_string ) {
-    Utils::split( tag_string, _unit_tags, ',' );
+    _unit_tags.clear();
+    std::vector<std::string> tags;
+    Utils::split( tag_string, tags, ',' );
+    for( auto str : tags ) {
+        _unit_tags.push_back( Value( str ) );
+    }
 }
 
 bool UnitNode::hasUnitTag( const std::string& tag_name ) {
     for( auto itr = _unit_tags.begin(); itr != _unit_tags.end(); ++itr ) {
-        if( itr->compare( tag_name ) == 0 ) {
+        if( itr->asString() == tag_name ) {
             return true;
         }
     }
@@ -987,6 +1089,30 @@ void UnitNode::jumpNumber( float amount, const std::string& type, bool is_critic
     jump_text->start( is_critical );
 }
 
+std::string UnitNode::getSkillHintTypeById( int sk_id ) {
+    return _skills.at( sk_id )->getSkillHintType();
+}
+
+float UnitNode::getSkillRangeById( int sk_id ) {
+    return _skills.at( sk_id )->getSkillRange();
+}
+
+float UnitNode::getSkillMinRangeById( int sk_id ) {
+    return _skills.at( sk_id )->getSkillMinRange();
+}
+
+float UnitNode::getSkillMaxRangeById( int sk_id ) {
+    return _skills.at( sk_id )->getSkillMaxRange();
+}
+
+float UnitNode::getSkillCDById( int sk_id ) {
+    return _skills.at( sk_id )->getSkillCD();
+}
+
+bool UnitNode::isSkillReadyById( int sk_id ) {
+    return _skills.at( sk_id )->isSkillReady();
+}
+
 //private methods
 void UnitNode::updateComponents( float delta ) {
     cocos2d::Map<std::string, UnitNodeComponent*> components = _components;
@@ -998,5 +1124,11 @@ void UnitNode::updateComponents( float delta ) {
         else {
             comp->updateFrame( delta );
         }
+    }
+}
+
+void UnitNode::updateSkills( float delta ) {
+    for( auto skill : _skills ) {
+        skill->updateFrame( delta );
     }
 }

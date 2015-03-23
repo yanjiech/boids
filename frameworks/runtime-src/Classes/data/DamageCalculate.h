@@ -16,6 +16,7 @@ typedef std::function<float(float, class UnitData*, class UnitData*)> DamageCalc
 class DamageCalculate : public cocos2d::Ref {
 private:
     std::string _calculator_name;
+    float _base_damage;
     
     DamageCalculator _calculator;
     
@@ -23,10 +24,11 @@ public:
     DamageCalculate();
     virtual ~DamageCalculate();
     
-    static DamageCalculate* create( const std::string& calculator_name );
-    virtual bool init( const std::string& calculator_name );
+    static DamageCalculate* create( const std::string& calculator_name, float base_damage );
+    virtual bool init( const std::string& calculator_name, float base_damage );
     
-    cocos2d::ValueMap calculateDamage( float base_damage, class UnitData* atker_data, class UnitData* defer_data );
+    cocos2d::ValueMap calculateDamage( class UnitData* atker_data, class UnitData* defer_data );
+    cocos2d::ValueMap calculateDamageWithoutMiss( class UnitData* atker_data, class UnitData* defer_data );
     
     static float calculateDamage( const std::string calculator_name, float base_damage, class UnitData* atker_data, class UnitData* defer_data );
     

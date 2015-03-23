@@ -38,13 +38,13 @@ EditBox::EditBox(void)
 , _editBoxInputMode(EditBox::InputMode::SINGLE_LINE)
 , _editBoxInputFlag(EditBox::InputFlag::INTIAL_CAPS_ALL_CHARACTERS)
 , _keyboardReturnType(KeyboardReturnType::DEFAULT)
+, _backgroundSprite(nullptr)
 , _fontSize(-1)
 , _placeholderFontSize(-1)
 , _colText(Color3B::WHITE)
 , _colPlaceHolder(Color3B::GRAY)
 , _maxLength(0)
 , _adjustHeight(0.0f)
-, _backgroundSprite(nullptr)
 #if CC_ENABLE_SCRIPT_BINDING
 , _scriptEditBoxHandler(0)
 #endif
@@ -383,6 +383,11 @@ void EditBox::setAnchorPoint(const Vec2& anchorPoint)
     {
         _editBoxImpl->setAnchorPoint(anchorPoint);
     }
+}
+
+std::string EditBox::getDescription() const
+{
+    return "EditBox";
 }
 
 void EditBox::visit(Renderer *renderer, const Mat4 &parentTransform, uint32_t parentFlags)

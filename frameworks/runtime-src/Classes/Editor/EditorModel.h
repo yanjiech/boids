@@ -72,7 +72,8 @@ public:
     int Number;
     std::string Name;
     std::string Type;
-    EditorGameCondition(): Number(0), Name("") {}
+    std::string Desc;
+    EditorGameCondition(): Number(0), Name(""), Desc( "" ) {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
 };

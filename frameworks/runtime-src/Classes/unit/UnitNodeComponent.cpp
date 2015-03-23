@@ -7,6 +7,8 @@
 //
 
 #include "UnitNodeComponent.h"
+#include "UnitNode.h"
+#include "../data/DamageCalculate.h"
 
 using namespace cocos2d;
 
@@ -74,7 +76,7 @@ bool UnitNodeSpineComponent::init( spine::SkeletonAnimation* skeleton, const std
         return false;
     }
     
-    skeleton->setEndListener( CC_CALLBACK_1( UnitNodeSpineComponent::onSkeletonAnimationEnded, this ) );
+    skeleton->setCompleteListener( CC_CALLBACK_1( UnitNodeSpineComponent::onSkeletonAnimationCompleted, this ) );
     return true;
 }
 
@@ -86,10 +88,125 @@ bool UnitNodeSpineComponent::setAnimation( int track_index, const std::string& n
     return false;
 }
 
-void UnitNodeSpineComponent::onSkeletonAnimationEnded( int track_index ) {
+void UnitNodeSpineComponent::onSkeletonAnimationCompleted( int track_index ) {
     if( _auto_recycle ) {
         _should_recycle = true;
     }
+}
+
+UnitNodeDirectionalSpineComponent::UnitNodeDirectionalSpineComponent() {
+    
+}
+
+UnitNodeDirectionalSpineComponent::~UnitNodeDirectionalSpineComponent() {
+    
+}
+
+UnitNodeDirectionalSpineComponent* UnitNodeDirectionalSpineComponent::create( const cocos2d::Point& dir, float speed, float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    UnitNodeDirectionalSpineComponent* ret = new UnitNodeDirectionalSpineComponent();
+    if( ret && ret->init( dir, speed, duration, skeleton, name, auto_recycle ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitNodeDirectionalSpineComponent::init( const cocos2d::Point& dir, float speed, float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    if( !UnitNodeComponent::init( skeleton, name, auto_recycle ) ) {
+        return false;
+    }
+    
+    _dir = dir;
+    _dir.normalize();
+    _speed = speed;
+    _duration = duration;
+    _elapse = 0;
+    
+    return true;
+}
+
+void UnitNodeDirectionalSpineComponent::updateFrame( float delta ) {
+    _elapse += delta;
+    if( _elapse > _duration ) {
+        this->setShouldRecycle( true );
+    }
+    else {
+        this->setPosition( this->getPosition() + _dir * _speed * delta );
+    }
+}
+
+bool UnitNodeDirectionalSpineComponent::setAnimation( int track_index, const std::string& name, bool loop ) {
+    spine::SkeletonAnimation* skeleton = dynamic_cast<spine::SkeletonAnimation*>( _node );
+    if( skeleton ) {
+        return skeleton->setAnimation( track_index, name, loop ) != nullptr;
+    }
+    return false;
+}
+
+UnitNodeSpineDamageComponent::UnitNodeSpineDamageComponent() :
+_source_unit( nullptr ),
+_target_unit( nullptr ),
+_damage_calculator( nullptr )
+{
+    
+}
+
+UnitNodeSpineDamageComponent::~UnitNodeSpineDamageComponent() {
+    CC_SAFE_RELEASE( _source_unit );
+    CC_SAFE_RELEASE( _target_unit );
+    CC_SAFE_RELEASE( _damage_calculator );
+}
+
+UnitNodeSpineDamageComponent* UnitNodeSpineDamageComponent::create( UnitNode* source_unit, UnitNode* target_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle, DamageCalculate* calculator ) {
+    UnitNodeSpineDamageComponent* ret = new UnitNodeSpineDamageComponent();
+    if( ret && ret->init( source_unit, target_unit, skeleton, name, auto_recycle, calculator ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitNodeSpineDamageComponent::init( UnitNode* source_unit, UnitNode* target_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle, DamageCalculate* calculator ) {
+    if( !UnitNodeSpineComponent::init( skeleton, name, auto_recycle ) ) {
+        return false;
+    }
+    this->setSourceUnit( source_unit );
+    this->setTargetUnit( target_unit );
+    this->setDamageCalculator( calculator );
+    skeleton->setEventListener( CC_CALLBACK_2( UnitNodeSpineDamageComponent::onSkeletonAnimationEvent, this ) );
+    
+    return true;
+}
+
+void UnitNodeSpineDamageComponent::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
+    ValueMap result = _damage_calculator->calculateDamage( _source_unit->getUnitData(), _target_unit->getUnitData() );
+    if( !_target_unit->isDying() ) {
+        _target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), _target_unit->getDeployId() );
+    }
+}
+
+void UnitNodeSpineDamageComponent::setSourceUnit( UnitNode* source_unit ) {
+    CC_SAFE_RELEASE( _source_unit );
+    _source_unit = source_unit;
+    CC_SAFE_RETAIN( _source_unit );
+}
+
+void UnitNodeSpineDamageComponent::setTargetUnit( UnitNode* target_unit ) {
+    CC_SAFE_RELEASE( _target_unit );
+    _target_unit = target_unit;
+    CC_SAFE_RETAIN( _target_unit );
+}
+
+void UnitNodeSpineDamageComponent::setDamageCalculator( DamageCalculate* calculator ) {
+    CC_SAFE_RELEASE( _damage_calculator );
+    _damage_calculator = calculator;
+    CC_SAFE_RETAIN( _damage_calculator );
 }
 
 UnitNodeFadeoutComponent::UnitNodeFadeoutComponent() {

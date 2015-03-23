@@ -9,11 +9,11 @@
 #ifndef __Boids__PlayerInfo__
 #define __Boids__PlayerInfo__
 
-#include "external/json/document.h"
+#include "cocos2d.h"
 
 class PlayerInfo {
 private:
-    rapidjson::Document _player_info;
+    cocos2d::ValueMap _player_info;
     
 private:
     static PlayerInfo* _instance;
@@ -27,7 +27,9 @@ public:
     
     void loadPlayerInfo();
     
-    const rapidjson::Value& getPlayerUnitsInfo();
+    const cocos2d::ValueVector& getPlayerUnitsInfo();
+    
+    cocos2d::ValueVector getPlayerUnitNames();
 };
 
 #endif /* defined(__Boids__PlayerInfo__) */

@@ -65,7 +65,6 @@ enum {
 enum {
     TMXPropertyNone,
     TMXPropertyMap,
-    TMXPropertyTileset,
     TMXPropertyLayer,
     TMXPropertyObjectGroup,
     TMXPropertyObject,

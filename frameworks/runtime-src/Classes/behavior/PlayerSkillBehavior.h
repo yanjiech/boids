@@ -12,6 +12,9 @@
 #include "BehaviorBase.h"
 
 class PlayerSkillBehavior : public BehaviorBase {
+private:
+    float _elapse;
+    
 public:
     PlayerSkillBehavior( class UnitNode* unit_node );
     virtual ~PlayerSkillBehavior();

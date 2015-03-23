@@ -48,6 +48,8 @@ enum eUnitFace {
     Back = 2
 };
 
+class Path;
+
 class UnitData : public cocos2d::Ref {
 public:
     UnitData();
@@ -89,8 +91,6 @@ public:
     int default_face_dir;
     
     std::vector<std::string> skill_names;
-    
-    cocos2d::Vector<Skill*> skills;
 };
 
 class BattleLayer;
@@ -104,6 +104,7 @@ private:
     int _deploy_id;
     eUnitCamp _camp;
     eUnitState _state;
+    eUnitState _next_state;
     eUnitFace _face;
     std::string _sight_group;
     cocos2d::Point _born_position;
@@ -132,8 +133,6 @@ private:
     
     cocos2d::Map<std::string, Buff*> _buffs;
     
-    std::list<int> _skills_to_use;
-    
     int _priority;
     
     int _hesitate_frame;
@@ -142,11 +141,9 @@ private:
     
     bool _should_catch_up;
     
-    std::unique_ptr<class Path> _walk_path;
+    std::unique_ptr<Path> _walk_path;
     
     bool _is_concentrate_on_walk;
-    
-    std::vector<std::string> _unit_tags;
     
     bool _is_movable;
     
@@ -156,8 +153,16 @@ private:
     
     HpBar* _hp_bar;
     
+    cocos2d::Vector<Skill*> _skills;
+    
+    cocos2d::ValueMap _using_skill_params;
+    
+    cocos2d::ValueVector _unit_tags;
+    
 private:
     void updateComponents( float delta );
+    void updateSkills( float delta );
+    void checkToUseSkills();
     
 public:
     UnitNode();
@@ -172,6 +177,7 @@ public:
     
     void onSkeletonAnimationStart( int track_index );
     void onSkeletonAnimationEnded( int track_index );
+    void onSkeletonAnimationCompleted( int track_index );
     void onSkeletonAnimationEvent( int track_index, spEvent* event );
     
     BattleLayer* getBattleLayer() { return _battle_layer; }
@@ -184,6 +190,9 @@ public:
     
     eUnitState getUnitState() { return _state; }
     void setUnitState( eUnitState state ) { _state = state; }
+    
+    eUnitState getNextUnitState() { return _next_state; }
+    void setNextUnitState( eUnitState state ) { _next_state = state; }
     
     eUnitFace getUnitFace() { return _face; }
     void setUnitFace( eUnitFace face ) { _face = face; }
@@ -203,7 +212,7 @@ public:
     TargetNode* getChasingTarget() { return _chasing_target; }
     void setChasingTarget( TargetNode* target ) { _chasing_target = target; }
     
-    void changeUnitState( eUnitState new_state );
+    void changeUnitState( eUnitState new_state, bool force = false );
     void applyUnitState();
     
     void changeUnitDirection( const cocos2d::Point& new_dir );
@@ -248,7 +257,9 @@ public:
     bool hasBuff( const std::string& name );
     void removeAllBuffs();
     
-    void useSkill( int skill_id, cocos2d::Point& dir, float range );
+    void useSkill( int skill_id, const cocos2d::Point& dir, float range_per );
+    void endSkill();
+    void endCast();
     
     virtual bool willCollide( cocos2d::Point pos, float radius );
     
@@ -303,6 +314,8 @@ public:
     void setUnitTags( const std::string& tag_string );
     bool hasUnitTag( const std::string& tag_name );
     
+    cocos2d::ValueVector getUnitTags() { return _unit_tags; }
+    
     bool isMovable() { return _is_movable; }
     void setMovable( bool b ) { _is_movable = b; }
     
@@ -318,6 +331,15 @@ public:
     void setWalkPath( const Path& path );
     
     void jumpNumber( float amount, const std::string& type, bool is_critical, const std::string& name );
+    
+    const cocos2d::Vector<Skill*>& getSkills() { return _skills; }
+    
+    std::string getSkillHintTypeById( int sk_id );
+    float getSkillRangeById( int sk_id );
+    float getSkillMinRangeById( int sk_id );
+    float getSkillMaxRangeById( int sk_id );
+    float getSkillCDById( int sk_id );
+    bool isSkillReadyById( int sk_id );
 };
 
 #endif /* defined(__Boids__UnitNode__) */

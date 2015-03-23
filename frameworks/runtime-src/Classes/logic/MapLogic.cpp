@@ -12,27 +12,9 @@
 #include "../behavior/BehaviorHeader.h"
 #include "../util/CocosUtils.h"
 #include "../constant/BoidsConstant.h"
+#include "MapLogic.h"
 
 using namespace cocos2d;
-
-GameTask::GameTask( const std::string& name, const std::string& desc, const std::string& state ) {
-    this->task_name = name;
-    this->task_desc = desc;
-    this->task_state = state;
-}
-
-GameTask::GameTask( const GameTask& other ) {
-    this->task_name = other.task_name;
-    this->task_desc = other.task_desc;
-    this->task_state = other.task_state;
-}
-
-GameTask& GameTask::operator=( const GameTask& other ) {
-    this->task_name = other.task_name;
-    this->task_desc = other.task_desc;
-    this->task_state = other.task_state;
-    return *this;
-}
 
 MapLogic::MapLogic() {
     
@@ -56,25 +38,19 @@ MapLogic* MapLogic::retainedCreate( BattleLayer* battle_layer ) {
 bool MapLogic::init( BattleLayer* battle_layer ) {
     _battle_layer = battle_layer;
     
-    const rapidjson::Document& meta_json = _battle_layer->getMapData()->getMetaJson();
+    const ValueMap& meta_json = _battle_layer->getMapData()->getMetaJson();
     
-    const rapidjson::Value& task_json = meta_json["tasks"];
-    for( rapidjson::Value::ConstValueIterator itr = task_json.onBegin(); itr != task_json.onEnd(); ++itr ) {
-        const rapidjson::Value& t = *itr;
-        std::string name = std::string( t["name"].GetString(), t["name"].GetStringLength() );
-        std::string desc = std::string( t["desc"].GetString(), t["desc"].GetStringLength() );
-        GameTask gt = GameTask( name, desc, GAME_TASK_STATE_UNSTARTED );
-        _game_tasks.insert( std::make_pair( name, gt ) );
+    const ValueVector& task_json = meta_json.at( "conditions" ).asValueVector();
+    for( auto itr = task_json.begin(); itr != task_json.end(); ++itr ) {
+        const ValueMap& t = itr->asValueMap();
+        GameTask* gt = GameTask::create( t, this );
+        _game_tasks.pushBack( gt );
     }
     
-    const rapidjson::Value& events_json = meta_json["events"];
-    for( rapidjson::Value::ConstValueIterator itr = events_json.onBegin(); itr != events_json.onEnd(); ++itr ) {
-        EventTrigger* trigger = EventTrigger::create( *itr );
+    const ValueVector& events_json = meta_json.at( "events" ).asValueVector();
+    for( auto itr = events_json.begin(); itr != events_json.end(); ++itr ) {
+        EventTrigger* trigger = EventTrigger::create( itr->asValueMap() );
         _triggers.pushBack( trigger );
-    }
-    
-    if( meta_json.HasMember( "conditions" ) ) {
-        _conditions = CocosUtils::jsonArrayToValueVector( meta_json["conditions"] );
     }
     
     this->deployPlayerUnits();
@@ -84,24 +60,27 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
 
 void MapLogic::updateFrame( float delta ) {
     this->updateEventActions( delta );
+    this->checkGameState( delta );
+}
+
+void MapLogic::gameEndWithResult( const cocos2d::ValueMap& result ) {
+    
 }
 
 void MapLogic::deployPlayerUnits() {
-    const rapidjson::Value& region = _battle_layer->getMapData()->getAreaByName( "player_start" );
+    ValueMap region = _battle_layer->getMapData()->getAreaMapByName( "player_start" );
+    const ValueMap& rect_data = region.at( "rect" ).asValueMap();
     
-    float x = region["rect"]["x"].GetDouble();
-    float y = region["rect"]["y"].GetDouble();
-    float width = region["rect"]["width"].GetDouble();
-    float height = region["rect"]["height"].GetDouble();
+    float x = rect_data.at( "x" ).asFloat();
+    float y = rect_data.at( "y" ).asFloat();
+    float width = rect_data.at( "width" ).asFloat();
+    float height = rect_data.at( "height" ).asFloat();
     
     cocos2d::Rect player_start_area( x, y, width, height );
     
-    const rapidjson::Value& player_units = PlayerInfo::getInstance()->getPlayerUnitsInfo();
-    for( rapidjson::Value::ConstValueIterator itr = player_units.onBegin(); itr != player_units.onEnd(); ++itr ) {
-        const rapidjson::Value& value = *itr;
-        ValueMap vm;
-        vm["name"] = Value( value["name"].GetString() );
-        vm["level"] = Value( value["level"].GetInt() );
+    const ValueVector& player_units = PlayerInfo::getInstance()->getPlayerUnitsInfo();
+    for( auto itr = player_units.begin(); itr != player_units.end(); ++itr ) {
+        const ValueMap& vm = itr->asValueMap();
         UnitNode* unit = UnitNode::create( _battle_layer, vm );
         unit->setUnitCamp( eUnitCamp::Player );
         
@@ -142,7 +121,7 @@ void MapLogic::executeLogicEvent( EventTrigger* trigger, UnitNode* unit_node ) {
 }
 
 void MapLogic::executeUnitAction( const cocos2d::ValueMap& action_data, UnitNode* unit_node ) {
-    std::list<UnitNode*> source_units;
+    cocos2d::Vector<UnitNode*> source_units;
     bool should_perform_changes = false;
     std::string source_type = action_data.at( "source_type" ).asString();
     std::string source_value = action_data.at( "source_value" ).asString();
@@ -199,7 +178,7 @@ void MapLogic::executeUnitAction( const cocos2d::ValueMap& action_data, UnitNode
     }
     else if( source_type == UNIT_SOURCE_TRIGGERED ) {
         if( unit_node ) {
-            source_units.push_back( unit_node );
+            source_units.pushBack( unit_node );
         }
     }
     else if( source_type == UNIT_SOURCE_TAG ) {
@@ -251,7 +230,7 @@ void MapLogic::executeUnitAction( const cocos2d::ValueMap& action_data, UnitNode
                         custom_change = itr->second.asString();
                     }
                     
-                    std::list<UnitNode*> deploy_units;
+                    cocos2d::Vector<UnitNode*> deploy_units;
                     for( int i = 0; i < unit_count; ++i ) {
                         ValueMap unit_data;
                         unit_data["name"] = Value( source_value );
@@ -263,7 +242,7 @@ void MapLogic::executeUnitAction( const cocos2d::ValueMap& action_data, UnitNode
                         unit_data["tag_string"] = Value( tag_name );
                         
                         UnitNode* unit = UnitNode::create( _battle_layer, unit_data );
-                        deploy_units.push_back( unit );
+                        deploy_units.pushBack( unit );
                         
                         AttackBehavior* attack_behavior = AttackBehavior::create( unit );
                         unit->addBehavior( BEHAVIOR_NAME_ATTACK, attack_behavior );
@@ -430,38 +409,160 @@ void MapLogic::setTriggersEnabledOfName( const std::string& name, bool b ) {
     }
 }
 
-void MapLogic::checkGameState() {
-    
+void MapLogic::checkGameState( float delta ) {
+    ValueMap result;
+    for( auto itr = _game_tasks.begin(); itr != _game_tasks.end(); ++itr ) {
+        GameTask* task = *itr;
+        task->updateFrame( delta );
+        if( task->isPrimary() ) {
+            if( task->getTaskState() == GAME_TASK_STATE_FINISHED ) {
+                //win
+                result["result"] = Value( "win" );
+                this->gameEndWithResult( result );
+            }
+            else if( task->getTaskState() == GAME_TASK_STATE_FAILED ) {
+                //lose
+                result["result"] = Value( "lose" );
+                this->gameEndWithResult( result );
+            }
+        }
+    }
 }
 
-void MapLogic::onTargetNodeAppear( class TargetNode* target_node ) {
-    
+void MapLogic::onTargetNodeAppear( TargetNode* target_node ) {
+    do {
+        UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
+        if( unit_node ) {
+            this->increaseUnitAppearCountByCamp( 1, (int)unit_node->getUnitCamp() );
+            cocos2d::ValueVector tags = unit_node->getUnitTags();
+            for( auto itr = tags.begin(); itr != tags.end(); ++itr ) {
+                this->increaseUnitAppearCountByTag( 1, itr->asString() );
+            }
+            this->increaseUnitAppearCountByName( 1, unit_node->getUnitData()->name );
+            break;
+        }
+    }while( false );
 }
 
-void MapLogic::onTargetNodeDisappear( class TargetNode* target_node ) {
-    
+void MapLogic::onTargetNodeDisappear( TargetNode* target_node ) {
+    do {
+        UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
+        if( unit_node ) {
+            this->increaseUnitDisappearCountByCamp( 1, (int)unit_node->getUnitCamp() );
+            cocos2d::ValueVector tags = unit_node->getUnitTags();
+            for( auto itr = tags.begin(); itr != tags.end(); ++itr ) {
+                this->increaseUnitDisappearCountByTag( 1, itr->asString() );
+            }
+            this->increaseUnitDisappearCountByName( 1, unit_node->getUnitData()->name );
+            break;
+        }
+    }while( false );
 }
 
-int MapLogic::getUnitAppearCountByCamp( const std::string& camp ) {
-    return _unit_appear_count_by_camp[camp].asInt();
+int MapLogic::getUnitAppearCountByCamp( int camp ) {
+    auto itr = _unit_appear_count_by_camp.find( camp );
+    if( itr != _unit_appear_count_by_camp.end() ) {
+        return itr->second.asInt();
+    }
+    return 0;
 }
 
-int MapLogic::getUnitDisappearCountByCamp( const std::string& camp ) {
-    return _unit_disappear_count_by_camp[camp].asInt();
+void MapLogic::increaseUnitAppearCountByCamp( int count, int camp ) {
+    auto itr = _unit_appear_count_by_camp.find( camp );
+    if( itr != _unit_appear_count_by_camp.end() ) {
+        itr->second = Value( itr->second.asInt() + count );
+    }
+    else {
+        _unit_appear_count_by_camp[camp] = Value( count );
+    }
+}
+
+int MapLogic::getUnitDisappearCountByCamp( int camp ) {
+    auto itr = _unit_disappear_count_by_camp.find( camp );
+    if( itr != _unit_disappear_count_by_camp.end() ) {
+        return itr->second.asInt();
+    }
+    return 0;
+}
+
+void MapLogic::increaseUnitDisappearCountByCamp( int count, int camp ) {
+    auto itr = _unit_disappear_count_by_camp.find( camp );
+    if( itr != _unit_disappear_count_by_camp.end() ) {
+        itr->second = Value( itr->second.asInt() + count );
+    }
+    else {
+        _unit_disappear_count_by_camp[camp] = Value( count );
+    }
 }
 
 int MapLogic::getUnitAppearCountByTag( const std::string& tag ) {
-    return _unit_appear_count_by_tag[tag].asInt();
+    auto itr = _unit_appear_count_by_tag.find( tag );
+    if( itr != _unit_appear_count_by_tag.end() ) {
+        return itr->second.asInt();
+    }
+    return 0;
+}
+
+void MapLogic::increaseUnitAppearCountByTag( int count, const std::string& tag ) {
+    auto itr = _unit_appear_count_by_tag.find( tag );
+    if( itr != _unit_appear_count_by_tag.end() ) {
+        itr->second = Value( itr->second.asInt() + count );
+    }
+    else {
+        _unit_appear_count_by_tag[tag] = Value( count );
+    }
 }
 
 int MapLogic::getUnitDisappearCountByTag( const std::string& tag ) {
-    return _unit_disappear_count_by_tag[tag].asInt();
+    auto itr = _unit_disappear_count_by_tag.find( tag );
+    if( itr != _unit_disappear_count_by_tag.end() ) {
+        return itr->second.asInt();
+    }
+    return 0;
+}
+
+void MapLogic::increaseUnitDisappearCountByTag( int count, const std::string& tag ) {
+    auto itr = _unit_disappear_count_by_tag.find( tag );
+    if( itr != _unit_disappear_count_by_tag.end() ) {
+        itr->second = Value( itr->second.asInt() + count );
+    }
+    else {
+        _unit_disappear_count_by_tag[tag] = Value( count );
+    }
 }
 
 int MapLogic::getUnitAppearCountByName( const std::string& name ) {
-    return _unit_appear_count_by_name[name].asInt();
+    auto itr = _unit_appear_count_by_name.find( name );
+    if( itr != _unit_appear_count_by_name.end() ) {
+        return itr->second.asInt();
+    }
+    return 0;
+}
+
+void MapLogic::increaseUnitAppearCountByName( int count, const std::string& name ) {
+    auto itr = _unit_appear_count_by_name.find( name );
+    if( itr != _unit_appear_count_by_name.end() ) {
+        itr->second = Value( itr->second.asInt() + count );
+    }
+    else {
+        _unit_appear_count_by_name[name] = Value( count );
+    }
 }
 
 int MapLogic::getUnitDisappearCountByName( const std::string& name ) {
-    return _unit_disappear_count_by_name[name].asInt();
+    auto itr = _unit_disappear_count_by_name.find( name );
+    if( itr != _unit_disappear_count_by_name.end() ) {
+        return itr->second.asInt();
+    }
+    return 0;
+}
+
+void MapLogic::increaseUnitDisappearCountByName( int count, const std::string& name ) {
+    auto itr = _unit_disappear_count_by_name.find( name );
+    if( itr != _unit_disappear_count_by_name.end() ) {
+        itr->second = Value( itr->second.asInt() + count );
+    }
+    else {
+        _unit_disappear_count_by_name[name] = Value( count );
+    }
 }

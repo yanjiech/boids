@@ -66,9 +66,9 @@ bool UILevelChooseLayer::init() {
     
     _level_info_label = dynamic_cast<ui::Text*>( _background_node->getChildByName( "missionText" ) );
     
-    const rapidjson::Document& level_config = ResourceManager::getInstance()->getLevelConfig();
+    const ValueMap& level_config = ResourceManager::getInstance()->getLevelConfig();
     
-    int total_level_count = level_config["levels"].Size();
+    int total_level_count = level_config.at( "levels" ).asValueVector().size();
     for( int i = 1; i <= total_level_count; i++ ) {
         std::string button_name = Utils::stringFormat( "level%dButton", i );
         ui::Button* button = dynamic_cast<ui::Button*>( _scrollview->getChildByName( button_name ) );
@@ -101,27 +101,33 @@ void UILevelChooseLayer::onLevelTouched( cocos2d::Ref* sender, cocos2d::ui::Widg
         _level_node->setVisible( true );
         auto node = dynamic_cast<Node*>( sender );
         int tag = node->getTag();
-        const rapidjson::Document& level_config = ResourceManager::getInstance()->getLevelConfig();
-        const rapidjson::Value& level_obj = level_config["levels"][tag-1];
-        MapData* new_map_data = new MapData( level_obj["path"].GetString() );
+        const ValueMap& level_config = ResourceManager::getInstance()->getLevelConfig();
+        const ValueMap& level_obj = level_config.at( "levels" ).asValueVector().at( tag - 1 ).asValueMap();
+        MapData* new_map_data = new MapData( level_obj.at( "path" ).asString() );
         this->setMapData( new_map_data );
-        _is_pvp = level_obj.HasMember( "is_pvp" ) ? level_obj["is_pvp"].GetBool() : false;
+        _is_pvp = false;
+        auto itr = level_obj.find( "is_pvp" );
+        if( itr != level_obj.end() ) {
+            _is_pvp = itr->second.asBool();
+        }
         
-        const rapidjson::Document& meta_json = _map_data->getMetaJson();
-        if( meta_json.HasMember( "tasks" ) ) {
-            const rapidjson::Value& task_array = meta_json["tasks"];
-            int task_count = (int)task_array.Size();
+        const ValueMap& meta_json = _map_data->getMetaJson();
+        itr = meta_json.find( "tasks" );
+        if( itr != meta_json.end() ) {
+            const ValueVector& task_array = itr->second.asValueVector();
+            int task_count = (int)task_array.size();
             for( int i = 0; i < _mission_labels.size(); i++ ) {
                 if( i < task_count ) {
-                    _mission_labels[i]->setString( task_array[i]["desc"].GetString() );
+                    _mission_labels[i]->setString( task_array.at( i ).asValueMap().at( "desc" ).asString() );
                 }
                 else {
                     _mission_labels[i]->setString( "" );
                 }
             }
         }
-        if( meta_json.HasMember( "desc" ) ) {
-            _level_info_label->setString( meta_json["desc"].GetString() );
+        itr = meta_json.find( "desc" );
+        if( itr != meta_json.end() ) {
+            _level_info_label->setString( itr->second.asString() );
         }
         else {
             _level_info_label->setString( "" );

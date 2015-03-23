@@ -42,12 +42,6 @@
 
 NS_CC_BEGIN
 
-//render state
-static bool   s_cullFaceEnabled = false;
-static GLenum s_cullFace = 0;
-static bool   s_depthTestEnabled = false;
-static bool   s_depthWriteEnabled = false;
-
 static const char          *s_dirLightUniformColorName = "u_DirLightSourceColor";
 static std::vector<Vec3> s_dirLightUniformColorValues;
 static const char          *s_dirLightUniformDirName = "u_DirLightSourceDirection";
@@ -78,25 +72,58 @@ static const char          *s_ambientLightUniformColorName = "u_AmbientLightSour
 
 MeshCommand::MeshCommand()
 : _textureID(0)
-, _blendType(BlendFunc::DISABLE)
 , _glProgramState(nullptr)
-, _cullFaceEnabled(false)
-, _cullFace(GL_BACK)
-, _depthTestEnabled(false)
-, _depthWriteEnabled(false)
+, _blendType(BlendFunc::DISABLE)
 , _displayColor(1.0f, 1.0f, 1.0f, 1.0f)
 , _matrixPalette(nullptr)
 , _matrixPaletteSize(0)
 , _materialID(0)
 , _vao(0)
+, _cullFaceEnabled(false)
+, _cullFace(GL_BACK)
+, _depthTestEnabled(false)
+, _depthWriteEnabled(false)
+, _forceDepthWrite(false)
+, _renderStateCullFace(false)
+, _renderStateDepthTest(false)
+, _renderStateDepthWrite(GL_FALSE)
 , _lightMask(-1)
 {
     _type = RenderCommand::Type::MESH_COMMAND;
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WP8 || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
     // listen the event that renderer was recreated on Android/WP8
     _rendererRecreatedListener = EventListenerCustom::create(EVENT_RENDERER_RECREATED, CC_CALLBACK_1(MeshCommand::listenRendererRecreated, this));
     Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(_rendererRecreatedListener, -1);
 #endif
+}
+
+void MeshCommand::init(float globalZOrder,
+                       GLuint textureID,
+                       cocos2d::GLProgramState *glProgramState,
+                       cocos2d::BlendFunc blendType,
+                       GLuint vertexBuffer,
+                       GLuint indexBuffer,
+                       GLenum primitive,
+                       GLenum indexFormat,
+                       ssize_t indexCount,
+                       const cocos2d::Mat4 &mv,
+                       uint32_t flags)
+{
+    CCASSERT(glProgramState, "GLProgramState cannot be nill");
+    
+    _globalOrder = globalZOrder;
+    _textureID = textureID;
+    _blendType = blendType;
+    _glProgramState = glProgramState;
+    
+    _vertexBuffer = vertexBuffer;
+    _indexBuffer = indexBuffer;
+    _primitive = primitive;
+    _indexFormat = indexFormat;
+    _indexCount = indexCount;
+    _mv.set(mv);
+    
+    _is3D = true;
 }
 
 void MeshCommand::init(float globalOrder,
@@ -110,20 +137,7 @@ void MeshCommand::init(float globalOrder,
                        ssize_t indexCount,
                        const Mat4 &mv)
 {
-    CCASSERT(glProgramState, "GLProgramState cannot be nill");
-    
-    _globalOrder = globalOrder;
-    _textureID = textureID;
-    _blendType = blendType;
-    _glProgramState = glProgramState;
-
-    _vertexBuffer = vertexBuffer;
-    _indexBuffer = indexBuffer;
-    _primitive = primitive;
-    _indexFormat = indexFormat;
-    _indexCount = indexCount;
-    _mv.set(mv);
-
+    init(globalOrder, textureID, glProgramState, blendType, vertexBuffer, indexBuffer, primitive, indexFormat, indexCount, mv, 0);
 }
 
 void MeshCommand::setCullFaceEnabled(bool enable)
@@ -143,6 +157,7 @@ void MeshCommand::setDepthTestEnabled(bool enable)
 
 void MeshCommand::setDepthWriteEnabled(bool enable)
 {
+    _forceDepthWrite = enable;
     _depthWriteEnabled = enable;
 }
 
@@ -151,56 +166,74 @@ void MeshCommand::setDisplayColor(const Vec4& color)
     _displayColor = color;
 }
 
+void MeshCommand::setTransparent(bool value)
+{
+    _isTransparent = value;
+    //Skip batching for transparent mesh
+    _skipBatching = value;
+    
+    if (_isTransparent && !_forceDepthWrite)
+    {
+        _depthWriteEnabled = false;
+    }
+    else
+    {
+        _depthWriteEnabled = true;
+    }
+}
+
 MeshCommand::~MeshCommand()
 {
     releaseVAO();
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WP8 || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
     Director::getInstance()->getEventDispatcher()->removeEventListener(_rendererRecreatedListener);
 #endif
 }
 
 void MeshCommand::applyRenderState()
 {
-    if (_cullFaceEnabled && !s_cullFaceEnabled)
+    _renderStateCullFace = glIsEnabled(GL_CULL_FACE);
+    _renderStateDepthTest = glIsEnabled(GL_DEPTH_TEST);
+    glGetBooleanv(GL_DEPTH_WRITEMASK, &_renderStateDepthWrite);
+    
+    if (_cullFaceEnabled && !_renderStateCullFace)
     {
         glEnable(GL_CULL_FACE);
-        if (s_cullFace != _cullFace)
-        {
-            glCullFace(_cullFace);
-            s_cullFace = _cullFace;
-        }
-        s_cullFaceEnabled = true;
     }
-    if (_depthTestEnabled && !s_depthTestEnabled)
+    
+    glCullFace(_cullFace);
+    
+    if (_depthTestEnabled && !_renderStateDepthTest)
     {
         glEnable(GL_DEPTH_TEST);
-        s_depthTestEnabled = true;
     }
-    if (_depthWriteEnabled && !s_depthWriteEnabled)
+    if (_depthWriteEnabled && !_renderStateDepthWrite)
     {
         glDepthMask(GL_TRUE);
-        s_depthWriteEnabled = true;
     }
 }
 
 void MeshCommand::restoreRenderState()
 {
-    if (s_cullFaceEnabled)
+    if (_renderStateCullFace)
+    {
+        glEnable(GL_CULL_FACE);
+    }
+    else
     {
         glDisable(GL_CULL_FACE);
-        s_cullFaceEnabled = false;
     }
-    if (s_depthTestEnabled)
+    
+    if (_renderStateDepthTest)
+    {
+        glEnable(GL_DEPTH_TEST);
+    }
+    else
     {
         glDisable(GL_DEPTH_TEST);
-        s_depthTestEnabled = false;
     }
-    if (s_depthWriteEnabled)
-    {
-        glDepthMask(GL_FALSE);
-        s_depthWriteEnabled = false;
-    }
-    s_cullFace = 0;
+    
+    glDepthMask(_renderStateDepthTest);
 }
 
 void MeshCommand::genMaterialID(GLuint texID, void* glProgramState, GLuint vertexBuffer, GLuint indexBuffer, const BlendFunc& blend)
@@ -460,7 +493,7 @@ void MeshCommand::setLightUniforms()
     else // normal does not exist
     {
         Vec3 ambient(0.0f, 0.0f, 0.0f);
-        bool hasAmbient;
+        bool hasAmbient = false;
         for (const auto& light : lights)
         {
             if (light->getLightType() == LightType::AMBIENT)
@@ -506,7 +539,7 @@ void MeshCommand::resetLightUniformValues()
     s_spotLightUniformRangeInverseValues.assign(maxSpotLight, 0.0f);
 }
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WP8 || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 void MeshCommand::listenRendererRecreated(EventCustom* event)
 {
     _vao = 0;

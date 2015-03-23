@@ -20,6 +20,15 @@ private:
     BattleLayer* _battle_layer;
     UnitNode* _unit_node;
     
+    cocos2d::ProgressTimer* _avatar;
+    std::string _hint_type;
+    float _range;
+    float _min_range;
+    float _max_range;
+    cocos2d::Point _hint_d_pos;
+    
+    cocos2d::Node* _hint_effect;
+    
 public:
     UISkillNode();
     virtual ~UISkillNode();
@@ -33,6 +42,8 @@ public:
     
     void showHint( const cocos2d::Point& dir, float range_per );
     void hideHint();
+    
+    virtual void updateFrame( float delta );
 };
 
 class UIBattleLayer : public cocos2d::Layer {
@@ -42,6 +53,9 @@ private:
     UISkillNode* _selected_skill;
     
     std::list<UISkillNode*> _skill_nodes;
+    
+    cocos2d::Point _touch_down_pos;
+    cocos2d::Touch* _touch;
     
 public:
     UIBattleLayer();
@@ -54,6 +68,8 @@ public:
     virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );
     virtual void onTouchCancelled( cocos2d::Touch* touch, cocos2d::Event* event );
     virtual void onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event );
+    
+    virtual void updateFrame( float delta );
     
     void reset();
     

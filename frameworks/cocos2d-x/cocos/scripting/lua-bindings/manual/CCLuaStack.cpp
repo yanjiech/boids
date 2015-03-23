@@ -91,7 +91,7 @@ int lua_print(lua_State * luastate)
                 t += lua_typename(luastate, lua_type(luastate, i));
         }
         if (i!=nargs)
-            t += " ";
+            t += "\t";
     }
     CCLOG("[LUA-print] %s", t.c_str());
 
@@ -133,7 +133,7 @@ int lua_release_print(lua_State * L)
                 t += lua_typename(L, lua_type(L, i));
         }
         if (i!=nargs)
-            t += " ";
+            t += "\t";
     }
     log("[LUA-print] %s", t.c_str());
     
@@ -175,7 +175,7 @@ bool LuaStack::init(void)
 
     // Register our version of the global "print" function
     const luaL_reg global_functions [] = {
-		{ "print", lua_release_print },
+        {"print", lua_print},
         {"release_print",lua_release_print},
         {nullptr, nullptr}
     };
@@ -274,10 +274,59 @@ int LuaStack::executeString(const char *codes)
 
 int LuaStack::executeScriptFile(const char* filename)
 {
-    std::string code("require \"");
-    code.append(filename);
-    code.append("\"");
-    return executeString(code.c_str());
+    CCAssert(filename, "CCLuaStack::executeScriptFile() - invalid filename");
+    
+    static const std::string BYTECODE_FILE_EXT    = ".luac";
+    static const std::string NOT_BYTECODE_FILE_EXT = ".lua";
+    
+    std::string buf(filename);
+    //
+    // remove .lua or .luac
+    //
+    size_t pos = buf.rfind(BYTECODE_FILE_EXT);
+    if (pos != std::string::npos)
+    {
+        buf = buf.substr(0, pos);
+    }
+    else
+    {
+        pos = buf.rfind(NOT_BYTECODE_FILE_EXT);
+        if (pos == buf.length() - NOT_BYTECODE_FILE_EXT.length())
+        {
+            buf = buf.substr(0, pos);
+        }
+    }
+    
+    FileUtils *utils = FileUtils::getInstance();
+    //
+    // 1. check .lua suffix
+    // 2. check .luac suffix
+    //
+    std::string tmpfilename = buf + NOT_BYTECODE_FILE_EXT;
+    if (utils->isFileExist(tmpfilename))
+    {
+        buf = tmpfilename;
+    }
+    else
+    {
+        tmpfilename = buf + BYTECODE_FILE_EXT;
+        if (utils->isFileExist(tmpfilename))
+        {
+            buf = tmpfilename;
+        }
+    }
+    
+    std::string fullPath = utils->fullPathForFilename(buf);
+    Data data = utils->getDataFromFile(fullPath);
+    int rn = 0;
+    if (!data.isNull())
+    {
+        if (luaLoadBuffer(_state, (const char*)data.getBytes(), (int)data.getSize(), fullPath.c_str()) == 0)
+        {
+            rn = executeFunction(0);
+        }
+    }
+    return rn;
 }
 
 int LuaStack::executeGlobalFunction(const char* functionName)
@@ -285,7 +334,7 @@ int LuaStack::executeGlobalFunction(const char* functionName)
     lua_getglobal(_state, functionName);       /* query function by name, stack: function */
     if (!lua_isfunction(_state, -1))
     {
-        cocos2d::log("[LUA ERROR] name '%s' does not represent a Lua function", functionName);
+        CCLOG("[LUA ERROR] name '%s' does not represent a Lua function", functionName);
         lua_pop(_state, 1);
         return 0;
     }
@@ -398,7 +447,7 @@ bool LuaStack::pushFunctionByHandler(int nHandler)
     toluafix_get_function_by_refid(_state, nHandler);                  /* L: ... func */
     if (!lua_isfunction(_state, -1))
     {
-		cocos2d::log("[LUA ERROR] function refid '%d' does not reference a Lua function", nHandler);
+        CCLOG("[LUA ERROR] function refid '%d' does not reference a Lua function", nHandler);
         lua_pop(_state, 1);
         return false;
     }
@@ -435,7 +484,7 @@ int LuaStack::executeFunction(int numArgs)
     {
         if (traceback == 0)
         {
-			cocos2d::log("[LUA ERROR] %s", lua_tostring(_state, -1));        /* L: ... error */
+            CCLOG("[LUA ERROR] %s", lua_tostring(_state, - 1));        /* L: ... error */
             lua_pop(_state, 1); // remove error message from stack
         }
         else                                                            /* L: ... G error */
@@ -548,7 +597,7 @@ int LuaStack::executeFunctionReturnArray(int handler,int numArgs,int numResults,
         {
             if (traceback == 0)
             {
-				cocos2d::log("[LUA ERROR] %s", lua_tostring(_state, -1));        /* L: ... error */
+                CCLOG("[LUA ERROR] %s", lua_tostring(_state, - 1));        /* L: ... error */
                 lua_pop(_state, 1); // remove error message from stack
             }
             else                                                            /* L: ... G error */
@@ -640,7 +689,7 @@ int LuaStack::executeFunction(int handler, int numArgs, int numResults, const st
         {
             if (traceCallback == 0)
             {
-				cocos2d::log("[LUA ERROR] %s", lua_tostring(_state, -1));        /* L: ... error */
+                CCLOG("[LUA ERROR] %s", lua_tostring(_state, - 1));        /* L: ... error */
                 lua_pop(_state, 1);                                        // remove error message from stack
             }
             else                                                           /* L: ... G error */
@@ -773,7 +822,7 @@ int LuaStack::luaLoadChunksFromZIP(lua_State *L)
                                    (unsigned char*)stack->_xxteaKey,
                                    (xxtea_long)stack->_xxteaKeyLen,
                                    &len);
-            delete []zipFileData;
+            free(zipFileData);
             zipFileData = nullptr;
             zip = ZipFile::createWithBuffer(buffer, len);
         } else {
@@ -793,11 +842,24 @@ int LuaStack::luaLoadChunksFromZIP(lua_State *L)
                 ssize_t bufferSize = 0;
                 unsigned char *zbuffer = zip->getFileData(filename.c_str(), &bufferSize);
                 if (bufferSize) {
+                    // remove extension
+                    std::size_t found = filename.rfind(".lua");
+                    if (found != std::string::npos)
+                    {
+                        filename.erase(found);
+                    }
+                    // replace path seperator '/' '\' to '.'
+                    for (int i=0; i<filename.size(); i++) {
+                        if (filename[i] == '/' || filename[i] == '\\') {
+                            filename[i] = '.';
+                        }
+                    }
+                    CCLOG("[luaLoadChunksFromZIP] add %s to preload", filename.c_str());
                     if (stack->luaLoadBuffer(L, (char*)zbuffer, (int)bufferSize, filename.c_str()) == 0) {
                         lua_setfield(L, -2, filename.c_str());
                         ++count;
                     }
-                    delete []zbuffer;
+                    free(zbuffer);
                 }
                 filename = zip->getNextFilename();
             }
@@ -812,7 +874,7 @@ int LuaStack::luaLoadChunksFromZIP(lua_State *L)
         }
         
         if (zipFileData) {
-            delete []zipFileData;
+            free(zipFileData);
         }
         
         if (buffer) {
@@ -844,28 +906,28 @@ int LuaStack::luaLoadBuffer(lua_State *L, const char *chunk, int chunkSize, cons
         r = luaL_loadbuffer(L, chunk, chunkSize, chunkName);
     }
     
-//#if defined(COCOS2D_DEBUG) && COCOS2D_DEBUG > 0
+#if defined(COCOS2D_DEBUG) && COCOS2D_DEBUG > 0
     if (r)
     {
         switch (r)
         {
             case LUA_ERRSYNTAX:
-                cocos2d::log("[LUA ERROR] load \"%s\", error: syntax error during pre-compilation.", chunkName);
+                CCLOG("[LUA ERROR] load \"%s\", error: syntax error during pre-compilation.", chunkName);
                 break;
                 
             case LUA_ERRMEM:
-				cocos2d::log("[LUA ERROR] load \"%s\", error: memory allocation error.", chunkName);
+                CCLOG("[LUA ERROR] load \"%s\", error: memory allocation error.", chunkName);
                 break;
                 
             case LUA_ERRFILE:
-				cocos2d::log("[LUA ERROR] load \"%s\", error: cannot open/read file.", chunkName);
+                CCLOG("[LUA ERROR] load \"%s\", error: cannot open/read file.", chunkName);
                 break;
                 
             default:
-				cocos2d::log("[LUA ERROR] load \"%s\", error: unknown.", chunkName);
+                CCLOG("[LUA ERROR] load \"%s\", error: unknown.", chunkName);
         }
     }
-//#endif
+#endif
     return r;
 }
 

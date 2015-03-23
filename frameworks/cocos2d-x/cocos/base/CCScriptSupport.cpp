@@ -65,18 +65,18 @@ ScriptHandlerEntry::~ScriptHandlerEntry(void)
 // 
 // // SchedulerScriptHandlerEntry
 
-SchedulerScriptHandlerEntry* SchedulerScriptHandlerEntry::create(int handler, float interval, unsigned int repeat, float delay, bool paused)
+SchedulerScriptHandlerEntry* SchedulerScriptHandlerEntry::create(int handler, float interval, bool paused)
 {
     SchedulerScriptHandlerEntry* entry = new (std::nothrow) SchedulerScriptHandlerEntry(handler);
-    entry->init(interval, repeat, delay, paused);
+    entry->init(interval, paused);
     entry->autorelease();
     return entry;
 }
 
-bool SchedulerScriptHandlerEntry::init(float interval, unsigned int repeat, float delay, bool paused)
+bool SchedulerScriptHandlerEntry::init(float interval, bool paused)
 {
     _timer = new (std::nothrow) TimerScriptHandler();
-    _timer->initWithScriptHandler(_handler, interval, repeat, delay);
+    _timer->initWithScriptHandler(_handler, interval);
     _paused = paused;
     LUALOG("[LUA] ADD script schedule: %d, entryID: %d", _handler, _entryId);
     return true;

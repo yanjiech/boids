@@ -23,7 +23,7 @@ EventTrigger::~EventTrigger() {
     
 }
 
-EventTrigger* EventTrigger::create( const rapidjson::Value& event ) {
+EventTrigger* EventTrigger::create( const ValueMap& event ) {
     EventTrigger* ret = new EventTrigger();
     if( ret && ret->init( event ) ) {
         ret->autorelease();
@@ -35,11 +35,11 @@ EventTrigger* EventTrigger::create( const rapidjson::Value& event ) {
     }
 }
 
-bool EventTrigger::init( const rapidjson::Value& event ) {
+bool EventTrigger::init( const ValueMap& event ) {
     _trigger_index = 0;
     _is_enabled = true;
     
-    _logic_event = CocosUtils::jsonObjectToValueMap( event );
+    _logic_event = event;
     ValueMap& trigger_meta = _logic_event["trigger_meta"].asValueMap();
     auto itr = trigger_meta.find( "trigger_relation" );
     if( itr == trigger_meta.end() ) {
@@ -165,16 +165,16 @@ void EventTrigger::activateTriggerByUnit( class MapLogic* map_logic, class UnitN
             
             if( source_type == UNIT_SOURCE_TYPE && camp == UnitNode::getCampByString( source_value ) ) {
                 if( unit_state == UNIT_STATE_APPEAR ) {
-                    if( trigger_count == 1 || trigger_count == map_logic->getUnitAppearCountByCamp( source_value ) ) {
+                    if( trigger_count == 1 || trigger_count == map_logic->getUnitAppearCountByCamp( (int)UnitNode::getCampByString( source_value ) ) ) {
                         this->onSingleTriggerPass( i, map_logic, unit );
                     }
                 }
                 else if( unit_state == UNIT_STATE_DISAPPEAR ) {
-                    if( trigger_count == 1 || trigger_count == map_logic->getUnitDisappearCountByCamp( source_value ) ) {
+                    if( trigger_count == 1 || trigger_count == map_logic->getUnitDisappearCountByCamp( (int)UnitNode::getCampByString( source_value ) ) ) {
                         this->onSingleTriggerPass( i, map_logic, unit );
                     }
                     else if( trigger_count == 0 ) {
-                        std::list<UnitNode*> units = unit->getBattleLayer()->getAliveUnitsByCamp( UnitNode::getCampByString( source_value ) );
+                        cocos2d::Vector<UnitNode*> units = unit->getBattleLayer()->getAliveUnitsByCamp( UnitNode::getCampByString( source_value ) );
                         if( units.size() == 0 ) {
                             this->onSingleTriggerPass( i, map_logic, unit );
                         }
@@ -183,7 +183,7 @@ void EventTrigger::activateTriggerByUnit( class MapLogic* map_logic, class UnitN
                 else if( unit_state == UNIT_STATE_MOVE_TO ) {
                     MapData* map_data = unit->getBattleLayer()->getMapData();
                     int in_area_count = 0;
-                    std::list<UnitNode*> units = unit->getBattleLayer()->getAliveUnitsByCamp( UnitNode::getCampByString( source_value ) );
+                    cocos2d::Vector<UnitNode*> units = unit->getBattleLayer()->getAliveUnitsByCamp( UnitNode::getCampByString( source_value ) );
                     if( units.size() == 0 ) {
                         continue;
                     }
@@ -215,7 +215,7 @@ void EventTrigger::activateTriggerByUnit( class MapLogic* map_logic, class UnitN
                 }
                 else if( unit_state == UNIT_STATE_DISAPPEAR ) {
                     if( trigger_count == 0 ) {
-                        std::list<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByTag( source_value );
+                        cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByTag( source_value );
                         if( units.size() == 0 ) {
                             this->onSingleTriggerPass( i, map_logic, unit );
                         }
@@ -227,7 +227,7 @@ void EventTrigger::activateTriggerByUnit( class MapLogic* map_logic, class UnitN
                 else if( unit_state == UNIT_STATE_MOVE_TO ) {
                     MapData* map_data = unit->getBattleLayer()->getMapData();
                     int in_area_count = 0;
-                    std::list<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByTag( source_value );
+                    cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByTag( source_value );
                     if( units.size() == 0 ) {
                         continue;
                     }
@@ -259,7 +259,7 @@ void EventTrigger::activateTriggerByUnit( class MapLogic* map_logic, class UnitN
                 }
                 else if( unit_state == UNIT_STATE_DISAPPEAR ) {
                     if( trigger_count == 0 ) {
-                        std::list<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByName( source_value );
+                        cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByName( source_value );
                         if( units.size() == 0 ) {
                             this->onSingleTriggerPass( i, map_logic, unit );
                         }
@@ -271,7 +271,7 @@ void EventTrigger::activateTriggerByUnit( class MapLogic* map_logic, class UnitN
                 else if( unit_state == UNIT_STATE_MOVE_TO ) {
                     MapData* map_data = unit->getBattleLayer()->getMapData();
                     int in_area_count = 0;
-                    std::list<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByName( source_value );
+                    cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByName( source_value );
                     if( units.size() == 0 ) {
                         continue;
                     }

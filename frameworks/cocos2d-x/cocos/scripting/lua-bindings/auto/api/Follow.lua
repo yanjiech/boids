@@ -6,9 +6,10 @@
 
 --------------------------------
 --  alter behavior - turn on/off boundary 
--- @function [parent=#Follow] setBoudarySet 
+-- @function [parent=#Follow] setBoundarySet 
 -- @param self
 -- @param #bool value
+-- @return Follow#Follow self (return value: cc.Follow)
         
 --------------------------------
 -- 
@@ -28,10 +29,11 @@
 -- @return Follow#Follow ret (return value: cc.Follow)
         
 --------------------------------
--- 
+-- param dt in seconds.
 -- @function [parent=#Follow] step 
 -- @param self
 -- @param #float dt
+-- @return Follow#Follow self (return value: cc.Follow)
         
 --------------------------------
 -- 
@@ -43,6 +45,7 @@
 -- 
 -- @function [parent=#Follow] stop 
 -- @param self
+-- @return Follow#Follow self (return value: cc.Follow)
         
 --------------------------------
 -- 

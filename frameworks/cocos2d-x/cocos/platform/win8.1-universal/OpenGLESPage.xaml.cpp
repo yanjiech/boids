@@ -47,7 +47,10 @@ OpenGLESPage::OpenGLESPage(OpenGLES* openGLES) :
     mRenderSurface(EGL_NO_SURFACE),
     mCustomRenderSurfaceSize(0,0),
     mUseCustomRenderSurfaceSize(false),
-    m_coreInput(nullptr)
+    m_coreInput(nullptr),
+    m_dpi(0.0f),
+    m_deviceLost(false),
+    m_orientation(DisplayOrientations::Landscape)
 {
     InitializeComponent();
 
@@ -58,6 +61,13 @@ OpenGLESPage::OpenGLESPage(OpenGLES* openGLES) :
 
     swapChainPanel->SizeChanged +=
         ref new Windows::UI::Xaml::SizeChangedEventHandler(this, &OpenGLESPage::OnSwapChainPanelSizeChanged);
+
+    DisplayInformation^ currentDisplayInformation = DisplayInformation::GetForCurrentView();
+
+    currentDisplayInformation->OrientationChanged +=
+        ref new TypedEventHandler<DisplayInformation^, Object^>(this, &OpenGLESPage::OnOrientationChanged);
+
+    m_orientation = currentDisplayInformation->CurrentOrientation;
 
     this->Loaded +=
         ref new Windows::UI::Xaml::RoutedEventHandler(this, &OpenGLESPage::OnPageLoaded);
@@ -135,7 +145,11 @@ void OpenGLESPage::OnPointerReleased(Object^ sender, PointerEventArgs^ e)
     }
 }
 
-
+void OpenGLESPage::OnOrientationChanged(DisplayInformation^ sender, Object^ args)
+{
+    critical_section::scoped_lock lock(mSwapChainPanelSizeCriticalSection);
+   m_orientation = sender->CurrentOrientation;
+}
 
 void OpenGLESPage::OnVisibilityChanged(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::VisibilityChangedEventArgs^ args)
 {
@@ -208,7 +222,6 @@ void OpenGLESPage::RecoverFromLostDevice()
 
     {
         critical_section::scoped_lock lock(mRenderSurfaceCriticalSection);
-
         DestroyRenderSurface();
         mOpenGLES->Reset();
         CreateRenderSurface();
@@ -225,6 +238,9 @@ void OpenGLESPage::StartRenderLoop()
         return;
     }
 
+    DisplayInformation^ currentDisplayInformation = DisplayInformation::GetForCurrentView();
+    m_dpi = currentDisplayInformation->LogicalDpi;
+
     auto dispatcher = Windows::UI::Xaml::Window::Current->CoreWindow->Dispatcher;
 
     // Create a task for rendering that will be run on a background thread.
@@ -238,24 +254,37 @@ void OpenGLESPage::StartRenderLoop()
         GLsizei panelHeight = 0;
         GetSwapChainPanelSize(&panelWidth, &panelHeight);
         
+
+
         if (m_renderer.get() == nullptr)
         {
-            m_renderer = std::make_shared<Cocos2dRenderer>(panelWidth, panelHeight, dispatcher, swapChainPanel);
+            m_renderer = std::make_shared<Cocos2dRenderer>(panelWidth, panelHeight, m_dpi, m_orientation, dispatcher, swapChainPanel);
         }
 
-        while (action->Status == Windows::Foundation::AsyncStatus::Started)
+        if (m_deviceLost)
         {
- 
+            m_deviceLost = false;
+            m_renderer->DeviceLost();
+        }
+        else
+        {
+            m_renderer->Resume();
+        }
+
+
+        while (action->Status == Windows::Foundation::AsyncStatus::Started && !m_deviceLost)
+        {
             GetSwapChainPanelSize(&panelWidth, &panelHeight);
-            m_renderer.get()->Draw(panelWidth, panelHeight);
+            m_renderer.get()->Draw(panelWidth, panelHeight, m_dpi, m_orientation);
 
             // The call to eglSwapBuffers might not be successful (i.e. due to Device Lost)
             // If the call fails, then we must reinitialize EGL and the GL resources.
             if (mOpenGLES->SwapBuffers(mRenderSurface) != GL_TRUE)
             {
+                m_deviceLost = true;
+
                 // XAML objects like the SwapChainPanel must only be manipulated on the UI thread.
                 swapChainPanel->Dispatcher->RunAsync(Windows::UI::Core::CoreDispatcherPriority::High, ref new Windows::UI::Core::DispatchedHandler([=]()
-                //swapChainPanel->Dispatcher->RunAsync(Windows::UI::Core::CoreDispatcherPriority::High, ref new Windows::UI::Core::DispatchedHandler([=]()
                 {
                     RecoverFromLostDevice();
                 }, CallbackContext::Any));
@@ -275,5 +304,10 @@ void OpenGLESPage::StopRenderLoop()
     {
         mRenderLoopWorker->Cancel();
         mRenderLoopWorker = nullptr;
+    }
+
+    if (m_renderer)
+    {
+        m_renderer->Pause();
     }
 }

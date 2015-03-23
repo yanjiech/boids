@@ -308,7 +308,6 @@ void TMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
             tmxMapInfo->getTilesets().pushBack(tileset);
             tileset->release();
         }
-        tmxMapInfo->setParentElement(TMXPropertyTileset);
     }
     else if (elementName == "tile")
     {
@@ -377,26 +376,21 @@ void TMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
     }
     else if (elementName == "image")
     {
-        std::string sourceImage;
+        TMXTilesetInfo* tileset = tmxMapInfo->getTilesets().back();
+
+        // build full path
         std::string imagename = attributeDict["source"].asString();
 
         if (_TMXFileName.find_last_of("/") != string::npos)
         {
             string dir = _TMXFileName.substr(0, _TMXFileName.find_last_of("/") + 1);
-            sourceImage = dir + imagename;
+            tileset->_sourceImage = dir + imagename;
         }
         else 
         {
-            sourceImage = _resources + (_resources.size() ? "/" : "") + imagename;
+            tileset->_sourceImage = _resources + (_resources.size() ? "/" : "") + imagename;
         }
-        
-        if (tmxMapInfo->getParentElement() == TMXPropertyTileset) {
-            TMXTilesetInfo* tileset = tmxMapInfo->getTilesets().back();
-            tileset->_sourceImage = sourceImage;
-        } else if (tmxMapInfo->getParentElement() == TMXPropertyTile) {
-            tmxMapInfo->getTileProperties()[tmxMapInfo->getParentGID()] = attributeDict;
-        }
-    }
+    } 
     else if (elementName == "data")
     {
         std::string encoding = attributeDict["encoding"].asString();
@@ -699,12 +693,7 @@ void TMXMapInfo::endElement(void *ctx, const char *name)
     }
     else if (elementName == "tileset")
     {
-        tmxMapInfo->setParentElement(TMXPropertyNone);
         _recordFirstGID = true;
-    }
-    else if (elementName == "tile")
-    {
-        tmxMapInfo->setParentElement(TMXPropertyNone);
     }
 }
 
@@ -723,4 +712,3 @@ void TMXMapInfo::textHandler(void *ctx, const char *ch, int len)
 }
 
 NS_CC_END
-

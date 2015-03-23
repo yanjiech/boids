@@ -53,7 +53,49 @@ public:
     virtual bool init( spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
     
     bool setAnimation( int track_index, const std::string& name, bool loop );
-    void onSkeletonAnimationEnded( int track_index );
+    void onSkeletonAnimationCompleted( int track_index );
+};
+
+class DamageCalculate;
+class UnitNode;
+
+class UnitNodeSpineDamageComponent : public UnitNodeSpineComponent {
+private:
+    UnitNode* _source_unit;
+    UnitNode* _target_unit;
+    DamageCalculate* _damage_calculator;
+    
+public:
+    UnitNodeSpineDamageComponent();
+    virtual ~UnitNodeSpineDamageComponent();
+    
+    static UnitNodeSpineDamageComponent* create( UnitNode* source_unit, UnitNode* target_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle, DamageCalculate* calculator );
+    virtual bool init( UnitNode* source_unit, UnitNode* target_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle, DamageCalculate* calculator );
+    
+    void onSkeletonAnimationEvent( int track_index, spEvent* event );
+    
+    void setSourceUnit( UnitNode* source_unit );
+    void setTargetUnit( UnitNode* target_unit );
+    void setDamageCalculator( DamageCalculate* calculator );
+};
+
+class UnitNodeDirectionalSpineComponent : public UnitNodeComponent {
+private:
+    cocos2d::Point _dir;
+    float _speed;
+    float _duration;
+    float _elapse;
+    
+public:
+    UnitNodeDirectionalSpineComponent();
+    virtual ~UnitNodeDirectionalSpineComponent();
+    
+    static UnitNodeDirectionalSpineComponent* create( const cocos2d::Point& dir, float speed, float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
+    virtual bool init( const cocos2d::Point& dir, float speed, float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
+    
+    virtual void updateFrame( float delta );
+    
+    bool setAnimation( int track_index, const std::string& name, bool loop );
 };
 
 class UnitNodeFadeoutComponent : public UnitNodeComponent {

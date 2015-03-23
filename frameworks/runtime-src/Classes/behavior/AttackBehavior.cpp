@@ -45,11 +45,11 @@ bool AttackBehavior::behave( float delta ) {
     if( _unit_node->isUnderControl() ) {
         return true;
     }
-    if( _unit_node->isHarmless() ) {
-        return false;
-    }
     if( _unit_node->isAttacking() || _unit_node->isCasting() ) {
         return true;
+    }
+    if( _unit_node->isHarmless() ) {
+        return false;
     }
     TargetNode* attack_target = _unit_node->getAttackTarget();
     if( attack_target != nullptr ) {
@@ -63,7 +63,7 @@ bool AttackBehavior::behave( float delta ) {
         }
     }
     else if( _unit_node->getChasingTarget() == nullptr && _unit_node->getSightGroup() != "" ) {
-        std::list<UnitNode*> same_sight_group_units = _unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( _unit_node->getUnitCamp(), _unit_node->getSightGroup() );
+        cocos2d::Vector<UnitNode*> same_sight_group_units = _unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( _unit_node->getUnitCamp(), _unit_node->getSightGroup() );
         for( auto u : same_sight_group_units ) {
             if( u->getChasingTarget() != nullptr ) {
                 _unit_node->setChasingTarget( u->getChasingTarget() );

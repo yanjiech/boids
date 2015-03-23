@@ -10,7 +10,6 @@
 #define __Boids__BulletNode__
 
 #include "cocos2d.h"
-#include "external/json/Document.h"
 #include "../data/DamageCalculate.h"
 
 #define DEFAULT_BULLET_SPEED 500.0
@@ -68,8 +67,8 @@ public:
     
     static int getNextBulletId();
     
-    static BulletNode* create( class UnitNode* unit_node, const rapidjson::Value& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
-    virtual bool init( class UnitNode* unit_node, const rapidjson::Value& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
+    static BulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
+    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
     
     void shootAt( class UnitNode* source, class TargetNode* target );
     void shootAtPosition( class UnitNode* source, const cocos2d::Point& pos );

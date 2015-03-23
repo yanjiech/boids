@@ -16,6 +16,7 @@
 #include "BETypes.h"
 #include <fstream>
 #include "./util/CocosUtils.h"
+#include "./constant/BoidsConstant.h"
 
 using namespace cocos2d;
 
@@ -78,12 +79,28 @@ const std::string& MapData::getMapData() {
 TMXTiledMap *MapData::generateTiledMapWithFlags(int flags) {
 	assert(_mapData.size() && "_mapData empty");
     auto map = TMXTiledMap::createWithXML(_mapData, _path);
-    map->setContentSize(Size(map->getMapSize().width * map->getTileSize().width, map->getTileSize().height * map->getMapSize().height));
-    
+    float map_width = map->getMapSize().width * map->getTileSize().width;
+    float map_height = map->getTileSize().height * map->getMapSize().height;
+    map->setContentSize( Size( map_width, map_height ) );
     
     auto spriteFromObject = [this, map](Value& o, bool createFromCache) {
         auto object = o.asValueMap();
         auto gid = object.at("gid").asInt();
+        bool flipped_horizontally = false;
+        bool flipped_vertically = false;
+        bool flipped_diagonally = false;
+        if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
+            flipped_horizontally = true;
+            gid &= 0x7fffffff;
+        }
+        if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
+            flipped_vertically = true;
+            gid &= 0xbfffffff;
+        }
+        if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
+            flipped_diagonally = true;
+            gid &= 0xdfffffff;
+        }
         auto x = object.at("x").asFloat();
         auto y = object.at("y").asFloat();
         auto p = map->getPropertiesForGID(gid);
@@ -96,7 +113,14 @@ TMXTiledMap *MapData::generateTiledMapWithFlags(int flags) {
             sprite = Sprite::create(spritePath);
         }
         sprite->setAnchorPoint(Vec2::ZERO);
-        sprite->setPosition(Vec2(x, y));
+        sprite->setPosition( Point( x, y ) );
+//        sprite->setPosition(Vec2(x + sprite->getContentSize().width / 2, y + sprite->getContentSize().height / 2));
+        if( flipped_horizontally ) {
+            sprite->setFlippedX( true );
+        }
+        if( flipped_vertically ) {
+            sprite->setFlippedY( true );
+        }
         return sprite;
     };
     
@@ -126,29 +150,22 @@ TMXTiledMap *MapData::generateTiledMapWithFlags(int flags) {
         auto objects = map->getObjectGroup("vision")->getObjects();
         for (auto o : objects) {
             auto sp = spriteFromObject(o, true);
-            objectLayer->addChild(sp);
+            objectLayer->addChild(sp, (int)-sp->getPosition().x - (int)sp->getPosition().y * (int)map_width );
         }
     }
     
     return map;
 }
 
-const rapidjson::Value& MapData::getAreaByName( const std::string& name ) {
-    for( auto itr = _meta_json["positions"].onBegin(); itr != _meta_json["positions"].onEnd(); ++itr ) {
-        const rapidjson::Value& pos = *itr;
-        std::string pos_name = std::string( pos["name"].GetString(), pos["name"].GetStringLength() );
-        if( pos_name == name ) {
-            return pos;
-        }
-    }
-    return CocosUtils::NULL_RAPIDJSON_VALUE;
-}
-
 cocos2d::ValueMap MapData::getAreaMapByName( const std::string& name ) {
     cocos2d::ValueMap ret;
-    const rapidjson::Value& area_json = this->getAreaByName( name );
-    if( !area_json.IsNull() ) {
-        ret = CocosUtils::jsonObjectToValueMap( area_json );
+    const ValueVector& position_vector = _meta_json.at( "positions" ).asValueVector();
+    for( auto itr = position_vector.begin(); itr != position_vector.end(); ++itr ) {
+        const ValueMap& pos_data = itr->asValueMap();
+        if( pos_data.at( "name" ).asString() == name ) {
+            ret = pos_data;
+            break;
+        }
     }
     return ret;
 }
@@ -160,15 +177,17 @@ cocos2d::ValueVector MapData::getAreasVectorByTag( const std::string& tag_name )
 
 cocos2d::ValueMap MapData::getAreaMapByPosition( const cocos2d::Point& pos ) {
     ValueMap ret;
-    for( auto itr = _meta_json["positions"].onBegin(); itr != _meta_json["positions"].onEnd(); ++itr ) {
-        const rapidjson::Value& pos_data = *itr;
-        float x = (float)pos_data["rect"]["x"].GetDouble();
-        float y = (float)pos_data["rect"]["y"].GetDouble();
-        float width = (float)pos_data["rect"]["width"].GetDouble();
-        float height = (float)pos_data["rect"]["height"].GetDouble();
+    const ValueVector& position_vector = _meta_json.at( "positions" ).asValueVector();
+    for( auto itr = position_vector.begin(); itr != position_vector.end(); ++itr ) {
+        const ValueMap& pos_data = itr->asValueMap();
+        const ValueMap& rect_data = pos_data.at( "rect" ).asValueMap();
+        float x = rect_data.at( "x" ).asFloat();
+        float y = rect_data.at( "y" ).asFloat();
+        float width = rect_data.at( "width" ).asFloat();
+        float height = rect_data.at( "height" ).asFloat();
         Rect rect = Rect( x, y, width, height );
         if( rect.containsPoint( pos ) ) {
-            ret = CocosUtils::jsonObjectToValueMap( pos_data );
+            ret = pos_data;
             break;
         }
     }
@@ -177,9 +196,10 @@ cocos2d::ValueMap MapData::getAreaMapByPosition( const cocos2d::Point& pos ) {
 }
 
 void MapData::preprocessMapData() {
-    _meta_json.Parse<0>(_metaData.c_str());
-    if (_meta_json.HasMember("plist")) {
-        const rapidjson::Value& plist = _meta_json["plist"];
+    rapidjson::Document meta_json;
+    meta_json.Parse<0>(_metaData.c_str());
+    if (meta_json.HasMember("plist")) {
+        const rapidjson::Value& plist = meta_json["plist"];
         for (int i = 0; i < plist.Size(); ++i) {
             _plistList.push_back(plist[i].GetString());
         }
@@ -205,22 +225,32 @@ void MapData::preprocessMapData() {
             plistArray.SetArray();
             for (std::string p : _plistList) {
                 rapidjson::Value pnode;
-                pnode.SetString(p.c_str(), _meta_json.GetAllocator());
-                plistArray.PushBack(pnode, _meta_json.GetAllocator());
+                pnode.SetString(p.c_str(), meta_json.GetAllocator());
+                plistArray.PushBack(pnode, meta_json.GetAllocator());
             }
-            _meta_json.AddMember("plist", plistArray, _meta_json.GetAllocator());
+            meta_json.AddMember("plist", plistArray, meta_json.GetAllocator());
             rapidjson::StringBuffer buffer;
             rapidjson::PrettyWriter<rapidjson::GenericStringBuffer<rapidjson::UTF8<>>> writer(buffer);
-            _meta_json.Accept(writer);
+            meta_json.Accept(writer);
             _metaData = buffer.GetString();
         }
     }
+    _meta_json = CocosUtils::jsonObjectToValueMap( meta_json );
 }
 
 void MapData::manuallyLoadImagesToCache() {
     auto map = TMXTiledMap::createWithXML(_mapData, _path);
     auto loadImage = [this, map](ValueMap& vm) {
         auto gid = vm.at("gid").asInt();
+        if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
+            gid &= 0x7fffffff;
+        }
+        if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
+            gid &= 0xbfffffff;
+        }
+        if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
+            gid &= 0xdfffffff;
+        }
         auto p = map->getPropertiesForGID(gid);
         std::string imageName = p.asValueMap().at("source").asString();
         //std::string imagePath = Utils::stringFormat("%s/%s", _path.c_str(), imageName.c_str());

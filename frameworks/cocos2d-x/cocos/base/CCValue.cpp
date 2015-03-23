@@ -29,9 +29,9 @@
 
 NS_CC_BEGIN
 
-const ValueVector ValueVectorNull;
-const ValueMap ValueMapNull;
-const ValueMapIntKey ValueMapIntKeyNull;
+CC_DLL const ValueVector ValueVectorNull;
+CC_DLL const ValueMap ValueMapNull;
+CC_DLL const ValueMapIntKey ValueMapIntKeyNull;
 
 const Value Value::Null;
 
@@ -469,7 +469,12 @@ int Value::asInt() const
 
     if (_type == Type::STRING)
     {
-        return atoi(_field.strVal->c_str());
+//        return atoi(_field.strVal->c_str());
+        std::stringstream ss;
+        unsigned int ret;
+        ss << _field.strVal;
+        ss >> ret;
+        return static_cast<int>( ret );
     }
 
     if (_type == Type::FLOAT)

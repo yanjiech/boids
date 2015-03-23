@@ -74,7 +74,6 @@ private:
     void runSceneWithNode(cocos2d::Node *node);
     void fetchPositionTags();
     
-    
     void onMenuCommand(EditorCommandType ct, cocos2d::Ref *sender);
     void onPopupEvent(EditorPopupEventType et, BEUIBase *popup, cocos2d::Ref *sender);
     void onMainCommand(MainCommandType ct, const std::string& mapFolder, cocos2d::Ref *sender);

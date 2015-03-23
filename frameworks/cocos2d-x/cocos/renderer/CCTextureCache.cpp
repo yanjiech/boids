@@ -403,19 +403,6 @@ Texture2D* TextureCache::addImage(Image *image, const std::string &key)
     return texture;
 }
 
-void TextureCache::addTexture(Texture2D* tex, const std::string& key) {
-    CCASSERT(tex != nullptr, "TextureCache: texture MUST not be nil");
-    do {
-        _textures.insert(std::make_pair(key, tex));
-        tex->retain();
-        
-        auto it = _textures.find(key);
-        if( it != _textures.end() ) {
-            break;
-        }
-    } while (0);
-}
-
 bool TextureCache::reloadTexture(const std::string& fileName)
 {
     Texture2D * texture = nullptr;

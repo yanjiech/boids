@@ -9,6 +9,7 @@
 #include "DamageCalculate.h"
 #include "../unit/UnitNode.h"
 #include "../Utils.h"
+#include "../constant/BoidsConstant.h"
 
 using namespace cocos2d;
 
@@ -20,9 +21,9 @@ DamageCalculate::~DamageCalculate() {
     
 }
 
-DamageCalculate* DamageCalculate::create( const std::string& calculator_name ) {
+DamageCalculate* DamageCalculate::create( const std::string& calculator_name, float base_damage ) {
     DamageCalculate* ret = new DamageCalculate();
-    if( ret && ret->init( calculator_name ) ) {
+    if( ret && ret->init( calculator_name, base_damage ) ) {
         ret->autorelease();
         return ret;
     }
@@ -32,13 +33,14 @@ DamageCalculate* DamageCalculate::create( const std::string& calculator_name ) {
     }
 }
 
-bool DamageCalculate::init( const std::string& calculator_name ) {
+bool DamageCalculate::init( const std::string& calculator_name, float base_damage ) {
     _calculator_name = calculator_name;
     _calculator = nullptr;
+    _base_damage = base_damage;
     return true;
 }
 
-cocos2d::ValueMap DamageCalculate::calculateDamage( float base_damage, class UnitData* atker_data, class UnitData* defer_data ) {
+cocos2d::ValueMap DamageCalculate::calculateDamage( class UnitData* atker_data, class UnitData* defer_data ) {
     cocos2d::ValueMap ret;
     
     do {
@@ -53,10 +55,10 @@ cocos2d::ValueMap DamageCalculate::calculateDamage( float base_damage, class Uni
         
         float damage = 0;
         if( _calculator ) {
-            damage = _calculator( base_damage, atker_data, defer_data );
+            damage = _calculator( _base_damage, atker_data, defer_data );
         }
         else {
-            damage = DamageCalculate::calculateDamage( _calculator_name, base_damage, atker_data, defer_data );
+            damage = DamageCalculate::calculateDamage( _calculator_name, _base_damage, atker_data, defer_data );
         }
         if( this->doesCritical( atker_data->critical, defer_data->tenacity, atker_data->level, defer_data->level ) ) {
             damage *= 2.0f;
@@ -66,14 +68,50 @@ cocos2d::ValueMap DamageCalculate::calculateDamage( float base_damage, class Uni
             ret["cri"] = Value( false );
         }
         ret["damage"] = Value( damage );
-        break;
-    }while( true );
+    }while( false );
+    return ret;
+}
+
+cocos2d::ValueMap DamageCalculate::calculateDamageWithoutMiss( class UnitData* atker_data, class UnitData* defer_data ) {
+    cocos2d::ValueMap ret;
+    
+    do {
+        ret["miss"] = Value( false );
+        
+        float damage = 0;
+        if( _calculator ) {
+            damage = _calculator( _base_damage, atker_data, defer_data );
+        }
+        else {
+            damage = DamageCalculate::calculateDamage( _calculator_name, _base_damage, atker_data, defer_data );
+        }
+        if( this->doesCritical( atker_data->critical, defer_data->tenacity, atker_data->level, defer_data->level ) ) {
+            damage *= 2.0f;
+            ret["cri"] = Value( true );
+        }
+        else {
+            ret["cri"] = Value( false );
+        }
+        ret["damage"] = Value( damage );
+    }while( false );
     return ret;
 }
 
 float DamageCalculate::calculateDamage( const std::string calculator_name, float base_damage, class UnitData* atker_data, class UnitData* defer_data ) {
     if( calculator_name == "normal" ) {
         return ( base_damage + 0.2 * atker_data->atk ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+    }
+    else if( calculator_name == SKILL_NAME_WRATH_OF_THUNDER ) {
+        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+    }
+    else if( calculator_name == SKILL_NAME_LIGHTNING_CHAIN ) {
+        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+    }
+    else if( calculator_name == SKILL_NAME_BARRAGE_OF_ARROW ) {
+        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+    }
+    else if ( calculator_name == SKILL_NAME_CRAZYSHOOT ) {
+        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
     }
     return 0;
 }

@@ -43,8 +43,23 @@ bool Path::operator == (const class Path& other)
 	return true;
 }
 
-Path::Path(int _validity_frame) : 
+const Path& Path::operator = ( const Path& other ) {
+    if( this == &other ) {
+        return *this;
+    }
+    this->steps = other.steps;
+    this->validity_frame = other.validity_frame;
+    return *this;
+}
+
+Path::Path() :
 validity_frame( INT_MAX ), customized_is_reach_destination(nullptr), path_released_callback(nullptr)
+{
+    
+}
+
+Path::Path(int _validity_frame) : 
+validity_frame( _validity_frame ), customized_is_reach_destination(nullptr), path_released_callback(nullptr)
 {
 }
 
