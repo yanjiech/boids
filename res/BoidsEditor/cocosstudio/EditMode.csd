@@ -1663,7 +1663,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_gameCondition" ActionTag="1605730295" Visible="False" FrameEvent="" Tag="164" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_gameCondition" ActionTag="1605730295" FrameEvent="" Tag="164" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Position X="0.0000" Y="0.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -1785,6 +1785,15 @@
                     <Size X="500.0000" Y="27.0000" />
                     <PrePosition X="0.4020" Y="0.8500" />
                     <PreSize X="0.5000" Y="0.0338" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="input_tag" ActionTag="887275693" FrameEvent="" Tag="186" LeftMargin="520.5000" RightMargin="379.5000" TopMargin="35.0000" BottomMargin="738.0000" TouchEnable="True" FontSize="14" IsCustomSize="True" LabelText="" PlaceHolderText="tag" MaxLengthText="10" ctype="TextFieldObjectData">
+                    <Position X="570.5000" Y="751.5000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="0" G="0" B="0" />
+                    <Size X="100.0000" Y="27.0000" />
+                    <PrePosition X="0.5705" Y="0.9394" />
+                    <PreSize X="0.0000" Y="0.0000" />
                   </NodeObjectData>
                 </Children>
                 <SingleColor A="255" R="255" G="255" B="255" />

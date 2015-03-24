@@ -22,7 +22,7 @@ GameTask::~GameTask() {
 
 GameTask* GameTask::create( const cocos2d::ValueMap& data, MapLogic* map_logic ) {
     GameTask* ret = nullptr;
-    std::string type = data.at( "task_type" ).asString();
+    std::string type = data.at( "condition" ).asString();
     if( type == GAME_TASK_TYPE_ELIMINATE_UNIT ) {
         ret = EliminateUnitTask::create( data, map_logic );
     }

@@ -9,6 +9,7 @@
 #include "PlayerInfo.h"
 #include "external/json/Document.h"
 #include "../util/CocosUtils.h"
+#include "../manager/ResourceManager.h"
 
 using namespace cocos2d;
 
@@ -36,15 +37,81 @@ void PlayerInfo::loadPlayerInfo() {
     _player_info = CocosUtils::jsonObjectToValueMap( player_info_json );
 }
 
-const cocos2d::ValueVector& PlayerInfo::getPlayerUnitsInfo() {
-    return _player_info.at( "units" ).asValueVector();
-}
-
-cocos2d::ValueVector PlayerInfo::getPlayerUnitNames() {
+cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitsInfo() {
     ValueVector ret;
-    const ValueVector& units = _player_info.at( "units" ).asValueVector();
-    for( auto itr = units.begin(); itr != units.end(); ++itr ) {
-        ret.push_back( Value( itr->asValueMap().at( "name" ).asString() ) );
+    const ValueMap& player_units = _player_info.at( "units" ).asValueMap();
+    const ValueVector& player_unit_ids = _player_info.at( "deploy_units" ).asValueVector();
+    
+    for( auto itr = player_unit_ids.begin(); itr != player_unit_ids.end(); ++itr ) {
+        auto sitr = player_units.find( itr->asString() );
+        if( sitr != player_units.end() ) {
+            ret.push_back( sitr->second );
+        }
     }
     return ret;
+}
+
+cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitNames() {
+    ValueVector ret;
+    const ValueMap& player_units = _player_info.at( "units" ).asValueMap();
+    const ValueVector& player_unit_ids = _player_info.at( "deploy_units" ).asValueVector();
+    
+    for( auto itr = player_unit_ids.begin(); itr != player_unit_ids.end(); ++itr ) {
+        auto sitr = player_units.find( itr->asString() );
+        if( sitr != player_units.end() ) {
+            ret.push_back( sitr->second.asValueMap().at( "name" ) );
+        }
+    }
+    return ret;
+}
+
+void PlayerInfo::gainGold( int gain ) {
+    int gold = this->getGold();
+    _player_info["gold"] = Value( gold + gain );
+}
+
+int PlayerInfo::getGold() {
+    return _player_info.at( "gold" ).asInt();
+}
+
+void PlayerInfo::gainDiamond( int gain ) {
+    int diamond = this->getDiamond();
+    _player_info["diamond"] = Value( diamond + gain );
+}
+
+int PlayerInfo::getDiamond() {
+    return _player_info.at( "diamond" ).asInt();
+}
+
+void PlayerInfo::gainTeamExp( int exp ) {
+    int team_exp = _player_info.at( "team_exp" ).asInt();
+    team_exp += exp;
+    _player_info["team_exp"] = Value( team_exp );
+    int team_level = this->getTeamLevel();
+    int next_team_level = team_level + 1;
+    const ValueVector& team_level_exp_conf = ResourceManager::getInstance()->getTeamLevelExpConfig();
+    if( team_level_exp_conf.size() > next_team_level ) {
+        int next_team_level_exp = team_level_exp_conf[next_team_level-1].asInt();
+        if( team_exp >= next_team_level_exp ) {
+            this->setTeamLevel( next_team_level );
+        }
+    }
+}
+
+void PlayerInfo::setTeamLevel( int level ) {
+    _player_info["team_level"] = Value( level );
+}
+
+int PlayerInfo::getTeamLevel() {
+    return _player_info.at( "team_level" ).asInt();
+}
+
+void PlayerInfo::gainTeamSkillLevel( int lvl_up, const std::string& skill_name ) {
+    ValueMap& skill = this->getTeamSkill( skill_name );
+    int sk_lvl = skill["level"].asInt();
+    skill["level"] = Value( sk_lvl + lvl_up );
+}
+
+ValueMap& PlayerInfo::getTeamSkill( const std::string& skill_name ) {
+    return _player_info.at( "team_skills" ).asValueMap().at( skill_name ).asValueMap();
 }

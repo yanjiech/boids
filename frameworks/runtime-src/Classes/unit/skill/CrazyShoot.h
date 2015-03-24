@@ -12,6 +12,15 @@
 #include "SkillNode.h"
 
 class CrazyShoot : public SkillNode {
+private:
+    float _base_damage;
+    float _elapse;
+    float _interval;
+    float _speed;
+    float _range;
+    int _count;
+    int _current_count;
+    
 public:
     CrazyShoot();
     virtual ~CrazyShoot();

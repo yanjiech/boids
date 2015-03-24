@@ -137,6 +137,7 @@ public:
     cocos2d::Vector<UnitNode*> getAliveUnitsByTag( const std::string& tag );
     cocos2d::Vector<UnitNode*> getAliveUnitsByName( const std::string& name );
     cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eUnitCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group );
     

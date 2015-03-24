@@ -145,6 +145,9 @@ rapidjson::Value& EditorGameCondition::toJson(rapidjson::Document::AllocatorType
     if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "collect_item" || Condition == "time_limit") {
         _json.AddMember("desc", Desc.c_str(), allocator);
     }
+    if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "collect_item" || Condition == "time_limit") {
+        _json.AddMember("tag", Tag.c_str(), allocator);
+    }
     return _json;
 }
 
@@ -159,6 +162,9 @@ void EditorGameCondition::loadJson(const rapidjson::Value& value) {
     }
     if( value.HasMember( "desc" ) ) {
         Desc = value["desc"].GetString();
+    }
+    if( value.HasMember( "tag" ) ) {
+        Tag = value["tag"].GetString();
     }
 }
 

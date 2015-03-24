@@ -27,9 +27,22 @@ public:
     
     void loadPlayerInfo();
     
-    const cocos2d::ValueVector& getPlayerUnitsInfo();
+    cocos2d::ValueVector getPlayerDeployedUnitsInfo();
     
-    cocos2d::ValueVector getPlayerUnitNames();
+    cocos2d::ValueVector getPlayerDeployedUnitNames();
+    
+    void gainGold( int gain );
+    int getGold();
+    
+    void gainDiamond( int gain );
+    int getDiamond();
+    
+    void gainTeamExp( int exp );
+    void setTeamLevel( int level );
+    int getTeamLevel();
+    
+    void gainTeamSkillLevel( int lvl_up, const std::string& skill_name );
+    cocos2d::ValueMap& getTeamSkill( const std::string& skill_name );
 };
 
 #endif /* defined(__Boids__PlayerInfo__) */

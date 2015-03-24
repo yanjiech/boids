@@ -7,7 +7,7 @@
 //
 
 #include "UnitNodeComponent.h"
-#include "UnitNode.h"
+#include "../scene/BattleLayer.h"
 #include "../data/DamageCalculate.h"
 
 using namespace cocos2d;
@@ -94,17 +94,17 @@ void UnitNodeSpineComponent::onSkeletonAnimationCompleted( int track_index ) {
     }
 }
 
-UnitNodeDirectionalSpineComponent::UnitNodeDirectionalSpineComponent() {
+DirectionalSpineComponent::DirectionalSpineComponent() {
     
 }
 
-UnitNodeDirectionalSpineComponent::~UnitNodeDirectionalSpineComponent() {
+DirectionalSpineComponent::~DirectionalSpineComponent() {
     
 }
 
-UnitNodeDirectionalSpineComponent* UnitNodeDirectionalSpineComponent::create( const cocos2d::Point& dir, float speed, float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
-    UnitNodeDirectionalSpineComponent* ret = new UnitNodeDirectionalSpineComponent();
-    if( ret && ret->init( dir, speed, duration, skeleton, name, auto_recycle ) ) {
+DirectionalSpineComponent* DirectionalSpineComponent::create( const cocos2d::ValueMap& data, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    DirectionalSpineComponent* ret = new DirectionalSpineComponent();
+    if( ret && ret->init( data, skeleton, name, auto_recycle ) ) {
         ret->autorelease();
         return ret;
     }
@@ -114,21 +114,21 @@ UnitNodeDirectionalSpineComponent* UnitNodeDirectionalSpineComponent::create( co
     }
 }
 
-bool UnitNodeDirectionalSpineComponent::init( const cocos2d::Point& dir, float speed, float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+bool DirectionalSpineComponent::init( const cocos2d::ValueMap& data, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
     if( !UnitNodeComponent::init( skeleton, name, auto_recycle ) ) {
         return false;
     }
     
-    _dir = dir;
+    _dir = Point( data.at( "dir_x" ).asFloat(), data.at( "dir_y" ).asFloat() );
     _dir.normalize();
-    _speed = speed;
-    _duration = duration;
+    _speed = data.at( "speed" ).asFloat();
+    _duration = data.at( "duration" ).asFloat();
     _elapse = 0;
     
     return true;
 }
 
-void UnitNodeDirectionalSpineComponent::updateFrame( float delta ) {
+void DirectionalSpineComponent::updateFrame( float delta ) {
     _elapse += delta;
     if( _elapse > _duration ) {
         this->setShouldRecycle( true );
@@ -138,7 +138,7 @@ void UnitNodeDirectionalSpineComponent::updateFrame( float delta ) {
     }
 }
 
-bool UnitNodeDirectionalSpineComponent::setAnimation( int track_index, const std::string& name, bool loop ) {
+bool DirectionalSpineComponent::setAnimation( int track_index, const std::string& name, bool loop ) {
     spine::SkeletonAnimation* skeleton = dynamic_cast<spine::SkeletonAnimation*>( _node );
     if( skeleton ) {
         return skeleton->setAnimation( track_index, name, loop ) != nullptr;

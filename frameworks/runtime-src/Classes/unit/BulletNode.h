@@ -15,7 +15,7 @@
 #define DEFAULT_BULLET_SPEED 500.0
 
 class BulletNode : public cocos2d::Node {
-private:
+protected:
     static int _global_bullet_id;
     
     cocos2d::ValueMap _bullet_data;
@@ -56,7 +56,7 @@ private:
     
     bool _should_recycle;
     
-private:
+protected:
     void shoot( class UnitNode* source );
     
     bool doesHitTarget( const cocos2d::Point& source_pos, const cocos2d::Point& target_pos, float delta );
@@ -73,7 +73,7 @@ public:
     void shootAt( class UnitNode* source, class TargetNode* target );
     void shootAtPosition( class UnitNode* source, const cocos2d::Point& pos );
     
-    void updateFrame( float delta );
+    virtual void updateFrame( float delta );
     
     int getBulletId() { return _bullet_id; }
     void setBulletId( int bullet_id ) { _bullet_id = bullet_id; }
@@ -91,7 +91,26 @@ public:
     void setDamageCalculator( DamageCalculate* calculator );
     void setBuff( class Buff* buff );
     
+    void setShouldRecycle( bool b ) { _should_recycle = b; }
     bool shouldRecycle() { return _should_recycle; }
+};
+
+class DirectionalBulletNode : public BulletNode {
+private:
+    cocos2d::Point _dir;
+    float _duration;
+    cocos2d::ValueMapIntKey _excluded_targets;
+    
+public:
+    DirectionalBulletNode();
+    virtual ~DirectionalBulletNode();
+    
+    static DirectionalBulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
+    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
+    
+    void shootAlong( const cocos2d::Point& dir, float duration, class UnitNode* source_unit );
+    
+    virtual void updateFrame( float delta );
 };
 
 #endif /* defined(__Boids__BulletNode__) */

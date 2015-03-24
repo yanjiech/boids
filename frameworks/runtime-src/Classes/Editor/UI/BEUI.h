@@ -348,6 +348,7 @@ private:
     cocos2d::ui::TextField *_numberTextField;
     cocos2d::ui::TextField *_nameTextField;
     cocos2d::ui::TextField *_descTextField;
+    cocos2d::ui::TextField *_tagTextField;
     cocos2d::ui::Button *_addButton;
     cocos2d::ui::Button *_deleteButton;
     BEListView *_resultListView;

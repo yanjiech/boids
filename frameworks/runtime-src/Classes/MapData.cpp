@@ -104,6 +104,12 @@ TMXTiledMap *MapData::generateTiledMapWithFlags(int flags) {
         auto x = object.at("x").asFloat();
         auto y = object.at("y").asFloat();
         auto p = map->getPropertiesForGID(gid);
+        
+        //temp use
+        for( auto sitr = p.asValueMap().begin(); sitr != p.asValueMap().end(); ++sitr ) {
+            printf( "%s : %s\n", sitr->first.c_str(), sitr->second.asString().c_str() );
+        }
+        
         auto source = p.asValueMap().at("source").asString();
         Sprite *sprite = nullptr;
         if (createFromCache) {

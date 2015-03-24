@@ -10,6 +10,8 @@
 #include "../../scene/BattleLayer.h"
 #include "../../constant/BoidsConstant.h"
 #include "../../Utils.h"
+#include "../BulletNode.h"
+#include "../../manager/ResourceManager.h"
 
 using namespace cocos2d;
 
@@ -42,14 +44,12 @@ bool BarrageOfArrow::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     _base_damage = data.at( "damage" ).asValueVector().at( level - 1 ).asFloat();
     _interval = data.at( "interval" ).asFloat();
     _elapse = _interval;
-    _damage_elapse = _interval / 2;
     _speed = data.at( "speed" ).asFloat();
     _waves = data.at( "waves" ).asInt();
     _current_wave = 0;
     _count_per_wave = data.at( "count_per_wave" ).asInt();
     _angle = data.at( "angle" ).asFloat();
     _range = data.at( "range" ).asFloat();
-    _bullet_length = data.at( "bullet_length" ).asFloat();
     _dir_angle = _owner->getUnitDirection().getAngle();
     
     return true;
@@ -58,25 +58,6 @@ bool BarrageOfArrow::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 void BarrageOfArrow::updateFrame( float delta ) {
     if( !_should_recycle ) {
         _elapse += delta;
-        _damage_elapse += delta;
-        if( _damage_elapse >= _interval ) {
-            _damage_elapse = 0;
-            BattleLayer* battle_layer = _owner->getBattleLayer();
-            cocos2d::Vector<UnitNode*> units = battle_layer->getAliveOpponentsInSector( _owner->getUnitCamp(), _owner->getEmitPos(), _owner->getUnitDirection(), _range, _angle );
-            DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_BARRAGE_OF_ARROW, _base_damage );
-            for( auto u : units ) {
-                ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getUnitData(), u->getUnitData() );
-                u->takeDamage( result.at( "damage").asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), _owner->getDeployId() );
-                //add hit effect
-                std::string resource = "effects/bullets/blue_ball_hit";
-                std::string name = Utils::stringFormat( "%s_hit_%d", SKILL_NAME_BARRAGE_OF_ARROW, BulletNode::getNextBulletId() );
-                spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
-                UnitNodeSpineComponent* hit_component = UnitNodeSpineComponent::create( skeleton, name, true );
-                hit_component->setPosition( u->getLocalHitPos() );
-                u->addUnitComponent( hit_component, name, eComponentLayer::OverObject );
-                hit_component->setAnimation( 0, "animation", false );
-            }
-        }
         
         if( _elapse >= _interval ) {
             if( _current_wave < _waves ) {
@@ -94,20 +75,18 @@ void BarrageOfArrow::updateFrame( float delta ) {
                 shoot_component->setAnimation( 0, "animation", false );
                 
                 //add arrow components
-                std::string bullet_resource = "effects/bullets/vanhelsing_bullet_body";
+                ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( "vanhelsing_skill_bullet" );
                 for( int i = 0; i < _count_per_wave; ++i ) {
-                    std::string bullet_name = SKILL_NAME_BARRAGE_OF_ARROW + Utils::stringFormat( "_%d", BulletNode::getNextBulletId() );
-                    skeleton = ArmatureManager::getInstance()->createArmature( bullet_resource );
                     float angle = ( ( i - ( _count_per_wave - 1 ) / 2.0f ) ) * ( CC_DEGREES_TO_RADIANS( _angle ) / ( _count_per_wave - 1 ) ) + _dir_angle;
                     Point dir = Point( cosf( angle ), sinf( angle ) );
-                    skeleton->setRotation( -CC_RADIANS_TO_DEGREES( angle ) );
-                    UnitNodeDirectionalSpineComponent* component = UnitNodeDirectionalSpineComponent::create( dir, _speed, _range / _speed, skeleton, bullet_name, true );
-                    battle_layer->addToEffectLayer( component, _owner->getEmitPos(), 0 );
-                    component->setAnimation( 0, "animation", true );
+                    DamageCalculate* calculator = DamageCalculate::create( "BarrageOfArrow", _base_damage );
+                    DirectionalBulletNode* bullet = DirectionalBulletNode::create( _owner, bullet_data, calculator, nullptr );
+                    battle_layer->addBullet( bullet->getBulletId(), bullet );
+                    bullet->shootAlong( dir, _range / _speed, _owner );
                 }
             }
             
-            if( ++_current_wave == _waves ) {
+            if( ++_current_wave >= _waves ) {
                 this->end();
             }
         }

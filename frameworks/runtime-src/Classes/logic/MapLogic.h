@@ -83,6 +83,7 @@ public:
     
     void setTriggersEnabledOfName( const std::string& name, bool b );
     
+    void checkTriggers();
     void checkGameState( float delta );
     
     void onTargetNodeAppear( class TargetNode* target_node );

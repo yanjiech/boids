@@ -26,6 +26,8 @@ private:
     cocos2d::ValueMap _battle_ui_config;
     cocos2d::ValueMap _level_config;
     cocos2d::ValueMap _skill_config;
+    cocos2d::ValueVector _team_level_exp_config;
+    cocos2d::ValueMap _team_skill_exp_config;
     
 private:
     ResourceManager();
@@ -44,6 +46,8 @@ public:
     const cocos2d::ValueMap& getBattleUIConfig() { return _battle_ui_config; }
     const cocos2d::ValueMap& getLevelConfig() { return _level_config; }
     const cocos2d::ValueMap& getSkillConfig() { return _skill_config; }
+    const cocos2d::ValueVector& getTeamLevelExpConfig() { return _team_level_exp_config; }
+    const cocos2d::ValueMap& getTeamSkillExpConfig() { return _team_skill_exp_config; }
     
     void loadMap( MapData* map_data );
     void purgeMap( MapData* map_data );
@@ -60,6 +64,8 @@ public:
     void loadUnitEffects();
     void loadLevelData();
     void loadSkillData();
+    void loadTeamLevelExpData();
+    void loadTeamSkillExpData();
     
     void loadBulletArmature( const std::string& name, const std::string& type );
     void purgeBulletArmature( const std::string& name, const std::string& type );

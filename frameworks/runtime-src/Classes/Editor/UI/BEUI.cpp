@@ -1050,6 +1050,7 @@ BEUIGameCondition::BEUIGameCondition(Node *root, const BEPopupEventHandler& hand
     _numberTextField = getTextFieldFrom("input_number", _root);
     _nameTextField = getTextFieldFrom("input_name", _root);
     _descTextField = getTextFieldFrom("input_desc", _root);
+    _tagTextField = getTextFieldFrom( "input_tag", _root );
     _addButton = getButtonFrom("button_add", _root);
     _okButton = getButtonFrom("button_ok", _root);
     _cancelButton = getButtonFrom("button_cancel", _root);
@@ -1094,6 +1095,7 @@ void BEUIGameCondition::onAddButtonClicked(Ref *sender) {
     _condition->Number = atoi(_numberTextField->getString().c_str());
     _condition->Name = _nameTextField->getString();
     _condition->Desc = _descTextField->getString();
+    _condition->Tag = _tagTextField->getString();
     _conditions.push_back(_condition);
     std::string name = Utils::stringFormat("%s:%s", _condition->Type.c_str(), _condition->Condition.c_str());
     _resultListView->addItem(name);
@@ -1120,6 +1122,7 @@ void BEUIGameCondition::onConditionItemClicked(Ref *sender) {
     _numberTextField->setString("");
     _nameTextField->setString("");
     _descTextField->setString("");
+    _tagTextField->setString( "" );
 }
 
 void BEUIGameCondition::onTypeItemClicked(Ref *sender) {

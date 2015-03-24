@@ -305,7 +305,21 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp
         UnitNode* unit = pair.second;
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
-            if( Math::isPositionInRange( unit->getPosition(), center, radius + unit->getUnitData()->collide ) ) {
+            if( Math::isPositionInRange( unit->getPosition(), center, radius ) ) {
+                ret.pushBack( unit );
+            }
+        }
+    }
+    return ret;
+}
+
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius ) {
+    cocos2d::Vector<UnitNode*> ret;
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        if( unit->isFoeOfCamp( camp ) ) {
+            Point unit_pos = unit->getPosition();
+            if( Math::isPositionInRange( unit_pos, center, radius ) && !Terrain::getInstance()->isBlocked( init_pos, unit_pos ) ) {
                 ret.pushBack( unit );
             }
         }

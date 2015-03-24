@@ -48,7 +48,7 @@ void ResourceManager::loadMap( MapData* map_data ) {
     const ValueVector& unit_names = meta_json.at( "units" ).asValueVector();
     this->loadUnitArmatures( unit_names );
     
-    const ValueVector& player_unit_names = PlayerInfo::getInstance()->getPlayerUnitNames();
+    const ValueVector& player_unit_names = PlayerInfo::getInstance()->getPlayerDeployedUnitNames();
     this->loadUnitArmatures( player_unit_names );
 }
 
@@ -59,7 +59,7 @@ void ResourceManager::purgeMap( MapData* map_data ) {
     const ValueVector& unit_names = meta_json.at( "units" ).asValueVector();
     this->purgeUnitArmatures( unit_names );
     
-    const ValueVector& player_unit_names = PlayerInfo::getInstance()->getPlayerUnitNames();
+    const ValueVector& player_unit_names = PlayerInfo::getInstance()->getPlayerDeployedUnitNames();
     this->purgeUnitArmatures( player_unit_names );
 }
 
@@ -72,6 +72,7 @@ void ResourceManager::loadAllData() {
     this->loadBattleUIData();
     this->loadLevelData();
     this->loadSkillData();
+    this->loadTeamLevelExpData();
 }
 
 void ResourceManager::loadDefaultData() {
@@ -129,6 +130,20 @@ void ResourceManager::loadSkillData() {
     rapidjson::Document skill_config_json;
     skill_config_json.Parse<0>( data_string.c_str() );
     _skill_config = CocosUtils::jsonObjectToValueMap( skill_config_json );
+}
+
+void ResourceManager::loadTeamLevelExpData() {
+    std::string data_string = FileUtils::getInstance()->getStringFromFile( "team_level_exp.json" );
+    rapidjson::Document level_exp_config_json;
+    level_exp_config_json.Parse<0>( data_string.c_str() );
+    _team_level_exp_config = CocosUtils::jsonArrayToValueVector( level_exp_config_json["team_level_exp"] );
+}
+
+void ResourceManager::loadTeamSkillExpData() {
+    std::string data_string = FileUtils::getInstance()->getStringFromFile( "team_skill_exp_conf.json" );
+    rapidjson::Document team_skill_exp_config_json;
+    team_skill_exp_config_json.Parse<0>( data_string.c_str() );
+    _team_skill_exp_config = CocosUtils::jsonObjectToValueMap( team_skill_exp_config_json );
 }
 
 void ResourceManager::loadUnitEffects() {

@@ -14,6 +14,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "../manager/ResourceManager.h"
 #include "../BoidsMath.h"
+#include "../AI/Terrain.h"
 
 using namespace cocos2d;
 
@@ -332,5 +333,107 @@ bool BulletNode::doesHitTarget( const cocos2d::Point& source_pos, const cocos2d:
     }
     else {
         return ( distance < _speed * delta );
+    }
+}
+
+DirectionalBulletNode::DirectionalBulletNode() :
+_duration( 0 ) {
+    
+}
+
+DirectionalBulletNode::~DirectionalBulletNode() {
+    
+}
+
+DirectionalBulletNode* DirectionalBulletNode::create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff ) {
+    DirectionalBulletNode* ret = new DirectionalBulletNode();
+    if( ret && ret->init( unit_node, bullet_data, damage_calculator, buff ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool DirectionalBulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff ) {
+    if( !BulletNode::init( unit_node, bullet_data, damage_calculator, buff ) ) {
+        return false;
+    }
+    _accumulator = 0;
+    
+    return true;
+}
+
+void DirectionalBulletNode::shootAlong( const cocos2d::Point& dir, float duration, class UnitNode* source_unit ) {
+    _dir = dir;
+    _duration = duration;
+    BulletNode::shoot( source_unit );
+    _bullet->setRotation( -_dir.getAngle() * 180.0f / M_PI );
+}
+
+void DirectionalBulletNode::updateFrame( float delta ) {
+    _accumulator += delta;
+    if( _accumulator > _duration ) {
+        this->setShouldRecycle( true );
+    }
+    else {
+        Point new_pos = this->getPosition() + _dir * delta * _speed;
+        this->setPosition( new_pos );
+        if( Terrain::getInstance()->isBlocked( _init_pos, new_pos ) ) {
+            this->setShouldRecycle( true );
+        }
+        else {
+            if( _streak ) {
+                _streak->setPosition( new_pos );
+            }
+            
+            bool show_hit_effect = false;
+            std::string hit_type = "";
+            std::string hit_name = "";
+            
+            auto itr = _bullet_data.find( "hit_type" );
+            if( itr != _bullet_data.end() ) {
+                hit_type = itr->second.asString();
+                hit_name = _bullet_data.at( "hit_name" ).asString();
+            }
+            
+            float hit_effect_scale = 1.0f;
+            itr = _bullet_data.find( "hit_scale" );
+            if( itr != _bullet_data.end() ) {
+                hit_effect_scale = itr->second.asFloat();
+            }
+            
+            if( hit_type != "" ) {
+                show_hit_effect = true;
+            }
+            
+            cocos2d::Vector<UnitNode*> alive_opponents = _battle_layer->getAliveOpponentsInRange( (eUnitCamp)_source_camp, _init_pos, new_pos, _damage_radius );
+            for( auto itr = alive_opponents.begin(); itr != alive_opponents.end(); ++itr ) {
+                UnitNode* target_unit = *itr;
+                int unit_id = target_unit->getDeployId();
+                if( _excluded_targets.find( unit_id ) == _excluded_targets.end() ) {
+                    _excluded_targets.insert( std::make_pair( unit_id, Value( true ) ) );
+                    ValueMap result = _damage_calculator->calculateDamageWithoutMiss( _unit_data, target_unit->getUnitData() );
+                    target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "miss" ).asBool(), result.at( "cri" ).asBool(), _source_id );
+                    
+                    if( show_hit_effect ) {
+                        std::string hit_resource = Utils::stringFormat( "effects/bullets/%s_hit", hit_name.c_str() );
+                        spine::SkeletonAnimation* hit_effect = ArmatureManager::getInstance()->createArmature( hit_resource );
+                        if( hit_effect_scale != 1.0f ) {
+                            hit_effect->setScale( hit_effect_scale );
+                        }
+                        UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( hit_effect, Utils::stringFormat( "bullet_%d_hit", _bullet_id ), true );
+                        component->setPosition( target_unit->getLocalHitPos() );
+                        target_unit->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
+                        component->setAnimation( 0, "animation", false );
+                    }
+                }
+            }
+        }
+    }
+    if( _should_recycle && _streak ) {
+        _streak->removeFromParent();
     }
 }

@@ -59,7 +59,7 @@ bool SkillBehavior::behave( float delta ) {
             int skill_count = _unit_node->getSkills().size();
             for( int i = 0; i < skill_count; i++ ) {
                 float range = _unit_node->getSkillRangeById( i );
-                if( distance <= range && _unit_node->isSkillReadyById( i ) && Utils::randomFloat() < 0.5 ) {
+                if( ( distance <= range || range == 0 ) && _unit_node->isSkillReadyById( i ) && Utils::randomFloat() < 0.5 ) {
                     _unit_node->useSkill( i, _unit_node->getUnitDirection(), 0 );
                     return true;
                 }

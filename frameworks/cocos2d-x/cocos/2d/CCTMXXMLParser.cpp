@@ -390,7 +390,11 @@ void TMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
         {
             tileset->_sourceImage = _resources + (_resources.size() ? "/" : "") + imagename;
         }
-    } 
+    
+        if( tmxMapInfo->getParentElement() == TMXPropertyTile ) {
+            tmxMapInfo->getTileProperties()[tmxMapInfo->getParentGID()] = Value(attributeDict);
+        }
+    }
     else if (elementName == "data")
     {
         std::string encoding = attributeDict["encoding"].asString();

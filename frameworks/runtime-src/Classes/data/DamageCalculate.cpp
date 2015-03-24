@@ -113,7 +113,9 @@ float DamageCalculate::calculateDamage( const std::string calculator_name, float
     else if ( calculator_name == SKILL_NAME_CRAZYSHOOT ) {
         return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
     }
-    return 0;
+    else {
+        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+    }
 }
 
 float DamageCalculate::calculateResistance( float def, float negl, float neglp ) {

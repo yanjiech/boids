@@ -9,7 +9,6 @@
         "speed" : 1000.0,
         "range" : 500.0,
         "angle" : 30.0,
-        "bullet_length" : 60.0,
         "count_per_wave" : 5,
         "waves" : 5
     },
@@ -50,10 +49,10 @@
     {
         "multi_action" : false,
         "hint" : "circle",
-        "count" : 5,
+        "count" : 3,
         "speed" : 800.0,
-        "damage" : 35.0,
-        "interval" : 0.1,
+        "damage" : [ 35.0, 50.0, 80.0 ],
+        "interval" : 0.15,
         "range" : 400.0,
         "cd" : 5.0
     },

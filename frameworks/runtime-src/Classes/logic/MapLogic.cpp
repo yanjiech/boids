@@ -40,11 +40,14 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
     
     const ValueMap& meta_json = _battle_layer->getMapData()->getMetaJson();
     
-    const ValueVector& task_json = meta_json.at( "conditions" ).asValueVector();
-    for( auto itr = task_json.begin(); itr != task_json.end(); ++itr ) {
-        const ValueMap& t = itr->asValueMap();
-        GameTask* gt = GameTask::create( t, this );
-        _game_tasks.pushBack( gt );
+    auto sitr = meta_json.find( "conditions" );
+    if( sitr != meta_json.end() ) {
+        const ValueVector& task_json = sitr->second.asValueVector();
+        for( auto itr = task_json.begin(); itr != task_json.end(); ++itr ) {
+            const ValueMap& t = itr->asValueMap();
+            GameTask* gt = GameTask::create( t, this );
+//            _game_tasks.pushBack( gt );
+        }
     }
     
     const ValueVector& events_json = meta_json.at( "events" ).asValueVector();
@@ -53,13 +56,12 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
         _triggers.pushBack( trigger );
     }
     
-    this->deployPlayerUnits();
-    
     return true;
 }
 
 void MapLogic::updateFrame( float delta ) {
     this->updateEventActions( delta );
+    this->checkTriggers();
     this->checkGameState( delta );
 }
 
@@ -78,7 +80,7 @@ void MapLogic::deployPlayerUnits() {
     
     cocos2d::Rect player_start_area( x, y, width, height );
     
-    const ValueVector& player_units = PlayerInfo::getInstance()->getPlayerUnitsInfo();
+    const ValueVector& player_units = PlayerInfo::getInstance()->getPlayerDeployedUnitsInfo();
     for( auto itr = player_units.begin(); itr != player_units.end(); ++itr ) {
         const ValueMap& vm = itr->asValueMap();
         UnitNode* unit = UnitNode::create( _battle_layer, vm );
@@ -326,6 +328,7 @@ void MapLogic::onEventChanged( const std::string& event_name, const std::string&
 }
 
 void MapLogic::onMapInit() {
+    this->deployPlayerUnits();
     for( auto trigger : _triggers ) {
         if( trigger->isValid() ) {
             ValueMap conditions;
@@ -407,6 +410,10 @@ void MapLogic::setTriggersEnabledOfName( const std::string& name, bool b ) {
             trigger->setEnabled( b );
         }
     }
+}
+
+void MapLogic::checkTriggers() {
+    
 }
 
 void MapLogic::checkGameState( float delta ) {

@@ -105,6 +105,17 @@
         "need_rotate": true,
         "track_target": true
     },
+    "vanhelsing_skill_bullet" :
+    {
+        "name" : "vanhelsing_bullet",
+        "speed" : 1200.0,
+        "move_type" : "straight",
+        "body_type" : "spine",
+        "hit_type" : "spine",
+        "hit_name" : "blue_ball",
+        "need_rotation": true,
+        "damage_radius" : 50.0
+    },
     "zhadan": {
         "name": "zhadan",
         "move_type": "paracurve",

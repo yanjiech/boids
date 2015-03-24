@@ -471,8 +471,8 @@ int Value::asInt() const
     {
 //        return atoi(_field.strVal->c_str());
         std::stringstream ss;
+        ss << *_field.strVal;
         unsigned int ret;
-        ss << _field.strVal;
         ss >> ret;
         return static_cast<int>( ret );
     }

@@ -16,7 +16,6 @@ private:
     float _base_damage;
     float _interval;
     float _elapse;
-    float _damage_elapse;
     float _speed;
     int _waves;
     int _current_wave;
