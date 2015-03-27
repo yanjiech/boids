@@ -9,55 +9,51 @@
 #ifndef __Boids__EventTrigger__
 #define __Boids__EventTrigger__
 
-#include "cocos2d.h"
-
-#define EVENT_TRIGGER_TYPE_MAP_INIT "map_init"
-#define EVENT_TRIGGER_TYPE_UNIT_CHANGE "unit_change"
-#define EVENT_TRIGGER_TYPE_EVENT_CHANGE "event_change"
-#define EVENT_TRIGGER_TYPE_GAME_CHANGE "game_change"
-#define EVENT_TRIGGER_TYPE_VISION_CHANGE "vision_change"
-#define EVENT_TRIGGER_TYPE_CONVERSATION_CHANGE "conversation_change"
-#define EVENT_TRIGGER_TYPE_CUSTOM "custom"
-
-#define EVENT_STATE_UNSTRART "event_unstart"
-#define EVENT_STATE_TRIGGER "event_trigger"
-#define EVENT_STATE_FINISH "event_finish"
-#define EVENT_STATE_ENABLE "event_enable"
+#include "Trigger.h"
 
 class EventTrigger : public cocos2d::Ref {
 private:
-    int _trigger_index;
+    int _current_trigger_index;
     int _total_trigger_count;
     bool _is_enabled;
     bool _is_repeat;
     std::string _relation;
     
-    cocos2d::ValueMap _logic_event;
+    cocos2d::ValueMap _event_data;
+    
+    cocos2d::Vector<Trigger*> _triggers;
     
 public:
     EventTrigger();
     virtual ~EventTrigger();
     
-    static EventTrigger* create( const cocos2d::ValueMap& event );
-    virtual bool init( const cocos2d::ValueMap& event );
+    static EventTrigger* create( const cocos2d::ValueMap& event_data );
+    virtual bool init( const cocos2d::ValueMap& event_data );
     
     int getTotalTriggerCount() { return _total_trigger_count; }
+    void setTotalTriggerCount( int count ) { _total_trigger_count = count; }
     
     void setEnabled( bool b );
     
     bool canFire();
     
-    bool isValid();
+    bool isEnabled();
     
-    bool moveOn();
+    void moveOn();
+    
+    void trigger( class MapLogic* map_logic, class UnitNode* unit_node );
     
     void activateTriggerByConditions( const cocos2d::ValueMap& conditions, class MapLogic* map_logic, class UnitNode* unit_node );
     
     void activateTriggerByUnit( class MapLogic* map_logic, class UnitNode* unit, const std::string& unit_state, const cocos2d::ValueMap& area );
     
-    void onSingleTriggerPass( int index, class MapLogic* map_logic, class UnitNode* unit_node );
+    void checkTriggerPass( class MapLogic* map_logic, class UnitNode* unit_node );
     
-    const cocos2d::ValueMap& getLogicEvent() { return _logic_event; }
+    const cocos2d::ValueMap& getEventData() { return _event_data; }
+    
+    const cocos2d::Vector<Trigger*>& getTriggers() { return _triggers; }
+    
+    void addTrigger( Trigger* trigger );
 };
 
 #endif /* defined(__Boids__EventTrigger__) */

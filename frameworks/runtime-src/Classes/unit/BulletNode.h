@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "../data/DamageCalculate.h"
+#include <spine/spine-cocos2dx.h>
 
 #define DEFAULT_BULLET_SPEED 500.0
 
@@ -70,8 +71,8 @@ public:
     static BulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
     virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
     
-    void shootAt( class UnitNode* source, class TargetNode* target );
-    void shootAtPosition( class UnitNode* source, const cocos2d::Point& pos );
+    virtual void shootAt( class UnitNode* source, class TargetNode* target );
+    virtual void shootAtPosition( class UnitNode* source, const cocos2d::Point& pos );
     
     virtual void updateFrame( float delta );
     
@@ -111,6 +112,20 @@ public:
     void shootAlong( const cocos2d::Point& dir, float duration, class UnitNode* source_unit );
     
     virtual void updateFrame( float delta );
+};
+
+class FixedPosBulletNode : public BulletNode {
+public:
+    FixedPosBulletNode();
+    virtual ~FixedPosBulletNode();
+    
+    static FixedPosBulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
+    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
+    
+    virtual void shootAtPosition( const cocos2d::Point& pos );
+    virtual void updateFrame( float delta );
+    
+    void onSkeletonAnimationEvent( int track_index, spEvent* event );
 };
 
 #endif /* defined(__Boids__BulletNode__) */

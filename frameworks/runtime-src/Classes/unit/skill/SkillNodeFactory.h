@@ -13,6 +13,8 @@
 #include "LightningChain.h"
 #include "BarrageOfArrow.h"
 #include "CrazyShoot.h"
+#include "GiantSword.h"
+#include "LightShield.h"
 
 class SkillNodeFactory {
 public:

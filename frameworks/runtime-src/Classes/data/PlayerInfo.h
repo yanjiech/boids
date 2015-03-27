@@ -11,6 +11,11 @@
 
 #include "cocos2d.h"
 
+#define LEVEL_UP_SUCCESS 0
+#define LEVEL_UP_ERROR_NOT_FOUND 1
+#define LEVEL_UP_ERROR_NOT_ENOUGH_GOLD 2
+#define LEVEL_UP_ERROR_REACH_LEVEL_LIMIT 3
+
 class PlayerInfo {
 private:
     cocos2d::ValueMap _player_info;
@@ -43,6 +48,9 @@ public:
     
     void gainTeamSkillLevel( int lvl_up, const std::string& skill_name );
     cocos2d::ValueMap& getTeamSkill( const std::string& skill_name );
+    
+    int getLevelUpCost( const std::string& slot );
+    int unitLevelUpByOne( const std::string& slot );
 };
 
 #endif /* defined(__Boids__PlayerInfo__) */

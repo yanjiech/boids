@@ -41,11 +41,11 @@ void initialize_profile()
 
 	load_profile(profile_path);
 
-	if (user_id.empty()) //���ǿյ�˵��֮ǰ��ȡʧ����
+	if (user_id.empty()) //ªπ «ø’µƒÀµ√˜÷Æ«∞∂¡»° ß∞‹¡À
 	{
 #endif
 		Utils::initRandom2ByTime();
-		user_id = Utils::generateRandomString(8); //��������������ˣ�֮��Ҫ�ٸġ�����ע�᣿
+		user_id = Utils::generateRandomString(8); //œ÷‘⁄ «ÀÊª˙…˙≥…¡À£¨÷Æ∫Û“™‘Ÿ∏ƒ°£øÏÀŸ◊¢≤·£ø
 
 #ifndef RANDOM_UID_EVERY_TIME
 		rapidjson::Document d;
@@ -64,7 +64,7 @@ void initialize_profile()
 		file.close();
 	}
 
-	std::string debug_profile_path = "boids.profile"; //����ǰĿ¼�µġ����Ե�profile���е�ֵ�Ḳ��writableĿ¼���ֵ
+	std::string debug_profile_path = "boids.profile"; //∂¡µ±«∞ƒø¬ºœ¬µƒ°£µ˜ ‘µƒprofile¿Ô”–µƒ÷µª·∏≤∏«writableƒø¬º¿Ôµƒ÷µ
 	load_profile(debug_profile_path);
 #endif
 }

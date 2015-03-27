@@ -79,20 +79,17 @@ public:
     void setDamageCalculator( DamageCalculate* calculator );
 };
 
-class DirectionalSpineComponent : public UnitNodeComponent {
+class TimeLimitSpineComponent : public UnitNodeComponent {
 protected:
-    cocos2d::Point _dir;
-    float _speed;
     float _duration;
     float _elapse;
-    float _radius;
     
 public:
-    DirectionalSpineComponent();
-    virtual ~DirectionalSpineComponent();
+    TimeLimitSpineComponent();
+    virtual ~TimeLimitSpineComponent();
     
-    static DirectionalSpineComponent* create( const cocos2d::ValueMap& data, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
-    virtual bool init( const cocos2d::ValueMap& data, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
+    static TimeLimitSpineComponent* create( float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
+    virtual bool init( float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
     
     virtual void updateFrame( float delta );
     

@@ -66,6 +66,7 @@ void ResourceManager::purgeMap( MapData* map_data ) {
 void ResourceManager::loadAllData() {
     this->loadDefaultData();
     this->loadUnitData();
+    this->loadUnitLevelupCostData();
     this->loadBulletData();
     this->loadCenterData();
     this->loadBuildingData();
@@ -95,6 +96,13 @@ void ResourceManager::loadUnitData() {
     rapidjson::Document unit_config_json;
     unit_config_json.Parse<0>( data_string.c_str() );
     _unit_config = CocosUtils::jsonObjectToValueMap( unit_config_json );
+}
+
+void ResourceManager::loadUnitLevelupCostData() {
+    std::string data_string = FileUtils::getInstance()->getStringFromFile( "level_up_cost_conf.json" );
+    rapidjson::Document unit_levelup_cost_config_json;
+    unit_levelup_cost_config_json.Parse<0>( data_string.c_str() );
+    _unit_levelup_cost_config = CocosUtils::jsonObjectToValueMap( unit_levelup_cost_config_json );
 }
 
 void ResourceManager::loadBulletData() {

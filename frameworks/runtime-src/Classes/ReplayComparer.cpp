@@ -53,7 +53,7 @@ bool compareSnapshot(unsigned frame, const Snapshot* a, const Snapshot* b)
 		cocos2d::log("[%d] replay inconsistent. a_random_i: %d, b_random_i: %d", frame, a->random_i, b->random_i);
 	}
 
-	for (auto id_u_in_a : *a) //È¡snapshot_aÖĞµÄÔªËØ£¬ºÍbÖĞµÄ¶Ô±È
+	for (auto id_u_in_a : *a) //Â»Â°snapshot_aÃ·â€“ÂµÆ’â€˜â„¢Ã€Ã¿Â£Â¨âˆ«Ã•bÃ·â€“ÂµÆ’âˆ‚â€˜Â±Â»
 	{
 		const auto& it_unit_in_b = b->find(id_u_in_a.first);
 		if (it_unit_in_b == b->end())
@@ -81,7 +81,7 @@ bool ReplayComparer::compare(const char* replay1, const char* replay2)
 	ReplayToPlay r1(std::string(replay1) + ".rep", true);
 	ReplayToPlay r2(std::string(replay2) + ".rep", true);
 	cocos2d::log("comparing %s(%d) and %s(%d).", replay1, r1._finishFrame, replay2, r2._finishFrame);
-	Utils::replay_to_play = nullptr; //±ØĞë°ÑÕâ¸ö±äÁ¿¸³»ØÈ¥£¬·ñÔòÖ®ºólogrµÄÊ±ºò»á³ö´í
+	Utils::replay_to_play = nullptr; //Â±Ã¿â€“Ãâˆâ€”â€™â€šâˆË†Â±â€°Â¡Ã¸âˆâ‰¥ÂªÃ¿Â»â€¢Â£Â¨âˆ‘Ã’â€˜ÃšÃ·Ã†âˆ«Ã›logrÂµÆ’Â Â±âˆ«ÃšÂªÂ·â‰¥Ë†Â¥ÃŒ
 
 	bool ret = true;
 

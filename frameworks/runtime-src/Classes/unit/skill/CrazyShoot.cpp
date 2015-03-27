@@ -79,9 +79,9 @@ void CrazyShoot::updateFrame( float delta ) {
 }
 
 void CrazyShoot::begin() {
-    
+    SkillNode::begin();
 }
 
 void CrazyShoot::end() {
-    this->setShouldRecycle( true );
+    SkillNode::end();
 }

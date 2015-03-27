@@ -61,7 +61,6 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
 
 void MapLogic::updateFrame( float delta ) {
     this->updateEventActions( delta );
-    this->checkTriggers();
     this->checkGameState( delta );
 }
 
@@ -97,28 +96,6 @@ void MapLogic::deployPlayerUnits() {
         
         cocos2d::Point pos = _battle_layer->getAvailablePosition( unit->getUnitData()->collide, player_start_area );
         _battle_layer->deployUnit( unit, pos, "player" );
-    }
-}
-
-void MapLogic::executeLogicEvent( EventTrigger* trigger, UnitNode* unit_node ) {
-    const cocos2d::ValueMap& event = trigger->getLogicEvent();
-    const cocos2d::ValueVector& actions = event.at( "actions" ).asValueVector();
-    int action_count = actions.size();
-    for( int i = 0; i < action_count; ++i ) {
-        const ValueMap& action = actions.at( i ).asValueMap();
-        EventAction* ea = EventAction::create( action, this, trigger );
-        this->addEventAction( ea, ea->getActionName() );
-        cocos2d::Map<std::string, cocos2d::Ref*> params;
-        if( unit_node ) {
-            params.insert( "unit", unit_node );
-        }
-        else {
-            params.insert( "unit", Node::create() );
-        }
-        Node* node = Node::create();
-        node->setTag( i );
-        params.insert( "idx", node );
-        ea->start( params, true );
     }
 }
 
@@ -317,7 +294,7 @@ void MapLogic::executeCustomAction( const cocos2d::ValueMap& action_data ) {
 
 void MapLogic::onEventChanged( const std::string& event_name, const std::string& event_state ) {
     for( auto trigger : _triggers ) {
-        if( trigger->isValid() ) {
+        if( trigger->isEnabled() ) {
             ValueMap conditions;
             conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_EVENT_CHANGE );
             conditions["event_name"] = Value( event_name );
@@ -330,7 +307,7 @@ void MapLogic::onEventChanged( const std::string& event_name, const std::string&
 void MapLogic::onMapInit() {
     this->deployPlayerUnits();
     for( auto trigger : _triggers ) {
-        if( trigger->isValid() ) {
+        if( trigger->isEnabled() ) {
             ValueMap conditions;
             conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_MAP_INIT );
             trigger->activateTriggerByConditions( conditions, this, nullptr );
@@ -347,7 +324,7 @@ void MapLogic::onGameStateChanged( const std::string& game_state ) {
     
     //triggers
     for( auto trigger : _triggers ) {
-        if( trigger->isValid() ) {
+        if( trigger->isEnabled() ) {
             ValueMap conditions;
             conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_GAME_CHANGE );
             conditions["game_state"] = Value( game_state );
@@ -362,7 +339,7 @@ void MapLogic::onVisionChanged( const cocos2d::ValueMap& action_data ) {
 
 void MapLogic::onCustomTrigger( const std::string& trigger_name ) {
     for( auto trigger : _triggers ) {
-        if( trigger->isValid() ) {
+        if( trigger->isEnabled() ) {
             ValueMap conditions;
             conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_CUSTOM );
             conditions["trigger_name"] = Value( trigger_name );
@@ -373,7 +350,7 @@ void MapLogic::onCustomTrigger( const std::string& trigger_name ) {
 
 void MapLogic::onConversationStateChanged( const std::string& trigger_name, const std::string& trigger_state ) {
     for( auto trigger : _triggers ) {
-        if( trigger->isValid() ) {
+        if( trigger->isEnabled() ) {
             ValueMap conditions;
             conditions["trigger_type"] = Value( EVENT_TRIGGER_TYPE_CONVERSATION_CHANGE );
             conditions["name"] = Value( trigger_name );
@@ -406,14 +383,10 @@ void MapLogic::updateEventActions( float delta ) {
 
 void MapLogic::setTriggersEnabledOfName( const std::string& name, bool b ) {
     for( auto trigger : _triggers ) {
-        if( trigger->getLogicEvent().at( "name" ).asString() == name ) {
+        if( trigger->getEventData().at( "name" ).asString() == name ) {
             trigger->setEnabled( b );
         }
     }
-}
-
-void MapLogic::checkTriggers() {
-    
 }
 
 void MapLogic::checkGameState( float delta ) {
@@ -446,6 +419,16 @@ void MapLogic::onTargetNodeAppear( TargetNode* target_node ) {
                 this->increaseUnitAppearCountByTag( 1, itr->asString() );
             }
             this->increaseUnitAppearCountByName( 1, unit_node->getUnitData()->name );
+            
+            for( auto trigger : _triggers ) {
+                if( trigger->isEnabled() ) {
+                    ValueMap area = _battle_layer->getMapData()->getAreaMapByPosition( unit_node->getPosition() );
+                    if( !area.empty() ) {
+                        trigger->activateTriggerByUnit( this, unit_node, UNIT_STATE_APPEAR, area );
+                    }
+                }
+            }
+
             break;
         }
     }while( false );
@@ -461,9 +444,29 @@ void MapLogic::onTargetNodeDisappear( TargetNode* target_node ) {
                 this->increaseUnitDisappearCountByTag( 1, itr->asString() );
             }
             this->increaseUnitDisappearCountByName( 1, unit_node->getUnitData()->name );
+            
+            for( auto trigger : _triggers ) {
+                if( trigger->isEnabled() ) {
+                    ValueMap area = _battle_layer->getMapData()->getAreaMapByPosition( unit_node->getPosition() );
+                    if( !area.empty() ) {
+                        trigger->activateTriggerByUnit( this, unit_node, UNIT_STATE_MOVE_TO, area );
+                    }
+                }
+            }
             break;
         }
     }while( false );
+}
+
+void MapLogic::onUnitMoved( class UnitNode* unit_node ) {
+    for( auto trigger : _triggers ) {
+        if( trigger->isEnabled() ) {
+            ValueMap area = _battle_layer->getMapData()->getAreaMapByPosition( unit_node->getPosition() );
+            if( !area.empty() ) {
+                trigger->activateTriggerByUnit( this, unit_node, UNIT_STATE_MOVE_TO, area );
+            }
+        }
+    }
 }
 
 int MapLogic::getUnitAppearCountByCamp( int camp ) {

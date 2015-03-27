@@ -5,7 +5,7 @@
 #include <functional>
 
 template <typename D>
-class CycledListElement //ÓÅ»¯µÄÊ±ºò×îºÃ¶¼Ê¹ÓÃÄÚ´æ³ØÀ´new
+class CycledListElement //â€â‰ˆÂªÃ˜ÂµÆ’Â Â±âˆ«Ãšâ—ŠÃ“âˆ«âˆšâˆ‚ÂºÂ Ï€â€âˆšÆ’â„Â¥ÃŠâ‰¥Ã¿Â¿Â¥new
 {
 public:
 	D d;
@@ -19,10 +19,10 @@ template <typename D>
 class CycledList
 {
 public:
-	CycledListElement<D>* ap; //½ÓÈëµã(access point£©£¬¼´Ñ­»·ÁĞ±íÖĞµÄÈÎÒâÒ»¸öÔªËØ¡£·½±ã¿ªÊ¼·ÃÎÊÑ­»·Á´±í¡£apÖ»Òª²»±»É¾³ı£¬ÊÇ²»»á±»¸Ä±äµÄ¡£
-	CycledListElement<D>* tail; //ĞÂÔªËØ¶¼»á²åÔÚËûºóÃæ¡£ÆäÊµÒ²ÊÇapµÄÇ°Ò»¸ö
+	CycledListElement<D>* ap; //Î©â€Â»ÃÂµâ€(access pointÂ£Â©Â£Â¨ÂºÂ¥â€”â‰ Âªâˆ‘Â¡â€“Â±ÃŒÃ·â€“ÂµÆ’Â»Å’â€œâ€šâ€œÂªâˆË†â€˜â„¢Ã€Ã¿Â°Â£âˆ‘Î©Â±â€Ã¸â„¢Â Âºâˆ‘âˆšÅ’Â â€”â‰ Âªâˆ‘Â¡Â¥Â±ÃŒÂ°Â£apÃ·Âªâ€œâ„¢â‰¤ÂªÂ±Âªâ€¦Ã¦â‰¥ËÂ£Â¨Â Â«â‰¤ÂªÂªÂ·Â±ÂªâˆÆ’Â±â€°ÂµÆ’Â°Â£
+	CycledListElement<D>* tail; //â€“Â¬â€˜â„¢Ã€Ã¿âˆ‚ÂºÂªÂ·â‰¤Ã‚â€˜â„Ã€Ëšâˆ«Ã›âˆšÃŠÂ°Â£âˆ†â€°Â Âµâ€œâ‰¤Â Â«apÂµÆ’Â«âˆâ€œÂªâˆË†
 
-	CycledList() : ap(nullptr), tail(nullptr), _size(0) //ÆäÊµÖ»³õÊ¼»¯tail¾Í¹»ÁË£¬µ«ÎªÁËµ÷ÊÔµÄÊ±ºòÃ÷ÏÔ£¬°ÑapÒ²³õÊ¼»¯ÁË
+	CycledList() : ap(nullptr), tail(nullptr), _size(0) //âˆ†â€°Â ÂµÃ·Âªâ‰¥Ä±Â ÂºÂªÃ˜tailÃ¦Ã•Ï€ÂªÂ¡Ã€Â£Â¨ÂµÂ´Å’â„¢Â¡Ã€ÂµËœÂ â€˜ÂµÆ’Â Â±âˆ«ÃšâˆšËœÅ“â€˜Â£Â¨âˆâ€”apâ€œâ‰¤â‰¥Ä±Â ÂºÂªÃ˜Â¡Ã€
 	{
 	}
 
@@ -33,7 +33,7 @@ public:
 
 	bool empty()
 	{
-		return tail == nullptr; //tailÎª¿ÕËµÃ÷Ã»ÓĞÈÎºÎ½áµã
+		return tail == nullptr; //tailÅ’â„¢Ã¸â€™Ã€ÂµâˆšËœâˆšÂªâ€â€“Â»Å’âˆ«Å’Î©Â·Âµâ€
 	}
 
 	void push_back(D d)
@@ -52,7 +52,7 @@ public:
 		_size++;
 	}
 
-	//ÔÚinsert_after_thisºóÃæ²åÈë¡£·µ»Ø±»²åÈëÔªËØµÄËùÔÚ½áµã
+	//â€˜â„insert_after_thisâˆ«Ã›âˆšÃŠâ‰¤Ã‚Â»ÃÂ°Â£âˆ‘ÂµÂªÃ¿Â±Âªâ‰¤Ã‚Â»Ãâ€˜â„¢Ã€Ã¿ÂµÆ’Ã€Ë˜â€˜â„Î©Â·Âµâ€
 	CycledListElement<D>* insert(const D d, CycledListElement<D>* insert_after_this)
 	{
 		insert_after_this->next = new CycledListElement<D>(d, insert_after_this->next);
@@ -64,10 +64,10 @@ public:
 		return insert_after_this->next;
 	}
 
-	//½«[to_insert_begin, to_insert_end)²åÈëµ½insert_after_thisÖ®ºó¡£·µ»Ø×îºóÒ»¸ö±»²åÈëÔªËØµÄËùÔÚ½áµã¡£beginºÍendÏàÍ¬±íÊ¾²åÒ»È¦£¬¶ø²»ÊÇÊ²Ã´¶¼²»²å¡£µ«begin²»»á±»ÖØ¸´²å£¬ËùÓĞÔªËØÖ»±»²åÒ»´Î
+	//Î©Â´[to_insert_begin, to_insert_end)â‰¤Ã‚Â»ÃÂµÎ©insert_after_thisÃ·Ã†âˆ«Ã›Â°Â£âˆ‘ÂµÂªÃ¿â—ŠÃ“âˆ«Ã›â€œÂªâˆË†Â±Âªâ‰¤Ã‚Â»Ãâ€˜â„¢Ã€Ã¿ÂµÆ’Ã€Ë˜â€˜â„Î©Â·Âµâ€Â°Â£beginâˆ«Ã•endÅ“â€¡Ã•Â¨Â±ÃŒÂ Ã¦â‰¤Ã‚â€œÂªÂ»Â¶Â£Â¨âˆ‚Â¯â‰¤ÂªÂ Â«Â â‰¤âˆšÂ¥âˆ‚Âºâ‰¤Âªâ‰¤Ã‚Â°Â£ÂµÂ´beginâ‰¤ÂªÂªÂ·Â±ÂªÃ·Ã¿âˆÂ¥â‰¤Ã‚Â£Â¨Ã€Ë˜â€â€“â€˜â„¢Ã€Ã¿Ã·ÂªÂ±Âªâ‰¤Ã‚â€œÂªÂ¥Å’
 	CycledListElement<D>* insert(CycledListElement<D>* to_insert_begin, CycledListElement<D>* to_insert_end, CycledListElement<D>* insert_after_this)
 	{
-		//ËÆºõ¼¸ºõÄÜĞ´³ÉO(1)µÄ£¬ÒòÎªÁ´±íÊÇÄÜÖ±½Ó½ÓµÄ£¬²»¹ıºÃÏñÎÒÒªÍ³¼Æsize£¬O(1)²»³ÉÁË£¬ÄÇ¾ÍÖ±½ÓÕâÃ´À´°É¡£¡£
+		//Ã€âˆ†âˆ«Ä±Âºâˆâˆ«Ä±Æ’â€¹â€“Â¥â‰¥â€¦O(1)ÂµÆ’Â£Â¨â€œÃšÅ’â„¢Â¡Â¥Â±ÃŒÂ Â«Æ’â€¹Ã·Â±Î©â€Î©â€ÂµÆ’Â£Â¨â‰¤ÂªÏ€Ëâˆ«âˆšÅ“Ã’Å’â€œâ€œâ„¢Ã•â‰¥Âºâˆ†sizeÂ£Â¨O(1)â‰¤Âªâ‰¥â€¦Â¡Ã€Â£Â¨Æ’Â«Ã¦Ã•Ã·Â±Î©â€â€™â€šâˆšÂ¥Â¿Â¥âˆâ€¦Â°Â£Â°Â£
 		for (CycledListElement<D>* to_insert = to_insert_begin;;)
 		{
 			insert_after_this = insert(to_insert->d, insert_after_this);
@@ -77,8 +77,8 @@ public:
 		return insert_after_this;
 	}
 
-	//½«(erase_prev, erase_end)²Áµô¡£¼´Á½¶Ë¶¼ÊÇ¿ªÇø¼ä¡£
-	//×î¶àÍ¨¹ıprev == endÉ¾µ½Ö»Ê£Ò»¸ö£¬È«É¾µÄ»°µÃµ÷ÓÃclear
+	//Î©Â´(erase_prev, erase_end)â‰¤Â¡ÂµÃ™Â°Â£ÂºÂ¥Â¡Î©âˆ‚Ã€âˆ‚ÂºÂ Â«Ã¸â„¢Â«Â¯Âºâ€°Â°Â£
+	//â—ŠÃ“âˆ‚â€¡Ã•Â®Ï€Ëprev == endâ€¦Ã¦ÂµÎ©Ã·ÂªÂ Â£â€œÂªâˆË†Â£Â¨Â»Â´â€¦Ã¦ÂµÆ’ÂªâˆÂµâˆšÂµËœâ€âˆšclear
 	void erase(CycledListElement<D>* erase_prev, CycledListElement<D>* erase_end, std::function<void(D)> do_something_before_erase = nullptr)
 	{
 		bool tail_erased = false, ap_erased = false;
@@ -133,7 +133,7 @@ public:
 		_size = 0;
 	}
 
-	//´«¸ødo_somethingµÄµÚÒ»¸ö²ÎÊıÒª±£Ö¤²»±»É¾µô
+	//Â¥Â´âˆÂ¯do_somethingÂµÆ’Âµâ„â€œÂªâˆË†â‰¤Å’Â Ëâ€œâ„¢Â±Â£Ã·Â§â‰¤ÂªÂ±Âªâ€¦Ã¦ÂµÃ™
 	void foreachelement(std::function<void(CycledListElement<D>*)> do_something)
 	{
 		for (CycledListElement<D>* e = ap;;)
@@ -144,7 +144,7 @@ public:
 		}
 	}
 
-	//´«¸ødo_somethingµÄµÚÒ»¸ö²ÎÊıÒª±£Ö¤²»±»É¾µô
+	//Â¥Â´âˆÂ¯do_somethingÂµÆ’Âµâ„â€œÂªâˆË†â‰¤Å’Â Ëâ€œâ„¢Â±Â£Ã·Â§â‰¤ÂªÂ±Âªâ€¦Ã¦ÂµÃ™
 	void foreachelement2(std::function<void(CycledListElement<D>*, CycledListElement<D>*)> do_something)
 	{
 		for (CycledListElement<D>* e = ap;;)
@@ -155,7 +155,7 @@ public:
 		}
 	}
 
-	//´«¸ødo_somethingµÄµÚÒ»¸ö²ÎÊıÒª±£Ö¤²»±»É¾µô
+	//Â¥Â´âˆÂ¯do_somethingÂµÆ’Âµâ„â€œÂªâˆË†â‰¤Å’Â Ëâ€œâ„¢Â±Â£Ã·Â§â‰¤ÂªÂ±Âªâ€¦Ã¦ÂµÃ™
 	void foreachelement2_with_break(std::function<bool(CycledListElement<D>*, CycledListElement<D>*)> do_something)
 	{
 		for (CycledListElement<D>* e = ap;;)

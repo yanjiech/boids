@@ -94,10 +94,10 @@ void BarrageOfArrow::updateFrame( float delta ) {
 }
 
 void BarrageOfArrow::begin() {
-    
+    SkillNode::begin();
 }
 
 void BarrageOfArrow::end() {
     _owner->endCast();
-    this->setShouldRecycle( true );
+    SkillNode::end();
 }

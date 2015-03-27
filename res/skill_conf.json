@@ -9,6 +9,7 @@
         "speed" : 1000.0,
         "range" : 500.0,
         "angle" : 30.0,
+        "bullet_length" : 90.0,
         "count_per_wave" : 5,
         "waves" : 5
     },
@@ -49,10 +50,10 @@
     {
         "multi_action" : false,
         "hint" : "circle",
-        "count" : 3,
+        "count" : 5,
         "speed" : 800.0,
-        "damage" : [ 35.0, 50.0, 80.0 ],
-        "interval" : 0.15,
+        "damage" : 35.0,
+        "interval" : 0.1,
         "range" : 400.0,
         "cd" : 5.0
     },
@@ -102,7 +103,7 @@
     {
         "multi_action" : false,
         "hint" : "dyn_circle",
-        "damage" : 50.0,
+        "damage" : [ 50.0, 100.0, 200.0 ],
         "cd" : 4.0,
         "radius" : 150.0,
         "range" : 150.0,
@@ -134,7 +135,7 @@
     {
         "multi_action" : false,
         "hint" : "none",
-        "cd" : 12.0,
+        "cd" : 8.0,
         "hp" : [ 100.0, 200.0, 300.0 ],
         "duration" : 6.0
     },

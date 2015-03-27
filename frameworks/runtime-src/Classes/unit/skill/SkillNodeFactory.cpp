@@ -24,6 +24,12 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_CRAZYSHOOT ) {
         ret = CrazyShoot::create( owner, data );
     }
+    else if( name == SKILL_NAME_GIANT_SWORD ) {
+        ret = GiantSword::create( owner, data, params );
+    }
+    else if( name == SKILL_NAME_LIGHTSHIELD ) {
+        ret = LightShield::create( owner, data );
+    }
     
     return ret;
 }

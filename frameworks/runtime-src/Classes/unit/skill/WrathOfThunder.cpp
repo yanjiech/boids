@@ -45,7 +45,6 @@ bool WrathOfThunder::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 
 void WrathOfThunder::updateFrame( float delta ) {
     if( !_should_recycle ) {
-        this->begin();
         this->end();
     }
 }
@@ -69,5 +68,5 @@ void WrathOfThunder::begin() {
 }
 
 void WrathOfThunder::end() {
-    this->setShouldRecycle( true );
+    SkillNode::end();
 }

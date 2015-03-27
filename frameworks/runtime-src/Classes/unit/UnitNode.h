@@ -19,6 +19,7 @@
 #include "../AI/Collidable.h"
 #include "../behavior/BehaviorBase.h"
 #include "HpBar.h"
+#include "./skill/SkillNode.h"
 
 #define DEFAULT_RELAX_FRAMES 45
 
@@ -159,8 +160,11 @@ private:
     
     cocos2d::ValueVector _unit_tags;
     
+    SkillNode* _using_skill_node;
+    
 private:
     void updateComponents( float delta );
+    void updateBuffs( float delta );
     void updateSkills( float delta );
     void checkToUseSkills();
     
@@ -230,6 +234,7 @@ public:
     
     UnitData* getUnitData() { return _unit_data; }
     
+    void takeDamage( const cocos2d::ValueMap& result, int source_id );
     void takeDamage( float amount, bool is_cri, bool is_miss, int source_id );
     void takeHeal( float amount, bool is_cri, int source_id );
     
@@ -252,9 +257,9 @@ public:
     
     void applyCustomChange( const std::string& content_string );
     
-    void addBuff( const std::string& name, Buff* buff );
-    void removeBuff( const std::string& name );
-    bool hasBuff( const std::string& name );
+    void addBuff( const std::string& buff_id, Buff* buff );
+    void removeBuff( const std::string& buff_id );
+    bool hasBuff( const std::string& buff_id );
     void removeAllBuffs();
     
     void useSkill( int skill_id, const cocos2d::Point& dir, float range_per );
@@ -335,11 +340,15 @@ public:
     const cocos2d::Vector<Skill*>& getSkills() { return _skills; }
     
     std::string getSkillHintTypeById( int sk_id );
+    float getSkillRadiusById( int sk_id );
     float getSkillRangeById( int sk_id );
     float getSkillMinRangeById( int sk_id );
     float getSkillMaxRangeById( int sk_id );
     float getSkillCDById( int sk_id );
     bool isSkillReadyById( int sk_id );
+    
+    void setUsingSkillNode( SkillNode* skill_node ) { _using_skill_node = nullptr; }
+    SkillNode* getSkillNode() { return _using_skill_node; }
 };
 
 #endif /* defined(__Boids__UnitNode__) */

@@ -42,7 +42,7 @@ public:
 	void stopListen()
 	{
 		keep_listening = false;
-		t.join(); //�������еĻ��ᡰR6010 - abort() has been called��
+		t.join(); //≤ªµ˜’‚––µƒª∞ª·°∞R6010 - abort() has been called°±
 	}
 
 	std::string popCmd()

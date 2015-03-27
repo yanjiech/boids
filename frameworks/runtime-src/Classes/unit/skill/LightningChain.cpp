@@ -128,10 +128,10 @@ void LightningChain::updateFrame( float delta ) {
 }
 
 void LightningChain::begin() {
-    
+    SkillNode::begin();
 }
 
 void LightningChain::end() {
     this->setTargetNode( nullptr );
-    this->setShouldRecycle( true );
+    SkillNode::end();
 }

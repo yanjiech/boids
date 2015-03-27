@@ -197,6 +197,19 @@ void BattleLayer::updateFrame( float delta ) {
             }
         }
         
+        Vector<Node*> onground_effect_nodes = _on_ground_layer->getChildren();
+        for( auto node : onground_effect_nodes ) {
+            UnitNodeComponent* component = dynamic_cast<UnitNodeComponent*>( node );
+            if( component ) {
+                if( component->shouldRecycle() ) {
+                    component->removeFromParent();
+                }
+                else {
+                    component->updateFrame( delta );
+                }
+            }
+        }
+        
         _map_logic->updateFrame( delta );
         this->reorderObjectLayer();
         this->adjustCamera();
@@ -422,6 +435,10 @@ void BattleLayer::onUnitDead( UnitNode* unit ) {
     _dead_units.erase( key );
     _map_logic->onTargetNodeDisappear( unit );
     unit->removeFromParent();
+}
+
+void BattleLayer::onUnitMoved( UnitNode* unit ) {
+    _map_logic->onUnitMoved( unit );
 }
 
 bool BattleLayer::isPositionInVision( const cocos2d::Point& pos ) {

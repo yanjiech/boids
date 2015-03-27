@@ -62,7 +62,6 @@ public:
     
     void onMapInit();
     
-    void executeLogicEvent( EventTrigger* trigger, UnitNode* unit_node );
     void executeUnitAction( const cocos2d::ValueMap& action_data, UnitNode* unit_node );
     void executeWaveAction( const cocos2d::ValueMap& action_data, const std::string& wave_action_tag );
     void executeConversationAction( const cocos2d::ValueMap& action_data );
@@ -83,11 +82,11 @@ public:
     
     void setTriggersEnabledOfName( const std::string& name, bool b );
     
-    void checkTriggers();
     void checkGameState( float delta );
     
     void onTargetNodeAppear( class TargetNode* target_node );
     void onTargetNodeDisappear( class TargetNode* target_node );
+    void onUnitMoved( class UnitNode* unit_node );
     
     int getUnitAppearCountByCamp( int camp );
     void increaseUnitAppearCountByCamp( int count, int camp );

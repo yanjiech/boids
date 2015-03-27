@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "cocostudio/CocoStudio.h"
-#include "CocosGUI.h"
+#include "ui/CocosGUI.h"
 #include "MapData.h"
 #include <vector>
 

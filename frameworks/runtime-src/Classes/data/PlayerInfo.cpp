@@ -115,3 +115,36 @@ void PlayerInfo::gainTeamSkillLevel( int lvl_up, const std::string& skill_name )
 ValueMap& PlayerInfo::getTeamSkill( const std::string& skill_name ) {
     return _player_info.at( "team_skills" ).asValueMap().at( skill_name ).asValueMap();
 }
+
+int PlayerInfo::getLevelUpCost( const std::string& slot ) {
+    //todo
+    return INT_MAX;
+}
+
+int PlayerInfo::unitLevelUpByOne( const std::string& slot ) {
+    int team_level = _player_info.at( "team_level" ).asInt();
+    int gold = _player_info.at( "gold" ).asInt();
+    ValueMap& player_units = _player_info.at( "units" ).asValueMap();
+    auto itr = player_units.find( slot );
+    if( itr != player_units.end() ) {
+        ValueMap& unit_data = itr->second.asValueMap();
+        int unit_level = unit_data.at( "level" ).asInt();
+        if( unit_level >= team_level ) {
+            return LEVEL_UP_ERROR_REACH_LEVEL_LIMIT;
+        }
+        const ValueVector& levelup_cost = ResourceManager::getInstance()->getUnitLevelupCostConfig().at( unit_data.at( "name" ).asString() ).asValueVector();
+        if( levelup_cost.size()  <= unit_level ) {
+            return LEVEL_UP_ERROR_REACH_LEVEL_LIMIT;
+        }
+        int cost = levelup_cost.at( unit_level ).asInt();
+        if( gold < cost ) {
+            return LEVEL_UP_ERROR_NOT_ENOUGH_GOLD;
+        }
+        gold -= cost;
+        ++unit_level;
+        unit_data["level"] = Value( unit_level );
+        _player_info["gold"] = Value( "gold" );
+        return LEVEL_UP_SUCCESS;
+    }
+    return LEVEL_UP_ERROR_NOT_FOUND;
+}

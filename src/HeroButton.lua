@@ -1,1 +1,0 @@
-local HeroButton = class("HeroButton", function return cc.Sprite)

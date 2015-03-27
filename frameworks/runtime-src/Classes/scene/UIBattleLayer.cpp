@@ -67,6 +67,7 @@ bool UISkillNode::init( BattleLayer* battle_layer, UnitNode* unit_node ) {
     if( _hint_type == "dyn_circle" ) {
         _min_range = unit_node->getSkillMinRangeById( 0 );
         _max_range = unit_node->getSkillMaxRangeById( 0 );
+        _radius = unit_node->getSkillRadiusById( 0 );
     }
     
     return true;
@@ -109,8 +110,8 @@ void UISkillNode::showHint( const cocos2d::Point& dir, float range_per ) {
         }
         else if( _hint_type == "dyn_circle" ) {
             _hint_effect = Sprite::create( "ui/skillcircle.png" );
-            _hint_effect->setScale( _range / 200.0f );
-            _hint_d_pos = skill_dir * _range;
+            _hint_effect->setScale( _radius / 200.0f );
+            _hint_d_pos = skill_dir * _min_range;
             hint_pos = hint_pos + _hint_d_pos;
             _battle_layer->addToOnGroundLayer( _hint_effect, hint_pos, 0 );
         }
@@ -178,12 +179,12 @@ bool UIBattleLayer::init( BattleLayer* battle_layer ) {
 
 bool UIBattleLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event ) {
     if( _is_touch_began == false ) {
-        _touch_down_pos = this->convertTouchToNodeSpace( touch );
         _selected_skill = this->skillNodeForTouch( touch );
         if( _selected_skill != nullptr ) {
             _is_touch_began = true;
             _touch = touch;
             _selected_skill->showHint( Point::ZERO, 0 );
+            _touch_down_pos = this->convertTouchToNodeSpace( touch );
             return true;
         }
     }
@@ -202,9 +203,8 @@ void UIBattleLayer::onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event )
             if( distance > MAX_SWIPE_DISTANCE ) {
                 distance = MAX_SWIPE_DISTANCE;
             }
-            range_per = ( distance - MIN_SWIPE_DISTANCE ) / ( MAX_SWIPE_DISTANCE - MIN_SWIPE_DISTANCE );
+            range_per = distance / MAX_SWIPE_DISTANCE;
         }
-        dir.normalize();
         _selected_skill->showHint( dir, range_per );
     }
 }
@@ -232,7 +232,6 @@ void UIBattleLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event )
             }
             range_per = ( distance - MIN_SWIPE_DISTANCE ) / ( MAX_SWIPE_DISTANCE - MIN_SWIPE_DISTANCE );
         }
-        dir.normalize();
         _selected_skill->hideHint();
         _selected_skill->activate( dir, range_per );
         

@@ -48,11 +48,32 @@
 #define SKILL_NAME_LIGHTNING_CHAIN "LightningChain"
 #define SKILL_NAME_BARRAGE_OF_ARROW "BarrageOfArrow"
 #define SKILL_NAME_CRAZYSHOOT "CrazyShoot"
+#define SKILL_NAME_GIANT_SWORD "GiantSword"
+#define SKILL_NAME_LIGHTSHIELD "LightShield"
 
 #define GAME_TASK_TYPE_LIMITED_TIME "limited_time"
 #define GAME_TASK_TYPE_SURVIVE "survive"
 #define GAME_TASK_TYPE_ELIMINATE_UNIT "eliminate_unit"
 #define GAME_TASK_TYPE_COLLECT_ITEM "collect_item"
 #define GAME_TASK_TYPE_ESCAPE "escape"
+
+#define BUFF_TYPE_SHIELD "buff_shield"
+#define BUFF_TYPE_STUN "buff_stun"
+#define BUFF_TYPE_PIERCE "buff_pierce"
+#define BUFF_TYPE_BURN "buff_burn"
+#define BUFF_TYPE_POISON "buff_poison"
+
+#define EVENT_TRIGGER_TYPE_MAP_INIT "map_init"
+#define EVENT_TRIGGER_TYPE_UNIT_CHANGE "unit_change"
+#define EVENT_TRIGGER_TYPE_EVENT_CHANGE "event_change"
+#define EVENT_TRIGGER_TYPE_GAME_CHANGE "game_change"
+#define EVENT_TRIGGER_TYPE_VISION_CHANGE "vision_change"
+#define EVENT_TRIGGER_TYPE_CONVERSATION_CHANGE "conversation_change"
+#define EVENT_TRIGGER_TYPE_CUSTOM "custom"
+
+#define EVENT_STATE_UNSTRART "event_unstart"
+#define EVENT_STATE_TRIGGER "event_trigger"
+#define EVENT_STATE_FINISH "event_finish"
+#define EVENT_STATE_ENABLE "event_enable"
 
 #endif /* defined(__Boids__BoidsConstant__) */

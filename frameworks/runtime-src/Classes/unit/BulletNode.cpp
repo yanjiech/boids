@@ -69,7 +69,8 @@ bool BulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bulle
     
     _bullet_data = bullet_data;
     
-    this->setBulletId( BulletNode::getNextBulletId() );
+    int bullet_id = BulletNode::getNextBulletId();
+    this->setBulletId( bullet_id );
     _battle_layer = unit_node->getBattleLayer();
     this->setSourceId( unit_node->getDeployId() );
     this->setTargetId( -1 );
@@ -436,4 +437,92 @@ void DirectionalBulletNode::updateFrame( float delta ) {
     if( _should_recycle && _streak ) {
         _streak->removeFromParent();
     }
+}
+
+FixedPosBulletNode::FixedPosBulletNode() {
+    
+}
+
+FixedPosBulletNode::~FixedPosBulletNode() {
+    
+}
+
+FixedPosBulletNode* FixedPosBulletNode::create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff ) {
+    FixedPosBulletNode* ret = new FixedPosBulletNode();
+    if( ret && ret->init( unit_node, bullet_data, damage_calculator, buff ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool FixedPosBulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff ) {
+    if( !BulletNode::init( unit_node, bullet_data, damage_calculator, buff ) ) {
+        return false;
+    }
+    
+    return true;
+}
+
+void FixedPosBulletNode::shootAtPosition( const cocos2d::Point& pos ) {
+    std::string resource = Utils::stringFormat( "effects/bullets/%s_body", _bullet_data.at( "name" ).asString().c_str() );
+    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    skeleton->setEventListener( CC_CALLBACK_2( FixedPosBulletNode::onSkeletonAnimationEvent, this ) );
+    skeleton->setAnimation( 0, "animation", false );
+    auto itr = _bullet_data.find( "scale" );
+    if( itr != _bullet_data.end() ) {
+        skeleton->setScale( itr->second.asFloat() );
+    }
+    this->addChild( skeleton );
+    this->setPosition( pos );
+    _battle_layer->addBullet( BulletNode::getNextBulletId(), this );
+}
+
+void FixedPosBulletNode::updateFrame( float delta ) {
+}
+
+void FixedPosBulletNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
+    bool show_hit_effect = false;
+    std::string hit_type = "";
+    std::string hit_name = "";
+    
+    auto itr = _bullet_data.find( "hit_type" );
+    if( itr != _bullet_data.end() ) {
+        hit_type = itr->second.asString();
+        hit_name = _bullet_data.at( "hit_name" ).asString();
+    }
+    
+    float hit_effect_scale = 1.0f;
+    itr = _bullet_data.find( "hit_scale" );
+    if( itr != _bullet_data.end() ) {
+        hit_effect_scale = itr->second.asFloat();
+    }
+    
+    if( hit_type != "" ) {
+        show_hit_effect = true;
+    }
+    
+    Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( (eUnitCamp)_source_camp, this->getPosition(), _damage_radius );
+    for( auto u : candidates ) {
+        ValueMap result = _damage_calculator->calculateDamageWithoutMiss( _unit_data, u->getUnitData() );
+        u->takeDamage( result, _source_id );
+        
+        //hit effect
+        if( show_hit_effect ) {
+            std::string hit_resource = Utils::stringFormat( "effects/bullets/%s_hit", hit_name.c_str() );
+            spine::SkeletonAnimation* hit_effect = ArmatureManager::getInstance()->createArmature( hit_resource );
+            if( hit_effect_scale != 1.0f ) {
+                hit_effect->setScale( hit_effect_scale );
+            }
+            UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( hit_effect, Utils::stringFormat( "bullet_%d_hit", _bullet_id ), true );
+            component->setPosition( u->getLocalHitPos() );
+            u->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
+            component->setAnimation( 0, "animation", false );
+        }
+    }
+    
+    this->setShouldRecycle( true );
 }

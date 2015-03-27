@@ -23,9 +23,9 @@ EventTrigger::~EventTrigger() {
     
 }
 
-EventTrigger* EventTrigger::create( const ValueMap& event ) {
+EventTrigger* EventTrigger::create( const ValueMap& event_data ) {
     EventTrigger* ret = new EventTrigger();
-    if( ret && ret->init( event ) ) {
+    if( ret && ret->init( event_data ) ) {
         ret->autorelease();
         return ret;
     }
@@ -35,31 +35,32 @@ EventTrigger* EventTrigger::create( const ValueMap& event ) {
     }
 }
 
-bool EventTrigger::init( const ValueMap& event ) {
-    _trigger_index = 0;
+bool EventTrigger::init( const ValueMap& event_data ) {
+    _current_trigger_index = 0;
     _is_enabled = true;
     
-    _logic_event = event;
-    ValueMap& trigger_meta = _logic_event["trigger_meta"].asValueMap();
-    auto itr = trigger_meta.find( "trigger_relation" );
-    if( itr == trigger_meta.end() ) {
+    _event_data = event_data;
+    const ValueMap& meta_data = event_data.at( "trigger_meta" ).asValueMap();
+    auto itr = meta_data.find( "trigger_relation" );
+    if( itr == meta_data.end() ) {
         _relation = "then";
     }
     else {
         _relation = itr->second.asString();
     }
-    itr = trigger_meta.find( "is_repeated" );
-    if( itr == trigger_meta.end() ) {
+    itr = meta_data.find( "is_repeated" );
+    if( itr == meta_data.end() ) {
         _is_repeat = false;
     }
     else {
         _is_repeat = itr->second.asBool();
     }
     
-    ValueVector& triggers = _logic_event["triggers"].asValueVector();
-    _total_trigger_count = triggers.size();
-    for( auto itr = triggers.begin(); itr != triggers.end(); ++itr ) {
-        itr->asValueMap().insert( std::make_pair( "fired", Value( false ) ) );
+    const ValueVector& trigger_data = event_data.at( "triggers" ).asValueVector();
+    _total_trigger_count = trigger_data.size();
+    for( auto itr = trigger_data.begin(); itr != trigger_data.end(); ++itr ) {
+        Trigger* trigger = Trigger::create( itr->asValueMap() );
+        this->addTrigger( trigger );
     }
     
     return true;
@@ -67,45 +68,51 @@ bool EventTrigger::init( const ValueMap& event ) {
 
 void EventTrigger::setEnabled( bool b ) {
     _is_enabled = b;
-    _trigger_index = 0;
 }
 
 bool EventTrigger::canFire() {
     if( _relation == "then" ) {
-        return moveOn();
+        return _triggers.at( _current_trigger_index )->couldTrigger();
     }
     else if( _relation == "or" ) {
-        return true;
+        for( auto itr = _triggers.begin(); itr != _triggers.end(); ++itr ) {
+            if( (*itr)->couldTrigger() ) {
+                return true;
+            }
+        }
+        return false;
     }
-    else {
-        ValueVector& triggers = _logic_event["triggers"].asValueVector();
-        for( auto itr = triggers.begin(); itr != triggers.end(); ++itr ) {
-            if( itr->asValueMap().at( "fired" ).asBool() == false ) {
+    else if( _relation == "and" ) {
+        for( auto itr = _triggers.begin(); itr != _triggers.end(); ++itr ) {
+            if( !(*itr)->couldTrigger() ) {
                 return false;
             }
         }
         return true;
     }
+    return false;
 }
 
-bool EventTrigger::isValid() {
-    return ( _trigger_index < _total_trigger_count ) && _is_enabled;
+bool EventTrigger::isEnabled() {
+    return _is_enabled;
 }
 
-bool EventTrigger::moveOn() {
-    return ++_trigger_index >= _total_trigger_count;
-}
-
-void EventTrigger::onSingleTriggerPass( int index, class MapLogic* map_logic, class UnitNode* unit_node ) {
-    ValueVector& trigger_vector = _logic_event.at( "triggers" ).asValueVector();
-    ValueMap& trigger_data = trigger_vector.at( index ).asValueMap();
-    trigger_data["fired"] = Value( true );
-    if( this->canFire() ) {
-        map_logic->executeLogicEvent( this, unit_node );
+void EventTrigger::moveOn() {
+    bool should_check = false;
+    if( ++_current_trigger_index >= _total_trigger_count && _relation == "then" ) {
+        should_check = true;
+    }
+    else if( _relation == "or" ) {
+        should_check = true;
+    }
+    else if( _relation == "and" ) {
+        should_check = true;
+    }
+    if( should_check ) {
         if( _is_repeat ) {
-            _trigger_index = 0;
-            for( auto itr = trigger_vector.begin(); itr != trigger_vector.end(); ++itr ) {
-                itr->asValueMap()["fired"] = Value( false );
+            _current_trigger_index = 0;
+            for( auto trigger : _triggers ) {
+                trigger->setCouldTrigger( false );
             }
         }
         else {
@@ -114,184 +121,58 @@ void EventTrigger::onSingleTriggerPass( int index, class MapLogic* map_logic, cl
     }
 }
 
-void EventTrigger::activateTriggerByConditions( const cocos2d::ValueMap& conditions, class MapLogic* map_logic, class UnitNode* unit_node ) {
-    ValueVector& trigger_vector = _logic_event.at( "triggers" ).asValueVector();
-    int count = (int)trigger_vector.size();
-    if( _relation == "then" ) {
-        count = 1;
+void EventTrigger::trigger( class MapLogic* map_logic, class UnitNode* unit_node ) {
+    const cocos2d::ValueVector& actions = _event_data.at( "actions" ).asValueVector();
+    int action_count = actions.size();
+    for( int i = 0; i < action_count; ++i ) {
+        const ValueMap& action = actions.at( i ).asValueMap();
+        EventAction* ea = EventAction::create( action, map_logic, this );
+        map_logic->addEventAction( ea, ea->getActionName() );
+        cocos2d::Map<std::string, cocos2d::Ref*> params;
+        if( unit_node ) {
+            params.insert( "unit", unit_node );
+        }
+        else {
+            params.insert( "unit", Node::create() );
+        }
+        Node* node = Node::create();
+        node->setTag( i );
+        params.insert( "idx", node );
+        ea->start( params, true );
     }
-    for( int i = 0; i < count; i++ ) {
-        const ValueMap& trigger_data_map = trigger_vector.at( i ).asValueMap();
-        bool is_qualified = true;
-        for( auto pair : conditions ) {
-            std::string key = pair.first;
-            auto itr = trigger_data_map.find( key );
-            if( itr == trigger_data_map.end() || itr->second != pair.second ) {
-                is_qualified = false;
-                break;
-            }
-        }
-        if( is_qualified ) {
-            this->onSingleTriggerPass( i, map_logic, unit_node );
-        }
+    this->moveOn();
+}
+
+void EventTrigger::checkTriggerPass( class MapLogic* map_logic, class UnitNode* unit_node ) {
+    if( this->canFire() ) {
+        this->trigger( map_logic, unit_node );
     }
 }
 
-void EventTrigger::activateTriggerByUnit( class MapLogic* map_logic, class UnitNode* unit, const std::string& unit_state, const cocos2d::ValueMap& area ) {
-    eUnitCamp camp = unit->getUnitCamp();
-    ValueVector& trigger_vector = _logic_event.at( "triggers" ).asValueVector();
-    int count = (int)trigger_vector.size();
+void EventTrigger::activateTriggerByConditions( const cocos2d::ValueMap& conditions, class MapLogic* map_logic, class UnitNode* unit_node ) {
     if( _relation == "then" ) {
-        count = 1;
+        _triggers.at( _current_trigger_index )->updateTrigger( conditions );
     }
-    for( int i = 0; i < count; i++ ) {
-        const ValueMap& trigger_data_map = trigger_vector.at( i ).asValueMap();
-        std::string trigger_type = trigger_data_map.at( "trigger_type" ).asString();
-        std::string unit_state = "";
-        auto itr = trigger_data_map.find( "unit_state" );
-        if( itr != trigger_data_map.end() ) {
-            unit_state = itr->second.asString();
-        }
-        
-        if( trigger_type == EVENT_TRIGGER_TYPE_UNIT_CHANGE && unit_state == unit_state ) {
-            std::string source_type = trigger_data_map.at( "source_type" ).asString();
-            std::string source_value = trigger_data_map.at( "source_value" ).asString();
-            std::string position_name = trigger_data_map.at( "position_name" ).asString();
-            int trigger_count = 1;
-            itr = trigger_data_map.find( "trigger_count" );
-            if( itr != trigger_data_map.end() ) {
-                trigger_count = itr->second.asInt();
-            }
-            
-            if( source_type == UNIT_SOURCE_TYPE && camp == UnitNode::getCampByString( source_value ) ) {
-                if( unit_state == UNIT_STATE_APPEAR ) {
-                    if( trigger_count == 1 || trigger_count == map_logic->getUnitAppearCountByCamp( (int)UnitNode::getCampByString( source_value ) ) ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                }
-                else if( unit_state == UNIT_STATE_DISAPPEAR ) {
-                    if( trigger_count == 1 || trigger_count == map_logic->getUnitDisappearCountByCamp( (int)UnitNode::getCampByString( source_value ) ) ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                    else if( trigger_count == 0 ) {
-                        cocos2d::Vector<UnitNode*> units = unit->getBattleLayer()->getAliveUnitsByCamp( UnitNode::getCampByString( source_value ) );
-                        if( units.size() == 0 ) {
-                            this->onSingleTriggerPass( i, map_logic, unit );
-                        }
-                    }
-                }
-                else if( unit_state == UNIT_STATE_MOVE_TO ) {
-                    MapData* map_data = unit->getBattleLayer()->getMapData();
-                    int in_area_count = 0;
-                    cocos2d::Vector<UnitNode*> units = unit->getBattleLayer()->getAliveUnitsByCamp( UnitNode::getCampByString( source_value ) );
-                    if( units.size() == 0 ) {
-                        continue;
-                    }
-                    for( auto u : units ) {
-                        ValueMap unit_area = map_data->getAreaMapByPosition( u->getPosition() );
-                        if( ( unit_area.find( "name" ) != unit_area.end() ) && ( unit_area.at( "name" ).asString() == position_name ) ) {
-                            ++in_area_count;
-                        }
-                    }
-                    if( trigger_count == 0 && in_area_count == units.size() ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                    else if( trigger_count == 1 && area.at( "name" ).asString() == position_name ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                    else if( in_area_count == trigger_count ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                }
-            }
-            else if( source_type == UNIT_SOURCE_TAG && unit->hasUnitTag( source_value ) ) {
-                if( unit_state == UNIT_STATE_APPEAR ) {
-                    if( trigger_count == 0 ) {
-                        continue;
-                    }
-                    else if( trigger_count == 1 || map_logic->getUnitAppearCountByTag( source_value ) == trigger_count ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                }
-                else if( unit_state == UNIT_STATE_DISAPPEAR ) {
-                    if( trigger_count == 0 ) {
-                        cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByTag( source_value );
-                        if( units.size() == 0 ) {
-                            this->onSingleTriggerPass( i, map_logic, unit );
-                        }
-                    }
-                    else if( trigger_count == 1 || trigger_count == map_logic->getUnitDisappearCountByTag( source_value ) ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                }
-                else if( unit_state == UNIT_STATE_MOVE_TO ) {
-                    MapData* map_data = unit->getBattleLayer()->getMapData();
-                    int in_area_count = 0;
-                    cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByTag( source_value );
-                    if( units.size() == 0 ) {
-                        continue;
-                    }
-                    for( auto u : units ) {
-                        ValueMap unit_area = map_data->getAreaMapByPosition( u->getPosition() );
-                        if( ( unit_area.find( "name" ) != unit_area.end() ) && ( unit_area.at( "name" ).asString() == position_name ) ) {
-                            ++in_area_count;
-                        }
-                    }
-                    if( trigger_count == 0 && in_area_count == units.size() ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                    else if( trigger_count == 1 && area.at( "name" ).asString() == position_name ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                    else if( in_area_count == trigger_count ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                }
-            }
-            else if( source_type == UNIT_SOURCE_NAME && unit->getUnitData()->name == source_value ) {
-                if( unit_state == UNIT_STATE_APPEAR ) {
-                    if( trigger_count == 0 ) {
-                        continue;
-                    }
-                    else if( trigger_count == 1 || map_logic->getUnitAppearCountByName( source_value ) ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                }
-                else if( unit_state == UNIT_STATE_DISAPPEAR ) {
-                    if( trigger_count == 0 ) {
-                        cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByName( source_value );
-                        if( units.size() == 0 ) {
-                            this->onSingleTriggerPass( i, map_logic, unit );
-                        }
-                    }
-                    else if( trigger_count == 1 || trigger_count == map_logic->getUnitDisappearCountByName( source_value ) ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                }
-                else if( unit_state == UNIT_STATE_MOVE_TO ) {
-                    MapData* map_data = unit->getBattleLayer()->getMapData();
-                    int in_area_count = 0;
-                    cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByName( source_value );
-                    if( units.size() == 0 ) {
-                        continue;
-                    }
-                    for( auto u : units ) {
-                        ValueMap unit_area = map_data->getAreaMapByPosition( u->getPosition() );
-                        if( ( unit_area.find( "name" ) != unit_area.end() ) && ( unit_area.at( "name" ).asString() == position_name ) ) {
-                            ++in_area_count;
-                        }
-                    }
-                    if( trigger_count == 0 && in_area_count == units.size() ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                    else if( trigger_count == 1 && area.at( "name" ).asString() == position_name ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                    else if( in_area_count == trigger_count ) {
-                        this->onSingleTriggerPass( i, map_logic, unit );
-                    }
-                }
-            }
+    else {
+        for( auto trigger : _triggers ) {
+            trigger->updateTrigger( conditions );
         }
     }
+    this->checkTriggerPass( map_logic, unit_node );
+}
+
+void EventTrigger::activateTriggerByUnit( class MapLogic* map_logic, class UnitNode* unit, const std::string& unit_state, const cocos2d::ValueMap& area ) {
+    if( _relation == "then" ) {
+        _triggers.at( _current_trigger_index )->updateTrigger( map_logic, unit, unit_state );
+    }
+    else {
+        for( auto trigger : _triggers ) {
+            trigger->updateTrigger( map_logic, unit, unit_state );
+        }
+    }
+    this->checkTriggerPass( map_logic, unit );
+}
+
+void EventTrigger::addTrigger( Trigger* trigger ) {
+    _triggers.pushBack( trigger );
 }

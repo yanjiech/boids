@@ -94,17 +94,17 @@ void UnitNodeSpineComponent::onSkeletonAnimationCompleted( int track_index ) {
     }
 }
 
-DirectionalSpineComponent::DirectionalSpineComponent() {
+TimeLimitSpineComponent::TimeLimitSpineComponent() {
     
 }
 
-DirectionalSpineComponent::~DirectionalSpineComponent() {
+TimeLimitSpineComponent::~TimeLimitSpineComponent() {
     
 }
 
-DirectionalSpineComponent* DirectionalSpineComponent::create( const cocos2d::ValueMap& data, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
-    DirectionalSpineComponent* ret = new DirectionalSpineComponent();
-    if( ret && ret->init( data, skeleton, name, auto_recycle ) ) {
+TimeLimitSpineComponent* TimeLimitSpineComponent::create( float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    TimeLimitSpineComponent* ret = new TimeLimitSpineComponent();
+    if( ret && ret->init( duration, skeleton, name, auto_recycle ) ) {
         ret->autorelease();
         return ret;
     }
@@ -114,31 +114,25 @@ DirectionalSpineComponent* DirectionalSpineComponent::create( const cocos2d::Val
     }
 }
 
-bool DirectionalSpineComponent::init( const cocos2d::ValueMap& data, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+bool TimeLimitSpineComponent::init( float duration, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
     if( !UnitNodeComponent::init( skeleton, name, auto_recycle ) ) {
         return false;
     }
     
-    _dir = Point( data.at( "dir_x" ).asFloat(), data.at( "dir_y" ).asFloat() );
-    _dir.normalize();
-    _speed = data.at( "speed" ).asFloat();
-    _duration = data.at( "duration" ).asFloat();
+    _duration = duration;
     _elapse = 0;
     
     return true;
 }
 
-void DirectionalSpineComponent::updateFrame( float delta ) {
+void TimeLimitSpineComponent::updateFrame( float delta ) {
     _elapse += delta;
     if( _elapse > _duration ) {
         this->setShouldRecycle( true );
     }
-    else {
-        this->setPosition( this->getPosition() + _dir * _speed * delta );
-    }
 }
 
-bool DirectionalSpineComponent::setAnimation( int track_index, const std::string& name, bool loop ) {
+bool TimeLimitSpineComponent::setAnimation( int track_index, const std::string& name, bool loop ) {
     spine::SkeletonAnimation* skeleton = dynamic_cast<spine::SkeletonAnimation*>( _node );
     if( skeleton ) {
         return skeleton->setAnimation( track_index, name, loop ) != nullptr;

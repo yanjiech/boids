@@ -23,6 +23,7 @@ private:
     cocos2d::ProgressTimer* _avatar;
     std::string _hint_type;
     float _range;
+    float _radius;
     float _min_range;
     float _max_range;
     cocos2d::Point _hint_d_pos;

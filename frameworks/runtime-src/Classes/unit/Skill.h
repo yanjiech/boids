@@ -63,6 +63,7 @@ public:
     
     float getSkillCD();
     
+    float getSkillRadius();
     float getSkillRange();
     float getSkillMaxRange();
     float getSkillMinRange();

@@ -1168,6 +1168,35 @@
                     "name": "again_0982"
                 }
             ]
+        },
+        {
+            "name": "test",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                },
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_type": "player",
+                    "popup_type": "normal"
+                }
+            ]
         }
     ],
     "units": [

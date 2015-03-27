@@ -23,7 +23,7 @@
     },
     "deploy_units" :
     [
-        "1"
+        "4"
     ],
     "units" :
     {
@@ -41,7 +41,14 @@
                     "name" : "CrazyShoot",
                     "level" : 1
                 }
-            ]
+            ],
+            "equips" :
+            {
+                "weapon" : "1",
+                "armor" : "2",
+                "boot" : "3",
+                "accessory" : "4"
+            }
         },
         "2" :
         {
@@ -57,7 +64,14 @@
                     "name" : "LightningChain",
                     "level" : 1
                 }
-            ]
+            ],
+            "equips" :
+            {
+                "weapon" : "1",
+                "armor" : "2",
+                "boot" : "3",
+                "accessory" : "4"
+            }
         },
         "3" :
         {
@@ -73,7 +87,64 @@
                      "name" : "",
                      "level" : 2
                 }
-            ]
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
+        },
+        "4" :
+        {
+            "name" : "saber",
+            "level" : 1,
+            "skills" :
+            [
+                {
+                    "name" : "GiantSword",
+                    "level" : 1
+                },
+                {
+                    "name" : "LightShield",
+                    "level" : 1
+                }
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
+        }
+    },
+    "equips" :
+    {
+        "1" :
+        {
+            "name" : "sword",
+            "level" : 1,
+            "in_use" : true
+        },
+        "2" :
+        {
+            "name" : "cloth",
+            "level" : 1,
+            "in_use" : true
+        },
+        "3" :
+        {
+            "name" : "boot",
+            "level" : 1,
+            "in_use" : true
+        },
+        "4" :
+        {
+            "name" : "cape",
+            "level" : 1,
+            "in_use" : true
         }
     }
 }

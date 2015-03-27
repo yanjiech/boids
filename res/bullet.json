@@ -76,6 +76,17 @@
         "hit_scale": 1.0,
         "scale": 1.0
     },
+    "saber_bullet" :
+    {
+        "name" : "saber_bullet",
+        "move_type" : "fixed",
+        "body_type" : "spine",
+        "hit_type" : "spine",
+        "hit_name" : "default",
+        "damage_radius" : 200.0,
+        "hit_scale" : 1.0,
+        "scale" : 1.0
+    },
     "silver_arrow": {
         "name": "silver_arrow",
         "move_type": "straight",

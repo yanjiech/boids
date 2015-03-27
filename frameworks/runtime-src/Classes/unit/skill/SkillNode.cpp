@@ -7,7 +7,7 @@
 //
 
 #include "SkillNode.h"
-#include "UnitNode.h"
+#include "../UnitNode.h"
 
 using namespace cocos2d;
 
@@ -55,9 +55,10 @@ UnitNode* SkillNode::getOwner() {
 }
 
 void SkillNode::begin() {
-    
+    _owner->setUsingSkillNode( this );
 }
 
 void SkillNode::end() {
-    
+    _owner->setUsingSkillNode( nullptr );
+    this->setShouldRecycle( true );
 }

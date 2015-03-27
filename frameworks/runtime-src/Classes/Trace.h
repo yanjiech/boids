@@ -14,7 +14,7 @@
 #include <sys/time.h>
 #include <map>
 
-//TraceĞÅÏ¢´òµÃ¹ı¶àÇë×¢ÊÍÏÂÃæÕâĞĞ
+//Traceâ€“â‰ˆÅ“Â¢Â¥ÃšÂµâˆšÏ€Ëâˆ‚â€¡Â«Ãâ—ŠÂ¢Â Ã•Å“Â¬âˆšÃŠâ€™â€šâ€“â€“
 //#define __TRACE__
 //#define __PRINT_SLOW_ACCUMULATE__
 
@@ -52,7 +52,7 @@ public:
 	{
 #ifdef __TRACE__
 		uint64_t time_new = gettime();
-		long t = time_new - _time; //¼ÙÉè²»»á³¬¹ılong
+		long t = time_new - _time; //ÂºÅ¸â€¦Ã‹â‰¤ÂªÂªÂ·â‰¥Â¨Ï€Ëlong
 		_time = time_new;
 		printf("[%s]: %ldus", title.c_str(), t);
 #endif
@@ -69,7 +69,7 @@ public:
 	{
 #ifdef __TRACE__
 		uint64_t time_new = gettime();
-		long t = time_new - _accumulate_time; //¼ÙÉè²»»á³¬¹ılong
+		long t = time_new - _accumulate_time; //ÂºÅ¸â€¦Ã‹â‰¤ÂªÂªÂ·â‰¥Â¨Ï€Ëlong
 		_accumulate_time = time_new;
 
 		accumulated_time[title] += t;

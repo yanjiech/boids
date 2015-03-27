@@ -11,21 +11,21 @@
             }
         },
         {
-            "name": "boss_trigger_area",
-            "rect": {
-                "x": 941.007,
-                "y": 881.204,
-                "width": 159.55,
-                "height": 202.995
-            }
-        },
-        {
             "name": "boss",
             "rect": {
                 "x": 1283.96,
                 "y": 814.746,
                 "width": 163.954,
                 "height": 186.262
+            }
+        },
+        {
+            "name": "boss_trigger_area",
+            "rect": {
+                "x": 873.76,
+                "y": 599.425,
+                "width": 279.322,
+                "height": 471.947
             }
         }
     ],

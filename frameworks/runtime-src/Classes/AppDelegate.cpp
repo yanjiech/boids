@@ -58,7 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect( "My Game", cocos2d::Rect( 0, 0, 1440, 800 ) );
+        glview = GLViewImpl::createWithRect( "My Game", cocos2d::Rect( 0, 0, 1920, 1080 ) );
         director->setOpenGLView(glview);
     }
     glview->setDesignResolutionSize( 1920.0f, 1080.0f, ResolutionPolicy::NO_BORDER );
@@ -82,9 +82,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     ResourceManager::getInstance()->loadAllData();
     
-#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
     EditMode::getInstance()->enterMain( CC_CALLBACK_0( AppDelegate::onEditModeExit, this ) );
-    
 #else
     PlayerInfo::getInstance()->loadPlayerInfo();
     SceneManager::getInstance()->transitToScene( eSceneName::LevelChoose );

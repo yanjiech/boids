@@ -154,7 +154,9 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
     }
 }
 
-UnitNode::UnitNode() : _state( eUnitState::Unknown_Unit_State ) {
+UnitNode::UnitNode() :
+_state( eUnitState::Unknown_Unit_State ),
+_using_skill_node( nullptr ) {
 }
 
 UnitNode::~UnitNode() {
@@ -286,7 +288,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     
     _face = eUnitFace::Back;
     this->setCurrentSkeleton( _front );
-    this->changeFace( eUnitFace::Front );
+    this->changeUnitDirection( Point( 1.0f, 0 ) );
     this->setNextUnitState( eUnitState::Unknown_Unit_State );
     this->changeUnitState( eUnitState::Idle );
     
@@ -355,8 +357,9 @@ void UnitNode::updateFrame( float delta ) {
         }
     }while( false );
     
-    this->updateSkills( delta );
     this->updateComponents( delta );
+    this->updateBuffs( delta );
+    this->updateSkills( delta );
 }
 
 void UnitNode::onSkeletonAnimationStart( int track_index ) {
@@ -506,18 +509,18 @@ void UnitNode::changeUnitDirection( const cocos2d::Point& new_dir ) {
     float rotation = 0;
     if( new_dir.y > 0 ) {
         if( new_dir.x > 0 ) {
-            rotation = ( _unit_data->default_face_dir == 2 or _unit_data->default_face_dir == 3 ) ? 180.0f : 0;
+            rotation = ( _unit_data->default_face_dir == 2 || _unit_data->default_face_dir == 3 ) ? 180.0f : 0;
         }
         else {
-            rotation = ( _unit_data->default_face_dir == 0 or _unit_data->default_face_dir == 1 ) ? 180.0f : 0;
+            rotation = ( _unit_data->default_face_dir == 0 || _unit_data->default_face_dir == 1 ) ? 180.0f : 0;
         }
     }
     else {
         if( new_dir.x > 0 ) {
-            rotation = ( _unit_data->default_face_dir == 1 or _unit_data->default_face_dir == 3 ) ? 180.0f : 0;
+            rotation = ( _unit_data->default_face_dir == 1 || _unit_data->default_face_dir == 3 ) ? 180.0f : 0;
         }
         else {
-            rotation = ( _unit_data->default_face_dir == 0 or _unit_data->default_face_dir == 2 ) ? 180.0f : 0;
+            rotation = ( _unit_data->default_face_dir == 0 || _unit_data->default_face_dir == 2 ) ? 180.0f : 0;
         }
     }
     if( this->getCurrentSkeleton()->getRotationSkewY() != rotation ) {
@@ -600,9 +603,21 @@ void UnitNode::onDying() {
     this->addUnitComponent( component, component->getName(), eComponentLayer::BelowObject );
 }
 
+void UnitNode::takeDamage( const cocos2d::ValueMap& result, int source_id ) {
+    this->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), source_id );
+}
+
 void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_id ) {
     if( _unit_data->current_hp > 0 ) {
-        _unit_data->current_hp -= amount;
+        float damage = amount;
+        for( auto itr = _buffs.begin(); itr != _buffs.end(); ++itr ) {
+            ShieldBuff* buff = dynamic_cast<ShieldBuff*>( itr->second );
+            if( buff ) {
+                damage = buff->absorbDamage( amount );
+                break;
+            }
+        }
+        _unit_data->current_hp -= damage;
         
         if( _unit_data->current_hp <= 0 ) {
             _unit_data->current_hp = 0;
@@ -610,7 +625,7 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
         
         //jump damage number
         std::string jump_text_name = Utils::stringFormat( "damage_from_%d_%f_jump_text", source_id, _battle_layer->getGameTime() );
-        this->jumpNumber( amount, "damage", is_cri, jump_text_name );
+        this->jumpNumber( damage, "damage", is_cri, jump_text_name );
         
         //update blood bar
         _hp_bar->setPercentage( _unit_data->current_hp / _unit_data->hp * 100.0f );
@@ -722,39 +737,43 @@ void UnitNode::applyCustomChange( const std::string& content_string ) {
     }
 }
 
-void UnitNode::addBuff( const std::string& name, Buff* buff ) {
-    if( !this->hasBuff( name ) ) {
-        _buffs.insert( name, buff );
+void UnitNode::addBuff( const std::string& buff_id, Buff* buff ) {
+    if( !this->hasBuff( buff_id ) ) {
+        _buffs.insert( buff_id, buff );
     }
 }
 
-void UnitNode::removeBuff( const std::string& name ) {
-    auto itr = _buffs.find( name );
+void UnitNode::removeBuff( const std::string& buff_id ) {
+    auto itr = _buffs.find( buff_id );
     if( itr != _buffs.end() ) {
         _buffs.erase( itr );
     }
 }
 
-bool UnitNode::hasBuff( const std::string& name ) {
-    auto itr = _buffs.find( name );
+bool UnitNode::hasBuff( const std::string& buff_id ) {
+    auto itr = _buffs.find( buff_id );
     return itr != _buffs.end();
 }
     
 void UnitNode::removeAllBuffs() {
-    
+    _buffs.clear();
 }
 
 void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_per ) {
     if( !this->isDying() && !this->isCasting() ) {
-        _using_skill_params["multi_action"] = Value( _skills.at( skill_id )->shouldContinue() );
-        _using_skill_params["skill_id"] = Value( skill_id );
-        _using_skill_params["dir_x"] = Value( dir.x );
-        _using_skill_params["dir_y"] = Value( dir.y );
-        _using_skill_params["range_per"] = Value( range_per );
-        _using_skill_params["state"] = Value( "start" );
-        if( dir.x != 0 || dir.y != 0 ) {
+        Point sk_dir = dir;
+        if( sk_dir.x != 0 || sk_dir.y != 0 ) {
             this->changeUnitDirection( dir );
         }
+        else {
+            sk_dir = this->getUnitDirection();
+        }
+        _using_skill_params["dir_x"] = Value( sk_dir.x );
+        _using_skill_params["dir_y"] = Value( sk_dir.y );
+        _using_skill_params["multi_action"] = Value( _skills.at( skill_id )->shouldContinue() );
+        _using_skill_params["skill_id"] = Value( skill_id );
+        _using_skill_params["range_per"] = Value( range_per );
+        _using_skill_params["state"] = Value( "start" );
         this->changeUnitState( eUnitState::Casting, true );
     }
 }
@@ -863,6 +882,7 @@ void UnitNode::walkTo( const cocos2d::Point& new_pos ) {
         this->changeUnitDirection( new_dir );
     }
     this->setPosition( dest_pos );
+    _battle_layer->onUnitMoved( this );
 }
 
 void UnitNode::walkAlongPath( float distance ) {
@@ -997,7 +1017,17 @@ void UnitNode::onAttacking() {
             if( target_unit ) {
                 DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
                 ValueMap result = damage_calculator->calculateDamage( _unit_data, target_unit->getUnitData() );
-                target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), _deploy_id );
+                target_unit->takeDamage( result, _deploy_id );
+                
+                if( !result.at( "miss" ).asBool() ) {
+                    std::string hit_resource = "effects/bullets/default_hit";
+                    spine::SkeletonAnimation* hit_effect = ArmatureManager::getInstance()->createArmature( hit_resource );
+                    hit_effect->setScale( 0.7f );
+                    UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( hit_effect, Utils::stringFormat( "bullet_%d_hit", BulletNode::getNextBulletId() ), true );
+                    component->setPosition( target_unit->getLocalHitPos() );
+                    target_unit->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
+                    component->setAnimation( 0, "animation", false );
+                }
             }
         }
         else {
@@ -1093,6 +1123,10 @@ std::string UnitNode::getSkillHintTypeById( int sk_id ) {
     return _skills.at( sk_id )->getSkillHintType();
 }
 
+float UnitNode::getSkillRadiusById( int sk_id ) {
+    return _skills.at( sk_id )->getSkillRadius();
+}
+
 float UnitNode::getSkillRangeById( int sk_id ) {
     return _skills.at( sk_id )->getSkillRange();
 }
@@ -1123,6 +1157,19 @@ void UnitNode::updateComponents( float delta ) {
         }
         else {
             comp->updateFrame( delta );
+        }
+    }
+}
+
+void UnitNode::updateBuffs( float delta ) {
+    cocos2d::Map<std::string, Buff*> buffs = _buffs;
+    for( auto pair : buffs ) {
+        Buff* buff = pair.second;
+        if( buff->shouldRecycle() ) {
+            this->removeBuff( buff->getBuffId() );
+        }
+        else {
+            buff->updateFrame( delta );
         }
     }
 }

@@ -62,6 +62,7 @@ void Skill::activate( const cocos2d::ValueMap& params ) {
     _elapse = 0;
     this->setSkillState( eSkillState::SkillStateCasting );
     SkillNode* skill_node = SkillNodeFactory::createSkillNode( _skill_name, _owner, _skill_data, params );
+    skill_node->begin();
     _owner->getBattleLayer()->addSkillNode( skill_node );
 }
 
@@ -76,6 +77,14 @@ bool Skill::isSkillReady() {
 
 float Skill::getSkillCD() {
     return _elapse / _full_cd;
+}
+
+float Skill::getSkillRadius() {
+    auto itr = _skill_data.find( "radius" );
+    if( itr != _skill_data.end() ) {
+        return itr->second.asFloat();
+    }
+    return 0;
 }
 
 float Skill::getSkillRange() {

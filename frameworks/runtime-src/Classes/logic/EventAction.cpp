@@ -95,7 +95,7 @@ void EventAction::updateFrame( float delta ) {
 }
 
 void EventAction::onEventTriggered( bool finish ) {
-    const ValueMap& event = _trigger->getLogicEvent();
+    const ValueMap& event = _trigger->getEventData();
     _map_logic->onEventChanged( event.at( "name" ).asString(), EVENT_STATE_TRIGGER );
     const std::string& action_type = _action_data.at( "action_type" ).asString();
     if( action_type == ACTION_TYPE_UNIT_CHANGE ) {
