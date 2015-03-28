@@ -46,7 +46,7 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
         
     }
     else if( buff_type == BUFF_TYPE_PIERCE ) {
-        
+        ret = PierceBuff::create( owner, data );
     }
     else if( buff_type == BUFF_TYPE_POISON ) {
         
@@ -152,4 +152,84 @@ int ShieldBuff::absorbDamage( float damage ) {
         this->end();
     }
     return ret;
+}
+
+PierceBuff::PierceBuff() {
+    
+}
+
+PierceBuff::~PierceBuff() {
+    
+}
+
+PierceBuff* PierceBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    PierceBuff* ret = new PierceBuff();
+    if( ret && ret->init( owner, data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool PierceBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    if( !Buff::init( owner, data ) ) {
+        return false;
+    }
+    return true;
+}
+
+void PierceBuff::updateFrame( float delta ) {
+    Buff::updateFrame( delta );
+    if( _elapse > _duration ) {
+        this->end();
+    }
+}
+
+void PierceBuff::begin() {
+    Buff::begin();
+
+    std::string resource = "effects/dracula_skill_1/dark_pierce/down";
+    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    TimeLimitSpineComponent* pierce_bottom = TimeLimitSpineComponent::create( _duration, skeleton, _buff_id + "_b", true );
+    _owner->addUnitComponent( pierce_bottom, pierce_bottom->getName(), eComponentLayer::OverObject );
+    pierce_bottom->setAnimation( 0, "animation", false );
+    pierce_bottom->setPosition( _owner->getLocalHitPos() + Point( 0, 30.0f ) );
+    
+    resource = "effects/dracula_skill_1/dark_pierce/up";
+    skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    TimeLimitSpineComponent* pierce_top = TimeLimitSpineComponent::create( _duration, skeleton, _buff_id + "_f", true );
+    _owner->addUnitComponent( pierce_top, pierce_top->getName(), eComponentLayer::BelowObject );
+    pierce_top->setAnimation( 0, "animation", false );
+    pierce_top->setPosition( _owner->getLocalHitPos() + Point( 0, 30.0f ) );
+    
+    resource = "effects/dracula_skill_1/bat";
+    skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    TimeLimitSpineComponent* bat_component = TimeLimitSpineComponent::create( _duration, skeleton, _buff_id + "_bat", true );
+    _owner->addUnitComponent( bat_component, bat_component->getName(), eComponentLayer::OverObject );
+    bat_component->setAnimation( 0, "animation", true );
+    bat_component->setPosition( _owner->getLocalHeadPos() );
+    
+    resource = "effects/blood";
+    skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    TimeLimitSpineComponent* blood_component = TimeLimitSpineComponent::create( _duration, skeleton, _buff_id + "_blood", true );
+    _owner->addUnitComponent( blood_component, blood_component->getName(), eComponentLayer::OverObject );
+    blood_component->setAnimation( 0, "animation", true );
+    blood_component->setPosition( _owner->getLocalHitPos() );
+    
+    _owner->riseup( 0.2f, 30.0f );
+    _owner->changeUnitState( eUnitState::UnderControl, true );
+}
+
+void PierceBuff::end() {
+    Buff::end();
+    
+    _owner->falldown( 0, 30.0f );
+    _owner->removeUnitComponent( _buff_id + "_b" );
+    _owner->removeUnitComponent( _buff_id + "_f" );
+    
+    _owner->changeUnitState( eUnitState::Idle, true );
+    
 }

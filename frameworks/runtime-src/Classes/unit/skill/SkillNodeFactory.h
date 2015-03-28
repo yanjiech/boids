@@ -15,6 +15,8 @@
 #include "CrazyShoot.h"
 #include "GiantSword.h"
 #include "LightShield.h"
+#include "DarkPierce.h"
+#include "BatSwarm.h"
 
 class SkillNodeFactory {
 public:

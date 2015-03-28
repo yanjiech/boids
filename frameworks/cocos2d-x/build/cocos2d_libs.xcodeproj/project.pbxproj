@@ -1754,7 +1754,6 @@
 		50ED2BE719BEAF7900A0AB90 /* UIEditBoxImpl-wp8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50ED2BDF19BEAF7900A0AB90 /* UIEditBoxImpl-wp8.cpp */; };
 		52B47A1E1A53489B004E4C60 /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A1D1A53489B004E4C60 /* HttpClient.cpp */; };
 		52B47A2E1A5349A3004E4C60 /* HttpAsynConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B47A291A5349A3004E4C60 /* HttpAsynConnection.h */; };
-		52B47A2F1A5349A3004E4C60 /* HttpAsynConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2A1A5349A3004E4C60 /* HttpAsynConnection.m */; };
 		52B47A301A5349A3004E4C60 /* HttpClient-ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2B1A5349A3004E4C60 /* HttpClient-ios.mm */; };
 		52B47A311A5349A3004E4C60 /* HttpCookie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2C1A5349A3004E4C60 /* HttpCookie.cpp */; };
 		52B47A321A5349A3004E4C60 /* HttpCookie.h in Headers */ = {isa = PBXBuildFile; fileRef = 52B47A2D1A5349A3004E4C60 /* HttpCookie.h */; };
@@ -1766,6 +1765,8 @@
 		5E9F612B1A3FFE3D0038DE01 /* CCPlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E9F61241A3FFE3D0038DE01 /* CCPlane.cpp */; };
 		5E9F612C1A3FFE3D0038DE01 /* CCPlane.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E9F61251A3FFE3D0038DE01 /* CCPlane.h */; };
 		5E9F612D1A3FFE3D0038DE01 /* CCPlane.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E9F61251A3FFE3D0038DE01 /* CCPlane.h */; };
+		76148F231AC550AA00235C7B /* HttpAsynConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A2A1A5349A3004E4C60 /* HttpAsynConnection.mm */; };
+		76148F241AC5517A00235C7B /* HttpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B47A1D1A53489B004E4C60 /* HttpClient.cpp */; };
 		98E67F441ABFF74A00076CE1 /* Animation.c in Sources */ = {isa = PBXBuildFile; fileRef = 98E67EF51ABFF74900076CE1 /* Animation.c */; };
 		98E67F451ABFF74A00076CE1 /* Animation.c in Sources */ = {isa = PBXBuildFile; fileRef = 98E67EF51ABFF74900076CE1 /* Animation.c */; };
 		98E67F461ABFF74A00076CE1 /* Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = 98E67EF61ABFF74900076CE1 /* Animation.h */; };
@@ -2925,7 +2926,7 @@
 		50FCEB9218C72017004AD434 /* WidgetReaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetReaderProtocol.h; sourceTree = "<group>"; };
 		52B47A1D1A53489B004E4C60 /* HttpClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpClient.cpp; sourceTree = "<group>"; };
 		52B47A291A5349A3004E4C60 /* HttpAsynConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpAsynConnection.h; sourceTree = "<group>"; };
-		52B47A2A1A5349A3004E4C60 /* HttpAsynConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpAsynConnection.m; sourceTree = "<group>"; };
+		52B47A2A1A5349A3004E4C60 /* HttpAsynConnection.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = HttpAsynConnection.mm; sourceTree = "<group>"; };
 		52B47A2B1A5349A3004E4C60 /* HttpClient-ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "HttpClient-ios.mm"; sourceTree = "<group>"; };
 		52B47A2C1A5349A3004E4C60 /* HttpCookie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpCookie.cpp; sourceTree = "<group>"; };
 		52B47A2D1A5349A3004E4C60 /* HttpCookie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpCookie.h; sourceTree = "<group>"; };
@@ -3902,7 +3903,7 @@
 			isa = PBXGroup;
 			children = (
 				52B47A291A5349A3004E4C60 /* HttpAsynConnection.h */,
-				52B47A2A1A5349A3004E4C60 /* HttpAsynConnection.m */,
+				52B47A2A1A5349A3004E4C60 /* HttpAsynConnection.mm */,
 				52B47A2B1A5349A3004E4C60 /* HttpClient-ios.mm */,
 				52B47A2C1A5349A3004E4C60 /* HttpCookie.cpp */,
 				52B47A2D1A5349A3004E4C60 /* HttpCookie.h */,
@@ -6811,6 +6812,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76148F241AC5517A00235C7B /* HttpClient.cpp in Sources */,
 				D0FD03541A3B51AA00825BB5 /* CCAllocatorGlobalNewDelete.cpp in Sources */,
 				15AE1B9819AADAA100C27E9E /* UIVideoPlayer-ios.mm in Sources */,
 				15AE1C0519AAE01E00C27E9E /* CCTableViewCell.cpp in Sources */,
@@ -7069,6 +7071,7 @@
 				15AE185F19AAD31200C27E9E /* SimpleAudioEngine.mm in Sources */,
 				15AE1BE819AAE01E00C27E9E /* CCControl.cpp in Sources */,
 				1A570226180BCC1A0088DEC7 /* CCParticleExamples.cpp in Sources */,
+				76148F231AC550AA00235C7B /* HttpAsynConnection.mm in Sources */,
 				15AE194919AAD35100C27E9E /* CCComController.cpp in Sources */,
 				98E67FA91ABFF74A00076CE1 /* Skin.c in Sources */,
 				1A57022A180BCC1A0088DEC7 /* CCParticleSystem.cpp in Sources */,
@@ -7182,7 +7185,6 @@
 				98E67FAD1ABFF74A00076CE1 /* SkinnedMeshAttachment.c in Sources */,
 				50ABBEB01925AB6F00A911A9 /* CCUserDefault.cpp in Sources */,
 				50ABBE521925AB6F00A911A9 /* CCEventDispatcher.cpp in Sources */,
-				52B47A2F1A5349A3004E4C60 /* HttpAsynConnection.m in Sources */,
 				15AE1B8019AADA9A00C27E9E /* UITextAtlas.cpp in Sources */,
 				15AE195919AAD35100C27E9E /* CCProcessBase.cpp in Sources */,
 				15AE18D319AAD33D00C27E9E /* CCParticleSystemQuadLoader.cpp in Sources */,

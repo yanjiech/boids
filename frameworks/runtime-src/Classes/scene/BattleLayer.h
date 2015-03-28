@@ -36,11 +36,12 @@ enum eBattleSubLayer {
 };
 
 enum eBattleState {
-    Win = 1,
-    Lose = 2,
-    Prepare = 3,
-    Paused = 4,
-    Running = 5
+    UnknownBattleState = 1,
+    BattleWin = 2,
+    BattleLose = 3,
+    BattlePrepare = 4,
+    BattlePaused = 5,
+    BattleRunning = 6
 };
 
 enum eCameraMode {
@@ -97,6 +98,8 @@ private:
     void updateSkillNodes( float delta );
     
 public:
+    static eBattleState getBattleStateFromString( const std::string& str );
+    
     BattleLayer();
     virtual ~BattleLayer();
     

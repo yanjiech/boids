@@ -45,8 +45,8 @@ EditorTypeManager::EditorTypeManager() {
     _unitType->_typeVector = { "player", "neutral", "ally", "enemy", "item", "wild" };
     _unitTriggerSourceType->_typeVector = { "type_source", "tag_source", "name_source" };
     _unitActionSourceType->_typeVector = { "trigger_source", "type_source", "tag_source", "name_source" };
-    _triggerType->_typeVector = { "map_init", "unit_change", "event_change", "game_change", "vision_change", "conversation_change", "custom" };
-    _actionType->_typeVector = { "unit_change", "task_change", "game_change", "event_change", "vision_change", "custom", "waves_appear", "conversation_appear" };
+    _triggerType->_typeVector = { "map_init", "unit_change", "unit_stay", "event_change", "game_change", "vision_change", "conversation_change", "custom" };
+    _actionType->_typeVector = { "unit_change", "task_change", "game_change", "event_change", "vision_change", "custom", "wave_action", "conversation_action" };
     _visionObjectStateType->_typeVector = { "unnormal", "normal", "disable" };
     _visionObjectSourceType->_typeVector = { "name_source", "tag_source" };
     _gameConditionType->_typeVector = { "player_nodie", "unit_die", "unit_alive", "clear_enemy", "arrive_area", "collect_item", "time_limit" };

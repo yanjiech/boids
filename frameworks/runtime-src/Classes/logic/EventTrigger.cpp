@@ -57,7 +57,7 @@ bool EventTrigger::init( const ValueMap& event_data ) {
     }
     
     const ValueVector& trigger_data = event_data.at( "triggers" ).asValueVector();
-    _total_trigger_count = trigger_data.size();
+    _total_trigger_count = (int)trigger_data.size();
     for( auto itr = trigger_data.begin(); itr != trigger_data.end(); ++itr ) {
         Trigger* trigger = Trigger::create( itr->asValueMap() );
         this->addTrigger( trigger );
@@ -123,7 +123,7 @@ void EventTrigger::moveOn() {
 
 void EventTrigger::trigger( class MapLogic* map_logic, class UnitNode* unit_node ) {
     const cocos2d::ValueVector& actions = _event_data.at( "actions" ).asValueVector();
-    int action_count = actions.size();
+    int action_count = (int)actions.size();
     for( int i = 0; i < action_count; ++i ) {
         const ValueMap& action = actions.at( i ).asValueMap();
         EventAction* ea = EventAction::create( action, map_logic, this );

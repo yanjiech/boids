@@ -52,11 +52,18 @@
 		7631FA371AC2A92B00CAB9C8 /* LightShield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */; };
 		7631FA3A1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */; };
 		7631FA3B1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */; };
+		76E21D8D1AC5137B006714AD /* Equipment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8B1AC5137B006714AD /* Equipment.cpp */; };
+		76E21D8E1AC5137B006714AD /* Equipment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8B1AC5137B006714AD /* Equipment.cpp */; };
+		76E21D911AC52924006714AD /* DarkPierce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8F1AC52924006714AD /* DarkPierce.cpp */; };
+		76E21D921AC52924006714AD /* DarkPierce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8F1AC52924006714AD /* DarkPierce.cpp */; };
+		76E21D951AC5373A006714AD /* BatSwarm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D931AC5373A006714AD /* BatSwarm.cpp */; };
+		76E21D961AC5373A006714AD /* BatSwarm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D931AC5373A006714AD /* BatSwarm.cpp */; };
+		76E605D31AC665EF0096F69D /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E605D21AC665EF0096F69D /* libboost_filesystem.a */; };
+		76E605D41AC6661F0096F69D /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76148F211AC54D9300235C7B /* libboost_system.a */; };
+		76E605D51AC666500096F69D /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E605D21AC665EF0096F69D /* libboost_filesystem.a */; };
+		76E605D61AC666500096F69D /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76148F211AC54D9300235C7B /* libboost_system.a */; };
 		76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
 		76EADAF81AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
-		84CB804E1AC29316000E5873 /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CB804D1AC29316000E5873 /* libboost_system.a */; };
-		84CB80501AC29379000E5873 /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CB804F1AC29379000E5873 /* libboost_filesystem.a */; };
-		84CB80511AC293C2000E5873 /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CB804D1AC29316000E5873 /* libboost_system.a */; };
 		98531A761AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
 		98531A771AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
 		9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
@@ -78,8 +85,6 @@
 		9868BBA61AB2DE57002ED7A1 /* BulletNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9868BBA31AB2DE57002ED7A1 /* BulletNode.cpp */; };
 		9868BBA91AB2F64D002ED7A1 /* DamageCalculate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9868BBA71AB2F64D002ED7A1 /* DamageCalculate.cpp */; };
 		9868BBAA1AB2F64D002ED7A1 /* DamageCalculate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9868BBA71AB2F64D002ED7A1 /* DamageCalculate.cpp */; };
-		98690F2C1AB15B6600E9AFFE /* WaveAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98690F2A1AB15B6600E9AFFE /* WaveAction.cpp */; };
-		98690F2D1AB15B6600E9AFFE /* WaveAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98690F2A1AB15B6600E9AFFE /* WaveAction.cpp */; };
 		986A553E1AA559F70051B0B9 /* TargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A553C1AA559F70051B0B9 /* TargetNode.cpp */; };
 		986A553F1AA559F70051B0B9 /* TargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A553C1AA559F70051B0B9 /* TargetNode.cpp */; };
 		986A55421AA55A390051B0B9 /* BuildingNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55401AA55A390051B0B9 /* BuildingNode.cpp */; };
@@ -459,14 +464,20 @@
 		50D7C96F17EBBEEC005D0B91 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		521A8E6819F0C3AC00D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6919F0C3AC00D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
+		76148F211AC54D9300235C7B /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../lib/lib/libboost_system.a; sourceTree = "<group>"; };
 		7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightShield.cpp; sourceTree = "<group>"; };
 		7631FA351AC2A92B00CAB9C8 /* LightShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightShield.h; sourceTree = "<group>"; };
 		7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GiantSword.cpp; sourceTree = "<group>"; };
 		7631FA391AC2A94000CAB9C8 /* GiantSword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiantSword.h; sourceTree = "<group>"; };
+		76E21D8B1AC5137B006714AD /* Equipment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Equipment.cpp; sourceTree = "<group>"; };
+		76E21D8C1AC5137B006714AD /* Equipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Equipment.h; sourceTree = "<group>"; };
+		76E21D8F1AC52924006714AD /* DarkPierce.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DarkPierce.cpp; sourceTree = "<group>"; };
+		76E21D901AC52924006714AD /* DarkPierce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkPierce.h; sourceTree = "<group>"; };
+		76E21D931AC5373A006714AD /* BatSwarm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BatSwarm.cpp; sourceTree = "<group>"; };
+		76E21D941AC5373A006714AD /* BatSwarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatSwarm.h; sourceTree = "<group>"; };
+		76E605D21AC665EF0096F69D /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../../../../lib/lib/libboost_filesystem.a; sourceTree = "<group>"; };
 		76EADAF51AC4018200E00BFA /* Trigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trigger.cpp; sourceTree = "<group>"; };
 		76EADAF61AC4018200E00BFA /* Trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trigger.h; sourceTree = "<group>"; };
-		84CB804D1AC29316000E5873 /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../Documents/lib/lib/libboost_system.a; sourceTree = "<group>"; };
-		84CB804F1AC29379000E5873 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../../../../Documents/lib/lib/libboost_filesystem.a; sourceTree = "<group>"; };
 		98531A751AA2C14100A37BFE /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../src; sourceTree = "<group>"; };
 		98598B141A10BF7F0075D0EC /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
 		98598B151A10BF7F0075D0EC /* CycledList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CycledList.cpp; path = ../Classes/CycledList.cpp; sourceTree = "<group>"; };
@@ -480,7 +491,6 @@
 		9859D1D11A7B4C0300FF6D82 /* boids.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boids.pb.h; sourceTree = "<group>"; };
 		9859D1D71A7B4E8400FF6D82 /* Counter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Counter.cpp; path = ../Classes/Counter.cpp; sourceTree = "<group>"; };
 		9859D1D81A7B4E8400FF6D82 /* Counter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Counter.h; path = ../Classes/Counter.h; sourceTree = "<group>"; };
-		985BB8741A1F4E920018F4FC /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../../../../Development/Lib/Boost/lib/libboost_filesystem.a; sourceTree = "<group>"; };
 		985F4D1E1AAD49E4008D2EF8 /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Skill.cpp; sourceTree = "<group>"; };
 		985F4D1F1AAD49E4008D2EF8 /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
 		985F4D221AAD532E008D2EF8 /* AudioManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioManager.cpp; sourceTree = "<group>"; };
@@ -494,8 +504,6 @@
 		9868BBA41AB2DE57002ED7A1 /* BulletNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletNode.h; sourceTree = "<group>"; };
 		9868BBA71AB2F64D002ED7A1 /* DamageCalculate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DamageCalculate.cpp; sourceTree = "<group>"; };
 		9868BBA81AB2F64D002ED7A1 /* DamageCalculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DamageCalculate.h; sourceTree = "<group>"; };
-		98690F2A1AB15B6600E9AFFE /* WaveAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaveAction.cpp; sourceTree = "<group>"; };
-		98690F2B1AB15B6600E9AFFE /* WaveAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveAction.h; sourceTree = "<group>"; };
 		986A553C1AA559F70051B0B9 /* TargetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TargetNode.cpp; sourceTree = "<group>"; };
 		986A553D1AA559F70051B0B9 /* TargetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetNode.h; sourceTree = "<group>"; };
 		986A55401AA55A390051B0B9 /* BuildingNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BuildingNode.cpp; sourceTree = "<group>"; };
@@ -572,7 +580,6 @@
 		98BD48731A245241004F4A90 /* Trace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trace.h; path = ../Classes/Trace.h; sourceTree = "<group>"; };
 		98E3B5E11A73963300B5BEBB /* pvp.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pvp.pb.cc; sourceTree = "<group>"; };
 		98E3B5E21A73963300B5BEBB /* pvp.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pvp.pb.h; sourceTree = "<group>"; };
-		98E3B5E71A739B6500B5BEBB /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../../Protobuf/lib/libprotobuf.a; sourceTree = "<group>"; };
 		98E3B5EB1A73A77A00B5BEBB /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		98E3B5EE1A73A77A00B5BEBB /* descriptor.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = descriptor.cc; sourceTree = "<group>"; };
 		98E3B5EF1A73A77A00B5BEBB /* descriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = descriptor.h; sourceTree = "<group>"; };
@@ -806,8 +813,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84CB80511AC293C2000E5873 /* libboost_system.a in Frameworks */,
-				84CB80501AC29379000E5873 /* libboost_filesystem.a in Frameworks */,
+				76E605D51AC666500096F69D /* libboost_filesystem.a in Frameworks */,
+				76E605D61AC666500096F69D /* libboost_system.a in Frameworks */,
 				15427C79198F1FA200DC375D /* libluacocos2d Mac.a in Frameworks */,
 				15427C78198F1F9900DC375D /* libcocos2d Mac.a in Frameworks */,
 				15A8A4881834C90F00142BE0 /* libcurl.dylib in Frameworks */,
@@ -827,7 +834,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84CB804E1AC29316000E5873 /* libboost_system.a in Frameworks */,
+				76E605D41AC6661F0096F69D /* libboost_system.a in Frameworks */,
+				76E605D31AC665EF0096F69D /* libboost_filesystem.a in Frameworks */,
 				15427C5B198F1E0100DC375D /* libluacocos2d iOS.a in Frameworks */,
 				15427C5A198F1DF000DC375D /* libcocos2d iOS.a in Frameworks */,
 				15AECE29195D482800907DB0 /* MediaPlayer.framework in Frameworks */,
@@ -968,6 +976,10 @@
 				7631FA351AC2A92B00CAB9C8 /* LightShield.h */,
 				7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */,
 				7631FA391AC2A94000CAB9C8 /* GiantSword.h */,
+				76E21D8F1AC52924006714AD /* DarkPierce.cpp */,
+				76E21D901AC52924006714AD /* DarkPierce.h */,
+				76E21D931AC5373A006714AD /* BatSwarm.cpp */,
+				76E21D941AC5373A006714AD /* BatSwarm.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -994,6 +1006,8 @@
 				987336131AB6840200694B53 /* JumpText.h */,
 				98E61DD01AB6A674005DE093 /* HpBar.cpp */,
 				98E61DD11AB6A674005DE093 /* HpBar.h */,
+				76E21D8B1AC5137B006714AD /* Equipment.cpp */,
+				76E21D8C1AC5137B006714AD /* Equipment.h */,
 			);
 			name = unit;
 			path = ../Classes/unit;
@@ -1231,8 +1245,6 @@
 				98EBBF031AAC865C00ADB84A /* EventAction.h */,
 				98EBBF061AAC866A00ADB84A /* EventTrigger.cpp */,
 				98EBBF071AAC866A00ADB84A /* EventTrigger.h */,
-				98690F2A1AB15B6600E9AFFE /* WaveAction.cpp */,
-				98690F2B1AB15B6600E9AFFE /* WaveAction.h */,
 				98E67E1E1ABFB01C00076CE1 /* GameTask.cpp */,
 				98E67E1F1ABFB01C00076CE1 /* GameTask.h */,
 				76EADAF51AC4018200E00BFA /* Trigger.cpp */,
@@ -1441,10 +1453,8 @@
 		F293B3CB15EB7BE500256477 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84CB804F1AC29379000E5873 /* libboost_filesystem.a */,
-				84CB804D1AC29316000E5873 /* libboost_system.a */,
-				98E3B5E71A739B6500B5BEBB /* libprotobuf.a */,
-				985BB8741A1F4E920018F4FC /* libboost_filesystem.a */,
+				76E605D21AC665EF0096F69D /* libboost_filesystem.a */,
+				76148F211AC54D9300235C7B /* libboost_system.a */,
 				15AECE28195D482800907DB0 /* MediaPlayer.framework */,
 				15A8A4871834C90E00142BE0 /* libcurl.dylib */,
 				D6B061341803AC000077942B /* CoreMotion.framework */,
@@ -1737,6 +1747,7 @@
 				988B52EC1AA4491600FB7B21 /* BehaviorBase.cpp in Sources */,
 				988B52F11AA44ABD00FB7B21 /* ResourceManager.cpp in Sources */,
 				98E3B6761A73A77A00B5BEBB /* atomicops_internals_x86_msvc.cc in Sources */,
+				76E21D8E1AC5137B006714AD /* Equipment.cpp in Sources */,
 				98E3B65E1A73A77A00B5BEBB /* printer.cc in Sources */,
 				E829419F1A5D68C00076E856 /* EditorVisionNode.cpp in Sources */,
 				98E3B67A1A73A77A00B5BEBB /* once.cc in Sources */,
@@ -1769,6 +1780,7 @@
 				E87413111A0B5634003EBD0B /* base64.cpp in Sources */,
 				E87413121A0B5647003EBD0B /* adler32.c in Sources */,
 				986A55431AA55A390051B0B9 /* BuildingNode.cpp in Sources */,
+				76E21D961AC5373A006714AD /* BatSwarm.cpp in Sources */,
 				E874131E1A0B5647003EBD0B /* trees.c in Sources */,
 				E87413091A0B5629003EBD0B /* TmxPropertySet.cpp in Sources */,
 				98E67E211ABFB01C00076CE1 /* GameTask.cpp in Sources */,
@@ -1820,7 +1832,6 @@
 				9871DBF31ABADF68009B8EC9 /* WrathOfThunder.cpp in Sources */,
 				9859D1D31A7B4C0300FF6D82 /* Battle.pb.cc in Sources */,
 				987A83731ABBE1540093940D /* CrazyShoot.cpp in Sources */,
-				98690F2D1AB15B6600E9AFFE /* WaveAction.cpp in Sources */,
 				985F4D211AAD49E4008D2EF8 /* Skill.cpp in Sources */,
 				E87413011A0B5629003EBD0B /* TmxImage.cpp in Sources */,
 				98B402511AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp in Sources */,
@@ -1856,6 +1867,7 @@
 				9859D1CC1A7B4B8700FF6D82 /* TcpClient.cpp in Sources */,
 				E867B1B71A36EDAC00EF8088 /* CmdLineDebuggerLua.cpp in Sources */,
 				985F4D291AAD72B9008D2EF8 /* Buff.cpp in Sources */,
+				76E21D921AC52924006714AD /* DarkPierce.cpp in Sources */,
 				E87413141A0B5647003EBD0B /* crc32.c in Sources */,
 				E874131F1A0B5647003EBD0B /* uncompr.c in Sources */,
 				986A55831AA57D850051B0B9 /* AttackBehavior.cpp in Sources */,
@@ -1930,11 +1942,13 @@
 				98E3B6851A73A77A00B5BEBB /* unknown_field_set.cc in Sources */,
 				E84197D41A09226300F5DF36 /* crc32.c in Sources */,
 				98E3B5E31A73963300B5BEBB /* pvp.pb.cc in Sources */,
+				76E21D911AC52924006714AD /* DarkPierce.cpp in Sources */,
 				98E3B65F1A73A77A00B5BEBB /* strtod.cc in Sources */,
 				988B52E21AA445EF00FB7B21 /* UIBattleLayer.cpp in Sources */,
 				986A55861AA57D950051B0B9 /* MoveBehavior.cpp in Sources */,
 				98742E661ABBD31B0087D13D /* BarrageOfArrow.cpp in Sources */,
 				98E3B6891A73A77A00B5BEBB /* wire_format_lite.cc in Sources */,
+				76E21D8D1AC5137B006714AD /* Equipment.cpp in Sources */,
 				986A55671AA5640D0051B0B9 /* CommonUtils.cpp in Sources */,
 				E84197DB1A09226300F5DF36 /* inffast.c in Sources */,
 				986A557E1AA57D730051B0B9 /* SkillBehavior.cpp in Sources */,
@@ -1970,6 +1984,7 @@
 				E86CDE931A1F3D21004FBDA2 /* Collidable.cpp in Sources */,
 				E84197D31A09226300F5DF36 /* compress.c in Sources */,
 				76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */,
+				76E21D951AC5373A006714AD /* BatSwarm.cpp in Sources */,
 				98E3B6831A73A77A00B5BEBB /* text_format.cc in Sources */,
 				98E3B66F1A73A77A00B5BEBB /* repeated_field.cc in Sources */,
 				E84197DF1A09226300F5DF36 /* uncompr.c in Sources */,
@@ -2025,7 +2040,6 @@
 				98E3B6811A73A77A00B5BEBB /* substitute.cc in Sources */,
 				98E3B6571A73A77A00B5BEBB /* generated_message_util.cc in Sources */,
 				9859D1D21A7B4C0300FF6D82 /* Battle.pb.cc in Sources */,
-				98690F2C1AB15B6600E9AFFE /* WaveAction.cpp in Sources */,
 				986A55621AA562C30051B0B9 /* SceneManager.cpp in Sources */,
 				E87413481A0BBB39003EBD0B /* EditorModel.cpp in Sources */,
 				988283001A3019EA0071D233 /* Border.cpp in Sources */,
@@ -2187,7 +2201,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2200,11 +2214,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
+					"$(SRCROOT)/../Classes/Protobuf",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
-				PROVISIONING_PROFILE = "e5db4c62-a5b1-4104-89f8-d717fd9ea941";
+				PROVISIONING_PROFILE = "2f3491b5-8b75-4821-b32a-4469d9b58db0";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";
@@ -2216,7 +2231,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2228,11 +2243,12 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
+					"$(SRCROOT)/../Classes/Protobuf",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
-				PROVISIONING_PROFILE = "e5db4c62-a5b1-4104-89f8-d717fd9ea941";
+				PROVISIONING_PROFILE = "2f3491b5-8b75-4821-b32a-4469d9b58db0";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";

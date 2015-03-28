@@ -627,7 +627,7 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
                 trigger = std::shared_ptr<EditorGameTrigger>(new EditorGameTrigger());
             } else if (triggerType == "vision_change") {
                 trigger = std::shared_ptr<EditorVisionTrigger>(new EditorVisionTrigger());
-            } else if (triggerType == "conversation_change") {
+            } else if (triggerType == "conversation_action") {
                 trigger = std::shared_ptr<EditorConversationChangeTrigger>(new EditorConversationChangeTrigger());
             }
             trigger->loadJson(triggers[i]);
@@ -655,9 +655,9 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
                 action = std::shared_ptr<EditorEventAction>(new EditorEventAction());
             } else if (actionType == "vision_change") {
                 action = std::shared_ptr<EditorVisionAction>(new EditorVisionAction());
-            } else if (actionType == "waves_appear") {
+            } else if (actionType == "wave_action") {
                 action = std::shared_ptr<EditorWaveAction>(new EditorWaveAction());
-            } else if (actionType == "conversation_appear") {
+            } else if (actionType == "conversation_action") {
                 action = std::shared_ptr<EditorConversationAction>(new EditorConversationAction());
             }
             action->loadJson(actions[i]);

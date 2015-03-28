@@ -237,7 +237,7 @@ void EditMode::fetchConversations() {
     _conversations.clear();
     for (auto event : _data.Events) {
         for (auto action : event->Actions) {
-            if (action->ActionType == "conversation_appear") {
+            if (action->ActionType == "conversation_action") {
                 auto conversationAction = static_pointer_cast<EditorConversationAction>(action);
                 _conversations.push_back(conversationAction->Name);
             }
@@ -522,7 +522,7 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             ctx->addOperation(EditorOperation::SetGameTrigger);
         } else if (triggerType == "vision_change") {
             ctx->addOperation(EditorOperation::SetVisionTrigger);
-        } else if (triggerType == "conversation_change") {
+        } else if (triggerType == "conversation_action") {
             ctx->addOperation(EditorOperation::SetConverSationTrigger);
         }
         moveOn();
@@ -542,9 +542,9 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             ctx->addOperation(EditorOperation::SetEventAction);
         } else if (type == "vision_change") {
             ctx->addOperation(EditorOperation::SetVisionAction);
-        } else if (type == "waves_appear") {
+        } else if (type == "wave_action") {
             ctx->addOperation(EditorOperation::SetWaveAction);
-        } else if (type == "conversation_appear") {
+        } else if (type == "conversation_action") {
             ctx->addOperation(EditorOperation::SetConverSationAction);
         }
         moveOn();

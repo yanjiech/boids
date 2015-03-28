@@ -12,7 +12,7 @@
 	<dict>
 		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
 		<string>https://github.com/xinxu/cocos2d-x.git</string>
-		<key>C687A095BDFAEAA3F1F9FEB05CC0F4EC21D9DC1D</key>
+		<key>C420E5F3FF1C085C5041BA2CDE47837BAB3289D9</key>
 		<string>https://github.com/xinxu/Boids.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
@@ -21,7 +21,7 @@
 	<dict>
 		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
 		<string>../../../../..frameworks/cocos2d-x</string>
-		<key>C687A095BDFAEAA3F1F9FEB05CC0F4EC21D9DC1D</key>
+		<key>C420E5F3FF1C085C5041BA2CDE47837BAB3289D9</key>
 		<string>../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -29,14 +29,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C687A095BDFAEAA3F1F9FEB05CC0F4EC21D9DC1D</string>
+	<string>C420E5F3FF1C085C5041BA2CDE47837BAB3289D9</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C687A095BDFAEAA3F1F9FEB05CC0F4EC21D9DC1D</string>
+			<string>C420E5F3FF1C085C5041BA2CDE47837BAB3289D9</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Boids</string>
 		</dict>

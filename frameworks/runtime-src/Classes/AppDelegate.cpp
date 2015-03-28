@@ -66,7 +66,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // turn on display FPS
     director->setDisplayStats(true);
     
-    director->setAnimationInterval(1.0 / 30);
+    director->setAnimationInterval(1.0 / 60);
     
     FileUtils* file_utils = FileUtils::getInstance();
     file_utils->addSearchPath( "res" );

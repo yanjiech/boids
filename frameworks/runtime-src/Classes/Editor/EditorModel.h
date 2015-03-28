@@ -161,7 +161,7 @@ public:
 
 class EditorConversationChangeTrigger : public EditorTriggerBase {
 public:
-    EditorConversationChangeTrigger(): EditorTriggerBase("conversation_change") {}
+    EditorConversationChangeTrigger(): EditorTriggerBase("conversation_action") {}
     std::string ConversationName;
     std::string State;
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
@@ -271,7 +271,7 @@ class EditorConversationAction : public EditorActionBase {
 public:
     std::vector<std::shared_ptr<EditorSpeech>> Speeches;
     std::string Name;
-    EditorConversationAction(): EditorActionBase("conversation_appear") {}
+    EditorConversationAction(): EditorActionBase("conversation_action") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
 };

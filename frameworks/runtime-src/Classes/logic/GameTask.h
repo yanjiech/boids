@@ -11,11 +11,6 @@
 
 #include "cocos2d.h"
 
-#define GAME_TASK_STATE_UNSTARTED "task_unstart"
-#define GAME_TASK_STATE_STARTED "task_start"
-#define GAME_TASK_STATE_FAILED "task_failed"
-#define GAME_TASK_STATE_FINISHED "task_finished"
-
 class MapLogic;
 
 class GameTask : public cocos2d::Ref {
@@ -51,6 +46,9 @@ public:
     
     const std::string& getTaskState() { return _state; }
     void setTaskState( const std::string& new_state );
+    
+    bool isActive() { return _is_active; }
+    void setActive( bool b ) { _is_active = b; }
 };
 
 class LimitedTimeTask : public GameTask {

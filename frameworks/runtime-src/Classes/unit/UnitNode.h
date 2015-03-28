@@ -17,7 +17,7 @@
 #include "Buff.h"
 #include "UnitNodeComponent.h"
 #include "../AI/Collidable.h"
-#include "../behavior/BehaviorBase.h"
+#include "../behavior/BehaviorHeader.h"
 #include "HpBar.h"
 #include "./skill/SkillNode.h"
 
@@ -238,9 +238,6 @@ public:
     void takeDamage( float amount, bool is_cri, bool is_miss, int source_id );
     void takeHeal( float amount, bool is_cri, int source_id );
     
-    void riseup( float duration, float height );
-    void falldown();
-    
     void setGLProgrameState( const std::string& name );
     
     bool addUnitComponent( UnitNodeComponent* component, const std::string& key, eComponentLayer layer_type );
@@ -349,6 +346,9 @@ public:
     
     void setUsingSkillNode( SkillNode* skill_node ) { _using_skill_node = nullptr; }
     SkillNode* getSkillNode() { return _using_skill_node; }
+    
+    void riseup( float _duration, float delta_height );
+    void falldown( float _duration, float delta_height );
 };
 
 #endif /* defined(__Boids__UnitNode__) */

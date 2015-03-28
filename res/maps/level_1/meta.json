@@ -800,7 +800,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "tag_source",
@@ -863,7 +863,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "tag_source",
@@ -903,7 +903,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "player_source",
@@ -938,7 +938,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "tag_source",
@@ -968,7 +968,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "tag_source",
@@ -1026,7 +1026,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "tag_source",
@@ -1065,7 +1065,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "tag_source",
@@ -1095,7 +1095,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "tag_source",
@@ -1125,7 +1125,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "tag_source",
@@ -1155,7 +1155,7 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_appear",
+                    "action_type": "conversation_action",
                     "speeches": [
                         {
                             "source_type": "tag_source",

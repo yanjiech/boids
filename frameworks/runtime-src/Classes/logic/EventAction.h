@@ -11,19 +11,10 @@
 
 #include "cocos2d.h"
 
-#define ACTION_TYPE_UNIT_CHANGE "unit_change"
-#define ACTION_TYPE_TASK_CHANGE "task_change"
-#define ACTION_TYPE_GAME_CHANGE "game_change"
-#define ACTION_TYPE_EVENT_CHANGE "event_change"
-#define ACTION_TYPE_VISION_CHANGE "vision_change"
-#define ACTION_TYPE_WAVE_ACTION "waves_appear"
-#define ACTION_TYPE_CONVERSATION_ACTION "conversation_appear"
-#define ACTION_TYPE_CUSTOM "custom"
-
 typedef std::function<void(bool)> EventActionCallback;
 
 class EventAction : public cocos2d::Ref {
-private:
+protected:
     class MapLogic* _map_logic;
     class EventTrigger* _trigger;
     
@@ -50,7 +41,7 @@ public:
     virtual ~EventAction();
     
     static EventAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
-    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger  );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
     
     bool isInfinite() { return _repeat < 0; }
     
@@ -61,9 +52,97 @@ public:
     
     const std::string& getActionName() { return _action_name; }
     
-    void onEventTriggered( bool finish );
+    virtual void onActionTriggered( bool finish );
     
     bool shouldRecycle() { return _should_recycle; }
+};
+
+class UnitChangeAction : public EventAction {
+public:
+    UnitChangeAction();
+    virtual ~UnitChangeAction();
+    
+    static UnitChangeAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
+};
+
+class TaskChangeAction : public EventAction {
+public:
+    TaskChangeAction();
+    virtual ~TaskChangeAction();
+    
+    static TaskChangeAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
+};
+
+class GameChangeAction : public EventAction {
+public:
+    GameChangeAction();
+    virtual ~GameChangeAction();
+    
+    static GameChangeAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
+};
+
+class EventChangeAction : public EventAction {
+public:
+    EventChangeAction();
+    virtual ~EventChangeAction();
+    
+    static EventChangeAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
+};
+
+class VisionChangeAction : public EventAction {
+public:
+    VisionChangeAction();
+    virtual ~VisionChangeAction();
+    
+    static VisionChangeAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
+};
+
+class WaveAction : public EventAction {
+public:
+    WaveAction();
+    virtual ~WaveAction();
+    
+    static WaveAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
+};
+
+class ConversationAction : public EventAction {
+public:
+    ConversationAction();
+    virtual ~ConversationAction();
+    
+    static ConversationAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
+};
+
+class CustomAction : public EventAction {
+public:
+    CustomAction();
+    virtual ~CustomAction();
+    
+    static CustomAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
 };
 
 #endif /* defined(__Boids__EventAction__) */

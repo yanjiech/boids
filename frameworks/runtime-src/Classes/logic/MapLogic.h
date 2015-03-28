@@ -62,7 +62,6 @@ public:
     
     void onMapInit();
     
-    void executeUnitAction( const cocos2d::ValueMap& action_data, UnitNode* unit_node );
     void executeWaveAction( const cocos2d::ValueMap& action_data, const std::string& wave_action_tag );
     void executeConversationAction( const cocos2d::ValueMap& action_data );
     void executeSpeech( const cocos2d::ValueMap& action_data );

@@ -30,6 +30,12 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_LIGHTSHIELD ) {
         ret = LightShield::create( owner, data );
     }
+    else if( name == SKILL_NAME_DARK_PIERCE ) {
+        ret = DarkPierce::create( owner, data );
+    }
+    else if( name == SKILL_NAME_BAT_SWARM ) {
+        ret = BatSwarm::create( owner, data );
+    }
     
     return ret;
 }

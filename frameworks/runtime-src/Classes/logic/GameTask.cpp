@@ -56,10 +56,10 @@ void GameTask::updateFrame( float delta ) {
 void GameTask::setTaskState( const std::string& new_state ) {
     _state = new_state;
     if( _state == GAME_TASK_STATE_STARTED ) {
-        _is_active = true;
+        this->setActive( true );
     }
     else {
-        _is_active = false;
+        this->setActive( false );
     }
 }
 

@@ -496,6 +496,9 @@ void UnitNode::applyUnitState() {
             case eUnitState::Disappear:
                 this->disappear();
                 break;
+            case eUnitState::UnderControl:
+                _current_skeleton->setAnimation( 0, "Stun", true );
+                break;
             default:
                 break;
         }
@@ -664,14 +667,6 @@ void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
     //jump number
     std::string jump_text_name = component_name + "_jump_text";
     this->jumpNumber( amount, "heal", is_cri, component_name );
-}
-
-void UnitNode::riseup( float duration, float height ) {
-    
-}
-
-void UnitNode::falldown() {
-    
 }
 
 void UnitNode::setGLProgrameState( const std::string& name ) {
@@ -1178,4 +1173,15 @@ void UnitNode::updateSkills( float delta ) {
     for( auto skill : _skills ) {
         skill->updateFrame( delta );
     }
+}
+
+void UnitNode::riseup( float duration, float delta_height ) {
+    MoveBy* rise = MoveBy::create( duration, Point( 0, delta_height ) );
+    rise->setTag( 10000 );
+    _current_skeleton->runAction( rise );
+}
+
+void UnitNode::falldown( float duration, float delta_height ) {
+    _current_skeleton->stopActionByTag( 10000 );
+    _current_skeleton->setPosition( Point::ZERO );
 }

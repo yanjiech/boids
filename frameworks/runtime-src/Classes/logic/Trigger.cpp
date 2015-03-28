@@ -61,6 +61,10 @@ void Trigger::updateTrigger( class MapLogic* map_logic, class UnitNode* unit_nod
     
 }
 
+void Trigger::updateFrame( float delta ) {
+    
+}
+
 MapInitTrigger::MapInitTrigger() {
     
 }
@@ -146,24 +150,6 @@ void UnitChangeTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode
                 this->setCouldTrigger( true );
             }
         }
-        else if( unit_state == UNIT_STATE_MOVE_TO ) {
-            BattleLayer* battle_layer = unit_node->getBattleLayer();
-            MapData* map_data = unit_node->getBattleLayer()->getMapData();
-            int in_area_count = 0;
-            cocos2d::Vector<UnitNode*> units = battle_layer->getAliveUnitsByCamp( camp );
-            if( units.size() == 0 ) {
-                return;
-            }
-            for( auto u : units ) {
-                ValueMap unit_area = map_data->getAreaMapByPosition( u->getPosition() );
-                if( ( unit_area.find( "name" ) != unit_area.end() ) && ( unit_area.at( "name" ).asString() == position_name ) ) {
-                    ++in_area_count;
-                }
-            }
-            if( trigger_count <= in_area_count ) {
-                this->setCouldTrigger( true );
-            }
-        }
     }
     else if( source_type == UNIT_SOURCE_TAG && unit_node->hasUnitTag( source_value ) ) {
         if( unit_state == UNIT_STATE_APPEAR ) {
@@ -173,24 +159,6 @@ void UnitChangeTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode
         }
         else if( unit_state == UNIT_STATE_DISAPPEAR ) {
             if( trigger_count <= map_logic->getUnitDisappearCountByTag( source_value ) ) {
-                this->setCouldTrigger( true );
-            }
-        }
-        else if( unit_state == UNIT_STATE_MOVE_TO ) {
-            BattleLayer* battle_layer = unit_node->getBattleLayer();
-            MapData* map_data = battle_layer->getMapData();
-            int in_area_count = 0;
-            cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByTag( source_value );
-            if( units.size() == 0 ) {
-                return;
-            }
-            for( auto u : units ) {
-                ValueMap unit_area = map_data->getAreaMapByPosition( u->getPosition() );
-                if( ( unit_area.find( "name" ) != unit_area.end() ) && ( unit_area.at( "name" ).asString() == position_name ) ) {
-                    ++in_area_count;
-                }
-            }
-            if( trigger_count <= in_area_count ) {
                 this->setCouldTrigger( true );
             }
         }
@@ -206,23 +174,67 @@ void UnitChangeTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode
                 this->setCouldTrigger( true );
             }
         }
-        else if( unit_state == UNIT_STATE_MOVE_TO ) {
-            BattleLayer* battle_layer = unit_node->getBattleLayer();
-            MapData* map_data = battle_layer->getMapData();
-            int in_area_count = 0;
-            cocos2d::Vector<UnitNode*> units = map_logic->getBattleLayer()->getAliveUnitsByName( source_value );
-            if( units.size() == 0 ) {
-                return;
-            }
-            for( auto u : units ) {
-                ValueMap unit_area = map_data->getAreaMapByPosition( u->getPosition() );
-                if( ( unit_area.find( "name" ) != unit_area.end() ) && ( unit_area.at( "name" ).asString() == position_name ) ) {
-                    ++in_area_count;
-                }
-            }
-            if( trigger_count <= in_area_count ) {
-                this->setCouldTrigger( true );
-            }
+    }
+}
+
+UnitStayTrigger::UnitStayTrigger() {
+    
+}
+
+UnitStayTrigger::~UnitStayTrigger() {
+    
+}
+
+UnitStayTrigger* UnitStayTrigger::create( const cocos2d::ValueMap& data ) {
+    UnitStayTrigger* ret = new UnitStayTrigger();
+    if( ret && ret->init( data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitStayTrigger::init( const cocos2d::ValueMap& data ) {
+    if( !Trigger::init( data ) ) {
+        return false;
+    }
+    
+    _elapse = 0;
+    _duration = data.at( "duration" ).asFloat();
+    _is_active = false;
+    return true;
+}
+
+void UnitStayTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state ) {
+    if( unit_state != UNIT_STATE_MOVE_TO ) {
+        return;
+    }
+    
+    std::string source_type = _trigger_data.at( "source_type" ).asString();
+    std::string source_value = _trigger_data.at( "source_value" ).asString();
+    std::string position_name = _trigger_data.at( "position_name" ).asString();
+    
+    if( source_type == UNIT_SOURCE_TAG && unit_node->hasUnitTag( source_value ) ) {
+        BattleLayer* battle_layer = unit_node->getBattleLayer();
+        const cocos2d::ValueMap& area = battle_layer->getMapData()->getAreaMapByPosition( unit_node->getPosition() );
+        if( area.at( "name" ).asString() == position_name && !_is_active ) {
+            this->setActive( true );
+        }
+        else {
+            this->setActive( false );
+            _elapse = 0;
+        }
+    }
+}
+
+void UnitStayTrigger::updateFrame( float delta ) {
+    if( !_could_trigger && _is_active ) {
+        _elapse += delta;
+        if( _elapse > _duration ) {
+            this->setCouldTrigger( true );
         }
     }
 }
@@ -334,5 +346,32 @@ bool CustomTrigger::init( const cocos2d::ValueMap& data ) {
         return false;
     }
     
+    return true;
+}
+
+GameChangeTrigger::GameChangeTrigger() {
+    
+}
+
+GameChangeTrigger::~GameChangeTrigger() {
+    
+}
+
+GameChangeTrigger* GameChangeTrigger::create( const cocos2d::ValueMap& data ) {
+    GameChangeTrigger* ret = new GameChangeTrigger();
+    if( ret && ret->init( data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool GameChangeTrigger::init( const cocos2d::ValueMap& data ) {
+    if( !Trigger::init( data ) ) {
+        return false;
+    }
     return true;
 }

@@ -23,7 +23,7 @@
     },
     "deploy_units" :
     [
-        "4"
+        "5"
     ],
     "units" :
     {
@@ -108,6 +108,29 @@
                 },
                 {
                     "name" : "LightShield",
+                    "level" : 1
+                }
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
+        },
+        "5" :
+        {
+            "name" : "dracula",
+            "level" : 1,
+            "skills" :
+            [
+                {
+                    "name" : "DarkPierce",
+                    "level" : 1
+                },
+                {
+                    "name" : "BatSwarm",
                     "level" : 1
                 }
             ],

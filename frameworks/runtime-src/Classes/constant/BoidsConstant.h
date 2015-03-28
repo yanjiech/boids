@@ -50,6 +50,8 @@
 #define SKILL_NAME_CRAZYSHOOT "CrazyShoot"
 #define SKILL_NAME_GIANT_SWORD "GiantSword"
 #define SKILL_NAME_LIGHTSHIELD "LightShield"
+#define SKILL_NAME_DARK_PIERCE "DarkPierce"
+#define SKILL_NAME_BAT_SWARM "BatSwarm"
 
 #define GAME_TASK_TYPE_LIMITED_TIME "limited_time"
 #define GAME_TASK_TYPE_SURVIVE "survive"
@@ -75,5 +77,25 @@
 #define EVENT_STATE_TRIGGER "event_trigger"
 #define EVENT_STATE_FINISH "event_finish"
 #define EVENT_STATE_ENABLE "event_enable"
+
+#define GAME_TASK_STATE_UNSTARTED "task_unstart"
+#define GAME_TASK_STATE_STARTED "task_start"
+#define GAME_TASK_STATE_FAILED "task_failed"
+#define GAME_TASK_STATE_FINISHED "task_finished"
+
+#define GAME_STATE_PREPARE "game_prepare"
+#define GAME_STATE_RUNNING "game_running"
+#define GAME_STATE_PAUSED "game_paused"
+#define GAME_STATE_WIN "game_win"
+#define GAME_STATE_LOSE "game_lose"
+
+#define ACTION_TYPE_UNIT_CHANGE "unit_change"
+#define ACTION_TYPE_TASK_CHANGE "task_change"
+#define ACTION_TYPE_GAME_CHANGE "game_change"
+#define ACTION_TYPE_EVENT_CHANGE "event_change"
+#define ACTION_TYPE_VISION_CHANGE "vision_change"
+#define ACTION_TYPE_WAVE_ACTION "wave_action"
+#define ACTION_TYPE_CONVERSATION_ACTION "conversation_action"
+#define ACTION_TYPE_CUSTOM "custom"
 
 #endif /* defined(__Boids__BoidsConstant__) */

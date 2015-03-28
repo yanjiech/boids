@@ -15,6 +15,26 @@
 
 using namespace cocos2d;
 
+eBattleState BattleLayer::getBattleStateFromString( const std::string& str ) {
+    if( str == GAME_STATE_WIN ) {
+        return eBattleState::BattleWin;
+    }
+    else if( str == GAME_STATE_LOSE ) {
+        return eBattleState::BattleLose;
+    }
+    else if( str == GAME_STATE_PREPARE ) {
+        return eBattleState::BattlePrepare;
+    }
+    else if( str == GAME_STATE_RUNNING ) {
+        return eBattleState::BattleRunning;
+    }
+    else if( str == GAME_STATE_PAUSED ) {
+        return eBattleState::BattlePaused;
+    }
+    
+    return eBattleState::UnknownBattleState;
+}
+
 BattleLayer::BattleLayer() : _map_data( nullptr ), _map_logic( nullptr ) {
 }
 
@@ -114,7 +134,7 @@ void BattleLayer::setup() {
 }
 
 void BattleLayer::reset() {
-    _state = eBattleState::Prepare;
+    _state = eBattleState::BattlePrepare;
     _on_ground_layer->removeAllChildren();
     _below_object_layer->removeAllChildren();
     _object_layer->removeAllChildren();
@@ -134,7 +154,7 @@ void BattleLayer::reset() {
 }
 
 void BattleLayer::updateFrame( float delta ) {
-    if( _state == Running ) {
+    if( _state == BattleRunning ) {
         _game_time += delta;
         _skill_ui_layer->updateFrame( delta );
         this->updateSkillNodes( delta );
@@ -217,20 +237,20 @@ void BattleLayer::updateFrame( float delta ) {
 }
 
 void BattleLayer::startBattle() {
-    if( _state != eBattleState::Running ) {
-        _state = eBattleState::Running;
+    if( _state != eBattleState::BattleRunning ) {
+        _state = eBattleState::BattleRunning;
     }
 }
 
 void BattleLayer::pauseBattle() {
-    if( _state == eBattleState::Running ) {
-        _state = eBattleState::Paused;
+    if( _state == eBattleState::BattleRunning ) {
+        _state = eBattleState::BattlePaused;
     }
 }
 
 void BattleLayer::resumeBattle() {
-    if( _state == eBattleState::Paused ) {
-        _state = eBattleState::Running;
+    if( _state == eBattleState::BattlePaused ) {
+        _state = eBattleState::BattleRunning;
     }
 }
 

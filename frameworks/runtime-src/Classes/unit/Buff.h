@@ -62,6 +62,18 @@ public:
     void setBuffData( const cocos2d::ValueMap& data ) { _data = data; }
 };
 
+class BurnBuff : public Buff {
+public:
+    BurnBuff();
+    virtual ~BurnBuff();
+    
+    
+};
+
+class PoisonBuff : public Buff {
+    
+};
+
 class ShieldBuff : public Buff {
 private:
     int _absorb;
@@ -82,6 +94,20 @@ public:
     
     int getAbsorb() { return _absorb; }
     void setAbsorb( float value ) { _absorb = value; }
+};
+
+class PierceBuff : public Buff {
+public:
+    PierceBuff();
+    virtual ~PierceBuff();
+    
+    static PierceBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
 };
 
 #endif /* defined(__Boids__Buff__) */

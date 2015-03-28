@@ -33,6 +33,8 @@ public:
     
     virtual void updateTrigger( const cocos2d::ValueMap& update_data );
     virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );
+    
+    virtual void updateFrame( float delta );
 };
 
 class MapInitTrigger : public Trigger {
@@ -53,6 +55,28 @@ public:
     virtual bool init( const cocos2d::ValueMap& data );
     
     virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );
+};
+
+class UnitStayTrigger : public Trigger {
+private:
+    float _elapse;
+    float _duration;
+    
+    bool _is_active;
+    
+public:
+    UnitStayTrigger();
+    virtual ~UnitStayTrigger();
+    
+    static UnitStayTrigger* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );
+    
+    virtual void updateFrame( float delta );
+    
+    bool isActive() { return _is_active; }
+    void setActive( bool b ) { _is_active = b; }
 };
 
 class ConversationChangeTrigger : public Trigger {
@@ -88,6 +112,15 @@ public:
     virtual ~CustomTrigger();
     
     static CustomTrigger* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+};
+
+class GameChangeTrigger : public Trigger {
+public:
+    GameChangeTrigger();
+    virtual ~GameChangeTrigger();
+    
+    static GameChangeTrigger* create( const cocos2d::ValueMap& data );
     virtual bool init( const cocos2d::ValueMap& data );
 };
 
