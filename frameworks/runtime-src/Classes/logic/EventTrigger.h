@@ -13,6 +13,9 @@
 
 class EventTrigger : public cocos2d::Ref {
 private:
+    class MapLogic* _map_logic;
+    
+    bool _should_recycle;
     int _current_trigger_index;
     int _total_trigger_count;
     bool _is_enabled;
@@ -27,8 +30,15 @@ public:
     EventTrigger();
     virtual ~EventTrigger();
     
-    static EventTrigger* create( const cocos2d::ValueMap& event_data );
-    virtual bool init( const cocos2d::ValueMap& event_data );
+    static EventTrigger* create( class MapLogic* map_logic, const cocos2d::ValueMap& event_data );
+    virtual bool init( class MapLogic* map_logic, const cocos2d::ValueMap& event_data );
+    
+    virtual void updateFrame( float delta );
+    
+    void setMapLogic( class MapLogic* map_logic );
+    
+    bool shouldRecycle() { return _should_recycle; }
+    void setShouldRecycle( bool b ) { _should_recycle = b; }
     
     int getTotalTriggerCount() { return _total_trigger_count; }
     void setTotalTriggerCount( int count ) { _total_trigger_count = count; }
@@ -41,13 +51,13 @@ public:
     
     void moveOn();
     
-    void trigger( class MapLogic* map_logic, class UnitNode* unit_node );
+    void trigger( class UnitNode* unit_node );
     
-    void activateTriggerByConditions( const cocos2d::ValueMap& conditions, class MapLogic* map_logic, class UnitNode* unit_node );
+    void activateTriggerByConditions( const cocos2d::ValueMap& conditions, class UnitNode* unit_node );
     
-    void activateTriggerByUnit( class MapLogic* map_logic, class UnitNode* unit, const std::string& unit_state, const cocos2d::ValueMap& area );
+    void activateTriggerByUnit( class UnitNode* unit, const std::string& unit_state, const cocos2d::ValueMap& area );
     
-    void checkTriggerPass( class MapLogic* map_logic, class UnitNode* unit_node );
+    void checkTriggerPass( class UnitNode* unit_node = nullptr );
     
     const cocos2d::ValueMap& getEventData() { return _event_data; }
     

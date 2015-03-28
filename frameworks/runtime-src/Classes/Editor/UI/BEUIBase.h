@@ -19,6 +19,7 @@ extern const char *kTriggerOptionsPanel;
 extern const char *kActionOptionsPanel;
 extern const char *kUnitActionPanel;
 extern const char *kUnitTriggerPanel;
+extern const char* kUnitStayTriggerPanel;
 extern const char *kEventChangePanel;
 extern const char *kGameChangePanel;
 extern const char *kTaskChangePanel;

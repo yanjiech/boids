@@ -3,7 +3,7 @@
     [
         {
             "name" : "第一排第一关",
-            "path" : "maps/level_1"
+            "path" : "maps/01"
         },
         {
             "name" : "第一排第二关",

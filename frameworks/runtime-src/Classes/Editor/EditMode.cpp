@@ -415,7 +415,12 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
         } else if (op == EditorOperation::SetUnitTrigger) {
             ctx->Event->Triggers.push_back(_editUI->unitTriggerUI->getTrigger());
             ctx->addOperation(EditorOperation::SetTrigger);
-        } else if (op == EditorOperation::SetEventTrigger) {
+        }
+        else if( op == EditorOperation::SetUnitStayTrigger ) {
+            ctx->Event->Triggers.push_back(_editUI->unitstayTriggerUI->getTrigger());
+            ctx->addOperation(EditorOperation::SetTrigger);
+        }
+        else if (op == EditorOperation::SetEventTrigger) {
             auto trigger = EditorEventTriggerPtr(new EditorEventTrigger());
             trigger->EventName = _editUI->eventChangeUI->getEventName();
             trigger->EventState = _editUI->eventChangeUI->getEventState();
@@ -514,7 +519,11 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             ctx->addOperation(EditorOperation::SetAction);
         } else if (triggerType == "unit_change") {
             ctx->addOperation(EditorOperation::SetUnitTrigger);
-        } else if (triggerType == "event_change") {
+        }
+        else if( triggerType == "unit_stay" ) {
+            ctx->addOperation(EditorOperation::SetUnitStayTrigger);
+        }
+        else if (triggerType == "event_change") {
             ctx->addOperation(EditorOperation::SetEventTrigger);
         } else if (triggerType == "custom") {
             ctx->addOperation(EditorOperation::SetCustomTrigger);
@@ -637,6 +646,11 @@ void EditMode::onStep(int step) {
             _editUI->unitTriggerUI->setVisible(true);
             _editUI->unitTriggerUI->reset();
             _editUI->unitTriggerUI->loadSourceList(getTriggerSources());
+            break;
+        }
+        case EditorOperation::SetUnitStayTrigger: {
+            _editUI->unitstayTriggerUI->setVisible(true);
+            _editUI->unitstayTriggerUI->reset();
             break;
         }
         case EditorOperation::SetEventTrigger: {

@@ -237,6 +237,29 @@ void EditorUnitTrigger::loadJson(const rapidjson::Value& value) {
     }
 }
 
+rapidjson::Value& EditorUnitStayTrigger::toJson(rapidjson::Document::AllocatorType& allocator) {
+    EditorTriggerBase::toJson(allocator);
+    _json.AddMember("source_type", this->SourceType.c_str(), allocator);
+    _json.AddMember("source_value", this->SourceValue.c_str(), allocator);
+    _json.AddMember("position_name", this->PositionName.c_str(), allocator);
+    _json.AddMember("trigger_count", this->TriggerCount, allocator);
+    _json.AddMember( "duration", this->Duration, allocator );
+    return _json;
+}
+
+void EditorUnitStayTrigger::loadJson(const rapidjson::Value& value) {
+    EditorTriggerBase::loadJson(value);
+    this->SourceType = value["source_type"].GetString();
+    this->SourceValue = value["source_value"].GetString();
+    this->PositionName = value["position_name"].GetString();
+    this->Duration = (float)value["duration"].GetDouble();
+    if (value.HasMember("trigger_count")) {
+        this->TriggerCount = value["trigger_count"].GetInt();
+    } else {
+        this->TriggerCount = 1;
+    }
+}
+
 rapidjson::Value& EditorEventTrigger::toJson(rapidjson::Document::AllocatorType& allocator) {
     EditorTriggerBase::toJson(allocator);
     _json.AddMember("event_name", EventName.c_str(), allocator);
@@ -617,7 +640,11 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
             std::shared_ptr<EditorTriggerBase> trigger;
             if (triggerType == "unit_change") {
                 trigger = std::shared_ptr<EditorUnitTrigger>(new EditorUnitTrigger());
-            } else if (triggerType == "map_init") {
+            }
+            else if( triggerType == "unit_stay" ) {
+                trigger = std::shared_ptr<EditorUnitStayTrigger>( new EditorUnitStayTrigger() );
+            }
+            else if (triggerType == "map_init") {
                 trigger = std::shared_ptr<EditorMapInitTrigger>(new EditorMapInitTrigger());
             } else if (triggerType == "event_change") {
                 trigger = std::shared_ptr<EditorEventTrigger>(new EditorEventTrigger());

@@ -67,6 +67,7 @@
 
 #define EVENT_TRIGGER_TYPE_MAP_INIT "map_init"
 #define EVENT_TRIGGER_TYPE_UNIT_CHANGE "unit_change"
+#define EVENT_TRIGGER_TYPE_UNIT_STAY "unit_stay"
 #define EVENT_TRIGGER_TYPE_EVENT_CHANGE "event_change"
 #define EVENT_TRIGGER_TYPE_GAME_CHANGE "game_change"
 #define EVENT_TRIGGER_TYPE_VISION_CHANGE "vision_change"

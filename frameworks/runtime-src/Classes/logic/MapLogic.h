@@ -44,6 +44,10 @@ private:
     cocos2d::ValueMap _unit_appear_count_by_name;
     cocos2d::ValueMap _unit_disappear_count_by_name;
     
+private:
+    void updateEventTriggers( float delta );
+    void updateEventActions( float delta );
+    
 public:
     MapLogic();
     ~MapLogic();
@@ -62,26 +66,15 @@ public:
     
     void onMapInit();
     
-    void executeWaveAction( const cocos2d::ValueMap& action_data, const std::string& wave_action_tag );
-    void executeConversationAction( const cocos2d::ValueMap& action_data );
-    void executeSpeech( const cocos2d::ValueMap& action_data );
-    void executeCustomAction( const cocos2d::ValueMap& action_data );
-    
     void onEventChanged( const std::string& event_name, const std::string& event_state );
     void onTaskStateChanged( const std::string& task_name, const std::string& task_state );
-    void onGameStateChanged( const std::string& game_state );
-    void onVisionChanged( const cocos2d::ValueMap& action_data );
     void onCustomTrigger( const std::string& trigger_name );
     void onConversationStateChanged( const std::string& trigger_name, const std::string& trigger_state );
     
     void addEventAction( EventAction* action, const std::string& key );
     void removeEventAction( const std::string& key );
     
-    void updateEventActions( float delta );
-    
     void setTriggersEnabledOfName( const std::string& name, bool b );
-    
-    void checkGameState( float delta );
     
     void onTargetNodeAppear( class TargetNode* target_node );
     void onTargetNodeDisappear( class TargetNode* target_node );

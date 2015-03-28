@@ -124,6 +124,18 @@ public:
     virtual void loadJson(const rapidjson::Value& value);
 };
 
+class EditorUnitStayTrigger : public EditorTriggerBase {
+public:
+    EditorUnitStayTrigger(): EditorTriggerBase("unit_stay"), PositionName("") {}
+    std::string SourceType;
+    std::string SourceValue;
+    std::string PositionName;
+    int TriggerCount;
+    float Duration;
+    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
+    virtual void loadJson(const rapidjson::Value& value);
+};
+
 class EditorEventTrigger : public EditorTriggerBase {
 public:
     EditorEventTrigger(): EditorTriggerBase("event_change") {}
@@ -311,6 +323,7 @@ enum class EditorOperation {
     SetTrigger,
     SetAction,
     SetUnitTrigger,
+    SetUnitStayTrigger,
     SetEventTrigger,
     SetUnitAction,
     SetGameAction,

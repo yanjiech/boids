@@ -31,19 +31,19 @@
     ],
     "events": [
         {
-            "name": "boss_appear",
+            "name": "trigger_boss",
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
             },
             "triggers": [
                 {
-                    "trigger_type": "unit_change",
-                    "source_type": "type_source",
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
                     "source_value": "player",
-                    "unit_state": "unit_move",
                     "position_name": "boss_trigger_area",
-                    "trigger_count": 1
+                    "trigger_count": 1,
+                    "duration": 0
                 }
             ],
             "actions": [
@@ -52,21 +52,16 @@
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "skeleton_king",
-                    "unit_type": "enemy",
                     "unit_state": "unit_appear",
-                    "tag_name": "boss",
                     "position_name": "boss",
                     "unit_count": 1,
                     "is_boss": true,
-                    "class_name": "skeleton_king",
                     "popup_type": "normal"
                 }
             ]
         }
     ],
-    "units": [
-        "skeleton_king"
-    ],
+    "units": [],
     "conditions": [
         {
             "condition": "unit_die",

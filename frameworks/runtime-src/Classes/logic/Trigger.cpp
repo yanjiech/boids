@@ -32,6 +32,9 @@ Trigger* Trigger::create( const cocos2d::ValueMap& data ) {
     else if( trigger_type == EVENT_TRIGGER_TYPE_UNIT_CHANGE ) {
         ret = UnitChangeTrigger::create( data );
     }
+    else if( trigger_type == EVENT_TRIGGER_TYPE_UNIT_STAY ) {
+        ret = UnitStayTrigger::create( data );
+    }
     else if( trigger_type == EVENT_TRIGGER_TYPE_CONVERSATION_CHANGE ) {
         ret = ConversationChangeTrigger::create( data );
     }
@@ -42,6 +45,7 @@ Trigger* Trigger::create( const cocos2d::ValueMap& data ) {
 bool Trigger::init( const cocos2d::ValueMap& data ) {
     _trigger_data = data;
     _trigger_type = data.at( "trigger_type" ).asString();
+    _could_trigger = false;
     return true;
 }
 
@@ -221,7 +225,12 @@ void UnitStayTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* 
         BattleLayer* battle_layer = unit_node->getBattleLayer();
         const cocos2d::ValueMap& area = battle_layer->getMapData()->getAreaMapByPosition( unit_node->getPosition() );
         if( area.at( "name" ).asString() == position_name && !_is_active ) {
-            this->setActive( true );
+            if( _duration <= 0 ) {
+                this->setCouldTrigger( true );
+            }
+            else {
+                this->setActive( true );
+            }
         }
         else {
             this->setActive( false );

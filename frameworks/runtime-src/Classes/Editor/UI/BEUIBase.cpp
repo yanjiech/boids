@@ -16,6 +16,7 @@ const char *kTriggerOptionsPanel = "popup_triggerOptions";
 const char *kActionOptionsPanel = "popup_actionOptions";
 const char *kUnitActionPanel = "popup_unitAction";
 const char *kUnitTriggerPanel = "popup_unitTrigger";
+const char *kUnitStayTriggerPanel = "popup_unitstayTrigger";
 const char *kEventChangePanel = "popup_eventChange";
 const char *kGameChangePanel = "popup_gameChange";
 const char *kTaskChangePanel = "popup_taskChange";

@@ -532,6 +532,7 @@ void BEUIUnitAction::toggleBossUI(bool visible) {
     _bossCheckBox->setVisible(visible);
 }
 
+//unit change trigger
 BEUIUnitTrigger::BEUIUnitTrigger(ui::Layout *root, const BEPopupEventHandler& handler):BEUIBase(root, handler), _groupListView(nullptr), _stateListView(nullptr) {
     
     _infoPanel = getPanelFrom("panel_info", _root);
@@ -653,6 +654,68 @@ void BEUIUnitTrigger::togglePositionUI(bool visible) {
     _selectPositionButton1->setVisible(visible);
 }
 
+//unit stay trigger
+BEUIUnitStayTrigger::BEUIUnitStayTrigger(ui::Layout *root, const BEPopupEventHandler& handler):BEUIBase(root, handler) {
+    _infoPanel = getPanelFrom("Panel_info", _root);
+    _btn_ok = getButtonFrom("btn_ok", _infoPanel);
+    _btn_cancel = getButtonFrom("btn_cancel", _infoPanel);
+    _trigger = EditorUnitStayTriggerPtr(new EditorUnitStayTrigger());
+    
+    _lb_pos_name = getLabelFrom("text_pos", _infoPanel);
+    _btn_new_pos = getButtonFrom("btn_create_pos", _infoPanel);
+    _btn_select_pos = getButtonFrom("btn_select_pos", _infoPanel);
+    _tf_count = getTextFieldFrom("tf_count", _infoPanel);
+    _tf_duration = getTextFieldFrom( "tf_duration", _infoPanel );
+    _tf_tag = getTextFieldFrom( "tf_tag", _infoPanel );
+    
+    bindNewPositionHandler( _btn_new_pos );
+    bindSelectPositionHandler( _btn_select_pos );
+    bindOKHandler( _btn_ok );
+    bindCancelHandler( _btn_cancel );
+    
+//    togglePositionUI(true);
+}
+
+void BEUIUnitStayTrigger::reset() {
+//    togglePositionUI(false);
+    _tf_count->setString("1");
+    _positionName = "";
+    _lb_pos_name->setString("位置1");
+    _tf_duration->setString( "0" );
+    _tf_tag->setString( "" );
+    _trigger = EditorUnitStayTriggerPtr( new EditorUnitStayTrigger() );
+}
+
+void BEUIUnitStayTrigger::didGetPosition(EditorPositionPtr pos, Ref *sender) {
+    std::string text = Utils::stringFormat("%s:(%.1f,%.1f)", pos->Name.c_str(), pos->Rect.origin.x, pos->Rect.origin.y);
+    _positionName = pos->Name;
+    _lb_pos_name->setString(text);
+}
+
+EditorUnitStayTriggerPtr BEUIUnitStayTrigger::getTrigger() {
+    _trigger->PositionName = _positionName;
+    _trigger->SourceType = "tag_source";
+    _trigger->SourceValue = _tf_tag->getString();
+    if (_tf_count->getString() == "") {
+        _trigger->TriggerCount = 1;
+    } else {
+        _trigger->TriggerCount = atoi(_tf_count->getString().c_str());
+    }
+    if (_tf_duration->getString() == "") {
+        _trigger->Duration = 0;
+    } else {
+        _trigger->Duration = atof(_tf_duration->getString().c_str());
+    }
+    return _trigger;
+}
+
+void BEUIUnitStayTrigger::togglePositionUI(bool visible) {
+    _lb_pos_name->setVisible(visible);
+    _btn_new_pos->setVisible(visible);
+    _btn_select_pos->setVisible(visible);
+}
+
+//event change trigger
 BEUIEventChange::BEUIEventChange(ui::Layout *root, const BEPopupEventHandler& handler):BEUIBase(root, handler),
 _eventListView(nullptr), _eventTypeListView(nullptr) {
     _eventTypeButton = getButtonFrom("button_eventType", _root);
@@ -1265,6 +1328,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     _actionOptionsPanel = getPanelFrom(kActionOptionsPanel, _popupContainer);
     _unitActionPanel = getPanelFrom(kUnitActionPanel, _popupContainer);
     _unitTriggerPanel = getPanelFrom(kUnitTriggerPanel, _popupContainer);
+    _unitstayTriggerPanel = getPanelFrom(kUnitStayTriggerPanel, _popupContainer);
     _eventChangePanel = getPanelFrom(kEventChangePanel, _popupContainer);
     _gameChangePanel = getPanelFrom(kGameChangePanel, _popupContainer);
     _taskChangePanel = getPanelFrom(kTaskChangePanel, _popupContainer);
@@ -1296,6 +1360,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     actionOptionsUI = new BEUIActionOptions(_actionOptionsPanel, handler);
     unitActionUI = new BEUIUnitAction(_unitActionPanel, handler);
     unitTriggerUI = new BEUIUnitTrigger(_unitTriggerPanel, handler);
+    unitstayTriggerUI = new BEUIUnitStayTrigger(_unitstayTriggerPanel, handler);
     eventChangeUI = new BEUIEventChange(_eventChangePanel, handler);
     gameStateChangeUI = new BEUIGameStateChange(_gameChangePanel, handler);
     taskStateChangeUI = new BEUITaskStateChange(_taskChangePanel, handler);
@@ -1314,6 +1379,7 @@ BEEditorMainUI::~BEEditorMainUI() {
     delete actionOptionsUI;
     delete unitActionUI;
     delete unitTriggerUI;
+    delete unitstayTriggerUI;
     delete eventChangeUI;
     delete gameStateChangeUI;
     delete taskStateChangeUI;
@@ -1331,6 +1397,7 @@ void BEEditorMainUI::hideAllPopups() {
     actionOptionsUI->setVisible(false);
     unitActionUI->setVisible(false);
     unitTriggerUI->setVisible(false);
+    unitstayTriggerUI->setVisible( false );
     eventChangeUI->setVisible(false);
     gameStateChangeUI->setVisible(false);
     taskStateChangeUI->setVisible(false);

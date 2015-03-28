@@ -114,37 +114,6 @@ void EventAction::updateFrame( float delta ) {
 }
 
 void EventAction::onActionTriggered( bool finish ) {
-    const ValueMap& event = _trigger->getEventData();
-    _map_logic->onEventChanged( event.at( "name" ).asString(), EVENT_STATE_TRIGGER );
-    const std::string& action_type = _action_data.at( "action_type" ).asString();
-    if( action_type == ACTION_TYPE_TASK_CHANGE ) {
-        const std::string& task_name = _action_data.at( "task_name" ).asString();
-        const std::string& task_state = _action_data.at( "task_state" ).asString();
-        _map_logic->onTaskStateChanged( task_name, task_state );
-    }
-    else if( action_type == ACTION_TYPE_GAME_CHANGE ) {
-        const std::string& game_state = _action_data.at( "game_state" ).asString();
-        _map_logic->onGameStateChanged( game_state );
-    }
-    else if( action_type == ACTION_TYPE_CUSTOM ) {
-        _map_logic->executeCustomAction( _action_data );
-    }
-    else if( action_type == ACTION_TYPE_EVENT_CHANGE ) {
-        const std::string& event_name = _action_data.at( "event_name" ).asString();
-        bool enabled = _action_data.at( "event_state" ).asString() == EVENT_STATE_ENABLE;
-        _map_logic->setTriggersEnabledOfName( event_name, enabled );
-    }
-    else if( action_type == ACTION_TYPE_VISION_CHANGE ) {
-        _map_logic->onVisionChanged( _action_data );
-    }
-    else if( action_type == ACTION_TYPE_WAVE_ACTION ) {
-        Node* node = dynamic_cast<Node*>( _params.at( "idx" ) );
-        std::string wave_tag = Utils::stringFormat( "%s_%d", event.at( "name" ).asString().c_str(), node->getTag() );
-        _map_logic->executeWaveAction( _action_data, wave_tag );
-    }
-    else if( action_type == ACTION_TYPE_CONVERSATION_ACTION ) {
-        _map_logic->executeConversationAction( _action_data );
-    }
 }
 
 //unit change aciton
@@ -178,6 +147,8 @@ bool UnitChangeAction::init( const cocos2d::ValueMap& action_data, class MapLogi
 }
 
 void UnitChangeAction::onActionTriggered( bool finish ) {
+    EventAction::onActionTriggered( finish );
+    
     UnitNode* unit_node = dynamic_cast<UnitNode*>( _params.at( "unit" ) );
     BattleLayer* battle_layer = _map_logic->getBattleLayer();
     
@@ -388,7 +359,11 @@ bool TaskChangeAction::init( const cocos2d::ValueMap& action_data, class MapLogi
 }
 
 void TaskChangeAction::onActionTriggered( bool finish ) {
+    EventAction::onActionTriggered( finish );
     
+    const std::string& task_name = _action_data.at( "task_name" ).asString();
+    const std::string& task_state = _action_data.at( "task_state" ).asString();
+    _map_logic->onTaskStateChanged( task_name, task_state );
 }
 
 //game change action
@@ -421,7 +396,8 @@ bool GameChangeAction::init( const cocos2d::ValueMap& action_data, class MapLogi
 }
 
 void GameChangeAction::onActionTriggered( bool finish ) {
-    
+    const std::string& game_state = _action_data.at( "game_state" ).asString();
+    _map_logic->getBattleLayer()->changeState( BattleLayer::getBattleStateFromString( game_state ) );
 }
 
 //event change action
@@ -455,7 +431,11 @@ bool EventChangeAction::init( const cocos2d::ValueMap& action_data, class MapLog
 }
 
 void EventChangeAction::onActionTriggered( bool finish ) {
+    EventAction::onActionTriggered( finish );
     
+    const std::string& event_name = _action_data.at( "event_name" ).asString();
+    bool enabled = _action_data.at( "event_state" ).asString() == EVENT_STATE_ENABLE;
+    _map_logic->setTriggersEnabledOfName( event_name, enabled );
 }
 
 //vision change action

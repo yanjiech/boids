@@ -196,6 +196,30 @@ private:
     void togglePositionUI(bool visible);
 };
 
+class BEUIUnitStayTrigger : public BEUIBase {
+public:
+    explicit BEUIUnitStayTrigger(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler);
+    virtual void reset();
+    EditorUnitStayTriggerPtr getTrigger();
+    virtual void didGetPosition(EditorPositionPtr pos, cocos2d::Ref *sender);
+    
+private:
+    cocos2d::ui::Button* _stateButton;
+    cocos2d::ui::Text* _lb_pos_name;
+    cocos2d::ui::Button* _btn_new_pos;
+    cocos2d::ui::Button* _btn_select_pos;
+    cocos2d::ui::Button* _btn_ok;
+    cocos2d::ui::Button* _btn_cancel;
+    cocos2d::ui::TextField* _tf_tag;
+    cocos2d::ui::TextField* _tf_count;
+    cocos2d::ui::TextField* _tf_duration;
+    cocos2d::ui::Layout *_infoPanel;
+    EditorUnitStayTriggerPtr _trigger;
+    std::string _positionName;
+    
+    void togglePositionUI(bool visible);
+};
+
 class BEUIEventChange : public BEUIBase {
 public:
     explicit BEUIEventChange(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler);
@@ -427,6 +451,7 @@ public:
     BEUIActionOptions *actionOptionsUI;
     BEUIUnitAction *unitActionUI;
     BEUIUnitTrigger *unitTriggerUI;
+    BEUIUnitStayTrigger* unitstayTriggerUI;
     BEUIEventChange *eventChangeUI;
     BEUIGameStateChange *gameStateChangeUI;
     BEUITaskStateChange *taskStateChangeUI;
@@ -454,6 +479,7 @@ private:
     cocos2d::ui::Layout *_actionOptionsPanel;
     cocos2d::ui::Layout *_unitActionPanel;
     cocos2d::ui::Layout *_unitTriggerPanel;
+    cocos2d::ui::Layout *_unitstayTriggerPanel;
     cocos2d::ui::Layout *_eventChangePanel;
     cocos2d::ui::Layout *_gameChangePanel;
     cocos2d::ui::Layout *_taskChangePanel;

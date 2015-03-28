@@ -19,6 +19,7 @@ typedef std::shared_ptr<EditorSpeech> EditorSpeechPtr;
 typedef std::shared_ptr<EditorPosition> EditorPositionPtr;
 typedef std::shared_ptr<EditorMapInitTrigger> EditorMapInitTriggerPtr;
 typedef std::shared_ptr<EditorUnitTrigger> EditorUnitTriggerPtr;
+typedef std::shared_ptr<EditorUnitStayTrigger> EditorUnitStayTriggerPtr;
 typedef std::shared_ptr<EditorEventTrigger> EditorEventTriggerPtr;
 typedef std::shared_ptr<EditorCustomTrigger> EditorCustomTriggerPtr;
 typedef std::shared_ptr<EditorUnitAction> EditorUnitActionPtr;

@@ -15,7 +15,9 @@
 
 using namespace cocos2d;
 
-EventTrigger::EventTrigger() {
+EventTrigger::EventTrigger() :
+_map_logic( nullptr )
+{
     
 }
 
@@ -23,9 +25,9 @@ EventTrigger::~EventTrigger() {
     
 }
 
-EventTrigger* EventTrigger::create( const ValueMap& event_data ) {
+EventTrigger* EventTrigger::create( class MapLogic* map_logic, const ValueMap& event_data ) {
     EventTrigger* ret = new EventTrigger();
-    if( ret && ret->init( event_data ) ) {
+    if( ret && ret->init( map_logic, event_data ) ) {
         ret->autorelease();
         return ret;
     }
@@ -35,9 +37,11 @@ EventTrigger* EventTrigger::create( const ValueMap& event_data ) {
     }
 }
 
-bool EventTrigger::init( const ValueMap& event_data ) {
+bool EventTrigger::init( class MapLogic* map_logic, const ValueMap& event_data ) {
+    this->setMapLogic( map_logic );
     _current_trigger_index = 0;
     _is_enabled = true;
+    _should_recycle = false;
     
     _event_data = event_data;
     const ValueMap& meta_data = event_data.at( "trigger_meta" ).asValueMap();
@@ -64,6 +68,21 @@ bool EventTrigger::init( const ValueMap& event_data ) {
     }
     
     return true;
+}
+
+void EventTrigger::updateFrame( float delta ) {
+    if( _is_enabled ) {
+        for( auto trigger : _triggers ) {
+            trigger->updateFrame( delta );
+        }
+        this->checkTriggerPass();
+    }
+}
+
+void EventTrigger::setMapLogic( class MapLogic* map_logic ) {
+    CC_SAFE_RELEASE( _map_logic );
+    _map_logic = map_logic;
+    CC_SAFE_RETAIN( _map_logic );
 }
 
 void EventTrigger::setEnabled( bool b ) {
@@ -121,13 +140,13 @@ void EventTrigger::moveOn() {
     }
 }
 
-void EventTrigger::trigger( class MapLogic* map_logic, class UnitNode* unit_node ) {
+void EventTrigger::trigger( class UnitNode* unit_node ) {
     const cocos2d::ValueVector& actions = _event_data.at( "actions" ).asValueVector();
     int action_count = (int)actions.size();
     for( int i = 0; i < action_count; ++i ) {
         const ValueMap& action = actions.at( i ).asValueMap();
-        EventAction* ea = EventAction::create( action, map_logic, this );
-        map_logic->addEventAction( ea, ea->getActionName() );
+        EventAction* ea = EventAction::create( action, _map_logic, this );
+        _map_logic->addEventAction( ea, ea->getActionName() );
         cocos2d::Map<std::string, cocos2d::Ref*> params;
         if( unit_node ) {
             params.insert( "unit", unit_node );
@@ -143,13 +162,13 @@ void EventTrigger::trigger( class MapLogic* map_logic, class UnitNode* unit_node
     this->moveOn();
 }
 
-void EventTrigger::checkTriggerPass( class MapLogic* map_logic, class UnitNode* unit_node ) {
+void EventTrigger::checkTriggerPass( class UnitNode* unit_node ) {
     if( this->canFire() ) {
-        this->trigger( map_logic, unit_node );
+        this->trigger( unit_node );
     }
 }
 
-void EventTrigger::activateTriggerByConditions( const cocos2d::ValueMap& conditions, class MapLogic* map_logic, class UnitNode* unit_node ) {
+void EventTrigger::activateTriggerByConditions( const cocos2d::ValueMap& conditions, class UnitNode* unit_node ) {
     if( _relation == "then" ) {
         _triggers.at( _current_trigger_index )->updateTrigger( conditions );
     }
@@ -158,19 +177,19 @@ void EventTrigger::activateTriggerByConditions( const cocos2d::ValueMap& conditi
             trigger->updateTrigger( conditions );
         }
     }
-    this->checkTriggerPass( map_logic, unit_node );
+    this->checkTriggerPass( unit_node );
 }
 
-void EventTrigger::activateTriggerByUnit( class MapLogic* map_logic, class UnitNode* unit, const std::string& unit_state, const cocos2d::ValueMap& area ) {
+void EventTrigger::activateTriggerByUnit( class UnitNode* unit, const std::string& unit_state, const cocos2d::ValueMap& area ) {
     if( _relation == "then" ) {
-        _triggers.at( _current_trigger_index )->updateTrigger( map_logic, unit, unit_state );
+        _triggers.at( _current_trigger_index )->updateTrigger( _map_logic, unit, unit_state );
     }
     else {
         for( auto trigger : _triggers ) {
-            trigger->updateTrigger( map_logic, unit, unit_state );
+            trigger->updateTrigger( _map_logic, unit, unit_state );
         }
     }
-    this->checkTriggerPass( map_logic, unit );
+    this->checkTriggerPass( unit );
 }
 
 void EventTrigger::addTrigger( Trigger* trigger ) {
