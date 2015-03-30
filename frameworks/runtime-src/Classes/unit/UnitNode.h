@@ -11,7 +11,7 @@
 
 #include "../interface/Updatable.h"
 #include "TargetNode.h"
-#include "BehaviorBase.h"
+#include "../behavior/BehaviorBase.h"
 #include "spine/spine-cocos2dx.h"
 #include "Skill.h"
 #include "Buff.h"

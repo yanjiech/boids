@@ -11,7 +11,7 @@
 #include "BETypes.h"
 #ifdef SUPPORT_EXTERNAL_MAP
 #include <boost/filesystem.hpp>
-#include "SimpleIni.h"
+#include "../../ini/SimpleIni.h"
 #define EDITOR_SETTING_PATH ("editor_setting.ini")
 #endif
 

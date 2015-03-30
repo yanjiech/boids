@@ -11,10 +11,13 @@
 
 #include <string>
 #include <cstdint>
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+#include "CCStdC-win32.h"
+#else
 #include <sys/time.h>
+#endif
 #include <map>
 
-//Trace–≈œ¢¥Úµ√π˝∂‡«Î◊¢ Õœ¬√Ê’‚––
 //#define __TRACE__
 //#define __PRINT_SLOW_ACCUMULATE__
 
@@ -28,7 +31,7 @@ private:
 	uint64_t gettime()
 	{
 		struct timeval _time;
-		gettimeofday(&_time, nullptr);
+		cocos2d::gettimeofday(&_time, nullptr);
 		return (uint64_t)_time.tv_sec * 1000000 + _time.tv_usec;
 	}
 

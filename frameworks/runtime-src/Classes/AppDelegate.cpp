@@ -1,11 +1,6 @@
 #include "AppDelegate.h"
-#include "CCLuaEngine.h"
 #include "SimpleAudioEngine.h"
 #include "cocos2d.h"
-#include "lua_module_register.h"
-//#include "lua_boids_auto.hpp"
-//#include "lua_boids_manual.h"
-//#include "lua_cjson.h"
 #include "./manager/SceneManager.h"
 #include "./manager/ResourceManager.h"
 #include "./data/PlayerInfo.h"
@@ -86,7 +81,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     EditMode::getInstance()->enterMain( CC_CALLBACK_0( AppDelegate::onEditModeExit, this ) );
 #else
     PlayerInfo::getInstance()->loadPlayerInfo();
-    SceneManager::getInstance()->transitToScene( eSceneName::LevelChoose );
+    SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
 #endif
     
     return true;
@@ -94,7 +89,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 void AppDelegate::onEditModeExit() {
     PlayerInfo::getInstance()->loadPlayerInfo();
-    SceneManager::getInstance()->transitToScene( eSceneName::LevelChoose );
+    SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too

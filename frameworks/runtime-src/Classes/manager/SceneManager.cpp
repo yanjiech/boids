@@ -7,9 +7,9 @@
 //
 
 #include "SceneManager.h"
-#include "SceneBase.h"
-#include "UILevelChooseLayer.h"
-#include "BattleLayer.h"
+#include "../scene/SceneBase.h"
+#include "../scene/UILevelChooseLayer.h"
+#include "../scene/BattleLayer.h"
 
 using namespace cocos2d;
 
@@ -40,10 +40,10 @@ void SceneManager::destroy() {
 bool SceneManager::transitToScene( eSceneName name, SceneConfig* config  ) {
     SceneBase* next_scene = SceneBase::create();
     cocos2d::Layer* layer = nullptr;
-    if( name == eSceneName::LevelChoose ) {
+    if( name == eSceneName::SceneLevelChoose ) {
         layer = UILevelChooseLayer::create();
     }
-    else if( name == eSceneName::Battle ) {
+    else if( name == eSceneName::SceneBattle ) {
         bool is_pvp = config->value_params["is_pvp"].asBool();
         MapData* map_data = dynamic_cast<MapData*>( config->ref_params[0] );
         layer = BattleLayer::create( map_data, is_pvp );
