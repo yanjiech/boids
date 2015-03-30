@@ -278,7 +278,13 @@ UnitNode* BattleLayer::getLeaderUnit() {
 }
 
 void BattleLayer::changeState( eBattleState new_state ) {
-    //todo
+    this->setState( new_state );
+    if( _state == eBattleState::BattleWin ) {
+        log( "game end: win" );
+    }
+    else if( _state == eBattleState::BattleLose ) {
+        log( "game end: lose" );
+    }
 }
 
 cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eUnitCamp camp ) {

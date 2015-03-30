@@ -134,37 +134,23 @@ void EditorTask::loadJson(const rapidjson::Value& value) {
 
 rapidjson::Value& EditorGameCondition::toJson(rapidjson::Document::AllocatorType& allocator) {
     EditorBase::toJson(allocator);
-    _json.AddMember("condition", Condition.c_str(), allocator);
     _json.AddMember("type", Type.c_str(), allocator);
-    if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "arrive_area" || Condition == "collect_item") {
-        _json.AddMember("name", Name.c_str(), allocator);
-    }
-    if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "collect_item" || Condition == "time_limit") {
-        _json.AddMember("number", Number, allocator);
-    }
-    if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "collect_item" || Condition == "time_limit") {
-        _json.AddMember("desc", Desc.c_str(), allocator);
-    }
-    if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "collect_item" || Condition == "time_limit") {
-        _json.AddMember("tag", Tag.c_str(), allocator);
-    }
+    _json.AddMember("name", Name.c_str(), allocator);
+    _json.AddMember("desc", Desc.c_str(), allocator);
+    _json.AddMember( "title", Title.c_str(), allocator );
     return _json;
 }
 
 void EditorGameCondition::loadJson(const rapidjson::Value& value) {
-    Condition = value["condition"].GetString();
     Type = value["type"].GetString();
     if (value.HasMember("name")) {
         Name = value["name"].GetString();
     }
-    if (value.HasMember("number")) {
-        Number = value["number"].GetInt();
-    }
     if( value.HasMember( "desc" ) ) {
         Desc = value["desc"].GetString();
     }
-    if( value.HasMember( "tag" ) ) {
-        Tag = value["tag"].GetString();
+    if( value.HasMember( "title" ) ) {
+        Title = value["title"].GetString();
     }
 }
 
@@ -413,6 +399,7 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
     if (this->CustomChange.length() > 0) {
         _json.AddMember("custom_change", CustomChange.c_str(), allocator);
     }
+    _json.AddMember( "unit_level", this->UnitLevel, allocator );
     if (this->PopupType.length() > 0) {
         _json.AddMember("popup_type", PopupType.c_str(), allocator);
     }
@@ -492,6 +479,12 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->CustomChange = value["custom_change"].GetString();
     } else {
         this->CustomChange = "";
+    }
+    if( value.HasMember( "unit_level" ) ) {
+        this->UnitLevel = value["unit_level"].GetInt();
+    }
+    else {
+        this->UnitLevel = 1;
     }
     if (value.HasMember("popup_type")) {
         this->PopupType = value["popup_type"].GetString();
@@ -707,20 +700,20 @@ std::string EditorData::getString() {
 }
 
 void EditorData::loadJson(const rapidjson::Value& value) {
-    Tasks.clear();
+//    Tasks.clear();
     Positions.clear();
     Events.clear();
     Conditions.clear();
     if (!value.IsNull()) {
-        const rapidjson::Value& tasks = value["tasks"];
-        if (!tasks.IsNull()) {
-            assert(tasks.IsArray());
-            for (int i = 0; i < tasks.Size(); ++i) {
-                auto taskPtr = std::shared_ptr<EditorTask>(new EditorTask());
-                taskPtr->loadJson(tasks[i]);
-                Tasks.push_back(taskPtr);
-            }
-        }
+//        const rapidjson::Value& tasks = value["tasks"];
+//        if (!tasks.IsNull()) {
+//            assert(tasks.IsArray());
+//            for (int i = 0; i < tasks.Size(); ++i) {
+//                auto taskPtr = std::shared_ptr<EditorTask>(new EditorTask());
+//                taskPtr->loadJson(tasks[i]);
+//                Tasks.push_back(taskPtr);
+//            }
+//        }
         
         const rapidjson::Value& positions = value["positions"];
         if (!positions.IsNull()) {
@@ -741,7 +734,7 @@ void EditorData::loadJson(const rapidjson::Value& value) {
                 Events.push_back(eventPtr);
             }
 		}
-        const rapidjson::Value& conditions = value["conditions"];
+        const rapidjson::Value& conditions = value["tasks"];
         if (!conditions.IsNull()) {
             assert(conditions.IsArray());
             for (int i = 0; i < conditions.Size(); i++) {
@@ -761,10 +754,10 @@ rapidjson::Value& EditorData::toJson(rapidjson::Document::AllocatorType& allocat
     _doc.RemoveMember("conditions");
     rapidjson::Value tasks;
     tasks.SetArray();
-    for (int i = 0; i < Tasks.size(); i++) {
-        tasks.PushBack(Tasks[i]->toJson(allocator), allocator);
-    }
-    _doc.AddMember("tasks", tasks, allocator);
+//    for (int i = 0; i < Tasks.size(); i++) {
+//        tasks.PushBack(Tasks[i]->toJson(allocator), allocator);
+//    }
+//    _doc.AddMember("tasks", tasks, allocator);
     rapidjson::Value positions;
     positions.SetArray();
     for (int i = 0; i < Positions.size(); i++) {
@@ -809,7 +802,7 @@ rapidjson::Value& EditorData::toJson(rapidjson::Document::AllocatorType& allocat
         for (auto cond : Conditions) {
             conditions.PushBack(cond->toJson(allocator), allocator);
         }
-        _doc.AddMember("conditions", conditions, allocator);
+        _doc.AddMember("tasks", conditions, allocator);
     }
     return _doc;
 }

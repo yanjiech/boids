@@ -183,6 +183,8 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     _classTextField = getTextFieldFrom("input_class", _infoPanel);
     _customTextField = getTextFieldFrom("input_custom", _infoPanel);
     
+    _levelTextField = getTextFieldFrom( "tf_level", _infoPanel );
+    
     _groupListView = BEFilterListView::create(Size(500, 600), CC_CALLBACK_1(BEUIUnitAction::onGroupItemClicked, this), _filterTextField);
     _groupListView->setDelegate(this);
     _groupListView->setPosition(Vec2(0, 100));
@@ -239,6 +241,7 @@ void BEUIUnitAction::reset() {
     toggleCountUI(false);
     _countTextField->setString("1");
     _customTextField->setString("");
+    _levelTextField->setString( "1" );
     _changeShowHPCheckBox->setSelected(false);
     _showHPCheckBox->setSelected(false);
     _buffCheckBox->setSelected(false);
@@ -362,6 +365,7 @@ void BEUIUnitAction::renderAction(EditorUnitActionPtr action) {
     }
     _bossCheckBox->setSelected(action->IsBoss);
     _customTextField->setString(action->CustomChange);
+    _levelTextField->setString( Utils::stringFormat( "%d", action->UnitLevel ) );
     if (action->PositionName.length() > 0) {
         _positionLabel->setString(action->PositionName);
     }
@@ -396,6 +400,7 @@ void BEUIUnitAction::onAddButtonClicked(Ref *sender) {
     }
     _action->IsBoss = _bossCheckBox->isSelected();
     _action->CustomChange = _customTextField->getString();
+    _action->UnitLevel = Utils::toInt( _levelTextField->getString() );
     if (_action->BuffChanged) {
         _action->BuffName = _buffTextField->getString();
     }
@@ -859,7 +864,7 @@ EditorTaskActionPtr BEUITaskStateChange::getAction() {
     return _action;
 }
 
-void BEUITaskStateChange::loadTaskList(const std::vector<EditorTaskPtr>& taskList) {
+void BEUITaskStateChange::loadTaskList(const std::vector<EditorGameConditionPtr>& taskList) {
     std::vector<std::string> names;
     for (auto task : taskList) {
         names.push_back(task->Name);
@@ -1118,12 +1123,10 @@ void BEUIWaveAction::onPositionGroupItemClicked(Ref *sender) {
 }
 
 BEUIGameCondition::BEUIGameCondition(Node *root, const BEPopupEventHandler& handler): BEUIBase(root, handler) {
-    _chooseConditionButton = getButtonFrom("button_condition", _root);
     _chooseTypeButton = getButtonFrom("button_type", _root);
-    _numberTextField = getTextFieldFrom("input_number", _root);
-    _nameTextField = getTextFieldFrom("input_name", _root);
-    _descTextField = getTextFieldFrom("input_desc", _root);
-    _tagTextField = getTextFieldFrom( "input_tag", _root );
+    _nameTextField = getTextFieldFrom("tf_name", _root);
+    _descTextField = getTextFieldFrom("tf_desc", _root);
+    _titleTextField = getTextFieldFrom( "tf_title", _root );
     _addButton = getButtonFrom("button_add", _root);
     _okButton = getButtonFrom("button_ok", _root);
     _cancelButton = getButtonFrom("button_cancel", _root);
@@ -1131,11 +1134,8 @@ BEUIGameCondition::BEUIGameCondition(Node *root, const BEPopupEventHandler& hand
     _resultListView = BEDefaultListView::create(Size(500, 550), nullptr);
     _resultListView->setPosition(Vec2(500, 150));
     _root->addChild(_resultListView);
-    _conditionListView = popupTypeListFromButton(_chooseConditionButton, EditorTypeManager::getInstance()->getGameConditionType(), CC_CALLBACK_1(BEUIGameCondition::onConditionItemClicked, this));
     _typeListView = popupTypeListFromButton(_chooseTypeButton, EditorTypeManager::getInstance()->getGameConditionSourceType(), CC_CALLBACK_1(BEUIGameCondition::onTypeItemClicked, this));
-    _conditionListView->setVisible(false);
     _typeListView->setVisible(false);
-    _chooseConditionButton->addClickEventListener(CC_CALLBACK_1(BEUIGameCondition::onChooseConditionButtonClicked, this));
     _chooseTypeButton->addClickEventListener(CC_CALLBACK_1(BEUIGameCondition::onChooseTypeButtonClicked, this));
     _addButton->addClickEventListener(CC_CALLBACK_1(BEUIGameCondition::onAddButtonClicked, this));
     _deleteButton->addClickEventListener(CC_CALLBACK_1(BEUIGameCondition::onDeleteButtonClicked, this));
@@ -1147,7 +1147,6 @@ void BEUIGameCondition::reset() {
     _condition = EditorGameConditionPtr(new EditorGameCondition());
     _conditions.clear();
     _resultListView->cleanAndReset();
-    _conditionListView->reset();
     _typeListView->reset();
 }
 
@@ -1156,21 +1155,19 @@ void BEUIGameCondition::loadConditions(const std::vector<EditorGameConditionPtr>
     _resultListView->removeAllItems();
     std::vector<std::string> names;
     for (auto condition : _conditions) {
-        std::string name = Utils::stringFormat("%s:%s", condition->Type.c_str(), condition->Condition.c_str());
+        std::string name = Utils::stringFormat("%s:%s", condition->Type.c_str(), condition->Name.c_str());
         names.push_back(name);
     }
     _resultListView->addItems(names);
 }
 
 void BEUIGameCondition::onAddButtonClicked(Ref *sender) {
-    _condition->Condition = _conditionListView->getCurrentType();
     _condition->Type = _typeListView->getCurrentType();
-    _condition->Number = atoi(_numberTextField->getString().c_str());
+    _condition->Title = _titleTextField->getString();
     _condition->Name = _nameTextField->getString();
     _condition->Desc = _descTextField->getString();
-    _condition->Tag = _tagTextField->getString();
     _conditions.push_back(_condition);
-    std::string name = Utils::stringFormat("%s:%s", _condition->Type.c_str(), _condition->Condition.c_str());
+    std::string name = Utils::stringFormat("%s:%s", _condition->Type.c_str(), _condition->Name.c_str());
     _resultListView->addItem(name);
     _condition = EditorGameConditionPtr(new EditorGameCondition());
 }
@@ -1181,21 +1178,14 @@ void BEUIGameCondition::onDeleteButtonClicked(Ref *sender) {
     _resultListView->removeCurrentIndex();
 }
 
-void BEUIGameCondition::onChooseConditionButtonClicked(Ref *sender) {
-    _conditionListView->setVisible(true);
-}
-
 void BEUIGameCondition::onChooseTypeButtonClicked(Ref *sender) {
     _typeListView->setVisible(true);
 }
 
 void BEUIGameCondition::onConditionItemClicked(Ref *sender) {
-    _chooseConditionButton->setTitleText(_conditionListView->getCurrentType());
-    _conditionListView->setVisible(false);
-    _numberTextField->setString("");
     _nameTextField->setString("");
     _descTextField->setString("");
-    _tagTextField->setString( "" );
+    _titleTextField->setString( "" );
 }
 
 void BEUIGameCondition::onTypeItemClicked(Ref *sender) {

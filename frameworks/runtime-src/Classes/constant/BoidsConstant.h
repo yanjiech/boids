@@ -29,6 +29,7 @@
 #define UNIT_STATE_IDLE "unit_idle"
 #define UNIT_STATE_DIE "unit_die"
 #define UNIT_STATE_DEAD "unit_dead"
+#define UNIT_STATE_ALIVE "unit_alive"
 #define UNIT_STATE_STUNNED "unit_stunned"
 #define UNIT_STATE_PIERCE "unit_pierce"
 #define UNIT_STATE_CAST "unit_cast"

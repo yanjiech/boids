@@ -104,6 +104,7 @@ private:
     cocos2d::ui::Button *_ok;
     cocos2d::ui::Button *_cancel;
     cocos2d::ui::Text *_countLabel;
+    cocos2d::ui::TextField* _levelTextField;
     cocos2d::ui::TextField *_countTextField;
     cocos2d::ui::CheckBox *_tagCheckBox;
     cocos2d::ui::Text *_tagLabel;
@@ -262,7 +263,7 @@ class BEUITaskStateChange : public BEUIBase {
 public:
     explicit BEUITaskStateChange(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler);
     virtual void reset();
-    void loadTaskList(const std::vector<EditorTaskPtr>& taskList);
+    void loadTaskList(const std::vector<EditorGameConditionPtr>& taskList);
     EditorTaskActionPtr getAction();
 private:
     cocos2d::ui::Button *_stateButton;
@@ -368,21 +369,17 @@ public:
     void loadConditions(const std::vector<EditorGameConditionPtr>& conditions);
     std::vector<EditorGameConditionPtr> getConditions() { return _conditions; }
 private:
-    cocos2d::ui::Button *_chooseConditionButton;
     cocos2d::ui::Button *_chooseTypeButton;
-    cocos2d::ui::TextField *_numberTextField;
     cocos2d::ui::TextField *_nameTextField;
+    cocos2d::ui::TextField *_titleTextField;
     cocos2d::ui::TextField *_descTextField;
-    cocos2d::ui::TextField *_tagTextField;
     cocos2d::ui::Button *_addButton;
     cocos2d::ui::Button *_deleteButton;
     BEListView *_resultListView;
-    BETypeListView *_conditionListView;
     BETypeListView *_typeListView;
     cocos2d::ui::Button *_okButton;
     cocos2d::ui::Button *_cancelButton;
     void onAddButtonClicked(cocos2d::Ref *sender);
-    void onChooseConditionButtonClicked(cocos2d::Ref *sender);
     void onChooseTypeButtonClicked(cocos2d::Ref *sender);
     void onConditionItemClicked(cocos2d::Ref *sender);
     void onTypeItemClicked(cocos2d::Ref *sender);

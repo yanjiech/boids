@@ -68,13 +68,12 @@ public:
 
 class EditorGameCondition : public EditorBase {
 public:
-    std::string Condition;
     int Number;
     std::string Name;
     std::string Type;
+    std::string Title;
     std::string Desc;
-    std::string Tag;
-    EditorGameCondition(): Number(0), Name(""), Desc( "" ), Tag( "" ) {}
+    EditorGameCondition(): Number(0), Name(""), Desc( "" ) {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
 };
@@ -229,6 +228,7 @@ public:
     bool IsBoss;
 	bool UnPushable;
     int UnitCount;
+    int UnitLevel;
     EditorUnitAction(): EditorActionBase("unit_change"), StateChanged(false), TypeChanged(false), ShowHPChanged(false), TagChanged(false), BuffChanged(false), IsBoss(false), UnPushable(false), ClassName("LogicUnit"),
     SourceValue(""), PositionName(""), PositionTag(""), TagName(""), BuffName(""), UnitCount(0), PopupType("normal") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
@@ -301,7 +301,7 @@ public:
 
 class EditorData {
 public:
-    std::vector<std::shared_ptr<EditorTask>> Tasks;
+//    std::vector<std::shared_ptr<EditorTask>> Tasks;
     std::vector<std::shared_ptr<EditorPosition>> Positions;
     std::vector<std::shared_ptr<EditorEvent>> Events;
     std::vector<std::shared_ptr<EditorGameCondition>> Conditions;

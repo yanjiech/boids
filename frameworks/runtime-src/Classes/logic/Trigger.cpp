@@ -30,8 +30,12 @@ Trigger* Trigger::create( const cocos2d::ValueMap& data ) {
         ret = MapInitTrigger::create( data );
     }
     else if( trigger_type == EVENT_TRIGGER_TYPE_UNIT_CHANGE ) {
-        if( data.at( "unit_state" ).asString() == UNIT_STATE_DEAD ) {
+        std::string unit_state = data.at( "unit_state" ).asString();
+        if( unit_state == UNIT_STATE_DEAD ) {
             ret = UnitDeadTrigger::create( data );
+        }
+        else if( unit_state == UNIT_STATE_ALIVE ) {
+            ret = UnitAliveTrigger::create( data );
         }
     }
     else if( trigger_type == EVENT_TRIGGER_TYPE_UNIT_STAY ) {
@@ -192,6 +196,59 @@ void UnitDeadTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* 
     
     if( _current_count >= _need_count ) {
         this->setCouldTrigger( true );
+    }
+}
+
+UnitAliveTrigger::UnitAliveTrigger() {
+    
+}
+
+UnitAliveTrigger::~UnitAliveTrigger() {
+    
+}
+
+UnitAliveTrigger* UnitAliveTrigger::create( const cocos2d::ValueMap& data ) {
+    UnitAliveTrigger* ret = new UnitAliveTrigger();
+    if( ret && ret->init( data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitAliveTrigger::init( const cocos2d::ValueMap& data ) {
+    if( !UnitChangeTrigger::init( data ) ) {
+        return false;
+    }
+    
+    return true;
+}
+
+void UnitAliveTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state ) {
+    if( unit_state != UNIT_STATE_DEAD ) {
+        return;
+    }
+    
+    std::string source_type = _trigger_data.at( "source_type" ).asString();
+    std::string source_value = _trigger_data.at( "source_value" ).asString();
+    
+    if( source_type == UNIT_SOURCE_TYPE ) {
+        if( (int)map_logic->getBattleLayer()->getAliveUnitsByCamp( UnitNode::getCampByString( source_value ) ).size() <= _need_count ) {
+            this->setCouldTrigger( true );
+        }
+    }
+    else if( source_type == UNIT_SOURCE_TAG ) {
+        if( (int)map_logic->getBattleLayer()->getAliveUnitsByTag( source_value ).size() <= _need_count ) {
+            this->setCouldTrigger( true );
+        }
+    }
+    else if( source_type == UNIT_SOURCE_NAME ) {
+        if( (int)map_logic->getBattleLayer()->getAliveUnitsByName( source_value ).size() <= _need_count ) {
+            this->setCouldTrigger( true );
+        }
     }
 }
 

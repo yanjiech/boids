@@ -663,7 +663,7 @@ void EditMode::onStep(int step) {
         case EditorOperation::SetMissionAction: {
             _editUI->taskStateChangeUI->setVisible(true);
             _editUI->taskStateChangeUI->reset();
-            _editUI->taskStateChangeUI->loadTaskList(_data.Tasks);
+            _editUI->taskStateChangeUI->loadTaskList(_data.Conditions);
             break;
         }
         case EditorOperation::SetGameTrigger:

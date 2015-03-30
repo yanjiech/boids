@@ -72,6 +72,17 @@ public:
     virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );
 };
 
+class UnitAliveTrigger : public UnitChangeTrigger {
+public:
+    UnitAliveTrigger();
+    virtual ~UnitAliveTrigger();
+    
+    static UnitAliveTrigger* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );
+};
+
 class UnitStayTrigger : public Trigger {
 private:
     float _elapse;
