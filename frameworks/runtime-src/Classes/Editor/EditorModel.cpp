@@ -217,9 +217,9 @@ rapidjson::Value& EditorUnitTrigger::toJson(rapidjson::Document::AllocatorType& 
     _json.AddMember("source_type", this->SourceType.c_str(), allocator);
     _json.AddMember("source_value", this->SourceValue.c_str(), allocator);
     _json.AddMember("unit_state", this->UnitState.c_str(), allocator);
-    if (this->PositionName != "") {
-        _json.AddMember("position_name", this->PositionName.c_str(), allocator);
-    }
+//    if (this->PositionName != "") {
+//        _json.AddMember("position_name", this->PositionName.c_str(), allocator);
+//    }
     _json.AddMember("trigger_count", this->TriggerCount, allocator);
     return _json;
 }

@@ -154,7 +154,7 @@ public:
     
     void onUnitAppear( UnitNode* unit );
     void onUnitDying( UnitNode* unit );
-    void onUnitDead( UnitNode* unit );
+    void onUnitDisappear( UnitNode* unit );
     void onUnitMoved( UnitNode* unit );
     
     bool isPositionInVision( const cocos2d::Point& pos );

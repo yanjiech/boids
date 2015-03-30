@@ -41,7 +41,7 @@ EditorTypeManager::EditorTypeManager() {
     _gameState->_typeVector = { "game_start", "game_win", "game_lose" };
     _taskState->_typeVector = { "task_start", "task_finish", "task_failed" };
     _unitActionState->_typeVector = { "unit_appear", "unit_hold_appear", "unit_move", "unit_patrol", "unit_disappear", "unit_idle", "unit_die" };
-    _unitTriggerState->_typeVector = { "unit_appear", "unit_move", "unit_disappear" };
+    _unitTriggerState->_typeVector = { "unit_appear", "unit_dead", "unit_disappear" };
     _unitType->_typeVector = { "player", "neutral", "ally", "enemy", "item", "wild" };
     _unitTriggerSourceType->_typeVector = { "type_source", "tag_source", "name_source" };
     _unitActionSourceType->_typeVector = { "trigger_source", "type_source", "tag_source", "name_source" };

@@ -1112,7 +1112,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_unitTrigger" ActionTag="521" Visible="False" FrameEvent="" Tag="133" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_unitTrigger" ActionTag="521" FrameEvent="" Tag="133" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Position X="0.0000" Y="0.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -1227,13 +1227,13 @@
                         <PrePosition X="0.0000" Y="0.0000" />
                         <PreSize X="0.3667" Y="0.0288" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_triggerCount" ActionTag="618" FrameEvent="" Tag="125" FontSize="20" LabelText="触发数量" ctype="TextObjectData">
-                        <Position X="350.0000" Y="640.0002" />
+                      <NodeObjectData Name="text_triggerCount" ActionTag="618" FrameEvent="" Tag="125" LeftMargin="270.0000" RightMargin="210.0000" TopMargin="142.9998" BottomMargin="623.0002" FontSize="30" LabelText="触发数量" ctype="TextObjectData">
+                        <Position X="330.0000" Y="640.0002" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
-                        <Size X="80.0000" Y="23.0000" />
-                        <PrePosition X="0.5833" Y="0.8000" />
+                        <Size X="120.0000" Y="34.0000" />
+                        <PrePosition X="0.5500" Y="0.8000" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
                       <NodeObjectData Name="button_ok" ActionTag="711" FrameEvent="" Tag="144" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
@@ -1249,13 +1249,31 @@
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="input_count" ActionTag="-524181679" FrameEvent="" Tag="198" TouchEnable="True" FontSize="14" IsCustomSize="True" LabelText="" PlaceHolderText="1" MaxLengthText="10" ctype="TextFieldObjectData">
-                        <Position X="460.0000" Y="640.0000" />
+                      <NodeObjectData Name="input_count" ActionTag="-524181679" FrameEvent="" Tag="198" LeftMargin="408.0000" RightMargin="92.0000" TopMargin="150.5000" BottomMargin="622.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="1" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="458.0000" Y="636.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <CColor A="255" R="51" G="51" B="51" />
+                        <CColor A="255" R="0" G="0" B="0" />
                         <Size X="100.0000" Y="27.0000" />
-                        <PrePosition X="0.7667" Y="0.8000" />
+                        <PrePosition X="0.7633" Y="0.7950" />
+                        <PreSize X="0.0000" Y="0.0000" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="Text_3" ActionTag="913043732" FrameEvent="" Tag="203" LeftMargin="49.9596" RightMargin="490.0404" TopMargin="263.1654" BottomMargin="502.8346" FontSize="30" LabelText="标记" ctype="TextObjectData">
+                        <Position X="79.9596" Y="519.8346" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="51" G="102" B="51" />
+                        <Size X="60.0000" Y="34.0000" />
+                        <PrePosition X="0.1333" Y="0.6498" />
+                        <PreSize X="0.0000" Y="0.0000" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="lb_tag" ActionTag="1688772992" FrameEvent="" Tag="204" LeftMargin="152.9596" RightMargin="347.0404" TopMargin="269.6654" BottomMargin="503.3346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="input tag" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="202.9596" Y="516.8346" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="0" G="0" B="0" />
+                        <Size X="100.0000" Y="27.0000" />
+                        <PrePosition X="0.3383" Y="0.6460" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
                     </Children>
@@ -1316,7 +1334,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_unitstayTrigger" ActionTag="140217292" FrameEvent="" Tag="187" LeftMargin="-540.0000" RightMargin="-560.0000" TopMargin="-390.0000" BottomMargin="-410.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_unitstayTrigger" ActionTag="140217292" Visible="False" FrameEvent="" Tag="187" LeftMargin="-540.0000" RightMargin="-560.0000" TopMargin="-390.0000" BottomMargin="-410.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                 <Position X="10.0000" Y="-10.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

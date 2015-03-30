@@ -192,6 +192,20 @@ void MapLogic::onTargetNodeAppear( TargetNode* target_node ) {
     }while( false );
 }
 
+void MapLogic::onTargetNodeDead( class TargetNode* target_node ) {
+    do {
+        UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
+        if( unit_node ) {
+            for( auto trigger : _triggers ) {
+                if( trigger->isEnabled() ) {
+                    trigger->activateTriggerByUnit( unit_node, UNIT_STATE_DEAD, ValueMap() );
+                }
+            }
+            break;
+        }
+    }while( false );
+}
+
 void MapLogic::onTargetNodeDisappear( TargetNode* target_node ) {
     do {
         UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
@@ -207,7 +221,7 @@ void MapLogic::onTargetNodeDisappear( TargetNode* target_node ) {
                 if( trigger->isEnabled() ) {
                     ValueMap area = _battle_layer->getMapData()->getAreaMapByPosition( unit_node->getPosition() );
                     if( !area.empty() ) {
-                        trigger->activateTriggerByUnit( unit_node, UNIT_STATE_MOVE_TO, area );
+                        trigger->activateTriggerByUnit( unit_node, UNIT_STATE_DISAPPEAR, area );
                     }
                 }
             }

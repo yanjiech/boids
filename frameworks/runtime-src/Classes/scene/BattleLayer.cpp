@@ -165,7 +165,7 @@ void BattleLayer::updateFrame( float delta ) {
             UnitNode* unit = pair.second;
             
             if( unit->getUnitState() == eUnitState::Dead ) {
-                this->onUnitDead( unit );
+                this->onUnitDisappear( unit );
             }
         }
         
@@ -278,7 +278,7 @@ UnitNode* BattleLayer::getLeaderUnit() {
 }
 
 void BattleLayer::changeState( eBattleState new_state ) {
-    
+    //todo
 }
 
 cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eUnitCamp camp ) {
@@ -448,9 +448,10 @@ void BattleLayer::onUnitDying( UnitNode* unit ) {
     _alive_units.erase( key );
     _dead_units.insert( key, unit );
     this->clearChasingTarget(  unit );
+    _map_logic->onTargetNodeDead( unit );
 }
 
-void BattleLayer::onUnitDead( UnitNode* unit ) {
+void BattleLayer::onUnitDisappear( UnitNode* unit ) {
     std::string key = Utils::stringFormat( "%d", unit->getDeployId() );
     _dead_units.erase( key );
     _map_logic->onTargetNodeDisappear( unit );

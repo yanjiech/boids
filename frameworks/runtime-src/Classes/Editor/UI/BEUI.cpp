@@ -552,6 +552,8 @@ BEUIUnitTrigger::BEUIUnitTrigger(ui::Layout *root, const BEPopupEventHandler& ha
     _positionLabel1 = getLabelFrom("text_postion1", _infoPanel);
     _triggerCountTextField = getTextFieldFrom("input_count", _infoPanel);
     
+    _lb_tag = getTextFieldFrom( "lb_tag", _infoPanel );
+    
     _groupListView = BEFilterListView::create(Size(500, 600), nullptr, _filterTextField);
     _groupListView->setDelegate(this);
     _groupListView->setPosition(Vec2(0, 100));
@@ -577,12 +579,15 @@ void BEUIUnitTrigger::reset() {
     _triggerCountTextField->setString("");
     _positionName = "";
     _positionLabel1->setString("位置1");
+    _lb_tag->setString( "1" );
     _trigger = EditorUnitTriggerPtr(new EditorUnitTrigger());
     _filterTextField->setString("");
 }
 
 void BEUIUnitTrigger::loadSourceList(const std::vector<std::pair<std::string, std::string>>& sources) {
-    _sourceList = sources;
+    _sourceList.clear();
+    _sourceList.push_back( std::make_pair( "tag_source", "custom" ) );
+    _sourceList.insert( _sourceList.end(), sources.begin(), sources.end() );
     _groupListView->updateData();
 }
 
@@ -624,7 +629,12 @@ EditorUnitTriggerPtr BEUIUnitTrigger::getTrigger() {
     int idx = _groupListView->getCurrentIndexForFullItems();
     auto pair = _sourceList[idx];
     _trigger->SourceType = pair.first;
-    _trigger->SourceValue = pair.second;
+    if( pair.first == "tag_source" ) {
+        _trigger->SourceValue = _lb_tag->getString();
+    }
+    else {
+        _trigger->SourceValue = pair.second;
+    }
     if (_triggerCountTextField->getString() == "") {
         _trigger->TriggerCount = 1;
     } else {
@@ -637,8 +647,8 @@ void BEUIUnitTrigger::onStateListItemClicked(Ref *sender) {
     auto name = _stateListView->getCurrentType();
     _stateButton->setTitleText(name);
     _stateListView->setVisible(false);
-    if (name == "unit_move") {
-        togglePositionUI(true);
+    if (name == "unit_dead") {
+        togglePositionUI( false );
         _positionTitleLabel1->setString("移动至");
     } else if (name == "unit_appear") {
         togglePositionUI(false);

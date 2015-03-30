@@ -77,6 +77,7 @@ public:
     void setTriggersEnabledOfName( const std::string& name, bool b );
     
     void onTargetNodeAppear( class TargetNode* target_node );
+    void onTargetNodeDead( class TargetNode* target_node );
     void onTargetNodeDisappear( class TargetNode* target_node );
     void onUnitMoved( class UnitNode* unit_node );
     

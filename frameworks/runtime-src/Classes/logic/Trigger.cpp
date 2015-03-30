@@ -30,7 +30,9 @@ Trigger* Trigger::create( const cocos2d::ValueMap& data ) {
         ret = MapInitTrigger::create( data );
     }
     else if( trigger_type == EVENT_TRIGGER_TYPE_UNIT_CHANGE ) {
-        ret = UnitChangeTrigger::create( data );
+        if( data.at( "unit_state" ).asString() == UNIT_STATE_DEAD ) {
+            ret = UnitDeadTrigger::create( data );
+        }
     }
     else if( trigger_type == EVENT_TRIGGER_TYPE_UNIT_STAY ) {
         ret = UnitStayTrigger::create( data );
@@ -124,60 +126,72 @@ bool UnitChangeTrigger::init( const cocos2d::ValueMap& data ) {
 }
 
 void UnitChangeTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state ) {
+}
+
+UnitDeadTrigger::UnitDeadTrigger() {
+    
+}
+
+UnitDeadTrigger::~UnitDeadTrigger() {
+    
+}
+
+UnitDeadTrigger* UnitDeadTrigger::create( const cocos2d::ValueMap& data ) {
+    UnitDeadTrigger* ret = new UnitDeadTrigger();
+    if( ret && ret->init( data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitDeadTrigger::init( const cocos2d::ValueMap& data ) {
+    if( !UnitChangeTrigger::init( data ) ) {
+        return false;
+    }
+    
+    _current_count = 0;
+    
+    auto itr = _trigger_data.find( "trigger_count" );
+    if( itr != _trigger_data.end() ) {
+        _need_count = itr->second.asInt();
+    }
+    else {
+        _need_count = 1;
+    }
+    
+    return true;
+}
+
+void UnitDeadTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state ) {
     if( _trigger_data.at( "unit_state" ).asString() != unit_state ) {
         return;
     }
-
+    
     std::string source_type = _trigger_data.at( "source_type" ).asString();
     std::string source_value = _trigger_data.at( "source_value" ).asString();
-    std::string position_name = "";
     
-    auto itr = _trigger_data.find( "position_name" );
-    if( itr != _trigger_data.end() ) {
-        position_name = itr->second.asString();
+    if( source_type == UNIT_SOURCE_TYPE ) {
+        if( unit_node->getUnitCamp() == UnitNode::getCampByString( source_value ) ) {
+            ++_current_count;
+        }
     }
-    int trigger_count = 1;
-    itr = _trigger_data.find( "trigger_count" );
-    if( itr != _trigger_data.end() ) {
-        trigger_count = itr->second.asInt();
+    else if( source_type == UNIT_SOURCE_TAG ) {
+        if( unit_node->hasUnitTag( source_value ) ) {
+            ++_current_count;
+        }
+    }
+    else if( source_type == UNIT_SOURCE_NAME ) {
+        if( unit_node->getUnitData()->name == source_value ) {
+            ++_current_count;
+        }
     }
     
-    eUnitCamp camp = unit_node->getUnitCamp();
-    if( source_type == UNIT_SOURCE_TYPE && camp == UnitNode::getCampByString( source_value ) ) {
-        if( unit_state == UNIT_STATE_APPEAR ) {
-            if( trigger_count <= map_logic->getUnitAppearCountByCamp( (int)camp ) ) {
-                this->setCouldTrigger( true );
-            }
-        }
-        else if( unit_state == UNIT_STATE_DISAPPEAR ) {
-            if( trigger_count <= map_logic->getUnitDisappearCountByCamp( (int)camp ) ) {
-                this->setCouldTrigger( true );
-            }
-        }
-    }
-    else if( source_type == UNIT_SOURCE_TAG && unit_node->hasUnitTag( source_value ) ) {
-        if( unit_state == UNIT_STATE_APPEAR ) {
-            if( trigger_count <= map_logic->getUnitAppearCountByTag( source_value ) ) {
-                this->setCouldTrigger( true );
-            }
-        }
-        else if( unit_state == UNIT_STATE_DISAPPEAR ) {
-            if( trigger_count <= map_logic->getUnitDisappearCountByTag( source_value ) ) {
-                this->setCouldTrigger( true );
-            }
-        }
-    }
-    else if( source_type == UNIT_SOURCE_NAME && unit_node->getUnitData()->name == source_value ) {
-        if( unit_state == UNIT_STATE_APPEAR ) {
-            if( trigger_count <= map_logic->getUnitAppearCountByName( source_value ) ) {
-                this->setCouldTrigger( true );
-            }
-        }
-        else if( unit_state == UNIT_STATE_DISAPPEAR ) {
-            if( trigger_count <= map_logic->getUnitDisappearCountByName( source_value ) ) {
-                this->setCouldTrigger( true );
-            }
-        }
+    if( _current_count >= _need_count ) {
+        this->setCouldTrigger( true );
     }
 }
 

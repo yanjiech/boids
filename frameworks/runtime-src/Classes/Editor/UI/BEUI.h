@@ -183,6 +183,7 @@ private:
     cocos2d::ui::Button *_cancel;
     cocos2d::ui::TextField *_triggerCountTextField;
     cocos2d::ui::TextField *_filterTextField;
+    cocos2d::ui::TextField* _lb_tag;
     BEFilterListView *_groupListView;
     BETypeListView *_stateListView;
     cocos2d::ui::Layout *_infoPanel;

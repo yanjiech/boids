@@ -52,16 +52,43 @@
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "skeleton_king",
+                    "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "tag_name": "boss",
                     "position_name": "boss",
                     "unit_count": 1,
                     "is_boss": true,
                     "popup_type": "normal"
                 }
             ]
+        },
+        {
+            "name": "primary_win",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "unit_state": "unit_dead",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "game_change",
+                    "game_state": "game_win"
+                }
+            ]
         }
     ],
-    "units": [],
+    "units": [
+        "skeleton_king"
+    ],
     "conditions": [
         {
             "condition": "unit_die",
