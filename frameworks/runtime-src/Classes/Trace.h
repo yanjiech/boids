@@ -9,12 +9,13 @@
 #ifndef __TRACE_H__
 #define __TRACE_H__
 
+#include "cocos2d.h"
 #include <string>
 #include <cstdint>
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
-#include "CCStdC-win32.h"
-#else
+#if ( CC_TARGET_PLATFORM != CC_PLATFORM_WIN32 )
 #include <sys/time.h>
+#else
+#include "CCStdC-win32.h"
 #endif
 #include <map>
 
@@ -31,7 +32,11 @@ private:
 	uint64_t gettime()
 	{
 		struct timeval _time;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 		cocos2d::gettimeofday(&_time, nullptr);
+#else
+        gettimeofday(&_time, nullptr);
+#endif
 		return (uint64_t)_time.tv_sec * 1000000 + _time.tv_usec;
 	}
 

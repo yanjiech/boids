@@ -53,6 +53,10 @@
 #define SKILL_NAME_LIGHTSHIELD "LightShield"
 #define SKILL_NAME_DARK_PIERCE "DarkPierce"
 #define SKILL_NAME_BAT_SWARM "BatSwarm"
+#define SKILL_NAME_NATURESATTENDANTS "NaturesAttendants"
+#define SKILL_NAME_IMPETUS "Impetus"
+#define SKILL_NAME_BONESRAIN "BonesRain"
+#define SKILL_NAME_MAGIC_PULSE "MagicPulse"
 
 #define GAME_TASK_TYPE_LIMITED_TIME "limited_time"
 #define GAME_TASK_TYPE_SURVIVE "survive"

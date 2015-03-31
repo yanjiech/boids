@@ -290,9 +290,9 @@ void BEUIUnitAction::saveEvent() {
 
 int BEUIUnitAction::itemCount() {
     if (_editMode) {
-        return _editableActions.size();
+        return (int)_editableActions.size();
     } else {
-        return _sourceList.size();
+        return (int)_sourceList.size();
     }
 }
 
@@ -1049,7 +1049,7 @@ void BEUIWaveAction::loadPositionGroups(const std::vector<std::string>& groups) 
 }
 
 int BEUIWaveAction::itemCount() {
-    return _unitList.size();
+    return (int)_unitList.size();
 }
 
 std::string BEUIWaveAction::searchNameAtIndex(int index) {
@@ -1252,7 +1252,7 @@ std::string BEUIConversationAction::displayNameAtIndex(int index) {
 }
 
 int BEUIConversationAction::itemCount() {
-    return _sources.size();
+    return (int)_sources.size();
 }
 
 void BEUIConversationAction::onAddButtonClicked(Ref *sender) {

@@ -155,8 +155,7 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
 }
 
 UnitNode::UnitNode() :
-_state( eUnitState::Unknown_Unit_State ),
-_using_skill_node( nullptr ) {
+_state( eUnitState::Unknown_Unit_State ) {
 }
 
 UnitNode::~UnitNode() {
@@ -425,10 +424,10 @@ void UnitNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
         this->onAttackBegan();
     }
     else if( animation_name == "Cast" && event_name == "OnJuneng" ) {
-        
+        this->onCharging();
     }
     else if( animation_name == "Cast2" && event_name == "OnJuneng" ) {
-        
+        this->onCharging();
     }
 }
 
@@ -575,8 +574,16 @@ cocos2d::Point UnitNode::getEmitPos() {
     return ret;
 }
 
+cocos2d::Point UnitNode::getLocalEmitPos() {
+    return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, "EmitPoint" );
+}
+
 cocos2d::Point UnitNode::getLocalHeadPos() {
     return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, "tou" );
+}
+
+cocos2d::Point UnitNode::getLocalBonePos( const std::string& bone_name ) {
+    return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, bone_name );
 }
 
 void UnitNode::appear() {
@@ -769,6 +776,8 @@ void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_pe
         _using_skill_params["skill_id"] = Value( skill_id );
         _using_skill_params["range_per"] = Value( range_per );
         _using_skill_params["state"] = Value( "start" );
+        _using_skill_params["charging_effect"] = Value( _skills.at( skill_id )->getChargingEffect() );
+        _using_skill_params["charging_effect_pos"] = Value( _skills.at( skill_id )->getChargingEffectPos() );
         this->changeUnitState( eUnitState::Casting, true );
     }
 }
@@ -997,8 +1006,19 @@ void UnitNode::attack( TargetNode* unit ) {
     this->changeUnitState( eUnitState::Attacking );
 }
 
-void UnitNode::onCharging( int i ) {
-    
+void UnitNode::onCharging() {
+    std::string resource = _using_skill_params["charging_effect"].asString();
+    std::string effect_pos = _using_skill_params["charging_effect"].asString();
+    if( resource != "" ) {
+        spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+        std::string name = Utils::stringFormat( "charging_%d", BulletNode::getNextBulletId() );
+        UnitNodeFollowSpineComponent* charging_component = UnitNodeFollowSpineComponent::create( this, effect_pos, skeleton, name, true );
+        if( effect_pos != "" ) {
+            charging_component->setPosition( this->getLocalBonePos( effect_pos ) );
+        }
+        this->addUnitComponent( charging_component, charging_component->getName(), eComponentLayer::OverObject );
+        charging_component->setAnimation( 0, "animation", false );
+    }
 }
 
 void UnitNode::onAttackBegan() {
@@ -1184,4 +1204,8 @@ void UnitNode::riseup( float duration, float delta_height ) {
 void UnitNode::falldown( float duration, float delta_height ) {
     _current_skeleton->stopActionByTag( 10000 );
     _current_skeleton->setPosition( Point::ZERO );
+}
+
+bool UnitNode::isAlive() {
+    return _state < eUnitState::Dying;
 }

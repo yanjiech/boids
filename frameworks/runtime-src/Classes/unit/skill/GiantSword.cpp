@@ -51,12 +51,9 @@ bool GiantSword::init( UnitNode* owner, const cocos2d::ValueMap& data, const coc
 }
 
 void GiantSword::updateFrame( float delta ) {
-    this->end();
 }
 
 void GiantSword::begin() {
-    SkillNode::begin();
-    
     std::string resource = "effects/saber_skill_1/down";
     spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
     UnitNodeSpineComponent* bottom_component = UnitNodeSpineComponent::create( skeleton, Utils::stringFormat( "giantsword_%d_bottom", BulletNode::getNextBulletId() ), true );
@@ -70,5 +67,4 @@ void GiantSword::begin() {
 }
 
 void GiantSword::end() {
-    SkillNode::end();
 }

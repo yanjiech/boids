@@ -23,7 +23,7 @@
     },
     "deploy_units" :
     [
-        "5"
+        "100"
     ],
     "units" :
     {
@@ -76,15 +76,15 @@
         "3" :
         {
             "name" : "enchantress",
-            "level" : 10,
+            "level" : 20,
             "skills" :
             [
                 {
-                     "name" : "",
+                     "name" : "NaturesAttendants",
                      "level" : 1
                 },
                 {
-                     "name" : "",
+                     "name" : "Impetus",
                      "level" : 2
                 }
             ],
@@ -141,7 +141,27 @@
                 "boot" : "none",
                 "accessory" : "none"
             }
+        },
+        "100" :
+        {
+            "name" : "skeleton_king",
+            "level" : 5,
+            "skills" :
+            [
+                {
+                    "name" : "BonesRain",
+                    "level" : 1
+                }
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
         }
+
     },
     "equips" :
     {

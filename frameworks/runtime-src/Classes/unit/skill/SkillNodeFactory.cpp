@@ -36,6 +36,15 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_BAT_SWARM ) {
         ret = BatSwarm::create( owner, data );
     }
+    else if( name == SKILL_NAME_NATURESATTENDANTS ) {
+        ret = NaturesAttendants::create( owner, data );
+    }
+    else if( name == SKILL_NAME_IMPETUS ) {
+        ret = Impetus::create( owner, data );
+    }
+    else if( name == SKILL_NAME_BONESRAIN ) {
+        ret = BonesRain::create( owner, data, params );
+    }
     
     return ret;
 }

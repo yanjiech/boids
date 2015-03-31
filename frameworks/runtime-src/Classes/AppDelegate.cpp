@@ -77,7 +77,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     ResourceManager::getInstance()->loadAllData();
     
-#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+#if ( CC_TARGET_PLATFORM == CC_PLATFORM_MAC ) || ( CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 )
     EditMode::getInstance()->enterMain( CC_CALLBACK_0( AppDelegate::onEditModeExit, this ) );
 #else
     PlayerInfo::getInstance()->loadPlayerInfo();

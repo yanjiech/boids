@@ -83,8 +83,6 @@ private:
     
     BulletMap _bullets;
     
-    cocos2d::Vector<SkillNode*> _skill_nodes;
-    
     int _next_deploy_id;
     
     float _game_time;
@@ -94,8 +92,6 @@ private:
     int zorderForPositionOnObjectLayer( const cocos2d::Point& pos );
     
     void reorderObjectLayer();
-    
-    void updateSkillNodes( float delta );
     
 public:
     static eBattleState getBattleStateFromString( const std::string& str );
@@ -149,8 +145,7 @@ public:
     bool addBullet( int key, BulletNode* bullet );
     void removeBullet( int key );
     
-    void addSkillNode( SkillNode* skill_node );
-    void removeSkillNode( SkillNode* skill_node );
+    void updateBullets( float delta );
     
     void onUnitAppear( UnitNode* unit );
     void onUnitDying( UnitNode* unit );

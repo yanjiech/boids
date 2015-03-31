@@ -12,6 +12,7 @@
 #include "../AI/Terrain.h"
 #include "../BoidsMath.h"
 #include "../constant/BoidsConstant.h"
+#include "../unit/skill/SkillCache.h"
 
 using namespace cocos2d;
 
@@ -156,8 +157,10 @@ void BattleLayer::reset() {
 void BattleLayer::updateFrame( float delta ) {
     if( _state == BattleRunning ) {
         _game_time += delta;
+        
+        //update skill
+        SkillCache::getInstance()->updateFrame( delta );
         _skill_ui_layer->updateFrame( delta );
-        this->updateSkillNodes( delta );
         
         //handle dead units which need to be removed from battle
         UnitMap dead_unit_map = this->getDeadUnits();
@@ -180,17 +183,7 @@ void BattleLayer::updateFrame( float delta ) {
         }
         
         //update bullets
-        BulletMap bullets = _bullets;
-        
-        for( auto pair : bullets ) {
-            BulletNode* b = pair.second;
-            if( b->shouldRecycle() ) {
-                this->removeBullet( b->getBulletId() );
-            }
-            else {
-                b->updateFrame( delta );
-            }
-        }
+        this->updateBullets( delta );
         
         //handle alive units
         for( auto pair : _alive_units ) {
@@ -344,7 +337,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp
         UnitNode* unit = pair.second;
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
-            if( Math::isPositionInRange( unit->getPosition(), center, radius ) ) {
+            if( Math::isPositionInRange( unit->getPosition(), center, radius + unit->getUnitData()->collide ) ) {
                 ret.pushBack( unit );
             }
         }
@@ -358,7 +351,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp
         UnitNode* unit = pair.second;
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
-            if( Math::isPositionInRange( unit_pos, center, radius ) && !Terrain::getInstance()->isBlocked( init_pos, unit_pos ) ) {
+            if( Math::isPositionInRange( unit_pos, center, radius + unit->getUnitData()->collide ) && !Terrain::getInstance()->isBlocked( init_pos, unit_pos ) ) {
                 ret.pushBack( unit );
             }
         }
@@ -421,11 +414,19 @@ void BattleLayer::removeBullet( int key ) {
     }
 }
 
-void BattleLayer::addSkillNode( SkillNode* skill_node ) {
-    _skill_nodes.pushBack( skill_node );
-}
-void BattleLayer::removeSkillNode( SkillNode* skill_node ) {
-    _skill_nodes.eraseObject( skill_node );
+void BattleLayer::updateBullets( float delta ) {
+    auto itr = _bullets.begin();
+    while( itr != _bullets.end() ) {
+        BulletNode* b = itr->second;
+        if( b->shouldRecycle() ) {
+            itr = _bullets.erase( itr );
+            b->removeFromParent();
+        }
+        else {
+            b->updateFrame( delta );
+            ++itr;
+        }
+    }
 }
 
 void BattleLayer::onUnitAppear( UnitNode* unit ) {
@@ -668,19 +669,5 @@ void BattleLayer::reorderObjectLayer() {
     for( auto pair : _dead_units ) {
         UnitNode* unit_node = pair.second;
         unit_node->setLocalZOrder( this->zorderForPositionOnObjectLayer( unit_node->getPosition() ) );
-    }
-}
-
-void BattleLayer::updateSkillNodes( float delta ) {
-    auto itr = _skill_nodes.begin();
-    while( itr != _skill_nodes.end() ) {
-        SkillNode* node = *itr;
-        if( node->shouldRecycle() ) {
-            itr = _skill_nodes.erase( itr );
-        }
-        else {
-            node->updateFrame( delta );
-            ++itr;
-        }
     }
 }

@@ -160,8 +160,6 @@ private:
     
     cocos2d::ValueVector _unit_tags;
     
-    SkillNode* _using_skill_node;
-    
 private:
     void updateComponents( float delta );
     void updateBuffs( float delta );
@@ -225,7 +223,10 @@ public:
     cocos2d::Point getLocalHitPos();
     cocos2d::Point getHitPos();
     cocos2d::Point getEmitPos();
+    cocos2d::Point getLocalEmitPos();
     cocos2d::Point getLocalHeadPos();
+    
+    cocos2d::Point getLocalBonePos( const std::string& bone_name );
     
     void appear();
     void disappear();
@@ -306,7 +307,7 @@ public:
     bool canAttack( TargetNode* target_node );
     
     void attack( TargetNode* unit );
-    void onCharging( int i );
+    void onCharging();
     void onAttackBegan();
     void onAttacking();
     void onCasting();
@@ -344,11 +345,10 @@ public:
     float getSkillCDById( int sk_id );
     bool isSkillReadyById( int sk_id );
     
-    void setUsingSkillNode( SkillNode* skill_node ) { _using_skill_node = nullptr; }
-    SkillNode* getSkillNode() { return _using_skill_node; }
-    
     void riseup( float _duration, float delta_height );
     void falldown( float _duration, float delta_height );
+    
+    bool isAlive();
 };
 
 #endif /* defined(__Boids__UnitNode__) */

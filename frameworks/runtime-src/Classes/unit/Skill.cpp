@@ -63,7 +63,6 @@ void Skill::activate( const cocos2d::ValueMap& params ) {
     this->setSkillState( eSkillState::SkillStateCasting );
     SkillNode* skill_node = SkillNodeFactory::createSkillNode( _skill_name, _owner, _skill_data, params );
     skill_node->begin();
-    _owner->getBattleLayer()->addSkillNode( skill_node );
 }
 
 void Skill::reload() {
@@ -113,6 +112,22 @@ float Skill::getSkillMinRange() {
 
 std::string Skill::getSkillHintType() {
     return _skill_data.at( "hint" ).asString();
+}
+
+std::string Skill::getChargingEffect() {
+    auto itr = _skill_data.find( "charging_effect" );
+    if( itr != _skill_data.end() ) {
+        return itr->second.asString();
+    }
+    return "";
+}
+
+std::string Skill::getChargingEffectPos() {
+    auto itr = _skill_data.find( "charging_effect_pos" );
+    if( itr != _skill_data.end() ) {
+        return itr->second.asString();
+    }
+    return "";
 }
 
 bool Skill::shouldContinue() {

@@ -647,7 +647,7 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
                 trigger = std::shared_ptr<EditorGameTrigger>(new EditorGameTrigger());
             } else if (triggerType == "vision_change") {
                 trigger = std::shared_ptr<EditorVisionTrigger>(new EditorVisionTrigger());
-            } else if (triggerType == "conversation_action") {
+            } else if (triggerType == "conversation_change") {
                 trigger = std::shared_ptr<EditorConversationChangeTrigger>(new EditorConversationChangeTrigger());
             }
             trigger->loadJson(triggers[i]);

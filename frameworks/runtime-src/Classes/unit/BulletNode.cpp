@@ -471,6 +471,7 @@ void FixedPosBulletNode::shootAtPosition( const cocos2d::Point& pos ) {
     std::string resource = Utils::stringFormat( "effects/bullets/%s_body", _bullet_data.at( "name" ).asString().c_str() );
     spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
     skeleton->setEventListener( CC_CALLBACK_2( FixedPosBulletNode::onSkeletonAnimationEvent, this ) );
+    skeleton->setCompleteListener( CC_CALLBACK_1( FixedPosBulletNode::onSkeletonAnimationCompleted, this ) );
     skeleton->setAnimation( 0, "animation", false );
     auto itr = _bullet_data.find( "scale" );
     if( itr != _bullet_data.end() ) {
@@ -523,6 +524,8 @@ void FixedPosBulletNode::onSkeletonAnimationEvent( int track_index, spEvent* eve
             component->setAnimation( 0, "animation", false );
         }
     }
-    
-    this->setShouldRecycle( true );
+}
+
+void FixedPosBulletNode::onSkeletonAnimationCompleted( int track_index ) {
+     this->setShouldRecycle( true );
 }

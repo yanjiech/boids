@@ -23,6 +23,9 @@ enum eComponentLayer {
     Float = 7
 };
 
+class DamageCalculate;
+class UnitNode;
+
 class UnitNodeComponent : public cocos2d::Node {
 protected:
     bool _auto_recycle;
@@ -56,8 +59,23 @@ public:
     void onSkeletonAnimationCompleted( int track_index );
 };
 
-class DamageCalculate;
-class UnitNode;
+
+class UnitNodeFollowSpineComponent : public UnitNodeSpineComponent {
+private:
+    UnitNode* _source_unit;
+    std::string _bone_name;
+    
+public:
+    UnitNodeFollowSpineComponent();
+    virtual ~UnitNodeFollowSpineComponent();
+    static UnitNodeFollowSpineComponent* create( UnitNode* source_unit, const std::string& bone_name, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
+    virtual bool init( UnitNode* source_unit, const std::string& bone_name, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
+    
+    virtual void updateFrame( float delta );
+    
+    void setSourceUnit( UnitNode* source_unit );
+};
+
 
 class UnitNodeSpineDamageComponent : public UnitNodeSpineComponent {
 private:

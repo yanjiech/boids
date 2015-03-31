@@ -69,6 +69,9 @@ public:
     float getSkillMinRange();
     std::string getSkillHintType();
     
+    std::string getChargingEffect();
+    std::string getChargingEffectPos();
+    
     bool shouldContinue();
 };
 

@@ -126,6 +126,21 @@ public:
     virtual void updateFrame( float delta );
     
     void onSkeletonAnimationEvent( int track_index, spEvent* event );
+    void onSkeletonAnimationCompleted( int track_index );
+};
+
+class HealBullet : public BulletNode {
+private:
+    float _duration;
+    
+public:
+    HealBullet();
+    virtual ~HealBullet();
+    
+    static HealBullet* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator );
+    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculator* damage_calculator );
+    
+    virtual void updateFrame( float delta );
 };
 
 #endif /* defined(__Boids__BulletNode__) */

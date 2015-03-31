@@ -94,6 +94,50 @@ void UnitNodeSpineComponent::onSkeletonAnimationCompleted( int track_index ) {
     }
 }
 
+UnitNodeFollowSpineComponent::UnitNodeFollowSpineComponent() :
+_source_unit( nullptr )
+{
+    
+}
+
+UnitNodeFollowSpineComponent::~UnitNodeFollowSpineComponent() {
+    
+}
+
+UnitNodeFollowSpineComponent* UnitNodeFollowSpineComponent::create( UnitNode* source_unit, const std::string& bone_name, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    UnitNodeFollowSpineComponent* ret = new UnitNodeFollowSpineComponent();
+    if( ret && ret->init( source_unit, bone_name, skeleton, name, auto_recycle ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitNodeFollowSpineComponent::init( UnitNode* source_unit, const std::string& bone_name, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    if( !UnitNodeSpineComponent::init( skeleton, name, auto_recycle ) ) {
+        return false;
+    }
+    this->setSourceUnit( source_unit );
+    _bone_name = bone_name;
+    return true;
+}
+
+void UnitNodeFollowSpineComponent::updateFrame( float delta ) {
+    if( _bone_name != "" ) {
+        Point new_pos = _source_unit->getLocalBonePos( _bone_name );
+        this->setPosition( new_pos );
+    }
+}
+
+void UnitNodeFollowSpineComponent::setSourceUnit( UnitNode* source_unit ) {
+    CC_SAFE_RELEASE( _source_unit );
+    _source_unit = source_unit;
+    CC_SAFE_RETAIN( _source_unit );
+}
+
 TimeLimitSpineComponent::TimeLimitSpineComponent() {
     
 }

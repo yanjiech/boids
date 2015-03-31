@@ -17,6 +17,9 @@
 #include "LightShield.h"
 #include "DarkPierce.h"
 #include "BatSwarm.h"
+#include "NaturesAttendants.h"
+#include "Impetus.h"
+#include "BonesRain.h"
 
 class SkillNodeFactory {
 public:
