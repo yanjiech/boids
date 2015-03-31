@@ -26,10 +26,10 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     //freopen("CONOUT$", "w", stdout);
 	//freopen("CONOUT$", "w", stderr);
 
-	CmdLineDebugger::getInstance()->listen(); //不知道mac下能不能用；有需求再说
+	//CmdLineDebugger::getInstance()->listen(); //不知道mac下能不能用；有需求再说
 #endif
 
-	Utils::runTest();
+	//Utils::runTest();
 
     // create the application instance
     AppDelegate app;
