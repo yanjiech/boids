@@ -52,7 +52,7 @@
         "hint" : "circle",
         "count" : 5,
         "speed" : 800.0,
-        "damage" : 35.0,
+        "damage" : [ 35.0, 40.0, 50.0 ],
         "interval" : 0.1,
         "range" : 400.0,
         "cd" : 5.0
