@@ -67,6 +67,8 @@ public:
     int level;
     float hp;
     float current_hp;
+    float mp;
+    float current_mp;
     float atk;
     float def;
     float move_speed;

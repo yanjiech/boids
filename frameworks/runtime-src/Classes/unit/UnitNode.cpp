@@ -60,6 +60,8 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
     this->display_name = unit_config.at( "displayname" ).asString();
     this->hp = unit_config.at( "hp" ).asFloat() + this->level * (float)unit_config.at( "hpgr" ).asFloat();
     this->current_hp = this->hp;
+    this->mp = unit_config.at( "mp" ).asFloat() + this->level * (float)unit_config.at( "mpgr" ).asFloat();
+    this->current_mp = this->mp;
     this->atk = unit_config.at( "atk" ).asFloat() + this->level * unit_config.at( "atkgr" ).asFloat();
     this->def = unit_config.at( "def" ).asFloat() + this->level * unit_config.at( "defgr" ).asFloat();
     this->move_speed = unit_config.at( "movespeed" ).asFloat();
@@ -130,6 +132,10 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
     else if( key == "hp" ) {
         this->hp = (float)Utils::toDouble( value );
         this->current_hp = this->hp;
+    }
+    else if( key == "mp" ) {
+        this->mp = (float)Utils::toDouble( value );
+        this->current_mp = this->mp;
     }
     else if( key == "id" ) {
         this->unit_id = Utils::toInt( value );
