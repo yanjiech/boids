@@ -12,6 +12,17 @@
 #include "SkillNode.h"
 
 class NaturesAttendants : public SkillNode {
+private:
+    float _heal;
+    float _range;
+    float _duration;
+    float _interval;
+    float _elapse;
+    float _heal_elapse;
+    float _accel;
+    float _init_speed;
+    int _count;
+    
 public:
     NaturesAttendants();
     virtual ~NaturesAttendants();

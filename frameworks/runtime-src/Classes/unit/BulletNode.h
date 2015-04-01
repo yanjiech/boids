@@ -92,7 +92,7 @@ public:
     void setDamageCalculator( DamageCalculate* calculator );
     void setBuff( class Buff* buff );
     
-    void setShouldRecycle( bool b ) { _should_recycle = b; }
+    void setShouldRecycle( bool b );
     bool shouldRecycle() { return _should_recycle; }
 };
 

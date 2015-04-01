@@ -45,6 +45,12 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_BONESRAIN ) {
         ret = BonesRain::create( owner, data, params );
     }
+    else if( name == SKILL_NAME_MAGIC_PULSE ) {
+        ret = MagicPulse::create( owner, data );
+    }
+    else if( name == SKILL_NAME_MISSILE_SHOWERS ) {
+        ret = MissileShowers::create( owner, data );
+    }
     
     return ret;
 }

@@ -20,6 +20,8 @@
 #include "NaturesAttendants.h"
 #include "Impetus.h"
 #include "BonesRain.h"
+#include "MagicPulse.h"
+#include "MissileShowers.h"
 
 class SkillNodeFactory {
 public:

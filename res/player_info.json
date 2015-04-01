@@ -23,7 +23,7 @@
     },
     "deploy_units" :
     [
-        "100"
+        "3"
     ],
     "units" :
     {
@@ -160,8 +160,46 @@
                 "boot" : "none",
                 "accessory" : "none"
             }
-        }
+        },
+        "101" :
+        {
+            "name" : "women_wizard",
+            "level" : 40,
+            "skills" :
+            [
+                {
+                    "name" : "MagicPulse",
+                    "level" : 3
+                }
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
 
+        },
+        "102" :
+        {
+            "name" : "rattletrap",
+            "level" : 40,
+            "skills" :
+            [
+                {
+                    "name" : "MissileShowers",
+                    "level" : 3
+                }
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
+        }
     },
     "equips" :
     {

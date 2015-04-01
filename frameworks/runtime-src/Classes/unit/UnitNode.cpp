@@ -390,21 +390,23 @@ void UnitNode::onSkeletonAnimationCompleted( int track_index ) {
     }
     else if( animation_name == "Cast" || animation_name == "Cast2" ) {
         if( _using_skill_params["multi_action"].asBool() ) {
-            _unit_state_changed = true;
-            this->setNextUnitState( eUnitState::Casting );
-            _using_skill_params["state"] = Value( "continue" );
+            if( _using_skill_params["state"].asString() == "start" ) {
+                _unit_state_changed = true;
+                this->setNextUnitState( eUnitState::Casting );
+                _using_skill_params["state"] = Value( "continue" );
+            }
         }
         else {
             this->endSkill();
             this->changeUnitState( eUnitState::Idle );
         }
     }
-    else if( animation_name == "Cast_1" || animation_name == "Cast2_1" ) {
-        if( _using_skill_params["state"].asString() == "end" ) {
-            _unit_state_changed = true;
-            this->setNextUnitState( eUnitState::Casting );
-        }
-    }
+//    else if( animation_name == "Cast_1" || animation_name == "Cast2_1" ) {
+//        if( _using_skill_params["state"].asString() == "end" ) {
+//            _unit_state_changed = true;
+//            this->setNextUnitState( eUnitState::Casting );
+//        }
+//    }
     else if( animation_name == "Die" ) {
         this->changeUnitState( eUnitState::Disappear );
     }
@@ -634,7 +636,7 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
         }
         
         //jump damage number
-        std::string jump_text_name = Utils::stringFormat( "damage_from_%d_%f_jump_text", source_id, _battle_layer->getGameTime() );
+        std::string jump_text_name = Utils::stringFormat( "damage_number_%d", BulletNode::getNextBulletId() );
         this->jumpNumber( damage, "damage", is_cri, jump_text_name );
         
         //update blood bar
@@ -653,6 +655,10 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
     }
 }
 
+void UnitNode::takeHeal( const cocos2d::ValueMap& result, int source_id ) {
+    this->takeHeal( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), source_id );
+}
+
 void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
     _unit_data->current_hp += amount;
     if( _unit_data->current_hp > _unit_data->hp ) {
@@ -660,11 +666,11 @@ void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
     }
     //add heal effect
     std::string resource = "effects/heal";
-    std::string component_name = Utils::stringFormat( "heal_from_%d", source_id );
+    std::string component_name = Utils::stringFormat( "heal_effect_%d", BulletNode::getNextBulletId() );
     spine::SkeletonAnimation* effect = ArmatureManager::getInstance()->createArmature( resource );
     effect->setScale( 0.7f );
     UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( effect, component_name, true );
-    component->setPosition( this->getLocalHitPos() );
+    component->setPosition( Point::ZERO );
     this->addUnitComponent( component, component_name, eComponentLayer::OverObject );
     component->setAnimation( 0, "animation", false );
     
@@ -672,8 +678,8 @@ void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
     _hp_bar->setPercentage( _unit_data->current_hp / _unit_data->hp * 100.0f );
     
     //jump number
-    std::string jump_text_name = component_name + "_jump_text";
-    this->jumpNumber( amount, "heal", is_cri, component_name );
+    std::string jump_text_name = Utils::stringFormat( "heal_number_%d", BulletNode::getNextBulletId() );
+    this->jumpNumber( amount, "heal", is_cri, jump_text_name );
 }
 
 void UnitNode::setGLProgrameState( const std::string& name ) {
@@ -1008,7 +1014,7 @@ void UnitNode::attack( TargetNode* unit ) {
 
 void UnitNode::onCharging() {
     std::string resource = _using_skill_params["charging_effect"].asString();
-    std::string effect_pos = _using_skill_params["charging_effect"].asString();
+    std::string effect_pos = _using_skill_params["charging_effect_pos"].asString();
     if( resource != "" ) {
         spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
         std::string name = Utils::stringFormat( "charging_%d", BulletNode::getNextBulletId() );

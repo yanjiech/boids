@@ -133,6 +133,7 @@ public:
     
     cocos2d::Vector<UnitNode*> getAliveOpponents( eUnitCamp camp );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eUnitCamp camp );
+    cocos2d::Vector<UnitNode*> getAliveAllyInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveUnitsByTag( const std::string& tag );
     cocos2d::Vector<UnitNode*> getAliveUnitsByName( const std::string& name );
     cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );

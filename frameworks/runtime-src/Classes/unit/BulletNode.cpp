@@ -211,10 +211,7 @@ void BulletNode::updateFrame( float delta ) {
             }
         }
         
-        if( _streak ) {
-            _streak->removeFromParent();
-        }
-        _should_recycle = true;
+        this->setShouldRecycle( true );
     }
     else {
         //not hit yet, update bullet position
@@ -283,6 +280,13 @@ void BulletNode::setBuff( class Buff* buff ) {
     }
 }
 
+void BulletNode::setShouldRecycle( bool b ) {
+    _should_recycle = b;
+    if( _should_recycle && _streak ) {
+        _streak->removeFromParent();
+    }
+}
+
 //private methods
 void BulletNode::shoot( class UnitNode* source ) {
     std::string body_type = _bullet_data.at( "body_type" ).asString();
@@ -314,7 +318,7 @@ void BulletNode::shoot( class UnitNode* source ) {
     itr = _bullet_data.find( "streak_color" );
     if( itr != _bullet_data.end() ) {
         const ValueMap& streak_rgb = itr->second.asValueMap();
-        _streak = MotionStreak::create( 0.5, 3, _bullet_data.at( "streak_width" ).asFloat(), Color3B( streak_rgb.at( "r" ).asInt(), streak_rgb.at( "g" ).asInt(), streak_rgb.at( "b" ).asInt() ), "effetcs/tuowei.png" );
+        _streak = MotionStreak::create( 0.5, 3, _bullet_data.at( "streak_width" ).asFloat(), Color3B( streak_rgb.at( "r" ).asInt(), streak_rgb.at( "g" ).asInt(), streak_rgb.at( "b" ).asInt() ), "effects/tuowei.png" );
         _battle_layer->addToEffectLayer( _streak, _init_pos, source->getLocalZOrder() );
     }
     
@@ -433,9 +437,6 @@ void DirectionalBulletNode::updateFrame( float delta ) {
                 }
             }
         }
-    }
-    if( _should_recycle && _streak ) {
-        _streak->removeFromParent();
     }
 }
 

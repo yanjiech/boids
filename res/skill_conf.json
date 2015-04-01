@@ -121,7 +121,7 @@
         "buff_damage" : [ 5.0, 10.0, 20.0 ],
         "range" : 500.0,
         "charging_effect" : "effects/enchantress_skill_2/charge",
-        "charging_effect_pos" : "EmitPos"
+        "charging_effect_pos" : "EmitPoint"
     },
     "LightningChain" :
     {
@@ -161,7 +161,8 @@
         "damage" : [ 50.0, 100.0, 200.0 ],
         "cd" : 6.0,
         "range" : 400.0,
-        "count" : 3,
+        "count" : [ 3, 3, 3 ],
+        "radius" : 100.0,
         "interval" : 0.3
     },
     "NaturesAttendants" :
@@ -176,7 +177,7 @@
         "init_speed" : 300.0,
         "accel" : 600.0,
         "duration" : 10.0
-     },
+    },
     "PandaFire" :
     {
         "multi_action" : false,

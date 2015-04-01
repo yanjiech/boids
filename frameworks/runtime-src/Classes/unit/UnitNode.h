@@ -237,6 +237,8 @@ public:
     
     void takeDamage( const cocos2d::ValueMap& result, int source_id );
     void takeDamage( float amount, bool is_cri, bool is_miss, int source_id );
+    
+    void takeHeal( const cocos2d::ValueMap& result, int source_id );
     void takeHeal( float amount, bool is_cri, int source_id );
     
     void setGLProgrameState( const std::string& name );

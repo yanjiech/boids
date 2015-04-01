@@ -305,6 +305,22 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCamp( eUnitCamp camp ) {
     return ret;
 }
 
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveAllyInRange( eUnitCamp camp, const cocos2d::Point& center, float radius ) {
+    cocos2d::Vector<UnitNode*> ret;
+    
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        if( !unit->isFoeOfCamp( camp ) ) {
+            Point unit_pos = unit->getPosition();
+            if( Math::isPositionInRange( unit->getPosition(), center, radius + unit->getUnitData()->collide ) ) {
+                ret.pushBack( unit );
+            }
+        }
+    }
+    
+    return ret;
+}
+
 cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByTag( const std::string& tag ) {
     cocos2d::Vector<UnitNode*> ret;
     

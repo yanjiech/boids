@@ -112,7 +112,33 @@ public:
     virtual void updateFrame( float delta );
     
     bool setAnimation( int track_index, const std::string& name, bool loop );
+    
+    void setDuration( float duration ) { _duration = duration; }
 };
+
+class TimeLimitWanderSpineComponent : public TimeLimitSpineComponent {
+protected:
+    float _init_speed;
+    float _accelarate;
+    cocos2d::Point _speed;
+    cocos2d::Point _gravity_point;
+    float _range;
+    UnitNode* _source_unit;
+    float _accel_change_interval;
+    float _accel_change_elapse;
+    
+public:
+    TimeLimitWanderSpineComponent();
+    virtual ~TimeLimitWanderSpineComponent();
+    
+    static TimeLimitWanderSpineComponent* create( const cocos2d::ValueMap& data, UnitNode* source_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
+    virtual bool init( const cocos2d::ValueMap& data, UnitNode* source_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
+    
+    virtual void updateFrame( float delta );
+    
+    void setSourceUnit( UnitNode* source_unit );
+};
+
 
 class UnitNodeFadeoutComponent : public UnitNodeComponent {
 public:

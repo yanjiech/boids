@@ -25,6 +25,9 @@ private:
     UnitNode* _target_unit;
     
     TimeLimitSpineComponent* _component;
+    TimeLimitSpineComponent* _hit_component;
+    
+    void adjustComponent();
     
 public:
     MagicPulse();

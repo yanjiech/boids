@@ -1569,7 +1569,7 @@
         "guard_radius": 260.0, 
         "hit": 22.0, 
         "hitgr": 3.1, 
-        "hp": 1100.0, 
+        "hp": 11000.0, 
         "hpgr": 250.0, 
         "id": 301002, 
         "is_melee": true, 
@@ -1918,7 +1918,9 @@
         "rec": 0.5, 
         "recgr": 0.2, 
         "scale": 1.0, 
-        "skills": [], 
+        "skills": [
+            "MagicPulse"    
+        ], 
         "ten": 0.0, 
         "tengr": 1.1
     }, 

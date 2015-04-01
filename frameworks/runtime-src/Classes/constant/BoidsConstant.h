@@ -57,6 +57,7 @@
 #define SKILL_NAME_IMPETUS "Impetus"
 #define SKILL_NAME_BONESRAIN "BonesRain"
 #define SKILL_NAME_MAGIC_PULSE "MagicPulse"
+#define SKILL_NAME_MISSILE_SHOWERS "MissileShowers"
 
 #define GAME_TASK_TYPE_LIMITED_TIME "limited_time"
 #define GAME_TASK_TYPE_SURVIVE "survive"
