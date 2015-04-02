@@ -353,6 +353,8 @@ public:
     void falldown( float _duration, float delta_height );
     
     bool isAlive();
+    
+    void makeSpeech( const std::string& content, float duration );
 };
 
 #endif /* defined(__Boids__UnitNode__) */

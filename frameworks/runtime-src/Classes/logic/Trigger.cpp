@@ -38,6 +38,12 @@ Trigger* Trigger::create( const cocos2d::ValueMap& data ) {
         else if( unit_state == UNIT_STATE_ALIVE ) {
             ret = UnitAliveTrigger::create( data );
         }
+        else if( unit_state == UNIT_STATE_APPEAR ) {
+            ret = UnitAppearTrigger::create( data );
+        }
+        else if( unit_state == UNIT_STATE_DISAPPEAR ) {
+            ret = UnitDisappearTrigger::create( data );
+        }
     }
     else if( trigger_type == EVENT_TRIGGER_TYPE_UNIT_STAY ) {
         ret = UnitStayTrigger::create( data );
@@ -127,10 +133,119 @@ bool UnitChangeTrigger::init( const cocos2d::ValueMap& data ) {
     if( !Trigger::init( data ) ) {
         return false;
     }
+    
+    _current_count = 0;
+    
+    auto itr = _trigger_data.find( "trigger_count" );
+    if( itr != _trigger_data.end() ) {
+        _need_count = itr->second.asInt();
+    }
+    else {
+        _need_count = 1;
+    }
+    
     return true;
 }
 
 void UnitChangeTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state ) {
+    std::string source_type = _trigger_data.at( "source_type" ).asString();
+    std::string source_value = _trigger_data.at( "source_value" ).asString();
+    
+    if( source_type == UNIT_SOURCE_TYPE ) {
+        if( unit_node->getUnitCamp() == UnitNode::getCampByString( source_value ) ) {
+            ++_current_count;
+        }
+    }
+    else if( source_type == UNIT_SOURCE_TAG ) {
+        if( unit_node->hasUnitTag( source_value ) ) {
+            ++_current_count;
+        }
+    }
+    else if( source_type == UNIT_SOURCE_NAME ) {
+        if( unit_node->getUnitData()->name == source_value ) {
+            ++_current_count;
+        }
+    }
+}
+
+UnitAppearTrigger::UnitAppearTrigger() {
+    
+}
+
+UnitAppearTrigger::~UnitAppearTrigger() {
+    
+}
+
+UnitAppearTrigger* UnitAppearTrigger::create( const cocos2d::ValueMap& data ) {
+    UnitAppearTrigger* ret = new UnitAppearTrigger();
+    if( ret && ret->init( data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitAppearTrigger::init( const cocos2d::ValueMap& data ) {
+    if( !UnitChangeTrigger::init( data ) ) {
+        return false;
+    }
+    
+    return true;
+}
+
+void UnitAppearTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state ) {
+    if( unit_state != UNIT_STATE_APPEAR ) {
+        return;
+    }
+    
+    UnitChangeTrigger::updateTrigger( map_logic, unit_node, unit_state );
+    
+    if( _current_count >= _need_count ) {
+        this->setCouldTrigger( true );
+    }
+}
+
+UnitDisappearTrigger::UnitDisappearTrigger() {
+    
+}
+
+UnitDisappearTrigger::~UnitDisappearTrigger() {
+    
+}
+
+UnitDisappearTrigger* UnitDisappearTrigger::create( const cocos2d::ValueMap& data ) {
+    UnitDisappearTrigger* ret = new UnitDisappearTrigger();
+    if( ret && ret->init( data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitDisappearTrigger::init( const cocos2d::ValueMap& data ) {
+    if( !UnitChangeTrigger::init( data ) ) {
+        return false;
+    }
+    
+    return true;
+}
+
+void UnitDisappearTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state ) {
+    if( unit_state != UNIT_STATE_DISAPPEAR ) {
+        return;
+    }
+    
+    UnitChangeTrigger::updateTrigger( map_logic, unit_node, unit_state );
+    
+    if( _current_count >= _need_count ) {
+        this->setCouldTrigger( true );
+    }
 }
 
 UnitDeadTrigger::UnitDeadTrigger() {
@@ -158,42 +273,15 @@ bool UnitDeadTrigger::init( const cocos2d::ValueMap& data ) {
         return false;
     }
     
-    _current_count = 0;
-    
-    auto itr = _trigger_data.find( "trigger_count" );
-    if( itr != _trigger_data.end() ) {
-        _need_count = itr->second.asInt();
-    }
-    else {
-        _need_count = 1;
-    }
-    
     return true;
 }
 
 void UnitDeadTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state ) {
-    if( _trigger_data.at( "unit_state" ).asString() != unit_state ) {
+    if( unit_state != UNIT_STATE_DEAD ) {
         return;
     }
     
-    std::string source_type = _trigger_data.at( "source_type" ).asString();
-    std::string source_value = _trigger_data.at( "source_value" ).asString();
-    
-    if( source_type == UNIT_SOURCE_TYPE ) {
-        if( unit_node->getUnitCamp() == UnitNode::getCampByString( source_value ) ) {
-            ++_current_count;
-        }
-    }
-    else if( source_type == UNIT_SOURCE_TAG ) {
-        if( unit_node->hasUnitTag( source_value ) ) {
-            ++_current_count;
-        }
-    }
-    else if( source_type == UNIT_SOURCE_NAME ) {
-        if( unit_node->getUnitData()->name == source_value ) {
-            ++_current_count;
-        }
-    }
+    UnitChangeTrigger::updateTrigger( map_logic, unit_node, unit_state );
     
     if( _current_count >= _need_count ) {
         this->setCouldTrigger( true );

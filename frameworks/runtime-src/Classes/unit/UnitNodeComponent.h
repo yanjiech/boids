@@ -48,6 +48,21 @@ public:
     virtual void updateFrame( float delta );
 };
 
+class TimeLimitComponent : public UnitNodeComponent {
+protected:
+    float _duration;
+    float _elapse;
+    
+public:
+    TimeLimitComponent();
+    virtual ~TimeLimitComponent();
+    
+    static TimeLimitComponent* create( float duration, cocos2d::Node* node, const std::string& name, bool auto_recycle );
+    virtual bool init( float duration, cocos2d::Node* node, const std::string& name, bool auto_recycle );
+    
+    virtual void updateFrame( float delta );
+};
+
 class UnitNodeSpineComponent : public UnitNodeComponent {
 public:
     UnitNodeSpineComponent();

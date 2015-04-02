@@ -410,9 +410,12 @@ private:
     cocos2d::ui::Layout *_infoPanel;
     cocos2d::ui::TextField *_filterTextField;
     cocos2d::ui::TextField *_contentTextField;
-    cocos2d::ui::TextField *_durationTextField;
+    cocos2d::ui::TextField* _tf_duration;
+    cocos2d::ui::TextField* _tf_tag;
+    cocos2d::ui::TextField* _tf_interval;
+    cocos2d::ui::TextField* _tf_repeat;
+    cocos2d::ui::CheckBox* _cb_random;
     cocos2d::ui::TextField *_nameTextField;
-    cocos2d::ui::CheckBox *_cameraMoveCheckBox;
     cocos2d::ui::Button *_addButton;
     cocos2d::ui::Button *_okButton;
     cocos2d::ui::Button *_cancelButton;
@@ -423,22 +426,22 @@ private:
     void onDeleteButtonClicked(cocos2d::Ref *sender);
 };
 
-class BEUIConversationTrigger : public BEUIBase {
-public:
-    BEUIConversationTrigger(cocos2d::Node *root, const BEPopupEventHandler& handler);
-    virtual void reset();
-    void loadConversations(const std::vector<std::string>& conversations);
-    EditorConversationChangeTriggerPtr getTrigger();
-private:
-    cocos2d::ui::Button *_stateButton;
-    cocos2d::ui::Button *_okButton;
-    cocos2d::ui::Button *_cancelButton;
-    BETypeListView *_stateListView;
-    BEListView *_conversationListView;
-    
-    void onStateButtonClicked(cocos2d::Ref *sender);
-    void onStateItemClicked(cocos2d::Ref *sender);
-};
+//class BEUIConversationTrigger : public BEUIBase {
+//public:
+//    BEUIConversationTrigger(cocos2d::Node *root, const BEPopupEventHandler& handler);
+//    virtual void reset();
+//    void loadConversations(const std::vector<std::string>& conversations);
+//    EditorConversationChangeTriggerPtr getTrigger();
+//private:
+//    cocos2d::ui::Button *_stateButton;
+//    cocos2d::ui::Button *_okButton;
+//    cocos2d::ui::Button *_cancelButton;
+//    BETypeListView *_stateListView;
+//    BEListView *_conversationListView;
+//    
+//    void onStateButtonClicked(cocos2d::Ref *sender);
+//    void onStateItemClicked(cocos2d::Ref *sender);
+//};
 
 class BEEditorMainUI : public BEUIBase {
 public:
@@ -458,7 +461,7 @@ public:
     BEUIWaveAction *waveActionUI;
     BEUIGameCondition *gameConditionUI;
     BEUIConversationAction *conversationActionUI;
-    BEUIConversationTrigger *conversationChangeUI;
+//    BEUIConversationTrigger *conversationChangeUI;
     virtual void reset();
     void hideAllPopups();
     
@@ -486,7 +489,7 @@ private:
     cocos2d::ui::Layout *_waveActionPanel;
     cocos2d::ui::Layout *_gameConditionPanel;
     cocos2d::ui::Layout *_conversationActionPanel;
-    cocos2d::ui::Layout *_conversationChangePanel;
+//    cocos2d::ui::Layout *_conversationChangePanel;
     
     BEEditorCommandHandler _commandHandler;
 };

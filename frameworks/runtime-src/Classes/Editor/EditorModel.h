@@ -80,11 +80,9 @@ public:
 
 class EditorSpeech : public EditorBase {
 public:
-    std::string SourceType;
-    std::string Source;
     std::string Content;
-    bool CameraMove;
     float Duration;
+    float Interval;
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
 };
@@ -170,14 +168,14 @@ public:
     virtual void loadJson(const rapidjson::Value& value);
 };
 
-class EditorConversationChangeTrigger : public EditorTriggerBase {
-public:
-    EditorConversationChangeTrigger(): EditorTriggerBase("conversation_action") {}
-    std::string ConversationName;
-    std::string State;
-    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
-    virtual void loadJson(const rapidjson::Value& value);
-};
+//class EditorConversationChangeTrigger : public EditorTriggerBase {
+//public:
+//    EditorConversationChangeTrigger(): EditorTriggerBase("conversation_action") {}
+//    std::string ConversationName;
+//    std::string State;
+//    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
+//    virtual void loadJson(const rapidjson::Value& value);
+//};
 
 class EditorActionMeta : public EditorBase {
 public:
@@ -283,6 +281,10 @@ class EditorConversationAction : public EditorActionBase {
 public:
     std::vector<std::shared_ptr<EditorSpeech>> Speeches;
     std::string Name;
+    std::string SourceType;
+    std::string SourceValue;
+    bool RandomOrder;
+    int RepeatTimes;
     EditorConversationAction(): EditorActionBase("conversation_action") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
@@ -339,7 +341,6 @@ enum class EditorOperation {
     SetWaveAction,
     EditCondition,
     SetConverSationAction,
-    SetConverSationTrigger,
     EditEvent,
 };
 

@@ -156,20 +156,16 @@ void EditorGameCondition::loadJson(const rapidjson::Value& value) {
 
 rapidjson::Value& EditorSpeech::toJson(rapidjson::Document::AllocatorType& allocator) {
     EditorBase::toJson(allocator);
-    _json.AddMember("source_type", SourceType.c_str(), allocator);
-    _json.AddMember("source", Source.c_str(), allocator);
     _json.AddMember("content", Content.c_str(), allocator);
-    _json.AddMember("camera_move", CameraMove, allocator);
     _json.AddMember("duration", Duration, allocator);
+    _json.AddMember( "interval", Interval, allocator );
     return _json;
 }
 
 void EditorSpeech::loadJson(const rapidjson::Value& value) {
-    SourceType = value["source_type"].GetString();
-    Source = value["source"].GetString();
     Content = value["content"].GetString();
-    CameraMove = value["camera_move"].GetBool();
     Duration = value["duration"].GetDouble();
+    Interval = value["interval"].GetDouble();
 }
 
 rapidjson::Value& EditorTriggerMeta::toJson(rapidjson::Document::AllocatorType& allocator) {
@@ -296,18 +292,18 @@ void EditorVisionTrigger::loadJson(const rapidjson::Value& value) {
     VisionState = value["vision_state"].GetString();
 }
 
-rapidjson::Value& EditorConversationChangeTrigger::toJson(rapidjson::Document::AllocatorType& allocator) {
-    EditorTriggerBase::toJson(allocator);
-    _json.AddMember("name", ConversationName.c_str(), allocator);
-    _json.AddMember("state", State.c_str(), allocator);
-    return _json;
-}
-
-void EditorConversationChangeTrigger::loadJson(const rapidjson::Value& value) {
-    EditorTriggerBase::loadJson(value);
-    ConversationName = value["name"].GetString();
-    State = value["state"].GetString();
-}
+//rapidjson::Value& EditorConversationChangeTrigger::toJson(rapidjson::Document::AllocatorType& allocator) {
+//    EditorTriggerBase::toJson(allocator);
+//    _json.AddMember("name", ConversationName.c_str(), allocator);
+//    _json.AddMember("state", State.c_str(), allocator);
+//    return _json;
+//}
+//
+//void EditorConversationChangeTrigger::loadJson(const rapidjson::Value& value) {
+//    EditorTriggerBase::loadJson(value);
+//    ConversationName = value["name"].GetString();
+//    State = value["state"].GetString();
+//}
 
 rapidjson::Value& EditorActionMeta::toJson(rapidjson::Document::AllocatorType& allocator) {
     int repeat = IsInfinite ? -1 : RepeatTimes;
@@ -582,6 +578,11 @@ rapidjson::Value& EditorConversationAction::toJson(rapidjson::Document::Allocato
     }
     _json.AddMember("speeches", speeches, allocator);
     _json.AddMember("name", Name.c_str(), allocator);
+    _json.AddMember( "source_type", SourceType.c_str(), allocator );
+    _json.AddMember( "source_value", SourceValue.c_str(), allocator );
+    _json.AddMember( "is_random_order", RandomOrder, allocator );
+    _json.AddMember( "repeat_times", RepeatTimes, allocator );
+    
     return _json;
 }
 
@@ -596,6 +597,10 @@ void EditorConversationAction::loadJson(const rapidjson::Value& value) {
         Speeches.push_back(speech);
     }
     Name = value["name"].GetString();
+    SourceType = value["source_type"].GetString();
+    SourceValue = value["source_value"].GetString();
+    RandomOrder = value["is_random_order"].GetBool();
+    RepeatTimes = value["repeat_times"].GetInt();
 }
 
 EditorEvent::EditorEvent() {
@@ -647,9 +652,10 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
                 trigger = std::shared_ptr<EditorGameTrigger>(new EditorGameTrigger());
             } else if (triggerType == "vision_change") {
                 trigger = std::shared_ptr<EditorVisionTrigger>(new EditorVisionTrigger());
-            } else if (triggerType == "conversation_change") {
-                trigger = std::shared_ptr<EditorConversationChangeTrigger>(new EditorConversationChangeTrigger());
             }
+//            else if (triggerType == "conversation_change") {
+//                trigger = std::shared_ptr<EditorConversationChangeTrigger>(new EditorConversationChangeTrigger());
+//            }
             trigger->loadJson(triggers[i]);
             Triggers.push_back(trigger);
         }

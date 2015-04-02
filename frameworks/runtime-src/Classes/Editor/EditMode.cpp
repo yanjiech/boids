@@ -51,21 +51,15 @@ void EditMode::backMain() {
 }
 
 void EditMode::enterEdit(const std::string& mapFolder) {
-	cocos2d::log("enterEdit");
     loadUnits();
-	cocos2d::log("loadUnits");
     _mapData = std::shared_ptr<MapData>(new MapData(mapFolder));
 //    _mapData->loadImagesToCache();
     _map = _mapData->generateTiledMapWithFlags(7);
-	cocos2d::log("newMap");
     loadVisionObjects();
-	cocos2d::log("loadVision");
     _data.loadJson(_mapData->getMetaData());
-	cocos2d::log("loadJson");
     fetchTags();
     fetchConversations();
     fetchPositionTags();
-	cocos2d::log("fetchTags");
 	if (PAINT_MESH)
 	{
 		std::set<float> collides;
@@ -80,7 +74,6 @@ void EditMode::enterEdit(const std::string& mapFolder) {
     for (auto pos : _data.Positions) {
         createPositionOnMap(pos);
     }
-	cocos2d::log("createPosition");
     _editRootNode = CSLoader::createNode("EditMode.csb");
     _editRootNode->addChild(_map, -1);
     _editUI = std::shared_ptr<BEEditorMainUI>(new BEEditorMainUI(_editRootNode, CC_CALLBACK_3(EditMode::onPopupEvent, this), CC_CALLBACK_2(EditMode::onMenuCommand, this)));
@@ -94,9 +87,7 @@ void EditMode::enterEdit(const std::string& mapFolder) {
     _keyboardListener->onKeyPressed = CC_CALLBACK_1(EditMode::onKeyPressed, this);
     _keyboardListener->onKeyReleased = CC_CALLBACK_1(EditMode::onKeyReleased, this);
     _map->getEventDispatcher()->addEventListenerWithSceneGraphPriority(_keyboardListener, _map);
-	cocos2d::log("beforeRun");
     runSceneWithNode(_editRootNode);
-	cocos2d::log("runScene");
 }
 
 void EditMode::leaveEdit() {
@@ -180,10 +171,10 @@ std::vector<std::pair<std::string, std::string>> EditMode::getTriggerSources() {
 std::vector<std::pair<std::string, std::string>> EditMode::getConversationSources() {
     std::vector<std::pair<std::string, std::string>> ret;
     for (auto tag : _tags) {
-        ret.push_back(std::make_pair("tag_source", tag));
+        ret.push_back( std::make_pair("tag_source", tag) );
     }
     for (auto name : _units) {
-        ret.push_back(std::make_pair("name_source", name));
+        ret.push_back( std::make_pair("name_source", name) );
     }
     ret.push_back(std::make_pair("player_source", "player"));
     return ret;
@@ -192,7 +183,7 @@ std::vector<std::pair<std::string, std::string>> EditMode::getConversationSource
 std::vector<std::pair<std::string, std::string>> EditMode::getVisionSources() {
     std::vector<std::pair<std::string, std::string>> ret;
     for (auto name : _visionObjects) {
-        ret.push_back(std::make_pair("name_source", name));
+        ret.push_back( std::make_pair("name_source", name) );
     }
     for (auto tag : _visionTags) {
         ret.push_back(std::make_pair("tag_source", tag));
@@ -484,11 +475,13 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             action->ActionMeta = ctx->ActionMeta;
             ctx->Event->Actions.push_back(action);
             ctx->addOperation(EditorOperation::SetAction);
-        } else if (op == EditorOperation::SetConverSationTrigger) {
-            auto trigger = _editUI->conversationChangeUI->getTrigger();
-            ctx->Event->Triggers.push_back(trigger);
-            ctx->addOperation(EditorOperation::SetTrigger);
-        } else if (op == EditorOperation::EditEvent) {
+        }
+//        else if (op == EditorOperation::SetConverSationTrigger) {
+//            auto trigger = _editUI->conversationChangeUI->getTrigger();
+//            ctx->Event->Triggers.push_back(trigger);
+//            ctx->addOperation(EditorOperation::SetTrigger);
+//        }
+        else if (op == EditorOperation::EditEvent) {
             _editUI->unitActionUI->saveEvent();
         }
         moveOn();
@@ -531,8 +524,6 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             ctx->addOperation(EditorOperation::SetGameTrigger);
         } else if (triggerType == "vision_change") {
             ctx->addOperation(EditorOperation::SetVisionTrigger);
-        } else if (triggerType == "conversation_action") {
-            ctx->addOperation(EditorOperation::SetConverSationTrigger);
         }
         moveOn();
     } else if (et == EditorPopupEventType::AnotherAction) {
@@ -730,12 +721,12 @@ void EditMode::onStep(int step) {
             _editUI->conversationActionUI->loadConversationSource(this->getConversationSources());
             break;
         }
-        case EditorOperation::SetConverSationTrigger: {
-            _editUI->conversationChangeUI->setVisible(true);
-            _editUI->conversationChangeUI->reset();
-            _editUI->conversationChangeUI->loadConversations(_conversations);
-            break;
-        }
+//        case EditorOperation::SetConverSationTrigger: {
+//            _editUI->conversationChangeUI->setVisible(true);
+//            _editUI->conversationChangeUI->reset();
+//            _editUI->conversationChangeUI->loadConversations(_conversations);
+//            break;
+//        }
         case EditorOperation::EditEvent: {
             _editUI->unitActionUI->setVisible(true);
             _editUI->unitActionUI->reset();

@@ -53,6 +53,46 @@ void UnitNodeComponent::updateFrame( float delta ) {
     
 }
 
+TimeLimitComponent::TimeLimitComponent() {
+    
+}
+
+TimeLimitComponent::~TimeLimitComponent() {
+    
+}
+
+TimeLimitComponent* TimeLimitComponent::create( float duration, cocos2d::Node* node, const std::string& name, bool auto_recycle ) {
+    TimeLimitComponent* ret = new TimeLimitComponent();
+    if( ret && ret->init( duration, node, name, auto_recycle ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool TimeLimitComponent::init( float duration, cocos2d::Node* node, const std::string& name, bool auto_recycle ) {
+    if( !UnitNodeComponent::init( node, name, auto_recycle ) ) {
+        return false;
+    }
+    
+    _duration = duration;
+    _elapse = 0;
+    
+    return true;
+}
+
+void TimeLimitComponent::updateFrame( float delta ) {
+    if( !_should_recycle ) {
+        _elapse += delta;
+        if( _elapse > _duration ) {
+            this->setShouldRecycle( true );
+        }
+    }
+}
+
 UnitNodeSpineComponent::UnitNodeSpineComponent() {
     
 }

@@ -9,10 +9,10 @@
 #include "BEUI.h"
 #include "Utils.h"
 #include "BETypes.h"
-#ifdef SUPPORT_EXTERNAL_MAP
-#include <boost/filesystem.hpp>
-#include "../../ini/SimpleIni.h"
-#define EDITOR_SETTING_PATH ("editor_setting.ini")
+#if defined( SUPPORT_EXTERNAL_MAP )
+    #include <boost/filesystem.hpp>
+    #include "../../ini/SimpleIni.h"
+    #define EDITOR_SETTING_PATH ("editor_setting.ini")
 #endif
 
 using namespace cocos2d;
@@ -1198,9 +1198,12 @@ BEUIConversationAction::BEUIConversationAction(Node *root, const BEPopupEventHan
     _infoPanel = getPanelFrom("panel_info", _root);
     _filterTextField = getTextFieldFrom("input_filter", _listPanel);
     _contentTextField = getTextFieldFrom("input_content", _infoPanel);
-    _durationTextField = getTextFieldFrom("input_duration", _infoPanel);
     _nameTextField = getTextFieldFrom("input_conversationName", _infoPanel);
-    _cameraMoveCheckBox = getCheckBoxFrom("checkbox_moveCamera", _infoPanel);
+    _tf_tag = getTextFieldFrom("tf_speaker_tag", _infoPanel);
+    _tf_repeat = getTextFieldFrom("tf_repeat", _infoPanel);
+    _tf_duration = getTextFieldFrom("tf_duration", _infoPanel);
+    _tf_interval = getTextFieldFrom("tf_interval", _infoPanel);
+    _cb_random = getCheckBoxFrom( "cb_random", _infoPanel );
     _addButton = getButtonFrom("button_add", _infoPanel);
     _okButton = getButtonFrom("button_ok", _infoPanel);
     _cancelButton = getButtonFrom("button_cancel", _infoPanel);
@@ -1226,12 +1229,24 @@ void BEUIConversationAction::reset() {
 }
 
 void BEUIConversationAction::loadConversationSource(const std::vector<std::pair<std::string, std::string>>& sources) {
-    _sources = sources;
+    _sources.clear();
+    _sources.push_back( std::make_pair( "tag_source", "custom" ) );
+    _sources.insert( _sources.end(), sources.begin(), sources.end() );
     _sourceListView->updateData();
 }
 
 EditorConversationActionPtr BEUIConversationAction::getAction() {
     _action->Name = _nameTextField->getString();
+    _action->RandomOrder = _cb_random->isSelected();
+    _action->RepeatTimes = atoi( _tf_repeat->getString().c_str() );
+    int index = _sourceListView->getCurrentIndexForFullItems();
+    _action->SourceType = _sources[index].first;
+    if( _action->SourceType == "tag_source" ) {
+        _action->SourceValue = _tf_tag->getString();
+    }
+    else {
+        _action->SourceValue = _sources[index].second;
+    }
     return _action;
 }
 
@@ -1256,15 +1271,11 @@ int BEUIConversationAction::itemCount() {
 }
 
 void BEUIConversationAction::onAddButtonClicked(Ref *sender) {
-    int index = _sourceListView->getCurrentIndexForFullItems();
-    _currentSpeech->SourceType = _sources[index].first;
-    _currentSpeech->Source = _sources[index].second;
     _currentSpeech->Content = _contentTextField->getString();
-    _currentSpeech->CameraMove = _cameraMoveCheckBox->isSelected();
-    _currentSpeech->Duration = atof(_durationTextField->getString().c_str());
+    _currentSpeech->Duration = atof( _tf_duration->getString().c_str());
+    _currentSpeech->Interval = atof( _tf_interval->getString().c_str() );
     _action->Speeches.push_back(_currentSpeech);
-    auto name = Utils::stringFormat("%s:%s", _currentSpeech->Source.c_str(), _currentSpeech->Content.c_str());
-    _speechListView->addItem(name);
+    _speechListView->addItem(_currentSpeech->Content);
     _currentSpeech = EditorSpeechPtr(new EditorSpeech());
 }
 
@@ -1274,45 +1285,45 @@ void BEUIConversationAction::onDeleteButtonClicked(Ref *sender) {
     _speechListView->removeCurrentIndex();
 }
 
-BEUIConversationTrigger::BEUIConversationTrigger(Node *root, const BEPopupEventHandler& handler): BEUIBase(root, handler) {
-    _stateButton = getButtonFrom("button_state", _root);
-    _okButton = getButtonFrom("button_ok", _root);
-    _cancelButton = getButtonFrom("button_cancel", _root);
-    _stateListView = popupTypeListFromButton(_stateButton, EditorTypeManager::getInstance()->getConversationState(), CC_CALLBACK_1(BEUIConversationTrigger::onStateItemClicked, this));
-    _stateListView->setVisible(false);
-    _conversationListView = BEDefaultListView::create(Size(400, 400), nullptr);
-    _conversationListView->setPosition(Vec2(0, 200));
-    _root->addChild(_conversationListView);
-    _stateButton->addClickEventListener(CC_CALLBACK_1(BEUIConversationTrigger::onStateButtonClicked, this));
-    bindOKHandler(_okButton);
-    bindCancelHandler(_cancelButton);
-}
-
-void BEUIConversationTrigger::reset() {
-    _conversationListView->cleanAndReset();
-    _stateListView->reset();
-    _stateButton->setTitleText("conversation_start");
-}
-
-void BEUIConversationTrigger::loadConversations(const std::vector<std::string>& conversations) {
-    _conversationListView->addItems(conversations);
-}
-
-EditorConversationChangeTriggerPtr BEUIConversationTrigger::getTrigger() {
-    auto trigger = EditorConversationChangeTriggerPtr(new EditorConversationChangeTrigger());
-    trigger->ConversationName = _conversationListView->getCurrentName();
-    trigger->State = _stateListView->getCurrentType();
-    return trigger;
-}
-
-void BEUIConversationTrigger::onStateButtonClicked(Ref *sender) {
-    _stateListView->setVisible(true);
-}
-
-void BEUIConversationTrigger::onStateItemClicked(Ref *sender) {
-    _stateButton->setTitleText(_stateListView->getCurrentType());
-    _stateListView->setVisible(false);
-}
+//BEUIConversationTrigger::BEUIConversationTrigger(Node *root, const BEPopupEventHandler& handler): BEUIBase(root, handler) {
+//    _stateButton = getButtonFrom("button_state", _root);
+//    _okButton = getButtonFrom("button_ok", _root);
+//    _cancelButton = getButtonFrom("button_cancel", _root);
+//    _stateListView = popupTypeListFromButton(_stateButton, EditorTypeManager::getInstance()->getConversationState(), CC_CALLBACK_1(BEUIConversationTrigger::onStateItemClicked, this));
+//    _stateListView->setVisible(false);
+//    _conversationListView = BEDefaultListView::create(Size(400, 400), nullptr);
+//    _conversationListView->setPosition(Vec2(0, 200));
+//    _root->addChild(_conversationListView);
+//    _stateButton->addClickEventListener(CC_CALLBACK_1(BEUIConversationTrigger::onStateButtonClicked, this));
+//    bindOKHandler(_okButton);
+//    bindCancelHandler(_cancelButton);
+//}
+//
+//void BEUIConversationTrigger::reset() {
+//    _conversationListView->cleanAndReset();
+//    _stateListView->reset();
+//    _stateButton->setTitleText("conversation_start");
+//}
+//
+//void BEUIConversationTrigger::loadConversations(const std::vector<std::string>& conversations) {
+//    _conversationListView->addItems(conversations);
+//}
+//
+//EditorConversationChangeTriggerPtr BEUIConversationTrigger::getTrigger() {
+//    auto trigger = EditorConversationChangeTriggerPtr(new EditorConversationChangeTrigger());
+//    trigger->ConversationName = _conversationListView->getCurrentName();
+//    trigger->State = _stateListView->getCurrentType();
+//    return trigger;
+//}
+//
+//void BEUIConversationTrigger::onStateButtonClicked(Ref *sender) {
+//    _stateListView->setVisible(true);
+//}
+//
+//void BEUIConversationTrigger::onStateItemClicked(Ref *sender) {
+//    _stateButton->setTitleText(_stateListView->getCurrentType());
+//    _stateListView->setVisible(false);
+//}
 
 
 BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, const BEEditorCommandHandler& commandHandler):BEUIBase(root, handler) {
@@ -1337,7 +1348,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     _waveActionPanel = getPanelFrom(kWaveActionPanel, _popupContainer);
     _gameConditionPanel = getPanelFrom(kGameConditionPanel, _popupContainer);
     _conversationActionPanel = getPanelFrom(kConversationActionPanel, _popupContainer);
-    _conversationChangePanel = getPanelFrom(kConversationChangePanel, _popupContainer);
+//    _conversationChangePanel = getPanelFrom(kConversationChangePanel, _popupContainer);
     _commandHandler = commandHandler;
     _newEventButton->addClickEventListener([this](Ref *sender) {
         this->_commandHandler(EditorCommandType::NewEvent, sender);
@@ -1369,7 +1380,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     waveActionUI = new BEUIWaveAction(_waveActionPanel, handler);
     gameConditionUI = new BEUIGameCondition(_gameConditionPanel, handler);
     conversationActionUI = new BEUIConversationAction(_conversationActionPanel, handler);
-    conversationChangeUI = new BEUIConversationTrigger(_conversationChangePanel, handler);
+//    conversationChangeUI = new BEUIConversationTrigger(_conversationChangePanel, handler);
     hideAllPopups();
 }
 
@@ -1388,7 +1399,7 @@ BEEditorMainUI::~BEEditorMainUI() {
     delete waveActionUI;
     delete gameConditionUI;
     delete conversationActionUI;
-    delete conversationChangeUI;
+//    delete conversationChangeUI;
 }
 
 void BEEditorMainUI::hideAllPopups() {
@@ -1406,7 +1417,7 @@ void BEEditorMainUI::hideAllPopups() {
     waveActionUI->setVisible(false);
     gameConditionUI->setVisible(false);
     conversationActionUI->setVisible(false);
-    conversationChangeUI->setVisible(false);
+//    conversationChangeUI->setVisible(false);
 }
 
 void BEEditorMainUI::reset() {

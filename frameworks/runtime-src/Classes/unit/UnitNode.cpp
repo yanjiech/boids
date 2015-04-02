@@ -18,6 +18,7 @@
 #include "../Utils.h"
 #include "BulletNode.h"
 #include "JumpText.h"
+#include "ui/CocosGUI.h"
 
 #define DEFAULT_SHADOW_RADIUS 30.0
 #define DEFAULT_HESITATE_FRAMES 5
@@ -269,6 +270,8 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         _front->setCompleteListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationCompleted, this ) );
         _front->setEventListener( CC_CALLBACK_2( UnitNode::onSkeletonAnimationEvent, this ) );
         this->addChild( _front, eComponentLayer::Object );
+        Rect bounding_box = _front->getBoundingBox();
+        this->setContentSize( bounding_box.size );
     }
     
     if( _back ) {
@@ -1172,6 +1175,28 @@ float UnitNode::getSkillCDById( int sk_id ) {
 
 bool UnitNode::isSkillReadyById( int sk_id ) {
     return _skills.at( sk_id )->isSkillReady();
+}
+
+void UnitNode::makeSpeech( const std::string& content, float duration ) {
+    Rect inset_rect = Rect( 100.0f, 40.0f, 60.0f, 60.0f );
+    ui::Scale9Sprite* window = ui::Scale9Sprite::createWithSpriteFrameName( "chat_popup.png", inset_rect );
+    window->setAnchorPoint( Point( 0.3f, 0 ) );
+    Label* content_label = Label::createWithSystemFont( content, "Helvetica", 40.0f );
+    content_label->setTextColor( Color4B::BLACK );
+    content_label->setLineBreakWithoutSpace( true );
+    content_label->setDimensions( 300, 0 );
+    content_label->setHorizontalAlignment( TextHAlignment::LEFT );
+    content_label->setVerticalAlignment( TextVAlignment::CENTER );
+    Size content_size = content_label->getContentSize();
+    Size real_content_size = Size( content_size.width + 60.0f, content_size.height + 70.0f );
+    window->setPreferredSize( real_content_size );
+    content_label->setAnchorPoint( Point( 0.5f, 1.0f ) );
+    content_label->setPosition( Point( real_content_size.width / 2, real_content_size.height - 20.0f ) );
+    window->addChild( content_label );
+    std::string name = Utils::stringFormat( "chat_popup_%d", BulletNode::getNextBulletId() );
+    TimeLimitComponent* component = TimeLimitComponent::create( duration, window, name, true );
+    component->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height ) );
+    this->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
 }
 
 //private methods
