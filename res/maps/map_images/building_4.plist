@@ -4,6 +4,19 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>renleibingying.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,759},{664,606}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{664,606}}</string>
+                <key>sourceSize</key>
+                <string>{664,606}</string>
+            </dict>
             <key>shaota_01.png</key>
             <dict>
                 <key>frame</key>
@@ -46,11 +59,11 @@
             <key>shuwu_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,759},{307,417}}</string>
+                <string>{{668,1032},{307,417}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{307,417}}</string>
                 <key>sourceSize</key>
@@ -59,7 +72,7 @@
             <key>zahuopu_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{421,759},{347,271}}</string>
+                <string>{{668,759},{347,271}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -79,7 +92,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b82a68f76adb426f9a254f7d11871ee4:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:472d8fd889b4e0b5fecf920661ef68f5:1/1$</string>
             <key>textureFileName</key>
             <string>building_4.png</string>
         </dict>

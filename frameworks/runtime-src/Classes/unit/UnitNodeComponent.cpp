@@ -9,6 +9,8 @@
 #include "UnitNodeComponent.h"
 #include "../scene/BattleLayer.h"
 #include "../data/DamageCalculate.h"
+#include "../Utils.h"
+#include "../BoidsMath.h"
 
 using namespace cocos2d;
 
@@ -49,6 +51,46 @@ bool UnitNodeComponent::init( cocos2d::Node* node, const std::string& name, bool
 
 void UnitNodeComponent::updateFrame( float delta ) {
     
+}
+
+TimeLimitComponent::TimeLimitComponent() {
+    
+}
+
+TimeLimitComponent::~TimeLimitComponent() {
+    
+}
+
+TimeLimitComponent* TimeLimitComponent::create( float duration, cocos2d::Node* node, const std::string& name, bool auto_recycle ) {
+    TimeLimitComponent* ret = new TimeLimitComponent();
+    if( ret && ret->init( duration, node, name, auto_recycle ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool TimeLimitComponent::init( float duration, cocos2d::Node* node, const std::string& name, bool auto_recycle ) {
+    if( !UnitNodeComponent::init( node, name, auto_recycle ) ) {
+        return false;
+    }
+    
+    _duration = duration;
+    _elapse = 0;
+    
+    return true;
+}
+
+void TimeLimitComponent::updateFrame( float delta ) {
+    if( !_should_recycle ) {
+        _elapse += delta;
+        if( _elapse > _duration ) {
+            this->setShouldRecycle( true );
+        }
+    }
 }
 
 UnitNodeSpineComponent::UnitNodeSpineComponent() {
@@ -92,6 +134,50 @@ void UnitNodeSpineComponent::onSkeletonAnimationCompleted( int track_index ) {
     if( _auto_recycle ) {
         _should_recycle = true;
     }
+}
+
+UnitNodeFollowSpineComponent::UnitNodeFollowSpineComponent() :
+_source_unit( nullptr )
+{
+    
+}
+
+UnitNodeFollowSpineComponent::~UnitNodeFollowSpineComponent() {
+    CC_SAFE_RELEASE( _source_unit );
+}
+
+UnitNodeFollowSpineComponent* UnitNodeFollowSpineComponent::create( UnitNode* source_unit, const std::string& bone_name, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    UnitNodeFollowSpineComponent* ret = new UnitNodeFollowSpineComponent();
+    if( ret && ret->init( source_unit, bone_name, skeleton, name, auto_recycle ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitNodeFollowSpineComponent::init( UnitNode* source_unit, const std::string& bone_name, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    if( !UnitNodeSpineComponent::init( skeleton, name, auto_recycle ) ) {
+        return false;
+    }
+    this->setSourceUnit( source_unit );
+    _bone_name = bone_name;
+    return true;
+}
+
+void UnitNodeFollowSpineComponent::updateFrame( float delta ) {
+    if( _bone_name != "" ) {
+        Point new_pos = _source_unit->getLocalBonePos( _bone_name );
+        this->setPosition( new_pos );
+    }
+}
+
+void UnitNodeFollowSpineComponent::setSourceUnit( UnitNode* source_unit ) {
+    CC_SAFE_RELEASE( _source_unit );
+    _source_unit = source_unit;
+    CC_SAFE_RETAIN( _source_unit );
 }
 
 TimeLimitSpineComponent::TimeLimitSpineComponent() {
@@ -138,6 +224,78 @@ bool TimeLimitSpineComponent::setAnimation( int track_index, const std::string& 
         return skeleton->setAnimation( track_index, name, loop ) != nullptr;
     }
     return false;
+}
+
+TimeLimitWanderSpineComponent::TimeLimitWanderSpineComponent() :
+_source_unit( nullptr )
+{
+    
+}
+
+TimeLimitWanderSpineComponent::~TimeLimitWanderSpineComponent() {
+    CC_SAFE_RELEASE( _source_unit );
+}
+
+TimeLimitWanderSpineComponent* TimeLimitWanderSpineComponent::create( const cocos2d::ValueMap& data, UnitNode* source_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    TimeLimitWanderSpineComponent* ret = new TimeLimitWanderSpineComponent();
+    if( ret && ret->init( data, source_unit, skeleton, name, auto_recycle ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool TimeLimitWanderSpineComponent::init( const cocos2d::ValueMap& data, UnitNode* source_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle ) {
+    float duration = data.at( "duration" ).asFloat();
+    if( !TimeLimitSpineComponent::init( duration, skeleton, name, auto_recycle ) ) {
+        return false;
+    }
+    
+    _init_speed = data.at( "init_speed" ).asFloat();
+    _accelarate = data.at( "accelerate" ).asFloat();
+    _range = data.at( "range" ).asFloat();
+    _accel_change_interval = data.at( "interval" ).asFloat();
+    _accel_change_elapse = _accel_change_interval;
+    this->setSourceUnit( source_unit );
+    float angle = Utils::randomFloat() * M_PI * 2.0f;
+    _speed = Point( cosf( angle ) * _init_speed, sinf( angle ) * _init_speed );
+    _gravity_point = Point::ZERO;
+    
+    return true;
+}
+
+void TimeLimitWanderSpineComponent::updateFrame( float delta ) {
+    TimeLimitSpineComponent::updateFrame( delta );
+    if( !_should_recycle ) {
+        Point center = _source_unit->getHitPos();
+         _accel_change_elapse += delta;
+        if( _accel_change_elapse > _accel_change_interval ) {
+            _accel_change_interval = 0;
+            _gravity_point = Utils::randomPositionInRange( center, _range );
+        }
+        
+        if( !Math::isPositionInRange( this->getPosition(), center, _range ) ) {
+            _speed = Point::ZERO;
+        }
+        
+        float d = center.distance( this->getPosition() );
+        float ratio = 0.5f + d * 1.5 / _range;
+        Point acc = _gravity_point - this->getPosition();
+        acc.normalize();
+        acc *= ( _accelarate * ratio );
+        _speed += ( acc * delta );
+        Point new_pos = this->getPosition() + _speed * delta;
+        this->setPosition( new_pos );
+    }
+}
+
+void TimeLimitWanderSpineComponent::setSourceUnit( UnitNode* source_unit ) {
+    CC_SAFE_RELEASE( _source_unit );
+    _source_unit = source_unit;
+    CC_SAFE_RETAIN( source_unit );
 }
 
 UnitNodeSpineDamageComponent::UnitNodeSpineDamageComponent() :

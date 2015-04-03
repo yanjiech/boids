@@ -84,7 +84,7 @@ void UILevelChooseLayer::onStartButtonTouched( cocos2d::Ref* sender, cocos2d::ui
         SceneConfig scene_config;
         scene_config.ref_params.push_back( _map_data );
         scene_config.value_params["is_pvp"] = Value( _is_pvp );
-        SceneManager::getInstance()->transitToScene( eSceneName::Battle, &scene_config );
+        SceneManager::getInstance()->transitToScene( eSceneName::SceneBattle, &scene_config );
     }
 }
 

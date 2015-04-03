@@ -68,7 +68,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>F:\LaluneCommon\protobuf\protos\out;F:\LaluneCommon\3rdparty\protobuf\src;F:\OpenSource\boost_1_57_0;$(ProjectDir)..\Classes\net;$(ProjectDir)..\Classes;$(ProjectDir)..\Classes\AI;$(ProjectDir)..\Classes\lua_cjson;$(ProjectDir)..\Classes\ini;$(ProjectDir)..\Classes\Editor\UI;$(ProjectDir)..\Classes\Editor;$(ProjectDir)..\Classes\manual;$(ProjectDir)..\Classes\TmxParser;$(ProjectDir)..\Classes\TmxParser\tinyxml;$(ProjectDir)..\Classes\TmxParser\base64;$(ProjectDir)..\Classes\TmxParser\zlib;$(ProjectDir)..\Classes\auto;$(EngineRoot)cocos\scripting\lua-bindings\auto;$(EngineRoot)cocos\scripting\lua-bindings\manual;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\lua\lua;$(EngineRoot)external\lua\tolua;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\lib\Boost\include\boost-1_57;$(ProjectDir)..\Classes\net;$(ProjectDir)..\Classes;$(ProjectDir)..\Classes\AI;$(ProjectDir)..\Classes\lua_cjson;$(ProjectDir)..\Classes\ini;$(ProjectDir)..\Classes\Editor\UI;$(ProjectDir)..\Classes\Editor;$(ProjectDir)..\Classes\manual;$(ProjectDir)..\Classes\TmxParser;$(ProjectDir)..\Classes\TmxParser\tinyxml;$(ProjectDir)..\Classes\TmxParser\base64;$(ProjectDir)..\Classes\TmxParser\zlib;$(ProjectDir)..\Classes\auto;$(EngineRoot)cocos\scripting\lua-bindings\auto;$(EngineRoot)cocos\scripting\lua-bindings\manual;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\lua\lua;$(EngineRoot)external\lua\tolua;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -85,8 +85,8 @@
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>F:\LaluneCommon\3rdparty\protobuf\vsprojects;F:\OpenSource\boost_1_57_0\stage\lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcurl_imp.lib;lua51.lib;websockets.lib;Debug\libprotobuf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\lib\Boost\lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcurl_imp.lib;lua51.lib;websockets.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -122,7 +122,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>F:\LaluneCommon\protobuf\protos\out;F:\LaluneCommon\3rdparty\protobuf\src;F:\OpenSource\boost_1_57_0;$(ProjectDir)..\Classes\net;$(ProjectDir)..\Classes;$(ProjectDir)..\Classes\AI;$(ProjectDir)..\Classes\lua_cjson;$(ProjectDir)..\Classes\ini;$(ProjectDir)..\Classes\Editor\UI;$(ProjectDir)..\Classes\Editor;$(ProjectDir)..\Classes\manual;$(ProjectDir)..\Classes\TmxParser;$(ProjectDir)..\Classes\TmxParser\tinyxml;$(ProjectDir)..\Classes\TmxParser\base64;$(ProjectDir)..\Classes\TmxParser\zlib;$(ProjectDir)..\Classes\auto;$(EngineRoot)cocos\scripting\lua-bindings\auto;$(EngineRoot)cocos\scripting\lua-bindings\manual;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\lua\lua;$(EngineRoot)external\lua\tolua;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\lib\Boost\include\boost-1_57;$(ProjectDir)..\Classes\net;$(ProjectDir)..\Classes;$(ProjectDir)..\Classes\AI;$(ProjectDir)..\Classes\Editor\UI;$(ProjectDir)..\Classes\Editor;$(ProjectDir)..\Classes\TmxParser;$(ProjectDir)..\Classes\TmxParser\tinyxml;$(ProjectDir)..\Classes\TmxParser\base64;$(ProjectDir)..\Classes\TmxParser\zlib;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\lua\lua;$(EngineRoot)external\lua\tolua;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\platform\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -140,8 +140,8 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <Link>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>F:\LaluneCommon\3rdparty\protobuf\vsprojects;F:\OpenSource\boost_1_57_0\stage\lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcurl_imp.lib;lua51.lib;websockets.lib;Release\libprotobuf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\lib\Boost\lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcurl_imp.lib;lua51.lib;websockets.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <ResourceCompile>
@@ -171,9 +171,6 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\AI\AI.h" />
-    <ClInclude Include="..\Classes\AI\AITest.h" />
-    <ClInclude Include="..\Classes\AI\AIUnit.h" />
     <ClInclude Include="..\Classes\AI\BoidsPolygon.h" />
     <ClInclude Include="..\Classes\AI\BoostGeometryDef.h" />
     <ClInclude Include="..\Classes\AI\Border.h" />
@@ -185,14 +182,34 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\AI\Terrain.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\ArmatureManager.h" />
-    <ClInclude Include="..\Classes\auto\lua_boids_auto.hpp" />
+    <ClInclude Include="..\Classes\behavior\AttackBehavior.h" />
+    <ClInclude Include="..\Classes\behavior\BehaviorBase.h" />
+    <ClInclude Include="..\Classes\behavior\BehaviorHeader.h" />
+    <ClInclude Include="..\Classes\behavior\IdleBehavior.h" />
+    <ClInclude Include="..\Classes\behavior\MoveBehavior.h" />
+    <ClInclude Include="..\Classes\behavior\PlayerAttackBehavior.h" />
+    <ClInclude Include="..\Classes\behavior\PlayerMoveBehavior.h" />
+    <ClInclude Include="..\Classes\behavior\PlayerSkillBehavior.h" />
+    <ClInclude Include="..\Classes\behavior\SkillBehavior.h" />
     <ClInclude Include="..\Classes\CmdLineDebugger.h" />
     <ClInclude Include="..\Classes\CmdLineDebuggerLua.h" />
     <ClInclude Include="..\Classes\Constants.h" />
+    <ClInclude Include="..\Classes\constant\BoidsConstant.h" />
     <ClInclude Include="..\Classes\Counter.h" />
     <ClInclude Include="..\Classes\CycledList.h" />
-    <ClInclude Include="..\Classes\EngineRelated.h" />
-    <ClInclude Include="..\Classes\manual\ArgCheck.h" />
+    <ClInclude Include="..\Classes\data\DamageCalculate.h" />
+    <ClInclude Include="..\Classes\data\PlayerInfo.h" />
+    <ClInclude Include="..\Classes\ini\ConvertUTF.h" />
+    <ClInclude Include="..\Classes\ini\SimpleIni.h" />
+    <ClInclude Include="..\Classes\interface\Updatable.h" />
+    <ClInclude Include="..\Classes\logic\EventAction.h" />
+    <ClInclude Include="..\Classes\logic\EventTrigger.h" />
+    <ClInclude Include="..\Classes\logic\GameTask.h" />
+    <ClInclude Include="..\Classes\logic\MapLogic.h" />
+    <ClInclude Include="..\Classes\logic\Trigger.h" />
+    <ClInclude Include="..\Classes\manager\AudioManager.h" />
+    <ClInclude Include="..\Classes\manager\ResourceManager.h" />
+    <ClInclude Include="..\Classes\manager\SceneManager.h" />
     <ClInclude Include="..\Classes\MapDebugger.h" />
     <ClInclude Include="..\Classes\Editor\BEHeaders.h" />
     <ClInclude Include="..\Classes\Editor\BETypes.h" />
@@ -203,33 +220,19 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\Editor\EditorPositionNode.h" />
     <ClInclude Include="..\Classes\Editor\UI\BEUI.h" />
     <ClInclude Include="..\Classes\Editor\UI\BEUIBase.h" />
-    <ClInclude Include="..\Classes\ini\SimpleIni.h" />
-    <ClInclude Include="..\Classes\LuaFunc.h" />
-    <ClInclude Include="..\Classes\LuaPlatform.h" />
-    <ClInclude Include="..\Classes\LuaUtils.h" />
-    <ClInclude Include="..\Classes\lua_cjson\dtoa_config.h" />
-    <ClInclude Include="..\Classes\lua_cjson\fpconv.h" />
-    <ClInclude Include="..\Classes\lua_cjson\lua_cjson.h" />
-    <ClInclude Include="..\Classes\lua_cjson\strbuf.h" />
-    <ClInclude Include="..\Classes\lua_module_register.h" />
     <ClInclude Include="..\Classes\BoidsMath.h" />
     <ClInclude Include="..\Classes\Macro.h" />
-    <ClInclude Include="..\Classes\manual\lua_boids_manual.h" />
     <ClInclude Include="..\Classes\MapData.h" />
-    <ClInclude Include="..\Classes\message\Battle.pb.h" />
-    <ClInclude Include="..\Classes\message\boids.pb.h" />
-    <ClInclude Include="..\Classes\message\pvp.pb.h" />
-    <ClInclude Include="..\Classes\net\Net.h" />
-    <ClInclude Include="..\Classes\net\NetDef.h" />
-    <ClInclude Include="..\Classes\net\NetForExport.h" />
-    <ClInclude Include="..\Classes\net\NetworkAdapter.h" />
-    <ClInclude Include="..\Classes\net\NetworkAdapterInternal.h" />
-    <ClInclude Include="..\Classes\net\TcpClient.h" />
-    <ClInclude Include="..\Classes\net\UdpClient.h" />
     <ClInclude Include="..\Classes\Profile.h" />
-    <ClInclude Include="..\Classes\Random.h" />
     <ClInclude Include="..\Classes\Replay.h" />
     <ClInclude Include="..\Classes\ReplayComparer.h" />
+    <ClInclude Include="..\Classes\scene\BattleLayer.h" />
+    <ClInclude Include="..\Classes\scene\SceneBase.h" />
+    <ClInclude Include="..\Classes\scene\UIBattleFloatLayer.h" />
+    <ClInclude Include="..\Classes\scene\UIBattleLayer.h" />
+    <ClInclude Include="..\Classes\scene\UIBattleMenuLayer.h" />
+    <ClInclude Include="..\Classes\scene\UIControlLayer.h" />
+    <ClInclude Include="..\Classes\scene\UILevelChooseLayer.h" />
     <ClInclude Include="..\Classes\Singleton.h" />
     <ClInclude Include="..\Classes\TmxParser\base64\base64.h" />
     <ClInclude Include="..\Classes\TmxParser\tinyxml\tinystr.h" />
@@ -262,14 +265,33 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\TmxParser\zlib\zlib.h" />
     <ClInclude Include="..\Classes\TmxParser\zlib\zutil.h" />
     <ClInclude Include="..\Classes\Trace.h" />
+    <ClInclude Include="..\Classes\unit\Buff.h" />
+    <ClInclude Include="..\Classes\unit\BuildingNode.h" />
+    <ClInclude Include="..\Classes\unit\BulletNode.h" />
+    <ClInclude Include="..\Classes\unit\Equipment.h" />
+    <ClInclude Include="..\Classes\unit\HpBar.h" />
+    <ClInclude Include="..\Classes\unit\JumpText.h" />
+    <ClInclude Include="..\Classes\unit\Skill.h" />
+    <ClInclude Include="..\Classes\unit\skill\BarrageOfArrow.h" />
+    <ClInclude Include="..\Classes\unit\skill\BatSwarm.h" />
+    <ClInclude Include="..\Classes\unit\skill\CrazyShoot.h" />
+    <ClInclude Include="..\Classes\unit\skill\DarkPierce.h" />
+    <ClInclude Include="..\Classes\unit\skill\GiantSword.h" />
+    <ClInclude Include="..\Classes\unit\skill\LightningChain.h" />
+    <ClInclude Include="..\Classes\unit\skill\LightShield.h" />
+    <ClInclude Include="..\Classes\unit\skill\SkillNode.h" />
+    <ClInclude Include="..\Classes\unit\skill\SkillNodeFactory.h" />
+    <ClInclude Include="..\Classes\unit\skill\WrathOfThunder.h" />
+    <ClInclude Include="..\Classes\unit\TargetNode.h" />
+    <ClInclude Include="..\Classes\unit\UnitNode.h" />
+    <ClInclude Include="..\Classes\unit\UnitNodeComponent.h" />
     <ClInclude Include="..\Classes\Utils.h" />
+    <ClInclude Include="..\Classes\util\CocosUtils.h" />
+    <ClInclude Include="..\Classes\util\CommonUtils.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Classes\AI\AI.cpp" />
-    <ClCompile Include="..\Classes\AI\AITest.cpp" />
-    <ClCompile Include="..\Classes\AI\AIUnit.cpp" />
     <ClCompile Include="..\Classes\AI\BoidsPolygon.cpp" />
     <ClCompile Include="..\Classes\AI\Border.cpp" />
     <ClCompile Include="..\Classes\AI\Collidable.cpp" />
@@ -280,11 +302,21 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\AI\Terrain.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\ArmatureManager.cpp" />
-    <ClCompile Include="..\Classes\auto\lua_boids_auto.cpp" />
+    <ClCompile Include="..\Classes\behavior\AttackBehavior.cpp" />
+    <ClCompile Include="..\Classes\behavior\BehaviorBase.cpp" />
+    <ClCompile Include="..\Classes\behavior\IdleBehavior.cpp" />
+    <ClCompile Include="..\Classes\behavior\MoveBehavior.cpp" />
+    <ClCompile Include="..\Classes\behavior\PlayerAttackBehavior.cpp" />
+    <ClCompile Include="..\Classes\behavior\PlayerMoveBehavior.cpp" />
+    <ClCompile Include="..\Classes\behavior\PlayerSkillBehavior.cpp" />
+    <ClCompile Include="..\Classes\behavior\SkillBehavior.cpp" />
     <ClCompile Include="..\Classes\CmdLineDebugger.cpp" />
     <ClCompile Include="..\Classes\CmdLineDebuggerLua.cpp" />
+    <ClCompile Include="..\Classes\constant\BoidsConstant.cpp" />
     <ClCompile Include="..\Classes\Counter.cpp" />
     <ClCompile Include="..\Classes\CycledList.cpp" />
+    <ClCompile Include="..\Classes\data\DamageCalculate.cpp" />
+    <ClCompile Include="..\Classes\data\PlayerInfo.cpp" />
     <ClCompile Include="..\Classes\Editor\BETypes.cpp" />
     <ClCompile Include="..\Classes\Editor\EditMode.cpp" />
     <ClCompile Include="..\Classes\Editor\EditorHelper.cpp" />
@@ -292,27 +324,28 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\Editor\EditorPositionNode.cpp" />
     <ClCompile Include="..\Classes\Editor\UI\BEUI.cpp" />
     <ClCompile Include="..\Classes\Editor\UI\BEUIBase.cpp" />
-    <ClCompile Include="..\Classes\EngineRelated.cpp" />
-    <ClCompile Include="..\Classes\LuaFunc.cpp" />
     <ClCompile Include="..\Classes\BoidsMath.cpp" />
-    <ClCompile Include="..\Classes\LuaPlatform.cpp" />
-    <ClCompile Include="..\Classes\LuaUtils.cpp" />
-    <ClCompile Include="..\Classes\lua_cjson\fpconv.c" />
-    <ClCompile Include="..\Classes\lua_cjson\lua_cjson.c" />
-    <ClCompile Include="..\Classes\lua_cjson\strbuf.c" />
-    <ClCompile Include="..\Classes\manual\lua_boids_manual.cpp" />
+    <ClCompile Include="..\Classes\interface\Updatable.cpp" />
+    <ClCompile Include="..\Classes\logic\EventAction.cpp" />
+    <ClCompile Include="..\Classes\logic\EventTrigger.cpp" />
+    <ClCompile Include="..\Classes\logic\GameTask.cpp" />
+    <ClCompile Include="..\Classes\logic\MapLogic.cpp" />
+    <ClCompile Include="..\Classes\logic\Trigger.cpp" />
+    <ClCompile Include="..\Classes\manager\AudioManager.cpp" />
+    <ClCompile Include="..\Classes\manager\ResourceManager.cpp" />
+    <ClCompile Include="..\Classes\manager\SceneManager.cpp" />
     <ClCompile Include="..\Classes\MapData.cpp" />
     <ClCompile Include="..\Classes\MapDebugger.cpp" />
-    <ClCompile Include="..\Classes\message\Battle.pb.cc" />
-    <ClCompile Include="..\Classes\message\boids.pb.cc" />
-    <ClCompile Include="..\Classes\message\pvp.pb.cc" />
-    <ClCompile Include="..\Classes\net\Net.cpp" />
-    <ClCompile Include="..\Classes\net\NetworkAdapter.cpp" />
-    <ClCompile Include="..\Classes\net\TcpClient.cpp" />
-    <ClCompile Include="..\Classes\net\UdpClient.cpp" />
     <ClCompile Include="..\Classes\Profile.cpp" />
     <ClCompile Include="..\Classes\Replay.cpp" />
     <ClCompile Include="..\Classes\ReplayComparer.cpp" />
+    <ClCompile Include="..\Classes\scene\BattleLayer.cpp" />
+    <ClCompile Include="..\Classes\scene\SceneBase.cpp" />
+    <ClCompile Include="..\Classes\scene\UIBattleFloatLayer.cpp" />
+    <ClCompile Include="..\Classes\scene\UIBattleLayer.cpp" />
+    <ClCompile Include="..\Classes\scene\UIBattleMenuLayer.cpp" />
+    <ClCompile Include="..\Classes\scene\UIControlLayer.cpp" />
+    <ClCompile Include="..\Classes\scene\UILevelChooseLayer.cpp" />
     <ClCompile Include="..\Classes\TmxParser\base64\base64.cpp" />
     <ClCompile Include="..\Classes\TmxParser\tinyxml\tinystr.cpp" />
     <ClCompile Include="..\Classes\TmxParser\tinyxml\tinyxml.cpp" />
@@ -347,7 +380,29 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\TmxParser\zlib\uncompr.c" />
     <ClCompile Include="..\Classes\TmxParser\zlib\zutil.c" />
     <ClCompile Include="..\Classes\Trace.cpp" />
+    <ClCompile Include="..\Classes\unit\Buff.cpp" />
+    <ClCompile Include="..\Classes\unit\BuildingNode.cpp" />
+    <ClCompile Include="..\Classes\unit\BulletNode.cpp" />
+    <ClCompile Include="..\Classes\unit\Equipment.cpp" />
+    <ClCompile Include="..\Classes\unit\HpBar.cpp" />
+    <ClCompile Include="..\Classes\unit\JumpText.cpp" />
+    <ClCompile Include="..\Classes\unit\Skill.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\BarrageOfArrow.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\BatSwarm.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\CrazyShoot.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\DarkPierce.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\GiantSword.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\LightningChain.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\LightShield.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\SkillNode.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\SkillNodeFactory.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\WrathOfThunder.cpp" />
+    <ClCompile Include="..\Classes\unit\TargetNode.cpp" />
+    <ClCompile Include="..\Classes\unit\UnitNode.cpp" />
+    <ClCompile Include="..\Classes\unit\UnitNodeComponent.cpp" />
     <ClCompile Include="..\Classes\Utils.cpp" />
+    <ClCompile Include="..\Classes\util\CocosUtils.cpp" />
+    <ClCompile Include="..\Classes\util\CommonUtils.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -366,11 +421,6 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ProjectReference Include="..\..\cocos2d-x\external\Box2D\proj.win32\libbox2d.vcxproj">
       <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\LaluneCommon\protobuf\protos\battle.proto" />
-    <None Include="..\..\..\..\LaluneCommon\protobuf\protos\boids.proto" />
-    <None Include="..\..\..\..\LaluneCommon\protobuf\protos\pvp.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

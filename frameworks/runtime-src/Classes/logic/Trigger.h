@@ -47,11 +47,59 @@ public:
 };
 
 class UnitChangeTrigger : public Trigger {
+protected:
+    int _need_count;
+    int _current_count;
+    
 public:
     UnitChangeTrigger();
     virtual ~UnitChangeTrigger();
     
     static UnitChangeTrigger* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );
+};
+
+class UnitAppearTrigger : public UnitChangeTrigger {
+public:
+    UnitAppearTrigger();
+    virtual ~UnitAppearTrigger();
+    
+    static UnitAppearTrigger* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );
+};
+
+class UnitDisappearTrigger : public UnitChangeTrigger {
+public:
+    UnitDisappearTrigger();
+    virtual ~UnitDisappearTrigger();
+    
+    static UnitDisappearTrigger* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );
+};
+
+class UnitDeadTrigger : public UnitChangeTrigger {
+public:
+    UnitDeadTrigger();
+    virtual ~UnitDeadTrigger();
+    
+    static UnitDeadTrigger* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );
+};
+
+class UnitAliveTrigger : public UnitChangeTrigger {
+public:
+    UnitAliveTrigger();
+    virtual ~UnitAliveTrigger();
+    
+    static UnitAliveTrigger* create( const cocos2d::ValueMap& data );
     virtual bool init( const cocos2d::ValueMap& data );
     
     virtual void updateTrigger( class MapLogic* map_logic, class UnitNode* unit_node, const std::string& unit_state );

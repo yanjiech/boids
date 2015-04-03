@@ -14,9 +14,9 @@
 #include "../util/CommonUtils.h"
 
 enum eSceneName {
-    Unknown = 0,
-    LevelChoose = 1,
-    Battle
+    SceneUnknown = 0,
+    SceneLevelChoose = 1,
+    SceneBattle
 };
 
 class SceneConfig {

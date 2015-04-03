@@ -88,6 +88,45 @@ void Buff::setOwner( UnitNode* owner ) {
     CC_SAFE_RETAIN( _owner );
 }
 
+PoisonBuff::PoisonBuff() {
+    
+}
+
+PoisonBuff::~PoisonBuff() {
+    
+}
+
+PoisonBuff* PoisonBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    PoisonBuff* ret = new PoisonBuff();
+    if( ret && ret->init( owner, data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool PoisonBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    if( !Buff::init( owner, data ) ) {
+        return false;
+    }
+    return true;
+}
+
+void PoisonBuff::updateFrame( float delta ) {
+    
+}
+
+void PoisonBuff::begin() {
+    Buff::begin();
+}
+
+void PoisonBuff::end() {
+    Buff::end();
+}
+
 ShieldBuff::ShieldBuff() {
     
 }

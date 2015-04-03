@@ -87,6 +87,8 @@ public:
 	static std::string generateRandomString(int len = 4);
 
 	static void saveReplay(const std::string& replay_name);
+    
+    static cocos2d::Point randomPositionInRange( const cocos2d::Point& center, float range );
 
 protected:
 	static cocos2d::DrawNode* _draw_node;

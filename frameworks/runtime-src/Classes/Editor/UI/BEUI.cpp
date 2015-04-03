@@ -9,10 +9,10 @@
 #include "BEUI.h"
 #include "Utils.h"
 #include "BETypes.h"
-#ifdef SUPPORT_EXTERNAL_MAP
-#include <boost/filesystem.hpp>
-#include "SimpleIni.h"
-#define EDITOR_SETTING_PATH ("editor_setting.ini")
+#if defined( SUPPORT_EXTERNAL_MAP )
+    #include <boost/filesystem.hpp>
+    #include "../../ini/SimpleIni.h"
+    #define EDITOR_SETTING_PATH ("editor_setting.ini")
 #endif
 
 using namespace cocos2d;
@@ -183,6 +183,8 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     _classTextField = getTextFieldFrom("input_class", _infoPanel);
     _customTextField = getTextFieldFrom("input_custom", _infoPanel);
     
+    _levelTextField = getTextFieldFrom( "tf_level", _infoPanel );
+    
     _groupListView = BEFilterListView::create(Size(500, 600), CC_CALLBACK_1(BEUIUnitAction::onGroupItemClicked, this), _filterTextField);
     _groupListView->setDelegate(this);
     _groupListView->setPosition(Vec2(0, 100));
@@ -239,6 +241,7 @@ void BEUIUnitAction::reset() {
     toggleCountUI(false);
     _countTextField->setString("1");
     _customTextField->setString("");
+    _levelTextField->setString( "1" );
     _changeShowHPCheckBox->setSelected(false);
     _showHPCheckBox->setSelected(false);
     _buffCheckBox->setSelected(false);
@@ -287,9 +290,9 @@ void BEUIUnitAction::saveEvent() {
 
 int BEUIUnitAction::itemCount() {
     if (_editMode) {
-        return _editableActions.size();
+        return (int)_editableActions.size();
     } else {
-        return _sourceList.size();
+        return (int)_sourceList.size();
     }
 }
 
@@ -362,6 +365,7 @@ void BEUIUnitAction::renderAction(EditorUnitActionPtr action) {
     }
     _bossCheckBox->setSelected(action->IsBoss);
     _customTextField->setString(action->CustomChange);
+    _levelTextField->setString( Utils::stringFormat( "%d", action->UnitLevel ) );
     if (action->PositionName.length() > 0) {
         _positionLabel->setString(action->PositionName);
     }
@@ -396,6 +400,7 @@ void BEUIUnitAction::onAddButtonClicked(Ref *sender) {
     }
     _action->IsBoss = _bossCheckBox->isSelected();
     _action->CustomChange = _customTextField->getString();
+    _action->UnitLevel = Utils::toInt( _levelTextField->getString() );
     if (_action->BuffChanged) {
         _action->BuffName = _buffTextField->getString();
     }
@@ -552,6 +557,8 @@ BEUIUnitTrigger::BEUIUnitTrigger(ui::Layout *root, const BEPopupEventHandler& ha
     _positionLabel1 = getLabelFrom("text_postion1", _infoPanel);
     _triggerCountTextField = getTextFieldFrom("input_count", _infoPanel);
     
+    _lb_tag = getTextFieldFrom( "lb_tag", _infoPanel );
+    
     _groupListView = BEFilterListView::create(Size(500, 600), nullptr, _filterTextField);
     _groupListView->setDelegate(this);
     _groupListView->setPosition(Vec2(0, 100));
@@ -577,12 +584,15 @@ void BEUIUnitTrigger::reset() {
     _triggerCountTextField->setString("");
     _positionName = "";
     _positionLabel1->setString("位置1");
+    _lb_tag->setString( "1" );
     _trigger = EditorUnitTriggerPtr(new EditorUnitTrigger());
     _filterTextField->setString("");
 }
 
 void BEUIUnitTrigger::loadSourceList(const std::vector<std::pair<std::string, std::string>>& sources) {
-    _sourceList = sources;
+    _sourceList.clear();
+    _sourceList.push_back( std::make_pair( "tag_source", "custom" ) );
+    _sourceList.insert( _sourceList.end(), sources.begin(), sources.end() );
     _groupListView->updateData();
 }
 
@@ -624,7 +634,12 @@ EditorUnitTriggerPtr BEUIUnitTrigger::getTrigger() {
     int idx = _groupListView->getCurrentIndexForFullItems();
     auto pair = _sourceList[idx];
     _trigger->SourceType = pair.first;
-    _trigger->SourceValue = pair.second;
+    if( pair.first == "tag_source" ) {
+        _trigger->SourceValue = _lb_tag->getString();
+    }
+    else {
+        _trigger->SourceValue = pair.second;
+    }
     if (_triggerCountTextField->getString() == "") {
         _trigger->TriggerCount = 1;
     } else {
@@ -637,8 +652,8 @@ void BEUIUnitTrigger::onStateListItemClicked(Ref *sender) {
     auto name = _stateListView->getCurrentType();
     _stateButton->setTitleText(name);
     _stateListView->setVisible(false);
-    if (name == "unit_move") {
-        togglePositionUI(true);
+    if (name == "unit_dead") {
+        togglePositionUI( false );
         _positionTitleLabel1->setString("移动至");
     } else if (name == "unit_appear") {
         togglePositionUI(false);
@@ -849,7 +864,7 @@ EditorTaskActionPtr BEUITaskStateChange::getAction() {
     return _action;
 }
 
-void BEUITaskStateChange::loadTaskList(const std::vector<EditorTaskPtr>& taskList) {
+void BEUITaskStateChange::loadTaskList(const std::vector<EditorGameConditionPtr>& taskList) {
     std::vector<std::string> names;
     for (auto task : taskList) {
         names.push_back(task->Name);
@@ -1034,7 +1049,7 @@ void BEUIWaveAction::loadPositionGroups(const std::vector<std::string>& groups) 
 }
 
 int BEUIWaveAction::itemCount() {
-    return _unitList.size();
+    return (int)_unitList.size();
 }
 
 std::string BEUIWaveAction::searchNameAtIndex(int index) {
@@ -1108,12 +1123,10 @@ void BEUIWaveAction::onPositionGroupItemClicked(Ref *sender) {
 }
 
 BEUIGameCondition::BEUIGameCondition(Node *root, const BEPopupEventHandler& handler): BEUIBase(root, handler) {
-    _chooseConditionButton = getButtonFrom("button_condition", _root);
     _chooseTypeButton = getButtonFrom("button_type", _root);
-    _numberTextField = getTextFieldFrom("input_number", _root);
-    _nameTextField = getTextFieldFrom("input_name", _root);
-    _descTextField = getTextFieldFrom("input_desc", _root);
-    _tagTextField = getTextFieldFrom( "input_tag", _root );
+    _nameTextField = getTextFieldFrom("tf_name", _root);
+    _descTextField = getTextFieldFrom("tf_desc", _root);
+    _titleTextField = getTextFieldFrom( "tf_title", _root );
     _addButton = getButtonFrom("button_add", _root);
     _okButton = getButtonFrom("button_ok", _root);
     _cancelButton = getButtonFrom("button_cancel", _root);
@@ -1121,11 +1134,8 @@ BEUIGameCondition::BEUIGameCondition(Node *root, const BEPopupEventHandler& hand
     _resultListView = BEDefaultListView::create(Size(500, 550), nullptr);
     _resultListView->setPosition(Vec2(500, 150));
     _root->addChild(_resultListView);
-    _conditionListView = popupTypeListFromButton(_chooseConditionButton, EditorTypeManager::getInstance()->getGameConditionType(), CC_CALLBACK_1(BEUIGameCondition::onConditionItemClicked, this));
     _typeListView = popupTypeListFromButton(_chooseTypeButton, EditorTypeManager::getInstance()->getGameConditionSourceType(), CC_CALLBACK_1(BEUIGameCondition::onTypeItemClicked, this));
-    _conditionListView->setVisible(false);
     _typeListView->setVisible(false);
-    _chooseConditionButton->addClickEventListener(CC_CALLBACK_1(BEUIGameCondition::onChooseConditionButtonClicked, this));
     _chooseTypeButton->addClickEventListener(CC_CALLBACK_1(BEUIGameCondition::onChooseTypeButtonClicked, this));
     _addButton->addClickEventListener(CC_CALLBACK_1(BEUIGameCondition::onAddButtonClicked, this));
     _deleteButton->addClickEventListener(CC_CALLBACK_1(BEUIGameCondition::onDeleteButtonClicked, this));
@@ -1137,7 +1147,6 @@ void BEUIGameCondition::reset() {
     _condition = EditorGameConditionPtr(new EditorGameCondition());
     _conditions.clear();
     _resultListView->cleanAndReset();
-    _conditionListView->reset();
     _typeListView->reset();
 }
 
@@ -1146,21 +1155,19 @@ void BEUIGameCondition::loadConditions(const std::vector<EditorGameConditionPtr>
     _resultListView->removeAllItems();
     std::vector<std::string> names;
     for (auto condition : _conditions) {
-        std::string name = Utils::stringFormat("%s:%s", condition->Type.c_str(), condition->Condition.c_str());
+        std::string name = Utils::stringFormat("%s:%s", condition->Type.c_str(), condition->Name.c_str());
         names.push_back(name);
     }
     _resultListView->addItems(names);
 }
 
 void BEUIGameCondition::onAddButtonClicked(Ref *sender) {
-    _condition->Condition = _conditionListView->getCurrentType();
     _condition->Type = _typeListView->getCurrentType();
-    _condition->Number = atoi(_numberTextField->getString().c_str());
+    _condition->Title = _titleTextField->getString();
     _condition->Name = _nameTextField->getString();
     _condition->Desc = _descTextField->getString();
-    _condition->Tag = _tagTextField->getString();
     _conditions.push_back(_condition);
-    std::string name = Utils::stringFormat("%s:%s", _condition->Type.c_str(), _condition->Condition.c_str());
+    std::string name = Utils::stringFormat("%s:%s", _condition->Type.c_str(), _condition->Name.c_str());
     _resultListView->addItem(name);
     _condition = EditorGameConditionPtr(new EditorGameCondition());
 }
@@ -1171,21 +1178,14 @@ void BEUIGameCondition::onDeleteButtonClicked(Ref *sender) {
     _resultListView->removeCurrentIndex();
 }
 
-void BEUIGameCondition::onChooseConditionButtonClicked(Ref *sender) {
-    _conditionListView->setVisible(true);
-}
-
 void BEUIGameCondition::onChooseTypeButtonClicked(Ref *sender) {
     _typeListView->setVisible(true);
 }
 
 void BEUIGameCondition::onConditionItemClicked(Ref *sender) {
-    _chooseConditionButton->setTitleText(_conditionListView->getCurrentType());
-    _conditionListView->setVisible(false);
-    _numberTextField->setString("");
     _nameTextField->setString("");
     _descTextField->setString("");
-    _tagTextField->setString( "" );
+    _titleTextField->setString( "" );
 }
 
 void BEUIGameCondition::onTypeItemClicked(Ref *sender) {
@@ -1198,9 +1198,12 @@ BEUIConversationAction::BEUIConversationAction(Node *root, const BEPopupEventHan
     _infoPanel = getPanelFrom("panel_info", _root);
     _filterTextField = getTextFieldFrom("input_filter", _listPanel);
     _contentTextField = getTextFieldFrom("input_content", _infoPanel);
-    _durationTextField = getTextFieldFrom("input_duration", _infoPanel);
     _nameTextField = getTextFieldFrom("input_conversationName", _infoPanel);
-    _cameraMoveCheckBox = getCheckBoxFrom("checkbox_moveCamera", _infoPanel);
+    _tf_tag = getTextFieldFrom("tf_speaker_tag", _infoPanel);
+    _tf_repeat = getTextFieldFrom("tf_repeat", _infoPanel);
+    _tf_duration = getTextFieldFrom("tf_duration", _infoPanel);
+    _tf_interval = getTextFieldFrom("tf_interval", _infoPanel);
+    _cb_random = getCheckBoxFrom( "cb_random", _infoPanel );
     _addButton = getButtonFrom("button_add", _infoPanel);
     _okButton = getButtonFrom("button_ok", _infoPanel);
     _cancelButton = getButtonFrom("button_cancel", _infoPanel);
@@ -1226,12 +1229,24 @@ void BEUIConversationAction::reset() {
 }
 
 void BEUIConversationAction::loadConversationSource(const std::vector<std::pair<std::string, std::string>>& sources) {
-    _sources = sources;
+    _sources.clear();
+    _sources.push_back( std::make_pair( "tag_source", "custom" ) );
+    _sources.insert( _sources.end(), sources.begin(), sources.end() );
     _sourceListView->updateData();
 }
 
 EditorConversationActionPtr BEUIConversationAction::getAction() {
     _action->Name = _nameTextField->getString();
+    _action->RandomOrder = _cb_random->isSelected();
+    _action->RepeatTimes = atoi( _tf_repeat->getString().c_str() );
+    int index = _sourceListView->getCurrentIndexForFullItems();
+    _action->SourceType = _sources[index].first;
+    if( _action->SourceType == "tag_source" ) {
+        _action->SourceValue = _tf_tag->getString();
+    }
+    else {
+        _action->SourceValue = _sources[index].second;
+    }
     return _action;
 }
 
@@ -1252,19 +1267,15 @@ std::string BEUIConversationAction::displayNameAtIndex(int index) {
 }
 
 int BEUIConversationAction::itemCount() {
-    return _sources.size();
+    return (int)_sources.size();
 }
 
 void BEUIConversationAction::onAddButtonClicked(Ref *sender) {
-    int index = _sourceListView->getCurrentIndexForFullItems();
-    _currentSpeech->SourceType = _sources[index].first;
-    _currentSpeech->Source = _sources[index].second;
     _currentSpeech->Content = _contentTextField->getString();
-    _currentSpeech->CameraMove = _cameraMoveCheckBox->isSelected();
-    _currentSpeech->Duration = atof(_durationTextField->getString().c_str());
+    _currentSpeech->Duration = atof( _tf_duration->getString().c_str());
+    _currentSpeech->Interval = atof( _tf_interval->getString().c_str() );
     _action->Speeches.push_back(_currentSpeech);
-    auto name = Utils::stringFormat("%s:%s", _currentSpeech->Source.c_str(), _currentSpeech->Content.c_str());
-    _speechListView->addItem(name);
+    _speechListView->addItem(_currentSpeech->Content);
     _currentSpeech = EditorSpeechPtr(new EditorSpeech());
 }
 
@@ -1274,45 +1285,45 @@ void BEUIConversationAction::onDeleteButtonClicked(Ref *sender) {
     _speechListView->removeCurrentIndex();
 }
 
-BEUIConversationTrigger::BEUIConversationTrigger(Node *root, const BEPopupEventHandler& handler): BEUIBase(root, handler) {
-    _stateButton = getButtonFrom("button_state", _root);
-    _okButton = getButtonFrom("button_ok", _root);
-    _cancelButton = getButtonFrom("button_cancel", _root);
-    _stateListView = popupTypeListFromButton(_stateButton, EditorTypeManager::getInstance()->getConversationState(), CC_CALLBACK_1(BEUIConversationTrigger::onStateItemClicked, this));
-    _stateListView->setVisible(false);
-    _conversationListView = BEDefaultListView::create(Size(400, 400), nullptr);
-    _conversationListView->setPosition(Vec2(0, 200));
-    _root->addChild(_conversationListView);
-    _stateButton->addClickEventListener(CC_CALLBACK_1(BEUIConversationTrigger::onStateButtonClicked, this));
-    bindOKHandler(_okButton);
-    bindCancelHandler(_cancelButton);
-}
-
-void BEUIConversationTrigger::reset() {
-    _conversationListView->cleanAndReset();
-    _stateListView->reset();
-    _stateButton->setTitleText("conversation_start");
-}
-
-void BEUIConversationTrigger::loadConversations(const std::vector<std::string>& conversations) {
-    _conversationListView->addItems(conversations);
-}
-
-EditorConversationChangeTriggerPtr BEUIConversationTrigger::getTrigger() {
-    auto trigger = EditorConversationChangeTriggerPtr(new EditorConversationChangeTrigger());
-    trigger->ConversationName = _conversationListView->getCurrentName();
-    trigger->State = _stateListView->getCurrentType();
-    return trigger;
-}
-
-void BEUIConversationTrigger::onStateButtonClicked(Ref *sender) {
-    _stateListView->setVisible(true);
-}
-
-void BEUIConversationTrigger::onStateItemClicked(Ref *sender) {
-    _stateButton->setTitleText(_stateListView->getCurrentType());
-    _stateListView->setVisible(false);
-}
+//BEUIConversationTrigger::BEUIConversationTrigger(Node *root, const BEPopupEventHandler& handler): BEUIBase(root, handler) {
+//    _stateButton = getButtonFrom("button_state", _root);
+//    _okButton = getButtonFrom("button_ok", _root);
+//    _cancelButton = getButtonFrom("button_cancel", _root);
+//    _stateListView = popupTypeListFromButton(_stateButton, EditorTypeManager::getInstance()->getConversationState(), CC_CALLBACK_1(BEUIConversationTrigger::onStateItemClicked, this));
+//    _stateListView->setVisible(false);
+//    _conversationListView = BEDefaultListView::create(Size(400, 400), nullptr);
+//    _conversationListView->setPosition(Vec2(0, 200));
+//    _root->addChild(_conversationListView);
+//    _stateButton->addClickEventListener(CC_CALLBACK_1(BEUIConversationTrigger::onStateButtonClicked, this));
+//    bindOKHandler(_okButton);
+//    bindCancelHandler(_cancelButton);
+//}
+//
+//void BEUIConversationTrigger::reset() {
+//    _conversationListView->cleanAndReset();
+//    _stateListView->reset();
+//    _stateButton->setTitleText("conversation_start");
+//}
+//
+//void BEUIConversationTrigger::loadConversations(const std::vector<std::string>& conversations) {
+//    _conversationListView->addItems(conversations);
+//}
+//
+//EditorConversationChangeTriggerPtr BEUIConversationTrigger::getTrigger() {
+//    auto trigger = EditorConversationChangeTriggerPtr(new EditorConversationChangeTrigger());
+//    trigger->ConversationName = _conversationListView->getCurrentName();
+//    trigger->State = _stateListView->getCurrentType();
+//    return trigger;
+//}
+//
+//void BEUIConversationTrigger::onStateButtonClicked(Ref *sender) {
+//    _stateListView->setVisible(true);
+//}
+//
+//void BEUIConversationTrigger::onStateItemClicked(Ref *sender) {
+//    _stateButton->setTitleText(_stateListView->getCurrentType());
+//    _stateListView->setVisible(false);
+//}
 
 
 BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, const BEEditorCommandHandler& commandHandler):BEUIBase(root, handler) {
@@ -1337,7 +1348,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     _waveActionPanel = getPanelFrom(kWaveActionPanel, _popupContainer);
     _gameConditionPanel = getPanelFrom(kGameConditionPanel, _popupContainer);
     _conversationActionPanel = getPanelFrom(kConversationActionPanel, _popupContainer);
-    _conversationChangePanel = getPanelFrom(kConversationChangePanel, _popupContainer);
+//    _conversationChangePanel = getPanelFrom(kConversationChangePanel, _popupContainer);
     _commandHandler = commandHandler;
     _newEventButton->addClickEventListener([this](Ref *sender) {
         this->_commandHandler(EditorCommandType::NewEvent, sender);
@@ -1369,7 +1380,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     waveActionUI = new BEUIWaveAction(_waveActionPanel, handler);
     gameConditionUI = new BEUIGameCondition(_gameConditionPanel, handler);
     conversationActionUI = new BEUIConversationAction(_conversationActionPanel, handler);
-    conversationChangeUI = new BEUIConversationTrigger(_conversationChangePanel, handler);
+//    conversationChangeUI = new BEUIConversationTrigger(_conversationChangePanel, handler);
     hideAllPopups();
 }
 
@@ -1388,7 +1399,7 @@ BEEditorMainUI::~BEEditorMainUI() {
     delete waveActionUI;
     delete gameConditionUI;
     delete conversationActionUI;
-    delete conversationChangeUI;
+//    delete conversationChangeUI;
 }
 
 void BEEditorMainUI::hideAllPopups() {
@@ -1406,7 +1417,7 @@ void BEEditorMainUI::hideAllPopups() {
     waveActionUI->setVisible(false);
     gameConditionUI->setVisible(false);
     conversationActionUI->setVisible(false);
-    conversationChangeUI->setVisible(false);
+//    conversationChangeUI->setVisible(false);
 }
 
 void BEEditorMainUI::reset() {

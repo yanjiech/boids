@@ -40,13 +40,13 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
     
     const ValueMap& meta_json = _battle_layer->getMapData()->getMetaJson();
     
-    auto sitr = meta_json.find( "conditions" );
+    auto sitr = meta_json.find( "tasks" );
     if( sitr != meta_json.end() ) {
         const ValueVector& task_json = sitr->second.asValueVector();
         for( auto itr = task_json.begin(); itr != task_json.end(); ++itr ) {
             const ValueMap& t = itr->asValueMap();
             GameTask* gt = GameTask::create( t, this );
-//            _game_tasks.pushBack( gt );
+            _game_tasks.pushBack( gt );
         }
     }
     
@@ -125,7 +125,20 @@ void MapLogic::onMapInit() {
 }
 
 void MapLogic::onTaskStateChanged( const std::string& task_name, const std::string& task_state ) {
-    
+    for( auto task : _game_tasks ) {
+        if( task->isActive() && task->getTaskName() == task_name ) {
+            task->setTaskState( task_state );
+            if( task->isPrimary() && !task->isActive() ) {
+                if( task->getTaskState() == GAME_TASK_STATE_FINISHED ) {
+                    _battle_layer->changeState( eBattleState::BattleWin );
+                }
+                else if( task->getTaskState() == GAME_TASK_STATE_FAILED ) {
+                    _battle_layer->changeState( eBattleState::BattleLose );
+                }
+            }
+            break;
+        }
+    }
 }
 
 void MapLogic::onCustomTrigger( const std::string& trigger_name ) {
@@ -192,6 +205,20 @@ void MapLogic::onTargetNodeAppear( TargetNode* target_node ) {
     }while( false );
 }
 
+void MapLogic::onTargetNodeDead( class TargetNode* target_node ) {
+    do {
+        UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
+        if( unit_node ) {
+            for( auto trigger : _triggers ) {
+                if( trigger->isEnabled() ) {
+                    trigger->activateTriggerByUnit( unit_node, UNIT_STATE_DEAD, ValueMap() );
+                }
+            }
+            break;
+        }
+    }while( false );
+}
+
 void MapLogic::onTargetNodeDisappear( TargetNode* target_node ) {
     do {
         UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
@@ -207,7 +234,7 @@ void MapLogic::onTargetNodeDisappear( TargetNode* target_node ) {
                 if( trigger->isEnabled() ) {
                     ValueMap area = _battle_layer->getMapData()->getAreaMapByPosition( unit_node->getPosition() );
                     if( !area.empty() ) {
-                        trigger->activateTriggerByUnit( unit_node, UNIT_STATE_MOVE_TO, area );
+                        trigger->activateTriggerByUnit( unit_node, UNIT_STATE_DISAPPEAR, area );
                     }
                 }
             }

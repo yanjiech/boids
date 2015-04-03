@@ -1,19 +1,5 @@
 {
     "desc": "为了寻找被哥布林囚禁的平民，英雄一行深入敌后",
-    "tasks": [
-        {
-            "name": "1",
-            "desc": "找到村民的线索"
-        },
-        {
-            "name": "2",
-            "desc": "2分钟内完成任务"
-        },
-        {
-            "name": "3",
-            "desc": "全员不死"
-        }
-    ],
     "positions": [
         {
             "name": "player_start",
@@ -300,6 +286,7 @@
                     "tag_name": "all",
                     "position_name": "1",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -312,6 +299,7 @@
                     "tag_name": "all",
                     "position_name": "2",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -324,6 +312,7 @@
                     "tag_name": "all",
                     "position_name": "3",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -336,6 +325,7 @@
                     "tag_name": "all,speaker_02",
                     "position_name": "4",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -348,6 +338,7 @@
                     "tag_name": "all,speaker_01",
                     "position_name": "5",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -360,6 +351,7 @@
                     "tag_name": "all",
                     "position_name": "6",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -372,6 +364,7 @@
                     "tag_name": "all",
                     "position_name": "7",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -384,6 +377,7 @@
                     "tag_name": "all",
                     "position_name": "8",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -396,6 +390,7 @@
                     "tag_name": "all",
                     "position_name": "9",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -408,6 +403,7 @@
                     "tag_name": "all",
                     "position_name": "10",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -420,6 +416,7 @@
                     "tag_name": "all,talker_03",
                     "position_name": "11",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -432,6 +429,7 @@
                     "tag_name": "all,talker_04",
                     "position_name": "12",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -444,6 +442,7 @@
                     "tag_name": "all",
                     "position_name": "13",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -456,6 +455,7 @@
                     "tag_name": "all",
                     "position_name": "14",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -468,6 +468,7 @@
                     "tag_name": "all",
                     "position_name": "15",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -480,6 +481,7 @@
                     "tag_name": "all",
                     "position_name": "16",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -492,6 +494,7 @@
                     "tag_name": "all",
                     "position_name": "17",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -504,6 +507,7 @@
                     "tag_name": "all,say_18",
                     "position_name": "18",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -516,6 +520,7 @@
                     "tag_name": "all",
                     "position_name": "19",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -528,6 +533,7 @@
                     "tag_name": "all",
                     "position_name": "20",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -540,6 +546,7 @@
                     "tag_name": "all,say_098",
                     "position_name": "21",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -566,6 +573,7 @@
                     "tag_name": "all",
                     "position_name": "4",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -578,6 +586,7 @@
                     "tag_name": "all",
                     "position_name": "6",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -590,6 +599,7 @@
                     "tag_name": "all",
                     "position_name": "10",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -602,6 +612,7 @@
                     "tag_name": "all",
                     "position_name": "13",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -614,6 +625,7 @@
                     "tag_name": "all,say_17",
                     "position_name": "17",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -626,6 +638,7 @@
                     "tag_name": "all",
                     "position_name": "20",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -638,6 +651,7 @@
                     "tag_name": "all",
                     "position_name": "19",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -664,6 +678,7 @@
                     "tag_name": "all",
                     "position_name": "2",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -679,7 +694,7 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "all",
-                    "unit_state": "unit_disappear",
+                    "unit_state": "unit_dead",
                     "trigger_count": 0
                 }
             ],
@@ -694,6 +709,7 @@
                     "tag_name": "the_last",
                     "position_name": "098",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -706,6 +722,7 @@
                     "tag_name": "the_last",
                     "position_name": "18",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -718,6 +735,7 @@
                     "tag_name": "the_last",
                     "position_name": "097",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -730,6 +748,7 @@
                     "tag_name": "the_last",
                     "position_name": "21",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -742,6 +761,7 @@
                     "tag_name": "the_last",
                     "position_name": "20",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -754,6 +774,7 @@
                     "tag_name": "the_last",
                     "position_name": "099",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -766,6 +787,7 @@
                     "tag_name": "talker_1,the_last",
                     "position_name": "19",
                     "unit_count": 1,
+                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -778,422 +800,7 @@
                     "tag_name": "talker_2,the_last",
                     "position_name": "096",
                     "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "talker_1",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "tag_source",
-                    "source_value": "talker_1",
-                    "unit_state": "unit_appear",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "talker_1",
-                            "content": "不怕死就告诉你们，村民在西边树林里~",
-                            "camera_move": true,
-                            "duration": 2
-                        },
-                        {
-                            "source_type": "tag_source",
-                            "source": "talker_2",
-                            "content": "嘿嘿，你们也一起陪葬！",
-                            "camera_move": true,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "talk_2"
-                }
-            ]
-        },
-        {
-            "name": "game_win",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "tag_source",
-                    "source_value": "the_last",
-                    "unit_state": "unit_disappear",
-                    "trigger_count": 0
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,1.00,0.00",
-                    "action_type": "game_change",
-                    "game_state": "game_win"
-                }
-            ]
-        },
-        {
-            "name": "speaker_01",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "type_source",
-                    "source_value": "player",
-                    "unit_state": "unit_move",
-                    "position_name": "5talk",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "speaker_01",
-                            "content": "嘿，有人冲进来了！",
-                            "camera_move": false,
-                            "duration": 3
-                        },
-                        {
-                            "source_type": "tag_source",
-                            "source": "speaker_02",
-                            "content": "好兴奋，有人送死来啦！",
-                            "camera_move": false,
-                            "duration": 3
-                        }
-                    ],
-                    "name": "02"
-                }
-            ]
-        },
-        {
-            "name": "talker_03",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "type_source",
-                    "source_value": "player",
-                    "unit_state": "unit_move",
-                    "position_name": "go_2",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "player_source",
-                            "source": "player",
-                            "content": "村民在哪儿！",
-                            "camera_move": true,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "player_speak"
-                }
-            ]
-        },
-        {
-            "name": "talker_03shuohua",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "player_speak",
-                    "state": "conversation_start"
-                },
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "player_speak",
-                    "state": "conversation_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "talker_03",
-                            "content": "这帮孙子是来找村民的！",
-                            "camera_move": false,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "speak_03"
-                }
-            ]
-        },
-        {
-            "name": "speaker_04",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "speak_03",
-                    "state": "conversation_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "talker_04",
-                            "content": "来人啊，砸场子啦！我先溜了！",
-                            "camera_move": true,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "speak_04"
-                }
-            ]
-        },
-        {
-            "name": "04escape",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "speak_04",
-                    "state": "conversation_start"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "tag_source",
-                    "source_value": "talker_04",
-                    "unit_state": "unit_move",
-                    "position_name": "16",
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "say_17",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "type_source",
-                    "source_value": "player",
-                    "unit_state": "unit_move",
-                    "position_name": "go_3",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "say_17",
-                            "content": "冤有头债有主，放过我！",
-                            "camera_move": false,
-                            "duration": 3
-                        }
-                    ],
-                    "name": "say_17"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "tag_source",
-                    "source_value": "say_17",
-                    "unit_state": "unit_patrol",
-                    "position_name": "go_3",
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "18_say",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "say_17",
-                    "state": "conversation_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "say_18",
-                            "content": "你说..老大是在讨饶还是拼命？",
-                            "camera_move": false,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "say_18"
-                }
-            ]
-        },
-        {
-            "name": "say_098",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "say_18",
-                    "state": "conversation_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "say_098",
-                            "content": "声东击西！你也去搭把手啊...",
-                            "camera_move": false,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "say_098"
-                }
-            ]
-        },
-        {
-            "name": "again_18",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "say_098",
-                    "state": "conversation_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "say_18",
-                            "content": "你去，你去",
-                            "camera_move": false,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "again_18"
-                }
-            ]
-        },
-        {
-            "name": "again_0982",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "again_18",
-                    "state": "conversation_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "say_098",
-                            "content": "你去，还是你去...",
-                            "camera_move": false,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "again_0982"
-                }
-            ]
-        },
-        {
-            "name": "test",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "type_source",
-                    "source_value": "player",
-                    "unit_state": "unit_appear",
-                    "trigger_count": 1
-                },
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "type_source",
-                    "source_value": "player",
-                    "unit_type": "player",
+                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -1202,5 +809,13 @@
     "units": [
         "bomb_goblin",
         "goblin"
+    ],
+    "tasks": [
+        {
+            "type": "primary_win",
+            "name": "main_task",
+            "desc": "kill boss",
+            "title": "kill boss"
+        }
     ]
 }

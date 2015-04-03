@@ -55,6 +55,7 @@ public:
     virtual void onActionTriggered( bool finish );
     
     bool shouldRecycle() { return _should_recycle; }
+    void setShouldRecycle( bool b ) { _should_recycle = b; }
 };
 
 class UnitChangeAction : public EventAction {
@@ -124,6 +125,14 @@ public:
 };
 
 class ConversationAction : public EventAction {
+private:
+    int _repeat_times;
+    int _current_times;
+    bool _is_random_order;
+    float _interval;
+    float _elapse;
+    int _current_speech_id;
+    
 public:
     ConversationAction();
     virtual ~ConversationAction();
@@ -132,6 +141,8 @@ public:
     virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
     
     virtual void onActionTriggered( bool finish );
+    
+    virtual void updateFrame( float delta );
 };
 
 class CustomAction : public EventAction {

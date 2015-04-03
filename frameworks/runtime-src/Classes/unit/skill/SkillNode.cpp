@@ -8,6 +8,7 @@
 
 #include "SkillNode.h"
 #include "../UnitNode.h"
+#include "SkillCache.h"
 
 using namespace cocos2d;
 
@@ -55,10 +56,9 @@ UnitNode* SkillNode::getOwner() {
 }
 
 void SkillNode::begin() {
-    _owner->setUsingSkillNode( this );
+    SkillCache::getInstance()->addSkill( this );
 }
 
 void SkillNode::end() {
-    _owner->setUsingSkillNode( nullptr );
     this->setShouldRecycle( true );
 }

@@ -134,56 +134,38 @@ void EditorTask::loadJson(const rapidjson::Value& value) {
 
 rapidjson::Value& EditorGameCondition::toJson(rapidjson::Document::AllocatorType& allocator) {
     EditorBase::toJson(allocator);
-    _json.AddMember("condition", Condition.c_str(), allocator);
     _json.AddMember("type", Type.c_str(), allocator);
-    if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "arrive_area" || Condition == "collect_item") {
-        _json.AddMember("name", Name.c_str(), allocator);
-    }
-    if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "collect_item" || Condition == "time_limit") {
-        _json.AddMember("number", Number, allocator);
-    }
-    if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "collect_item" || Condition == "time_limit") {
-        _json.AddMember("desc", Desc.c_str(), allocator);
-    }
-    if (Condition == "unit_die" || Condition == "unit_alive" || Condition == "collect_item" || Condition == "time_limit") {
-        _json.AddMember("tag", Tag.c_str(), allocator);
-    }
+    _json.AddMember("name", Name.c_str(), allocator);
+    _json.AddMember("desc", Desc.c_str(), allocator);
+    _json.AddMember( "title", Title.c_str(), allocator );
     return _json;
 }
 
 void EditorGameCondition::loadJson(const rapidjson::Value& value) {
-    Condition = value["condition"].GetString();
     Type = value["type"].GetString();
     if (value.HasMember("name")) {
         Name = value["name"].GetString();
     }
-    if (value.HasMember("number")) {
-        Number = value["number"].GetInt();
-    }
     if( value.HasMember( "desc" ) ) {
         Desc = value["desc"].GetString();
     }
-    if( value.HasMember( "tag" ) ) {
-        Tag = value["tag"].GetString();
+    if( value.HasMember( "title" ) ) {
+        Title = value["title"].GetString();
     }
 }
 
 rapidjson::Value& EditorSpeech::toJson(rapidjson::Document::AllocatorType& allocator) {
     EditorBase::toJson(allocator);
-    _json.AddMember("source_type", SourceType.c_str(), allocator);
-    _json.AddMember("source", Source.c_str(), allocator);
     _json.AddMember("content", Content.c_str(), allocator);
-    _json.AddMember("camera_move", CameraMove, allocator);
     _json.AddMember("duration", Duration, allocator);
+    _json.AddMember( "interval", Interval, allocator );
     return _json;
 }
 
 void EditorSpeech::loadJson(const rapidjson::Value& value) {
-    SourceType = value["source_type"].GetString();
-    Source = value["source"].GetString();
     Content = value["content"].GetString();
-    CameraMove = value["camera_move"].GetBool();
     Duration = value["duration"].GetDouble();
+    Interval = value["interval"].GetDouble();
 }
 
 rapidjson::Value& EditorTriggerMeta::toJson(rapidjson::Document::AllocatorType& allocator) {
@@ -217,9 +199,9 @@ rapidjson::Value& EditorUnitTrigger::toJson(rapidjson::Document::AllocatorType& 
     _json.AddMember("source_type", this->SourceType.c_str(), allocator);
     _json.AddMember("source_value", this->SourceValue.c_str(), allocator);
     _json.AddMember("unit_state", this->UnitState.c_str(), allocator);
-    if (this->PositionName != "") {
-        _json.AddMember("position_name", this->PositionName.c_str(), allocator);
-    }
+//    if (this->PositionName != "") {
+//        _json.AddMember("position_name", this->PositionName.c_str(), allocator);
+//    }
     _json.AddMember("trigger_count", this->TriggerCount, allocator);
     return _json;
 }
@@ -310,18 +292,18 @@ void EditorVisionTrigger::loadJson(const rapidjson::Value& value) {
     VisionState = value["vision_state"].GetString();
 }
 
-rapidjson::Value& EditorConversationChangeTrigger::toJson(rapidjson::Document::AllocatorType& allocator) {
-    EditorTriggerBase::toJson(allocator);
-    _json.AddMember("name", ConversationName.c_str(), allocator);
-    _json.AddMember("state", State.c_str(), allocator);
-    return _json;
-}
-
-void EditorConversationChangeTrigger::loadJson(const rapidjson::Value& value) {
-    EditorTriggerBase::loadJson(value);
-    ConversationName = value["name"].GetString();
-    State = value["state"].GetString();
-}
+//rapidjson::Value& EditorConversationChangeTrigger::toJson(rapidjson::Document::AllocatorType& allocator) {
+//    EditorTriggerBase::toJson(allocator);
+//    _json.AddMember("name", ConversationName.c_str(), allocator);
+//    _json.AddMember("state", State.c_str(), allocator);
+//    return _json;
+//}
+//
+//void EditorConversationChangeTrigger::loadJson(const rapidjson::Value& value) {
+//    EditorTriggerBase::loadJson(value);
+//    ConversationName = value["name"].GetString();
+//    State = value["state"].GetString();
+//}
 
 rapidjson::Value& EditorActionMeta::toJson(rapidjson::Document::AllocatorType& allocator) {
     int repeat = IsInfinite ? -1 : RepeatTimes;
@@ -413,6 +395,7 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
     if (this->CustomChange.length() > 0) {
         _json.AddMember("custom_change", CustomChange.c_str(), allocator);
     }
+    _json.AddMember( "unit_level", this->UnitLevel, allocator );
     if (this->PopupType.length() > 0) {
         _json.AddMember("popup_type", PopupType.c_str(), allocator);
     }
@@ -492,6 +475,12 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->CustomChange = value["custom_change"].GetString();
     } else {
         this->CustomChange = "";
+    }
+    if( value.HasMember( "unit_level" ) ) {
+        this->UnitLevel = value["unit_level"].GetInt();
+    }
+    else {
+        this->UnitLevel = 1;
     }
     if (value.HasMember("popup_type")) {
         this->PopupType = value["popup_type"].GetString();
@@ -589,6 +578,11 @@ rapidjson::Value& EditorConversationAction::toJson(rapidjson::Document::Allocato
     }
     _json.AddMember("speeches", speeches, allocator);
     _json.AddMember("name", Name.c_str(), allocator);
+    _json.AddMember( "source_type", SourceType.c_str(), allocator );
+    _json.AddMember( "source_value", SourceValue.c_str(), allocator );
+    _json.AddMember( "is_random_order", RandomOrder, allocator );
+    _json.AddMember( "repeat_times", RepeatTimes, allocator );
+    
     return _json;
 }
 
@@ -603,6 +597,10 @@ void EditorConversationAction::loadJson(const rapidjson::Value& value) {
         Speeches.push_back(speech);
     }
     Name = value["name"].GetString();
+    SourceType = value["source_type"].GetString();
+    SourceValue = value["source_value"].GetString();
+    RandomOrder = value["is_random_order"].GetBool();
+    RepeatTimes = value["repeat_times"].GetInt();
 }
 
 EditorEvent::EditorEvent() {
@@ -654,9 +652,10 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
                 trigger = std::shared_ptr<EditorGameTrigger>(new EditorGameTrigger());
             } else if (triggerType == "vision_change") {
                 trigger = std::shared_ptr<EditorVisionTrigger>(new EditorVisionTrigger());
-            } else if (triggerType == "conversation_action") {
-                trigger = std::shared_ptr<EditorConversationChangeTrigger>(new EditorConversationChangeTrigger());
             }
+//            else if (triggerType == "conversation_change") {
+//                trigger = std::shared_ptr<EditorConversationChangeTrigger>(new EditorConversationChangeTrigger());
+//            }
             trigger->loadJson(triggers[i]);
             Triggers.push_back(trigger);
         }
@@ -707,20 +706,20 @@ std::string EditorData::getString() {
 }
 
 void EditorData::loadJson(const rapidjson::Value& value) {
-    Tasks.clear();
+//    Tasks.clear();
     Positions.clear();
     Events.clear();
     Conditions.clear();
     if (!value.IsNull()) {
-        const rapidjson::Value& tasks = value["tasks"];
-        if (!tasks.IsNull()) {
-            assert(tasks.IsArray());
-            for (int i = 0; i < tasks.Size(); ++i) {
-                auto taskPtr = std::shared_ptr<EditorTask>(new EditorTask());
-                taskPtr->loadJson(tasks[i]);
-                Tasks.push_back(taskPtr);
-            }
-        }
+//        const rapidjson::Value& tasks = value["tasks"];
+//        if (!tasks.IsNull()) {
+//            assert(tasks.IsArray());
+//            for (int i = 0; i < tasks.Size(); ++i) {
+//                auto taskPtr = std::shared_ptr<EditorTask>(new EditorTask());
+//                taskPtr->loadJson(tasks[i]);
+//                Tasks.push_back(taskPtr);
+//            }
+//        }
         
         const rapidjson::Value& positions = value["positions"];
         if (!positions.IsNull()) {
@@ -741,7 +740,7 @@ void EditorData::loadJson(const rapidjson::Value& value) {
                 Events.push_back(eventPtr);
             }
 		}
-        const rapidjson::Value& conditions = value["conditions"];
+        const rapidjson::Value& conditions = value["tasks"];
         if (!conditions.IsNull()) {
             assert(conditions.IsArray());
             for (int i = 0; i < conditions.Size(); i++) {
@@ -761,10 +760,10 @@ rapidjson::Value& EditorData::toJson(rapidjson::Document::AllocatorType& allocat
     _doc.RemoveMember("conditions");
     rapidjson::Value tasks;
     tasks.SetArray();
-    for (int i = 0; i < Tasks.size(); i++) {
-        tasks.PushBack(Tasks[i]->toJson(allocator), allocator);
-    }
-    _doc.AddMember("tasks", tasks, allocator);
+//    for (int i = 0; i < Tasks.size(); i++) {
+//        tasks.PushBack(Tasks[i]->toJson(allocator), allocator);
+//    }
+//    _doc.AddMember("tasks", tasks, allocator);
     rapidjson::Value positions;
     positions.SetArray();
     for (int i = 0; i < Positions.size(); i++) {
@@ -809,7 +808,7 @@ rapidjson::Value& EditorData::toJson(rapidjson::Document::AllocatorType& allocat
         for (auto cond : Conditions) {
             conditions.PushBack(cond->toJson(allocator), allocator);
         }
-        _doc.AddMember("conditions", conditions, allocator);
+        _doc.AddMember("tasks", conditions, allocator);
     }
     return _doc;
 }

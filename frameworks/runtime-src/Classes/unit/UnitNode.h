@@ -11,7 +11,7 @@
 
 #include "../interface/Updatable.h"
 #include "TargetNode.h"
-#include "BehaviorBase.h"
+#include "../behavior/BehaviorBase.h"
 #include "spine/spine-cocos2dx.h"
 #include "Skill.h"
 #include "Buff.h"
@@ -67,6 +67,8 @@ public:
     int level;
     float hp;
     float current_hp;
+    float mp;
+    float current_mp;
     float atk;
     float def;
     float move_speed;
@@ -160,8 +162,6 @@ private:
     
     cocos2d::ValueVector _unit_tags;
     
-    SkillNode* _using_skill_node;
-    
 private:
     void updateComponents( float delta );
     void updateBuffs( float delta );
@@ -225,7 +225,10 @@ public:
     cocos2d::Point getLocalHitPos();
     cocos2d::Point getHitPos();
     cocos2d::Point getEmitPos();
+    cocos2d::Point getLocalEmitPos();
     cocos2d::Point getLocalHeadPos();
+    
+    cocos2d::Point getLocalBonePos( const std::string& bone_name );
     
     void appear();
     void disappear();
@@ -236,6 +239,8 @@ public:
     
     void takeDamage( const cocos2d::ValueMap& result, int source_id );
     void takeDamage( float amount, bool is_cri, bool is_miss, int source_id );
+    
+    void takeHeal( const cocos2d::ValueMap& result, int source_id );
     void takeHeal( float amount, bool is_cri, int source_id );
     
     void setGLProgrameState( const std::string& name );
@@ -306,7 +311,7 @@ public:
     bool canAttack( TargetNode* target_node );
     
     void attack( TargetNode* unit );
-    void onCharging( int i );
+    void onCharging();
     void onAttackBegan();
     void onAttacking();
     void onCasting();
@@ -344,11 +349,12 @@ public:
     float getSkillCDById( int sk_id );
     bool isSkillReadyById( int sk_id );
     
-    void setUsingSkillNode( SkillNode* skill_node ) { _using_skill_node = nullptr; }
-    SkillNode* getSkillNode() { return _using_skill_node; }
-    
     void riseup( float _duration, float delta_height );
     void falldown( float _duration, float delta_height );
+    
+    bool isAlive();
+    
+    void makeSpeech( const std::string& content, float duration );
 };
 
 #endif /* defined(__Boids__UnitNode__) */

@@ -53,7 +53,19 @@ void BoidsPolygon::loadFromTmxObject(Tmx::Object* ob, float map_height)
 		pt.y = map_height - pt.y;
 	});
 
-	makeSureAnticlockwise();
+	
+}
+
+void BoidsPolygon::loadFromValueMap( const cocos2d::ValueMap& data, float map_height ) {
+    const ValueVector& points = data.at( "points" ).asValueVector();
+    float base_x = data.at( "x" ).asFloat();
+    float base_y = data.at( "y" ).asFloat();
+    
+    for( auto itr = points.begin(); itr != points.end(); ++itr ) {
+        const ValueMap& pos_pair = itr->asValueMap();
+        this->addNewVertex( pos_pair.at( "x" ).asFloat() + base_x, pos_pair.at( "y" ).asFloat() + base_y );
+    }
+    this->makeSureAnticlockwise();
 }
 
 void BoidsPolygon::initializeAsRectangle(float x, float y, float width, float height)

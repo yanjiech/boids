@@ -47,14 +47,9 @@ bool DarkPierce::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 }
 
 void DarkPierce::updateFrame( float delta ) {
-    if( !_should_recycle ) {
-        this->end();
-    }
 }
 
 void DarkPierce::begin() {
-    SkillNode::begin();
-    
     BattleLayer* battle_layer = _owner->getBattleLayer();
     Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _owner->getPosition(), _range );
     int size = (int)candidates.size();
@@ -73,10 +68,9 @@ void DarkPierce::begin() {
         ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getUnitData(), target_unit->getUnitData() );
         target_unit->takeDamage( result, _owner->getDeployId() );
         candidates.erase( rand );
-        size = candidates.size();
+        --size;
     }
 }
 
 void DarkPierce::end() {
-    SkillNode::end();
 }

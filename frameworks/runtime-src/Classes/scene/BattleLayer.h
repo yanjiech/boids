@@ -20,6 +20,7 @@
 #include "../unit/BulletNode.h"
 #include <map>
 #include "../unit/skill/SkillNode.h"
+#include "BlockNode.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,
@@ -83,7 +84,7 @@ private:
     
     BulletMap _bullets;
     
-    cocos2d::Vector<SkillNode*> _skill_nodes;
+    cocos2d::Vector<BlockNode*> _block_nodes;
     
     int _next_deploy_id;
     
@@ -94,8 +95,6 @@ private:
     int zorderForPositionOnObjectLayer( const cocos2d::Point& pos );
     
     void reorderObjectLayer();
-    
-    void updateSkillNodes( float delta );
     
 public:
     static eBattleState getBattleStateFromString( const std::string& str );
@@ -137,6 +136,7 @@ public:
     
     cocos2d::Vector<UnitNode*> getAliveOpponents( eUnitCamp camp );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eUnitCamp camp );
+    cocos2d::Vector<UnitNode*> getAliveAllyInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveUnitsByTag( const std::string& tag );
     cocos2d::Vector<UnitNode*> getAliveUnitsByName( const std::string& name );
     cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );
@@ -144,17 +144,20 @@ public:
     cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eUnitCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group );
     
+    const cocos2d::Vector<BlockNode*> getBlockNodes() { return _block_nodes; }
+    void addBlockNode( BlockNode* block_node );
+    void removeBlockNode( BlockNode* block_node );
+    
     UnitNode* getAliveUnitByDeployId( int deploy_id );
     
     bool addBullet( int key, BulletNode* bullet );
     void removeBullet( int key );
     
-    void addSkillNode( SkillNode* skill_node );
-    void removeSkillNode( SkillNode* skill_node );
+    void updateBullets( float delta );
     
     void onUnitAppear( UnitNode* unit );
     void onUnitDying( UnitNode* unit );
-    void onUnitDead( UnitNode* unit );
+    void onUnitDisappear( UnitNode* unit );
     void onUnitMoved( UnitNode* unit );
     
     bool isPositionInVision( const cocos2d::Point& pos );

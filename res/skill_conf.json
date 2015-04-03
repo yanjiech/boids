@@ -29,7 +29,7 @@
         "multi_action" : false,
         "hint" : "arrow",
         "damage" : [ 50.0, 100.0, 200.0 ],
-        "cd" : 10.0,
+        "cd" : 5.0,
         "radius" : 50.0,
         "count" : 5,
         "interval" : 0.1,
@@ -52,7 +52,7 @@
         "hint" : "circle",
         "count" : 5,
         "speed" : 800.0,
-        "damage" : 35.0,
+        "damage" : [ 35.0, 40.0, 50.0 ],
         "interval" : 0.1,
         "range" : 400.0,
         "cd" : 5.0
@@ -114,10 +114,14 @@
     "Impetus" :
     {
         "multi_action" : false,
+        "hint" : "circle",
         "damage" : [ 50.0, 100.0, 200.0 ],
         "cd" : 6.0,
         "buff_duration" : 3.0,
-        "range" : 500.0
+        "buff_damage" : [ 5.0, 10.0, 20.0 ],
+        "range" : 500.0,
+        "charging_effect" : "effects/enchantress_skill_2/charge",
+        "charging_effect_pos" : "EmitPoint"
     },
     "LightningChain" :
     {
@@ -157,7 +161,8 @@
         "damage" : [ 50.0, 100.0, 200.0 ],
         "cd" : 6.0,
         "range" : 400.0,
-        "count" : 3,
+        "count" : [ 3, 3, 3 ],
+        "radius" : 100.0,
         "interval" : 0.3
     },
     "NaturesAttendants" :
@@ -165,7 +170,7 @@
         "multi_action" : false,
         "hint" : "circle",
         "heal" : [ 20.0, 40.0, 60.0 ],
-        "cd" : 15.0,
+        "cd" : 5.0,
         "count" : [ 4, 6, 8, 10 ],
         "range" : 500.0,
         "interval" : 1.0,

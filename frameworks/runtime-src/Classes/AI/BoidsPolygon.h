@@ -51,10 +51,12 @@ public:
 	bool operator == (const class BoidsPolygon& other);
 
 	void loadFromTmxObject(Tmx::Object* ob, float map_height);
+    
+    void loadFromValueMap( const cocos2d::ValueMap& data, float map_height = 0 );
 
 	void initializeAsRectangle(float x, float y, float width, float height);
 
-	void makeSureAnticlockwise(cocos2d::Point outside_point = cocos2d::Point(-1000.0f, -1000.0f));
+	void makeSureAnticlockwise(cocos2d::Point outside_point = cocos2d::Point(-10000.0f, -10000.0f));
 
 	bool isCollide(cocos2d::Point circle_center, float radius, cocos2d::Vec2* repulsion_vec = nullptr);
 
