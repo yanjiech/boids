@@ -42,7 +42,7 @@
 #define UNIT_CAMP_OPPONENT "opponent"
 
 #define PAINT_PATH 0
-#define PAINT_MESH 0
+#define PAINT_MESH 40
 
 #define SKILL_NAME_WRATH_OF_THUNDER "WrathOfThunder"
 #define SKILL_NAME_LIGHTNING_CHAIN "LightningChain"

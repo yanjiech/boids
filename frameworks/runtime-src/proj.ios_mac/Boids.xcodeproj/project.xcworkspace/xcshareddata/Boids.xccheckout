@@ -6,26 +6,18 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>8CBCB309-FA57-4D13-8449-71A5F7FAB697</string>
-	<key>IDESourceControlProjectName</key>
-	<string>Boids</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
-		<string>https://github.com/xinxu/cocos2d-x.git</string>
 		<key>C420E5F3FF1C085C5041BA2CDE47837BAB3289D9</key>
-		<string>https://github.com/xinxu/Boids.git</string>
+		<string>github.com:yanjiech/boids.git</string>
 	</dict>
-	<key>IDESourceControlProjectPath</key>
-	<string>frameworks/runtime-src/proj.ios_mac/Boids.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
-		<string>../../../../..frameworks/cocos2d-x</string>
 		<key>C420E5F3FF1C085C5041BA2CDE47837BAB3289D9</key>
-		<string>../../../../..</string>
+		<string>Boids/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/xinxu/Boids.git</string>
+	<string>github.com:yanjiech/boids.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -39,14 +31,6 @@
 			<string>C420E5F3FF1C085C5041BA2CDE47837BAB3289D9</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Boids</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>852ED3691A47A99B0D19C820A500AE9772B2A44E</string>
-			<key>IDESourceControlWCCName</key>
-			<string>cocos2d-x</string>
 		</dict>
 	</array>
 </dict>

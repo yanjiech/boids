@@ -64,8 +64,6 @@
 		76E605D61AC666500096F69D /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76148F211AC54D9300235C7B /* libboost_system.a */; };
 		76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
 		76EADAF81AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
-		98531A761AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
-		98531A771AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
 		9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
 		9859D1CC1A7B4B8700FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
 		9859D1D21A7B4C0300FF6D82 /* Battle.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1CE1A7B4C0300FF6D82 /* Battle.pb.cc */; };
@@ -478,7 +476,6 @@
 		76E605D21AC665EF0096F69D /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../../../../lib/lib/libboost_filesystem.a; sourceTree = "<group>"; };
 		76EADAF51AC4018200E00BFA /* Trigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trigger.cpp; sourceTree = "<group>"; };
 		76EADAF61AC4018200E00BFA /* Trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trigger.h; sourceTree = "<group>"; };
-		98531A751AA2C14100A37BFE /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../src; sourceTree = "<group>"; };
 		98598B141A10BF7F0075D0EC /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
 		98598B151A10BF7F0075D0EC /* CycledList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CycledList.cpp; path = ../Classes/CycledList.cpp; sourceTree = "<group>"; };
 		98598B161A10BF7F0075D0EC /* CycledList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycledList.h; path = ../Classes/CycledList.h; sourceTree = "<group>"; };
@@ -1535,7 +1532,6 @@
 		F293BC4615EB859D00256477 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				98531A751AA2C14100A37BFE /* src */,
 				E848F2301A23660600DAECF0 /* res */,
 			);
 			name = Resources;
@@ -1668,7 +1664,6 @@
 				98E3B64C1A73A77A00B5BEBB /* descriptor.proto in Resources */,
 				5023817617EBBE3400990C9B /* Icon.icns in Resources */,
 				E848F2331A23660600DAECF0 /* res in Resources */,
-				98531A771AA2C14100A37BFE /* src in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1683,7 +1678,6 @@
 				5091733617ECE17A00D62437 /* Icon-29.png in Resources */,
 				5023811917EBBCAC00990C9B /* Default-568h@2x.png in Resources */,
 				5091733917ECE17A00D62437 /* Icon-58.png in Resources */,
-				98531A761AA2C14100A37BFE /* src in Resources */,
 				521A8E6B19F0C3AC00D177D7 /* Default-736h@3x.png in Resources */,
 				521A8E6A19F0C3AC00D177D7 /* Default-667h@2x.png in Resources */,
 				5023811F17EBBCAC00990C9B /* Icon-152.png in Resources */,
@@ -2093,9 +2087,13 @@
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
 					"$(SRCROOT)/../Classes/Protobuf",
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/include\"",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/Users/chenyanjie/Documents/lib/lib,
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
+				);
 				OTHER_LDFLAGS = (
 					"-image_base",
 					100000000,
@@ -2124,9 +2122,13 @@
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
 					"$(SRCROOT)/../Classes/Protobuf",
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/include\"",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/Users/chenyanjie/Documents/lib/lib,
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
+				);
 				OTHER_LDFLAGS = (
 					"-image_base",
 					100000000,
@@ -2215,10 +2217,14 @@
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
 					"$(SRCROOT)/../Classes/Protobuf",
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/include\"",
+					/Users/chenyanjie/Documents/lib/lib,
+				);
 				PROVISIONING_PROFILE = "2f3491b5-8b75-4821-b32a-4469d9b58db0";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2244,10 +2250,14 @@
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
 					"$(SRCROOT)/../Classes/Protobuf",
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/include\"",
+					/Users/chenyanjie/Documents/lib/lib,
+				);
 				PROVISIONING_PROFILE = "2f3491b5-8b75-4821-b32a-4469d9b58db0";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
