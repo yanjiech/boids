@@ -19,15 +19,6 @@
             }
         },
         {
-            "name": "09",
-            "rect": {
-                "x": 1280.8,
-                "y": 635.846,
-                "width": 115.81,
-                "height": 70.5519
-            }
-        },
-        {
             "name": "02",
             "rect": {
                 "x": 684.439,
@@ -125,6 +116,24 @@
                 "width": 203.668,
                 "height": 140.169
             }
+        },
+        {
+            "name": "09",
+            "rect": {
+                "x": 1263.1,
+                "y": 662.198,
+                "width": 233.618,
+                "height": 117.407
+            }
+        },
+        {
+            "name": "01add",
+            "rect": {
+                "x": 741.956,
+                "y": 725.693,
+                "width": 92.2502,
+                "height": 68.2883
+            }
         }
     ],
     "events": [
@@ -179,7 +188,6 @@
                     "position_name": "02",
                     "unit_count": 1,
                     "unit_level": 1,
-                    "tag_name" : "wolf",
                     "popup_type": "normal"
                 }
             ]
@@ -211,41 +219,40 @@
             ]
         },
         {
-            "name": "wolf_talk",
+            "name": "09wolf_goblin",
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
             },
             "triggers": [
                 {
-                    "trigger_type": "unit_change",
-                    "source_type": "tag_source",
-                    "source_value": "wolf",
-                    "unit_state": "unit_appear",
-                    "trigger_count": 1
+                    "trigger_type": "map_init"
                 }
             ],
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "content": "im dying",
-                            "duration": 5,
-                            "interval": 7
-                        },
-                        {
-                            "content": "wooooooooooof",
-                            "duration": 5,
-                            "interval": 7
-                        }
-                    ],
-                    "name": "speech",
-                    "source_type": "tag_source",
-                    "source_value": "wolf",
-                    "is_random_order": false,
-                    "repeat_times": 1
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "09",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "09",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
                 }
             ]
         }

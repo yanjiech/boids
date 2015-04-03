@@ -224,7 +224,7 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                 areas.push_back( Value( battle_layer->getMapData()->getAreaMapByName( itr->second.asString() ) ) );
             }
             else {
-                areas = battle_layer->getMapData()->getAreasVectorByTag( _action_data.at( "position_name" ).asString() );
+                areas = battle_layer->getMapData()->getAreasVectorByTag( _action_data.at( "position_tag" ).asString() );
             }
             
             for( auto ar : areas ) {

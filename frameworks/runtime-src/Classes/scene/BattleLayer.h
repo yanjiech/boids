@@ -20,6 +20,7 @@
 #include "../unit/BulletNode.h"
 #include <map>
 #include "../unit/skill/SkillNode.h"
+#include "BlockNode.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,
@@ -83,6 +84,8 @@ private:
     
     BulletMap _bullets;
     
+    cocos2d::Vector<BlockNode*> _block_nodes;
+    
     int _next_deploy_id;
     
     float _game_time;
@@ -140,6 +143,10 @@ public:
     cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eUnitCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group );
+    
+    const cocos2d::Vector<BlockNode*> getBlockNodes() { return _block_nodes; }
+    void addBlockNode( BlockNode* block_node );
+    void removeBlockNode( BlockNode* block_node );
     
     UnitNode* getAliveUnitByDeployId( int deploy_id );
     

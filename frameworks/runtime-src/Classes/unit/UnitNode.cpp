@@ -831,9 +831,11 @@ bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d:
     cocos2d::Vec2 circle_center_dir( unit->getPosition(), this->getPosition() );
     if ( Fuzzy::_greater( circle_center_dir.cross( old_dir ), 0.0f ) ) {
         new_dir = Geometry::anticlockwisePerpendicularVecToLine( circle_center_dir );
+        new_dir = Geometry::anticlockwiseRotate1( new_dir );
     }
     else {
         new_dir = Geometry::clockwisePerpendicularVecToLine( circle_center_dir );
+        new_dir = Geometry::clockwiseRotate1( new_dir );
     }
     return true;
 }
@@ -861,9 +863,14 @@ void UnitNode::walkTo( const cocos2d::Point& new_pos ) {
         collidables.push_back(id_u.second);
     }
     
+    const Vector<BlockNode*>& block_nodes = _battle_layer->getBlockNodes();
+    for( auto block : block_nodes ) {
+        collidables.push_back( block );
+    }
+    
     std::set<Collidable*> steered_collidables;
     
-    for (;;) {//其实很少转两次，一般最多转一次。但转两次的情况也是存在的，即在一个钝角处，先被边A转向，再被边B转向，结果还是小于指定的角度区间。先被单位A转向，再被单位B转向也是一样的
+    while( true ) {//其实很少转两次，一般最多转一次。但转两次的情况也是存在的，即在一个钝角处，先被边A转向，再被边B转向，结果还是小于指定的角度区间。先被单位A转向，再被单位B转向也是一样的
         bool no_steer = true;
         
         //看看目前的方案是否有碰撞，如果有任意一个碰撞，那么尝试绕过它。

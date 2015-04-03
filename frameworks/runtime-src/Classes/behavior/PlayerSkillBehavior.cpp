@@ -50,6 +50,9 @@ bool PlayerSkillBehavior::behave( float delta ) {
     if( _unit_node->isCasting() ) {
         return true;
     }
+    if( _unit_node->isWalking() ) {
+        return false;
+    }
     
     if( _unit_node->getChasingTarget() != nullptr ) {
         cocos2d::Point target_pos = _unit_node->getChasingTarget()->getPosition();

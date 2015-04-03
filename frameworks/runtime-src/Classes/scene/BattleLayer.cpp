@@ -410,6 +410,16 @@ UnitNode* BattleLayer::getAliveUnitByDeployId( int deploy_id ) {
     return nullptr;
 }
 
+void BattleLayer::addBlockNode( BlockNode* block_node ) {
+    _block_nodes.pushBack( block_node );
+    this->addToOnGroundLayer( block_node, block_node->getPosition(), this->zorderForPositionOnObjectLayer( block_node->getPosition() ) );
+}
+
+void BattleLayer::removeBlockNode( BlockNode* block_node ) {
+    block_node->removeFromParent();
+    _block_nodes.eraseObject( block_node );
+}
+
 bool BattleLayer::addBullet( int key, BulletNode* bullet ) {
     std::string k = Utils::stringFormat( "%d", key );
     auto itr = _bullets.find( k );
@@ -670,6 +680,46 @@ void BattleLayer::parseMapObjects() {
         grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
         BuildingNode* building = BuildingNode::create( grid_properties, obj_properties );
         this->addToObjectLayer( building, building->getPosition(), building->getPosition() + building->getCenter() );
+    }
+    
+    const TMXObjectGroup* physics_group = _tmx_map->getObjectGroup( "physics" );
+    
+    const TMXObjectGroup* block_group = _tmx_map->getObjectGroup( "block" );
+    if( block_group ) {
+        const ValueVector& block_objects = block_group->getObjects();
+        for( auto itr = block_objects.begin(); itr != block_objects.end(); ++itr ) {
+            const ValueMap& obj_properties = itr->asValueMap();
+            int gid = obj_properties.at( "gid" ).asInt();
+            bool flipped_horizontally = false;
+            bool flipped_vertically = false;
+            bool flipped_diagonally = false;
+            if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
+                flipped_horizontally = true;
+                gid &= 0x7fffffff;
+            }
+            if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
+                flipped_vertically = true;
+                gid &= 0xbfffffff;
+            }
+            if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
+                flipped_diagonally = true;
+                gid &= 0xdfffffff;
+            }
+            
+            Value properties = _tmx_map->getPropertiesForGID( gid );
+            ValueMap& grid_properties = properties.asValueMap();
+            grid_properties["flipped_horizontally"] = Value( flipped_horizontally );
+            grid_properties["flipped_vertically"] = Value( flipped_vertically );
+            grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
+            std::string name = obj_properties.at( "name" ).asString();
+            ValueMap boundary = physics_group->getObject( name );
+            boundary["map_height"] = Value( _tmx_map->getContentSize().height );
+            if( !boundary.empty() ) {
+                grid_properties["boundary"] = Value( boundary );
+                BlockNode* block_node = BlockNode::create( grid_properties, obj_properties );
+                this->addBlockNode( block_node );
+            }
+        }
     }
 }
 

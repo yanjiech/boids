@@ -178,6 +178,17 @@ cocos2d::ValueMap MapData::getAreaMapByName( const std::string& name ) {
 
 cocos2d::ValueVector MapData::getAreasVectorByTag( const std::string& tag_name ) {
     ValueVector ret;
+    const ValueVector& position_vector = _meta_json.at( "positions" ).asValueVector();
+    for( auto itr = position_vector.begin(); itr != position_vector.end(); ++itr ) {
+        const ValueMap& pos_data = itr->asValueMap();
+        auto sitr = pos_data.find( "tag" );
+        if( sitr != pos_data.end() ) {
+            if( sitr->second.asString() == tag_name ) {
+                ret.push_back( Value( pos_data ) );
+            }
+        }
+    }
+    return ret;
     return ret;
 }
 

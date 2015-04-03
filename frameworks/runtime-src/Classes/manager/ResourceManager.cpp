@@ -83,8 +83,12 @@ void ResourceManager::loadDefaultData() {
     frame_cache->addSpriteFramesWithFile( "maps/map_images/building_3.plist", "maps/map_images/building_3.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/building_4.plist", "maps/map_images/building_4.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/decoration_1.plist", "maps/map_images/decoration_1.png" );
+    frame_cache->addSpriteFramesWithFile( "maps/map_images/decoration_2.plist", "maps/map_images/decoration_2.png" );
+    frame_cache->addSpriteFramesWithFile( "maps/map_images/decoration_3.plist", "maps/map_images/decoration_3.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/obstacle_1.plist", "maps/map_images/obstacle_1.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/terrain_1.plist", "maps/map_images/terrain_1.png" );
+    frame_cache->addSpriteFramesWithFile( "maps/map_images/terrain_2.plist", "maps/map_images/terrain_2.png" );
+    frame_cache->addSpriteFramesWithFile( "maps/map_images/terrain_3.plist", "maps/map_images/terrain_3.png" );
     frame_cache->addSpriteFramesWithFile( "ui/map_common.plist", "ui/map_common.png" );
     frame_cache->addSpriteFramesWithFile( "ui/hero_avatars.plist", "ui/hero_avatars.png" );
     frame_cache->addSpriteFramesWithFile( "effects/bullets/bullets.plist", "effects/bullets/bullets.png" );

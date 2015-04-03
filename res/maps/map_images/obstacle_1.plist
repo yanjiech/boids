@@ -157,7 +157,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:fdb55d33a0bf6266ea8c3aa185aaa7cc:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:b4c9f057ced6178c32804fef0abcde72:1/1$</string>
             <key>textureFileName</key>
             <string>obstacle_1.png</string>
         </dict>

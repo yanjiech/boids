@@ -4,83 +4,96 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>langtuteng_01.png</key>
+            <key>hu_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{486,2},{440,433}}</string>
+                <string>{{2,2},{1029,479}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{1029,479}}</string>
+                <key>sourceSize</key>
+                <string>{1029,479}</string>
+            </dict>
+            <key>hua_01.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{446,1151},{50,35}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{440,433}}</string>
+                <string>{{0,0},{50,35}}</string>
                 <key>sourceSize</key>
-                <string>{440,433}</string>
+                <string>{50,35}</string>
             </dict>
-            <key>matou_01.png</key>
+            <key>kushu_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,296},{421,189}}</string>
+                <string>{{229,1033},{176,215}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{176,215}}</string>
+                <key>sourceSize</key>
+                <string>{176,215}</string>
+            </dict>
+            <key>kushu_02.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1033},{199,225}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{199,225}}</string>
+                <key>sourceSize</key>
+                <string>{199,225}</string>
+            </dict>
+            <key>kuteng.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{229,1211},{171,130}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{421,189}}</string>
+                <string>{{0,0},{171,130}}</string>
                 <key>sourceSize</key>
-                <string>{421,189}</string>
+                <string>{171,130}</string>
             </dict>
-            <key>matou_02.png</key>
+            <key>nangua_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{263,487},{397,405}}</string>
+                <string>{{446,1033},{67,60}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{67,60}}</string>
+                <key>sourceSize</key>
+                <string>{67,60}</string>
+            </dict>
+            <key>nangua_03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{446,1102},{56,47}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{397,405}}</string>
+                <string>{{0,0},{56,47}}</string>
                 <key>sourceSize</key>
-                <string>{397,405}</string>
-            </dict>
-            <key>minju_01.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{662,437},{352,369}}</string>
-                <key>offset</key>
-                <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{352,369}}</string>
-                <key>sourceSize</key>
-                <string>{352,371}</string>
-            </dict>
-            <key>minju_03.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,487},{259,408}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{259,408}}</string>
-                <key>sourceSize</key>
-                <string>{259,408}</string>
-            </dict>
-            <key>muwu_01.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{482,292}}</string>
-                <key>offset</key>
-                <string>{5,2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{14,2},{482,292}}</string>
-                <key>sourceSize</key>
-                <string>{500,300}</string>
+                <string>{56,47}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -88,13 +101,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>building_3.png</string>
+            <string>terrain_2.png</string>
             <key>size</key>
-            <string>{1024,1024}</string>
+            <string>{512,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:acbcad98ab5ad53c4b2cd06a012c77ed:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:464bf1727abfb7f22e4e5deda8fbb06a:1/1$</string>
             <key>textureFileName</key>
-            <string>building_3.png</string>
+            <string>terrain_2.png</string>
         </dict>
     </dict>
 </plist>

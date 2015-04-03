@@ -8,6 +8,8 @@ class Border : public Collidable
 {
 public:
 	Border(const cocos2d::Point& _src, const cocos2d::Point& _dst, const cocos2d::Point& _next_point);
+    
+    Border( const Border& other );
 
 	bool willCollide(cocos2d::Point pos, float radius);
 
