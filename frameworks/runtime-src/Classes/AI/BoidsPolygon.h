@@ -9,8 +9,7 @@
 #include "CycledList.h"
 #include "BoostGeometryDef.h"
 #include "Utils.h"
-
-USING_NS_CC;
+#include "Border.h"
 
 typedef CycledListElement<cocos2d::Point>* PolygonPointPtr;
 
@@ -56,7 +55,8 @@ public:
 
 	void initializeAsRectangle(float x, float y, float width, float height);
 
-	void makeSureAnticlockwise(cocos2d::Point outside_point = cocos2d::Point(-10000.0f, -10000.0f));
+	void makeSureAnticlockwise(cocos2d::Point outside_point = cocos2d::Point(-1000.0f, -1000.0f));
+    void makeSureClockwise(cocos2d::Point outside_point = cocos2d::Point(-1000.0f, -1000.0f));
 
 	bool isCollide(cocos2d::Point circle_center, float radius, cocos2d::Vec2* repulsion_vec = nullptr);
 
@@ -69,6 +69,8 @@ public:
 	BoidsPolygon* getEnlargedPolygon(float enlarge_radius);
 
 	std::vector<Line> debug_lines;
+    
+    std::vector<Border> getNearbyBorders( const cocos2d::Point& center, float radius );
 
 	void drawSketchOn(cocos2d::DrawNode* node, cocos2d::Color4F c = cocos2d::Color4F::BLUE);
 

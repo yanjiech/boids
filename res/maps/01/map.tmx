@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="4000" tileheight="1200" nextobjectid="122">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="4000" tileheight="1200" nextobjectid="119">
  <tileset firstgid="1" name="bg" tilewidth="4000" tileheight="1200">
   <tile id="0">
    <image width="4000" height="1200" source="未标题-2.jpg"/>
@@ -74,10 +74,9 @@
   <object id="1" gid="1" x="0.444444" y="1200.11"/>
  </objectgroup>
  <objectgroup name="block">
-  <object id="2" name="b1" gid="2147483670" x="2551.33" y="667.606">
+  <object id="2" name="b1" type="BlockNode" gid="2147483670" x="2551.33" y="667.606">
    <properties>
-    <property name="enabled" value="false"/>
-    <property name="layer" value="2"/>
+    <property name="enabled" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -180,7 +179,7 @@
   <object id="98" gid="21" x="1260" y="242"/>
  </objectgroup>
  <objectgroup name="physics">
-  <object id="99" name="c1" type="collide" x="8" y="454">
+  <object id="99" name="c1" type="collide" x="0" y="452">
    <polygon points="0,0 72,16 117.333,144 194.667,172 221.333,154.667 221.333,116 253.333,4 321.333,-20 389.333,-22.6667 461.333,25.3333 504,38.6667 542.667,18.6667 544,4 513.333,-45.3333 686.667,-121.333 668,-145.333 581.333,-198.667 677.333,-252 761.333,-225.333 796,-229.333 873.333,-204 930.667,-213.333 1028,-196 1090.67,-190.667 1133.33,-206.667 1205.33,-197.333 1286.67,-216 1318.67,-234.667 1322.67,-266.667 1472,-212 1546.67,-245.333 1586.67,-238.667 1676,-297.333 1732,-289.333 1837.33,-318.667 1866.67,-360 1846.67,-381.333 1813.33,-452 0,-450.667"/>
   </object>
   <object id="100" name="c2" type="collide" x="1174" y="340">
@@ -198,10 +197,13 @@
   <object id="104" name="c6" type="collide" x="2120" y="298">
    <polygon points="0,0 32,12 42,-12 16,-18"/>
   </object>
-  <object id="106" name="c8" type="collide" x="13" y="1010">
+  <object id="105" name="c7" type="collide" x="1630" y="688">
+   <polygon points="0,0 146,20 226,-14 108,-68"/>
+  </object>
+  <object id="106" name="c8" type="collide" x="2" y="1020">
    <polygon points="0,0 90,28 118,16 154,20 218,22 254,36 410,88 442,84 466,104 466,114 436,150 376,180 -2,178"/>
   </object>
-  <object id="107" name="c9" type="collide" x="794" y="1189">
+  <object id="107" name="c9" type="collide" x="794" y="1194">
    <polygon points="0,0 -24,-16 34,-56 78,-76 104,-78 158,-148 186,-180 224,-176 244,-150 352,-158 396,-192 524,-116 588,-104 530,6"/>
   </object>
   <object id="108" name="c10" type="collide" x="1452" y="1192">
@@ -213,29 +215,26 @@
   <object id="110" name="c12" type="collide" x="2372" y="1196">
    <polygon points="0,0 102,-44 164,-94 260,-76 310,-30 418,-32 482,4"/>
   </object>
-  <object id="111" name="c13" type="collide" x="3006" y="1192">
+  <object id="111" name="c13" type="collide" x="3010" y="1198">
    <polygon points="0,0 102,-40 238,-46 298,2"/>
   </object>
   <object id="112" name="c14" type="collide" x="3130" y="1062">
    <polygon points="0,0 -4,-24 250,-68 344,-32 346,4 196,110 124,96 6,50"/>
   </object>
-  <object id="113" name="c15" type="collide" x="3473" y="1059">
+  <object id="113" name="c15" type="collide" x="3478" y="1062">
    <polygon points="0,0 90,-20 212,70 284,98 316,74 386,114 508,96 518,134 -164,138"/>
   </object>
-  <object id="114" name="c16" type="collide" x="3390" y="109">
+  <object id="114" name="c16" type="collide" x="3394" y="104">
    <polygon points="0,0 120,36 208,100 260,172 274,234 322,260 338,328 414,350 552,338 604,222 602,-106 102,-104"/>
   </object>
-  <object id="115" name="c17" type="collide" x="2943" y="6">
+  <object id="115" name="c17" type="collide" x="2942" y="2">
    <polygon points="0,0 -38,58 -60,114 -62,170 -70,220 -82,262 -108,312 -140,354 -162,386 -196,414 -240,438 -178,454 -124,480 -82,510 -54,552 -34,578 0,548 36,484 68,430 104,356 124,304 134,246 134,170 148,130 172,96 228,64 274,30 300,-4 190,-6"/>
   </object>
-  <object id="117" name="b1" type="block" x="2538" y="533">
-   <polygon points="0,0 101,24 224,120 372,54 325,-18 259,-61 153,-81"/>
+  <object id="116" name="c18" type="collide" x="2526" y="562">
+   <polygon points="15,-5 27,-28 74,-26 112,-10 146,12 180,32 210,58 220,84 238,110 230,130 212,148 180,174 122,222 94,242 64,260 22,286 -28,322 -62,338 -98,364 -128,386 -152,420 -168,460 -182,516 -182,548 -176,604 -182,634 -472,638 -462,564 -440,492 -418,426 -386,372 -350,314 -304,250 -208,170 -114,102 -74,70 -22,32 -2,8"/>
   </object>
-  <object id="118" name="c18" type="collide" x="2343" y="1193">
-   <polygon points="0,0 -287,1 -267,-190 -189,-299 -72,-444 66,-533 210,-648 294,-628 408,-534 408,-486 324,-392 82,-256 23,-166 4,-103"/>
-  </object>
-  <object id="121" name="c7" type="collide" x="1718" y="611">
-   <polygon points="0,0 -82,52 24,87 125,69 84,5"/>
+  <object id="117" name="b1" type="block" x="2694" y="446">
+   <polygon points="0,0 -142,80 -59,96 1,129 49,171 72,219 210,140 160,68 89,24"/>
   </object>
  </objectgroup>
 </map>

@@ -58,6 +58,8 @@
 		76E21D921AC52924006714AD /* DarkPierce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8F1AC52924006714AD /* DarkPierce.cpp */; };
 		76E21D951AC5373A006714AD /* BatSwarm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D931AC5373A006714AD /* BatSwarm.cpp */; };
 		76E21D961AC5373A006714AD /* BatSwarm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D931AC5373A006714AD /* BatSwarm.cpp */; };
+		76E379021ACF792B002DB4F1 /* DebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E379001ACF792B002DB4F1 /* DebugMacros.cpp */; };
+		76E379031ACF792B002DB4F1 /* DebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E379001ACF792B002DB4F1 /* DebugMacros.cpp */; };
 		76E414631ACA7E47003DB126 /* Impetus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414611ACA7E47003DB126 /* Impetus.cpp */; };
 		76E414641ACA7E47003DB126 /* Impetus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414611ACA7E47003DB126 /* Impetus.cpp */; };
 		76E414671ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */; };
@@ -489,6 +491,8 @@
 		76E21D901AC52924006714AD /* DarkPierce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkPierce.h; sourceTree = "<group>"; };
 		76E21D931AC5373A006714AD /* BatSwarm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BatSwarm.cpp; sourceTree = "<group>"; };
 		76E21D941AC5373A006714AD /* BatSwarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatSwarm.h; sourceTree = "<group>"; };
+		76E379001ACF792B002DB4F1 /* DebugMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugMacros.cpp; sourceTree = "<group>"; };
+		76E379011ACF792B002DB4F1 /* DebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMacros.h; sourceTree = "<group>"; };
 		76E414611ACA7E47003DB126 /* Impetus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Impetus.cpp; sourceTree = "<group>"; };
 		76E414621ACA7E47003DB126 /* Impetus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Impetus.h; sourceTree = "<group>"; };
 		76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NaturesAttendants.cpp; sourceTree = "<group>"; };
@@ -960,6 +964,8 @@
 			children = (
 				986A556E1AA565430051B0B9 /* BoidsConstant.cpp */,
 				986A556F1AA565430051B0B9 /* BoidsConstant.h */,
+				76E379001ACF792B002DB4F1 /* DebugMacros.cpp */,
+				76E379011ACF792B002DB4F1 /* DebugMacros.h */,
 			);
 			name = constant;
 			path = ../Classes/constant;
@@ -1810,6 +1816,7 @@
 				E87413181A0B5647003EBD0B /* gzread.c in Sources */,
 				E87413131A0B5647003EBD0B /* compress.c in Sources */,
 				E87413041A0B5629003EBD0B /* TmxMap.cpp in Sources */,
+				76E379031ACF792B002DB4F1 /* DebugMacros.cpp in Sources */,
 				9868BBA61AB2DE57002ED7A1 /* BulletNode.cpp in Sources */,
 				E87413071A0B5629003EBD0B /* TmxPolygon.cpp in Sources */,
 				E84FA27F1A28A079008A3891 /* GrassMonitor.cpp in Sources */,
@@ -2018,6 +2025,7 @@
 				E88DE6BB1A0103FC005E1ABA /* Utils.cpp in Sources */,
 				98E3B6611A73A77A00B5BEBB /* tokenizer.cc in Sources */,
 				98E3B67B1A73A77A00B5BEBB /* stringprintf.cc in Sources */,
+				76E379021ACF792B002DB4F1 /* DebugMacros.cpp in Sources */,
 				986A558A1AA57DBF0051B0B9 /* IdleBehavior.cpp in Sources */,
 				5023812417EBBCAC00990C9B /* main.m in Sources */,
 				986A55821AA57D850051B0B9 /* AttackBehavior.cpp in Sources */,

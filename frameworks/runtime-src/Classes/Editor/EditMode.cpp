@@ -18,7 +18,7 @@
 #include <math.h>
 //#include "AI.h"
 #include "MapDebugger.h"
-#include "../constant/BoidsConstant.h"
+#include "../constant/DebugMacros.h"
 
 using namespace cocos2d;
 using namespace cocostudio;
@@ -132,6 +132,20 @@ void EditMode::loadVisionObjects() {
             tags.insert(tag);
         }
     }
+    
+    auto blockObjectGroup = _map->getObjectGroup("block");
+    for (auto object : blockObjectGroup->getObjects()) {
+        auto vm = object.asValueMap();
+        auto name = vm["name"].asString();
+        if (name.length() ) {
+            _visionObjects.push_back(name);
+        }
+        auto tag = vm["tag"].asString();
+        if (tag.length()) {
+            tags.insert(tag);
+        }
+    }
+    
     _visionTags.assign(tags.begin(), tags.end());
 }
 
@@ -188,6 +202,7 @@ std::vector<std::pair<std::string, std::string>> EditMode::getVisionSources() {
     for (auto tag : _visionTags) {
         ret.push_back(std::make_pair("tag_source", tag));
     }
+    
     return ret;
 }
 
@@ -642,6 +657,7 @@ void EditMode::onStep(int step) {
         case EditorOperation::SetUnitStayTrigger: {
             _editUI->unitstayTriggerUI->setVisible(true);
             _editUI->unitstayTriggerUI->reset();
+            _editUI->unitstayTriggerUI->loadSourceList(getTriggerSources());
             break;
         }
         case EditorOperation::SetEventTrigger: {

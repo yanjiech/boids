@@ -8,8 +8,8 @@
 #include "Trace.h"
 //#include "AI.h"
 #include "BoidsPolygon.h"
-#include "TmxPolyline.h"
-#include "../constant/BoidsConstant.h"
+#include "../TMXParser/TmxPolyline.h"
+#include "../constant/DebugMacros.h"
 
 USING_NS_CC;
 
@@ -364,7 +364,7 @@ void Terrain::paintDebugLayer(cocos2d::Node* node_parent)
 	auto draw_node = DrawNode::create();
 	if (node_parent)
 	{
-		node_parent->addChild(draw_node);
+		node_parent->addChild(draw_node, 1000);
 	}
 	else
 	{
@@ -373,11 +373,7 @@ void Terrain::paintDebugLayer(cocos2d::Node* node_parent)
 
 	//drawSketchOn(draw_node);
 
-	//看需要画指定半径的NavMesh
-//	if (AI::getInstance()->_PAINT_MESH)
-//	{
-		getMeshByUnitRadius(PAINT_MESH)->drawSketchOn(draw_node);
-//	}
+    getMeshByUnitRadius(PAINT_MESH)->drawSketchOn(draw_node);
 
 	/*BoidsPolygon p1("(5730,30) (5730,1103.48) (5197.12,641.176) (5197.59,634.087) (5005.83,467.648)");
 	extra_polygons_to_draw.push_back(&p1);*/

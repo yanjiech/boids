@@ -134,6 +134,15 @@
                 "width": 92.2502,
                 "height": 68.2883
             }
+        },
+        {
+            "name": "bridge_destroy_pos",
+            "rect": {
+                "x": 2898.39,
+                "y": 57.0355,
+                "width": 92.5159,
+                "height": 658.371
+            }
         }
     ],
     "events": [
@@ -253,6 +262,40 @@
                     "unit_count": 1,
                     "unit_level": 1,
                     "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "destroy_bridge",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "bridge_destroy_pos",
+                    "trigger_count": 1,
+                    "duration": 0
+                },
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "bridge_destroy_pos",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "vision_change",
+                    "source_type": "name_source",
+                    "source_value": "b1",
+                    "vision_state": "disabled"
                 }
             ]
         }

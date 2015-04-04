@@ -7,8 +7,8 @@
 //
 
 #include "BEUI.h"
-#include "Utils.h"
-#include "BETypes.h"
+#include "../../Utils.h"
+#include "../BETypes.h"
 #if defined( SUPPORT_EXTERNAL_MAP )
     #include <boost/filesystem.hpp>
     #include "../../ini/SimpleIni.h"
@@ -688,11 +688,21 @@ BEUIUnitStayTrigger::BEUIUnitStayTrigger(ui::Layout *root, const BEPopupEventHan
     bindOKHandler( _btn_ok );
     bindCancelHandler( _btn_cancel );
     
+    _groupListPanel = getPanelFrom("panel_groupList", _root);
+    _filterTextField = getTextFieldFrom("input_filter", _groupListPanel);
+   
+    _groupListView = BEFilterListView::create(Size(500, 600), nullptr, _filterTextField);
+    _groupListView->setDelegate(this);
+    _groupListView->setPosition(Vec2(0, 100));
+    _groupListPanel->addChild(_groupListView);
+    
 //    togglePositionUI(true);
 }
 
 void BEUIUnitStayTrigger::reset() {
 //    togglePositionUI(false);
+    _groupListView->cleanAndReset();
+    _filterTextField->setString( "" );
     _tf_count->setString("1");
     _positionName = "";
     _lb_pos_name->setString("位置1");
@@ -728,6 +738,35 @@ void BEUIUnitStayTrigger::togglePositionUI(bool visible) {
     _lb_pos_name->setVisible(visible);
     _btn_new_pos->setVisible(visible);
     _btn_select_pos->setVisible(visible);
+}
+
+void BEUIUnitStayTrigger::loadSourceList(const std::vector<std::pair<std::string, std::string>>& sources) {
+    _sourceList.clear();
+    _sourceList.push_back( std::make_pair( "tag_source", "custom" ) );
+    _sourceList.insert( _sourceList.end(), sources.begin(), sources.end() );
+    _groupListView->updateData();
+}
+
+std::string BEUIUnitStayTrigger::searchNameAtIndex(int index) {
+    auto pair = _sourceList[index];
+    return pair.second;
+}
+
+std::string BEUIUnitStayTrigger::displayNameAtIndex(int index) {
+    auto pair = _sourceList[index];
+    if (pair.first == "name_source") {
+        return Utils::stringFormat("name:%s", pair.second.c_str());
+    } else if (pair.first == "tag_source") {
+        return Utils::stringFormat("tag:%s", pair.second.c_str());
+    } else if (pair.first == "type_source") {
+        return Utils::stringFormat("type:%s", pair.second.c_str());
+    } else {
+        return pair.second;
+    }
+}
+
+int BEUIUnitStayTrigger::itemCount() {
+     return (int)_sourceList.size();
 }
 
 //event change trigger
@@ -929,23 +968,49 @@ BEUIVisionChange::BEUIVisionChange(Node *root, const BEPopupEventHandler& handle
     _stateButton = getButtonFrom("button_state", _root);
     _stateListView = popupTypeListFromButton(_stateButton, EditorTypeManager::getInstance()->getVisionObjectStateType(), CC_CALLBACK_1(BEUIVisionChange::onStateItemClicked, this));
     _stateListView->setVisible(false);
-    _visionListView = BEDefaultListView::create(Size(400, 400), nullptr);
-    _visionListView->setPosition(Vec2(0, 200));
-    _root->addChild(_visionListView);
+    
+    _groupListPanel = getPanelFrom("panel_groupList", _root);
+    _filterTextField = getTextFieldFrom("input_filter", _groupListPanel);
+    
+    _groupListView = BEFilterListView::create(Size(500, 600), nullptr, _filterTextField);
+    _groupListView->setDelegate(this);
+    _groupListView->setPosition(Vec2(0, 100));
+    _groupListPanel->addChild(_groupListView);
+    
     _stateButton->addClickEventListener(CC_CALLBACK_1(BEUIVisionChange::onStateButtonClicked, this));
     bindOKHandler(_okButton);
     bindCancelHandler(_cancelButton);
 }
 
 void BEUIVisionChange::reset() {
-    _visionListView->cleanAndReset();
+    _groupListView->cleanAndReset();
     _stateListView->reset();
     _stateButton->setTitleText("vision_change");
 }
 
+std::string BEUIVisionChange::searchNameAtIndex(int index) {
+    auto pair = _sourceList[index];
+    return pair.second;
+}
+
+std::string BEUIVisionChange::displayNameAtIndex(int index) {
+    auto pair = _sourceList[index];
+    if (pair.first == "name_source") {
+        return Utils::stringFormat("name:%s", pair.second.c_str());
+    } else if (pair.first == "tag_source") {
+        return Utils::stringFormat("tag:%s", pair.second.c_str());
+    } else {
+        return pair.second;
+    }
+}
+
+int BEUIVisionChange::itemCount() {
+    return (int)_sourceList.size();
+}
+
 EditorVisionActionPtr BEUIVisionChange::getAction() {
     auto action = EditorVisionActionPtr(new EditorVisionAction());
-    int index = _visionListView->getCurrentIndex();
+    int index = _groupListView->getCurrentIndex();
     auto p = _sourceList[index];
     action->SourceType = p.first;
     action->SourceValue = p.second;
@@ -955,7 +1020,7 @@ EditorVisionActionPtr BEUIVisionChange::getAction() {
 
 EditorVisionTriggerPtr BEUIVisionChange::getTrigger() {
     auto trigger = EditorVisionTriggerPtr(new EditorVisionTrigger());
-    int index = _visionListView->getCurrentIndex();
+    int index = _groupListView->getCurrentIndex();
     auto p = _sourceList[index];
     trigger->SourceType = p.first;
     trigger->SourceValue = p.second;
@@ -964,16 +1029,8 @@ EditorVisionTriggerPtr BEUIVisionChange::getTrigger() {
 }
 
 void BEUIVisionChange::loadVisionObjects(const std::vector<std::pair<std::string, std::string>>& visionObjects) {
-    std::vector<std::string> names;
-    for (auto p : visionObjects) {
-        if (p.first == "name_source") {
-            names.push_back(Utils::stringFormat("name:%s", p.second.c_str()));
-        } else if (p.first == "tag_source") {
-            names.push_back(Utils::stringFormat("tag:%s", p.second.c_str()));
-        }
-    }
     _sourceList = visionObjects;
-    _visionListView->addItems(names);
+    _groupListView->updateData();
 }
 
 void BEUIVisionChange::onStateButtonClicked(Ref *sender) {

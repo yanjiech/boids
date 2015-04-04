@@ -8,7 +8,9 @@
 //#include "AI.h"
 #include "MapDebugger.h"
 #include "BoidsPolygon.h"
-#include "../constant/BoidsConstant.h"
+#include "../constant/DebugMacros.h"
+
+using namespace cocos2d;
 
 //待改进项
 //* 出生重叠的话，互相没法推开，别人也穿不过去

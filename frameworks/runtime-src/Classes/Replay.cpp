@@ -1,7 +1,8 @@
 #include "Replay.h"
 #include "Terrain.h"
-//#include "AI.h"
 #include "Trace.h"
+
+using namespace cocos2d;
 
 void ReplayData::resetData()
 {
@@ -123,7 +124,7 @@ void ReplayToSave::save(std::string replay_name)
 	{
 		replay_name = Utils::getFileNameByTime();
 	}
-	std::string replay_save_path = FileUtils::getInstance()->getWritablePath() + replay_name + ".rep";
+	std::string replay_save_path = cocos2d::FileUtils::getInstance()->getWritablePath() + replay_name + ".rep";
 	f = fopen(replay_save_path.c_str(), "wb");
 	assert(f && "failed to open file for saving replay");
 

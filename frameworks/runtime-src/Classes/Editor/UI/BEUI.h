@@ -198,12 +198,18 @@ private:
     void togglePositionUI(bool visible);
 };
 
-class BEUIUnitStayTrigger : public BEUIBase {
+class BEUIUnitStayTrigger : public BEUIBase, public BEFilterListViewDelegate {
 public:
     explicit BEUIUnitStayTrigger(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler);
     virtual void reset();
     EditorUnitStayTriggerPtr getTrigger();
     virtual void didGetPosition(EditorPositionPtr pos, cocos2d::Ref *sender);
+    
+    void loadSourceList(const std::vector<std::pair<std::string, std::string>>& sources);
+    
+    virtual std::string searchNameAtIndex(int index);
+    virtual std::string displayNameAtIndex(int index);
+    virtual int itemCount();
     
 private:
     cocos2d::ui::Button* _stateButton;
@@ -218,6 +224,11 @@ private:
     cocos2d::ui::Layout *_infoPanel;
     EditorUnitStayTriggerPtr _trigger;
     std::string _positionName;
+    
+    cocos2d::ui::TextField *_filterTextField;
+    cocos2d::ui::Layout *_groupListPanel;
+    BEFilterListView *_groupListView;
+    std::vector<std::pair<std::string, std::string>> _sourceList;
     
     void togglePositionUI(bool visible);
 };
@@ -296,7 +307,7 @@ private:
     void onDeleteButtonClicked(cocos2d::Ref *sender);
 };
 
-class BEUIVisionChange : public BEUIBase {
+class BEUIVisionChange : public BEUIBase, public BEFilterListViewDelegate {
 public:
     BEUIVisionChange(cocos2d::Node *root, const BEPopupEventHandler& handler);
     virtual void reset();
@@ -308,11 +319,18 @@ private:
     cocos2d::ui::Button *_cancelButton;
     cocos2d::ui::Button *_stateButton;
     BETypeListView *_stateListView;
-    BEListView *_visionListView;
     std::vector<std::pair<std::string, std::string>> _sourceList;
+    
+    cocos2d::ui::Layout *_groupListPanel;
+    cocos2d::ui::TextField *_filterTextField;
+    BEFilterListView *_groupListView;
     
     void onStateButtonClicked(cocos2d::Ref *sender);
     void onStateItemClicked(cocos2d::Ref *sender);
+    
+    virtual std::string searchNameAtIndex(int index);
+    virtual std::string displayNameAtIndex(int index);
+    virtual int itemCount();
 };
 
 class BEUIWaveAction : public BEUIBase, public BEFilterListViewDelegate {

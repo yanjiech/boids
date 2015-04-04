@@ -56,6 +56,8 @@ public:
 	bool isBlocked(cocos2d::Point src, cocos2d::Point dst);
 
 	NavMesh* getMeshByUnitRadius(float radius);
+    
+    std::map<float, NavMesh*>& getMeshes() { return meshes; }
 
 	void addCollidablePolygon(const std::string& name, const std::vector<float>& points_x, const std::vector<float>& points_y);
 	void addCollidablePolygon(const std::string& name); //增加一个从tmx中读到的"dynamic"多边形

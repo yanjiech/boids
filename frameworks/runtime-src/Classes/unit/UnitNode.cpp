@@ -863,11 +863,6 @@ void UnitNode::walkTo( const cocos2d::Point& new_pos ) {
         collidables.push_back(id_u.second);
     }
     
-    const Vector<BlockNode*>& block_nodes = _battle_layer->getBlockNodes();
-    for( auto block : block_nodes ) {
-        collidables.push_back( block );
-    }
-    
     std::set<Collidable*> steered_collidables;
     
     while( true ) {//其实很少转两次，一般最多转一次。但转两次的情况也是存在的，即在一个钝角处，先被边A转向，再被边B转向，结果还是小于指定的角度区间。先被单位A转向，再被单位B转向也是一样的

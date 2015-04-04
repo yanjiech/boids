@@ -411,13 +411,13 @@ UnitNode* BattleLayer::getAliveUnitByDeployId( int deploy_id ) {
 }
 
 void BattleLayer::addBlockNode( BlockNode* block_node ) {
-    _block_nodes.pushBack( block_node );
+    _block_nodes.insert( block_node->getBlockName(), block_node );
     this->addToOnGroundLayer( block_node, block_node->getPosition(), this->zorderForPositionOnObjectLayer( block_node->getPosition() ) );
 }
 
 void BattleLayer::removeBlockNode( BlockNode* block_node ) {
     block_node->removeFromParent();
-    _block_nodes.eraseObject( block_node );
+    _block_nodes.erase( block_node->getBlockName() );
 }
 
 bool BattleLayer::addBullet( int key, BulletNode* bullet ) {

@@ -84,7 +84,7 @@ private:
     
     BulletMap _bullets;
     
-    cocos2d::Vector<BlockNode*> _block_nodes;
+    cocos2d::Map<std::string, BlockNode*> _block_nodes;
     
     int _next_deploy_id;
     
@@ -144,7 +144,7 @@ public:
     cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eUnitCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group );
     
-    const cocos2d::Vector<BlockNode*> getBlockNodes() { return _block_nodes; }
+    const cocos2d::Map<std::string, BlockNode*>& getBlockNodes() { return _block_nodes; }
     void addBlockNode( BlockNode* block_node );
     void removeBlockNode( BlockNode* block_node );
     

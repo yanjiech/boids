@@ -1,8 +1,9 @@
 ﻿#include "BoidsPolygonEx.h"
 #include "Utils.h"
 #include <sstream>
-#include "BoidsMath.h"
+#include "../BoidsMath.h"
 
+using namespace cocos2d;
 
 int BoidsPolygonEx::global_id = 0;
 

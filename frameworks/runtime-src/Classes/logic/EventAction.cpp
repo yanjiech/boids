@@ -468,7 +468,26 @@ bool VisionChangeAction::init( const cocos2d::ValueMap& action_data, class MapLo
 }
 
 void VisionChangeAction::onActionTriggered( bool finish ) {
+    std::string vision_state = _action_data.at( "vision_state" ).asString();
+    bool enabled = true;
+    if( vision_state == VISION_STATE_ENABLED ) {
+        enabled = true;
+    }
+    else {
+        enabled = false;
+    }
     
+    std::string source_type = _action_data.at( "source_type" ).asString();
+    std::string source_value = _action_data.at( "source_value" ).asString();
+    
+    if( source_type == UNIT_SOURCE_NAME ) {
+        const cocos2d::Map<std::string, BlockNode*>& block_nodes = _map_logic->getBattleLayer()->getBlockNodes();
+        for( auto itr = block_nodes.begin(); itr != block_nodes.end(); ++itr ) {
+            if( itr->first == source_value ) {
+                itr->second->setEnabled( enabled );
+            }
+        }
+    }
 }
 
 //wave action

@@ -1,8 +1,10 @@
 ﻿#include "BoidsPolygon.h"
-#include "BoidsMath.h"
-#include "TmxPolyline.h"
-#include "TmxPolygon.h"
-#include "Utils.h"
+#include "../BoidsMath.h"
+#include "../TMXParser/TmxPolyline.h"
+#include "../TMXParser/TmxPolygon.h"
+#include "../Utils.h"
+
+using namespace cocos2d;
 
 segment toBoostSeg(PolygonPointPtr src)
 {
@@ -53,19 +55,23 @@ void BoidsPolygon::loadFromTmxObject(Tmx::Object* ob, float map_height)
 		pt.y = map_height - pt.y;
 	});
 
-	
+	this->makeSureAnticlockwise();
 }
 
 void BoidsPolygon::loadFromValueMap( const cocos2d::ValueMap& data, float map_height ) {
-    const ValueVector& points = data.at( "points" ).asValueVector();
+    const cocos2d::ValueVector& points = data.at( "points" ).asValueVector();
     float base_x = data.at( "x" ).asFloat();
     float base_y = data.at( "y" ).asFloat();
+    if( map_height == 0 ) {
+        map_height = data.at( "map_height" ).asFloat();
+    }
     
     for( auto itr = points.begin(); itr != points.end(); ++itr ) {
-        const ValueMap& pos_pair = itr->asValueMap();
-        this->addNewVertex( pos_pair.at( "x" ).asFloat() + base_x, pos_pair.at( "y" ).asFloat() + base_y );
+        const cocos2d::ValueMap& pos_pair = itr->asValueMap();
+        this->addNewVertex( base_x + pos_pair.at( "x" ).asFloat(), base_y - pos_pair.at( "y" ).asFloat() );
     }
-    this->makeSureAnticlockwise();
+    
+    this->makeSureClockwise();
 }
 
 void BoidsPolygon::initializeAsRectangle(float x, float y, float width, float height)
@@ -143,6 +149,22 @@ void BoidsPolygon::makeSureAnticlockwise(cocos2d::Point outside_point) //假设�
 		//log("clockwise polygon detected.");
 		reverse();
 	}
+}
+
+void BoidsPolygon::makeSureClockwise(cocos2d::Point outside_point)
+{
+    
+    float area = 0.0f;
+    foreach2([&](cocos2d::Point pt, cocos2d::Point pt2)
+    {
+        area += cocos2d::Vec2(outside_point, pt).cross(cocos2d::Vec2(outside_point, pt2));
+    });
+    
+    if (area >= 0.0f)
+    {
+        //log("clockwise polygon detected.");
+        reverse();
+    }
 }
 
 //repulsion_vec为斥力向量，当冲突时，表示沿着向量走那么段路就能不碰撞
@@ -561,4 +583,20 @@ void BoidsPolygon::drawSketchOn(cocos2d::DrawNode* node, cocos2d::Color4F c)
 	{
 		Utils::drawVec(debug_lines[i].src, debug_lines[i].dst, node, Color4F::GREEN);
 	}
+}
+
+std::vector<Border> BoidsPolygon::getNearbyBorders( const cocos2d::Point& center, float radius ) {
+    std::vector<Border> ret;
+    
+    foreachelement2( [&](PolygonPointPtr _pt, PolygonPointPtr _pt2) {
+        Point pt1 = _pt->d;
+        Point pt2 = _pt2->d;
+        Point pt3 = _pt2->next->d;
+        
+        if( Geometry::distanceToLine( center, pt1, pt2 ) <= radius ) {
+            ret.push_back( Border( pt1, pt2, pt3 ) );
+        }
+    } );
+    
+    return ret;
 }

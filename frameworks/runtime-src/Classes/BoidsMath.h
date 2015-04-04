@@ -165,7 +165,7 @@ public:
 				{
 					return perpendicular_vec * t;
 				}
-				else //¥πœﬂΩª‘⁄‘≠œÚ¡øµƒ—”≥§œﬂ…œ¡À£¨∑µªÿµΩ∂Àµ„µƒæ‡¿Î
+				else
 				{
 					if (Fuzzy::_less(s, 0.0f))
 					{
@@ -177,7 +177,7 @@ public:
 					}
 				}
 			}
-			else //“—æ≠‘⁄’œ∞≠µƒ¡Ì“ª≤‡¡À£¨æÕ≤ª”√øº¬«¡À
+			else
 			{
 				return -cocos2d::Vec2::ONE;
 			}
@@ -306,24 +306,21 @@ public:
 		return true;
 	}
 
-	//»Áπ˚‘⁄À≥ ±’Î…œ£¨x±»y¿Îbase∏¸Ω¸£¨ƒ«√¥∑µªÿtrue
 	static bool clockwiseCloser(cocos2d::Point origin, cocos2d::Point base, cocos2d::Point x, cocos2d::Point y)
 	{
 		cocos2d::Vec2 base_vec(origin, base);
 		cocos2d::Vec2 vec_x(origin, x);
 		cocos2d::Vec2 vec_y(origin, y);
 
-		//œ»ø¥ «≤ª «Õ¨≤‡£¨‘⁄(origin, base)”“≤‡µƒ“ª∂®“™±»‘⁄◊Û≤‡µƒÀ≥ ±’Î∏¸Ω¸
 		int side_x = Fuzzy::side(base_vec.cross(vec_x));
 		int side_y = Fuzzy::side(base_vec.cross(vec_y));
 
-		//∆‰ µœ¬√Ê’‚¡Ω÷÷Ãÿ ‚«Èøˆ‘⁄Œ“ π”√’‚∏ˆ∑Ω∑®µƒµÿ∑Ω’’¿Ì «≤ªª·Ω¯µƒ°£°£
-		if (side_y == 0 && base_vec.dot(vec_y) > 0) //»Áπ˚vec_y∫Õbase_vecÕÍ»´Õ¨œÚ£¨ƒ«xøœ∂®≤ªø…ƒ‹∏¸Ω¸¡À
+		if (side_y == 0 && base_vec.dot(vec_y) > 0)
 		{
 			return false;
 		}
 
-		if (side_x == 0 && base_vec.dot(vec_x) > 0) //»Áπ˚vec_y√ª”–Õ¨œÚ∂¯vec_xÕ¨œÚ¡À£¨ƒ«øœ∂® «x◊ÓΩ¸¡À
+		if (side_x == 0 && base_vec.dot(vec_x) > 0)
 		{
 			return true;
 		}
