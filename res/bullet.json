@@ -97,26 +97,6 @@
         "track_target" : true,
         "hit_scale": 0.5
     },
-    "skeleton_king_bullet_1" : {
-        "name" : "gu01",
-        "move_type" : "fixed",
-        "body_type" : "spine",
-        "hit_type" : "spine",
-        "hit_name" : "default",
-        "damage_radius" : 50.0,
-        "hit_scale" : 1.0,
-        "scale" : 1.0
-    },
-    "skeleton_king_bullet_2" : {
-        "name" : "gu02",
-        "move_type" : "fixed",
-        "body_type" : "spine",
-        "hit_type" : "spine",
-        "hit_name" : "default",
-        "damage_radius" : 50.0,
-        "hit_scale" : 1.0,
-        "scale" : 1.0
-    },
     "thunderbolt": {
         "name": "thunderbolt",
         "move_type": "straight",

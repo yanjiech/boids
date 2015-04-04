@@ -59,7 +59,7 @@ void CrazyShoot::updateFrame( float delta ) {
             BattleLayer* battle_layer = _owner->getBattleLayer();
             
             cocos2d::Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _owner->getPosition(), _range );
-            int size = (int)candidates.size();
+            int size = candidates.size();
             if( size > 0 ) {
                 int i = Utils::randomNumber( size ) - 1;
                 UnitNode* target_unit = candidates.at( i );

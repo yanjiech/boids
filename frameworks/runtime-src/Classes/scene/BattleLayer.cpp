@@ -12,7 +12,6 @@
 #include "../AI/Terrain.h"
 #include "../BoidsMath.h"
 #include "../constant/BoidsConstant.h"
-#include "../unit/skill/SkillCache.h"
 
 using namespace cocos2d;
 
@@ -157,10 +156,8 @@ void BattleLayer::reset() {
 void BattleLayer::updateFrame( float delta ) {
     if( _state == BattleRunning ) {
         _game_time += delta;
-        
-        //update skill
-        SkillCache::getInstance()->updateFrame( delta );
         _skill_ui_layer->updateFrame( delta );
+        this->updateSkillNodes( delta );
         
         //handle dead units which need to be removed from battle
         UnitMap dead_unit_map = this->getDeadUnits();
@@ -168,7 +165,7 @@ void BattleLayer::updateFrame( float delta ) {
             UnitNode* unit = pair.second;
             
             if( unit->getUnitState() == eUnitState::Dead ) {
-                this->onUnitDisappear( unit );
+                this->onUnitDead( unit );
             }
         }
         
@@ -183,7 +180,17 @@ void BattleLayer::updateFrame( float delta ) {
         }
         
         //update bullets
-        this->updateBullets( delta );
+        BulletMap bullets = _bullets;
+        
+        for( auto pair : bullets ) {
+            BulletNode* b = pair.second;
+            if( b->shouldRecycle() ) {
+                this->removeBullet( b->getBulletId() );
+            }
+            else {
+                b->updateFrame( delta );
+            }
+        }
         
         //handle alive units
         for( auto pair : _alive_units ) {
@@ -271,13 +278,7 @@ UnitNode* BattleLayer::getLeaderUnit() {
 }
 
 void BattleLayer::changeState( eBattleState new_state ) {
-    this->setState( new_state );
-    if( _state == eBattleState::BattleWin ) {
-        log( "game end: win" );
-    }
-    else if( _state == eBattleState::BattleLose ) {
-        log( "game end: lose" );
-    }
+    
 }
 
 cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eUnitCamp camp ) {
@@ -299,22 +300,6 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCamp( eUnitCamp camp ) {
         UnitNode* unit = pair.second;
         if( unit->getUnitCamp() == camp ) {
             ret.pushBack( unit );
-        }
-    }
-    
-    return ret;
-}
-
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveAllyInRange( eUnitCamp camp, const cocos2d::Point& center, float radius ) {
-    cocos2d::Vector<UnitNode*> ret;
-    
-    for( auto pair : _alive_units ) {
-        UnitNode* unit = pair.second;
-        if( !unit->isFoeOfCamp( camp ) ) {
-            Point unit_pos = unit->getPosition();
-            if( Math::isPositionInRange( unit->getPosition(), center, radius + unit->getUnitData()->collide ) ) {
-                ret.pushBack( unit );
-            }
         }
     }
     
@@ -353,7 +338,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp
         UnitNode* unit = pair.second;
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
-            if( Math::isPositionInRange( unit->getPosition(), center, radius + unit->getUnitData()->collide ) ) {
+            if( Math::isPositionInRange( unit->getPosition(), center, radius ) ) {
                 ret.pushBack( unit );
             }
         }
@@ -367,7 +352,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp
         UnitNode* unit = pair.second;
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
-            if( Math::isPositionInRange( unit_pos, center, radius + unit->getUnitData()->collide ) && !Terrain::getInstance()->isBlocked( init_pos, unit_pos ) ) {
+            if( Math::isPositionInRange( unit_pos, center, radius ) && !Terrain::getInstance()->isBlocked( init_pos, unit_pos ) ) {
                 ret.pushBack( unit );
             }
         }
@@ -410,16 +395,6 @@ UnitNode* BattleLayer::getAliveUnitByDeployId( int deploy_id ) {
     return nullptr;
 }
 
-void BattleLayer::addBlockNode( BlockNode* block_node ) {
-    _block_nodes.pushBack( block_node );
-    this->addToOnGroundLayer( block_node, block_node->getPosition(), this->zorderForPositionOnObjectLayer( block_node->getPosition() ) );
-}
-
-void BattleLayer::removeBlockNode( BlockNode* block_node ) {
-    block_node->removeFromParent();
-    _block_nodes.eraseObject( block_node );
-}
-
 bool BattleLayer::addBullet( int key, BulletNode* bullet ) {
     std::string k = Utils::stringFormat( "%d", key );
     auto itr = _bullets.find( k );
@@ -440,19 +415,11 @@ void BattleLayer::removeBullet( int key ) {
     }
 }
 
-void BattleLayer::updateBullets( float delta ) {
-    auto itr = _bullets.begin();
-    while( itr != _bullets.end() ) {
-        BulletNode* b = itr->second;
-        if( b->shouldRecycle() ) {
-            itr = _bullets.erase( itr );
-            b->removeFromParent();
-        }
-        else {
-            b->updateFrame( delta );
-            ++itr;
-        }
-    }
+void BattleLayer::addSkillNode( SkillNode* skill_node ) {
+    _skill_nodes.pushBack( skill_node );
+}
+void BattleLayer::removeSkillNode( SkillNode* skill_node ) {
+    _skill_nodes.eraseObject( skill_node );
 }
 
 void BattleLayer::onUnitAppear( UnitNode* unit ) {
@@ -481,10 +448,9 @@ void BattleLayer::onUnitDying( UnitNode* unit ) {
     _alive_units.erase( key );
     _dead_units.insert( key, unit );
     this->clearChasingTarget(  unit );
-    _map_logic->onTargetNodeDead( unit );
 }
 
-void BattleLayer::onUnitDisappear( UnitNode* unit ) {
+void BattleLayer::onUnitDead( UnitNode* unit ) {
     std::string key = Utils::stringFormat( "%d", unit->getDeployId() );
     _dead_units.erase( key );
     _map_logic->onTargetNodeDisappear( unit );
@@ -681,46 +647,6 @@ void BattleLayer::parseMapObjects() {
         BuildingNode* building = BuildingNode::create( grid_properties, obj_properties );
         this->addToObjectLayer( building, building->getPosition(), building->getPosition() + building->getCenter() );
     }
-    
-    const TMXObjectGroup* physics_group = _tmx_map->getObjectGroup( "physics" );
-    
-    const TMXObjectGroup* block_group = _tmx_map->getObjectGroup( "block" );
-    if( block_group ) {
-        const ValueVector& block_objects = block_group->getObjects();
-        for( auto itr = block_objects.begin(); itr != block_objects.end(); ++itr ) {
-            const ValueMap& obj_properties = itr->asValueMap();
-            int gid = obj_properties.at( "gid" ).asInt();
-            bool flipped_horizontally = false;
-            bool flipped_vertically = false;
-            bool flipped_diagonally = false;
-            if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
-                flipped_horizontally = true;
-                gid &= 0x7fffffff;
-            }
-            if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
-                flipped_vertically = true;
-                gid &= 0xbfffffff;
-            }
-            if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
-                flipped_diagonally = true;
-                gid &= 0xdfffffff;
-            }
-            
-            Value properties = _tmx_map->getPropertiesForGID( gid );
-            ValueMap& grid_properties = properties.asValueMap();
-            grid_properties["flipped_horizontally"] = Value( flipped_horizontally );
-            grid_properties["flipped_vertically"] = Value( flipped_vertically );
-            grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
-            std::string name = obj_properties.at( "name" ).asString();
-            ValueMap boundary = physics_group->getObject( name );
-            boundary["map_height"] = Value( _tmx_map->getContentSize().height );
-            if( !boundary.empty() ) {
-                grid_properties["boundary"] = Value( boundary );
-                BlockNode* block_node = BlockNode::create( grid_properties, obj_properties );
-                this->addBlockNode( block_node );
-            }
-        }
-    }
 }
 
 int BattleLayer::zorderForPositionOnObjectLayer( const cocos2d::Point& pos ) {
@@ -735,5 +661,19 @@ void BattleLayer::reorderObjectLayer() {
     for( auto pair : _dead_units ) {
         UnitNode* unit_node = pair.second;
         unit_node->setLocalZOrder( this->zorderForPositionOnObjectLayer( unit_node->getPosition() ) );
+    }
+}
+
+void BattleLayer::updateSkillNodes( float delta ) {
+    auto itr = _skill_nodes.begin();
+    while( itr != _skill_nodes.end() ) {
+        SkillNode* node = *itr;
+        if( node->shouldRecycle() ) {
+            itr = _skill_nodes.erase( itr );
+        }
+        else {
+            node->updateFrame( delta );
+            ++itr;
+        }
     }
 }

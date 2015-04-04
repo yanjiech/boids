@@ -466,12 +466,6 @@ float Utils::randomFloat2()
 	return another_r.randomFloat();
 }
 
-cocos2d::Point Utils::randomPositionInRange( const cocos2d::Point& center, float range ) {
-    float angle = Utils::randomFloat() * M_PI * 2;
-    float r = Utils::randomFloat() * range;
-    return center + Point( cosf( angle ) * r, sinf( angle ) * r / 1.74f );
-}
-
 void Utils::saveReplay(const std::string& replay_name)
 {
 	if (replay_to_save)

@@ -18,7 +18,6 @@
 #include "../Utils.h"
 #include "BulletNode.h"
 #include "JumpText.h"
-#include "ui/CocosGUI.h"
 
 #define DEFAULT_SHADOW_RADIUS 30.0
 #define DEFAULT_HESITATE_FRAMES 5
@@ -61,8 +60,6 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
     this->display_name = unit_config.at( "displayname" ).asString();
     this->hp = unit_config.at( "hp" ).asFloat() + this->level * (float)unit_config.at( "hpgr" ).asFloat();
     this->current_hp = this->hp;
-    this->mp = unit_config.at( "mp" ).asFloat() + this->level * (float)unit_config.at( "mpgr" ).asFloat();
-    this->current_mp = this->mp;
     this->atk = unit_config.at( "atk" ).asFloat() + this->level * unit_config.at( "atkgr" ).asFloat();
     this->def = unit_config.at( "def" ).asFloat() + this->level * unit_config.at( "defgr" ).asFloat();
     this->move_speed = unit_config.at( "movespeed" ).asFloat();
@@ -134,10 +131,6 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
         this->hp = (float)Utils::toDouble( value );
         this->current_hp = this->hp;
     }
-    else if( key == "mp" ) {
-        this->mp = (float)Utils::toDouble( value );
-        this->current_mp = this->mp;
-    }
     else if( key == "id" ) {
         this->unit_id = Utils::toInt( value );
     }
@@ -162,7 +155,8 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
 }
 
 UnitNode::UnitNode() :
-_state( eUnitState::Unknown_Unit_State ) {
+_state( eUnitState::Unknown_Unit_State ),
+_using_skill_node( nullptr ) {
 }
 
 UnitNode::~UnitNode() {
@@ -270,8 +264,6 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         _front->setCompleteListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationCompleted, this ) );
         _front->setEventListener( CC_CALLBACK_2( UnitNode::onSkeletonAnimationEvent, this ) );
         this->addChild( _front, eComponentLayer::Object );
-        Rect bounding_box = _front->getBoundingBox();
-        this->setContentSize( bounding_box.size );
     }
     
     if( _back ) {
@@ -399,23 +391,21 @@ void UnitNode::onSkeletonAnimationCompleted( int track_index ) {
     }
     else if( animation_name == "Cast" || animation_name == "Cast2" ) {
         if( _using_skill_params["multi_action"].asBool() ) {
-            if( _using_skill_params["state"].asString() == "start" ) {
-                _unit_state_changed = true;
-                this->setNextUnitState( eUnitState::Casting );
-                _using_skill_params["state"] = Value( "continue" );
-            }
+            _unit_state_changed = true;
+            this->setNextUnitState( eUnitState::Casting );
+            _using_skill_params["state"] = Value( "continue" );
         }
         else {
             this->endSkill();
             this->changeUnitState( eUnitState::Idle );
         }
     }
-//    else if( animation_name == "Cast_1" || animation_name == "Cast2_1" ) {
-//        if( _using_skill_params["state"].asString() == "end" ) {
-//            _unit_state_changed = true;
-//            this->setNextUnitState( eUnitState::Casting );
-//        }
-//    }
+    else if( animation_name == "Cast_1" || animation_name == "Cast2_1" ) {
+        if( _using_skill_params["state"].asString() == "end" ) {
+            _unit_state_changed = true;
+            this->setNextUnitState( eUnitState::Casting );
+        }
+    }
     else if( animation_name == "Die" ) {
         this->changeUnitState( eUnitState::Disappear );
     }
@@ -435,10 +425,10 @@ void UnitNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
         this->onAttackBegan();
     }
     else if( animation_name == "Cast" && event_name == "OnJuneng" ) {
-        this->onCharging();
+        
     }
     else if( animation_name == "Cast2" && event_name == "OnJuneng" ) {
-        this->onCharging();
+        
     }
 }
 
@@ -585,16 +575,8 @@ cocos2d::Point UnitNode::getEmitPos() {
     return ret;
 }
 
-cocos2d::Point UnitNode::getLocalEmitPos() {
-    return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, "EmitPoint" );
-}
-
 cocos2d::Point UnitNode::getLocalHeadPos() {
     return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, "tou" );
-}
-
-cocos2d::Point UnitNode::getLocalBonePos( const std::string& bone_name ) {
-    return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, bone_name );
 }
 
 void UnitNode::appear() {
@@ -645,7 +627,7 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
         }
         
         //jump damage number
-        std::string jump_text_name = Utils::stringFormat( "damage_number_%d", BulletNode::getNextBulletId() );
+        std::string jump_text_name = Utils::stringFormat( "damage_from_%d_%f_jump_text", source_id, _battle_layer->getGameTime() );
         this->jumpNumber( damage, "damage", is_cri, jump_text_name );
         
         //update blood bar
@@ -664,10 +646,6 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
     }
 }
 
-void UnitNode::takeHeal( const cocos2d::ValueMap& result, int source_id ) {
-    this->takeHeal( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), source_id );
-}
-
 void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
     _unit_data->current_hp += amount;
     if( _unit_data->current_hp > _unit_data->hp ) {
@@ -675,11 +653,11 @@ void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
     }
     //add heal effect
     std::string resource = "effects/heal";
-    std::string component_name = Utils::stringFormat( "heal_effect_%d", BulletNode::getNextBulletId() );
+    std::string component_name = Utils::stringFormat( "heal_from_%d", source_id );
     spine::SkeletonAnimation* effect = ArmatureManager::getInstance()->createArmature( resource );
     effect->setScale( 0.7f );
     UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( effect, component_name, true );
-    component->setPosition( Point::ZERO );
+    component->setPosition( this->getLocalHitPos() );
     this->addUnitComponent( component, component_name, eComponentLayer::OverObject );
     component->setAnimation( 0, "animation", false );
     
@@ -687,8 +665,8 @@ void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
     _hp_bar->setPercentage( _unit_data->current_hp / _unit_data->hp * 100.0f );
     
     //jump number
-    std::string jump_text_name = Utils::stringFormat( "heal_number_%d", BulletNode::getNextBulletId() );
-    this->jumpNumber( amount, "heal", is_cri, jump_text_name );
+    std::string jump_text_name = component_name + "_jump_text";
+    this->jumpNumber( amount, "heal", is_cri, component_name );
 }
 
 void UnitNode::setGLProgrameState( const std::string& name ) {
@@ -791,8 +769,6 @@ void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_pe
         _using_skill_params["skill_id"] = Value( skill_id );
         _using_skill_params["range_per"] = Value( range_per );
         _using_skill_params["state"] = Value( "start" );
-        _using_skill_params["charging_effect"] = Value( _skills.at( skill_id )->getChargingEffect() );
-        _using_skill_params["charging_effect_pos"] = Value( _skills.at( skill_id )->getChargingEffectPos() );
         this->changeUnitState( eUnitState::Casting, true );
     }
 }
@@ -831,11 +807,9 @@ bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d:
     cocos2d::Vec2 circle_center_dir( unit->getPosition(), this->getPosition() );
     if ( Fuzzy::_greater( circle_center_dir.cross( old_dir ), 0.0f ) ) {
         new_dir = Geometry::anticlockwisePerpendicularVecToLine( circle_center_dir );
-        new_dir = Geometry::anticlockwiseRotate1( new_dir );
     }
     else {
         new_dir = Geometry::clockwisePerpendicularVecToLine( circle_center_dir );
-        new_dir = Geometry::clockwiseRotate1( new_dir );
     }
     return true;
 }
@@ -863,14 +837,9 @@ void UnitNode::walkTo( const cocos2d::Point& new_pos ) {
         collidables.push_back(id_u.second);
     }
     
-    const Vector<BlockNode*>& block_nodes = _battle_layer->getBlockNodes();
-    for( auto block : block_nodes ) {
-        collidables.push_back( block );
-    }
-    
     std::set<Collidable*> steered_collidables;
     
-    while( true ) {//其实很少转两次，一般最多转一次。但转两次的情况也是存在的，即在一个钝角处，先被边A转向，再被边B转向，结果还是小于指定的角度区间。先被单位A转向，再被单位B转向也是一样的
+    for (;;) {//其实很少转两次，一般最多转一次。但转两次的情况也是存在的，即在一个钝角处，先被边A转向，再被边B转向，结果还是小于指定的角度区间。先被单位A转向，再被单位B转向也是一样的
         bool no_steer = true;
         
         //看看目前的方案是否有碰撞，如果有任意一个碰撞，那么尝试绕过它。
@@ -1028,19 +997,8 @@ void UnitNode::attack( TargetNode* unit ) {
     this->changeUnitState( eUnitState::Attacking );
 }
 
-void UnitNode::onCharging() {
-    std::string resource = _using_skill_params["charging_effect"].asString();
-    std::string effect_pos = _using_skill_params["charging_effect_pos"].asString();
-    if( resource != "" ) {
-        spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
-        std::string name = Utils::stringFormat( "charging_%d", BulletNode::getNextBulletId() );
-        UnitNodeFollowSpineComponent* charging_component = UnitNodeFollowSpineComponent::create( this, effect_pos, skeleton, name, true );
-        if( effect_pos != "" ) {
-            charging_component->setPosition( this->getLocalBonePos( effect_pos ) );
-        }
-        this->addUnitComponent( charging_component, charging_component->getName(), eComponentLayer::OverObject );
-        charging_component->setAnimation( 0, "animation", false );
-    }
+void UnitNode::onCharging( int i ) {
+    
 }
 
 void UnitNode::onAttackBegan() {
@@ -1184,28 +1142,6 @@ bool UnitNode::isSkillReadyById( int sk_id ) {
     return _skills.at( sk_id )->isSkillReady();
 }
 
-void UnitNode::makeSpeech( const std::string& content, float duration ) {
-    Rect inset_rect = Rect( 100.0f, 40.0f, 60.0f, 60.0f );
-    ui::Scale9Sprite* window = ui::Scale9Sprite::createWithSpriteFrameName( "chat_popup.png", inset_rect );
-    window->setAnchorPoint( Point( 0.3f, 0 ) );
-    Label* content_label = Label::createWithSystemFont( content, "Helvetica", 40.0f );
-    content_label->setTextColor( Color4B::BLACK );
-    content_label->setLineBreakWithoutSpace( true );
-    content_label->setDimensions( 300, 0 );
-    content_label->setHorizontalAlignment( TextHAlignment::LEFT );
-    content_label->setVerticalAlignment( TextVAlignment::CENTER );
-    Size content_size = content_label->getContentSize();
-    Size real_content_size = Size( content_size.width + 60.0f, content_size.height + 70.0f );
-    window->setPreferredSize( real_content_size );
-    content_label->setAnchorPoint( Point( 0.5f, 1.0f ) );
-    content_label->setPosition( Point( real_content_size.width / 2, real_content_size.height - 20.0f ) );
-    window->addChild( content_label );
-    std::string name = Utils::stringFormat( "chat_popup_%d", BulletNode::getNextBulletId() );
-    TimeLimitComponent* component = TimeLimitComponent::create( duration, window, name, true );
-    component->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height ) );
-    this->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
-}
-
 //private methods
 void UnitNode::updateComponents( float delta ) {
     cocos2d::Map<std::string, UnitNodeComponent*> components = _components;
@@ -1248,8 +1184,4 @@ void UnitNode::riseup( float duration, float delta_height ) {
 void UnitNode::falldown( float duration, float delta_height ) {
     _current_skeleton->stopActionByTag( 10000 );
     _current_skeleton->setPosition( Point::ZERO );
-}
-
-bool UnitNode::isAlive() {
-    return _state < eUnitState::Dying;
 }

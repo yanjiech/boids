@@ -23,7 +23,7 @@
     },
     "deploy_units" :
     [
-        "1"
+        "5"
     ],
     "units" :
     {
@@ -76,15 +76,15 @@
         "3" :
         {
             "name" : "enchantress",
-            "level" : 20,
+            "level" : 10,
             "skills" :
             [
                 {
-                     "name" : "NaturesAttendants",
+                     "name" : "",
                      "level" : 1
                 },
                 {
-                     "name" : "Impetus",
+                     "name" : "",
                      "level" : 2
                 }
             ],
@@ -132,64 +132,6 @@
                 {
                     "name" : "BatSwarm",
                     "level" : 1
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-        },
-        "100" :
-        {
-            "name" : "skeleton_king",
-            "level" : 5,
-            "skills" :
-            [
-                {
-                    "name" : "BonesRain",
-                    "level" : 1
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-        },
-        "101" :
-        {
-            "name" : "women_wizard",
-            "level" : 40,
-            "skills" :
-            [
-                {
-                    "name" : "MagicPulse",
-                    "level" : 3
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-
-        },
-        "102" :
-        {
-            "name" : "rattletrap",
-            "level" : 40,
-            "skills" :
-            [
-                {
-                    "name" : "MissileShowers",
-                    "level" : 3
                 }
             ],
             "equips" :

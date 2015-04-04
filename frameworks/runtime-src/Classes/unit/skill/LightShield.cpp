@@ -43,6 +43,9 @@ bool LightShield::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 }
 
 void LightShield::updateFrame( float delta ) {
+    if( !_should_recycle ) {
+        this->end();
+    }
 }
 
 void LightShield::begin() {
@@ -56,7 +59,9 @@ void LightShield::begin() {
     ShieldBuff* buff = ShieldBuff::create( _owner, data );
     _owner->addBuff( buff->getBuffId(), buff );
     buff->begin();
+    SkillNode::begin();
 }
 
 void LightShield::end() {
+    SkillNode::end();
 }

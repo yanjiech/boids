@@ -71,17 +71,7 @@ public:
 };
 
 class PoisonBuff : public Buff {
-public:
-    PoisonBuff();
-    virtual ~PoisonBuff();
     
-    static PoisonBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
-    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
-    
-    virtual void updateFrame( float delta );
-    
-    virtual void begin();
-    virtual void end();
 };
 
 class ShieldBuff : public Buff {

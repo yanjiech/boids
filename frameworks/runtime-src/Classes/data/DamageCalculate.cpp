@@ -99,7 +99,7 @@ cocos2d::ValueMap DamageCalculate::calculateDamageWithoutMiss( class UnitData* a
 
 float DamageCalculate::calculateDamage( const std::string calculator_name, float base_damage, class UnitData* atker_data, class UnitData* defer_data ) {
     if( calculator_name == "normal" ) {
-        return ( base_damage + atker_data->atk ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+        return ( base_damage + 0.2 * atker_data->atk ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
     }
     else if( calculator_name == SKILL_NAME_WRATH_OF_THUNDER ) {
         return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );

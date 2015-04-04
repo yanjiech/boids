@@ -1,4 +1,10 @@
 {
+    "tasks": [
+        {
+            "name": "main",
+            "desc": "哦呵呵"
+        }
+    ],
     "positions": [
         {
             "name": "player_start",
@@ -158,7 +164,6 @@
                     "unit_state": "unit_appear",
                     "position_name": "02",
                     "unit_count": 1,
-                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -187,7 +192,6 @@
                     "unit_state": "unit_appear",
                     "position_name": "02",
                     "unit_count": 1,
-                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -213,7 +217,6 @@
                     "unit_state": "unit_appear",
                     "position_name": "01",
                     "unit_count": 2,
-                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -239,7 +242,6 @@
                     "unit_state": "unit_appear",
                     "position_name": "09",
                     "unit_count": 1,
-                    "unit_level": 1,
                     "popup_type": "normal"
                 },
                 {
@@ -251,7 +253,6 @@
                     "unit_state": "unit_appear",
                     "position_name": "09",
                     "unit_count": 1,
-                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -260,13 +261,5 @@
     "units": [
         "goblin",
         "wild_wolf"
-    ],
-    "tasks": [
-        {
-            "type": "primary_win",
-            "name": "main",
-            "desc": "哦呵呵",
-            "title": "杀死boss"
-        }
     ]
 }

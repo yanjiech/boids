@@ -10,6 +10,9 @@
     <Filter Include="resource">
       <UniqueIdentifier>{2d1d0979-58cd-4ab6-b91c-13650158f1fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\auto">
+      <UniqueIdentifier>{38e517b5-5d28-4ad0-9928-d43d293cf0ba}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Classes\AI">
       <UniqueIdentifier>{29fc73ab-0260-4c1a-89a2-d0a14c79cede}</UniqueIdentifier>
     </Filter>
@@ -31,38 +34,20 @@
     <Filter Include="Classes\Editor\UI">
       <UniqueIdentifier>{a3d30c4e-8ad0-476a-a8ac-ee7445e1200d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\scene">
-      <UniqueIdentifier>{d4044f49-1c1e-48e1-950b-2024b7a85f39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\constant">
-      <UniqueIdentifier>{1ef50615-5732-461c-9ffd-6091d59d8f7a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\unit">
-      <UniqueIdentifier>{4fd1a2e5-c853-487d-bdad-7bde5ca05a7a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\manager">
-      <UniqueIdentifier>{8e811684-e620-46bf-a437-9b3cddba3e84}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\behavior">
-      <UniqueIdentifier>{11537df9-e75e-480a-ac10-76026cac478b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\data">
-      <UniqueIdentifier>{ddd16593-c15b-4f5c-8afa-4f0e31593af5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\interface">
-      <UniqueIdentifier>{b30c1743-3a3d-417e-860f-0429b74ab818}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\logic">
-      <UniqueIdentifier>{bd8a73f2-f2b5-4eff-8960-049b1167e00f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\util">
-      <UniqueIdentifier>{ffa534f3-591b-43d4-810a-050bdbb77e85}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\unit\skill">
-      <UniqueIdentifier>{14378621-e216-4d3b-bb81-c484b096010a}</UniqueIdentifier>
+    <Filter Include="Classes\manual">
+      <UniqueIdentifier>{69f61f58-3ee4-4bc3-9062-e263be1c7ccd}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\ini">
-      <UniqueIdentifier>{c0d5876c-d2e8-4e34-90b6-f7b0284c9933}</UniqueIdentifier>
+      <UniqueIdentifier>{83c17011-d453-424b-9e98-131c418615ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\lua_cjson">
+      <UniqueIdentifier>{56a43652-28f0-48a1-b6a8-248db1e0d511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\net">
+      <UniqueIdentifier>{be1891c4-6fc5-4cd0-9a6a-928c184798b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\message">
+      <UniqueIdentifier>{4e3bb250-2251-4983-8907-0f42ffeee73b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +62,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Utils.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_module_register.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\AI.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AI\AIUnit.h">
+      <Filter>Classes\AI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\AI\BoidsPolygon.h">
       <Filter>Classes\AI</Filter>
@@ -177,6 +171,9 @@
     <ClInclude Include="..\Classes\TmxParser\tinyxml\tinystr.h">
       <Filter>Classes\tmxParser\tinyxml</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\LuaFunc.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\BoidsMath.h">
       <Filter>Classes</Filter>
     </ClInclude>
@@ -228,10 +225,19 @@
     <ClInclude Include="..\Classes\Editor\UI\BEUIBase.h">
       <Filter>Classes\Editor\UI</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\manual\lua_boids_manual.h">
+      <Filter>Classes\manual</Filter>
+    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\LuaPlatform.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\MapData.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CmdLineDebugger.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Editor\BETypes.h">
@@ -240,11 +246,41 @@
     <ClInclude Include="..\Classes\AI\GrassMonitor.h">
       <Filter>Classes\AI</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\AI\AITest.h">
+      <Filter>Classes\AI</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\AI\Border.h">
       <Filter>Classes\AI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Macro.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ini\SimpleIni.h">
+      <Filter>Classes\ini</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LuaUtils.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CmdLineDebuggerLua.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\auto\lua_boids_auto.hpp">
+      <Filter>Classes\auto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Replay.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_cjson\dtoa_config.h">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_cjson\fpconv.h">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_cjson\lua_cjson.h">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\lua_cjson\strbuf.h">
+      <Filter>Classes\lua_cjson</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\MapDebugger.h">
       <Filter>Classes</Filter>
@@ -252,175 +288,49 @@
     <ClInclude Include="..\Classes\Counter.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\net\UdpClient.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\NetworkAdapter.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\NetworkAdapterInternal.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\TcpClient.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\Net.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EngineRelated.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\NetForExport.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\net\NetDef.h">
+      <Filter>Classes\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\manual\ArgCheck.h">
+      <Filter>Classes\manual</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Profile.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\behavior\IdleBehavior.h">
-      <Filter>Classes\behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\behavior\MoveBehavior.h">
-      <Filter>Classes\behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\behavior\PlayerAttackBehavior.h">
-      <Filter>Classes\behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\behavior\PlayerMoveBehavior.h">
-      <Filter>Classes\behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\behavior\PlayerSkillBehavior.h">
-      <Filter>Classes\behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\behavior\SkillBehavior.h">
-      <Filter>Classes\behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\behavior\AttackBehavior.h">
-      <Filter>Classes\behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\behavior\BehaviorBase.h">
-      <Filter>Classes\behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\behavior\BehaviorHeader.h">
-      <Filter>Classes\behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\constant\BoidsConstant.h">
-      <Filter>Classes\constant</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\data\DamageCalculate.h">
-      <Filter>Classes\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\data\PlayerInfo.h">
-      <Filter>Classes\data</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\interface\Updatable.h">
-      <Filter>Classes\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\logic\EventTrigger.h">
-      <Filter>Classes\logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\logic\GameTask.h">
-      <Filter>Classes\logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\logic\MapLogic.h">
-      <Filter>Classes\logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\logic\Trigger.h">
-      <Filter>Classes\logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\logic\EventAction.h">
-      <Filter>Classes\logic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\manager\ResourceManager.h">
-      <Filter>Classes\manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\manager\SceneManager.h">
-      <Filter>Classes\manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\manager\AudioManager.h">
-      <Filter>Classes\manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\UIBattleLayer.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\UIBattleMenuLayer.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\UIControlLayer.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\UILevelChooseLayer.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\BattleLayer.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\SceneBase.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\UIBattleFloatLayer.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\BuildingNode.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\BulletNode.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\Equipment.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\HpBar.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\JumpText.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\Skill.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\TargetNode.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\UnitNode.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\UnitNodeComponent.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\Buff.h">
-      <Filter>Classes\unit</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\LightningChain.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\LightShield.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\SkillNode.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\SkillNodeFactory.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\WrathOfThunder.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\BarrageOfArrow.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\BatSwarm.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\CrazyShoot.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\DarkPierce.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\unit\skill\GiantSword.h">
-      <Filter>Classes\unit\skill</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\util\CommonUtils.h">
-      <Filter>Classes\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\util\CocosUtils.h">
-      <Filter>Classes\util</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ini\ConvertUTF.h">
-      <Filter>Classes\ini</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ini\SimpleIni.h">
-      <Filter>Classes\ini</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Replay.h">
+    <ClInclude Include="..\Classes\Random.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\message\Battle.pb.h">
+      <Filter>Classes\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\message\boids.pb.h">
+      <Filter>Classes\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\message\pvp.pb.h">
+      <Filter>Classes\message</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\ReplayComparer.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CmdLineDebugger.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CmdLineDebuggerLua.h">
       <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
@@ -431,11 +341,20 @@
     <ClCompile Include="main.cpp">
       <Filter>win32</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\auto\lua_boids_auto.cpp">
+      <Filter>Classes\auto</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\ArmatureManager.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Utils.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\AI.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AI\AIUnit.cpp">
+      <Filter>Classes\AI</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\TmxParser\TmxPolygon.cpp">
       <Filter>Classes\tmxParser</Filter>
@@ -539,6 +458,9 @@
     <ClCompile Include="..\Classes\AI\BoidsPolygon.cpp">
       <Filter>Classes\AI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\LuaFunc.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\BoidsMath.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -578,6 +500,12 @@
     <ClCompile Include="..\Classes\Editor\UI\BEUIBase.cpp">
       <Filter>Classes\Editor\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\manual\lua_boids_manual.cpp">
+      <Filter>Classes\manual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LuaPlatform.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\MapData.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -587,11 +515,35 @@
     <ClCompile Include="..\Classes\AI\GrassMonitor.cpp">
       <Filter>Classes\AI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\AI\AITest.cpp">
+      <Filter>Classes\AI</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\AI\Border.cpp">
       <Filter>Classes\AI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\LuaUtils.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CmdLineDebuggerLua.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CmdLineDebugger.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\AI\Terrain.cpp">
       <Filter>Classes\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Replay.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\lua_cjson\fpconv.c">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\lua_cjson\strbuf.c">
+      <Filter>Classes\lua_cjson</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\lua_cjson\lua_cjson.c">
+      <Filter>Classes\lua_cjson</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\MapDebugger.cpp">
       <Filter>Classes</Filter>
@@ -599,166 +551,34 @@
     <ClCompile Include="..\Classes\Counter.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\net\UdpClient.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\NetworkAdapter.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\TcpClient.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\net\Net.cpp">
+      <Filter>Classes\net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EngineRelated.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Profile.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\behavior\IdleBehavior.cpp">
-      <Filter>Classes\behavior</Filter>
+    <ClCompile Include="..\Classes\message\Battle.pb.cc">
+      <Filter>Classes\message</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\behavior\MoveBehavior.cpp">
-      <Filter>Classes\behavior</Filter>
+    <ClCompile Include="..\Classes\message\boids.pb.cc">
+      <Filter>Classes\message</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\behavior\PlayerAttackBehavior.cpp">
-      <Filter>Classes\behavior</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\behavior\PlayerMoveBehavior.cpp">
-      <Filter>Classes\behavior</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\behavior\PlayerSkillBehavior.cpp">
-      <Filter>Classes\behavior</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\behavior\SkillBehavior.cpp">
-      <Filter>Classes\behavior</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\behavior\AttackBehavior.cpp">
-      <Filter>Classes\behavior</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\behavior\BehaviorBase.cpp">
-      <Filter>Classes\behavior</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\constant\BoidsConstant.cpp">
-      <Filter>Classes\constant</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\data\PlayerInfo.cpp">
-      <Filter>Classes\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\data\DamageCalculate.cpp">
-      <Filter>Classes\data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\interface\Updatable.cpp">
-      <Filter>Classes\interface</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\logic\EventTrigger.cpp">
-      <Filter>Classes\logic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\logic\GameTask.cpp">
-      <Filter>Classes\logic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\logic\MapLogic.cpp">
-      <Filter>Classes\logic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\logic\Trigger.cpp">
-      <Filter>Classes\logic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\logic\EventAction.cpp">
-      <Filter>Classes\logic</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\manager\ResourceManager.cpp">
-      <Filter>Classes\manager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\manager\SceneManager.cpp">
-      <Filter>Classes\manager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\manager\AudioManager.cpp">
-      <Filter>Classes\manager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\UIBattleMenuLayer.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\UIControlLayer.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\UILevelChooseLayer.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\BattleLayer.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\SceneBase.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\UIBattleFloatLayer.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\UIBattleLayer.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\BulletNode.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\Equipment.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\HpBar.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\JumpText.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\Skill.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\TargetNode.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\UnitNode.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\UnitNodeComponent.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\Buff.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\BuildingNode.cpp">
-      <Filter>Classes\unit</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\LightningChain.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\LightShield.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\SkillNode.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\SkillNodeFactory.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\WrathOfThunder.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\BarrageOfArrow.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\BatSwarm.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\CrazyShoot.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\DarkPierce.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\unit\skill\GiantSword.cpp">
-      <Filter>Classes\unit\skill</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\util\CommonUtils.cpp">
-      <Filter>Classes\util</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\util\CocosUtils.cpp">
-      <Filter>Classes\util</Filter>
+    <ClCompile Include="..\Classes\message\pvp.pb.cc">
+      <Filter>Classes\message</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ReplayComparer.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Replay.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CmdLineDebuggerLua.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CmdLineDebugger.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -769,5 +589,16 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\game.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\LaluneCommon\protobuf\protos\pvp.proto">
+      <Filter>Classes\message</Filter>
+    </None>
+    <None Include="..\..\..\..\LaluneCommon\protobuf\protos\battle.proto">
+      <Filter>Classes\message</Filter>
+    </None>
+    <None Include="..\..\..\..\LaluneCommon\protobuf\protos\boids.proto">
+      <Filter>Classes\message</Filter>
+    </None>
   </ItemGroup>
 </Project>

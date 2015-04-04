@@ -58,24 +58,10 @@
 		76E21D921AC52924006714AD /* DarkPierce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8F1AC52924006714AD /* DarkPierce.cpp */; };
 		76E21D951AC5373A006714AD /* BatSwarm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D931AC5373A006714AD /* BatSwarm.cpp */; };
 		76E21D961AC5373A006714AD /* BatSwarm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D931AC5373A006714AD /* BatSwarm.cpp */; };
-		76E414631ACA7E47003DB126 /* Impetus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414611ACA7E47003DB126 /* Impetus.cpp */; };
-		76E414641ACA7E47003DB126 /* Impetus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414611ACA7E47003DB126 /* Impetus.cpp */; };
-		76E414671ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */; };
-		76E414681ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */; };
-		76E4146B1ACA9E6A003DB126 /* BonesRain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414691ACA9E6A003DB126 /* BonesRain.cpp */; };
-		76E4146C1ACA9E6A003DB126 /* BonesRain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414691ACA9E6A003DB126 /* BonesRain.cpp */; };
-		76E414731ACAA14F003DB126 /* SkillCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414711ACAA14F003DB126 /* SkillCache.cpp */; };
-		76E414741ACAA14F003DB126 /* SkillCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414711ACAA14F003DB126 /* SkillCache.cpp */; };
-		76E414771ACAB0B4003DB126 /* MagicPulse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414751ACAB0B4003DB126 /* MagicPulse.cpp */; };
-		76E414781ACAB0B4003DB126 /* MagicPulse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414751ACAB0B4003DB126 /* MagicPulse.cpp */; };
-		76E533C01ACE41430020B825 /* BlockNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E533BE1ACE41430020B825 /* BlockNode.cpp */; };
-		76E533C11ACE41430020B825 /* BlockNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E533BE1ACE41430020B825 /* BlockNode.cpp */; };
 		76E605D31AC665EF0096F69D /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E605D21AC665EF0096F69D /* libboost_filesystem.a */; };
 		76E605D41AC6661F0096F69D /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76148F211AC54D9300235C7B /* libboost_system.a */; };
 		76E605D51AC666500096F69D /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E605D21AC665EF0096F69D /* libboost_filesystem.a */; };
 		76E605D61AC666500096F69D /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76148F211AC54D9300235C7B /* libboost_system.a */; };
-		76EA0D2E1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */; };
-		76EA0D2F1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */; };
 		76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
 		76EADAF81AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
 		9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
@@ -489,21 +475,7 @@
 		76E21D901AC52924006714AD /* DarkPierce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkPierce.h; sourceTree = "<group>"; };
 		76E21D931AC5373A006714AD /* BatSwarm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BatSwarm.cpp; sourceTree = "<group>"; };
 		76E21D941AC5373A006714AD /* BatSwarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatSwarm.h; sourceTree = "<group>"; };
-		76E414611ACA7E47003DB126 /* Impetus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Impetus.cpp; sourceTree = "<group>"; };
-		76E414621ACA7E47003DB126 /* Impetus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Impetus.h; sourceTree = "<group>"; };
-		76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NaturesAttendants.cpp; sourceTree = "<group>"; };
-		76E414661ACA80F5003DB126 /* NaturesAttendants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaturesAttendants.h; sourceTree = "<group>"; };
-		76E414691ACA9E6A003DB126 /* BonesRain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BonesRain.cpp; sourceTree = "<group>"; };
-		76E4146A1ACA9E6A003DB126 /* BonesRain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonesRain.h; sourceTree = "<group>"; };
-		76E414711ACAA14F003DB126 /* SkillCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkillCache.cpp; sourceTree = "<group>"; };
-		76E414721ACAA14F003DB126 /* SkillCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillCache.h; sourceTree = "<group>"; };
-		76E414751ACAB0B4003DB126 /* MagicPulse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagicPulse.cpp; sourceTree = "<group>"; };
-		76E414761ACAB0B4003DB126 /* MagicPulse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicPulse.h; sourceTree = "<group>"; };
-		76E533BE1ACE41430020B825 /* BlockNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockNode.cpp; sourceTree = "<group>"; };
-		76E533BF1ACE41430020B825 /* BlockNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockNode.h; sourceTree = "<group>"; };
 		76E605D21AC665EF0096F69D /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../../../../lib/lib/libboost_filesystem.a; sourceTree = "<group>"; };
-		76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MissileShowers.cpp; sourceTree = "<group>"; };
-		76EA0D2D1ACBCAEA00EDD10D /* MissileShowers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissileShowers.h; sourceTree = "<group>"; };
 		76EADAF51AC4018200E00BFA /* Trigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trigger.cpp; sourceTree = "<group>"; };
 		76EADAF61AC4018200E00BFA /* Trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trigger.h; sourceTree = "<group>"; };
 		98598B141A10BF7F0075D0EC /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
@@ -1010,18 +982,6 @@
 				76E21D901AC52924006714AD /* DarkPierce.h */,
 				76E21D931AC5373A006714AD /* BatSwarm.cpp */,
 				76E21D941AC5373A006714AD /* BatSwarm.h */,
-				76E414611ACA7E47003DB126 /* Impetus.cpp */,
-				76E414621ACA7E47003DB126 /* Impetus.h */,
-				76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */,
-				76E414661ACA80F5003DB126 /* NaturesAttendants.h */,
-				76E414691ACA9E6A003DB126 /* BonesRain.cpp */,
-				76E4146A1ACA9E6A003DB126 /* BonesRain.h */,
-				76E414751ACAB0B4003DB126 /* MagicPulse.cpp */,
-				76E414761ACAB0B4003DB126 /* MagicPulse.h */,
-				76E414711ACAA14F003DB126 /* SkillCache.cpp */,
-				76E414721ACAA14F003DB126 /* SkillCache.h */,
-				76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */,
-				76EA0D2D1ACBCAEA00EDD10D /* MissileShowers.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -1050,8 +1010,6 @@
 				98E61DD11AB6A674005DE093 /* HpBar.h */,
 				76E21D8B1AC5137B006714AD /* Equipment.cpp */,
 				76E21D8C1AC5137B006714AD /* Equipment.h */,
-				76E533BE1ACE41430020B825 /* BlockNode.cpp */,
-				76E533BF1ACE41430020B825 /* BlockNode.h */,
 			);
 			name = unit;
 			path = ../Classes/unit;
@@ -1820,14 +1778,12 @@
 				E87413721A0DFA3C003EBD0B /* BEUIBase.cpp in Sources */,
 				E893DB501A1B74BA00B74590 /* MapData.cpp in Sources */,
 				E874131A1A0B5647003EBD0B /* infback.c in Sources */,
-				76E4146C1ACA9E6A003DB126 /* BonesRain.cpp in Sources */,
 				98A366CC1AA84E8400393B8E /* UIBattleMenuLayer.cpp in Sources */,
 				E87413111A0B5634003EBD0B /* base64.cpp in Sources */,
 				E87413121A0B5647003EBD0B /* adler32.c in Sources */,
 				986A55431AA55A390051B0B9 /* BuildingNode.cpp in Sources */,
 				76E21D961AC5373A006714AD /* BatSwarm.cpp in Sources */,
 				E874131E1A0B5647003EBD0B /* trees.c in Sources */,
-				76E414681ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */,
 				E87413091A0B5629003EBD0B /* TmxPropertySet.cpp in Sources */,
 				98E67E211ABFB01C00076CE1 /* GameTask.cpp in Sources */,
 				98E3B66C1A73A77A00B5BEBB /* message_lite.cc in Sources */,
@@ -1852,7 +1808,6 @@
 				9859D1D51A7B4C0300FF6D82 /* boids.pb.cc in Sources */,
 				E87412FC1A0B55F5003EBD0B /* Utils.cpp in Sources */,
 				5023813317EBBCE400990C9B /* AppDelegate.cpp in Sources */,
-				76EA0D2F1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */,
 				986A55631AA562C30051B0B9 /* SceneManager.cpp in Sources */,
 				E87412F61A0B55DB003EBD0B /* NavMesh.cpp in Sources */,
 				E807DF601A4D642B004F76DA /* CycledList.cpp in Sources */,
@@ -1873,7 +1828,6 @@
 				E87413171A0B5647003EBD0B /* gzlib.c in Sources */,
 				E87413031A0B5629003EBD0B /* TmxLayer.cpp in Sources */,
 				98E3B6821A73A77A00B5BEBB /* substitute.cc in Sources */,
-				76E414641ACA7E47003DB126 /* Impetus.cpp in Sources */,
 				E87413201A0B5647003EBD0B /* zutil.c in Sources */,
 				9871DBFB1ABAE1F5009B8EC9 /* SkillNodeFactory.cpp in Sources */,
 				7631FA371AC2A92B00CAB9C8 /* LightShield.cpp in Sources */,
@@ -1915,7 +1869,6 @@
 				9859D1CC1A7B4B8700FF6D82 /* TcpClient.cpp in Sources */,
 				E867B1B71A36EDAC00EF8088 /* CmdLineDebuggerLua.cpp in Sources */,
 				985F4D291AAD72B9008D2EF8 /* Buff.cpp in Sources */,
-				76E414741ACAA14F003DB126 /* SkillCache.cpp in Sources */,
 				76E21D921AC52924006714AD /* DarkPierce.cpp in Sources */,
 				E87413141A0B5647003EBD0B /* crc32.c in Sources */,
 				E874131F1A0B5647003EBD0B /* uncompr.c in Sources */,
@@ -1932,9 +1885,7 @@
 				98E3B6881A73A77A00B5BEBB /* wire_format.cc in Sources */,
 				9859D1DC1A7B4E8400FF6D82 /* Counter.cpp in Sources */,
 				98E3B6741A73A77A00B5BEBB /* atomicops_internals_x86_gcc.cc in Sources */,
-				76E414781ACAB0B4003DB126 /* MagicPulse.cpp in Sources */,
 				98E3B6801A73A77A00B5BEBB /* strutil.cc in Sources */,
-				76E533C11ACE41430020B825 /* BlockNode.cpp in Sources */,
 				98E3B6581A73A77A00B5BEBB /* generated_message_util.cc in Sources */,
 				E807501A1A1369D500AD920F /* BoidsPolygonEx.cpp in Sources */,
 			);
@@ -1944,7 +1895,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76EA0D2E1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */,
 				986A55421AA55A390051B0B9 /* BuildingNode.cpp in Sources */,
 				986A55701AA565430051B0B9 /* BoidsConstant.cpp in Sources */,
 				98E3B66B1A73A77A00B5BEBB /* message_lite.cc in Sources */,
@@ -1961,7 +1911,6 @@
 				E84197C81A09226300F5DF36 /* TmxLayer.cpp in Sources */,
 				98BD48741A245241004F4A90 /* Trace.cpp in Sources */,
 				98E3B67F1A73A77A00B5BEBB /* strutil.cc in Sources */,
-				76E414771ACAB0B4003DB126 /* MagicPulse.cpp in Sources */,
 				98B4024C1AAEB9B900F4FE09 /* BattleLayer.cpp in Sources */,
 				9859D1D41A7B4C0300FF6D82 /* boids.pb.cc in Sources */,
 				E8676E401A7B734000F927E5 /* Profile.cpp in Sources */,
@@ -1990,7 +1939,6 @@
 				9868BBA91AB2F64D002ED7A1 /* DamageCalculate.cpp in Sources */,
 				E84197C21A09226300F5DF36 /* tinyxml.cpp in Sources */,
 				E898E7521A529393001189FF /* MapDebugger.cpp in Sources */,
-				76E414671ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */,
 				E84197C61A09226300F5DF36 /* TmxImage.cpp in Sources */,
 				9880121E1A36A3490096D1EC /* CmdLineDebugger.cpp in Sources */,
 				98E3B6851A73A77A00B5BEBB /* unknown_field_set.cc in Sources */,
@@ -2012,7 +1960,6 @@
 				9880121F1A36A3490096D1EC /* CmdLineDebuggerLua.cpp in Sources */,
 				E87413541A0BD01D003EBD0B /* EditorHelper.cpp in Sources */,
 				E87739451A11D6D4007A8EC3 /* BEUI.cpp in Sources */,
-				76E414731ACAA14F003DB126 /* SkillCache.cpp in Sources */,
 				98E3B6651A73A77A00B5BEBB /* zero_copy_stream_impl.cc in Sources */,
 				E84197D51A09226300F5DF36 /* deflate.c in Sources */,
 				E84197DC1A09226300F5DF36 /* inflate.c in Sources */,
@@ -2033,13 +1980,11 @@
 				98E3B6491A73A77A00B5BEBB /* descriptor.pb.cc in Sources */,
 				987336141AB6840200694B53 /* JumpText.cpp in Sources */,
 				7631FA3A1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */,
-				76E4146B1ACA9E6A003DB126 /* BonesRain.cpp in Sources */,
 				986A555E1AA561E30051B0B9 /* SceneBase.cpp in Sources */,
 				98E3B6531A73A77A00B5BEBB /* extension_set_heavy.cc in Sources */,
 				E893DB4F1A1B74BA00B74590 /* MapData.cpp in Sources */,
 				E86CDE931A1F3D21004FBDA2 /* Collidable.cpp in Sources */,
 				E84197D31A09226300F5DF36 /* compress.c in Sources */,
-				76E414631ACA7E47003DB126 /* Impetus.cpp in Sources */,
 				76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */,
 				76E21D951AC5373A006714AD /* BatSwarm.cpp in Sources */,
 				98E3B6831A73A77A00B5BEBB /* text_format.cc in Sources */,
@@ -2070,7 +2015,6 @@
 				9868BBA51AB2DE57002ED7A1 /* BulletNode.cpp in Sources */,
 				985F4D281AAD72B9008D2EF8 /* Buff.cpp in Sources */,
 				98E3B6511A73A77A00B5BEBB /* extension_set.cc in Sources */,
-				76E533C01ACE41430020B825 /* BlockNode.cpp in Sources */,
 				E84197D61A09226300F5DF36 /* gzclose.c in Sources */,
 				98EBBF041AAC865C00ADB84A /* EventAction.cpp in Sources */,
 				9871DBEE1ABADCEF009B8EC9 /* SkillNode.cpp in Sources */,
@@ -2136,7 +2080,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2174,7 +2118,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
@@ -2231,7 +2175,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "441ac096-962d-496c-9944-d987a8c3187d";
+				PROVISIONING_PROFILE = "5da757d6-3f2a-4af6-8132-76fd66074e41";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x $(SRCROOT)/../../cocos2d-x/cocos $(SRCROOT)/../../cocos2d-x/cocos/base $(SRCROOT)/../../cocos2d-x/cocos/physics $(SRCROOT)/../../cocos2d-x/cocos/math/kazmath $(SRCROOT)/../../cocos2d-x/cocos/2d $(SRCROOT)/../../cocos2d-x/cocos/ui $(SRCROOT)/../../cocos2d-x/cocos/network $(SRCROOT)/../../cocos2d-x/cocos/audio/include $(SRCROOT)/../../cocos2d-x/cocos/editor-support $(SRCROOT)/../../cocos2d-x/extensions $(SRCROOT)/../../cocos2d-x/external $(SRCROOT)/../../cocos2d-x/external/chipmunk/include/chipmunk $(SRCROOT)/../../cocos2d-x/external/lua/luajit/include $(SRCROOT)/../../cocos2d-x/external/lua/tolua $(SRCROOT)/../../cocos2d-x/cocos/scripting/lua-bindings/manual $(SRCROOT)/../../cocos2d-x/cocos/scripting/lua-bindings/auto";
 			};
 			name = Debug;
@@ -2257,7 +2201,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "441ac096-962d-496c-9944-d987a8c3187d";
+				PROVISIONING_PROFILE = "5da757d6-3f2a-4af6-8132-76fd66074e41";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x $(SRCROOT)/../../cocos2d-x/cocos $(SRCROOT)/../../cocos2d-x/cocos/base $(SRCROOT)/../../cocos2d-x/cocos/physics $(SRCROOT)/../../cocos2d-x/cocos/math/kazmath $(SRCROOT)/../../cocos2d-x/cocos/2d $(SRCROOT)/../../cocos2d-x/cocos/ui $(SRCROOT)/../../cocos2d-x/cocos/network $(SRCROOT)/../../cocos2d-x/cocos/audio/include $(SRCROOT)/../../cocos2d-x/cocos/editor-support $(SRCROOT)/../../cocos2d-x/extensions $(SRCROOT)/../../cocos2d-x/external $(SRCROOT)/../../cocos2d-x/external/chipmunk/include/chipmunk $(SRCROOT)/../../cocos2d-x/external/lua/luajit/include $(SRCROOT)/../../cocos2d-x/external/lua/tolua $(SRCROOT)/../../cocos2d-x/cocos/scripting/lua-bindings/manual $(SRCROOT)/../../cocos2d-x/cocos/scripting/lua-bindings/auto";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2267,7 +2211,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2301,7 +2245,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

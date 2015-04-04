@@ -224,7 +224,7 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                 areas.push_back( Value( battle_layer->getMapData()->getAreaMapByName( itr->second.asString() ) ) );
             }
             else {
-                areas = battle_layer->getMapData()->getAreasVectorByTag( _action_data.at( "position_tag" ).asString() );
+                areas = battle_layer->getMapData()->getAreasVectorByTag( _action_data.at( "position_name" ).asString() );
             }
             
             for( auto ar : areas ) {
@@ -532,74 +532,11 @@ bool ConversationAction::init( const cocos2d::ValueMap& action_data, class MapLo
     }
     
     _callback = CC_CALLBACK_1( ConversationAction::onActionTriggered, this );
-    
-    _interval = 0;
-    _elapse = 0;
-    _current_speech_id = 0;
-    _repeat_times = action_data.at( "repeat_times" ).asInt();
-    _current_times = 0;
-    _is_random_order = action_data.at( "is_random_order" ).asBool();
-    
     return true;
 }
 
 void ConversationAction::onActionTriggered( bool finish ) {
-    std::string source_type = _action_data.at( "source_type" ).asString();
-    std::string source_value = _action_data.at( "source_value" ).asString();
-    Vector<UnitNode*> candidates;
-    if( source_type == UNIT_SOURCE_TYPE ) {
-        candidates = _map_logic->getBattleLayer()->getAliveUnitsByCamp( UnitNode::getCampByString( source_value ) );
-    }
-    else if( source_type == UNIT_SOURCE_TAG ) {
-        candidates = _map_logic->getBattleLayer()->getAliveUnitsByTag( source_value );
-    }
-    else if( source_type == UNIT_SOURCE_NAME ) {
-        candidates = _map_logic->getBattleLayer()->getAliveUnitsByName( source_value );
-    }
-    if( candidates.size() == 0 ) {
-        this->stop();
-    }
-    else {
-        const ValueVector& speeches = _action_data.at( "speeches" ).asValueVector();
-        int speech_count = (int)speeches.size();
-        if( _is_random_order ) {
-            _current_speech_id = Utils::randomNumber( speech_count ) - 1;
-        }
-        const ValueMap& speech_data = speeches.at( _current_speech_id ).asValueMap();
-        float duration = speech_data.at( "duration" ).asFloat();
-        std::string content = speech_data.at( "content" ).asString();
-        //speech
-        for( auto unit : candidates ) {
-            unit->makeSpeech( content, duration );
-        }
-        
-        _interval = speech_data.at( "interval" ).asFloat();
-        _elapse = 0;
-        
-        if( _is_random_order ) {
-            ++_current_times;
-        }
-        else {
-            ++_current_speech_id;
-            if( _current_speech_id >= speech_count ) {
-                ++_current_times;
-            }
-        }
-        if( _current_times >= _repeat_times ) {
-            this->stop();
-        }
-    }
-}
-
-void ConversationAction::updateFrame( float delta ) {
-    if( _is_running ) {
-        _elapse += delta;
-        if( _elapse > _interval ) {
-            if( _callback ) {
-                _callback( false );
-            }
-        }
-    }
+    
 }
 
 CustomAction::CustomAction() {

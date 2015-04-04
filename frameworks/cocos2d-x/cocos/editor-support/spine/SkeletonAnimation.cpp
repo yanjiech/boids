@@ -33,6 +33,8 @@
 #include <spine/extension.h>
 #include <algorithm>
 
+#include "../../../frameworks/runtime-src/Classes/Trace.h"
+
 USING_NS_CC;
 using std::min;
 using std::max;
@@ -122,12 +124,15 @@ SkeletonAnimation::~SkeletonAnimation () {
 }
 
 void SkeletonAnimation::update (float deltaTime) {
+    Trace::accumulate_static( "other update" );
 	super::update(deltaTime);
 
 	deltaTime *= _timeScale;
 	spAnimationState_update(_state, deltaTime);
 	spAnimationState_apply(_state, _skeleton);
 	spSkeleton_updateWorldTransform(_skeleton);
+    
+    Trace::accumulate_static( "spine update" );
 }
 
 void SkeletonAnimation::setAnimationStateData (spAnimationStateData* stateData) {

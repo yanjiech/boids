@@ -23,9 +23,6 @@ enum eComponentLayer {
     Float = 7
 };
 
-class DamageCalculate;
-class UnitNode;
-
 class UnitNodeComponent : public cocos2d::Node {
 protected:
     bool _auto_recycle;
@@ -48,21 +45,6 @@ public:
     virtual void updateFrame( float delta );
 };
 
-class TimeLimitComponent : public UnitNodeComponent {
-protected:
-    float _duration;
-    float _elapse;
-    
-public:
-    TimeLimitComponent();
-    virtual ~TimeLimitComponent();
-    
-    static TimeLimitComponent* create( float duration, cocos2d::Node* node, const std::string& name, bool auto_recycle );
-    virtual bool init( float duration, cocos2d::Node* node, const std::string& name, bool auto_recycle );
-    
-    virtual void updateFrame( float delta );
-};
-
 class UnitNodeSpineComponent : public UnitNodeComponent {
 public:
     UnitNodeSpineComponent();
@@ -74,23 +56,8 @@ public:
     void onSkeletonAnimationCompleted( int track_index );
 };
 
-
-class UnitNodeFollowSpineComponent : public UnitNodeSpineComponent {
-private:
-    UnitNode* _source_unit;
-    std::string _bone_name;
-    
-public:
-    UnitNodeFollowSpineComponent();
-    virtual ~UnitNodeFollowSpineComponent();
-    static UnitNodeFollowSpineComponent* create( UnitNode* source_unit, const std::string& bone_name, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
-    virtual bool init( UnitNode* source_unit, const std::string& bone_name, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
-    
-    virtual void updateFrame( float delta );
-    
-    void setSourceUnit( UnitNode* source_unit );
-};
-
+class DamageCalculate;
+class UnitNode;
 
 class UnitNodeSpineDamageComponent : public UnitNodeSpineComponent {
 private:
@@ -127,33 +94,7 @@ public:
     virtual void updateFrame( float delta );
     
     bool setAnimation( int track_index, const std::string& name, bool loop );
-    
-    void setDuration( float duration ) { _duration = duration; }
 };
-
-class TimeLimitWanderSpineComponent : public TimeLimitSpineComponent {
-protected:
-    float _init_speed;
-    float _accelarate;
-    cocos2d::Point _speed;
-    cocos2d::Point _gravity_point;
-    float _range;
-    UnitNode* _source_unit;
-    float _accel_change_interval;
-    float _accel_change_elapse;
-    
-public:
-    TimeLimitWanderSpineComponent();
-    virtual ~TimeLimitWanderSpineComponent();
-    
-    static TimeLimitWanderSpineComponent* create( const cocos2d::ValueMap& data, UnitNode* source_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
-    virtual bool init( const cocos2d::ValueMap& data, UnitNode* source_unit, spine::SkeletonAnimation* skeleton, const std::string& name, bool auto_recycle );
-    
-    virtual void updateFrame( float delta );
-    
-    void setSourceUnit( UnitNode* source_unit );
-};
-
 
 class UnitNodeFadeoutComponent : public UnitNodeComponent {
 public:

@@ -1,18 +1,11 @@
 ﻿#include "Border.h"
 //#include "AI.h"
 #include "Utils.h"
-#include "../BoidsMath.h"
+#include "BoidsMath.h"
 #include "../unit/UnitNode.h"
 
 Border::Border(const cocos2d::Point& _src, const cocos2d::Point& _dst, const cocos2d::Point& _next_point) : src(_src), dst(_dst), vec(_src, _dst), next_vec(_dst, _next_point)
 {
-}
-
-Border::Border( const Border& other ) {
-    this->src = other.src;
-    this->dst = other.dst;
-    this->vec = other.vec;
-    this->next_vec = other.next_vec;
 }
 
 int Border::getPriority() const //障碍物的优先级最高，以后如果有能被推动的障碍物再说。或者说能被推动的都是单位好了。

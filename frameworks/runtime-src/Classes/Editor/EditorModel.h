@@ -68,21 +68,24 @@ public:
 
 class EditorGameCondition : public EditorBase {
 public:
+    std::string Condition;
     int Number;
     std::string Name;
     std::string Type;
-    std::string Title;
     std::string Desc;
-    EditorGameCondition(): Number(0), Name(""), Desc( "" ) {}
+    std::string Tag;
+    EditorGameCondition(): Number(0), Name(""), Desc( "" ), Tag( "" ) {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
 };
 
 class EditorSpeech : public EditorBase {
 public:
+    std::string SourceType;
+    std::string Source;
     std::string Content;
+    bool CameraMove;
     float Duration;
-    float Interval;
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
 };
@@ -168,14 +171,14 @@ public:
     virtual void loadJson(const rapidjson::Value& value);
 };
 
-//class EditorConversationChangeTrigger : public EditorTriggerBase {
-//public:
-//    EditorConversationChangeTrigger(): EditorTriggerBase("conversation_action") {}
-//    std::string ConversationName;
-//    std::string State;
-//    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
-//    virtual void loadJson(const rapidjson::Value& value);
-//};
+class EditorConversationChangeTrigger : public EditorTriggerBase {
+public:
+    EditorConversationChangeTrigger(): EditorTriggerBase("conversation_action") {}
+    std::string ConversationName;
+    std::string State;
+    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
+    virtual void loadJson(const rapidjson::Value& value);
+};
 
 class EditorActionMeta : public EditorBase {
 public:
@@ -226,7 +229,6 @@ public:
     bool IsBoss;
 	bool UnPushable;
     int UnitCount;
-    int UnitLevel;
     EditorUnitAction(): EditorActionBase("unit_change"), StateChanged(false), TypeChanged(false), ShowHPChanged(false), TagChanged(false), BuffChanged(false), IsBoss(false), UnPushable(false), ClassName("LogicUnit"),
     SourceValue(""), PositionName(""), PositionTag(""), TagName(""), BuffName(""), UnitCount(0), PopupType("normal") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
@@ -281,10 +283,6 @@ class EditorConversationAction : public EditorActionBase {
 public:
     std::vector<std::shared_ptr<EditorSpeech>> Speeches;
     std::string Name;
-    std::string SourceType;
-    std::string SourceValue;
-    bool RandomOrder;
-    int RepeatTimes;
     EditorConversationAction(): EditorActionBase("conversation_action") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
@@ -303,7 +301,7 @@ public:
 
 class EditorData {
 public:
-//    std::vector<std::shared_ptr<EditorTask>> Tasks;
+    std::vector<std::shared_ptr<EditorTask>> Tasks;
     std::vector<std::shared_ptr<EditorPosition>> Positions;
     std::vector<std::shared_ptr<EditorEvent>> Events;
     std::vector<std::shared_ptr<EditorGameCondition>> Conditions;
@@ -341,6 +339,7 @@ enum class EditorOperation {
     SetWaveAction,
     EditCondition,
     SetConverSationAction,
+    SetConverSationTrigger,
     EditEvent,
 };
 

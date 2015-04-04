@@ -10,6 +10,6 @@
 #define Boids_DebugMacro_h
 
 #define PAINT_PATH 0
-#define PAINT_MESH 40
+#define PAINT_MESH 30
 
 #endif
