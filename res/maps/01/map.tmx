@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="4000" tileheight="1200" nextobjectid="119">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="1" height="1" tilewidth="4000" tileheight="1200" nextobjectid="136">
  <tileset firstgid="1" name="bg" tilewidth="4000" tileheight="1200">
   <tile id="0">
    <image width="4000" height="1200" source="未标题-2.jpg"/>
@@ -70,9 +70,7 @@
    <image width="364" height="214" source="muqiao_01.png"/>
   </tile>
  </tileset>
- <objectgroup name="background">
-  <object id="1" gid="1" x="0.444444" y="1200.11"/>
- </objectgroup>
+ <objectgroup name="background"/>
  <objectgroup name="block">
   <object id="2" name="b1" type="BlockNode" gid="2147483670" x="2551.33" y="667.606">
    <properties>
@@ -177,6 +175,22 @@
   <object id="96" gid="2147483664" x="1478" y="662"/>
   <object id="97" gid="16" x="2432" y="226"/>
   <object id="98" gid="21" x="1260" y="242"/>
+  <object id="119" gid="17" x="3434" y="712"/>
+  <object id="120" gid="17" x="3475" y="667"/>
+  <object id="121" gid="17" x="3522" y="616"/>
+  <object id="122" gid="17" x="3512" y="563"/>
+  <object id="123" gid="17" x="3471" y="511"/>
+  <object id="124" gid="17" x="3423" y="511"/>
+  <object id="125" gid="17" x="3383" y="515"/>
+  <object id="126" gid="17" x="3355" y="538"/>
+  <object id="127" gid="17" x="3309" y="558"/>
+  <object id="128" gid="17" x="3286" y="571"/>
+  <object id="129" gid="17" x="3300" y="615"/>
+  <object id="130" gid="17" x="3329" y="652"/>
+  <object id="132" gid="17" x="3366" y="688"/>
+  <object id="133" gid="17" x="3399" y="696"/>
+  <object id="134" gid="17" x="3503" y="648"/>
+  <object id="135" gid="17" x="3494" y="537"/>
  </objectgroup>
  <objectgroup name="physics">
   <object id="99" name="c1" type="collide" x="0" y="452">

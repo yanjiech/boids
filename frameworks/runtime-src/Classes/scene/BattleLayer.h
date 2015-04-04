@@ -20,7 +20,7 @@
 #include "../unit/BulletNode.h"
 #include <map>
 #include "../unit/skill/SkillNode.h"
-#include "BlockNode.h"
+#include "../unit/BlockNode.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,

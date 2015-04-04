@@ -64,15 +64,6 @@
             }
         },
         {
-            "name": "comehere_02",
-            "rect": {
-                "x": 2516.09,
-                "y": 642.509,
-                "width": 202.333,
-                "height": 147.758
-            }
-        },
-        {
             "name": "add01",
             "rect": {
                 "x": 2329.73,
@@ -100,24 +91,6 @@
             }
         },
         {
-            "name": "comehere03",
-            "rect": {
-                "x": 3526.19,
-                "y": 411.812,
-                "width": 148.556,
-                "height": 129.387
-            }
-        },
-        {
-            "name": "boss",
-            "rect": {
-                "x": 3238.66,
-                "y": 494.476,
-                "width": 203.668,
-                "height": 140.169
-            }
-        },
-        {
             "name": "09",
             "rect": {
                 "x": 1263.1,
@@ -136,12 +109,30 @@
             }
         },
         {
+            "name": "boss",
+            "rect": {
+                "x": 3080.09,
+                "y": 577.625,
+                "width": 140.402,
+                "height": 128.11
+            }
+        },
+        {
+            "name": "trigger_add01_07",
+            "rect": {
+                "x": 2505.74,
+                "y": 637.394,
+                "width": 192.434,
+                "height": 156.875
+            }
+        },
+        {
             "name": "bridge_destroy_pos",
             "rect": {
-                "x": 2898.39,
-                "y": 57.0355,
-                "width": 92.5159,
-                "height": 658.371
+                "x": 3372.91,
+                "y": 582.847,
+                "width": 143.206,
+                "height": 97.73
             }
         }
     ],
@@ -220,9 +211,10 @@
                     "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "tag_name": "goblin_talker",
                     "position_name": "01",
-                    "unit_count": 2,
-                    "unit_level": 1,
+                    "unit_count": 1,
+                    "unit_level": 3,
                     "popup_type": "normal"
                 }
             ]
@@ -279,14 +271,6 @@
                     "position_name": "bridge_destroy_pos",
                     "trigger_count": 1,
                     "duration": 0
-                },
-                {
-                    "trigger_type": "unit_stay",
-                    "source_type": "tag_source",
-                    "source_value": "player",
-                    "position_name": "bridge_destroy_pos",
-                    "trigger_count": 1,
-                    "duration": 0
                 }
             ],
             "actions": [
@@ -296,20 +280,310 @@
                     "source_type": "name_source",
                     "source_value": "b1",
                     "vision_state": "disabled"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "11",
+                    "unit_count": 2,
+                    "unit_level": 2,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "10",
+                    "unit_count": 2,
+                    "unit_level": 2,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "boss",
+                    "position_name": "boss",
+                    "unit_count": 1,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "trigger_03_06",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "comehere",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "goblin_lead",
+                    "position_name": "03",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "06",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "trigger_add01_07",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "trigger_add01_07",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "5,0.00,3.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "add01",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "5,0.00,3.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "07",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "win",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "unit_state": "unit_dead",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "boss",
+                    "task_state": "task_finished"
+                }
+            ]
+        },
+        {
+            "name": "goblin_talk",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "goblin_talker",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "Hey buddy!",
+                            "duration": 3,
+                            "interval": 4
+                        },
+                        {
+                            "content": "Kill me Please!",
+                            "duration": 3,
+                            "interval": 4
+                        },
+                        {
+                            "content": "Your mom is asking you home!",
+                            "duration": 3,
+                            "interval": 4
+                        }
+                    ],
+                    "name": "goblin_1",
+                    "source_type": "tag_source",
+                    "source_value": "goblin_talker",
+                    "is_random_order": true,
+                    "repeat_times": 4
+                }
+            ]
+        },
+        {
+            "name": "globlin_attention!",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "I'll eat your meat for dinner!",
+                            "duration": 5,
+                            "interval": 5
+                        }
+                    ],
+                    "name": "boss_speech",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "is_random_order": false,
+                    "repeat_times": 1
+                }
+            ]
+        },
+        {
+            "name": "more_goblin",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "goblin_lead",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "Attension!",
+                            "duration": 5,
+                            "interval": 5
+                        },
+                        {
+                            "content": "Waves of monster ahead!",
+                            "duration": 5,
+                            "interval": 5
+                        }
+                    ],
+                    "name": "lead_speech",
+                    "source_type": "tag_source",
+                    "source_value": "goblin_lead",
+                    "is_random_order": false,
+                    "repeat_times": 1
+                }
+            ]
+        },
+        {
+            "name": "game_lose",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "boss",
+                    "task_state": "task_failed"
                 }
             ]
         }
     ],
     "units": [
+        "bomb_goblin",
         "goblin",
         "wild_wolf"
     ],
     "tasks": [
         {
             "type": "primary_win",
-            "name": "main",
-            "desc": "哦呵呵",
-            "title": "杀死boss"
+            "name": "boss",
+            "desc": "kill bomb goblin",
+            "title": "kill boss"
         }
     ]
 }

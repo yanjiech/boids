@@ -108,9 +108,6 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         _skill_ui_layer = UIBattleLayer::create( this );
         this->addChild( _skill_ui_layer, eBattleSubLayer::BattleUILayer, eBattleSubLayer::BattleUILayer );
         
-        _battle_menu_layer = UIBattleMenuLayer::create( this );
-        this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
-        
         _control_layer = UIControlLayer::create();
         this->addChild( _control_layer, eBattleSubLayer::ControlLayer, eBattleSubLayer::ControlLayer );
         
@@ -273,9 +270,13 @@ UnitNode* BattleLayer::getLeaderUnit() {
 void BattleLayer::changeState( eBattleState new_state ) {
     this->setState( new_state );
     if( _state == eBattleState::BattleWin ) {
+        _battle_menu_layer = UIBattleMenuLayer::create( this, "You Win! @ @!" );
+        this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
         log( "game end: win" );
     }
     else if( _state == eBattleState::BattleLose ) {
+        _battle_menu_layer = UIBattleMenuLayer::create( this, "You Lose! @ @!" );
+        this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
         log( "game end: lose" );
     }
 }

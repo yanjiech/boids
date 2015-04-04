@@ -99,8 +99,8 @@ void EventAction::updateFrame( float delta ) {
         if( ( _current_round == 0 && _accumulator > _delay ) || ( _current_round > 0 && _accumulator > _interval ) ) {
             _accumulator = 0;
             bool finish = false;
+            ++_current_round;
             if( !this->isInfinite() ) {
-                ++_current_round;
                 finish = _current_round > _repeat;
             }
             if( _callback ) {
