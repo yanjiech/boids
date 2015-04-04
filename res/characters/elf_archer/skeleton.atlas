@@ -1,0 +1,139 @@
+
+skeleton.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dang
+  rotate: false
+  xy: 436, 103
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: -1
+dang-L
+  rotate: false
+  xy: 461, 107
+  size: 19, 19
+  orig: 19, 19
+  offset: 0, 0
+  index: -1
+dang-R
+  rotate: true
+  xy: 283, 61
+  size: 17, 18
+  orig: 17, 18
+  offset: 0, 0
+  index: -1
+fa-B
+  rotate: false
+  xy: 186, 58
+  size: 69, 68
+  orig: 69, 68
+  offset: 0, 0
+  index: -1
+fa-L
+  rotate: false
+  xy: 74, 2
+  size: 17, 42
+  orig: 17, 42
+  offset: 0, 0
+  index: -1
+fa-R
+  rotate: false
+  xy: 283, 80
+  size: 20, 46
+  orig: 20, 46
+  offset: 0, 0
+  index: -1
+gong
+  rotate: false
+  xy: 2, 6
+  size: 70, 38
+  orig: 70, 38
+  offset: 0, 0
+  index: -1
+jian
+  rotate: false
+  xy: 98, 48
+  size: 71, 21
+  orig: 71, 21
+  offset: 0, 0
+  index: -1
+jiao-L
+  rotate: false
+  xy: 171, 57
+  size: 9, 12
+  orig: 9, 12
+  offset: 0, 0
+  index: -1
+jiao-R
+  rotate: false
+  xy: 502, 114
+  size: 8, 12
+  orig: 8, 12
+  offset: 0, 0
+  index: -1
+mao
+  rotate: false
+  xy: 98, 71
+  size: 86, 55
+  orig: 86, 55
+  offset: 0, 0
+  index: -1
+shen
+  rotate: false
+  xy: 335, 99
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: -1
+shen-UP
+  rotate: false
+  xy: 398, 112
+  size: 36, 14
+  orig: 36, 14
+  offset: 0, 0
+  index: -1
+shou-L
+  rotate: false
+  xy: 305, 90
+  size: 28, 36
+  orig: 28, 36
+  offset: 0, 0
+  index: -1
+shou-R
+  rotate: true
+  xy: 368, 100
+  size: 26, 28
+  orig: 26, 28
+  offset: 0, 0
+  index: -1
+tou
+  rotate: false
+  xy: 2, 46
+  size: 94, 80
+  orig: 94, 80
+  offset: 0, 0
+  index: -1
+tui-L
+  rotate: false
+  xy: 482, 108
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+tui-R
+  rotate: false
+  xy: 398, 92
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+yu
+  rotate: false
+  xy: 257, 65
+  size: 24, 61
+  orig: 24, 61
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,97 @@
+
+skeleton.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+klgs
+  rotate: false
+  xy: 2, 2
+  size: 30, 145
+  orig: 30, 145
+  offset: 0, 0
+  index: -1
+klt
+  rotate: false
+  xy: 34, 83
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+klwg
+  rotate: false
+  xy: 2, 665
+  size: 230, 315
+  orig: 230, 315
+  offset: 0, 0
+  index: -1
+youling01
+  rotate: true
+  xy: 2, 407
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+youling02
+  rotate: false
+  xy: 234, 852
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+youling03
+  rotate: true
+  xy: 2, 149
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+youling04
+  rotate: false
+  xy: 234, 722
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+youling05
+  rotate: false
+  xy: 492, 852
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+youling06
+  rotate: false
+  xy: 492, 722
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+youling07
+  rotate: false
+  xy: 750, 852
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+youling08
+  rotate: false
+  xy: 750, 722
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+youling09
+  rotate: true
+  xy: 132, 407
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+youling10
+  rotate: true
+  xy: 132, 149
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1

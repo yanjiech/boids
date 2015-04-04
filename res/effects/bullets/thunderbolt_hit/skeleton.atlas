@@ -1,0 +1,55 @@
+
+skeleton.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+gongji0001
+  rotate: false
+  xy: 2, 692
+  size: 280, 228
+  orig: 280, 228
+  offset: 0, 0
+  index: -1
+gongji0002
+  rotate: false
+  xy: 2, 462
+  size: 280, 228
+  orig: 280, 228
+  offset: 0, 0
+  index: -1
+gongji0003
+  rotate: false
+  xy: 284, 692
+  size: 280, 228
+  orig: 280, 228
+  offset: 0, 0
+  index: -1
+gongji0004
+  rotate: false
+  xy: 2, 232
+  size: 280, 228
+  orig: 280, 228
+  offset: 0, 0
+  index: -1
+gongji0005
+  rotate: false
+  xy: 284, 462
+  size: 280, 228
+  orig: 280, 228
+  offset: 0, 0
+  index: -1
+gongji0006
+  rotate: false
+  xy: 566, 692
+  size: 280, 228
+  orig: 280, 228
+  offset: 0, 0
+  index: -1
+gongji0007
+  rotate: false
+  xy: 2, 2
+  size: 280, 228
+  orig: 280, 228
+  offset: 0, 0
+  index: -1
