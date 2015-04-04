@@ -1,8 +1,42 @@
-*.o
+# temp file
 *.swp
-*.obj
 *.DS_Store
+
+# xcode
 *.xcbkptlist
 *.xcuserstate
+
+#windows
 *.filters
 *.rc
+
+#compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+*.swp
