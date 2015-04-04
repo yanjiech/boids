@@ -18,7 +18,7 @@
 #include <math.h>
 //#include "AI.h"
 #include "MapDebugger.h"
-#include "../constant/BoidsConstant.h"
+#include "../constant/DebugMacro.h"
 
 using namespace cocos2d;
 using namespace cocostudio;

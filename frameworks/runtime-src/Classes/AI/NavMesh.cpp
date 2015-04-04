@@ -8,7 +8,7 @@
 //#include "AI.h"
 #include "MapDebugger.h"
 #include "BoidsPolygon.h"
-#include "../constant/BoidsConstant.h"
+#include "../constant/DebugMacro.h"
 
 //待改进项
 //* 出生重叠的话，互相没法推开，别人也穿不过去
@@ -531,7 +531,6 @@ std::unique_ptr<Path> NavMesh::findPath(cocos2d::Point from, cocos2d::Point to, 
 
 			if (PAINT_PATH)
 			{
-				//输出平滑前路线
 				Utils::clearDrawNode();
 				auto node = Utils::getDrawNode();
 				if (node)

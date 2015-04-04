@@ -161,6 +161,8 @@
 		989143721A81D15E007A5D45 /* ReplayComparer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9891436F1A81D15E007A5D45 /* ReplayComparer.cpp */; };
 		98A366CB1AA84E8400393B8E /* UIBattleMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A366C91AA84E8400393B8E /* UIBattleMenuLayer.cpp */; };
 		98A366CC1AA84E8400393B8E /* UIBattleMenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98A366C91AA84E8400393B8E /* UIBattleMenuLayer.cpp */; };
+		98AD2A431ACF5F76002768EC /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98AD2A421ACF5F76002768EC /* src */; };
+		98AD2A441ACF5F76002768EC /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98AD2A421ACF5F76002768EC /* src */; };
 		98B4024C1AAEB9B900F4FE09 /* BattleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98B4024B1AAEB9B800F4FE09 /* BattleLayer.cpp */; };
 		98B4024D1AAEB9B900F4FE09 /* BattleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98B4024B1AAEB9B800F4FE09 /* BattleLayer.cpp */; };
 		98B402501AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98B4024E1AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp */; };
@@ -595,8 +597,10 @@
 		988B52EF1AA44ABD00FB7B21 /* ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager.h; sourceTree = "<group>"; };
 		9891436F1A81D15E007A5D45 /* ReplayComparer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ReplayComparer.cpp; path = ../Classes/ReplayComparer.cpp; sourceTree = "<group>"; };
 		989143701A81D15E007A5D45 /* ReplayComparer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReplayComparer.h; path = ../Classes/ReplayComparer.h; sourceTree = "<group>"; };
+		9891679D1ACEEF3500C1B028 /* DebugMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMacro.h; sourceTree = "<group>"; };
 		98A366C91AA84E8400393B8E /* UIBattleMenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIBattleMenuLayer.cpp; sourceTree = "<group>"; };
 		98A366CA1AA84E8400393B8E /* UIBattleMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBattleMenuLayer.h; sourceTree = "<group>"; };
+		98AD2A421ACF5F76002768EC /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../src; sourceTree = "<group>"; };
 		98B4024B1AAEB9B800F4FE09 /* BattleLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleLayer.cpp; sourceTree = "<group>"; };
 		98B4024E1AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerMoveBehavior.cpp; sourceTree = "<group>"; };
 		98B4024F1AAEF12C00F4FE09 /* PlayerMoveBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMoveBehavior.h; sourceTree = "<group>"; };
@@ -957,6 +961,7 @@
 			children = (
 				986A556E1AA565430051B0B9 /* BoidsConstant.cpp */,
 				986A556F1AA565430051B0B9 /* BoidsConstant.h */,
+				9891679D1ACEEF3500C1B028 /* DebugMacro.h */,
 			);
 			name = constant;
 			path = ../Classes/constant;
@@ -1574,6 +1579,7 @@
 		F293BC4615EB859D00256477 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				98AD2A421ACF5F76002768EC /* src */,
 				E848F2301A23660600DAECF0 /* res */,
 			);
 			name = Resources;
@@ -1706,6 +1712,7 @@
 				98E3B64C1A73A77A00B5BEBB /* descriptor.proto in Resources */,
 				5023817617EBBE3400990C9B /* Icon.icns in Resources */,
 				E848F2331A23660600DAECF0 /* res in Resources */,
+				98AD2A441ACF5F76002768EC /* src in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1725,6 +1732,7 @@
 				5023811F17EBBCAC00990C9B /* Icon-152.png in Resources */,
 				5023812017EBBCAC00990C9B /* Icon-57.png in Resources */,
 				98E3B64B1A73A77A00B5BEBB /* descriptor.proto in Resources */,
+				98AD2A431ACF5F76002768EC /* src in Resources */,
 				5023812217EBBCAC00990C9B /* Icon-76.png in Resources */,
 				E848F2321A23660600DAECF0 /* res in Resources */,
 				5091733A17ECE17A00D62437 /* Icon-80.png in Resources */,

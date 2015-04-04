@@ -42,9 +42,6 @@
 #define UNIT_CAMP_WILD "wild"
 #define UNIT_CAMP_OPPONENT "opponent"
 
-#define PAINT_PATH 0
-#define PAINT_MESH 40
-
 #define SKILL_NAME_WRATH_OF_THUNDER "WrathOfThunder"
 #define SKILL_NAME_LIGHTNING_CHAIN "LightningChain"
 #define SKILL_NAME_BARRAGE_OF_ARROW "BarrageOfArrow"

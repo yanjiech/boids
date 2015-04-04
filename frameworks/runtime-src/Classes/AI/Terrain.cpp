@@ -9,6 +9,7 @@
 //#include "AI.h"
 #include "BoidsPolygon.h"
 #include "TmxPolyline.h"
+#include "../constant/DebugMacro.h"
 
 USING_NS_CC;
 
@@ -375,7 +376,7 @@ void Terrain::paintDebugLayer(cocos2d::Node* node_parent)
 	//看需要画指定半径的NavMesh
 //	if (AI::getInstance()->_PAINT_MESH)
 //	{
-		getMeshByUnitRadius(40.0)->drawSketchOn(draw_node);
+		getMeshByUnitRadius(PAINT_MESH)->drawSketchOn(draw_node);
 //	}
 
 	/*BoidsPolygon p1("(5730,30) (5730,1103.48) (5197.12,641.176) (5197.59,634.087) (5005.83,467.648)");
