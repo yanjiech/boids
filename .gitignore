@@ -2,3 +2,7 @@
 *.swp
 *.obj
 *.DS_Store
+
+*.xcbkptlist
+
+*.xcuserstate
