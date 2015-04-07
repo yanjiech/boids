@@ -120,7 +120,7 @@ bool BulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bulle
     return true;
 }
 
-void BulletNode::shootAt( class UnitNode* source, class TargetNode* target ) {
+void BulletNode::shootAt( class UnitNode* source, class TargetNode* target, int emit_pos_type ) {
     do {
         UnitNode* unit_node = dynamic_cast<UnitNode*>( target );
         if( unit_node ) {
@@ -129,7 +129,7 @@ void BulletNode::shootAt( class UnitNode* source, class TargetNode* target ) {
             break;
         }
     }while( true );
-    this->shoot( source );
+    this->shoot( source, emit_pos_type );
 }
 
 void BulletNode::shootAtPosition( class UnitNode* source, const cocos2d::Point& pos ) {
@@ -288,7 +288,7 @@ void BulletNode::setShouldRecycle( bool b ) {
 }
 
 //private methods
-void BulletNode::shoot( class UnitNode* source ) {
+void BulletNode::shoot( class UnitNode* source, int emit_pos_type ) {
     std::string body_type = _bullet_data.at( "body_type" ).asString();
     Node* bullet = nullptr;
     if( body_type == "png" ) {
@@ -314,7 +314,21 @@ void BulletNode::shoot( class UnitNode* source ) {
     this->addChild( bullet );
     _bullet = bullet;
     
-    _init_pos = source->getEmitPos();
+    switch( emit_pos_type ) {
+        case 1:
+            _init_pos = source->getBonePos( "shou-l" );
+            break;
+        case 2:
+            _init_pos = source->getBonePos( "shou-r" );
+            break;
+        case 3:
+            _init_pos = source->getBonePos( "tou" );
+            break;
+        case 0:
+        default:
+            _init_pos = source->getEmitPos();
+            break;
+    }
     itr = _bullet_data.find( "streak_color" );
     if( itr != _bullet_data.end() ) {
         const ValueMap& streak_rgb = itr->second.asValueMap();

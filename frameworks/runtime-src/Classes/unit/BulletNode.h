@@ -58,7 +58,7 @@ protected:
     bool _should_recycle;
     
 protected:
-    void shoot( class UnitNode* source );
+    void shoot( class UnitNode* source, int emit_pos_type = 0 );
     
     bool doesHitTarget( const cocos2d::Point& source_pos, const cocos2d::Point& target_pos, float delta );
     
@@ -71,7 +71,7 @@ public:
     static BulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
     virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
     
-    virtual void shootAt( class UnitNode* source, class TargetNode* target );
+    virtual void shootAt( class UnitNode* source, class TargetNode* target, int emit_pos_type = 0 );
     virtual void shootAtPosition( class UnitNode* source, const cocos2d::Point& pos );
     
     virtual void updateFrame( float delta );

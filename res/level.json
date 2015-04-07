@@ -4,6 +4,10 @@
         {
             "name" : "第一排第一关",
             "path" : "maps/01"
+        },
+        {
+            "name" : "第二关",
+            "path" : "maps/level_1"
         }
     ]
 }

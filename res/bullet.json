@@ -23,6 +23,18 @@
         "track_target" : true,
         "scale" : 0.5
     },
+    "crown":
+    {
+        "name": "crown",
+        "move_type": "paracurve",
+        "body_type": "png",
+        "need_rotate": true,
+        "hit_type": "spine",
+        "hit_name": "default",
+        "track_target": false,
+        "damage_radius": 50.0,
+        "speed": 100.0
+    },
     "enchantress_javelin" : {
         "name": "enchantress_javelin",
         "move_type": "straight",
@@ -41,6 +53,18 @@
         "hit_type": "spine",
         "hit_name": "default"
 
+    },
+    "flamingo":
+    {
+        "name": "flamingo",
+        "move_type": "paracurve",
+        "body_type": "png",
+        "need_rotate": true,
+        "hit_type": "spine",
+        "hit_name": "default",
+        "track_target": false,
+        "damage_radius": 50.0,
+        "speed": 100.0
     },
     "human_arrow": {
         "name": "human_arrow",

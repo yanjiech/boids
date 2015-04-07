@@ -16,7 +16,6 @@ typedef std::function<void(bool)> EventActionCallback;
 class EventAction : public cocos2d::Ref {
 protected:
     class MapLogic* _map_logic;
-    class EventTrigger* _trigger;
     
     int _current_round;
     int _repeat;
@@ -36,6 +35,8 @@ protected:
     cocos2d::ValueMap _action_data;
     cocos2d::Map<std::string, cocos2d::Ref*> _params;
     
+    std::string _trigger_name;
+    
 public:
     EventAction();
     virtual ~EventAction();
@@ -46,6 +47,8 @@ public:
     bool isInfinite() { return _repeat < 0; }
     
     bool start( const cocos2d::Map<std::string, cocos2d::Ref*> params, bool auto_unschedule );
+    void pause();
+    void resume();
     void stop();
     
     virtual void updateFrame( float delta );
@@ -56,6 +59,9 @@ public:
     
     bool shouldRecycle() { return _should_recycle; }
     void setShouldRecycle( bool b ) { _should_recycle = b; }
+    
+    const std::string& getTriggerName() { return _trigger_name; }
+    void setTriggerName( const std::string& trigger_name ) { _trigger_name = trigger_name; }
 };
 
 class UnitChangeAction : public EventAction {

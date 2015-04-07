@@ -36,7 +36,6 @@ UnitData::UnitData() {
 }
 
 UnitData::~UnitData() {
-    
 }
 
 UnitData* UnitData::create( const cocos2d::ValueMap& data ) {
@@ -162,13 +161,13 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
 }
 
 UnitNode::UnitNode() :
-_state( eUnitState::Unknown_Unit_State ) {
+_state( eUnitState::Unknown_Unit_State ),
+_guard_target( nullptr ) {
 }
 
 UnitNode::~UnitNode() {
-    if( _unit_data ) {
-        _unit_data->release();
-    }
+    CC_SAFE_RELEASE( _unit_data );
+    CC_SAFE_RELEASE( _guard_target );
 }
 
 eUnitCamp UnitNode::getCampByString( const std::string& camp_string ) {
@@ -500,8 +499,12 @@ void UnitNode::applyUnitState() {
                 _current_skeleton->setAnimation( 0, "Attack", false );
                 break;
             case eUnitState::Dying:
-                _current_skeleton->setAnimation( 0, "Die", false );
-                this->onDying();
+                if( _current_skeleton->setAnimation( 0, "Die", false ) == nullptr ) {
+                    this->changeUnitState( eUnitState::Disappear );
+                }
+                else {
+                    this->onDying();
+                }
                 break;
             case eUnitState::Disappear:
                 this->disappear();
@@ -593,6 +596,13 @@ cocos2d::Point UnitNode::getLocalHeadPos() {
     return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, "tou" );
 }
 
+cocos2d::Point UnitNode::getBonePos( const std::string& bone_name ) {
+    Point ret = this->getLocalBonePos( bone_name );
+    ret = _current_skeleton->convertToWorldSpace( ret );
+    ret = this->getParent()->convertToNodeSpace( ret );
+    return ret;
+}
+
 cocos2d::Point UnitNode::getLocalBonePos( const std::string& bone_name ) {
     return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, bone_name );
 }
@@ -657,7 +667,7 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
         }
         else if( _chasing_target == nullptr ) {
             UnitNode* atker = _battle_layer->getAliveUnitByDeployId( source_id );
-            if( atker ) {
+            if( atker && atker->isAttackable() ) {
                 this->setChasingTarget( atker );
             }
         }
@@ -851,58 +861,14 @@ void UnitNode::removeBehavior( const std::string& key ) {
 void UnitNode::walkTo( const cocos2d::Point& new_pos ) {
     this->changeUnitState( eUnitState::Walking );
     Point origin_dir = new_pos - this->getPosition();
-    std::vector<Collidable*> collidables;
+    origin_dir.normalize();
     float max_walk_length = new_pos.distance( this->getPosition() );
-    Point new_dir = origin_dir;
-    Point dest_pos = new_pos;
-    Terrain::getInstance()->getMeshByUnitRadius( _unit_data->collide )->getNearbyBorders( this->getPosition(), max_walk_length, collidables );
-    
-    for( auto id_u : _battle_layer->getAliveUnits() ) { //单位们拷一遍到collidables中。以后如果单位特别多，也可以针对单位使用rtree。
-        if( id_u.second == this)
-            continue; //不和自己碰撞
-        collidables.push_back(id_u.second);
-    }
-    
-    std::set<Collidable*> steered_collidables;
-    
-    while( true ) {//其实很少转两次，一般最多转一次。但转两次的情况也是存在的，即在一个钝角处，先被边A转向，再被边B转向，结果还是小于指定的角度区间。先被单位A转向，再被单位B转向也是一样的
-        bool no_steer = true;
-        
-        //看看目前的方案是否有碰撞，如果有任意一个碰撞，那么尝试绕过它。
-        for( auto c : collidables ) {
-            if( c->willCollide( this, dest_pos ) ) {
-                //如果碰撞了一个曾经绕过的东西，那就不用尝试再绕了，走不通
-                if( steered_collidables.count( c ) ) {
-                    return;
-                }
-                
-                steered_collidables.insert( c );
-                
-                no_steer = false;
-                
-                if ( !c->getAdvisedNewDir( this, cocos2d::Vec2( this->getPosition(), dest_pos ), new_dir ) ) { //如果已经给不出建议方向了，那么说明没角度(正撞在墙上了)，说明走不通。如果是绕到这个方向再撞墙的，那也可以说明原方向走不通。
-                    return;
-                }
-                
-                if( Geometry::deviateLessThan90( origin_dir, new_dir ) ) {
-                    dest_pos = this->getPosition() + new_dir.getNormalized() * max_walk_length;
-                    break; //break是为了进到外面那个for循环，再从头判
-                }
-                else {//如果超过了的话，也说明走不通
-                    return;
-                }
-            }
-        }
-        
-        if( no_steer) {
-            break;
-        }
-    }
+    Point new_dir = this->pushToward( origin_dir, max_walk_length );
     
     if( !this->isOscillate( new_dir ) ) {
         this->changeUnitDirection( new_dir );
     }
-    this->setPosition( dest_pos );
+    
     _battle_layer->onUnitMoved( this );
 }
 
@@ -929,6 +895,58 @@ void UnitNode::walkAlongPath( float distance ) {
             }
         }
     }
+}
+
+cocos2d::Point UnitNode::pushToward( const cocos2d::Point& dir, float distance ) {
+    Point new_pos = dir * distance + this->getPosition();
+    Point origin_dir = dir;
+    std::vector<Collidable*> collidables;
+    float max_walk_length = distance;
+    Point new_dir = origin_dir;
+    Point dest_pos = new_pos;
+    Terrain::getInstance()->getMeshByUnitRadius( _unit_data->collide )->getNearbyBorders( this->getPosition(), max_walk_length, collidables );
+    
+    for( auto id_u : _battle_layer->getAliveUnits() ) {
+        if( id_u.second == this)
+            continue;
+        collidables.push_back(id_u.second);
+    }
+    
+    std::set<Collidable*> steered_collidables;
+    
+    while( true ) {
+        bool no_steer = true;
+        
+        for( auto c : collidables ) {
+            if( c->willCollide( this, dest_pos ) ) {
+                if( steered_collidables.count( c ) ) {
+                    return origin_dir;
+                }
+                
+                steered_collidables.insert( c );
+                
+                no_steer = false;
+                
+                if ( !c->getAdvisedNewDir( this, cocos2d::Vec2( this->getPosition(), dest_pos ), new_dir ) ) {
+                    return origin_dir;
+                }
+                
+                if( Geometry::deviateLessThan90( origin_dir, new_dir ) ) {
+                    dest_pos = this->getPosition() + new_dir.getNormalized() * max_walk_length;
+                    break;
+                }
+                else {
+                    return origin_dir;
+                }
+            }
+        }
+        
+        if( no_steer) {
+            break;
+        }
+    }
+    this->setPosition( dest_pos );
+    return new_dir;
 }
 
 bool UnitNode::isUnderControl() {
@@ -985,8 +1003,11 @@ bool UnitNode::isHarmless() {
 }
 
 TargetNode* UnitNode::getAttackTarget() {
-    TargetNode* ret = _chasing_target;
-    float min_distance = ( _chasing_target == nullptr ) ? 10000.0f : _chasing_target->getPosition().distance( this->getPosition() );
+    TargetNode* ret = nullptr;
+    if( _chasing_target && _chasing_target->isAttackable() ) {
+        ret = _chasing_target;
+    }
+    float min_distance = ( _chasing_target == nullptr ) ? INT_MAX : _chasing_target->getPosition().distance( this->getPosition() );
     cocos2d::Vector<UnitNode*> candidates = _battle_layer->getAliveOpponents( _camp );
     for( auto unit : candidates ) {
         if( unit->isAttackable() && this->isUnitInDirectView( unit ) ) {
@@ -996,7 +1017,6 @@ TargetNode* UnitNode::getAttackTarget() {
                 min_distance = distance;
             }
         }
-        
     }
     return ret;
 }
@@ -1199,6 +1219,21 @@ void UnitNode::makeSpeech( const std::string& content, float duration ) {
     TimeLimitComponent* component = TimeLimitComponent::create( duration, window, name, true );
     component->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height ) );
     this->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
+}
+
+void UnitNode::setGuardTarget( UnitNode* guard_target ) {
+    CC_SAFE_RELEASE( _guard_target );
+    _guard_target = guard_target;
+    CC_SAFE_RETAIN( _guard_target );
+}
+
+cocos2d::Point UnitNode::getGuardCenter() {
+    if( _guard_target ) {
+        return _guard_target->getPosition();
+    }
+    else {
+        return this->getPosition();
+    }
 }
 
 //private methods

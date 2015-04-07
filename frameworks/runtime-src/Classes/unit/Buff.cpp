@@ -43,13 +43,13 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
         
     }
     else if( buff_type == BUFF_TYPE_BURN ) {
-        
+        ret = BurnBuff::create( owner, data );
     }
     else if( buff_type == BUFF_TYPE_PIERCE ) {
         ret = PierceBuff::create( owner, data );
     }
     else if( buff_type == BUFF_TYPE_POISON ) {
-        
+        ret = PoisonBuff::create( owner, data );
     }
     return ret;
 }

@@ -23,8 +23,7 @@
     },
     "deploy_units" :
     [
-        "1",
-        "2"
+        "100"
     ],
     "units" :
     {
@@ -54,7 +53,7 @@
         "2" :
         {
             "name" : "zeus",
-            "level" : 3,
+            "level" : 2,
             "skills" :
             [
                 {
@@ -145,12 +144,16 @@
         },
         "100" :
         {
-            "name" : "skeleton_king",
-            "level" : 5,
+            "name" : "human_king",
+            "level" : 2,
             "skills" :
             [
                 {
-                    "name" : "BonesRain",
+                    "name" : "AtomFart",
+                    "level" : 1
+                },
+                {
+                    "name" : "FatalThrow",
                     "level" : 1
                 }
             ],

@@ -162,6 +162,8 @@ private:
     
     cocos2d::ValueVector _unit_tags;
     
+    UnitNode* _guard_target;
+    
 private:
     void updateComponents( float delta );
     void updateBuffs( float delta );
@@ -228,6 +230,7 @@ public:
     cocos2d::Point getLocalEmitPos();
     cocos2d::Point getLocalHeadPos();
     
+    cocos2d::Point getBonePos( const std::string& bone_name );
     cocos2d::Point getLocalBonePos( const std::string& bone_name );
     
     void appear();
@@ -287,6 +290,8 @@ public:
     
     void walkTo( const cocos2d::Point& new_pos );
     void walkAlongPath( float distance );
+    
+    cocos2d::Point pushToward( const cocos2d::Point& dir, float distance );
     
     bool isUnderControl();
     bool isCasting();
@@ -355,6 +360,11 @@ public:
     bool isAlive();
     
     void makeSpeech( const std::string& content, float duration );
+    
+    UnitNode* getGuardTarget() { return _guard_target; }
+    void setGuardTarget( UnitNode* guard_target );
+    
+    cocos2d::Point getGuardCenter();
 };
 
 #endif /* defined(__Boids__UnitNode__) */

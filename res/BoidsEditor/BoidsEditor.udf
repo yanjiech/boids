@@ -21,5 +21,14 @@
         <IsDebugKeystore Value="True" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="Main.csd" />
+          <FilePathData Path="EditMode.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="EditMode.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>

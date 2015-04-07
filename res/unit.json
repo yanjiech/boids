@@ -1078,7 +1078,8 @@
         "recgr": 0.2, 
         "scale": 1.0, 
         "skills": [
-            "AtomFart"
+            "AtomFart",
+            "FatalThrow"
         ], 
         "ten": 3.0, 
         "tengr": 2.9

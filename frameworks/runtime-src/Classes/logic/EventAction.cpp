@@ -55,7 +55,6 @@ EventAction* EventAction::create( const cocos2d::ValueMap& action_data, class Ma
 bool EventAction::init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger  ) {
     _action_data = action_data;
     _map_logic = map_logic;
-    _trigger = trigger;
     std::string meta = _action_data.at( "meta" ).asString();
     std::vector<std::string> str_vector;
     Utils::split( meta, str_vector, ',' );
@@ -73,6 +72,8 @@ bool EventAction::init( const cocos2d::ValueMap& action_data, class MapLogic* ma
     _should_recycle = false;
     
     _action_name = CocosUtils::getNextGlobalBoidsEventActionId();
+    
+    this->setTriggerName( trigger->getEventTriggerName() );
     return true;
 }
 
@@ -86,6 +87,14 @@ bool EventAction::start( cocos2d::Map<std::string, cocos2d::Ref*> params, bool a
     return false;
 }
 
+void EventAction::pause() {
+    _is_running = false;
+}
+
+void EventAction::resume() {
+    _is_running = true;
+}
+
 void EventAction::stop() {
     if( _is_running ) {
         _should_recycle = true;
@@ -94,7 +103,7 @@ void EventAction::stop() {
 }
 
 void EventAction::updateFrame( float delta ) {
-    if( _is_running ) {
+    if( !_should_recycle && _is_running ) {
         _accumulator += delta;
         if( ( _current_round == 0 && _accumulator > _delay ) || ( _current_round > 0 && _accumulator > _interval ) ) {
             _accumulator = 0;
@@ -434,8 +443,19 @@ void EventChangeAction::onActionTriggered( bool finish ) {
     EventAction::onActionTriggered( finish );
     
     const std::string& event_name = _action_data.at( "event_name" ).asString();
-    bool enabled = _action_data.at( "event_state" ).asString() == EVENT_STATE_ENABLE;
-    _map_logic->setTriggersEnabledOfName( event_name, enabled );
+    int event_state = 0;
+    std::string state_string = _action_data.at( "event_state" ).asString();
+    if( state_string == EVENT_STATE_ENABLE ) {
+        event_state = 0;
+    }
+    else if( state_string == EVENT_STATE_DISABLE ) {
+        event_state = 1;
+    }
+    else if( state_string == EVENT_STATE_FINISH ) {
+        event_state = 2;
+    }
+    _map_logic->setActionStateByName( event_name, event_state );
+    _map_logic->setTriggerStateByName( event_name, event_state );
 }
 
 //vision change action

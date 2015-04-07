@@ -43,8 +43,8 @@ bool UISkillNode::init( BattleLayer* battle_layer, UnitNode* unit_node ) {
     _unit_node = unit_node;
     _hint_effect = nullptr;
     
-    std::string resource = _unit_node->getUnitData()->name + "_avatar.png";
-//    std::string resource = "saber_avatar.png";
+//    std::string resource = _unit_node->getUnitData()->name + "_avatar.png";
+    std::string resource = "saber_avatar.png";
     Sprite* sp = Sprite::createWithSpriteFrameName( resource );
     this->addChild( sp );
     

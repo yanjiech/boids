@@ -9,6 +9,7 @@
 #include "UIBattleMenuLayer.h"
 #include "BattleLayer.h"
 #include "../manager/SceneManager.h"
+#include "../AI/Terrain.h"
 
 using namespace cocos2d;
 
@@ -70,6 +71,7 @@ bool UIBattleMenuLayer::init( BattleLayer* battle_layer, const std::string& resu
 }
 
 void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender ) {
+    Terrain::getInstance()->release();
     SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
 }
 

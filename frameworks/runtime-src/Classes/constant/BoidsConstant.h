@@ -42,20 +42,6 @@
 #define UNIT_CAMP_WILD "wild"
 #define UNIT_CAMP_OPPONENT "opponent"
 
-#define SKILL_NAME_WRATH_OF_THUNDER "WrathOfThunder"
-#define SKILL_NAME_LIGHTNING_CHAIN "LightningChain"
-#define SKILL_NAME_BARRAGE_OF_ARROW "BarrageOfArrow"
-#define SKILL_NAME_CRAZYSHOOT "CrazyShoot"
-#define SKILL_NAME_GIANT_SWORD "GiantSword"
-#define SKILL_NAME_LIGHTSHIELD "LightShield"
-#define SKILL_NAME_DARK_PIERCE "DarkPierce"
-#define SKILL_NAME_BAT_SWARM "BatSwarm"
-#define SKILL_NAME_NATURESATTENDANTS "NaturesAttendants"
-#define SKILL_NAME_IMPETUS "Impetus"
-#define SKILL_NAME_BONESRAIN "BonesRain"
-#define SKILL_NAME_MAGIC_PULSE "MagicPulse"
-#define SKILL_NAME_MISSILE_SHOWERS "MissileShowers"
-
 #define GAME_TASK_TYPE_LIMITED_TIME "limited_time"
 #define GAME_TASK_TYPE_SURVIVE "survive"
 #define GAME_TASK_TYPE_ELIMINATE_UNIT "eliminate_unit"
@@ -81,6 +67,7 @@
 #define EVENT_STATE_TRIGGER "event_trigger"
 #define EVENT_STATE_FINISH "event_finish"
 #define EVENT_STATE_ENABLE "event_enable"
+#define EVENT_STATE_DISABLE "event_disable"
 
 #define GAME_TASK_STATE_UNSTARTED "task_unstart"
 #define GAME_TASK_STATE_STARTED "task_start"
@@ -104,5 +91,21 @@
 
 #define VISION_STATE_ENABLED  "enabled"
 #define VISION_STATE_DISABLED "disabled"
+
+#define SKILL_NAME_WRATH_OF_THUNDER "WrathOfThunder"
+#define SKILL_NAME_LIGHTNING_CHAIN "LightningChain"
+#define SKILL_NAME_BARRAGE_OF_ARROW "BarrageOfArrow"
+#define SKILL_NAME_CRAZYSHOOT "CrazyShoot"
+#define SKILL_NAME_GIANT_SWORD "GiantSword"
+#define SKILL_NAME_LIGHTSHIELD "LightShield"
+#define SKILL_NAME_DARK_PIERCE "DarkPierce"
+#define SKILL_NAME_BAT_SWARM "BatSwarm"
+#define SKILL_NAME_NATURESATTENDANTS "NaturesAttendants"
+#define SKILL_NAME_IMPETUS "Impetus"
+#define SKILL_NAME_BONESRAIN "BonesRain"
+#define SKILL_NAME_MAGIC_PULSE "MagicPulse"
+#define SKILL_NAME_MISSILE_SHOWERS "MissileShowers"
+#define SKILL_NAME_ATOM_FART "AtomFart"
+#define SKILL_NAME_FATAL_THROW "FatalThrow"
 
 #endif /* defined(__Boids__BoidsConstant__) */

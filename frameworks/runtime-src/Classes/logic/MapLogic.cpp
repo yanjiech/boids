@@ -79,6 +79,7 @@ void MapLogic::deployPlayerUnits() {
     
     cocos2d::Rect player_start_area( x, y, width, height );
     
+    bool is_leader = true;
     const ValueVector& player_units = PlayerInfo::getInstance()->getPlayerDeployedUnitsInfo();
     for( auto itr = player_units.begin(); itr != player_units.end(); ++itr ) {
         const ValueMap& vm = itr->asValueMap();
@@ -94,7 +95,13 @@ void MapLogic::deployPlayerUnits() {
         PlayerSkillBehavior* skill_behavior = PlayerSkillBehavior::create( unit );
         unit->addBehavior( BEHAVIOR_NAME_SKILL, skill_behavior );
         
-        unit->setUnitTags( "player" );
+        if( is_leader ) {
+            is_leader = false;
+            unit->setUnitTags( "player,leader" );
+        }
+        else {
+            unit->setUnitTags( "player" );
+        }
         
         cocos2d::Point pos = _battle_layer->getAvailablePosition( unit->getUnitData()->collide, player_start_area );
         _battle_layer->deployUnit( unit, pos, "player" );
@@ -172,10 +179,43 @@ void MapLogic::removeEventAction( const std::string& key ) {
     _event_actions.erase( key );
 }
 
-void MapLogic::setTriggersEnabledOfName( const std::string& name, bool b ) {
+void MapLogic::setTriggerStateByName( const std::string& name, int state ) {
     for( auto trigger : _triggers ) {
         if( trigger->getEventData().at( "name" ).asString() == name ) {
-            trigger->setEnabled( b );
+            switch( state ) {
+                case 0:
+                    trigger->setEnabled( true );
+                    break;
+                case 1:
+                    trigger->setEnabled( false );
+                    break;
+                case 2:
+                    trigger->setShouldRecycle( true );
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
+
+void MapLogic::setActionStateByName( const std::string& name, int state ) {
+    for( auto pair : _event_actions ) {
+        EventAction* action = pair.second;
+        if( action->getTriggerName() == name ) {
+            switch( state ) {
+                case 0:
+                    action->resume();
+                    break;
+                case 1:
+                    action->pause();
+                    break;
+                case 2:
+                    action->stop();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

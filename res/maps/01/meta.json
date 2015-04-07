@@ -129,10 +129,10 @@
         {
             "name": "bridge_destroy_pos",
             "rect": {
-                "x": 3372.91,
-                "y": 582.847,
-                "width": 143.206,
-                "height": 97.73
+                "x": 3318.74,
+                "y": 498.345,
+                "width": 248.978,
+                "height": 248.201
             }
         }
     ],
@@ -158,7 +158,7 @@
                     "unit_state": "unit_appear",
                     "position_name": "02",
                     "unit_count": 1,
-                    "unit_level": 1,
+                    "unit_level": 2,
                     "popup_type": "normal"
                 }
             ]
@@ -187,7 +187,7 @@
                     "unit_state": "unit_appear",
                     "position_name": "02",
                     "unit_count": 1,
-                    "unit_level": 1,
+                    "unit_level": 2,
                     "popup_type": "normal"
                 }
             ]
@@ -240,7 +240,7 @@
                     "unit_state": "unit_appear",
                     "position_name": "09",
                     "unit_count": 1,
-                    "unit_level": 1,
+                    "unit_level": 2,
                     "popup_type": "normal"
                 },
                 {
@@ -252,7 +252,7 @@
                     "unit_state": "unit_appear",
                     "position_name": "09",
                     "unit_count": 1,
-                    "unit_level": 1,
+                    "unit_level": 2,
                     "popup_type": "normal"
                 }
             ]
@@ -289,7 +289,7 @@
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "11",
-                    "unit_count": 2,
+                    "unit_count": 1,
                     "unit_level": 2,
                     "popup_type": "normal"
                 },
@@ -301,9 +301,15 @@
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "10",
-                    "unit_count": 2,
+                    "unit_count": 1,
                     "unit_level": 2,
                     "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "trigger_add01_07",
+                    "event_state": "event_finish"
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -312,10 +318,13 @@
                     "source_value": "bomb_goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": true,
                     "tag_name": "boss",
                     "position_name": "boss",
                     "unit_count": 1,
-                    "unit_level": 4,
+                    "is_boss": true,
+                    "custom_change": "hp:3000.0",
+                    "unit_level": 2,
                     "popup_type": "normal"
                 }
             ]
@@ -347,7 +356,7 @@
                     "tag_name": "goblin_lead",
                     "position_name": "03",
                     "unit_count": 2,
-                    "unit_level": 1,
+                    "unit_level": 2,
                     "popup_type": "normal"
                 },
                 {
@@ -359,7 +368,7 @@
                     "unit_state": "unit_appear",
                     "position_name": "06",
                     "unit_count": 2,
-                    "unit_level": 1,
+                    "unit_level": 2,
                     "popup_type": "normal"
                 }
             ]
@@ -382,19 +391,20 @@
             ],
             "actions": [
                 {
-                    "meta": "5,0.00,3.00",
+                    "meta": "60,0.00,3.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "tag_name": "boss_guard",
                     "position_name": "add01",
                     "unit_count": 2,
-                    "unit_level": 1,
+                    "unit_level": 2,
                     "popup_type": "normal"
                 },
                 {
-                    "meta": "5,0.00,3.00",
+                    "meta": "50,0.00,3.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "wild_wolf",
@@ -402,7 +412,7 @@
                     "unit_state": "unit_appear",
                     "position_name": "07",
                     "unit_count": 2,
-                    "unit_level": 1,
+                    "unit_level": 2,
                     "popup_type": "normal"
                 }
             ]
@@ -569,6 +579,79 @@
                     "action_type": "task_change",
                     "task_name": "boss",
                     "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "goblin_guard_talker",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss_guard",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "Stop them! ",
+                            "duration": 2,
+                            "interval": 3
+                        },
+                        {
+                            "content": "Keep them away from the flowers!",
+                            "duration": 3,
+                            "interval": 4
+                        }
+                    ],
+                    "name": "boss_guard_speech",
+                    "source_type": "tag_source",
+                    "source_value": "boss_guard",
+                    "is_random_order": true,
+                    "repeat_times": 6
+                }
+            ]
+        },
+        {
+            "name": "player_talk",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss_guard",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "Go to the flowers! Quick!",
+                            "duration": 5,
+                            "interval": 0
+                        }
+                    ],
+                    "name": "leader_speech",
+                    "source_type": "tag_source",
+                    "source_value": "leader",
+                    "is_random_order": false,
+                    "repeat_times": 1
                 }
             ]
         }

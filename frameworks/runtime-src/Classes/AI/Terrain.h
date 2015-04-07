@@ -37,7 +37,7 @@ protected:
 
 	void addCollidablePolygon(BoidsPolygon* p);
 
-	std::vector<BoidsPolygon*> extra_polygons_to_draw; //只是为了到时候(通常是进游戏第一帧的时候)能把他画出来；不管释放
+	std::vector<BoidsPolygon*> extra_polygons_to_draw;
 	void drawSketchOn(cocos2d::DrawNode* node);
 
 public:
@@ -60,7 +60,7 @@ public:
     std::map<float, NavMesh*>& getMeshes() { return meshes; }
 
 	void addCollidablePolygon(const std::string& name, const std::vector<float>& points_x, const std::vector<float>& points_y);
-	void addCollidablePolygon(const std::string& name); //增加一个从tmx中读到的"dynamic"多边形
+	void addCollidablePolygon(const std::string& name);
 	bool removeCollidablePolygon(const std::string& name);
 
 	bool isInNarrowPlace(const cocos2d::Point& pt);

@@ -1,0 +1,153 @@
+
+skeleton.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+G0001
+  rotate: false
+  xy: 2, 10
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+G0002
+  rotate: false
+  xy: 1112, 530
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+G0003
+  rotate: false
+  xy: 1482, 790
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+G0004
+  rotate: false
+  xy: 304, 10
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+G0005
+  rotate: false
+  xy: 1112, 304
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+G0006
+  rotate: false
+  xy: 606, 10
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+G0007
+  rotate: false
+  xy: 908, 10
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+G0008
+  rotate: true
+  xy: 1210, 2
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+G0009
+  rotate: true
+  xy: 1414, 454
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+G0010
+  rotate: true
+  xy: 1640, 488
+  size: 300, 224
+  orig: 300, 224
+  offset: 0, 0
+  index: -1
+Y0001
+  rotate: false
+  xy: 2, 756
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+Y0002
+  rotate: false
+  xy: 2, 496
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+Y0003
+  rotate: false
+  xy: 372, 756
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+Y0004
+  rotate: false
+  xy: 2, 236
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+Y0005
+  rotate: false
+  xy: 372, 496
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+Y0006
+  rotate: false
+  xy: 742, 756
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+Y0007
+  rotate: false
+  xy: 372, 236
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+Y0008
+  rotate: false
+  xy: 742, 496
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+Y0009
+  rotate: false
+  xy: 1112, 756
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+Y0010
+  rotate: false
+  xy: 742, 236
+  size: 368, 258
+  orig: 368, 258
+  offset: 0, 0
+  index: -1
+lp
+  rotate: false
+  xy: 1784, 809
+  size: 252, 205
+  orig: 252, 205
+  offset: 0, 0
+  index: -1
