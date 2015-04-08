@@ -1084,7 +1084,7 @@ void UnitNode::onAttacking() {
         }
         else {
             DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
-            BulletNode* bullet = BulletNode::create( this, ResourceManager::getInstance()->getBulletData( _unit_data->bullet_name ), damage_calculator, nullptr );
+            BulletNode* bullet = BulletNode::create( this, ResourceManager::getInstance()->getBulletData( _unit_data->bullet_name ), damage_calculator, ValueMap() );
             bullet->shootAt( this, _chasing_target );
         }
     }

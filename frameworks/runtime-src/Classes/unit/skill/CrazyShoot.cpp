@@ -65,8 +65,9 @@ void CrazyShoot::updateFrame( float delta ) {
                 UnitNode* target_unit = candidates.at( i );
                 ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( "vanhelsing_bullet" );
                 bullet_data["speed"] = Value( _speed );
+                bullet_data["will_miss"] = Value( false );
                 DamageCalculate* calculator = DamageCalculate::create( "CrazyShoot", _base_damage );
-                BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, nullptr );
+                BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, ValueMap() );
                 battle_layer->addBullet( bullet->getBulletId(), bullet );
                 bullet->shootAt( _owner, target_unit );
             }

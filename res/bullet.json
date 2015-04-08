@@ -111,6 +111,16 @@
         "hit_scale" : 1.0,
         "scale" : 1.0
     },
+    "saucer": {
+        "name" : "saucer",
+        "move_type" : "straight",
+        "body_type" : "spine",
+        "hit_type" : "spine",
+        "hit_name" : "blood",
+        "damage_radius" : 50.0,
+        "hit_scale" : 1.0,
+        "scale" : 1.0
+    },
     "silver_arrow": {
         "name": "silver_arrow",
         "move_type": "straight",
@@ -120,7 +130,7 @@
         "hit_name": "blue_ball",
         "track_target" : true,
         "hit_scale": 0.5
-    },
+    }, 
     "skeleton_king_bullet_1" : {
         "name" : "gu01",
         "move_type" : "fixed",
@@ -177,9 +187,11 @@
         "body_type": "png",
         "need_rotate": true,
         "hit_type": "spine",
-        "hit_name": "bomb",
+        "hit_name": "default",
         "track_target" : false,
         "damage_radius": 100.0,
+        "bomb_type": "spine",
+        "bomb_name": "bomb",
         "hit_scale": 1.0
     },
     "purple_ball": {

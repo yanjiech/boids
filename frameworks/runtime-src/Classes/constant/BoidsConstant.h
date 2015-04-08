@@ -53,6 +53,7 @@
 #define BUFF_TYPE_PIERCE "buff_pierce"
 #define BUFF_TYPE_BURN "buff_burn"
 #define BUFF_TYPE_POISON "buff_poison"
+#define BUFF_TYPE_SLOW "buff_slow"
 
 #define EVENT_TRIGGER_TYPE_MAP_INIT "map_init"
 #define EVENT_TRIGGER_TYPE_UNIT_CHANGE "unit_change"
@@ -107,5 +108,7 @@
 #define SKILL_NAME_MISSILE_SHOWERS "MissileShowers"
 #define SKILL_NAME_ATOM_FART "AtomFart"
 #define SKILL_NAME_FATAL_THROW "FatalThrow"
+#define SKILL_NAME_FIRE_WHIRL "FireWhirl"
+#define SKILL_NAME_DEATH_SLICE "DeathSlice"
 
 #endif /* defined(__Boids__BoidsConstant__) */

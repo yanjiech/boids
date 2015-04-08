@@ -57,6 +57,12 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_FATAL_THROW ) {
         ret = FatalThrow::create( owner, data );
     }
+    else if( name == SKILL_NAME_FIRE_WHIRL ) {
+        ret = FireWhirl::create( owner, data );
+    }
+    else if( name == SKILL_NAME_DEATH_SLICE ) {
+        ret = DeathSlice::create( owner, data );
+    }
     
     return ret;
 }

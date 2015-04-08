@@ -440,7 +440,7 @@ bool BattleLayer::addBullet( int key, BulletNode* bullet ) {
     auto itr = _bullets.find( k );
     if( itr == _bullets.end() ) {
         _bullets.insert( k, bullet );
-        this->addToEffectLayer( bullet, bullet->getPosition(), bullet->getLocalZOrder() );
+        this->addToObjectLayer( bullet, bullet->getPosition(), bullet->getPosition() );
         return true;
     }
     return false;
@@ -743,6 +743,10 @@ int BattleLayer::zorderForPositionOnObjectLayer( const cocos2d::Point& pos ) {
 }
 
 void BattleLayer::reorderObjectLayer() {
+    for( auto pair : _bullets ) {
+        BulletNode* bullet = pair.second;
+        bullet->setLocalZOrder( this->zorderForPositionOnObjectLayer( bullet->getPosition() ) );
+    }
     for( auto pair : _alive_units ) {
         UnitNode* unit_node = pair.second;
         unit_node->setLocalZOrder( this->zorderForPositionOnObjectLayer( unit_node->getPosition() ) );

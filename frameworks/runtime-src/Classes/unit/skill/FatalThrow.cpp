@@ -84,8 +84,9 @@ void FatalThrow::updateFrame( float delta ) {
                     UnitNode* target_unit = candidates.at( rand_candidate );
                     
                     DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_FATAL_THROW, _damage );
-                    const ValueMap& bullet_data = ResourceManager::getInstance()->getBulletData( bullet_name );
-                    BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, nullptr );
+                    ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( bullet_name );
+                    bullet_data["will_miss"] = Value( false );
+                    BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, ValueMap() );
                     bullet->shootAt( _owner, target_unit, _left_or_right + 1 );
                 }
             }

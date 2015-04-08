@@ -25,7 +25,6 @@ Trigger::~Trigger() {
 Trigger* Trigger::create( const cocos2d::ValueMap& data ) {
     Trigger* ret = nullptr;
     std::string trigger_type = data.at( "trigger_type" ).asString();
-    log( "%s", trigger_type.c_str() );
     
     if( trigger_type == EVENT_TRIGGER_TYPE_MAP_INIT ) {
         ret = MapInitTrigger::create( data );

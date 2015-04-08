@@ -80,6 +80,10 @@
 		76EA0D2F1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */; };
 		76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
 		76EADAF81AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
+		76ED99D31AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */; };
+		76ED99D41AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */; };
+		76ED99D71AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */; };
+		76ED99D81AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */; };
 		76EFF5BD1AD37E5800690CFE /* AtomFart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */; };
 		76EFF5BE1AD37E5800690CFE /* AtomFart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */; };
 		76EFF5C11AD396C300690CFE /* FatalThrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */; };
@@ -514,6 +518,10 @@
 		76EA0D2D1ACBCAEA00EDD10D /* MissileShowers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissileShowers.h; sourceTree = "<group>"; };
 		76EADAF51AC4018200E00BFA /* Trigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trigger.cpp; sourceTree = "<group>"; };
 		76EADAF61AC4018200E00BFA /* Trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trigger.h; sourceTree = "<group>"; };
+		76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireWhirl.cpp; sourceTree = "<group>"; };
+		76ED99D21AD4D0B60047D5A9 /* FireWhirl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireWhirl.h; sourceTree = "<group>"; };
+		76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeathSlice.cpp; sourceTree = "<group>"; };
+		76ED99D61AD4DB8F0047D5A9 /* DeathSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeathSlice.h; sourceTree = "<group>"; };
 		76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomFart.cpp; sourceTree = "<group>"; };
 		76EFF5BC1AD37E5800690CFE /* AtomFart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomFart.h; sourceTree = "<group>"; };
 		76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FatalThrow.cpp; sourceTree = "<group>"; };
@@ -1038,6 +1046,10 @@
 				76EFF5BC1AD37E5800690CFE /* AtomFart.h */,
 				76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */,
 				76EFF5C01AD396C300690CFE /* FatalThrow.h */,
+				76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */,
+				76ED99D21AD4D0B60047D5A9 /* FireWhirl.h */,
+				76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */,
+				76ED99D61AD4DB8F0047D5A9 /* DeathSlice.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -1855,6 +1867,7 @@
 				E87412F71A0B55DF003EBD0B /* BoidsPolygon.cpp in Sources */,
 				988B52E71AA4461700FB7B21 /* UIControlLayer.cpp in Sources */,
 				98E3B67C1A73A77A00B5BEBB /* stringprintf.cc in Sources */,
+				76ED99D81AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */,
 				E874130B1A0B5629003EBD0B /* TmxTileset.cpp in Sources */,
 				9871DBEF1ABADCEF009B8EC9 /* SkillNode.cpp in Sources */,
 				E87413001A0B5629003EBD0B /* TmxEllipse.cpp in Sources */,
@@ -1943,6 +1956,7 @@
 				986A558B1AA57DBF0051B0B9 /* IdleBehavior.cpp in Sources */,
 				98E3B6601A73A77A00B5BEBB /* strtod.cc in Sources */,
 				986A557F1AA57D730051B0B9 /* SkillBehavior.cpp in Sources */,
+				76ED99D41AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */,
 				E87413101A0B5630003EBD0B /* tinyxmlparser.cpp in Sources */,
 				98E3B64A1A73A77A00B5BEBB /* descriptor.pb.cc in Sources */,
 				987185971AAFF1BC00533C3E /* PlayerSkillBehavior.cpp in Sources */,
@@ -2059,6 +2073,7 @@
 				98E3B6531A73A77A00B5BEBB /* extension_set_heavy.cc in Sources */,
 				E893DB4F1A1B74BA00B74590 /* MapData.cpp in Sources */,
 				E86CDE931A1F3D21004FBDA2 /* Collidable.cpp in Sources */,
+				76ED99D31AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */,
 				E84197D31A09226300F5DF36 /* compress.c in Sources */,
 				76E414631ACA7E47003DB126 /* Impetus.cpp in Sources */,
 				76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */,
@@ -2071,6 +2086,7 @@
 				E84197D81A09226300F5DF36 /* gzread.c in Sources */,
 				98E3B6551A73A77A00B5BEBB /* generated_message_reflection.cc in Sources */,
 				988B52BE1AA42FB700FB7B21 /* Updatable.cpp in Sources */,
+				76ED99D71AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */,
 				985F4D201AAD49E4008D2EF8 /* Skill.cpp in Sources */,
 				986A55751AA565A60051B0B9 /* PlayerInfo.cpp in Sources */,
 				98E3B6591A73A77A00B5BEBB /* coded_stream.cc in Sources */,

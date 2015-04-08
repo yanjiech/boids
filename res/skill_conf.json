@@ -77,6 +77,19 @@
         "stun" : 2.0,
         "count" : 5
     },
+    "DeathSlice" :
+    {
+        "multi_action" : false,
+        "hint" : "arrow",
+        "cd" : 4.0,
+        "damage" : [ 5.0, 10.0, 20.0 ],
+        "range" : 500.0,
+        "radius" : 120.0,
+        "duration" : 15.0,
+        "interval" : 0.5,
+        "slow_percent" : 0.5,
+        "speed" : 400.0
+    },
     "DeathField" :
     {
         "multi_action" : false,
@@ -207,6 +220,16 @@
         "count" : 6,
         "buff_duration" : 2.0,
         "interval" : 0.08
+    },
+    "FireWhirl" :
+    {
+        "multi_action" : false,
+        "hint" : "circle",
+        "damage" : [ 50.0, 100.0, 150.0 ],
+        "cd" : 6.0,
+        "range" : 150.0,
+        "duration" : 5.0,
+        "interval" : 1.0
     },
     "WrathOfThunder" :
     {

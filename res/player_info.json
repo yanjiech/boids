@@ -23,7 +23,7 @@
     },
     "deploy_units" :
     [
-        "100"
+        "103"
     ],
     "units" :
     {
@@ -187,12 +187,31 @@
         },
         "102" :
         {
-            "name" : "rattletrap",
+            "name" : "women_fire_wizard",
             "level" : 40,
             "skills" :
             [
                 {
-                    "name" : "MissileShowers",
+                    "name" : "FireWhirl",
+                    "level" : 3
+                }
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
+        },
+        "103" :
+        {
+            "name" : "goblin_shredder",
+            "level" : 40,
+            "skills" :
+            [
+                {
+                    "name" : "DeathSlice",
                     "level" : 3
                 }
             ],
