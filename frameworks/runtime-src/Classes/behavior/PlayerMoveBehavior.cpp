@@ -48,9 +48,6 @@ bool PlayerMoveBehavior::behave( float delta ) {
     if( _unit_node->isUnderControl() ) {
         return true;
     }
-    if( !_unit_node->isMovable() ) {
-        return true;
-    }
     BattleLayer* battle_layer = _unit_node->getBattleLayer();
     cocos2d::Point control_dir = battle_layer->getControlLayer()->getJoyStickDirection();
     float move_speed = _unit_node->getUnitData()->move_speed;
@@ -63,6 +60,9 @@ bool PlayerMoveBehavior::behave( float delta ) {
     if( control_dir.x != 0 || control_dir.y != 0 ) {
         Point new_pos = _unit_node->getPosition() + control_dir * delta * move_speed;
         _unit_node->walkTo( new_pos );
+        return true;
+    }
+    if( _unit_node->isAttacking() ) {
         return true;
     }
     if( _unit_node->getChasingTarget() == nullptr ) {

@@ -162,12 +162,18 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
 
 UnitNode::UnitNode() :
 _state( eUnitState::Unknown_Unit_State ),
-_guard_target( nullptr ) {
+_guard_target( nullptr ),
+_walk_path( nullptr ),
+_unit_data( nullptr ),
+_tour_path( nullptr )
+{
 }
 
 UnitNode::~UnitNode() {
     CC_SAFE_RELEASE( _unit_data );
     CC_SAFE_RELEASE( _guard_target );
+    CC_SAFE_RELEASE( _walk_path );
+    CC_SAFE_RELEASE( _tour_path );
 }
 
 eUnitCamp UnitNode::getCampByString( const std::string& camp_string ) {
@@ -212,8 +218,10 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     ResourceManager* res_manager = ResourceManager::getInstance();
     
     _battle_layer = battle_layer;
-    _unit_data = UnitData::create( unit_data );
-    _unit_data->retain();
+    
+    UnitData* ud = UnitData::create( unit_data );
+    this->setUnitData( ud );
+    
     _direction = Point::ZERO;
     
     _face = eUnitFace::Front;
@@ -235,10 +243,10 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     
     itr = unit_data.find( "hold_position" );
     if( itr != unit_data.end() ) {
-        this->setMovable( !itr->second.asBool() );
+        //no move behavior
     }
     else {
-        this->setMovable( true );
+        //with move behavior
     }
     
     itr = unit_data.find( "skills" );
@@ -291,7 +299,6 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     this->setHesitateFrame( DEFAULT_HESITATE_FRAMES );
     this->setChasingTarget( nullptr );
     this->setShouldCatchUp( false );
-    this->setConcentrateOnWalk( false );
     
     _face = eUnitFace::Back;
     this->setCurrentSkeleton( _front );
@@ -889,7 +896,7 @@ void UnitNode::walkAlongPath( float distance ) {
         if( unit_pos.distance( _walk_path->steps.at( 0 ) ) < 5.0 ) {
             _walk_path->steps.erase( _walk_path->steps.begin() );
             if( _walk_path->steps.size() == 0 ) {
-                _walk_path.reset();
+                this->setWalkPath( nullptr );
                 this->changeUnitState( eUnitState::Idle );
                 _relax_frames = DEFAULT_RELAX_FRAMES;
             }
@@ -995,7 +1002,7 @@ void UnitNode::evaluateCatchUp() {
 }
 
 void UnitNode::findPathToPosition( const cocos2d::Point& pos, int validate_frames ) {
-    _walk_path = Terrain::getInstance()->getMeshByUnitRadius( _unit_data->collide )->findPath( this->getPosition(), pos, validate_frames );
+    this->setWalkPath( Terrain::getInstance()->getMeshByUnitRadius( _unit_data->collide )->findPath( this->getPosition(), pos, validate_frames ) );
 }
 
 bool UnitNode::isHarmless() {
@@ -1159,9 +1166,22 @@ cocos2d::Point UnitNode::getNextWanderPos() {
     return Point::ZERO;
 }
 
-void UnitNode::setWalkPath( const Path& path ) {
-    _walk_path = std::unique_ptr<Path>( new Path( INT_MAX ) );
-    _walk_path->steps = path.steps;
+void UnitNode::setWalkPath( Path* path ) {
+    CC_SAFE_RELEASE( _walk_path );
+    _walk_path = path;
+    CC_SAFE_RETAIN( _walk_path );
+}
+
+void UnitNode::setTourPath( Path* path ) {
+    CC_SAFE_RELEASE( _tour_path );
+    _tour_path = path;
+    CC_SAFE_RETAIN( _tour_path );
+}
+
+void UnitNode::setUnitData( UnitData* unit_data ) {
+    CC_SAFE_RELEASE( _unit_data );
+    _unit_data = unit_data;
+    CC_SAFE_RETAIN( _unit_data );
 }
 
 void UnitNode::jumpNumber( float amount, const std::string& type, bool is_critical, const std::string& name ) {

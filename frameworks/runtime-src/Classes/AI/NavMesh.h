@@ -58,7 +58,7 @@ public:
 	void getNearbyBorders(cocos2d::Point pos, float box_radius, std::vector<Collidable*>& output);
 			
 	bool hasPath(cocos2d::Point from, cocos2d::Point to);
-	std::unique_ptr<Path> findPath(cocos2d::Point from, cocos2d::Point to, int path_validity_frame = INT_MAX);
+	Path* findPath(cocos2d::Point from, cocos2d::Point to, int path_validity_frame = INT_MAX);
 
 	void drawSketchOn(cocos2d::DrawNode* node);
 

@@ -109,7 +109,10 @@ private:
     eUnitState _state;
     eUnitState _next_state;
     eUnitFace _face;
+    
+    //share sight
     std::string _sight_group;
+    
     cocos2d::Point _born_position;
     
     bool _show_hp;
@@ -144,12 +147,10 @@ private:
     
     bool _should_catch_up;
     
-    std::unique_ptr<Path> _walk_path;
+    Path* _walk_path;
     
-    bool _is_concentrate_on_walk;
-    
-    bool _is_movable;
-    
+    Path* _tour_path;
+
     int _relax_frames;
     
     float _wander_radius;
@@ -187,6 +188,7 @@ public:
     void onSkeletonAnimationEvent( int track_index, spEvent* event );
     
     BattleLayer* getBattleLayer() { return _battle_layer; }
+    
     
     int getDeployId() { return _deploy_id; }
     void setDeployId( int deploy_id ) { _deploy_id = deploy_id; }
@@ -239,6 +241,7 @@ public:
     void onDying();
     
     UnitData* getUnitData() { return _unit_data; }
+    void setUnitData( UnitData* unit_data );
     
     void takeDamage( const cocos2d::ValueMap& result, int source_id );
     void takeDamage( float amount, bool is_cri, bool is_miss, int source_id );
@@ -307,9 +310,6 @@ public:
     
     void findPathToPosition( const cocos2d::Point& pos, int validate_frames = INT_MAX );
     
-    bool isConcentrateOnWalk() { return _is_concentrate_on_walk; }
-    void setConcentrateOnWalk( bool b ) { _is_concentrate_on_walk = b; }
-    
     bool isHarmless();
     
     TargetNode* getAttackTarget();
@@ -328,9 +328,6 @@ public:
     
     cocos2d::ValueVector getUnitTags() { return _unit_tags; }
     
-    bool isMovable() { return _is_movable; }
-    void setMovable( bool b ) { _is_movable = b; }
-    
     bool isFoeOfCamp( eUnitCamp opponent_camp );
     
     bool needRelax();
@@ -340,7 +337,11 @@ public:
     float getWanderRadius() { return _wander_radius; }
     void setWanderRadius( float radius ) { _wander_radius = radius; }
     
-    void setWalkPath( const Path& path );
+    Path* getWalkPath() { return _walk_path; }
+    void setWalkPath( Path* path );
+    
+    Path* getTourPath() { return _tour_path; }
+    void setTourPath( Path* path );
     
     void jumpNumber( float amount, const std::string& type, bool is_critical, const std::string& name );
     

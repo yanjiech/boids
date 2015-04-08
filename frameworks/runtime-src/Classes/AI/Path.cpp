@@ -1,7 +1,6 @@
 ﻿#include "Path.h"
-#include "BoidsMath.h"
-#include "Utils.h"
-//#include "AI.h"
+#include "../BoidsMath.h"
+#include "../Utils.h"
 
 Path::Path(const std::string& steps_serialization)
 {
@@ -43,24 +42,20 @@ bool Path::operator == (const class Path& other)
 	return true;
 }
 
-const Path& Path::operator = ( const Path& other ) {
-    if( this == &other ) {
-        return *this;
-    }
-    this->steps = other.steps;
-    this->validity_frame = other.validity_frame;
-    return *this;
-}
+//const Path& Path::operator = ( const Path& other ) {
+//    if( this == &other ) {
+//        return *this;
+//    }
+//    this->steps = other.steps;
+//    this->validity_frame = other.validity_frame;
+//    return *this;
+//}
 
 Path::Path() :
-validity_frame( INT_MAX ), customized_is_reach_destination(nullptr), path_released_callback(nullptr)
+customized_is_reach_destination(nullptr),
+path_released_callback(nullptr)
 {
     
-}
-
-Path::Path(int _validity_frame) : 
-validity_frame( _validity_frame ), customized_is_reach_destination(nullptr), path_released_callback(nullptr)
-{
 }
 
 void Path::paint(cocos2d::Point from, cocos2d::DrawNode* node, cocos2d::Color4F c)
@@ -83,6 +78,23 @@ void Path::paint(cocos2d::Point from, cocos2d::DrawNode* node, cocos2d::Color4F 
 	}
 }
 
+Path* Path::create( int valid_frame ) {
+    Path* ret = new Path();
+    if( ret && ret->init( valid_frame ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool Path::init( int valid_frame ) {
+    validity_frame = valid_frame;
+    return true;
+}
+
 bool Path::isOutdated()
 {
     return true;
@@ -94,36 +106,6 @@ bool Path::isPathEnd()
 	return steps.empty();
 }
 
-cocos2d::Point Path::walkFrame(cocos2d::Point current_pos, int max_walk_length)
-{
-	assert(steps.size()); //如果steps里面没东西了就不应该进来了
-
-	cocos2d::Point new_pos;
-	cocos2d::Vec2 vector_to_step_point(current_pos, steps.back());
-	float distance = vector_to_step_point.lengthSquared();
-	if (distance <= max_walk_length * max_walk_length)
-	{
-		new_pos = steps.back(); //加了Boids算法之后我估计这种情况会有点问题，再改
-		steps.pop_back();
-	}
-	else
-	{
-		new_pos = current_pos + vector_to_step_point / sqrt(distance) * max_walk_length;
-	}
-
-	if (customized_is_reach_destination && customized_is_reach_destination(new_pos))
-	{
-		steps.clear();
-		//Utils::logAI("customized_reach_destination");
-	}
-
-	return new_pos;
-}
-
 Path::~Path()
 {
-	if (path_released_callback)
-	{
-		path_released_callback();
-	}
 }

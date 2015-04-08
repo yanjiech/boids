@@ -47,12 +47,9 @@ bool MoveBehavior::behave( float delta ) {
     if( _unit_node->isUnderControl() ) {
         return true;
     }
-    if( !_unit_node->isMovable() ) {
-        return true;
-    }
-    BattleLayer* battle_layer = _unit_node->getBattleLayer();
-    cocos2d::Point control_dir = battle_layer->getControlLayer()->getJoyStickDirection();
+    
     float move_speed = _unit_node->getUnitData()->move_speed;
+    
     if( _unit_node->getChasingTarget() ) {
         Point last_pos = _unit_node->getPosition();
         _unit_node->findPathToPosition( _unit_node->getChasingTarget()->getPosition() );
@@ -66,8 +63,8 @@ bool MoveBehavior::behave( float delta ) {
     if( !_unit_node->needRelax() && !_unit_node->isWalking() ) {
         Point wander_pos = _unit_node->getNextWanderPos();
         if( wander_pos.x != 0 || wander_pos.y != 0 ) {
-            Path path = Path( INT_MAX );
-            path.steps.push_back( wander_pos );
+            Path* path = Path::create( INT_MAX );
+            path->steps.push_back( wander_pos );
             _unit_node->setWalkPath( path );
             _unit_node->walkAlongPath( _unit_node->getUnitData()->move_speed * delta );
             return true;
