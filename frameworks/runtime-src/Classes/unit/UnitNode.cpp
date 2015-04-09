@@ -214,7 +214,6 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     if( !TargetNode::init() ) {
         return false;
     }
-    
     ResourceManager* res_manager = ResourceManager::getInstance();
     
     _battle_layer = battle_layer;
@@ -301,6 +300,18 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     this->setHesitateFrame( DEFAULT_HESITATE_FRAMES );
     this->setChasingTarget( nullptr );
     this->setShouldCatchUp( false );
+    
+    //debug
+    _custom_draw = DrawNode::create();
+    _custom_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::YELLOW );
+    this->addChild( _custom_draw, 10000 );
+    
+    _new_dir_draw = DrawNode::create();
+    _new_dir_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::BLUE );
+    this->addChild( _new_dir_draw, 10001 );
+    
+    _custom_draw->drawCircle( Point::ZERO, _unit_data->collide, 360, 100, false, Color4F::RED );
+    //end debug
     
     _face = eUnitFace::Back;
     this->setCurrentSkeleton( _front );
@@ -553,6 +564,7 @@ void UnitNode::changeUnitDirection( const cocos2d::Point& new_dir ) {
     }
     Point normalized_dir = new_dir;
     normalized_dir.normalize();
+    _custom_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
     this->setUnitDirection( normalized_dir );
 }
 
@@ -833,7 +845,7 @@ void UnitNode::endCast() {
 
 bool UnitNode::willCollide( cocos2d::Point pos, float radius ) {
     cocos2d::Vec2 d = this->getPosition() - pos;
-    return ( Fuzzy::_less(d.lengthSquared(), powf( _unit_data->collide + radius, 2.0f ) ) ); //单位和单位允许相切，因为push单位的结果是刚好相切的
+    return d.length() <= _unit_data->collide + radius;
 }
 
 bool UnitNode::willCollide( UnitNode* unit) {
@@ -842,11 +854,23 @@ bool UnitNode::willCollide( UnitNode* unit) {
 
 bool UnitNode::willCollide( UnitNode* unit, cocos2d::Point unit_new_pos ) {
     cocos2d::Vec2 d = this->getPosition() - unit_new_pos;
-    return ( Fuzzy::_less(d.lengthSquared(), powf( _unit_data->collide + unit->getUnitData()->collide, 2.0f ) ) );
+    return d.length() <= _unit_data->collide + unit->getUnitData()->collide;
 }
 
 bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir ) {
-    cocos2d::Vec2 circle_center_dir( unit->getPosition(), this->getPosition() );
+    Vec2 target_dir = unit->getUnitDirection();
+    Vec2 this_to_target_dir = unit->getPosition() - this->getPosition();
+    Vec2 target_to_this_dir = -this_to_target_dir;
+    
+    float this_dir_cross_this_to_target_dir = old_dir.cross( this_to_target_dir );
+    float target_dir_cross_target_to_this_dir = target_dir.cross( target_to_this_dir );
+    
+    if( this_dir_cross_this_to_target_dir * target_dir_cross_target_to_this_dir < 0 && this->getPriority() > unit->getPriority() ) {
+        return false;
+    }
+    
+    Vec2 circle_center_dir( unit->getPosition(), this->getPosition() );
+    
     if ( Fuzzy::_greater( circle_center_dir.cross( old_dir ), 0.0f ) ) {
         new_dir = Geometry::anticlockwisePerpendicularVecToLine( circle_center_dir );
         new_dir = Geometry::anticlockwiseRotate1( new_dir );
@@ -855,6 +879,9 @@ bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d:
         new_dir = Geometry::clockwisePerpendicularVecToLine( circle_center_dir );
         new_dir = Geometry::clockwiseRotate1( new_dir );
     }
+    new_dir.normalize();
+    
+    _new_dir_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
     return true;
 }
 

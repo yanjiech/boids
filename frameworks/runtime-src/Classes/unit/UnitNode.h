@@ -374,6 +374,11 @@ public:
     
     bool isConcentrateOnWalk() { return _is_concentrate_on_walk; }
     void setConcentrateOnWalk( bool b );
+    
+    //debug
+    cocos2d::DrawNode* _custom_draw;
+    void drawDirection();
+    cocos2d::DrawNode* _new_dir_draw;
 };
 
 #endif /* defined(__Boids__UnitNode__) */

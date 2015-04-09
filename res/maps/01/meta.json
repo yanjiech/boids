@@ -702,7 +702,7 @@
                     "source_type": "tag_source",
                     "source_value": "boss_guard",
                     "unit_state": "unit_move",
-                    "position_name": "01",
+                    "position_name": "patrol1",
                     "unit_level": 1,
                     "popup_type": "normal"
                 }

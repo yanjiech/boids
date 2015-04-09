@@ -339,7 +339,7 @@ bool UnitNodeSpineDamageComponent::init( UnitNode* source_unit, UnitNode* target
 void UnitNodeSpineDamageComponent::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
     ValueMap result = _damage_calculator->calculateDamage( _source_unit->getUnitData(), _target_unit->getUnitData() );
     if( !_target_unit->isDying() ) {
-        _target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), _target_unit->getDeployId() );
+        _target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), _source_unit->getDeployId() );
     }
 }
 
