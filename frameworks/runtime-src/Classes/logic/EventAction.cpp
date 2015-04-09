@@ -9,6 +9,7 @@
 #include "EventAction.h"
 #include "../util/CocosUtils.h"
 #include "../scene/BattleLayer.h"
+#include "../AI/Path.h"
 
 using namespace cocos2d;
 
@@ -162,7 +163,7 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
     BattleLayer* battle_layer = _map_logic->getBattleLayer();
     
     cocos2d::Vector<UnitNode*> source_units;
-    bool should_perform_changes = false;
+    bool should_perform_changes = true;
     std::string source_type = _action_data.at( "source_type" ).asString();
     std::string source_value = _action_data.at( "source_value" ).asString();
     std::string unit_state = "";
@@ -312,13 +313,35 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
     
     if( should_perform_changes ) {
         for( auto u : source_units ) {
-            if( unit_state == UNIT_STATE_MOVE_TO ) {
-                
+            if( unit_state == UNIT_STATE_MOVE_TO || unit_state == UNIT_STATE_PATROL_TO ) {
+                Path* path = Path::create( INT_MAX );
+                std::string pos_name = _action_data.at( "position_name" ).asString();
+                do {
+                    ValueMap area = battle_layer->getMapData()->getAreaMapByName( pos_name );
+                    if( area.empty() ) {
+                        break;
+                    }
+                    const ValueMap& rect_data = area.at( "rect" ).asValueMap();
+                    float x = rect_data.at( "x" ).asFloat();
+                    float y = rect_data.at( "y" ).asFloat();
+                    float width = rect_data.at( "width" ).asFloat();
+                    float height = rect_data.at( "height" ).asFloat();
+                    Point to_pos = Point( x + width / 2, y + height / 2 );
+                    path->steps.push_back( to_pos );
+                    auto itr = area.find( "prev_pos" );
+                    if( itr != area.end() ) {
+                        pos_name = itr->second.asString();
+                    }
+                    else {
+                        break;
+                    }
+                }while( true );
+                u->setTourPath( path );
+                if( unit_state == UNIT_STATE_MOVE_TO ) {
+                    u->setConcentrateOnWalk( true );
+                }
             }
-            else if( unit_state == UNIT_STATE_PATROL ) {
-                
-            }
-            else {
+            else if( unit_state == UNIT_STATE_DIE ) {
                 
             }
             if( show_hp ) {

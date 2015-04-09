@@ -13,11 +13,11 @@
 
 class PlayerMoveBehavior : public BehaviorBase {
 public:
-    PlayerMoveBehavior( UnitNode* unit_node );
+    PlayerMoveBehavior();
     virtual ~PlayerMoveBehavior();
     
     static PlayerMoveBehavior* create( UnitNode* unit_node );
-    virtual bool init();
+    virtual bool init( UnitNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

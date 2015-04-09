@@ -9,15 +9,15 @@
 #include "BehaviorBase.h"
 #include "../unit/UnitNode.h"
 
-BehaviorBase::BehaviorBase( UnitNode* unit_node ) : _unit_node( unit_node ) {
+BehaviorBase::BehaviorBase() : _unit_node( nullptr ) {
 }
 
 BehaviorBase::~BehaviorBase() {}
 
-bool BehaviorBase::init() {
-    if( _unit_node == nullptr ) {
-        return false;
-    }
+bool BehaviorBase::init( UnitNode* unit_node ) {
+    this->setUnitNode( unit_node );
+    this->setEnabled( true );
+    
     return true;
 }
 

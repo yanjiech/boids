@@ -24,7 +24,6 @@
 #define UNIT_STATE_HOLD_APPEAR "unit_hold_appear"
 #define UNIT_STATE_MOVE_TO "unit_move"
 #define UNIT_STATE_PATROL_TO "unit_patrol"
-#define UNIT_STATE_PATROL "unit_patrol"
 #define UNIT_STATE_DISAPPEAR "unit_disappear"
 #define UNIT_STATE_IDLE "unit_idle"
 #define UNIT_STATE_DIE "unit_die"

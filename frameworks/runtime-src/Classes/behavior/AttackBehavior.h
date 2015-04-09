@@ -13,11 +13,11 @@
 
 class AttackBehavior : public BehaviorBase {
 public:
-    AttackBehavior( UnitNode* unit_node );
+    AttackBehavior();
     virtual ~AttackBehavior();
     
     static AttackBehavior* create( UnitNode* unit_node );
-    virtual bool init();
+    virtual bool init( UnitNode* unit_node );
     
     virtual bool behave( float delta );
 };

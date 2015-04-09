@@ -152,9 +152,7 @@ void BattleLayer::reset() {
 }
 
 void BattleLayer::updateFrame( float delta ) {
-    if( _state == BattleRunning ) {
-        _game_time += delta;
-        
+    if( _state != eBattleState::BattlePaused ) {
         //update skill
         SkillCache::getInstance()->updateFrame( delta );
         _skill_ui_layer->updateFrame( delta );
@@ -220,9 +218,14 @@ void BattleLayer::updateFrame( float delta ) {
             }
         }
         
-        _map_logic->updateFrame( delta );
+
         this->reorderObjectLayer();
         this->adjustCamera();
+    }
+    
+    if( _state == BattleRunning ) {
+        _game_time += delta;
+        _map_logic->updateFrame( delta );
     }
 }
 
@@ -235,12 +238,14 @@ void BattleLayer::startBattle() {
 void BattleLayer::pauseBattle() {
     if( _state == eBattleState::BattleRunning ) {
         _state = eBattleState::BattlePaused;
+        this->pause();
     }
 }
 
 void BattleLayer::resumeBattle() {
     if( _state == eBattleState::BattlePaused ) {
         _state = eBattleState::BattleRunning;
+        this->resume();
     }
 }
 

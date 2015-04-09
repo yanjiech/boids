@@ -165,6 +165,8 @@ private:
     
     UnitNode* _guard_target;
     
+    bool _is_concentrate_on_walk;
+    
 private:
     void updateComponents( float delta );
     void updateBuffs( float delta );
@@ -292,7 +294,10 @@ public:
     void removeBehavior( const std::string& key );
     
     void walkTo( const cocos2d::Point& new_pos );
-    void walkAlongPath( float distance );
+    
+    void walkAlongPath( Path* path, float distance );
+    void walkAlongWalkPath( float distance );
+    void walkAlongTourPath( float distance );
     
     cocos2d::Point pushToward( const cocos2d::Point& dir, float distance );
     
@@ -366,6 +371,9 @@ public:
     void setGuardTarget( UnitNode* guard_target );
     
     cocos2d::Point getGuardCenter();
+    
+    bool isConcentrateOnWalk() { return _is_concentrate_on_walk; }
+    void setConcentrateOnWalk( bool b );
 };
 
 #endif /* defined(__Boids__UnitNode__) */

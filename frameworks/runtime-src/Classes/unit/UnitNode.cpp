@@ -226,6 +226,8 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     
     _face = eUnitFace::Front;
     
+    this->setConcentrateOnWalk( false );
+    
     auto itr = unit_data.find( "unit_camp" );
     if( itr != unit_data.end() ) {
         this->setUnitCamp( UnitNode::getCampByString( itr->second.asString() ) );
@@ -342,35 +344,34 @@ void UnitNode::updateFrame( float delta ) {
         if( !this->isDying() ) {
             //skill
             auto itr = _behaviors.find( BEHAVIOR_NAME_SKILL );
-            if( itr != _behaviors.end() ) {
+            if( itr != _behaviors.end() && itr->second->isEnabled() ) {
                 if( itr->second->behave( delta ) ) {
                     break;
                 }
             }
             //attack
             itr = _behaviors.find( BEHAVIOR_NAME_ATTACK );
-            if( itr != _behaviors.end() ) {
+            if( itr != _behaviors.end() && itr->second->isEnabled() ) {
                 if( itr->second->behave( delta ) ) {
                     break;
                 }
             }
             itr = _behaviors.find( BEHAVIOR_NAME_MOVE );
-            if( itr != _behaviors.end() ) {
+            if( itr != _behaviors.end() && itr->second->isEnabled() ) {
                 if( itr->second->behave( delta ) ) {
                     break;
                 }
             }
             itr = _behaviors.find( BEHAVIOR_NAME_IDLE );
-            if( itr != _behaviors.end() ) {
+            if( itr != _behaviors.end() && itr->second->isEnabled() ) {
                 if( itr->second->behave( delta ) ) {
                     break;
                 }
             }
-            
-            this->evaluateCatchUp();
         }
     }while( false );
     
+    this->evaluateCatchUp();
     this->updateComponents( delta );
     this->updateBuffs( delta );
     this->updateSkills( delta );
@@ -646,7 +647,7 @@ void UnitNode::takeDamage( const cocos2d::ValueMap& result, int source_id ) {
 }
 
 void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_id ) {
-    if( _unit_data->current_hp > 0 ) {
+    if( this->isAttackable() && _unit_data->current_hp > 0 ) {
         float damage = amount;
         for( auto itr = _buffs.begin(); itr != _buffs.end(); ++itr ) {
             ShieldBuff* buff = dynamic_cast<ShieldBuff*>( itr->second );
@@ -879,27 +880,45 @@ void UnitNode::walkTo( const cocos2d::Point& new_pos ) {
     _battle_layer->onUnitMoved( this );
 }
 
-void UnitNode::walkAlongPath( float distance ) {
-    if( _walk_path ) {
+void UnitNode::walkAlongPath( Path* path, float distance ) {
+    if( path ) {
         Point last_pos = this->getPosition();
-        Point new_pos = _walk_path->steps.at( 0 );
+        Point new_pos = path->steps.back();
+        Point to_pos = new_pos;
         if( new_pos.distance( last_pos ) > distance ) {
-            Point dir = _walk_path->steps.at( 0 ) - last_pos;
+            Point dir = new_pos - last_pos;
             dir.normalize();
             new_pos = last_pos + dir * distance;
         }
-        
-        this->walkTo( new_pos );
-        
-        //whether reach destination
         Point unit_pos = this->getPosition();
-        if( unit_pos.distance( _walk_path->steps.at( 0 ) ) < 5.0 ) {
-            _walk_path->steps.erase( _walk_path->steps.begin() );
-            if( _walk_path->steps.size() == 0 ) {
-                this->setWalkPath( nullptr );
-                this->changeUnitState( eUnitState::Idle );
-                _relax_frames = DEFAULT_RELAX_FRAMES;
-            }
+        if( unit_pos.distance( to_pos ) < 5.0 ) {
+            path->steps.pop_back();
+        }
+
+        this->walkTo( new_pos );
+    }
+}
+
+void UnitNode::walkAlongWalkPath( float distance ) {
+    if( _walk_path ) {
+        this->walkAlongPath( _walk_path, distance );
+        
+        if( _walk_path->steps.size() == 0 ) {
+            this->setWalkPath( nullptr );
+            this->changeUnitState( eUnitState::Idle );
+            _relax_frames = DEFAULT_RELAX_FRAMES;
+        }
+    }
+}
+
+void UnitNode::walkAlongTourPath( float distance ) {
+    if( _tour_path ) {
+        this->walkAlongPath( _tour_path, distance );
+        
+        if( _tour_path->steps.size() == 0 ) {
+            this->setTourPath( nullptr );
+            this->changeUnitState( eUnitState::Idle );
+            _relax_frames = DEFAULT_RELAX_FRAMES;
         }
     }
 }
@@ -1253,6 +1272,13 @@ cocos2d::Point UnitNode::getGuardCenter() {
     }
     else {
         return this->getPosition();
+    }
+}
+
+void UnitNode::setConcentrateOnWalk( bool b ) {
+    _is_concentrate_on_walk = b;
+    if( b ) {
+        this->setChasingTarget( nullptr );
     }
 }
 

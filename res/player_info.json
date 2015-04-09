@@ -23,14 +23,15 @@
     },
     "deploy_units" :
     [
-        "103"
+        "1",
+        "2"
     ],
     "units" :
     {
         "1" :
         {
             "name" : "vanhelsing",
-            "level" : 3,
+            "level" : 30,
             "skills" :
             [
                 {
@@ -53,7 +54,7 @@
         "2" :
         {
             "name" : "zeus",
-            "level" : 2,
+            "level" : 20,
             "skills" :
             [
                 {

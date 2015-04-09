@@ -134,18 +134,19 @@ void EditMode::loadVisionObjects() {
     }
     
     auto blockObjectGroup = _map->getObjectGroup("block");
-    for (auto object : blockObjectGroup->getObjects()) {
-        auto vm = object.asValueMap();
-        auto name = vm["name"].asString();
-        if (name.length() ) {
-            _visionObjects.push_back(name);
-        }
-        auto tag = vm["tag"].asString();
-        if (tag.length()) {
-            tags.insert(tag);
+    if( blockObjectGroup ) {
+        for (auto object : blockObjectGroup->getObjects()) {
+            auto vm = object.asValueMap();
+            auto name = vm["name"].asString();
+            if (name.length() ) {
+                _visionObjects.push_back(name);
+            }
+            auto tag = vm["tag"].asString();
+            if (tag.length()) {
+                tags.insert(tag);
+            }
         }
     }
-    
     _visionTags.assign(tags.begin(), tags.end());
 }
 
@@ -383,9 +384,10 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
         return;
     } else if (et == EditorPopupEventType::OK) {
         if (op == EditorOperation::InputPositionName) {
-            BEUIInputName *ui = (BEUIInputName *)popup;
+            BEUICreatePosition *ui = (BEUICreatePosition *)popup;
             ctx->Position->Name = ui->getInputName();
             ctx->Position->Tag = ui->getInputTag();
+            ctx->Position->PrevPos = ui->getPrevPosName();
             ctx->addOperation(EditorOperation::CreatePosition);
         } else if (op == EditorOperation::SetCustomTrigger) {
             BEUIInputName *ui = (BEUIInputName *)popup;
@@ -623,9 +625,9 @@ void EditMode::onStep(int step) {
             break;
         }
         case EditorOperation::InputPositionName: {
-            _editUI->inputNameUI->setVisible(true);
-            _editUI->inputNameUI->reset();
-            _editUI->inputNameUI->setShowTagInput(true);
+            _editUI->createPositionUI->setVisible(true);
+            _editUI->createPositionUI->reset();
+            _editUI->createPositionUI->setShowTagInput(true);
             break;
         }
         case EditorOperation::CreatePosition: {

@@ -10,8 +10,8 @@
 #define __Boids__BEUI__
 
 #include "BEUIBase.h"
-#include "EditorModel.h"
-#include "EditorModelDefines.h"
+#include "../EditorModel.h"
+#include "../EditorModelDefines.h"
 
 class BEUIInputName : public BEUIBase {
 public:
@@ -20,11 +20,24 @@ public:
     virtual void reset();
     const std::string& getInputName() const;
     const std::string& getInputTag() const;
-private:
+protected:
     cocos2d::ui::Button *_ok;
     cocos2d::ui::Button *_cancel;
     cocos2d::ui::TextField *_name;
     cocos2d::ui::TextField *_tag;
+};
+
+class BEUICreatePosition : public BEUIInputName {
+public:
+    explicit BEUICreatePosition(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler);
+    virtual void reset();
+    const std::string& getPrevPosName() const;
+    
+    virtual void didGetPosition(EditorPositionPtr pos, cocos2d::Ref *sender);
+    
+private:
+    cocos2d::ui::Button* _btn_prev_pos;
+    cocos2d::ui::TextField* _tf_prev_pos;
 };
 
 class BEUITriggerOptions : public BEUIBase {
@@ -466,6 +479,7 @@ public:
     BEEditorMainUI(cocos2d::Node *root, const BEPopupEventHandler& handler, const BEEditorCommandHandler& commandHandler);
     virtual ~BEEditorMainUI();
     BEUIInputName *inputNameUI;
+    BEUICreatePosition* createPositionUI;
     BEUITriggerOptions *triggerOptionsUI;
     BEUIActionOptions *actionOptionsUI;
     BEUIUnitAction *unitActionUI;
@@ -494,6 +508,7 @@ private:
     cocos2d::ui::Button *_editConditionButton;
     
     cocos2d::ui::Layout *_inputNamePanel;
+    cocos2d::ui::Layout *_createPositionPanel;
     cocos2d::ui::Layout *_triggerOptionsPanel;
     cocos2d::ui::Layout *_actionOptionsPanel;
     cocos2d::ui::Layout *_unitActionPanel;

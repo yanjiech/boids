@@ -134,6 +134,17 @@
                 "width": 248.978,
                 "height": 248.201
             }
+        },
+        {
+            "name": "patrol1",
+            "rect": {
+                "x": 490.608,
+                "y": 413.621,
+                "width": 73.2702,
+                "height": 82.6688
+            },
+            "tag": "1",
+            "prev_pos": "01"
         }
     ],
     "events": [
@@ -313,6 +324,12 @@
                 },
                 {
                     "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "on_boss_guard_appear",
+                    "event_state": "event_finish"
+                },
+                {
+                    "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_goblin",
@@ -410,6 +427,7 @@
                     "source_value": "wild_wolf",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "tag_name": "boss_guard",
                     "position_name": "07",
                     "unit_count": 2,
                     "unit_level": 2,
@@ -652,6 +670,41 @@
                     "source_value": "leader",
                     "is_random_order": false,
                     "repeat_times": 1
+                }
+            ]
+        },
+        {
+            "name": "on_boss_guard_appear",
+            "trigger_meta": {
+                "is_repeated": true,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss_guard",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                },
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss_guard",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss_guard",
+                    "unit_state": "unit_move",
+                    "position_name": "01",
+                    "unit_level": 1,
+                    "popup_type": "normal"
                 }
             ]
         }

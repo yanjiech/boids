@@ -13,11 +13,11 @@
 
 class PlayerAttackBehavior : public BehaviorBase {
 public:
-    PlayerAttackBehavior( class UnitNode* unit_node );
+    PlayerAttackBehavior();
     virtual ~PlayerAttackBehavior();
     
     static PlayerAttackBehavior* create( class UnitNode* unit_node );
-    virtual bool init();
+    virtual bool init( UnitNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

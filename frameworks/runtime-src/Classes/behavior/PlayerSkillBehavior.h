@@ -16,11 +16,11 @@ private:
     float _elapse;
     
 public:
-    PlayerSkillBehavior( class UnitNode* unit_node );
+    PlayerSkillBehavior();
     virtual ~PlayerSkillBehavior();
     
     static PlayerSkillBehavior* create( class UnitNode* unit_node );
-    virtual bool init();
+    virtual bool init( UnitNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

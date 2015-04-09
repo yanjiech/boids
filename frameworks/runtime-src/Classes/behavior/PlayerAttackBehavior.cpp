@@ -10,7 +10,7 @@
 #include "../unit/UnitNode.h"
 #include "../scene/BattleLayer.h"
 
-PlayerAttackBehavior::PlayerAttackBehavior( class UnitNode* unit_node ) : BehaviorBase( unit_node ) {
+PlayerAttackBehavior::PlayerAttackBehavior()  {
     
 }
 
@@ -19,8 +19,8 @@ PlayerAttackBehavior::~PlayerAttackBehavior() {
 }
 
 PlayerAttackBehavior* PlayerAttackBehavior::create( class UnitNode* unit_node ) {
-    PlayerAttackBehavior* ret = new PlayerAttackBehavior( unit_node );
-    if( ret && ret->init() ) {
+    PlayerAttackBehavior* ret = new PlayerAttackBehavior();
+    if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
         return ret;
     }
@@ -30,8 +30,8 @@ PlayerAttackBehavior* PlayerAttackBehavior::create( class UnitNode* unit_node ) 
     }
 }
 
-bool PlayerAttackBehavior::init() {
-    if( !BehaviorBase::init() ) {
+bool PlayerAttackBehavior::init( UnitNode* unit_node ) {
+    if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }
     return true;

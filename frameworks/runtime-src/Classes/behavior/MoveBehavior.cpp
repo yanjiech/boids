@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-MoveBehavior::MoveBehavior( UnitNode* unit_node ) : BehaviorBase( unit_node ) {
+MoveBehavior::MoveBehavior() {
     
 }
 
@@ -22,8 +22,8 @@ MoveBehavior::~MoveBehavior() {
 }
 
 MoveBehavior* MoveBehavior::create( UnitNode* unit_node ) {
-    MoveBehavior* ret = new MoveBehavior( unit_node );
-    if( ret && ret->init() ) {
+    MoveBehavior* ret = new MoveBehavior();
+    if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
         return ret;
     }
@@ -33,8 +33,8 @@ MoveBehavior* MoveBehavior::create( UnitNode* unit_node ) {
     }
 }
 
-bool MoveBehavior::init() {
-    if( !BehaviorBase::init() ) {
+bool MoveBehavior::init( UnitNode* unit_node ) {
+    if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }
     return true;
@@ -53,11 +53,15 @@ bool MoveBehavior::behave( float delta ) {
     if( _unit_node->getChasingTarget() ) {
         Point last_pos = _unit_node->getPosition();
         _unit_node->findPathToPosition( _unit_node->getChasingTarget()->getPosition() );
-        _unit_node->walkAlongPath( move_speed * delta );
+        _unit_node->walkAlongWalkPath( move_speed * delta );
+        return true;
+    }
+    if( _unit_node->getTourPath() ) {
+        _unit_node->walkAlongTourPath( move_speed * delta );
         return true;
     }
     if( _unit_node->isWalking() ) {
-        _unit_node->walkAlongPath( _unit_node->getUnitData()->move_speed * delta );
+        _unit_node->walkAlongWalkPath( move_speed * delta );
         return true;
     }
     if( !_unit_node->needRelax() && !_unit_node->isWalking() ) {
@@ -66,7 +70,7 @@ bool MoveBehavior::behave( float delta ) {
             Path* path = Path::create( INT_MAX );
             path->steps.push_back( wander_pos );
             _unit_node->setWalkPath( path );
-            _unit_node->walkAlongPath( _unit_node->getUnitData()->move_speed * delta );
+            _unit_node->walkAlongWalkPath( move_speed * delta );
             return true;
         }
     }

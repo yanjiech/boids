@@ -49,6 +49,29 @@ const std::string& BEUIInputName::getInputTag() const {
     return _tag->getString();
 }
 
+BEUICreatePosition::BEUICreatePosition(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler) :
+BEUIInputName( root, handler )
+{
+    _btn_prev_pos = getButtonFrom("btn_prev_pos", _root);
+    _tf_prev_pos = getTextFieldFrom("tf_prev_pos", _root);
+    
+    bindSelectPositionHandler( _btn_prev_pos );
+}
+
+void BEUICreatePosition::reset() {
+    BEUIInputName::reset();
+    _tf_prev_pos->setString( "" );
+}
+
+const std::string& BEUICreatePosition::getPrevPosName() const {
+    return _tf_prev_pos->getString();
+}
+
+void BEUICreatePosition::didGetPosition(EditorPositionPtr pos, cocos2d::Ref *sender) {
+    _tf_prev_pos->setString( pos->Name );
+}
+
+//trigger options
 BEUITriggerOptions::BEUITriggerOptions(ui::Layout *root, const BEPopupEventHandler& handler):BEUIBase(root, handler) {
     _ok = getButtonFrom("button_ok", _root);
     _done = getButtonFrom("button_done", _root);
@@ -1392,6 +1415,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     _exitButton = getButtonFrom("button_exit", _menuPanel);
     _editConditionButton = getButtonFrom("button_editCondition", _menuPanel);
     _inputNamePanel = getPanelFrom(kInputNamePanel, _popupContainer);
+    _createPositionPanel = getPanelFrom( kCreatePositionPanel, _popupContainer );
     _triggerOptionsPanel = getPanelFrom(kTriggerOptionsPanel, _popupContainer);
     _actionOptionsPanel = getPanelFrom(kActionOptionsPanel, _popupContainer);
     _unitActionPanel = getPanelFrom(kUnitActionPanel, _popupContainer);
@@ -1424,6 +1448,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     });
     
     inputNameUI = new BEUIInputName(_inputNamePanel, handler);
+    createPositionUI = new BEUICreatePosition( _createPositionPanel, handler );
     triggerOptionsUI = new BEUITriggerOptions(_triggerOptionsPanel, handler);
     actionOptionsUI = new BEUIActionOptions(_actionOptionsPanel, handler);
     unitActionUI = new BEUIUnitAction(_unitActionPanel, handler);
@@ -1443,6 +1468,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
 
 BEEditorMainUI::~BEEditorMainUI() {
     delete inputNameUI;
+    delete createPositionUI;
     delete triggerOptionsUI;
     delete actionOptionsUI;
     delete unitActionUI;
@@ -1461,6 +1487,7 @@ BEEditorMainUI::~BEEditorMainUI() {
 
 void BEEditorMainUI::hideAllPopups() {
     inputNameUI->setVisible(false);
+    createPositionUI->setVisible( false );
     triggerOptionsUI->setVisible(false);
     actionOptionsUI->setVisible(false);
     unitActionUI->setVisible(false);

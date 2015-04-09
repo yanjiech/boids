@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-AttackBehavior::AttackBehavior( UnitNode* unit_node ) : BehaviorBase( unit_node ) {
+AttackBehavior::AttackBehavior() {
     
 }
 
@@ -20,8 +20,8 @@ AttackBehavior::~AttackBehavior() {
 }
 
 AttackBehavior* AttackBehavior::create( UnitNode* unit_node ) {
-    AttackBehavior* ret = new AttackBehavior( unit_node );
-    if( ret && ret->init() ) {
+    AttackBehavior* ret = new AttackBehavior();
+    if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
         return ret;
     }
@@ -31,8 +31,8 @@ AttackBehavior* AttackBehavior::create( UnitNode* unit_node ) {
     }
 }
 
-bool AttackBehavior::init() {
-    if( !BehaviorBase::init() ) {
+bool AttackBehavior::init( UnitNode* unit_node ) {
+    if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }
     return true;
@@ -51,6 +51,10 @@ bool AttackBehavior::behave( float delta ) {
     if( _unit_node->isHarmless() ) {
         return false;
     }
+    if( _unit_node->isConcentrateOnWalk() ) {
+        return false;
+    }
+    
     TargetNode* attack_target = _unit_node->getAttackTarget();
     if( attack_target != nullptr ) {
         if( _unit_node->canAttack( attack_target ) ) {

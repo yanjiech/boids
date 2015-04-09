@@ -84,7 +84,7 @@
         "cd" : 4.0,
         "damage" : [ 5.0, 10.0, 20.0 ],
         "range" : 500.0,
-        "radius" : 100.0,
+        "radius" : 80.0,
         "duration" : 15.0,
         "interval" : 0.5,
         "slow_percent" : 0.5,

@@ -1,7 +1,6 @@
 ﻿#ifndef __Boids_Path__
 #define __Boids_Path__
 
-#include <vector>
 #include "cocos2d.h"
 
 class Path : public cocos2d::Ref
