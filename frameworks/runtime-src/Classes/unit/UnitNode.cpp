@@ -858,27 +858,27 @@ bool UnitNode::willCollide( UnitNode* unit, cocos2d::Point unit_new_pos ) {
 }
 
 bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir ) {
-    Vec2 target_dir = unit->getUnitDirection();
-    Vec2 this_to_target_dir = unit->getPosition() - this->getPosition();
-    Vec2 target_to_this_dir = -this_to_target_dir;
+    Vec2 unit_to_this = this->getPosition() - unit->getPosition();
+    Vec2 this_to_unit = unit->getPosition() - this->getPosition();
+    Vec2 this_dir = this->getUnitDirection();
     
-    float this_dir_cross_this_to_target_dir = old_dir.cross( this_to_target_dir );
-    float target_dir_cross_target_to_this_dir = target_dir.cross( target_to_this_dir );
+    float this_dir_to_center = this_dir.cross( this_to_unit );
+    float unit_dir_to_center = old_dir.cross( unit_to_this );
     
-    if( this_dir_cross_this_to_target_dir * target_dir_cross_target_to_this_dir < 0 && this->getPriority() > unit->getPriority() ) {
-        return false;
-    }
-    
-    Vec2 circle_center_dir( unit->getPosition(), this->getPosition() );
-    
-    if ( Fuzzy::_greater( circle_center_dir.cross( old_dir ), 0.0f ) ) {
-        new_dir = Geometry::anticlockwisePerpendicularVecToLine( circle_center_dir );
-        new_dir = Geometry::anticlockwiseRotate1( new_dir );
+    if( this_dir_to_center * unit_dir_to_center <= 0 ) {
+        new_dir = Geometry::clockwisePerpendicularVecToLine( unit_to_this );
     }
     else {
-        new_dir = Geometry::clockwisePerpendicularVecToLine( circle_center_dir );
-        new_dir = Geometry::clockwiseRotate1( new_dir );
+        if( unit_dir_to_center > 0 ) {
+//            new_dir = Geometry::anticlockwisePerpendicularVecToLine( unit_to_this );
+            new_dir = Geometry::clockwisePerpendicularVecToLine( unit_to_this );
+        }
+        else {
+            new_dir = Geometry::anticlockwisePerpendicularVecToLine( unit_to_this );
+//            new_dir = Geometry::clockwisePerpendicularVecToLine( unit_to_this );
+        }
     }
+    
     new_dir.normalize();
     
     _new_dir_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
@@ -968,33 +968,37 @@ cocos2d::Point UnitNode::pushToward( const cocos2d::Point& dir, float distance )
     std::set<Collidable*> steered_collidables;
     
     while( true ) {
-        bool no_steer = true;
+        bool no_collide = true;
         
         for( auto c : collidables ) {
             if( c->willCollide( this, dest_pos ) ) {
-                if( steered_collidables.count( c ) ) {
-                    return origin_dir;
+                no_collide = false;
+                int steered_count = steered_collidables.count( c );
+                if( steered_count == 0 ) {
+                    steered_collidables.insert( c );
+                    if ( c->getAdvisedNewDir( this, cocos2d::Vec2( this->getPosition(), dest_pos ), new_dir ) ) {
+                        
+                    }
+                }
+                else if( steered_count == 1 ) {
+                    steered_collidables.insert( c );
+                }
+                else {
+                    continue;
                 }
                 
-                steered_collidables.insert( c );
                 
-                no_steer = false;
                 
                 if ( !c->getAdvisedNewDir( this, cocos2d::Vec2( this->getPosition(), dest_pos ), new_dir ) ) {
                     return origin_dir;
                 }
                 
-                if( Geometry::deviateLessThan90( origin_dir, new_dir ) ) {
-                    dest_pos = this->getPosition() + new_dir.getNormalized() * max_walk_length;
-                    break;
-                }
-                else {
-                    return origin_dir;
-                }
+                dest_pos = this->getPosition() + new_dir.getNormalized() * max_walk_length;
+                break;
             }
         }
         
-        if( no_steer) {
+        if( no_collide) {
             break;
         }
     }
