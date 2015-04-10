@@ -195,6 +195,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\CmdLineDebuggerLua.h" />
     <ClInclude Include="..\Classes\Constants.h" />
     <ClInclude Include="..\Classes\constant\BoidsConstant.h" />
+    <ClInclude Include="..\Classes\constant\DebugMacros.h" />
     <ClInclude Include="..\Classes\Counter.h" />
     <ClInclude Include="..\Classes\CycledList.h" />
     <ClInclude Include="..\Classes\data\DamageCalculate.h" />
@@ -265,6 +266,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\TmxParser\zlib\zlib.h" />
     <ClInclude Include="..\Classes\TmxParser\zlib\zutil.h" />
     <ClInclude Include="..\Classes\Trace.h" />
+    <ClInclude Include="..\Classes\unit\BlockNode.h" />
     <ClInclude Include="..\Classes\unit\Buff.h" />
     <ClInclude Include="..\Classes\unit\BuildingNode.h" />
     <ClInclude Include="..\Classes\unit\BulletNode.h" />
@@ -274,11 +276,17 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\unit\Skill.h" />
     <ClInclude Include="..\Classes\unit\skill\BarrageOfArrow.h" />
     <ClInclude Include="..\Classes\unit\skill\BatSwarm.h" />
+    <ClInclude Include="..\Classes\unit\skill\BonesRain.h" />
     <ClInclude Include="..\Classes\unit\skill\CrazyShoot.h" />
     <ClInclude Include="..\Classes\unit\skill\DarkPierce.h" />
     <ClInclude Include="..\Classes\unit\skill\GiantSword.h" />
+    <ClInclude Include="..\Classes\unit\skill\Impetus.h" />
     <ClInclude Include="..\Classes\unit\skill\LightningChain.h" />
     <ClInclude Include="..\Classes\unit\skill\LightShield.h" />
+    <ClInclude Include="..\Classes\unit\skill\MagicPulse.h" />
+    <ClInclude Include="..\Classes\unit\skill\MissileShowers.h" />
+    <ClInclude Include="..\Classes\unit\skill\NaturesAttendants.h" />
+    <ClInclude Include="..\Classes\unit\skill\SkillCache.h" />
     <ClInclude Include="..\Classes\unit\skill\SkillNode.h" />
     <ClInclude Include="..\Classes\unit\skill\SkillNodeFactory.h" />
     <ClInclude Include="..\Classes\unit\skill\WrathOfThunder.h" />
@@ -313,6 +321,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\CmdLineDebugger.cpp" />
     <ClCompile Include="..\Classes\CmdLineDebuggerLua.cpp" />
     <ClCompile Include="..\Classes\constant\BoidsConstant.cpp" />
+    <ClCompile Include="..\Classes\constant\DebugMacros.cpp" />
     <ClCompile Include="..\Classes\Counter.cpp" />
     <ClCompile Include="..\Classes\CycledList.cpp" />
     <ClCompile Include="..\Classes\data\DamageCalculate.cpp" />
@@ -380,6 +389,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\TmxParser\zlib\uncompr.c" />
     <ClCompile Include="..\Classes\TmxParser\zlib\zutil.c" />
     <ClCompile Include="..\Classes\Trace.cpp" />
+    <ClCompile Include="..\Classes\unit\BlockNode.cpp" />
     <ClCompile Include="..\Classes\unit\Buff.cpp" />
     <ClCompile Include="..\Classes\unit\BuildingNode.cpp" />
     <ClCompile Include="..\Classes\unit\BulletNode.cpp" />
@@ -389,11 +399,17 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\unit\Skill.cpp" />
     <ClCompile Include="..\Classes\unit\skill\BarrageOfArrow.cpp" />
     <ClCompile Include="..\Classes\unit\skill\BatSwarm.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\BonesRain.cpp" />
     <ClCompile Include="..\Classes\unit\skill\CrazyShoot.cpp" />
     <ClCompile Include="..\Classes\unit\skill\DarkPierce.cpp" />
     <ClCompile Include="..\Classes\unit\skill\GiantSword.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\Impetus.cpp" />
     <ClCompile Include="..\Classes\unit\skill\LightningChain.cpp" />
     <ClCompile Include="..\Classes\unit\skill\LightShield.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\MagicPulse.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\MissileShowers.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\NaturesAttendants.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\SkillCache.cpp" />
     <ClCompile Include="..\Classes\unit\skill\SkillNode.cpp" />
     <ClCompile Include="..\Classes\unit\skill\SkillNodeFactory.cpp" />
     <ClCompile Include="..\Classes\unit\skill\WrathOfThunder.cpp" />

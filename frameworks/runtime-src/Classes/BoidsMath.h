@@ -10,9 +10,8 @@ class Fuzzy
 public:
 //#define FUZZY_THRESHOLD (2e-4f)
 #define FUZZY_THRESHOLD (1e-2f)
-	//÷ÆÀ˘“‘”–“ª¥Œ∏ƒ¥Û¡À£¨ «”–“ª¥Œ”¶∏√À„ «∆Ω––µƒ¡ΩÃıœﬂ£¨¿¥ªÿÀ„¡Àº∏œ¬≤Êª˝Ω·π˚-0.008ªπ «-0.0008¡À
 
-	inline static int side(float v) //fuzzyEqual∑µªÿ0£¨fuzzyGreater∑µªÿ1£¨∑Ò‘Ú∑µªÿ-1
+	inline static int side(float v) 
 	{
 		if (_equal(v, 0.0f))
 		{
@@ -27,7 +26,7 @@ public:
 
 	inline static bool _equal(float x, float y)
 	{
-		return fabs(x - y) <= FUZZY_THRESHOLD; //mac…œ√Ê÷±Ω””√absª·◊™≥…int£¨Ã´ø”¡À°£°£
+		return fabs(x - y) <= FUZZY_THRESHOLD; 
 	}
 
 	inline static bool _greater(float x, float y)
