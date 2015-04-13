@@ -135,8 +135,6 @@ private:
     int _repeat_times;
     int _current_times;
     bool _is_random_order;
-    float _interval;
-    float _elapse;
     int _current_speech_id;
     
 public:
@@ -149,6 +147,17 @@ public:
     virtual void onActionTriggered( bool finish );
     
     virtual void updateFrame( float delta );
+};
+
+class StoryAction : public EventAction {
+public:
+    StoryAction();
+    virtual ~StoryAction();
+    
+    static StoryAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
 };
 
 class CustomAction : public EventAction {

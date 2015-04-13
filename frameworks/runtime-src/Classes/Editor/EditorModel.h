@@ -286,7 +286,28 @@ public:
     std::string SourceValue;
     bool RandomOrder;
     int RepeatTimes;
+    
     EditorConversationAction(): EditorActionBase("conversation_action") {}
+    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
+    virtual void loadJson(const rapidjson::Value& value);
+};
+
+class EditorStory : public EditorBase {
+public:
+    std::string SpeakerName;
+    std::string Line;
+    bool LeftOrRight;//true left, false right
+    
+    EditorStory();
+    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
+    virtual void loadJson(const rapidjson::Value& value);
+};
+
+class EditorStoryAction : public EditorActionBase {
+public:
+    std::vector<std::shared_ptr<EditorStory>> Stories;
+    
+    EditorStoryAction() : EditorActionBase( "story_action" ) {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
 };
@@ -342,6 +363,7 @@ enum class EditorOperation {
     SetWaveAction,
     EditCondition,
     SetConverSationAction,
+    SetStoryAction,
     EditEvent,
 };
 

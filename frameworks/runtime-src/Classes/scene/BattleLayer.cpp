@@ -111,9 +111,14 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         _control_layer = UIControlLayer::create();
         this->addChild( _control_layer, eBattleSubLayer::ControlLayer, eBattleSubLayer::ControlLayer );
         
+        _story_layer = UIStoryLayer::create( CC_CALLBACK_0( BattleLayer::endStory, this ) );
+        this->addChild( _story_layer, eBattleSubLayer::BattleStoryLayer, eBattleSubLayer::BattleStoryLayer );
+        
         this->setup();
         
         this->startBattle();
+        
+        _map_logic->onMapInit();
         
         this->schedule( CC_CALLBACK_1( BattleLayer::updateFrame, this ), "battle_update"  );
         
@@ -127,7 +132,6 @@ void BattleLayer::setup() {
     this->parseMapObjects();
     MapLogic* new_map_logic = MapLogic::retainedCreate( this );
     this->setMapLogic( new_map_logic );
-    _map_logic->onMapInit();
     _game_time = 0;
 }
 
@@ -152,7 +156,7 @@ void BattleLayer::reset() {
 }
 
 void BattleLayer::updateFrame( float delta ) {
-    if( _state != eBattleState::BattlePaused ) {
+    if( _state != eBattleState::BattlePaused && _state != eBattleState::BattleStory ) {
         //update skill
         SkillCache::getInstance()->updateFrame( delta );
         _skill_ui_layer->updateFrame( delta );
@@ -218,9 +222,12 @@ void BattleLayer::updateFrame( float delta ) {
             }
         }
         
-
         this->reorderObjectLayer();
         this->adjustCamera();
+    }
+    
+    else if( _state == eBattleState::BattleStory ) {
+        _story_layer->updateFrame( delta );
     }
     
     if( _state == BattleRunning ) {
@@ -266,9 +273,12 @@ void BattleLayer::setMapLogic( MapLogic* map_logic ) {
 }
 
 UnitNode* BattleLayer::getLeaderUnit() {
-    if( _player_units.begin() != _player_units.end() ) {
-        return _player_units.begin()->second;
+    std::vector<std::string> keys = _player_units.keys();
+    if( keys.size() > 0 ) {
+        std::sort( keys.begin(), keys.end() );
+        return _player_units.at( keys.at( 0 ) );
     }
+    
     return nullptr;
 }
 
@@ -669,6 +679,18 @@ void BattleLayer::clearChasingTarget( TargetNode* unit ) {
             unit->setChasingTarget( nullptr );
         }
     }
+}
+
+void BattleLayer::startStory( const cocos2d::ValueMap& story_data ) {
+    _story_layer->setVisible( true );
+    _story_layer->setStoryData( story_data );
+    _story_layer->setEnabled( true );
+    _state = eBattleState::BattleStory;
+}
+
+void BattleLayer::endStory() {
+    _story_layer->setVisible( false );
+    _state = eBattleState::BattleRunning;
 }
 
 //private methods

@@ -457,6 +457,45 @@ private:
     void onDeleteButtonClicked(cocos2d::Ref *sender);
 };
 
+class BEUIStoryAction : public BEUIBase, public BEFilterListViewDelegate {
+public:
+    BEUIStoryAction(cocos2d::Node *root, const BEPopupEventHandler& handler);
+    virtual void reset();
+    void loadStorySource(const std::vector<std::pair<std::string, std::string>>& sources);
+    EditorStoryActionPtr getAction();
+    
+    virtual std::string searchNameAtIndex(int index);
+    virtual std::string displayNameAtIndex(int index);
+    virtual int itemCount();
+private:
+    
+    // model
+    EditorStoryActionPtr _action;
+    EditorStoryPtr _currentStory;
+    std::vector<std::pair<std::string, std::string>> _sources;
+    
+    // ui controls
+    cocos2d::ui::Layout *_listPanel;
+    cocos2d::ui::Layout *_infoPanel;
+    cocos2d::ui::TextField *_filterTextField;
+    cocos2d::ui::TextField *_contentTextField;
+    
+    cocos2d::ui::TextField* _tf_line;
+    cocos2d::ui::CheckBox* _cb_left_or_right;
+    
+    cocos2d::ui::Button *_addButton;
+    cocos2d::ui::Button *_okButton;
+    cocos2d::ui::Button *_cancelButton;
+    cocos2d::ui::Button *_deleteButton;
+    
+    BEFilterListView *_sourceListView;
+    
+    BEDefaultListView *_storiesListView;
+    void onAddButtonClicked(cocos2d::Ref *sender);
+    void onDeleteButtonClicked(cocos2d::Ref *sender);
+};
+
+
 //class BEUIConversationTrigger : public BEUIBase {
 //public:
 //    BEUIConversationTrigger(cocos2d::Node *root, const BEPopupEventHandler& handler);
@@ -493,6 +532,7 @@ public:
     BEUIWaveAction *waveActionUI;
     BEUIGameCondition *gameConditionUI;
     BEUIConversationAction *conversationActionUI;
+    BEUIStoryAction* storyActionUI;
 //    BEUIConversationTrigger *conversationChangeUI;
     virtual void reset();
     void hideAllPopups();
@@ -522,7 +562,7 @@ private:
     cocos2d::ui::Layout *_waveActionPanel;
     cocos2d::ui::Layout *_gameConditionPanel;
     cocos2d::ui::Layout *_conversationActionPanel;
-//    cocos2d::ui::Layout *_conversationChangePanel;
+    cocos2d::ui::Layout *_storyActionPanel;
     
     BEEditorCommandHandler _commandHandler;
 };

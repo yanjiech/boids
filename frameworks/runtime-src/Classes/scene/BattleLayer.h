@@ -21,6 +21,7 @@
 #include <map>
 #include "../unit/skill/SkillNode.h"
 #include "../unit/BlockNode.h"
+#include "UIStoryLayer.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,
@@ -33,7 +34,8 @@ enum eBattleSubLayer {
     ToastLayer = 8,
     ControlLayer = 9,
     BattleUILayer = 10,
-    BattleMenuLayer = 11
+    BattleStoryLayer = 11,
+    BattleMenuLayer = 12
 };
 
 enum eBattleState {
@@ -42,7 +44,8 @@ enum eBattleState {
     BattleLose = 3,
     BattlePrepare = 4,
     BattlePaused = 5,
-    BattleRunning = 6
+    BattleRunning = 6,
+    BattleStory = 7
 };
 
 enum eCameraMode {
@@ -75,6 +78,7 @@ private:
     UIBattleMenuLayer* _battle_menu_layer;
     UIControlLayer* _control_layer;
     cocos2d::TMXTiledMap* _tmx_map;
+    UIStoryLayer* _story_layer;
     
     eBattleState _state;
     
@@ -188,6 +192,9 @@ public:
     bool isPositionOK( cocos2d::Point pos, float radius );
     
     void clearChasingTarget( TargetNode* unit );
+    
+    void startStory( const cocos2d::ValueMap& story_data );
+    void endStory();
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

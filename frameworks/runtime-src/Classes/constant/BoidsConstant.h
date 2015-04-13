@@ -87,6 +87,7 @@
 #define ACTION_TYPE_VISION_CHANGE "vision_change"
 #define ACTION_TYPE_WAVE_ACTION "wave_action"
 #define ACTION_TYPE_CONVERSATION_ACTION "conversation_action"
+#define ACTION_TYPE_STORY_ACTION "story_action"
 #define ACTION_TYPE_CUSTOM "custom"
 
 #define VISION_STATE_ENABLED  "enabled"

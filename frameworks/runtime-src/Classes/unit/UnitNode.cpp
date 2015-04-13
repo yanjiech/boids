@@ -976,25 +976,16 @@ cocos2d::Point UnitNode::pushToward( const cocos2d::Point& dir, float distance )
                 int steered_count = steered_collidables.count( c );
                 if( steered_count == 0 ) {
                     steered_collidables.insert( c );
-                    if ( c->getAdvisedNewDir( this, cocos2d::Vec2( this->getPosition(), dest_pos ), new_dir ) ) {
-                        
+                    if ( !c->getAdvisedNewDir( this, cocos2d::Vec2( this->getPosition(), dest_pos ), new_dir ) ) {
+                        return origin_dir;
                     }
-                }
-                else if( steered_count == 1 ) {
-                    steered_collidables.insert( c );
+                    dest_pos = this->getPosition() + new_dir.getNormalized() * max_walk_length;
+                    break;
                 }
                 else {
-                    continue;
-                }
-                
-                
-                
-                if ( !c->getAdvisedNewDir( this, cocos2d::Vec2( this->getPosition(), dest_pos ), new_dir ) ) {
+                    steered_collidables.insert( c );
                     return origin_dir;
                 }
-                
-                dest_pos = this->getPosition() + new_dir.getNormalized() * max_walk_length;
-                break;
             }
         }
         

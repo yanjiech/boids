@@ -47,6 +47,9 @@ EventAction* EventAction::create( const cocos2d::ValueMap& action_data, class Ma
     else if( action_type == ACTION_TYPE_CONVERSATION_ACTION ) {
         ret = ConversationAction::create( action_data, map_logic, trigger );
     }
+    else if( action_type == ACTION_TYPE_STORY_ACTION ) {
+        ret = StoryAction::create( action_data, map_logic, trigger );
+    }
     else if( action_type == ACTION_TYPE_CUSTOM ) {
         ret = CustomAction::create( action_data, map_logic, trigger );
     }
@@ -595,8 +598,6 @@ bool ConversationAction::init( const cocos2d::ValueMap& action_data, class MapLo
     
     _callback = CC_CALLBACK_1( ConversationAction::onActionTriggered, this );
     
-    _interval = 0;
-    _elapse = 0;
     _current_speech_id = 0;
     _repeat_times = action_data.at( "repeat_times" ).asInt();
     _current_times = 0;
@@ -636,7 +637,6 @@ void ConversationAction::onActionTriggered( bool finish ) {
         }
         
         _interval = speech_data.at( "interval" ).asFloat();
-        _elapse = 0;
         
         if( _is_random_order ) {
             ++_current_times;
@@ -654,14 +654,51 @@ void ConversationAction::onActionTriggered( bool finish ) {
 }
 
 void ConversationAction::updateFrame( float delta ) {
-    if( _is_running ) {
-        _elapse += delta;
-        if( _elapse > _interval ) {
+    if( !_should_recycle && _is_running ) {
+        _accumulator += delta;
+        if( ( _current_round == 0 && _accumulator > _delay ) || ( _current_round > 0 && _accumulator > _interval ) ) {
+            _accumulator = 0;
             if( _callback ) {
                 _callback( false );
             }
+            else {
+                this->stop();
+            }
         }
     }
+}
+
+StoryAction::StoryAction() {
+    
+}
+
+StoryAction::~StoryAction() {
+    
+}
+
+StoryAction* StoryAction::create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger ) {
+    StoryAction* ret = new StoryAction();
+    if( ret && ret->init( action_data, map_logic, trigger ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool StoryAction::init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger ) {
+    if( !EventAction::init( action_data, map_logic, trigger ) ) {
+        return false;
+    }
+    
+    _callback = CC_CALLBACK_1( StoryAction::onActionTriggered, this );
+    return true;
+}
+
+void StoryAction::onActionTriggered( bool finish ) {
+    _map_logic->getBattleLayer()->startStory( _action_data );
 }
 
 CustomAction::CustomAction() {

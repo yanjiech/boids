@@ -609,6 +609,50 @@ void EditorConversationAction::loadJson(const rapidjson::Value& value) {
     RepeatTimes = value["repeat_times"].GetInt();
 }
 
+EditorStory::EditorStory() :
+LeftOrRight( true )
+{
+    
+}
+
+rapidjson::Value& EditorStory::toJson(rapidjson::Document::AllocatorType& allocator) {
+    EditorBase::toJson( allocator );
+    _json.AddMember( "left_or_right", LeftOrRight, allocator );
+    _json.AddMember( "line", Line.c_str(), allocator );
+    _json.AddMember( "speaker", SpeakerName.c_str(), allocator );
+    return _json;
+}
+
+void EditorStory::loadJson(const rapidjson::Value& value) {
+    LeftOrRight = value["left_or_right"].GetBool();
+    Line = std::string( value["line"].GetString(), value["line"].GetStringLength() );
+    SpeakerName = std::string( value["speaker"].GetString(), value["speaker"].GetStringLength() );
+}
+
+rapidjson::Value& EditorStoryAction::toJson(rapidjson::Document::AllocatorType& allocator) {
+    EditorActionBase::toJson( allocator );
+    rapidjson::Value stories;
+    stories.SetArray();
+    for( auto story : Stories ) {
+        stories.PushBack( story->toJson( allocator), allocator );
+    }
+    _json.AddMember( "story_data", stories, allocator );
+    
+    return _json;
+}
+
+void EditorStoryAction::loadJson( const rapidjson::Value& value ) {
+    EditorActionBase::loadJson( value );
+    const rapidjson::Value& stories = value["story_data"];
+    assert( stories.IsArray() );
+    Stories.clear();
+    for( int i = 0; i < stories.Size(); i++ ) {
+        auto story = std::shared_ptr<EditorStory>( new EditorStory() );
+        story->loadJson( stories[i] );
+        Stories.push_back( story );
+    }
+}
+
 EditorEvent::EditorEvent() {
     TriggerMeta = std::shared_ptr<EditorTriggerMeta>(new EditorTriggerMeta());
 }
@@ -691,6 +735,8 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
                 action = std::shared_ptr<EditorWaveAction>(new EditorWaveAction());
             } else if (actionType == "conversation_action") {
                 action = std::shared_ptr<EditorConversationAction>(new EditorConversationAction());
+            } else if( actionType == "story_action" ) {
+                action = std::shared_ptr<EditorStoryAction>( new EditorStoryAction() );
             }
             action->loadJson(actions[i]);
             Actions.push_back(action);

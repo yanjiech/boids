@@ -63,6 +63,7 @@ private:
     std::vector<std::pair<std::string, std::string>> getTriggerSources();
     std::vector<std::pair<std::string, std::string>> getVisionSources();
     std::vector<std::pair<std::string, std::string>> getConversationSources();
+    std::vector<std::pair<std::string, std::string>> getStorySources();
     std::vector<EditorEventPtr> getEditableEvents();
     void fetchTags();
     void fetchConversations();

@@ -195,6 +195,14 @@ std::vector<std::pair<std::string, std::string>> EditMode::getConversationSource
     return ret;
 }
 
+std::vector<std::pair<std::string, std::string>> EditMode::getStorySources() {
+    std::vector<std::pair<std::string, std::string>> ret;
+    for (auto name : _units) {
+        ret.push_back( std::make_pair("name_source", name) );
+    }
+    return ret;
+}
+
 std::vector<std::pair<std::string, std::string>> EditMode::getVisionSources() {
     std::vector<std::pair<std::string, std::string>> ret;
     for (auto name : _visionObjects) {
@@ -492,6 +500,11 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             action->ActionMeta = ctx->ActionMeta;
             ctx->Event->Actions.push_back(action);
             ctx->addOperation(EditorOperation::SetAction);
+        } else if( op == EditorOperation::SetStoryAction ) {
+            auto action = _editUI->storyActionUI->getAction();
+            action->ActionMeta = ctx->ActionMeta;
+            ctx->Event->Actions.push_back(action);
+            ctx->addOperation(EditorOperation::SetAction);
         }
 //        else if (op == EditorOperation::SetConverSationTrigger) {
 //            auto trigger = _editUI->conversationChangeUI->getTrigger();
@@ -563,6 +576,8 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             ctx->addOperation(EditorOperation::SetWaveAction);
         } else if (type == "conversation_action") {
             ctx->addOperation(EditorOperation::SetConverSationAction);
+        } else if( type == "story_action" ) {
+            ctx->addOperation( EditorOperation::SetStoryAction );
         }
         moveOn();
     }
@@ -737,6 +752,12 @@ void EditMode::onStep(int step) {
             _editUI->conversationActionUI->setVisible(true);
             _editUI->conversationActionUI->reset();
             _editUI->conversationActionUI->loadConversationSource(this->getConversationSources());
+            break;
+        }
+        case EditorOperation::SetStoryAction: {
+            _editUI->storyActionUI->setVisible( true );
+            _editUI->storyActionUI->reset();
+            _editUI->storyActionUI->loadStorySource( this->getStorySources() );
             break;
         }
 //        case EditorOperation::SetConverSationTrigger: {

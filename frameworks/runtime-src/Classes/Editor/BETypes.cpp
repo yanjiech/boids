@@ -57,7 +57,7 @@ EditorTypeManager::EditorTypeManager() {
     
     _triggerType->_typeVector = { "map_init", "unit_change", "unit_stay", "event_change", "game_change", "vision_change", "custom" };
     
-    _actionType->_typeVector = { "unit_change", "task_change", "game_change", "conversation_action", "event_change", "vision_change", "custom", "wave_action" };
+    _actionType->_typeVector = { "unit_change", "task_change", "game_change", "conversation_action", "story_action", "event_change", "vision_change", "custom", "wave_action" };
     
     _visionObjectStateType->_typeVector = { "enabled", "disabled" };
     

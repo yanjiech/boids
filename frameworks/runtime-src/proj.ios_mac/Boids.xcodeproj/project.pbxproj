@@ -80,6 +80,8 @@
 		76EA0D2F1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */; };
 		76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
 		76EADAF81AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
+		76EC48FE1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */; };
+		76EC48FF1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */; };
 		76ED99D31AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */; };
 		76ED99D41AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */; };
 		76ED99D71AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */; };
@@ -518,6 +520,8 @@
 		76EA0D2D1ACBCAEA00EDD10D /* MissileShowers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissileShowers.h; sourceTree = "<group>"; };
 		76EADAF51AC4018200E00BFA /* Trigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trigger.cpp; sourceTree = "<group>"; };
 		76EADAF61AC4018200E00BFA /* Trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trigger.h; sourceTree = "<group>"; };
+		76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIStoryLayer.cpp; sourceTree = "<group>"; };
+		76EC48FD1ADB605F00C9F17B /* UIStoryLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIStoryLayer.h; sourceTree = "<group>"; };
 		76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireWhirl.cpp; sourceTree = "<group>"; };
 		76ED99D21AD4D0B60047D5A9 /* FireWhirl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireWhirl.h; sourceTree = "<group>"; };
 		76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeathSlice.cpp; sourceTree = "<group>"; };
@@ -1102,6 +1106,8 @@
 				98A366CA1AA84E8400393B8E /* UIBattleMenuLayer.h */,
 				98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */,
 				98EBBEF41AABF73B00ADB84A /* UIBattleFloatLayer.h */,
+				76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */,
+				76EC48FD1ADB605F00C9F17B /* UIStoryLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;
@@ -1900,6 +1906,7 @@
 				98EBBEF61AABF73B00ADB84A /* UIBattleFloatLayer.cpp in Sources */,
 				E874130C1A0B5629003EBD0B /* TmxUtil.cpp in Sources */,
 				E86CDE941A1F3D21004FBDA2 /* Collidable.cpp in Sources */,
+				76EC48FF1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */,
 				76EFF5C21AD396C300690CFE /* FatalThrow.cpp in Sources */,
 				E87413161A0B5647003EBD0B /* gzclose.c in Sources */,
 				E87413171A0B5647003EBD0B /* gzlib.c in Sources */,
@@ -2132,6 +2139,7 @@
 				E84197D71A09226300F5DF36 /* gzlib.c in Sources */,
 				E84197CC1A09226300F5DF36 /* TmxPolygon.cpp in Sources */,
 				5023811817EBBCAC00990C9B /* AppController.mm in Sources */,
+				76EC48FE1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */,
 				98E3B6811A73A77A00B5BEBB /* substitute.cc in Sources */,
 				98E3B6571A73A77A00B5BEBB /* generated_message_util.cc in Sources */,
 				9859D1D21A7B4C0300FF6D82 /* Battle.pb.cc in Sources */,

@@ -707,6 +707,36 @@
                     "popup_type": "normal"
                 }
             ]
+        },
+        {
+            "name": "test",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "hey bitch, come here talk to me!",
+                            "speaker": "aladdin"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "bitch your mother fucker!",
+                            "speaker": "anubies"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "units": [
