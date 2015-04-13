@@ -20,6 +20,7 @@ enum eResourceType {
 class ResourceManager {
 private:
     cocos2d::ValueMap _unit_config;
+    cocos2d::ValueMap _tower_config;
     cocos2d::ValueMap _unit_levelup_cost_config;
     cocos2d::ValueMap _vision_config;
     cocos2d::ValueMap _building_config;
@@ -41,6 +42,7 @@ public:
     static void destroy();
     
     const cocos2d::ValueMap& getUnitConfig() { return _unit_config; }
+    const cocos2d::ValueMap& getTowerConfig() { return _tower_config; }
     const cocos2d::ValueMap& getUnitLevelupCostConfig() { return _unit_levelup_cost_config; }
     const cocos2d::ValueMap& getVisionConfig() { return _vision_config; }
     const cocos2d::ValueMap& getBuildingConfig() { return _building_config; }
@@ -59,6 +61,7 @@ public:
     void loadDefaultData();
     
     void loadUnitData();
+    void loadTowerData();
     void loadUnitLevelupCostData();
     void loadBulletData();
     void loadCenterData();
@@ -74,6 +77,7 @@ public:
     void purgeBulletArmature( const std::string& name, const std::string& type );
     
     const cocos2d::ValueMap& getUnitData( const std::string& name );
+    const cocos2d::ValueMap& getTowerData( const std::string& name );
     const cocos2d::ValueMap& getBulletData( const std::string& name );
     const cocos2d::ValueMap& getSkillData( const std::string& name );
     

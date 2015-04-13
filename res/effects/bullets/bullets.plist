@@ -33,11 +33,11 @@
             <key>enchantress_javelin.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,153},{71,20}}</string>
+                <string>{{45,156},{71,20}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{71,20}}</string>
                 <key>sourceSize</key>
@@ -46,11 +46,11 @@
             <key>enchantress_skill_javelin.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,107},{72,21}}</string>
+                <string>{{22,156},{72,21}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{72,21}}</string>
                 <key>sourceSize</key>
@@ -59,11 +59,11 @@
             <key>flamingo.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{75,144},{54,47}}</string>
+                <string>{{22,107},{54,47}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{54,47}}</string>
                 <key>sourceSize</key>
@@ -72,7 +72,7 @@
             <key>human_arrow.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,130},{71,21}}</string>
+                <string>{{22,230},{71,21}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -94,6 +94,19 @@
                 <string>{{0,0},{113,21}}</string>
                 <key>sourceSize</key>
                 <string>{113,21}</string>
+            </dict>
+            <key>spear.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,107},{144,18}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{144,18}}</string>
+                <key>sourceSize</key>
+                <string>{144,18}</string>
             </dict>
             <key>thunderbolt.png</key>
             <dict>
@@ -131,7 +144,7 @@
             <key>size</key>
             <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:fcca37be7714343b5ea5e66b22b171e2:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:ad24881ed2b049dba3b1383602fbf53c:1/1$</string>
             <key>textureFileName</key>
             <string>bullets.png</string>
         </dict>

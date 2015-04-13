@@ -948,7 +948,7 @@
         "atk": 28.0, 
         "atkgr": 13.0, 
         "attackspeed": 2.0, 
-        "bullet_name": "", 
+        "bullet_name": "spear", 
         "collide": 40.0, 
         "cri": 2.0, 
         "crigr": 4.4, 
@@ -975,7 +975,10 @@
         "rec": 0.5, 
         "recgr": 0.2, 
         "scale": 1.0, 
-        "skills": [], 
+        "skills": [
+            "GiantSword",
+            "LightShield"
+        ],
         "ten": 2.0, 
         "tengr": 3.1
     }, 

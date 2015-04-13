@@ -131,6 +131,17 @@
         "track_target" : true,
         "hit_scale": 0.5
     }, 
+    "spear" :
+    {
+        "name" : "spear",
+        "speed" : 1200.0,
+        "move_type" : "straight",
+        "body_type" : "spine",
+        "hit_type" : "spine",
+        "hit_name" : "default",
+        "need_rotate": true,
+        "track_target" : true
+    },
     "skeleton_king_bullet_1" : {
         "name" : "gu01",
         "move_type" : "fixed",
@@ -178,7 +189,7 @@
         "body_type" : "spine",
         "hit_type" : "spine",
         "hit_name" : "blue_ball",
-        "need_rotation": true,
+        "need_rotate": true,
         "damage_radius" : 50.0
     },
     "zhadan": {
