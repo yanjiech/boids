@@ -96,8 +96,6 @@
 		76EFF5BE1AD37E5800690CFE /* AtomFart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */; };
 		76EFF5C11AD396C300690CFE /* FatalThrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */; };
 		76EFF5C21AD396C300690CFE /* FatalThrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */; };
-		98531A761AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
-		98531A771AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
 		9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
 		9859D1CC1A7B4B8700FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
 		9859D1D21A7B4C0300FF6D82 /* Battle.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1CE1A7B4C0300FF6D82 /* Battle.pb.cc */; };
@@ -542,7 +540,6 @@
 		76EFF5BC1AD37E5800690CFE /* AtomFart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomFart.h; sourceTree = "<group>"; };
 		76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FatalThrow.cpp; sourceTree = "<group>"; };
 		76EFF5C01AD396C300690CFE /* FatalThrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatalThrow.h; sourceTree = "<group>"; };
-		98531A751AA2C14100A37BFE /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../src; sourceTree = "<group>"; };
 		98598B141A10BF7F0075D0EC /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
 		98598B151A10BF7F0075D0EC /* CycledList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CycledList.cpp; path = ../Classes/CycledList.cpp; sourceTree = "<group>"; };
 		98598B161A10BF7F0075D0EC /* CycledList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycledList.h; path = ../Classes/CycledList.h; sourceTree = "<group>"; };
@@ -1631,7 +1628,6 @@
 		F293BC4615EB859D00256477 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				98531A751AA2C14100A37BFE /* src */,
 				E848F2301A23660600DAECF0 /* res */,
 			);
 			name = Resources;
@@ -1764,7 +1760,6 @@
 				98E3B64C1A73A77A00B5BEBB /* descriptor.proto in Resources */,
 				5023817617EBBE3400990C9B /* Icon.icns in Resources */,
 				E848F2331A23660600DAECF0 /* res in Resources */,
-				98531A771AA2C14100A37BFE /* src in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1779,7 +1774,6 @@
 				5091733617ECE17A00D62437 /* Icon-29.png in Resources */,
 				5023811917EBBCAC00990C9B /* Default-568h@2x.png in Resources */,
 				5091733917ECE17A00D62437 /* Icon-58.png in Resources */,
-				98531A761AA2C14100A37BFE /* src in Resources */,
 				521A8E6B19F0C3AC00D177D7 /* Default-736h@3x.png in Resources */,
 				521A8E6A19F0C3AC00D177D7 /* Default-667h@2x.png in Resources */,
 				5023811F17EBBCAC00990C9B /* Icon-152.png in Resources */,
