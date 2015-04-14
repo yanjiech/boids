@@ -1,6 +1,6 @@
 # temp file
 #*.swp
-#*.DS_Store
+*.DS_Store
 
 # xcode
 #*.xcbkptlist
