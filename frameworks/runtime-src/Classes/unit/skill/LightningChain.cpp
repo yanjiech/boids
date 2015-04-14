@@ -74,7 +74,7 @@ void LightningChain::updateFrame( float delta ) {
                 this->setTargetNode( nullptr );
             }
             else {
-                target_units = battle_layer->getAliveOpponentsInRange( _owner->getUnitCamp(), _last_pos, _range );
+                target_units = battle_layer->getAliveOpponentsInRange( _owner->getTargetCamp(), _last_pos, _range );
             }
             for( auto u : target_units ) {
                 bool is_excluded = false;

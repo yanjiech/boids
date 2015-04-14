@@ -151,6 +151,7 @@ void BattleLayer::reset() {
     _dead_units.clear();
     
     _bullets.clear();
+    _towers.clear();
     
     _next_deploy_id = 0;
 }
@@ -193,6 +194,13 @@ void BattleLayer::updateFrame( float delta ) {
         for( auto pair : _dead_units ) {
             UnitNode* unit = pair.second;
             unit->updateFrame( delta );
+        }
+        
+        for( auto pair : _towers ) {
+            TowerNode* tower = pair.second;
+            if( tower->isAlive() ) {
+                tower->updateFrame( delta );
+            }
         }
         
         //recycle effects
@@ -296,7 +304,7 @@ void BattleLayer::changeState( eBattleState new_state ) {
     }
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eUnitCamp camp ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eTargetCamp camp ) {
     cocos2d::Vector<UnitNode*> ret;
     
     for( auto pair : _alive_units ) {
@@ -322,12 +330,12 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsInRoundRange( const cocos2d
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCamp( eUnitCamp camp ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCamp( eTargetCamp camp ) {
     cocos2d::Vector<UnitNode*> ret;
 
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
-        if( unit->getUnitCamp() == camp ) {
+        if( unit->getTargetCamp() == camp ) {
             ret.pushBack( unit );
         }
     }
@@ -335,7 +343,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCamp( eUnitCamp camp ) {
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveAllyInRange( eUnitCamp camp, const cocos2d::Point& center, float radius ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveAllyInRange( eTargetCamp camp, const cocos2d::Point& center, float radius ) {
     cocos2d::Vector<UnitNode*> ret;
     
     for( auto pair : _alive_units ) {
@@ -377,7 +385,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByName( const std::string& 
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& center, float radius ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& center, float radius ) {
     cocos2d::Vector<UnitNode*> ret;
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
@@ -391,7 +399,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius ) {
     cocos2d::Vector<UnitNode*> ret;
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
@@ -405,7 +413,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eUnitCamp camp
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInSector( eUnitCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInSector( eTargetCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle ) {
     cocos2d::Vector<UnitNode*> ret;
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
@@ -419,12 +427,40 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInSector( eUnitCamp cam
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCampAndSightGroup( eTargetCamp camp, const std::string& sight_group ) {
     cocos2d::Vector<UnitNode*> ret;
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
-        if( unit->getUnitCamp() == camp && unit->getSightGroup() == sight_group ) {
+        if( unit->getTargetCamp() == camp && unit->getSightGroup() == sight_group ) {
             ret.pushBack( unit );
+        }
+    }
+    return ret;
+}
+
+cocos2d::Vector<TowerNode*> BattleLayer::getAliveTowersInRange( eTargetCamp camp, const cocos2d::Point& center, float range ) {
+    cocos2d::Vector<TowerNode*> ret;
+    for( auto pair : _towers ) {
+        TowerNode* tower = pair.second;
+        if( tower->isAlive() && tower->isFoeOfCamp( camp ) ) {
+            Point tower_pos = tower->getPosition();
+            if( Math::isPositionInRange( tower_pos, center, range + tower->getTargetData()->collide ) ) {
+                ret.pushBack( tower );
+            }
+        }
+    }
+    return ret;
+}
+
+cocos2d::Vector<TowerNode*> BattleLayer::getAliveTowersInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float range ) {
+    cocos2d::Vector<TowerNode*> ret;
+    for( auto pair : _towers ) {
+        TowerNode* tower = pair.second;
+        if( tower->isAlive() && tower->isFoeOfCamp( camp ) ) {
+            Point tower_pos = tower->getPosition();
+            if( Math::isPositionInRange( tower_pos, center, range + tower->getTargetData()->collide ) && !Terrain::getInstance()->isBlocked( init_pos, tower_pos ) ) {
+                ret.pushBack( tower );
+            }
         }
     }
     return ret;
@@ -455,7 +491,7 @@ bool BattleLayer::addBullet( int key, BulletNode* bullet ) {
     auto itr = _bullets.find( k );
     if( itr == _bullets.end() ) {
         _bullets.insert( k, bullet );
-        this->addToObjectLayer( bullet, bullet->getPosition(), bullet->getPosition() );
+        this->addToEffectLayer( bullet, bullet->getPosition(), 0 );
         return true;
     }
     return false;
@@ -486,8 +522,8 @@ void BattleLayer::updateBullets( float delta ) {
 }
 
 void BattleLayer::onUnitAppear( UnitNode* unit ) {
-    eUnitCamp camp = unit->getUnitCamp();
-    if( camp == eUnitCamp::Player ) {
+    eTargetCamp camp = unit->getTargetCamp();
+    if( camp == eTargetCamp::Player ) {
         _player_units.insert( Utils::stringFormat( "%d", unit->getDeployId() ), unit );
         _skill_ui_layer->addSkillNode( unit );
     }
@@ -504,7 +540,7 @@ void BattleLayer::onUnitDying( UnitNode* unit ) {
         }
     }
     std::string key = Utils::stringFormat( "%d", unit->getDeployId() );
-    if( unit->getUnitCamp() == eUnitCamp::Player ) {
+    if( unit->getTargetCamp() == eTargetCamp::Player ) {
         _player_units.erase( key );
         _skill_ui_layer->removeSkillNode( unit );
     }
@@ -576,6 +612,13 @@ void BattleLayer::deployUnits( const cocos2d::Vector<UnitNode*>& units, const co
         Point pos = this->getAvailablePosition( unit->getUnitData()->collide, area );
         this->deployUnit( unit, pos, sight_group );
     }
+}
+
+void BattleLayer::deployTower( TowerNode* tower, const cocos2d::Point& pos ) {
+    int deploy_id = this->getNextDeployId();
+    tower->setDeployId( deploy_id );
+    this->addToObjectLayer( tower, pos, pos );
+    _towers.insert( Utils::stringFormat( "%d", deploy_id ), tower );
 }
 
 void BattleLayer::adjustCamera() {
@@ -696,42 +739,25 @@ void BattleLayer::endStory() {
 //private methods
 void BattleLayer::parseMapObjects() {
     const ValueVector& objects = _tmx_map->getObjectGroup( "vision" )->getObjects();
+    const TMXObjectGroup* physics_group = _tmx_map->getObjectGroup( "physics" );
     for( ValueVector::const_iterator itr = objects.begin(); itr != objects.end(); ++itr ) {
         const ValueMap& obj_properties = itr->asValueMap();
-        int gid = obj_properties.at( "gid" ).asInt();
-        bool flipped_horizontally = false;
-        bool flipped_vertically = false;
-        bool flipped_diagonally = false;
-        if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
-            flipped_horizontally = true;
-            gid &= 0x7fffffff;
-        }
-        if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
-            flipped_vertically = true;
-            gid &= 0xbfffffff;
-        }
-        if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
-            flipped_diagonally = true;
-            gid &= 0xdfffffff;
+        int gid = 0;
+        std::string type = "";
+        
+        auto sitr = obj_properties.find( "gid" );
+        if( sitr != obj_properties.end() ) {
+            gid = sitr->second.asInt();
         }
         
-        Value properties = _tmx_map->getPropertiesForGID( gid );
-        ValueMap& grid_properties = properties.asValueMap();
-        grid_properties["flipped_horizontally"] = Value( flipped_horizontally );
-        grid_properties["flipped_vertically"] = Value( flipped_vertically );
-        grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
-        BuildingNode* building = BuildingNode::create( grid_properties, obj_properties );
-        this->addToObjectLayer( building, building->getPosition(), building->getPosition() + building->getCenter() );
-    }
-    
-    const TMXObjectGroup* physics_group = _tmx_map->getObjectGroup( "physics" );
-    
-    const TMXObjectGroup* block_group = _tmx_map->getObjectGroup( "block" );
-    if( block_group ) {
-        const ValueVector& block_objects = block_group->getObjects();
-        for( auto itr = block_objects.begin(); itr != block_objects.end(); ++itr ) {
-            const ValueMap& obj_properties = itr->asValueMap();
-            int gid = obj_properties.at( "gid" ).asInt();
+        sitr = obj_properties.find( "type" );
+        if( sitr != obj_properties.end() ) {
+            type = sitr->second.asString();
+        }
+        
+        ValueMap grid_properties;
+        
+        if( gid != 0 ) {
             bool flipped_horizontally = false;
             bool flipped_vertically = false;
             bool flipped_diagonally = false;
@@ -749,10 +775,13 @@ void BattleLayer::parseMapObjects() {
             }
             
             Value properties = _tmx_map->getPropertiesForGID( gid );
-            ValueMap& grid_properties = properties.asValueMap();
+            grid_properties = properties.asValueMap();
             grid_properties["flipped_horizontally"] = Value( flipped_horizontally );
             grid_properties["flipped_vertically"] = Value( flipped_vertically );
             grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
+        }
+        
+        if( type == "BlockNode" ) {
             std::string name = obj_properties.at( "name" ).asString();
             ValueMap boundary = physics_group->getObject( name );
             boundary["map_height"] = Value( _tmx_map->getContentSize().height );
@@ -761,6 +790,28 @@ void BattleLayer::parseMapObjects() {
                 BlockNode* block_node = BlockNode::create( grid_properties, obj_properties );
                 this->addBlockNode( block_node );
             }
+        }
+        else if( type == "TowerNode" ) {
+            ValueMap tower_data;
+            tower_data["name"] = obj_properties.at( "name" );
+            sitr = obj_properties.find( "level" );
+            if( sitr != obj_properties.end() ) {
+                tower_data["level"] = sitr->second;
+            }
+            else {
+                tower_data["level"] = Value( 1 );
+            }
+            float x = obj_properties.at( "x" ).asFloat();
+            float y = obj_properties.at( "y" ).asFloat();
+            float width = obj_properties.at( "width" ).asFloat();
+            float height = obj_properties.at( "height" ).asFloat();
+            TowerNode* tower = TowerNode::create( this, tower_data );
+            tower->setTargetCamp( eTargetCamp::Enemy );
+            this->deployTower( tower, Point( x + width / 2, y + height / 2 ) );
+        }
+        else {
+            BuildingNode* building = BuildingNode::create( grid_properties, obj_properties );
+            this->addToObjectLayer( building, building->getPosition(), building->getPosition() + building->getCenter() );
         }
     }
 }

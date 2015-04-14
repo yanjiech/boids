@@ -357,7 +357,7 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                 u->setUnitTags( tag_name );
             }
             if( unit_type != "" ) {
-                u->setUnitCamp( UnitNode::getCampByString( unit_type ) );
+                u->setTargetCamp( UnitNode::getCampByString( unit_type ) );
             }
         }
     }

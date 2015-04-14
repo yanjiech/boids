@@ -76,7 +76,7 @@ void FatalThrow::updateFrame( float delta ) {
                         break;
                 }
                 
-                Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _range );
+                Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _range );
                 
                 int count = (int)candidates.size();
                 if( count > 0 ) {
@@ -87,7 +87,7 @@ void FatalThrow::updateFrame( float delta ) {
                     ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( bullet_name );
                     bullet_data["will_miss"] = Value( false );
                     BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, ValueMap() );
-                    bullet->shootAt( _owner, target_unit, _left_or_right + 1 );
+                    bullet->shootAt( target_unit, _left_or_right + 1 );
                 }
             }
         }
@@ -110,11 +110,11 @@ void FatalThrow::begin() {
     
     UnitNode* flamingo = UnitNode::create( battle_layer, unit_data );
     flamingo->setGuardTarget( _owner );
-    if( _owner->getUnitCamp() == eUnitCamp::Player ) {
-        flamingo->setUnitCamp( eUnitCamp::Ally );
+    if( _owner->getTargetCamp() == eTargetCamp::Player ) {
+        flamingo->setTargetCamp( eTargetCamp::Ally );
     }
     else {
-        flamingo->setUnitCamp( _owner->getUnitCamp() );
+        flamingo->setTargetCamp( _owner->getTargetCamp() );
     }
     
     deploy_units.pushBack( flamingo );

@@ -6,11 +6,11 @@
 class Collidable
 {
 public:
-	virtual bool willCollide(cocos2d::Point pos, float radius) = 0;
+	virtual bool willCollide( cocos2d::Point pos, float radius) = 0;
 
-	virtual bool willCollide(class UnitNode* unit, cocos2d::Point unit_new_pos) = 0;
+	virtual bool willCollide( class TargetNode* unit, cocos2d::Point unit_new_pos) = 0;
 
-	virtual bool getAdvisedNewDir(class UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir) = 0;
+	virtual bool getAdvisedNewDir( class UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir ) = 0;
 
 	virtual int getPriority() const = 0;
 };

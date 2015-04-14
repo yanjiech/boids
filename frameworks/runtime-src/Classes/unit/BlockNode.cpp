@@ -81,7 +81,7 @@ bool BlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::V
         this->setEnabled( true );
     }
     
-    _name = obj_properties.at( "name" ).asString();
+    _block_name = obj_properties.at( "name" ).asString();
     
     return true;
 }

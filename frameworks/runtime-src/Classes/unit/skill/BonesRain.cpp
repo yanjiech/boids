@@ -67,7 +67,7 @@ void BonesRain::updateFrame( float delta ) {
             bullet_data["will_miss"] = Value( false );
             
             DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_BONESRAIN, _damage );
-            FixedPosBulletNode* bullet = FixedPosBulletNode::create( _owner, bullet_data, calculator, ValueMap() );
+            FixedPosBulletNode* bullet = FixedPosBulletNode::create( dynamic_cast<TargetNode*>( _owner ), bullet_data, calculator, ValueMap() );
             bullet->shootAtPosition( pos );
             
             std::string resource = "effects/skeleton_king_skill_1/cross";

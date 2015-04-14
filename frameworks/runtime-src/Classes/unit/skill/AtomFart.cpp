@@ -68,13 +68,13 @@ void AtomFart::begin() {
     
     DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_ATOM_FART, _damage );
     
-    Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getUnitCamp(), fart_pos, _range );
+    Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getTargetCamp(), fart_pos, _range );
     for( auto itr = candidates.begin(); itr != candidates.end(); ++itr ) {
         UnitNode* unit = *itr;
         PoisonBuff* buff = PoisonBuff::create( unit, buff_data );
         unit->addBuff( buff->getBuffId(), buff );
         
-        ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getUnitData(), unit->getUnitData() );
+        ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getTargetData(), unit->getTargetData() );
         unit->takeDamage( result, _owner->getDeployId() );
         
         Point push_dir = unit->getPosition() - _owner->getPosition();

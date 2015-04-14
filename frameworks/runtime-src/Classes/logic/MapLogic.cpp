@@ -84,7 +84,7 @@ void MapLogic::deployPlayerUnits() {
     for( auto itr = player_units.begin(); itr != player_units.end(); ++itr ) {
         const ValueMap& vm = itr->asValueMap();
         UnitNode* unit = UnitNode::create( _battle_layer, vm );
-        unit->setUnitCamp( eUnitCamp::Player );
+        unit->setTargetCamp( eTargetCamp::Player );
         
         PlayerMoveBehavior* move_behavior = PlayerMoveBehavior::create( unit );
         unit->addBehavior( BEHAVIOR_NAME_MOVE, move_behavior );
@@ -224,7 +224,7 @@ void MapLogic::onTargetNodeAppear( TargetNode* target_node ) {
     do {
         UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
         if( unit_node ) {
-            this->increaseUnitAppearCountByCamp( 1, (int)unit_node->getUnitCamp() );
+            this->increaseUnitAppearCountByCamp( 1, (int)unit_node->getTargetCamp() );
             cocos2d::ValueVector tags = unit_node->getUnitTags();
             for( auto itr = tags.begin(); itr != tags.end(); ++itr ) {
                 this->increaseUnitAppearCountByTag( 1, itr->asString() );
@@ -263,7 +263,7 @@ void MapLogic::onTargetNodeDisappear( TargetNode* target_node ) {
     do {
         UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
         if( unit_node ) {
-            this->increaseUnitDisappearCountByCamp( 1, (int)unit_node->getUnitCamp() );
+            this->increaseUnitDisappearCountByCamp( 1, (int)unit_node->getTargetCamp() );
             cocos2d::ValueVector tags = unit_node->getUnitTags();
             for( auto itr = tags.begin(); itr != tags.end(); ++itr ) {
                 this->increaseUnitDisappearCountByTag( 1, itr->asString() );

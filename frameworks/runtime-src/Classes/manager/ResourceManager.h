@@ -14,7 +14,8 @@
 enum eResourceType {
     Character_Double_Face = 1,
     Character_Front = 2,
-    Character_Back = 3
+    Character_Back = 3,
+    Tower = 4
 };
 
 class ResourceManager {

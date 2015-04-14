@@ -51,29 +51,18 @@ UnitData* UnitData::create( const cocos2d::ValueMap& data ) {
 }
 
 bool UnitData::init( const cocos2d::ValueMap& data ) {
-    this->name = data.at( "name" ).asString();
-    this->level = data.at( "level" ).asInt();
+    std::string name = data.at( "name" ).asString();
+    int level = data.at( "level" ).asInt();
     
-    const ValueMap& unit_config = ResourceManager::getInstance()->getUnitData( name );
+    ValueMap unit_config = ResourceManager::getInstance()->getUnitData( name );
+    unit_config["name"] = Value( name );
+    unit_config["level"] = Value( level );
     
-    this->unit_id = unit_config.at( "id" ).asInt();
-    this->display_name = unit_config.at( "displayname" ).asString();
-    this->hp = unit_config.at( "hp" ).asFloat() + this->level * (float)unit_config.at( "hpgr" ).asFloat();
-    this->current_hp = this->hp;
-    this->mp = unit_config.at( "mp" ).asFloat() + this->level * (float)unit_config.at( "mpgr" ).asFloat();
-    this->current_mp = this->mp;
-    this->atk = unit_config.at( "atk" ).asFloat() + this->level * unit_config.at( "atkgr" ).asFloat();
-    this->def = unit_config.at( "def" ).asFloat() + this->level * unit_config.at( "defgr" ).asFloat();
-    this->move_speed = unit_config.at( "movespeed" ).asFloat();
-    this->atk_speed = unit_config.at( "attackspeed" ).asFloat();
-    this->collide = unit_config.at( "collide" ).asFloat();
-    this->critical = unit_config.at( "cri" ).asFloat() + this->level * unit_config.at( "crigr" ).asFloat();
-    this->tenacity = unit_config.at( "ten" ).asFloat() + this->level * unit_config.at( "tengr" ).asFloat();
-    this->hit = unit_config.at( "hit" ).asFloat() + this->level * unit_config.at( "hitgr" ).asFloat();
-    this->dodge = unit_config.at( "dodge" ).asFloat() + this->level * unit_config.at( "dodge" ).asFloat();
+    if( !ElementData::init( unit_config ) ) {
+        return false;
+    }
     
     this->guard_radius = unit_config.at( "guard_radius" ).asFloat();
-    this->atk_range = unit_config.at( "range" ).asFloat();
     
     this->recover = unit_config.at( "rec" ).asFloat() + this->level * unit_config.at( "recgr" ).asFloat();
     this->scale = unit_config.at( "scale" ).asFloat();
@@ -83,14 +72,6 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
     this->is_melee = unit_config.at( "is_melee" ).asBool();
     this->is_double_face = unit_config.at( "double_face" ).asBool();
     this->default_face_dir = unit_config.at( "faceleft" ).asInt();
-    
-    auto itr = unit_config.find( "bullet_name" );
-    if( itr != unit_config.end() ) {
-        this->bullet_name = itr->second.asString();
-    }
-    else {
-        this->bullet_name = "";
-    }
     
     const ValueVector& skill_vector = unit_config.at( "skills" ).asValueVector();
     for( auto itr = skill_vector.begin(); itr != skill_vector.end(); ++itr ) {
@@ -102,61 +83,12 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
 }
 
 void UnitData::setAttribute( const std::string& key, const std::string& value ) {
-    if( key == "atk" ) {
-        this->atk = (float)Utils::toDouble( value );
-    }
-    else if( key == "attackspeed" ) {
-        this->atk_speed = (float)Utils::toDouble( value );
-    }
-    else if( key == "collide" ) {
-        this->collide = (float)Utils::toDouble( value );
-    }
-    else if( key == "cri" ) {
-        this->critical = (float)Utils::toDouble( value );
-    }
-    else if( key == "def" ) {
-        this->def = (float)Utils::toDouble( value );
-    }
-    else if( key == "displayname" ) {
-        this->display_name = value;
-    }
-    else if( key == "dodge" ) {
-        this->dodge = (float)Utils::toDouble( value );
-    }
-    else if( key == "guard_radius" ) {
+    ElementData::setAttribute( key, value );
+    if( key == "guard_radius" ) {
         this->guard_radius = (float)Utils::toDouble( value );
-    }
-    else if( key == "hit" ) {
-        this->hit = (float)Utils::toDouble( value );
-    }
-    else if( key == "hp" ) {
-        this->hp = (float)Utils::toDouble( value );
-        this->current_hp = this->hp;
-    }
-    else if( key == "mp" ) {
-        this->mp = (float)Utils::toDouble( value );
-        this->current_mp = this->mp;
-    }
-    else if( key == "id" ) {
-        this->unit_id = Utils::toInt( value );
-    }
-    else if( key == "movespeed" ) {
-        this->move_speed = (float)Utils::toDouble( value );
-    }
-    else if( key == "name" ) {
-        this->name = value;
     }
     else if( key == "position" ) {
         this->role = value;
-    }
-    else if( key == "range" ) {
-        this->atk_range = (float)Utils::toDouble( value );
-    }
-    else if( key == "rec" ) {
-        this->recover = (float)Utils::toDouble( value );
-    }
-    else if( key == "ten") {
-        this->tenacity = (float)Utils::toDouble( value );
     }
 }
 
@@ -164,38 +96,36 @@ UnitNode::UnitNode() :
 _state( eUnitState::Unknown_Unit_State ),
 _guard_target( nullptr ),
 _walk_path( nullptr ),
-_unit_data( nullptr ),
 _tour_path( nullptr )
 {
 }
 
 UnitNode::~UnitNode() {
-    CC_SAFE_RELEASE( _unit_data );
     CC_SAFE_RELEASE( _guard_target );
     CC_SAFE_RELEASE( _walk_path );
     CC_SAFE_RELEASE( _tour_path );
 }
 
-eUnitCamp UnitNode::getCampByString( const std::string& camp_string ) {
+eTargetCamp UnitNode::getCampByString( const std::string& camp_string ) {
     if( camp_string == UNIT_CAMP_ENEMY ) {
-        return eUnitCamp::Enemy;
+        return eTargetCamp::Enemy;
     }
     else if( camp_string == UNIT_CAMP_NEUTRAL ) {
-        return eUnitCamp::NPC;
+        return eTargetCamp::NPC;
     }
     else if( camp_string == UNIT_CAMP_ALLY ) {
-        return eUnitCamp::Ally;
+        return eTargetCamp::Ally;
     }
     else if( camp_string == UNIT_CAMP_PLAYER ) {
-        return eUnitCamp::Player;
+        return eTargetCamp::Player;
     }
     else if( camp_string == UNIT_CAMP_WILD ) {
-        return eUnitCamp::Wild;
+        return eTargetCamp::Wild;
     }
     else if( camp_string == UNIT_CAMP_OPPONENT ) {
-        return eUnitCamp::Unknown_Camp;
+        return eTargetCamp::Unknown_Camp;
     }
-    return eUnitCamp::Unknown_Camp;
+    return eTargetCamp::Unknown_Camp;
 }
 
 UnitNode* UnitNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_data ) {
@@ -229,7 +159,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     
     auto itr = unit_data.find( "unit_camp" );
     if( itr != unit_data.end() ) {
-        this->setUnitCamp( UnitNode::getCampByString( itr->second.asString() ) );
+        this->setTargetCamp( UnitNode::getCampByString( itr->second.asString() ) );
     }
     
     itr = unit_data.find( "is_boss" );
@@ -260,20 +190,20 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         }
     }
     
-    if( _unit_data->is_double_face ) {
-        std::string resource = res_manager->getPathForResource( _unit_data->name, eResourceType::Character_Double_Face );
+    if( ud->is_double_face ) {
+        std::string resource = res_manager->getPathForResource( ud->name, eResourceType::Character_Double_Face );
         _front = ArmatureManager::getInstance()->createArmature( resource );
         _back = nullptr;
     }
     else {
-        std::string front_res = res_manager->getPathForResource( _unit_data->name, eResourceType::Character_Front );
+        std::string front_res = res_manager->getPathForResource( ud->name, eResourceType::Character_Front );
         _front = ArmatureManager::getInstance()->createArmature( front_res );
-        std::string back_res = res_manager->getPathForResource( _unit_data->name, eResourceType::Character_Back );
+        std::string back_res = res_manager->getPathForResource( ud->name, eResourceType::Character_Back );
         _back = ArmatureManager::getInstance()->createArmature( back_res );
         
     }
     if( _front ) {
-        _front->setScale( _unit_data->scale );
+        _front->setScale( ud->scale );
         _front->setStartListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationStart, this ) );
         _front->setCompleteListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationCompleted, this ) );
         _front->setEventListener( CC_CALLBACK_2( UnitNode::onSkeletonAnimationEvent, this ) );
@@ -283,7 +213,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     }
     
     if( _back ) {
-        _back->setScale( _unit_data->scale );
+        _back->setScale( ud->scale );
         _back->setStartListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationStart, this ) );
         _back->setCompleteListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationCompleted, this ) );
         _back->setEventListener( CC_CALLBACK_2( UnitNode::onSkeletonAnimationEvent, this ) );
@@ -292,10 +222,9 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     
     //shadow
     _shadow = Sprite::createWithSpriteFrameName( "unit_shadow.png" );
-    _shadow->setScale( _unit_data->collide / DEFAULT_SHADOW_RADIUS );
+    _shadow->setScale( ud->collide / DEFAULT_SHADOW_RADIUS );
     this->addChild( _shadow, eComponentLayer::MostBelow );
     
-    _deploy_id = 0;
     _same_dir_frame_count = 0;
     this->setHesitateFrame( DEFAULT_HESITATE_FRAMES );
     this->setChasingTarget( nullptr );
@@ -310,7 +239,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     _new_dir_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::BLUE );
     this->addChild( _new_dir_draw, 10001 );
     
-    _custom_draw->drawCircle( Point::ZERO, _unit_data->collide, 360, 100, false, Color4F::RED );
+    _custom_draw->drawCircle( Point::ZERO, ud->collide, 360, 100, false, Color4F::RED );
     //end debug
     
     _face = eUnitFace::Back;
@@ -345,47 +274,18 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
 }
 
 void UnitNode::updateFrame( float delta ) {
-    do {
-        if( _relax_frames > 0 && _state == eUnitState::Idle ) {
-            --_relax_frames;
-        }
-        ++_same_dir_frame_count;
-        this->applyUnitState();
-        
-        if( !this->isDying() ) {
-            //skill
-            auto itr = _behaviors.find( BEHAVIOR_NAME_SKILL );
-            if( itr != _behaviors.end() && itr->second->isEnabled() ) {
-                if( itr->second->behave( delta ) ) {
-                    break;
-                }
-            }
-            //attack
-            itr = _behaviors.find( BEHAVIOR_NAME_ATTACK );
-            if( itr != _behaviors.end() && itr->second->isEnabled() ) {
-                if( itr->second->behave( delta ) ) {
-                    break;
-                }
-            }
-            itr = _behaviors.find( BEHAVIOR_NAME_MOVE );
-            if( itr != _behaviors.end() && itr->second->isEnabled() ) {
-                if( itr->second->behave( delta ) ) {
-                    break;
-                }
-            }
-            itr = _behaviors.find( BEHAVIOR_NAME_IDLE );
-            if( itr != _behaviors.end() && itr->second->isEnabled() ) {
-                if( itr->second->behave( delta ) ) {
-                    break;
-                }
-            }
-        }
-    }while( false );
+    if( _relax_frames > 0 && _state == eUnitState::Idle ) {
+        --_relax_frames;
+    }
     
-    this->evaluateCatchUp();
-    this->updateComponents( delta );
+    ++_same_dir_frame_count;
+    TargetNode::updateFrame( delta );
+    
+    this->applyUnitState();
+    
     this->updateBuffs( delta );
     this->updateSkills( delta );
+    this->evaluateCatchUp();
 }
 
 void UnitNode::onSkeletonAnimationStart( int track_index ) {
@@ -541,21 +441,23 @@ void UnitNode::changeUnitDirection( const cocos2d::Point& new_dir ) {
     eUnitFace new_face = new_dir.y > 0 ? eUnitFace::Back : eUnitFace::Front;
     this->changeFace( new_face );
     
+    UnitData* unit_data = dynamic_cast<UnitData*>( _target_data );
+    
     float rotation = 0;
     if( new_dir.y > 0 ) {
         if( new_dir.x > 0 ) {
-            rotation = ( _unit_data->default_face_dir == 2 || _unit_data->default_face_dir == 3 ) ? 180.0f : 0;
+            rotation = ( unit_data->default_face_dir == 2 || unit_data->default_face_dir == 3 ) ? 180.0f : 0;
         }
         else {
-            rotation = ( _unit_data->default_face_dir == 0 || _unit_data->default_face_dir == 1 ) ? 180.0f : 0;
+            rotation = ( unit_data->default_face_dir == 0 || unit_data->default_face_dir == 1 ) ? 180.0f : 0;
         }
     }
     else {
         if( new_dir.x > 0 ) {
-            rotation = ( _unit_data->default_face_dir == 1 || _unit_data->default_face_dir == 3 ) ? 180.0f : 0;
+            rotation = ( unit_data->default_face_dir == 1 || unit_data->default_face_dir == 3 ) ? 180.0f : 0;
         }
         else {
-            rotation = ( _unit_data->default_face_dir == 0 || _unit_data->default_face_dir == 2 ) ? 180.0f : 0;
+            rotation = ( unit_data->default_face_dir == 0 || unit_data->default_face_dir == 2 ) ? 180.0f : 0;
         }
     }
     if( this->getCurrentSkeleton()->getRotationSkewY() != rotation ) {
@@ -569,7 +471,8 @@ void UnitNode::changeUnitDirection( const cocos2d::Point& new_dir ) {
 }
 
 void UnitNode::changeFace( eUnitFace face ) {
-    if( !_unit_data->is_double_face ) {
+    UnitData* unit_data = dynamic_cast<UnitData*>( _target_data );
+    if( !unit_data->is_double_face ) {
         if( _face != face ) {
             if( face == eUnitFace::Front ) {
                 _front->setVisible( true );
@@ -659,7 +562,7 @@ void UnitNode::takeDamage( const cocos2d::ValueMap& result, int source_id ) {
 }
 
 void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_id ) {
-    if( this->isAttackable() && _unit_data->current_hp > 0 ) {
+    if( this->isAttackable() && _target_data->current_hp > 0 ) {
         float damage = amount;
         for( auto itr = _buffs.begin(); itr != _buffs.end(); ++itr ) {
             ShieldBuff* buff = dynamic_cast<ShieldBuff*>( itr->second );
@@ -668,10 +571,10 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
                 break;
             }
         }
-        _unit_data->current_hp -= damage;
+        _target_data->current_hp -= damage;
         
-        if( _unit_data->current_hp <= 0 ) {
-            _unit_data->current_hp = 0;
+        if( _target_data->current_hp <= 0 ) {
+            _target_data->current_hp = 0;
         }
         
         //jump damage number
@@ -679,10 +582,10 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
         this->jumpNumber( damage, "damage", is_cri, jump_text_name );
         
         //update blood bar
-        _hp_bar->setPercentage( _unit_data->current_hp / _unit_data->hp * 100.0f );
+        _hp_bar->setPercentage( _target_data->current_hp / _target_data->hp * 100.0f );
         
         //dying
-        if( _unit_data->current_hp == 0 ) {
+        if( _target_data->current_hp == 0 ) {
             this->changeUnitState( eUnitState::Dying );
         }
         else if( _chasing_target == nullptr ) {
@@ -699,9 +602,9 @@ void UnitNode::takeHeal( const cocos2d::ValueMap& result, int source_id ) {
 }
 
 void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
-    _unit_data->current_hp += amount;
-    if( _unit_data->current_hp > _unit_data->hp ) {
-        _unit_data->current_hp = _unit_data->hp;
+    _target_data->current_hp += amount;
+    if( _target_data->current_hp > _target_data->hp ) {
+        _target_data->current_hp = _target_data->hp;
     }
     //add heal effect
     std::string resource = "effects/heal";
@@ -714,7 +617,7 @@ void UnitNode::takeHeal( float amount, bool is_cri, int source_id ) {
     component->setAnimation( 0, "animation", false );
     
     //update blood bar
-    _hp_bar->setPercentage( _unit_data->current_hp / _unit_data->hp * 100.0f );
+    _hp_bar->setPercentage( _target_data->current_hp / _target_data->hp * 100.0f );
     
     //jump number
     std::string jump_text_name = Utils::stringFormat( "heal_number_%d", BulletNode::getNextBulletId() );
@@ -729,35 +632,6 @@ void UnitNode::setGLProgrameState( const std::string& name ) {
             _back->setGLProgramState( gl_program_state );
         }
     }
-}
-
-bool UnitNode::addUnitComponent( UnitNodeComponent* component, const std::string& key, eComponentLayer layer_type ) {
-    if( _components.find( key ) == _components.end() ) {
-        _components.insert( key, component );
-        this->addChild( component, layer_type );
-        return true;
-    }
-    return false;
-}
-
-void UnitNode::removeUnitComponent( const std::string& key ) {
-    auto itr = _components.find( key );
-    if( itr != _components.end() ) {
-        UnitNodeComponent* component = itr->second;
-        _components.erase( itr );
-        component->removeFromParent();
-    }
-}
-
-void UnitNode::adjustAllUnitComponents() {
-    
-}
-
-void UnitNode::removeAllUnitComponents() {
-    for( auto pair : _components ) {
-        pair.second->removeFromParent();
-    }
-    _components.clear();
 }
 
 void UnitNode::showHP() {
@@ -780,7 +654,7 @@ void UnitNode::applyCustomChange( const std::string& content_string ) {
     for( auto str : change_pairs ) {
         std::vector<std::string> pair;
         Utils::split( str, pair, ':' );
-        _unit_data->setAttribute( pair.at( 0 ), pair.at( 1 ) );
+        _target_data->setAttribute( pair.at( 0 ), pair.at( 1 ) );
     }
 }
 
@@ -843,20 +717,6 @@ void UnitNode::endCast() {
     }
 }
 
-bool UnitNode::willCollide( cocos2d::Point pos, float radius ) {
-    cocos2d::Vec2 d = this->getPosition() - pos;
-    return d.length() <= _unit_data->collide + radius;
-}
-
-bool UnitNode::willCollide( UnitNode* unit) {
-    return this->willCollide( unit->getPosition(), unit->getUnitData()->collide );
-}
-
-bool UnitNode::willCollide( UnitNode* unit, cocos2d::Point unit_new_pos ) {
-    cocos2d::Vec2 d = this->getPosition() - unit_new_pos;
-    return d.length() <= _unit_data->collide + unit->getUnitData()->collide;
-}
-
 bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir ) {
     Vec2 unit_to_this = this->getPosition() - unit->getPosition();
     Vec2 this_to_unit = unit->getPosition() - this->getPosition();
@@ -883,14 +743,6 @@ bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d:
     
     _new_dir_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
     return true;
-}
-
-void UnitNode::addBehavior( const std::string& key, BehaviorBase* behavior ) {
-    _behaviors.insert( key, behavior );
-}
-
-void UnitNode::removeBehavior( const std::string& key ) {
-    _behaviors.erase( key );
 }
 
 void UnitNode::walkTo( const cocos2d::Point& new_pos ) {
@@ -957,12 +809,16 @@ cocos2d::Point UnitNode::pushToward( const cocos2d::Point& dir, float distance )
     float max_walk_length = distance;
     Point new_dir = origin_dir;
     Point dest_pos = new_pos;
-    Terrain::getInstance()->getMeshByUnitRadius( _unit_data->collide )->getNearbyBorders( this->getPosition(), max_walk_length, collidables );
+    Terrain::getInstance()->getMeshByUnitRadius( _target_data->collide )->getNearbyBorders( this->getPosition(), max_walk_length, collidables );
     
     for( auto id_u : _battle_layer->getAliveUnits() ) {
         if( id_u.second == this)
             continue;
         collidables.push_back(id_u.second);
+    }
+    
+    for( auto pair : _battle_layer->getAllTowers() ) {
+        collidables.push_back( pair.second );
     }
     
     std::set<Collidable*> steered_collidables;
@@ -1032,22 +888,24 @@ bool UnitNode::isOscillate( const cocos2d::Point& new_dir ) {
 
 void UnitNode::evaluateCatchUp() {
     const Point& pos = this->getPosition();
-    const Point& leader_pos = _battle_layer->getLeaderUnit()->getPosition();
-    float distance = pos.distance( leader_pos );
-    if( !_should_catch_up && distance > DEFAULT_CATCH_UP_START_DISTANCE ) {
-        this->setShouldCatchUp( true );
-    }
-    else if( _should_catch_up && distance < DEFAULT_CATCH_UP_STOP_DISTANCE ) {
-        this->setShouldCatchUp( false );
+    if( UnitNode* leader = _battle_layer->getLeaderUnit() ) {
+        const Point& leader_pos = leader->getPosition();
+        float distance = pos.distance( leader_pos );
+        if( !_should_catch_up && distance > DEFAULT_CATCH_UP_START_DISTANCE ) {
+            this->setShouldCatchUp( true );
+        }
+        else if( _should_catch_up && distance < DEFAULT_CATCH_UP_STOP_DISTANCE ) {
+            this->setShouldCatchUp( false );
+        }
     }
 }
 
 void UnitNode::findPathToPosition( const cocos2d::Point& pos, int validate_frames ) {
-    this->setWalkPath( Terrain::getInstance()->getMeshByUnitRadius( _unit_data->collide )->findPath( this->getPosition(), pos, validate_frames ) );
+    this->setWalkPath( Terrain::getInstance()->getMeshByUnitRadius( _target_data->collide )->findPath( this->getPosition(), pos, validate_frames ) );
 }
 
 bool UnitNode::isHarmless() {
-    return _unit_data->atk <= 0;
+    return _target_data->atk <= 0;
 }
 
 TargetNode* UnitNode::getAttackTarget() {
@@ -1071,7 +929,7 @@ TargetNode* UnitNode::getAttackTarget() {
 
 bool UnitNode::canAttack( TargetNode* target_node ) {
     if( UnitNode* unit = dynamic_cast<UnitNode*>( target_node ) ) {
-        if( this->getPosition().distance( unit->getPosition() ) > _unit_data->atk_range + unit->getUnitData()->collide ) {
+        if( this->getPosition().distance( unit->getPosition() ) > _target_data->atk_range + unit->getUnitData()->collide ) {
             return false;
         }
     }
@@ -1112,11 +970,12 @@ void UnitNode::onAttackBegan() {
 
 void UnitNode::onAttacking() {
     if( _chasing_target ) {
-        if( _unit_data->is_melee ) {
+        UnitData* unit_data = dynamic_cast<UnitData*>( _target_data );
+        if( unit_data->is_melee ) {
             UnitNode* target_unit = dynamic_cast<UnitNode*>( _chasing_target );
             if( target_unit ) {
                 DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
-                ValueMap result = damage_calculator->calculateDamage( _unit_data, target_unit->getUnitData() );
+                ValueMap result = damage_calculator->calculateDamage( _target_data, target_unit->getTargetData() );
                 target_unit->takeDamage( result, _deploy_id );
                 
                 if( !result.at( "miss" ).asBool() ) {
@@ -1132,8 +991,8 @@ void UnitNode::onAttacking() {
         }
         else {
             DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
-            BulletNode* bullet = BulletNode::create( this, ResourceManager::getInstance()->getBulletData( _unit_data->bullet_name ), damage_calculator, ValueMap() );
-            bullet->shootAt( this, _chasing_target );
+            BulletNode* bullet = BulletNode::create( this, ResourceManager::getInstance()->getBulletData( _target_data->bullet_name ), damage_calculator, ValueMap() );
+            bullet->shootAt( _chasing_target );
         }
     }
 }
@@ -1144,10 +1003,11 @@ void UnitNode::onCasting() {
 }
 
 bool UnitNode::isUnitInDirectView( UnitNode* unit ) {
+    UnitData* unit_data = dynamic_cast<UnitData*>( _target_data );
     if( Terrain::getInstance()->isBlocked( this->getPosition(), unit->getPosition() ) ) {
         return false;
     }
-    else if( this->getPosition().distance( unit->getPosition() ) > _unit_data->guard_radius + unit->getUnitData()->collide ) {
+    else if( this->getPosition().distance( unit->getPosition() ) > unit_data->guard_radius + unit->getUnitData()->collide ) {
         return false;
     }
     return true;
@@ -1171,26 +1031,6 @@ bool UnitNode::hasUnitTag( const std::string& tag_name ) {
     return false;
 }
 
-bool UnitNode::isFoeOfCamp( eUnitCamp opponent_camp ) {
-    eUnitCamp camp = this->getUnitCamp();
-    if( camp == eUnitCamp::Player || camp == eUnitCamp::Ally ) {
-        if( opponent_camp == eUnitCamp::Enemy || opponent_camp == eUnitCamp::Wild ) {
-            return true;
-        }
-    }
-    else if( camp == eUnitCamp::Enemy ) {
-        if( opponent_camp == eUnitCamp::Player || opponent_camp == eUnitCamp::Ally || opponent_camp == eUnitCamp::Wild ) {
-            return true;
-        }
-    }
-    else if( camp == eUnitCamp::Wild ) {
-        if( opponent_camp == eUnitCamp::Player || opponent_camp == eUnitCamp::Ally || opponent_camp == eUnitCamp::Enemy ) {
-            return true;
-        }
-    }
-    return false;
-}
-
 bool UnitNode::needRelax() {
     return ( _relax_frames > 0 );
 }
@@ -1200,7 +1040,7 @@ cocos2d::Point UnitNode::getNextWanderPos() {
         float r = Utils::randomNumber( _wander_radius );
         float angle = Utils::randomFloat() * M_PI;
         Point new_pos = Point( _born_position.x + cosf( angle ) * r, _born_position.y + sinf( angle ) * r );
-        if( _battle_layer->isPositionOK( new_pos, _unit_data->collide ) ) {
+        if( _battle_layer->isPositionOK( new_pos, _target_data->collide ) ) {
             return new_pos;
         }
     }
@@ -1219,10 +1059,12 @@ void UnitNode::setTourPath( Path* path ) {
     CC_SAFE_RETAIN( _tour_path );
 }
 
+UnitData* UnitNode::getUnitData() {
+    return dynamic_cast<UnitData*>( _target_data );
+}
+
 void UnitNode::setUnitData( UnitData* unit_data ) {
-    CC_SAFE_RELEASE( _unit_data );
-    _unit_data = unit_data;
-    CC_SAFE_RETAIN( _unit_data );
+    this->setTargetData( unit_data );
 }
 
 void UnitNode::jumpNumber( float amount, const std::string& type, bool is_critical, const std::string& name ) {
@@ -1305,18 +1147,6 @@ void UnitNode::setConcentrateOnWalk( bool b ) {
 }
 
 //private methods
-void UnitNode::updateComponents( float delta ) {
-    cocos2d::Map<std::string, UnitNodeComponent*> components = _components;
-    for( auto pair : components ) {
-        UnitNodeComponent* comp = pair.second;
-        if( comp->shouldRecycle() ) {
-            this->removeUnitComponent( comp->getName() );
-        }
-        else {
-            comp->updateFrame( delta );
-        }
-    }
-}
 
 void UnitNode::updateBuffs( float delta ) {
     cocos2d::Map<std::string, Buff*> buffs = _buffs;

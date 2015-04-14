@@ -2,7 +2,7 @@
     "arrow_tower": {
         "atk": 32.0, 
         "atkgr": 14.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "arrow", 
         "collide": 40.0, 
         "cri": 3.0, 
@@ -21,7 +21,7 @@
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "arrow_tower", 
-        "range": 300.0, 
+        "range": 500.0, 
         "rec": 0.5, 
         "recgr": 0.23, 
         "scale": 1.0, 

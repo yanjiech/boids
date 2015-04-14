@@ -64,7 +64,7 @@ void GiantSword::begin() {
     DamageCalculate* calculator = DamageCalculate::create( "GiantSword", _damage );
     ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( "saber_bullet" );
     bullet_data["will_miss"] = Value( false );
-    FixedPosBulletNode* bullet = FixedPosBulletNode::create( _owner, bullet_data, calculator, ValueMap() );
+    FixedPosBulletNode* bullet = FixedPosBulletNode::create( dynamic_cast<TargetNode*>( _owner ), bullet_data, calculator, ValueMap() );
     bullet->shootAtPosition( _owner->getPosition() + _dir * _range );
 }
 

@@ -39,38 +39,39 @@ bool AttackBehavior::init( UnitNode* unit_node ) {
 }
 
 bool AttackBehavior::behave( float delta ) {
-    if( _unit_node->isDying() ) {
+    UnitNode* unit_node = dynamic_cast<UnitNode*>( _target_node );
+    if( unit_node->isDying() ) {
         return true;
     }
-    if( _unit_node->isUnderControl() ) {
+    if( unit_node->isUnderControl() ) {
         return true;
     }
-    if( _unit_node->isAttacking() || _unit_node->isCasting() ) {
+    if( unit_node->isAttacking() || unit_node->isCasting() ) {
         return true;
     }
-    if( _unit_node->isHarmless() ) {
+    if( unit_node->isHarmless() ) {
         return false;
     }
-    if( _unit_node->isConcentrateOnWalk() ) {
+    if( unit_node->isConcentrateOnWalk() ) {
         return false;
     }
     
-    TargetNode* attack_target = _unit_node->getAttackTarget();
+    TargetNode* attack_target = unit_node->getAttackTarget();
     if( attack_target != nullptr ) {
-        if( _unit_node->canAttack( attack_target ) ) {
-            _unit_node->attack( attack_target );
+        if( unit_node->canAttack( attack_target ) ) {
+            unit_node->attack( attack_target );
             return true;
         }
         else {
-            _unit_node->setChasingTarget( attack_target );
+            unit_node->setChasingTarget( attack_target );
             return false;
         }
     }
-    else if( _unit_node->getChasingTarget() == nullptr && _unit_node->getSightGroup() != "" ) {
-        cocos2d::Vector<UnitNode*> same_sight_group_units = _unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( _unit_node->getUnitCamp(), _unit_node->getSightGroup() );
+    else if( unit_node->getChasingTarget() == nullptr && unit_node->getSightGroup() != "" ) {
+        cocos2d::Vector<UnitNode*> same_sight_group_units = unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( unit_node->getTargetCamp(), unit_node->getSightGroup() );
         for( auto u : same_sight_group_units ) {
             if( u->getChasingTarget() != nullptr ) {
-                _unit_node->setChasingTarget( u->getChasingTarget() );
+                unit_node->setChasingTarget( u->getChasingTarget() );
                 return false;
             }
         }

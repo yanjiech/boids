@@ -341,6 +341,9 @@ std::string ResourceManager::getPathForResource( const std::string& name, eResou
     else if( type == eResourceType::Character_Back ) {
         return Utils::stringFormat( "characters/%s/%s_b", name.c_str(), name.c_str() );
     }
+    else if( type == eResourceType::Tower ) {
+        return Utils::stringFormat( "towers/%s", name.c_str() );
+    }
     else {
         return std::string( "" );
     }

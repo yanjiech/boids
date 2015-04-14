@@ -63,10 +63,10 @@ void NaturesAttendants::updateFrame( float delta ) {
         else {
             if( _heal_elapse >= _interval ) {
                 _heal_elapse = 0;
-                Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveAllyInRange( _owner->getUnitCamp(), _owner->getPosition(), _range );
+                Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveAllyInRange( _owner->getTargetCamp(), _owner->getPosition(), _range );
                 for( auto unit : candidates ) {
                     DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_NATURESATTENDANTS, _heal );
-                    ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getUnitData(), unit->getUnitData() );
+                    ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getTargetData(), unit->getTargetData() );
                     unit->takeHeal( result, _owner->getDeployId() );
                 }
             }

@@ -43,10 +43,10 @@ private:
     std::string _metaData;
     std::string _path;
     std::vector<std::string> _plistList;
-    std::vector<std::string> _manuallyLoadedImages;
     
     void preprocessMapData();
-    void manuallyLoadImagesToCache();
+    
+    cocos2d::Sprite* spriteFromObject( cocos2d::TMXTiledMap* map, cocos2d::Value& o, bool createFromCache );
 };
 
 #endif /* defined(__Boids__MapData__) */

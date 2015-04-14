@@ -37,9 +37,10 @@ bool IdleBehavior::init( UnitNode* unit_node ) {
 }
 
 bool IdleBehavior::behave( float delta ) {
-    if( _unit_node->isDying() ) {
+    UnitNode* unit_node = dynamic_cast<UnitNode*>( _target_node );
+    if( unit_node->isDying() ) {
         return true;
     }
-    _unit_node->changeUnitState( eUnitState::Idle );
+    unit_node->changeUnitState( eUnitState::Idle );
     return true;
 }

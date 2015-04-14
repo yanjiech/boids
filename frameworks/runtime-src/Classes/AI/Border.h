@@ -11,11 +11,11 @@ public:
     
     Border( const Border& other );
 
-	bool willCollide(cocos2d::Point pos, float radius);
+	virtual bool willCollide(cocos2d::Point pos, float radius);
 
-	bool willCollide(class UnitNode* unit, cocos2d::Point unit_new_pos);
+	virtual bool willCollide(class TargetNode* unit, cocos2d::Point unit_new_pos);
 
-	bool getAdvisedNewDir(class UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir);
+	virtual bool getAdvisedNewDir(class UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir);
 
 	int getPriority() const;
 

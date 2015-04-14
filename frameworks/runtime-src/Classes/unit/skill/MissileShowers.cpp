@@ -59,12 +59,12 @@ void MissileShowers::updateFrame( float delta ) {
             DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_MISSILE_SHOWERS, _damage );
             bullet_data["damage_radius"] = Value( _radius );
             bullet_data["will_miss"] = Value( false );
-            Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _owner->getPosition(), _range );
+            Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _owner->getPosition(), _range );
             int size = candidates.size();
             if( size > 0 ) {
                 UnitNode* target_unit = candidates.at( Utils::randomNumber( size ) - 1 );
                 BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, ValueMap() );
-                bullet->shootAt( _owner, target_unit );
+                bullet->shootAt( target_unit );
             }
             else {
                 bullet_data["track_target"] = Value( false );
@@ -78,7 +78,7 @@ void MissileShowers::updateFrame( float delta ) {
                     pos = center + dir * range;
                     range /= 2.0f;
                 } while( Terrain::getInstance()->isBlocked( center, pos ) );
-                bullet->shootAtPosition( _owner, pos );
+                bullet->shootAtPosition( pos );
             }
             
             if( ++_current_count >= _count ) {

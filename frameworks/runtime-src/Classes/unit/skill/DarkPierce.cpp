@@ -51,7 +51,7 @@ void DarkPierce::updateFrame( float delta ) {
 
 void DarkPierce::begin() {
     BattleLayer* battle_layer = _owner->getBattleLayer();
-    Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _owner->getPosition(), _range );
+    Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _owner->getPosition(), _range );
     int size = (int)candidates.size();
     for( int i = 0; i < _count && size > 0; i++ ) {
         int rand = Utils::randomNumber( size ) - 1;

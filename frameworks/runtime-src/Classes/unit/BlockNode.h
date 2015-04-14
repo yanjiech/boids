@@ -15,7 +15,7 @@
 
 class BlockNode : public TargetNode {
 private:
-    std::string _name;
+    std::string _block_name;
     
     bool _is_enabled;
     BoidsPolygon _boundaries;
@@ -33,8 +33,8 @@ public:
     bool isEnabled() { return _is_enabled; }
     void setEnabled( bool b );
     
-    const std::string& getBlockName() { return _name; }
-    void setBlockName( const std::string& name ) { _name = name; }
+    const std::string& getBlockName() { return _block_name; }
+    void setBlockName( const std::string& name ) { _block_name = name; }
     
     BoidsPolygon& getBoundaries() { return _boundaries; }
 };

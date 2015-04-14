@@ -41,36 +41,37 @@ bool MoveBehavior::init( UnitNode* unit_node ) {
 }
 
 bool MoveBehavior::behave( float delta ) {
-    if( _unit_node->isDying() ) {
+    UnitNode* unit_node = dynamic_cast<UnitNode*>( _target_node );
+    if( unit_node->isDying() ) {
         return true;
     }
-    if( _unit_node->isUnderControl() ) {
+    if( unit_node->isUnderControl() ) {
         return true;
     }
     
-    float move_speed = _unit_node->getUnitData()->move_speed;
+    float move_speed = unit_node->getUnitData()->move_speed;
     
-    if( _unit_node->getChasingTarget() ) {
-        Point last_pos = _unit_node->getPosition();
-        _unit_node->findPathToPosition( _unit_node->getChasingTarget()->getPosition() );
-        _unit_node->walkAlongWalkPath( move_speed * delta );
+    if( unit_node->getChasingTarget() ) {
+        Point last_pos = unit_node->getPosition();
+        unit_node->findPathToPosition( unit_node->getChasingTarget()->getPosition() );
+        unit_node->walkAlongWalkPath( move_speed * delta );
         return true;
     }
-    if( _unit_node->getTourPath() ) {
-        _unit_node->walkAlongTourPath( move_speed * delta );
+    if( unit_node->getTourPath() ) {
+        unit_node->walkAlongTourPath( move_speed * delta );
         return true;
     }
-    if( _unit_node->isWalking() ) {
-        _unit_node->walkAlongWalkPath( move_speed * delta );
+    if( unit_node->isWalking() ) {
+        unit_node->walkAlongWalkPath( move_speed * delta );
         return true;
     }
-    if( !_unit_node->needRelax() && !_unit_node->isWalking() ) {
-        Point wander_pos = _unit_node->getNextWanderPos();
+    if( !unit_node->needRelax() && !unit_node->isWalking() ) {
+        Point wander_pos = unit_node->getNextWanderPos();
         if( wander_pos.x != 0 || wander_pos.y != 0 ) {
             Path* path = Path::create( INT_MAX );
             path->steps.push_back( wander_pos );
-            _unit_node->setWalkPath( path );
-            _unit_node->walkAlongWalkPath( move_speed * delta );
+            unit_node->setWalkPath( path );
+            unit_node->walkAlongWalkPath( move_speed * delta );
             return true;
         }
     }
