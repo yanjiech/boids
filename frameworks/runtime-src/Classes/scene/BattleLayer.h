@@ -167,7 +167,7 @@ public:
     void addBlockNode( BlockNode* block_node );
     void removeBlockNode( BlockNode* block_node );
     
-    UnitNode* getAliveUnitByDeployId( int deploy_id );
+    TargetNode* getAliveTargetByDeployId( int deploy_id );
     
     bool addBullet( int key, BulletNode* bullet );
     void removeBullet( int key );

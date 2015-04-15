@@ -73,6 +73,8 @@ public:
     std::string getChargingEffectPos();
     
     bool shouldContinue();
+    
+    bool shouldCastOnTouchDown();
 };
 
 #endif /* defined(__Boids__Skill__) */

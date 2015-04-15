@@ -26,6 +26,8 @@
 #include "FatalThrow.h"
 #include "FireWhirl.h"
 #include "DeathSlice.h"
+#include "PenetrateSpear.h"
+#include "HuntingIntuition.h"
 
 class SkillNodeFactory {
 public:

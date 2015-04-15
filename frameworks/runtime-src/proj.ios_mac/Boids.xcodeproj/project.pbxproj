@@ -92,6 +92,10 @@
 		76ED99D41AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */; };
 		76ED99D71AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */; };
 		76ED99D81AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */; };
+		76EF6B301ADE4CDF003E84EF /* PenetrateSpear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */; };
+		76EF6B311ADE4CDF003E84EF /* PenetrateSpear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */; };
+		76EF6B341ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */; };
+		76EF6B351ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */; };
 		76EFF5BD1AD37E5800690CFE /* AtomFart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */; };
 		76EFF5BE1AD37E5800690CFE /* AtomFart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */; };
 		76EFF5C11AD396C300690CFE /* FatalThrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */; };
@@ -536,6 +540,10 @@
 		76ED99D21AD4D0B60047D5A9 /* FireWhirl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireWhirl.h; sourceTree = "<group>"; };
 		76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeathSlice.cpp; sourceTree = "<group>"; };
 		76ED99D61AD4DB8F0047D5A9 /* DeathSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeathSlice.h; sourceTree = "<group>"; };
+		76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PenetrateSpear.cpp; sourceTree = "<group>"; };
+		76EF6B2F1ADE4CDF003E84EF /* PenetrateSpear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenetrateSpear.h; sourceTree = "<group>"; };
+		76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuntingIntuition.cpp; sourceTree = "<group>"; };
+		76EF6B331ADE4EC8003E84EF /* HuntingIntuition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuntingIntuition.h; sourceTree = "<group>"; };
 		76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomFart.cpp; sourceTree = "<group>"; };
 		76EFF5BC1AD37E5800690CFE /* AtomFart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomFart.h; sourceTree = "<group>"; };
 		76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FatalThrow.cpp; sourceTree = "<group>"; };
@@ -1063,6 +1071,10 @@
 				76ED99D21AD4D0B60047D5A9 /* FireWhirl.h */,
 				76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */,
 				76ED99D61AD4DB8F0047D5A9 /* DeathSlice.h */,
+				76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */,
+				76EF6B2F1ADE4CDF003E84EF /* PenetrateSpear.h */,
+				76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */,
+				76EF6B331ADE4EC8003E84EF /* HuntingIntuition.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -1884,6 +1896,7 @@
 				987336151AB6840200694B53 /* JumpText.cpp in Sources */,
 				98E61DD31AB6A674005DE093 /* HpBar.cpp in Sources */,
 				E87412F71A0B55DF003EBD0B /* BoidsPolygon.cpp in Sources */,
+				76EF6B311ADE4CDF003E84EF /* PenetrateSpear.cpp in Sources */,
 				988B52E71AA4461700FB7B21 /* UIControlLayer.cpp in Sources */,
 				98E3B67C1A73A77A00B5BEBB /* stringprintf.cc in Sources */,
 				76ED99D81AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */,
@@ -1950,6 +1963,7 @@
 				98E3B65A1A73A77A00B5BEBB /* coded_stream.cc in Sources */,
 				98E3B6521A73A77A00B5BEBB /* extension_set.cc in Sources */,
 				988B52BF1AA42FB700FB7B21 /* Updatable.cpp in Sources */,
+				76EF6B351ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */,
 				98E3B66E1A73A77A00B5BEBB /* reflection_ops.cc in Sources */,
 				E874130A1A0B5629003EBD0B /* TmxTile.cpp in Sources */,
 				E874131C1A0B5647003EBD0B /* inflate.c in Sources */,
@@ -2011,6 +2025,7 @@
 				987A83721ABBE1540093940D /* CrazyShoot.cpp in Sources */,
 				76021A971ADCBC7A00B639BA /* TowerNode.cpp in Sources */,
 				98E3B6731A73A77A00B5BEBB /* atomicops_internals_x86_gcc.cc in Sources */,
+				76EF6B301ADE4CDF003E84EF /* PenetrateSpear.cpp in Sources */,
 				9880121A1A36A3140096D1EC /* CycledList.cpp in Sources */,
 				98EBBF001AAC863500ADB84A /* MapLogic.cpp in Sources */,
 				98E3B6671A73A77A00B5BEBB /* zero_copy_stream_impl_lite.cc in Sources */,
@@ -2047,6 +2062,7 @@
 				9868BBA91AB2F64D002ED7A1 /* DamageCalculate.cpp in Sources */,
 				E84197C21A09226300F5DF36 /* tinyxml.cpp in Sources */,
 				E898E7521A529393001189FF /* MapDebugger.cpp in Sources */,
+				76EF6B341ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */,
 				76E414671ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */,
 				E84197C61A09226300F5DF36 /* TmxImage.cpp in Sources */,
 				9880121E1A36A3490096D1EC /* CmdLineDebugger.cpp in Sources */,

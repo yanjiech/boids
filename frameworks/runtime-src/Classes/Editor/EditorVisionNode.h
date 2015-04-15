@@ -11,7 +11,6 @@
 
 #include "cocos2d.h"
 #include "ui/UITextField.h"
-// 编辑器用来渲染tmxmap中vision层的node，支持选中，和更换状态
 
 class EditorVisionNode : public cocos2d::Node {
 public:

@@ -25,7 +25,7 @@ private:
     int _current_line_index;
     int _current_letter_pos;
     
-    std::string _current_line;
+    std::u16string _current_line;
     int _max_letters_per_row;
     
     cocos2d::Sprite* _sp_speaker;
@@ -65,6 +65,8 @@ public:
     void setStoryData( const cocos2d::ValueMap& data );
     
     void setStoryEndCallback( const StoryEndCallback& callback );
+    
+    void setSpeaker( const std::string& name, bool left_or_right );
 };
 
 #endif /* defined(__Boids__UIStoryLayer__) */

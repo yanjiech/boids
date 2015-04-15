@@ -63,6 +63,12 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_DEATH_SLICE ) {
         ret = DeathSlice::create( owner, data );
     }
+    else if( name == SKILL_NAME_PENETRATE_SPEAR ) {
+        ret = PenetrateSpear::create( owner, data, params );
+    }
+    else if( name == SKILL_NAME_HUNTING_INTUITION ) {
+        ret = HuntingIntuition::create( owner, data );
+    }
     
     return ret;
 }

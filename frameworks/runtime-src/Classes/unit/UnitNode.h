@@ -115,6 +115,8 @@ private:
     
     bool _is_concentrate_on_walk;
     
+    bool _is_charging;
+    
 private:
     void updateBuffs( float delta );
     void updateSkills( float delta );
@@ -204,7 +206,7 @@ public:
     bool hasBuff( const std::string& buff_id );
     void removeAllBuffs();
     
-    void useSkill( int skill_id, const cocos2d::Point& dir, float range_per );
+    void useSkill( int skill_id, const cocos2d::Point& dir, float range_per, float duration = 0 );
     void endSkill();
     void endCast();
     
@@ -241,7 +243,6 @@ public:
     
     bool isHarmless();
     
-    virtual TargetNode* getAttackTarget();
     virtual bool canAttack( TargetNode* target_node );
     
     void attack( TargetNode* unit );
@@ -282,6 +283,7 @@ public:
     float getSkillMaxRangeById( int sk_id );
     float getSkillCDById( int sk_id );
     bool isSkillReadyById( int sk_id );
+    bool shouldSkillCastOnTouchDown( int sk_id );
     
     void riseup( float _duration, float delta_height );
     void falldown( float _duration, float delta_height );
@@ -295,6 +297,9 @@ public:
     
     bool isConcentrateOnWalk() { return _is_concentrate_on_walk; }
     void setConcentrateOnWalk( bool b );
+    
+    bool isCharging() { return _is_charging; }
+    void setCharging( bool b ) { _is_charging = b; }
     
     //debug
     cocos2d::DrawNode* _custom_draw;

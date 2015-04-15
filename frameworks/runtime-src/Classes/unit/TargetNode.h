@@ -87,7 +87,6 @@ public:
     virtual void takeDamage( const cocos2d::ValueMap& result, int source_id ) {}
     virtual void takeDamage( float amount, bool is_cri, bool is_miss, int source_id ) {}
     
-    virtual TargetNode* getAttackTarget() { return nullptr; }
     virtual bool canAttack( TargetNode* target_node ) { return false; }
     
     virtual bool willCollide( cocos2d::Point pos, float radius );

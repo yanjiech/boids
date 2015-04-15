@@ -727,12 +727,12 @@
                         {
                             "left_or_right": true,
                             "line": "hey biaaaaaaaaaaaaaaaatch, come here talk to me!",
-                            "speaker": "aladdin"
+                            "speaker": "kyle"
                         },
                         {
                             "left_or_right": false,
-                            "line": "biaaaaaaaaaaatch your mother fucker!",
-                            "speaker": "anubies"
+                            "line": "宝贝儿，你说什么呢！",
+                            "speaker": "goblin_auntie"
                         }
                     ]
                 }

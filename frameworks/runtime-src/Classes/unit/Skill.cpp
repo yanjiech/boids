@@ -133,3 +133,11 @@ std::string Skill::getChargingEffectPos() {
 bool Skill::shouldContinue() {
     return _skill_data["multi_action"].asBool();
 }
+
+bool Skill::shouldCastOnTouchDown() {
+    auto itr = _skill_data.find( "touch_down_cast" );
+    if( itr != _skill_data.end() ) {
+        return itr->second.asBool();
+    }
+    return false;
+}

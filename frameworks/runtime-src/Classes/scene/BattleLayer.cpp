@@ -466,13 +466,21 @@ cocos2d::Vector<TowerNode*> BattleLayer::getAliveTowersInRange( eTargetCamp camp
     return ret;
 }
 
-UnitNode* BattleLayer::getAliveUnitByDeployId( int deploy_id ) {
+TargetNode* BattleLayer::getAliveTargetByDeployId( int deploy_id ) {
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
         if( unit->getDeployId() == deploy_id ) {
             return unit;
         }
     }
+    
+    for( auto pair : _towers ) {
+        TowerNode* tower = pair.second;
+        if( tower->getDeployId() == deploy_id ) {
+            return tower;
+        }
+    }
+    
     return nullptr;
 }
 

@@ -23,7 +23,7 @@
     },
     "deploy_units" :
     [
-        "4"
+        "6"
     ],
     "units" :
     {
@@ -149,12 +149,12 @@
             "skills" :
             [
                 {
-                    "name" : "GiantSword",
-                    "level" : 1
+                    "name" : "PenetrateSpear",
+                    "level" : 3
                 },
                 {
-                    "name" : "LightShield",
-                    "level" : 1
+                    "name" : "HuntingIntuition",
+                    "level" : 3
                 }
 
             ],

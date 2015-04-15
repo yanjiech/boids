@@ -191,7 +191,7 @@ void BulletNode::updateFrame( float delta ) {
     _accumulator += delta;
     
     Point last_pos = this->getPosition();
-    TargetNode* target_unit = _battle_layer->getAliveUnitByDeployId( _target_id );
+    TargetNode* target_unit = _battle_layer->getAliveTargetByDeployId( _target_id );
     
     
     if( target_unit && _track_target ) {

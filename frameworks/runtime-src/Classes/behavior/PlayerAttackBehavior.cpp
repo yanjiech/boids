@@ -10,6 +10,8 @@
 #include "../unit/UnitNode.h"
 #include "../scene/BattleLayer.h"
 
+using namespace cocos2d;
+
 PlayerAttackBehavior::PlayerAttackBehavior()  {
     
 }
@@ -59,15 +61,40 @@ bool PlayerAttackBehavior::behave( float delta ) {
     if( control_dir.x != 0 || control_dir.y != 0 ) {
         return false;
     }
-    TargetNode* attack_target = unit_node->getAttackTarget();
-    if( attack_target == nullptr ) {
+    
+    Point unit_pos = unit_node->getPosition();
+    TargetNode* chasing_target = unit_node->getChasingTarget();
+    float min_distance = ( chasing_target && chasing_target->isAttackable() ) ? chasing_target->getPosition().distance( unit_pos ) : INT_MAX;
+    cocos2d::Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( unit_node->getTargetCamp(), unit_pos, unit_pos, unit_node->getUnitData()->guard_radius );
+    for( auto unit : candidates ) {
+        if( unit->isAttackable() ) {
+            float distance = unit_pos.distance( unit->getPosition() );
+            if( distance < min_distance ) {
+                chasing_target = unit;
+                min_distance = distance;
+            }
+        }
+    }
+    
+    cocos2d::Vector<TowerNode*> tower_candidates = battle_layer->getAliveTowersInRange( unit_node->getTargetCamp(), unit_pos, unit_pos, unit_node->getUnitData()->guard_radius );
+    for( auto tower : tower_candidates ) {
+        if( tower->isAttackable() ) {
+            float distance = unit_pos.distance( tower->getPosition() );
+            if( distance < min_distance ) {
+                chasing_target = tower;
+                min_distance = distance;
+            }
+        }
+    }
+    
+    if( chasing_target == nullptr ) {
         return false;
     }
-    if( !unit_node->canAttack( attack_target ) ) {
-        unit_node->setChasingTarget( attack_target );
+    if( !unit_node->canAttack( chasing_target ) ) {
+        unit_node->setChasingTarget( chasing_target );
         return false;
     }
     
-    unit_node->attack( attack_target );
+    unit_node->attack( chasing_target );
     return true;
 }

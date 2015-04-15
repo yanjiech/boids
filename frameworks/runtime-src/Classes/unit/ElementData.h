@@ -46,6 +46,9 @@ public:
     virtual bool init( const cocos2d::ValueMap& data );
     
     virtual void setAttribute( const std::string& key, const std::string& value );
+    
+    void add( ElementData* other );
+    void sub( ElementData* other );
 };
 
 #endif /* defined(__Boids__ElementData__) */

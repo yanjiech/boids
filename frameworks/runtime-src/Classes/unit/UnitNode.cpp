@@ -19,6 +19,7 @@
 #include "BulletNode.h"
 #include "JumpText.h"
 #include "ui/CocosGUI.h"
+#include "../BoidsMath.h"
 
 #define DEFAULT_SHADOW_RADIUS 30.0
 #define DEFAULT_HESITATE_FRAMES 5
@@ -96,7 +97,8 @@ UnitNode::UnitNode() :
 _state( eUnitState::Unknown_Unit_State ),
 _guard_target( nullptr ),
 _walk_path( nullptr ),
-_tour_path( nullptr )
+_tour_path( nullptr ),
+_is_charging( false )
 {
 }
 
@@ -154,6 +156,8 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     _direction = Point::ZERO;
     
     _face = eUnitFace::Front;
+    
+    _is_charging = false;
     
     this->setConcentrateOnWalk( false );
     
@@ -409,10 +413,20 @@ void UnitNode::applyUnitState() {
             }
                 break;
             case eUnitState::Walking:
-                _current_skeleton->setAnimation( 0, "Walk", true );
+                if( _is_charging ) {
+                    _current_skeleton->setAnimation( 0, "Walk2", true );
+                }
+                else {
+                    _current_skeleton->setAnimation( 0, "Walk", true );
+                }
                 break;
             case eUnitState::Idle:
-                _current_skeleton->setAnimation( 0, "Idle", true );
+                if( _is_charging ) {
+                    _current_skeleton->setAnimation( 0, "Idle2", true );
+                }
+                else {
+                    _current_skeleton->setAnimation( 0, "Idle", true );
+                }
                 break;
             case eUnitState::Attacking:
                 _current_skeleton->setAnimation( 0, "Attack", false );
@@ -589,7 +603,7 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
             this->changeUnitState( eUnitState::Dying );
         }
         else if( _chasing_target == nullptr ) {
-            UnitNode* atker = _battle_layer->getAliveUnitByDeployId( source_id );
+            TargetNode* atker = _battle_layer->getAliveTargetByDeployId( source_id );
             if( atker && atker->isAttackable() ) {
                 this->setChasingTarget( atker );
             }
@@ -680,7 +694,7 @@ void UnitNode::removeAllBuffs() {
     _buffs.clear();
 }
 
-void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_per ) {
+void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_per, float duration ) {
     if( !this->isDying() && !this->isCasting() ) {
         Point sk_dir = dir;
         if( sk_dir.x != 0 || sk_dir.y != 0 ) {
@@ -691,6 +705,7 @@ void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_pe
         }
         _using_skill_params["dir_x"] = Value( sk_dir.x );
         _using_skill_params["dir_y"] = Value( sk_dir.y );
+        _using_skill_params["touch_down_duration"] = Value( duration );
         _using_skill_params["multi_action"] = Value( _skills.at( skill_id )->shouldContinue() );
         _using_skill_params["skill_id"] = Value( skill_id );
         _using_skill_params["range_per"] = Value( range_per );
@@ -908,25 +923,6 @@ bool UnitNode::isHarmless() {
     return _target_data->atk <= 0;
 }
 
-TargetNode* UnitNode::getAttackTarget() {
-    TargetNode* ret = nullptr;
-    if( _chasing_target && _chasing_target->isAttackable() ) {
-        ret = _chasing_target;
-    }
-    float min_distance = ( _chasing_target == nullptr ) ? INT_MAX : _chasing_target->getPosition().distance( this->getPosition() );
-    cocos2d::Vector<UnitNode*> candidates = _battle_layer->getAliveOpponents( _camp );
-    for( auto unit : candidates ) {
-        if( unit->isAttackable() && this->isUnitInDirectView( unit ) ) {
-            float distance = this->getPosition().distance( unit->getPosition() );
-            if( distance < min_distance ) {
-                ret = unit;
-                min_distance = distance;
-            }
-        }
-    }
-    return ret;
-}
-
 bool UnitNode::canAttack( TargetNode* target_node ) {
     if( UnitNode* unit = dynamic_cast<UnitNode*>( target_node ) ) {
         if( this->getPosition().distance( unit->getPosition() ) > _target_data->atk_range + unit->getUnitData()->collide ) {
@@ -1007,7 +1003,7 @@ bool UnitNode::isUnitInDirectView( UnitNode* unit ) {
     if( Terrain::getInstance()->isBlocked( this->getPosition(), unit->getPosition() ) ) {
         return false;
     }
-    else if( this->getPosition().distance( unit->getPosition() ) > unit_data->guard_radius + unit->getUnitData()->collide ) {
+    else if( !Math::isPositionInRange( unit->getPosition(), this->getPosition(), unit_data->guard_radius + unit->getUnitData()->collide ) ) {
         return false;
     }
     return true;
@@ -1100,6 +1096,10 @@ float UnitNode::getSkillCDById( int sk_id ) {
 
 bool UnitNode::isSkillReadyById( int sk_id ) {
     return _skills.at( sk_id )->isSkillReady();
+}
+
+bool UnitNode::shouldSkillCastOnTouchDown( int sk_id ) {
+    return _skills.at( sk_id )->shouldCastOnTouchDown();
 }
 
 void UnitNode::makeSpeech( const std::string& content, float duration ) {
