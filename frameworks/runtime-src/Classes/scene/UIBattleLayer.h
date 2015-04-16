@@ -26,6 +26,7 @@ private:
     float _radius;
     float _min_range;
     float _max_range;
+    float _max_charge_time;
     cocos2d::Point _hint_d_pos;
     
     cocos2d::Node* _hint_effect;
@@ -49,6 +50,10 @@ public:
     bool shouldCastOnTouchDown();
     
     bool isSkillReady();
+    
+    cocos2d::Value getSkillAttribute( const std::string& key );
+    
+    void setChargeTime( float time );
 };
 
 class UIBattleLayer : public cocos2d::Layer {

@@ -47,8 +47,8 @@ Trigger* Trigger::create( const cocos2d::ValueMap& data ) {
     else if( trigger_type == EVENT_TRIGGER_TYPE_UNIT_STAY ) {
         ret = UnitStayTrigger::create( data );
     }
-    else if( trigger_type == EVENT_TRIGGER_TYPE_CONVERSATION_CHANGE ) {
-        ret = ConversationChangeTrigger::create( data );
+    else if( trigger_type == EVENT_TRIGGER_TYPE_STORY_CHANGE ) {
+        ret = StoryChangeTrigger::create( data );
     }
     
     return ret;
@@ -407,16 +407,16 @@ void UnitStayTrigger::updateFrame( float delta ) {
     }
 }
 
-ConversationChangeTrigger::ConversationChangeTrigger() {
+StoryChangeTrigger::StoryChangeTrigger() {
     
 }
 
-ConversationChangeTrigger::~ConversationChangeTrigger() {
+StoryChangeTrigger::~StoryChangeTrigger() {
     
 }
 
-ConversationChangeTrigger* ConversationChangeTrigger::create( const cocos2d::ValueMap& data ) {
-    ConversationChangeTrigger* ret = new ConversationChangeTrigger();
+StoryChangeTrigger* StoryChangeTrigger::create( const cocos2d::ValueMap& data ) {
+    StoryChangeTrigger* ret = new StoryChangeTrigger();
     if( ret && ret->init( data ) ) {
         ret->autorelease();
         return ret;
@@ -427,7 +427,7 @@ ConversationChangeTrigger* ConversationChangeTrigger::create( const cocos2d::Val
     }
 }
 
-bool ConversationChangeTrigger::init( const cocos2d::ValueMap& data ) {
+bool StoryChangeTrigger::init( const cocos2d::ValueMap& data ) {
     if( !Trigger::init( data ) ) {
         return false;
     }

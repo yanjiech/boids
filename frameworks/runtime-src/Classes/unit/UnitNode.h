@@ -276,6 +276,8 @@ public:
     
     const cocos2d::Vector<Skill*>& getSkills() { return _skills; }
     
+    Skill* getSkill( int sk_id );
+    
     std::string getSkillHintTypeById( int sk_id );
     float getSkillRadiusById( int sk_id );
     float getSkillRangeById( int sk_id );

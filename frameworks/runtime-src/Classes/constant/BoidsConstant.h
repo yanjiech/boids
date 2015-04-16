@@ -62,6 +62,7 @@
 #define EVENT_TRIGGER_TYPE_GAME_CHANGE "game_change"
 #define EVENT_TRIGGER_TYPE_VISION_CHANGE "vision_change"
 #define EVENT_TRIGGER_TYPE_CONVERSATION_CHANGE "conversation_change"
+#define EVENT_TRIGGER_TYPE_STORY_CHANGE "story_change"
 #define EVENT_TRIGGER_TYPE_CUSTOM "custom"
 
 #define EVENT_STATE_UNSTRART "event_unstart"
@@ -93,6 +94,8 @@
 
 #define VISION_STATE_ENABLED  "enabled"
 #define VISION_STATE_DISABLED "disabled"
+
+#define STORY_STATE_END "story_end"
 
 #define SKILL_NAME_WRATH_OF_THUNDER "WrathOfThunder"
 #define SKILL_NAME_LIGHTNING_CHAIN "LightningChain"

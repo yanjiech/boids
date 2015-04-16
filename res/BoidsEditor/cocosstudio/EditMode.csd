@@ -1651,7 +1651,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_visionChange" ActionTag="1053987021" Visible="False" FrameEvent="" Tag="136" LeftMargin="-550.0000" RightMargin="-550.0000" TopMargin="-395.0000" BottomMargin="-395.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_visionChange" ActionTag="1053987021" FrameEvent="" Tag="136" LeftMargin="-550.0000" RightMargin="-550.0000" TopMargin="-395.0000" BottomMargin="-395.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Position X="0.0000" Y="0.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -2455,7 +2455,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_storyAction" ActionTag="-1317048004" FrameEvent="" Tag="225" LeftMargin="-790.0000" RightMargin="-810.0000" TopMargin="-390.0000" BottomMargin="-410.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_storyAction" ActionTag="-1317048004" Visible="False" FrameEvent="" Tag="225" LeftMargin="-790.0000" RightMargin="-810.0000" TopMargin="-390.0000" BottomMargin="-410.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
                 <Position X="10.0000" Y="-10.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -2562,6 +2562,24 @@
                         <PrePosition X="0.1483" Y="0.6548" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
+                      <NodeObjectData Name="Text_19" ActionTag="633734319" FrameEvent="" Tag="239" LeftMargin="44.9596" RightMargin="489.0404" TopMargin="107.1654" BottomMargin="664.8346" FontSize="24" LabelText="剧情id" ctype="TextObjectData">
+                        <Position X="77.9596" Y="678.8346" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="51" G="102" B="51" />
+                        <Size X="66.0000" Y="28.0000" />
+                        <PrePosition X="0.1299" Y="0.8485" />
+                        <PreSize X="0.0000" Y="0.0000" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="tf_story_name" ActionTag="-1719311240" FrameEvent="" Tag="240" LeftMargin="197.9596" RightMargin="302.0404" TopMargin="108.6654" BottomMargin="664.3346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="Text Field" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="247.9596" Y="677.8346" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="0" G="0" B="0" />
+                        <Size X="100.0000" Y="27.0000" />
+                        <PrePosition X="0.4133" Y="0.8473" />
+                        <PreSize X="0.0000" Y="0.0000" />
+                      </NodeObjectData>
                     </Children>
                     <SingleColor A="255" R="150" G="200" B="255" />
                     <FirstColor A="255" R="150" G="200" B="255" />
@@ -2617,6 +2635,133 @@
                     <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                     <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                     <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+                  </NodeObjectData>
+                </Children>
+                <SingleColor A="255" R="255" G="255" B="255" />
+                <FirstColor A="255" R="255" G="255" B="255" />
+                <EndColor A="255" R="255" G="255" B="255" />
+                <ColorVector ScaleY="1.0000" />
+              </NodeObjectData>
+              <NodeObjectData Name="popup_story_change" ActionTag="-1264645023" FrameEvent="" Tag="241" LeftMargin="-540.0000" RightMargin="-560.0000" TopMargin="-385.0000" BottomMargin="-405.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                <Position X="10.0000" Y="-10.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <Size X="1100.0000" Y="790.0000" />
+                <PrePosition X="0.0000" Y="0.0000" />
+                <PreSize X="0.0000" Y="0.0000" />
+                <Children>
+                  <NodeObjectData Name="Text_45_Copy_21" ActionTag="-503039292" FrameEvent="" Tag="242" LeftMargin="699.0000" RightMargin="281.0000" TopMargin="24.0000" BottomMargin="732.0000" FontSize="30" LabelText="剧情改变" ctype="TextObjectData">
+                    <Position X="759.0000" Y="749.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="21" G="95" B="173" />
+                    <Size X="120.0000" Y="34.0000" />
+                    <PrePosition X="0.6900" Y="0.9481" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="button_cancel" ActionTag="871498255" FrameEvent="" Tag="243" LeftMargin="867.0000" RightMargin="173.0000" TopMargin="678.0000" BottomMargin="72.0000" TouchEnable="True" FontSize="14" ButtonText="取消" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                    <Position X="897.0000" Y="92.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <Size X="60.0000" Y="40.0000" />
+                    <PrePosition X="0.8155" Y="0.1165" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                    <TextColor A="255" R="51" G="51" B="51" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+                    <PressedFileData Type="Default" Path="Default/Button_Press.png" />
+                    <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="Text_90_Copy_24" ActionTag="-610879877" FrameEvent="" Tag="244" LeftMargin="673.0000" RightMargin="379.0000" TopMargin="95.0000" BottomMargin="667.0000" FontSize="24" LabelText="状态" ctype="TextObjectData">
+                    <Position X="697.0000" Y="681.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="51" G="102" B="51" />
+                    <Size X="48.0000" Y="28.0000" />
+                    <PrePosition X="0.6336" Y="0.8620" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="button_state" ActionTag="701538974" FrameEvent="" Tag="245" LeftMargin="767.0000" RightMargin="233.0000" TopMargin="89.0000" BottomMargin="661.0000" TouchEnable="True" FontSize="14" ButtonText="story_change" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                    <Position X="817.0000" Y="681.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <Size X="100.0000" Y="40.0000" />
+                    <PrePosition X="0.7427" Y="0.8620" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                    <TextColor A="255" R="0" G="179" B="255" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+                    <PressedFileData Type="Default" Path="Default/Button_Press.png" />
+                    <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="button_ok" ActionTag="693664259" FrameEvent="" Tag="246" LeftMargin="728.0000" RightMargin="312.0000" TopMargin="682.0000" BottomMargin="68.0000" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                    <Position X="758.0000" Y="88.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <Size X="60.0000" Y="40.0000" />
+                    <PrePosition X="0.6891" Y="0.1114" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                    <TextColor A="255" R="0" G="179" B="255" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+                    <PressedFileData Type="Default" Path="Default/Button_Press.png" />
+                    <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="Text_22_26" ActionTag="-564265454" FrameEvent="" Tag="247" LeftMargin="77.0000" RightMargin="932.0000" TopMargin="211.5000" BottomMargin="555.5000" FontSize="20" LabelText="Text Label" ctype="TextObjectData">
+                    <Position X="122.5000" Y="567.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <Size X="91.0000" Y="23.0000" />
+                    <PrePosition X="0.1114" Y="0.7177" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="panel_groupList" ActionTag="915839051" FrameEvent="" Tag="248" LeftMargin="17.0006" RightMargin="582.9994" TopMargin="-18.0005" BottomMargin="8.0005" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                    <Position X="17.0006" Y="8.0005" />
+                    <Scale ScaleX="0.9740" ScaleY="0.9712" />
+                    <AnchorPoint />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <Size X="500.0000" Y="800.0000" />
+                    <PrePosition X="0.0155" Y="0.0101" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                    <Children>
+                      <NodeObjectData Name="Text_41_28" ActionTag="-30230671" FrameEvent="" Tag="249" LeftMargin="190.0000" RightMargin="190.0000" TopMargin="13.0000" BottomMargin="753.0000" FontSize="30" LabelText=" 剧情列表" HorizontalAlignmentType="HT_Center" ctype="TextObjectData">
+                        <Position X="250.0000" Y="770.0000" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="21" G="95" B="173" />
+                        <Size X="128.0000" Y="34.0000" />
+                        <PrePosition X="0.5000" Y="0.9625" />
+                        <PreSize X="0.0000" Y="0.0000" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="Panel_16_4" ActionTag="-864974468" FrameEvent="" Tag="250" LeftMargin="500.0000" RightMargin="-1.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                        <Position X="500.0000" Y="0.0000" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint />
+                        <CColor A="255" R="255" G="255" B="255" />
+                        <Size X="1.0000" Y="800.0000" />
+                        <PrePosition X="1.0000" Y="0.0000" />
+                        <PreSize X="0.0000" Y="0.0000" />
+                        <SingleColor A="255" R="0" G="0" B="0" />
+                        <FirstColor A="255" R="0" G="0" B="0" />
+                        <EndColor A="255" R="255" G="255" B="255" />
+                        <ColorVector ScaleY="1.0000" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="input_filter" ActionTag="-1901954855" FrameEvent="" Tag="251" LeftMargin="150.0000" RightMargin="150.0000" TopMargin="746.5000" BottomMargin="26.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="Text Field" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="250.0000" Y="40.0000" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="255" G="255" B="255" />
+                        <Size X="200.0000" Y="27.0000" />
+                        <PrePosition X="0.5000" Y="0.0500" />
+                        <PreSize X="0.4000" Y="0.0338" />
+                      </NodeObjectData>
+                    </Children>
+                    <SingleColor A="255" R="255" G="255" B="255" />
+                    <FirstColor A="255" R="255" G="255" B="255" />
+                    <EndColor A="255" R="255" G="255" B="255" />
+                    <ColorVector ScaleY="1.0000" />
                   </NodeObjectData>
                 </Children>
                 <SingleColor A="255" R="255" G="255" B="255" />

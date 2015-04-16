@@ -52,6 +52,7 @@ private:
     std::vector<std::string> _visionObjects;
     std::vector<std::string> _visionTags;
     std::vector<std::string> _conversations;
+    std::vector<std::string> _stories;
     
     void enterEdit(const std::string& mapFolder);
     void leaveEdit();
@@ -67,6 +68,7 @@ private:
     std::vector<EditorEventPtr> getEditableEvents();
     void fetchTags();
     void fetchConversations();
+    void fetchStories();
     void createPositionOnMap(EditorPositionPtr pos);
     EditorPositionPtr getPositionForTouch(cocos2d::Touch *touch);
     void setMapPosition(cocos2d::Point position);

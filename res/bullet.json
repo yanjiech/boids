@@ -142,6 +142,18 @@
         "need_rotate": true,
         "track_target" : true
     },
+    "penetrate_spear" :
+    {
+        "name" : "penetrate_spear",
+        "speed" : 1200.0,
+        "move_type" : "straight",
+        "body_type" : "spine",
+        "hit_type" : "spine",
+        "hit_name" : "default",
+        "need_rotate" : true,
+        "track_target" : false,
+        "damage_radius" : 40.0
+    },
     "skeleton_king_bullet_1" : {
         "name" : "gu01",
         "move_type" : "fixed",

@@ -844,7 +844,7 @@ cocos2d::Point UnitNode::pushToward( const cocos2d::Point& dir, float distance )
         for( auto c : collidables ) {
             if( c->willCollide( this, dest_pos ) ) {
                 no_collide = false;
-                int steered_count = steered_collidables.count( c );
+                int steered_count = (int)steered_collidables.count( c );
                 if( steered_count == 0 ) {
                     steered_collidables.insert( c );
                     if ( !c->getAdvisedNewDir( this, cocos2d::Vec2( this->getPosition(), dest_pos ), new_dir ) ) {
@@ -924,10 +924,8 @@ bool UnitNode::isHarmless() {
 }
 
 bool UnitNode::canAttack( TargetNode* target_node ) {
-    if( UnitNode* unit = dynamic_cast<UnitNode*>( target_node ) ) {
-        if( this->getPosition().distance( unit->getPosition() ) > _target_data->atk_range + unit->getUnitData()->collide ) {
-            return false;
-        }
+    if( this->getPosition().distance( target_node->getPosition() ) > _target_data->atk_range + target_node->getTargetData()->collide ) {
+        return false;
     }
     
     if( Terrain::getInstance()->isBlocked( this->getPosition(), target_node->getPosition() ) ) {
@@ -1070,6 +1068,11 @@ void UnitNode::jumpNumber( float amount, const std::string& type, bool is_critic
     jump_text->start( is_critical );
 }
 
+
+Skill* UnitNode::getSkill( int sk_id ) {
+    return _skills.at( sk_id );
+}
+
 std::string UnitNode::getSkillHintTypeById( int sk_id ) {
     return _skills.at( sk_id )->getSkillHintType();
 }
@@ -1148,7 +1151,7 @@ void UnitNode::setConcentrateOnWalk( bool b ) {
 
 void UnitNode::setCharging( bool b ) {
     _is_charging = b;
-    this->changeUnitState( _state );
+    this->changeUnitState( _state, true );
 }
 
 //private methods

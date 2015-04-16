@@ -33,6 +33,7 @@ extern const char *kGameConditionPanel;
 extern const char *kConversationActionPanel;
 extern const char *kStoryActionPanel;
 extern const char *kConversationChangePanel;
+extern const char *kStoryChangePanel;
 
 enum class EditorPopupEventType {
     OK = 0,

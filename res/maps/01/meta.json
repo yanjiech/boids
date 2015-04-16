@@ -734,7 +734,36 @@
                             "line": "宝贝儿，你说什么呢！",
                             "speaker": "goblin_auntie"
                         }
-                    ]
+                    ],
+                    "name": "goblin_talk"
+                }
+            ]
+        },
+        {
+            "name": "tst",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "goblin_talk",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "01",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
                 }
             ]
         }

@@ -72,48 +72,46 @@ const std::string& MapData::getMapData() {
 
 cocos2d::Sprite* MapData::spriteFromObject( TMXTiledMap* map, cocos2d::Value& o, bool createFromCache ) {
     auto object = o.asValueMap();
-    auto gid = object.at("gid").asInt();
-    bool flipped_horizontally = false;
-    bool flipped_vertically = false;
-    bool flipped_diagonally = false;
-    if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
-        flipped_horizontally = true;
-        gid &= 0x7fffffff;
+    int gid = object.at("gid").asInt();
+    if( gid != 0 ) {
+        bool flipped_horizontally = false;
+        bool flipped_vertically = false;
+        bool flipped_diagonally = false;
+        if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
+            flipped_horizontally = true;
+            gid &= 0x7fffffff;
+        }
+        if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
+            flipped_vertically = true;
+            gid &= 0xbfffffff;
+        }
+        if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
+            flipped_diagonally = true;
+            gid &= 0xdfffffff;
+        }
+        auto x = object.at("x").asFloat();
+        auto y = object.at("y").asFloat();
+        auto p = map->getPropertiesForGID(gid);
+        
+        auto source = p.asValueMap().at("source").asString();
+        Sprite *sprite = nullptr;
+        if (createFromCache) {
+            sprite = Sprite::createWithSpriteFrameName(source);
+        } else {
+            auto spritePath = Utils::stringFormat("%s/%s", this->_path.c_str(), source.c_str());
+            sprite = Sprite::create(spritePath);
+        }
+        sprite->setAnchorPoint(Vec2::ZERO);
+        sprite->setPosition( Point( x, y ) );
+        if( flipped_horizontally ) {
+            sprite->setFlippedX( true );
+        }
+        if( flipped_vertically ) {
+            sprite->setFlippedY( true );
+        }
+        return sprite;
     }
-    if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
-        flipped_vertically = true;
-        gid &= 0xbfffffff;
-    }
-    if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
-        flipped_diagonally = true;
-        gid &= 0xdfffffff;
-    }
-    auto x = object.at("x").asFloat();
-    auto y = object.at("y").asFloat();
-    auto p = map->getPropertiesForGID(gid);
-    
-    //temp use
-    for( auto sitr = p.asValueMap().begin(); sitr != p.asValueMap().end(); ++sitr ) {
-        printf( "%s : %s\n", sitr->first.c_str(), sitr->second.asString().c_str() );
-    }
-    
-    auto source = p.asValueMap().at("source").asString();
-    Sprite *sprite = nullptr;
-    if (createFromCache) {
-        sprite = Sprite::createWithSpriteFrameName(source);
-    } else {
-        auto spritePath = Utils::stringFormat("%s/%s", this->_path.c_str(), source.c_str());
-        sprite = Sprite::create(spritePath);
-    }
-    sprite->setAnchorPoint(Vec2::ZERO);
-    sprite->setPosition( Point( x, y ) );
-    if( flipped_horizontally ) {
-        sprite->setFlippedX( true );
-    }
-    if( flipped_vertically ) {
-        sprite->setFlippedY( true );
-    }
-    return sprite;
+    return nullptr;
 }
 
 TMXTiledMap* MapData::generateTiledMapWithFlags(int flags) {
@@ -129,7 +127,9 @@ TMXTiledMap* MapData::generateTiledMapWithFlags(int flags) {
         auto ogObjects = map->getObjectGroup("onground")->getObjects();
         for (auto o : ogObjects) {
             auto sp = this->spriteFromObject( map, o, true );
-            onGroundLayer->addChild(sp);
+            if( sp ) {
+                onGroundLayer->addChild(sp);
+            }
         }
     }
     

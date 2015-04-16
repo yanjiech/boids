@@ -59,6 +59,7 @@ void EditMode::enterEdit(const std::string& mapFolder) {
     _data.loadJson(_mapData->getMetaData());
     fetchTags();
     fetchConversations();
+    fetchStories();
     fetchPositionTags();
 	if (PAINT_MESH)
 	{
@@ -255,6 +256,18 @@ void EditMode::fetchConversations() {
             if (action->ActionType == "conversation_action") {
                 auto conversationAction = static_pointer_cast<EditorConversationAction>(action);
                 _conversations.push_back(conversationAction->Name);
+            }
+        }
+    }
+}
+
+void EditMode::fetchStories() {
+    _stories.clear();
+    for (auto event : _data.Events) {
+        for (auto action : event->Actions) {
+            if (action->ActionType == "story_action") {
+                auto storyAction = static_pointer_cast<EditorStoryAction>(action);
+                _stories.push_back(storyAction->Name);
             }
         }
     }
@@ -511,6 +524,11 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
 //            ctx->Event->Triggers.push_back(trigger);
 //            ctx->addOperation(EditorOperation::SetTrigger);
 //        }
+        else if( op == EditorOperation::SetStoryChangeTrigger ) {
+            auto trigger = _editUI->storyChangeTriggerUI->getTrigger();
+            ctx->Event->Triggers.push_back( trigger );
+            ctx->addOperation( EditorOperation::SetTrigger );
+        }
         else if (op == EditorOperation::EditEvent) {
             _editUI->unitActionUI->saveEvent();
         }
@@ -545,6 +563,9 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
         }
         else if( triggerType == "unit_stay" ) {
             ctx->addOperation(EditorOperation::SetUnitStayTrigger);
+        }
+        else if( triggerType == "story_change" ) {
+            ctx->addOperation( EditorOperation::SetStoryChangeTrigger );
         }
         else if (triggerType == "event_change") {
             ctx->addOperation(EditorOperation::SetEventTrigger);
@@ -766,6 +787,12 @@ void EditMode::onStep(int step) {
 //            _editUI->conversationChangeUI->loadConversations(_conversations);
 //            break;
 //        }
+        case EditorOperation::SetStoryChangeTrigger: {
+            _editUI->storyChangeTriggerUI->setVisible( true );
+            _editUI->storyChangeTriggerUI->reset();
+            _editUI->storyChangeTriggerUI->loadStories(_stories);
+            break;
+        }
         case EditorOperation::EditEvent: {
             _editUI->unitActionUI->setVisible(true);
             _editUI->unitActionUI->reset();

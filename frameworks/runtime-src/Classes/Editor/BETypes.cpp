@@ -36,6 +36,7 @@ EditorTypeManager::EditorTypeManager() {
     _conversationState = EditorTypePtr(new EditorType());
     _unitPopupType = EditorTypePtr(new EditorType());
     _triggerRelationType = EditorTypePtr(new EditorType());
+    _storyStateType = EditorTypePtr( new EditorType() );
     
     _eventTriggerState->_typeVector = { "event_enable", "event_disable", "event_finish" };
     
@@ -55,7 +56,7 @@ EditorTypeManager::EditorTypeManager() {
     
     _unitActionSourceType->_typeVector = { "trigger_source", "type_source", "tag_source", "name_source" };
     
-    _triggerType->_typeVector = { "map_init", "unit_change", "unit_stay", "event_change", "game_change", "vision_change", "custom" };
+    _triggerType->_typeVector = { "map_init", "unit_change", "unit_stay", "vision_change", "story_change" };
     
     _actionType->_typeVector = { "unit_change", "task_change", "game_change", "conversation_action", "story_action", "event_change", "vision_change", "custom", "wave_action" };
     
@@ -63,9 +64,11 @@ EditorTypeManager::EditorTypeManager() {
     
     _visionObjectSourceType->_typeVector = { "name_source", "tag_source" };
     
-    _gameConditionSourceType->_typeVector = { "primary_win", "additional_win", "lose" };
+    _gameConditionSourceType->_typeVector = { "primary_win", "additional_win" };
     
 //    _conversationState->_typeVector = { "conversation_start", "conversation_end" };
+    _storyStateType->_typeVector = { "story_end" };
+    
     _unitPopupType->_typeVector = { "normal", "help", "yellow_surprise", "red_surprise" };
     
     _triggerRelationType->_typeVector = { "then", "and", "or" };

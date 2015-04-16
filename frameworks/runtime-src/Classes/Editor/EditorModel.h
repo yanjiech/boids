@@ -178,6 +178,15 @@ public:
 //    virtual void loadJson(const rapidjson::Value& value);
 //};
 
+class EditorStoryChangeTrigger : public EditorTriggerBase {
+public:
+    EditorStoryChangeTrigger(): EditorTriggerBase("story_change") {}
+    std::string StoryName;
+    std::string State;
+    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
+    virtual void loadJson(const rapidjson::Value& value);
+};
+
 class EditorActionMeta : public EditorBase {
 public:
     bool IsInfinite;
@@ -306,6 +315,7 @@ public:
 class EditorStoryAction : public EditorActionBase {
 public:
     std::vector<std::shared_ptr<EditorStory>> Stories;
+    std::string Name;
     
     EditorStoryAction() : EditorActionBase( "story_action" ) {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
@@ -348,6 +358,7 @@ enum class EditorOperation {
     SetAction,
     SetUnitTrigger,
     SetUnitStayTrigger,
+    SetStoryChangeTrigger,
     SetEventTrigger,
     SetUnitAction,
     SetGameAction,

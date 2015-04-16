@@ -75,6 +75,8 @@ public:
     bool shouldContinue();
     
     bool shouldCastOnTouchDown();
+    
+    cocos2d::Value getAttribute( const std::string& key );
 };
 
 #endif /* defined(__Boids__Skill__) */

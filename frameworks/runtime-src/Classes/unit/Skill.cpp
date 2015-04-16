@@ -141,3 +141,12 @@ bool Skill::shouldCastOnTouchDown() {
     }
     return false;
 }
+
+cocos2d::Value Skill::getAttribute( const std::string& key ) {
+    auto itr = _skill_data.find( key );
+    if( itr != _skill_data.end() ) {
+        return itr->second;
+    }
+
+    return Value::Null;
+}

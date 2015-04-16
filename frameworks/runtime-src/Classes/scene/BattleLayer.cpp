@@ -111,7 +111,7 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         _control_layer = UIControlLayer::create();
         this->addChild( _control_layer, eBattleSubLayer::ControlLayer, eBattleSubLayer::ControlLayer );
         
-        _story_layer = UIStoryLayer::create( CC_CALLBACK_0( BattleLayer::endStory, this ) );
+        _story_layer = UIStoryLayer::create( CC_CALLBACK_1( BattleLayer::endStory, this ) );
         this->addChild( _story_layer, eBattleSubLayer::BattleStoryLayer, eBattleSubLayer::BattleStoryLayer );
         
         this->setup();
@@ -739,8 +739,9 @@ void BattleLayer::startStory( const cocos2d::ValueMap& story_data ) {
     _state = eBattleState::BattleStory;
 }
 
-void BattleLayer::endStory() {
+void BattleLayer::endStory( UIStoryLayer* story ) {
     _story_layer->setVisible( false );
+    _map_logic->onStoryChange( story->getStoryName(), STORY_STATE_END );
     _state = eBattleState::BattleRunning;
 }
 

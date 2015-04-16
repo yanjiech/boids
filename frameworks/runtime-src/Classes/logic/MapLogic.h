@@ -82,6 +82,8 @@ public:
     void onTargetNodeDisappear( class TargetNode* target_node );
     void onUnitMoved( class UnitNode* unit_node );
     
+    void onStoryChange( const std::string& story_name, const std::string& story_state );
+    
     int getUnitAppearCountByCamp( int camp );
     void increaseUnitAppearCountByCamp( int count, int camp );
     
