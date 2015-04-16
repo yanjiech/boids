@@ -44,7 +44,7 @@ int BulletNode::getNextBulletId() {
     return _global_bullet_id;
 }
 
-BulletNode* BulletNode::create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+BulletNode* BulletNode::create( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
     BulletNode* ret = new BulletNode();
     if( ret && ret->init( unit_node, bullet_data, damage_calculator, buff_data ) ) {
         ret->autorelease();
@@ -56,7 +56,7 @@ BulletNode* BulletNode::create( class UnitNode* unit_node, const cocos2d::ValueM
     }
 }
 
-bool BulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+bool BulletNode::init( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
     if( !Node::init() ) {
         return false;
     }
@@ -166,33 +166,33 @@ bool BulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bulle
     return true;
 }
 
-void BulletNode::shootAt( class UnitNode* source, class TargetNode* target, int emit_pos_type ) {
+void BulletNode::shootAt( class TargetNode* target, int emit_pos_type ) {
     do {
-        UnitNode* target_unit = dynamic_cast<UnitNode*>( target );
-        if( target_unit ) {
-            _target_id = target_unit->getDeployId();
+        if( target ) {
+            _target_id = target->getDeployId();
             if( _track_target ) {
-                _target_pos = target_unit->getHitPos();
+                _target_pos = target->getHitPos();
             }
             else {
-                _target_pos = target_unit->getPosition();
+                _target_pos = target->getPosition();
             }
             break;
         }
     }while( true );
-    this->shoot( source, emit_pos_type );
+    this->shoot( emit_pos_type );
 }
 
-void BulletNode::shootAtPosition( class UnitNode* source, const cocos2d::Point& pos ) {
+void BulletNode::shootAtPosition( const cocos2d::Point& pos ) {
     _target_pos = pos;
-    this->shoot( source );
+    this->shoot();
 }
 
 void BulletNode::updateFrame( float delta ) {
     _accumulator += delta;
     
     Point last_pos = this->getPosition();
-    UnitNode* target_unit = _battle_layer->getAliveUnitByDeployId( _target_id );
+    TargetNode* target_unit = _battle_layer->getAliveTargetByDeployId( _target_id );
+    
     
     if( target_unit && _track_target ) {
         _target_pos = target_unit->getHitPos();
@@ -201,10 +201,20 @@ void BulletNode::updateFrame( float delta ) {
     if( this->doesHitTarget( last_pos, _target_pos, delta ) ) {
         //does hit target
         
-        cocos2d::Vector<UnitNode*> hit_targets;
+        cocos2d::Vector<TargetNode*> hit_targets;
         
         if( _damage_radius > 0 ) {
-            hit_targets = _battle_layer->getAliveOpponentsInRange( _source_unit->getUnitCamp(), _target_pos, _damage_radius );
+            Vector<UnitNode*> unit_candidates = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), _target_pos, _damage_radius );
+            
+            for( auto unit : unit_candidates ) {
+                hit_targets.pushBack( unit );
+            }
+            
+            Vector<TowerNode*> tower_candidates = _battle_layer->getAliveTowersInRange( _source_unit->getTargetCamp(), _target_pos, _damage_radius );
+            
+            for( auto tower : tower_candidates ) {
+                hit_targets.pushBack( tower );
+            }
         }
         else {
             if( target_unit ) {
@@ -217,11 +227,11 @@ void BulletNode::updateFrame( float delta ) {
             std::string hit_resource = Utils::stringFormat( "effects/bullets/%s_hit", _bomb_name.c_str() );
             spine::SkeletonAnimation* bomb_effect = ArmatureManager::getInstance()->createArmature( hit_resource );
             UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( bomb_effect, Utils::stringFormat( "bullet_%d_hit", _bullet_id ), true );
-            _battle_layer->addToObjectLayer( component, _target_pos, _target_pos );
+            _battle_layer->addToEffectLayer( component, _target_pos, 0 );
             component->setAnimation( 0, "animation", false );
         }
         
-        for( UnitNode* u : hit_targets ) {
+        for( TargetNode* u : hit_targets ) {
             //take damage
             this->hitTarget( u );
         }
@@ -265,18 +275,20 @@ void BulletNode::updateFrame( float delta ) {
     }
 }
 
-void BulletNode::hitTarget( class UnitNode *target_unit, bool with_buff ) {
+void BulletNode::hitTarget( class TargetNode *target_unit, bool with_buff ) {
     ValueMap result;
     if( _will_miss ) {
-        result = _damage_calculator->calculateDamage( _source_unit->getUnitData(), target_unit->getUnitData() );
+        result = _damage_calculator->calculateDamage( _source_unit->getTargetData(), target_unit->getTargetData() );
     }
     else {
-        result = _damage_calculator->calculateDamageWithoutMiss( _source_unit->getUnitData(), target_unit->getUnitData() );
+        result = _damage_calculator->calculateDamageWithoutMiss( _source_unit->getTargetData(), target_unit->getTargetData() );
     }
     target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "miss" ).asBool(), result.at( "cri" ).asBool(), _source_unit->getDeployId() );
-    if( with_buff && !_buff_data.empty() ) {
-        Buff* buff = Buff::create( target_unit, _buff_data );
-        target_unit->addBuff( buff->getBuffId(), buff );
+    
+    UnitNode* unit = dynamic_cast<UnitNode*>( target_unit );
+    if( unit && with_buff && !_buff_data.empty() ) {
+        Buff* buff = Buff::create( unit, _buff_data );
+        unit->addBuff( buff->getBuffId(), buff );
         buff->begin();
     }
     
@@ -294,7 +306,7 @@ void BulletNode::hitTarget( class UnitNode *target_unit, bool with_buff ) {
     }
 }
 
-void BulletNode::setSourceUnit( class UnitNode* source_unit ) {
+void BulletNode::setSourceUnit( class TargetNode* source_unit ) {
     CC_SAFE_RELEASE( _source_unit );
     _source_unit = source_unit;
     CC_SAFE_RETAIN( _source_unit );
@@ -314,7 +326,7 @@ void BulletNode::setShouldRecycle( bool b ) {
 }
 
 //private methods
-void BulletNode::shoot( class UnitNode* source, int emit_pos_type ) {
+void BulletNode::shoot( int emit_pos_type ) {
     std::string body_type = _bullet_data.at( "body_type" ).asString();
     Node* bullet = nullptr;
     if( body_type == "png" ) {
@@ -342,28 +354,28 @@ void BulletNode::shoot( class UnitNode* source, int emit_pos_type ) {
     
     switch( emit_pos_type ) {
         case 1:
-            _init_pos = source->getBonePos( "shou-l" );
+            _init_pos = _source_unit->getBonePos( "shou-l" );
             break;
         case 2:
-            _init_pos = source->getBonePos( "shou-r" );
+            _init_pos = _source_unit->getBonePos( "shou-r" );
             break;
         case 3:
-            _init_pos = source->getBonePos( "tou" );
+            _init_pos = _source_unit->getBonePos( "tou" );
             break;
         case 0:
         default:
-            _init_pos = source->getEmitPos();
+            _init_pos = _source_unit->getEmitPos();
             break;
     }
     itr = _bullet_data.find( "streak_color" );
     if( itr != _bullet_data.end() ) {
         const ValueMap& streak_rgb = itr->second.asValueMap();
         _streak = MotionStreak::create( 0.5, 3, _bullet_data.at( "streak_width" ).asFloat(), Color3B( streak_rgb.at( "r" ).asInt(), streak_rgb.at( "g" ).asInt(), streak_rgb.at( "b" ).asInt() ), "effects/tuowei.png" );
-        _battle_layer->addToObjectLayer( _streak, _init_pos, _init_pos );
+        _battle_layer->addToEffectLayer( _streak, _init_pos, 0 );
     }
     
     this->setPosition( _init_pos );
-    this->setLocalZOrder( source->getLocalZOrder() );
+    this->setLocalZOrder( _source_unit->getLocalZOrder() );
     _battle_layer->addBullet( _bullet_id, this );
     Point full_dir = _target_pos - _init_pos;
     full_dir.normalize();
@@ -392,7 +404,7 @@ DirectionalBulletNode::~DirectionalBulletNode() {
     
 }
 
-DirectionalBulletNode* DirectionalBulletNode::create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+DirectionalBulletNode* DirectionalBulletNode::create( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
     DirectionalBulletNode* ret = new DirectionalBulletNode();
     if( ret && ret->init( unit_node, bullet_data, damage_calculator, buff_data ) ) {
         ret->autorelease();
@@ -404,7 +416,7 @@ DirectionalBulletNode* DirectionalBulletNode::create( class UnitNode* unit_node,
     }
 }
 
-bool DirectionalBulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+bool DirectionalBulletNode::init( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
     if( !BulletNode::init( unit_node, bullet_data, damage_calculator, buff_data ) ) {
         return false;
     }
@@ -413,10 +425,10 @@ bool DirectionalBulletNode::init( class UnitNode* unit_node, const cocos2d::Valu
     return true;
 }
 
-void DirectionalBulletNode::shootAlong( const cocos2d::Point& dir, float duration, class UnitNode* source_unit ) {
+void DirectionalBulletNode::shootAlong( const cocos2d::Point& dir, float duration ) {
     _dir = dir;
     _duration = duration;
-    BulletNode::shoot( source_unit );
+    BulletNode::shoot();
     _bullet->setRotation( -_dir.getAngle() * 180.0f / M_PI );
 }
 
@@ -436,7 +448,7 @@ void DirectionalBulletNode::updateFrame( float delta ) {
                 _streak->setPosition( new_pos );
             }
             
-            cocos2d::Vector<UnitNode*> alive_opponents = _battle_layer->getAliveOpponentsInRange( _source_unit->getUnitCamp(), _init_pos, new_pos, _damage_radius );
+            cocos2d::Vector<UnitNode*> alive_opponents = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), _init_pos, new_pos, _damage_radius );
             for( auto itr = alive_opponents.begin(); itr != alive_opponents.end(); ++itr ) {
                 UnitNode* target_unit = *itr;
                 int unit_id = target_unit->getDeployId();
@@ -458,7 +470,7 @@ DirectionalLastingBulletNode::~DirectionalLastingBulletNode() {
     
 }
 
-DirectionalLastingBulletNode* DirectionalLastingBulletNode::create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+DirectionalLastingBulletNode* DirectionalLastingBulletNode::create( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
     DirectionalLastingBulletNode* ret = new DirectionalLastingBulletNode();
     if( ret && ret->init( unit_node, bullet_data, damage_calculator, buff_data ) ) {
         ret->autorelease();
@@ -470,7 +482,7 @@ DirectionalLastingBulletNode* DirectionalLastingBulletNode::create( class UnitNo
     }
 }
 
-bool DirectionalLastingBulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+bool DirectionalLastingBulletNode::init( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
     if( !BulletNode::init( unit_node, bullet_data, damage_calculator, buff_data ) ) {
         return false;
     }
@@ -484,7 +496,7 @@ bool DirectionalLastingBulletNode::init( class UnitNode* unit_node, const cocos2
 }
 
 void DirectionalLastingBulletNode::shootTo( const cocos2d::Point& from_pos, const cocos2d::Point& to_pos ) {
-    BulletNode::shoot( _source_unit );
+    BulletNode::shoot();
     
     _dir = to_pos - from_pos;
     _dir.normalize();
@@ -522,7 +534,7 @@ void DirectionalLastingBulletNode::updateFrame( float delta ) {
                 }
             }
         }
-        Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( _source_unit->getUnitCamp(), this->getPosition(), _damage_radius );
+        Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), this->getPosition(), _damage_radius );
         for( auto itr = candidates.begin(); itr != candidates.end(); ++itr ) {
             UnitNode* target_unit = *itr;
             int target_id = target_unit->getDeployId();
@@ -543,7 +555,7 @@ FixedPosBulletNode::~FixedPosBulletNode() {
     
 }
 
-FixedPosBulletNode* FixedPosBulletNode::create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+FixedPosBulletNode* FixedPosBulletNode::create( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
     FixedPosBulletNode* ret = new FixedPosBulletNode();
     if( ret && ret->init( unit_node, bullet_data, damage_calculator, buff_data ) ) {
         ret->autorelease();
@@ -555,7 +567,7 @@ FixedPosBulletNode* FixedPosBulletNode::create( class UnitNode* unit_node, const
     }
 }
 
-bool FixedPosBulletNode::init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+bool FixedPosBulletNode::init( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
     if( !BulletNode::init( unit_node, bullet_data, damage_calculator, buff_data ) ) {
         return false;
     }
@@ -602,9 +614,9 @@ void FixedPosBulletNode::onSkeletonAnimationEvent( int track_index, spEvent* eve
         show_hit_effect = true;
     }
     
-    Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( _source_unit->getUnitCamp(), this->getPosition(), _damage_radius );
+    Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), this->getPosition(), _damage_radius );
     for( auto u : candidates ) {
-        ValueMap result = _damage_calculator->calculateDamageWithoutMiss( _source_unit->getUnitData(), u->getUnitData() );
+        ValueMap result = _damage_calculator->calculateDamageWithoutMiss( _source_unit->getTargetData(), u->getTargetData() );
         u->takeDamage( result, _source_unit->getDeployId() );
         
         //hit effect

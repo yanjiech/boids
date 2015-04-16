@@ -66,6 +66,7 @@ void ResourceManager::purgeMap( MapData* map_data ) {
 void ResourceManager::loadAllData() {
     this->loadDefaultData();
     this->loadUnitData();
+    this->loadTowerData();
     this->loadUnitLevelupCostData();
     this->loadBulletData();
     this->loadCenterData();
@@ -100,6 +101,13 @@ void ResourceManager::loadUnitData() {
     rapidjson::Document unit_config_json;
     unit_config_json.Parse<0>( data_string.c_str() );
     _unit_config = CocosUtils::jsonObjectToValueMap( unit_config_json );
+}
+
+void ResourceManager::loadTowerData() {
+    std::string data_string = FileUtils::getInstance()->getStringFromFile( "tower.json" );
+    rapidjson::Document tower_config_json;
+    tower_config_json.Parse<0>( data_string.c_str() );
+    _tower_config = CocosUtils::jsonObjectToValueMap( tower_config_json );
 }
 
 void ResourceManager::loadUnitLevelupCostData() {
@@ -195,6 +203,10 @@ void ResourceManager::purgeBulletArmature( const std::string& name, const std::s
 
 const cocos2d::ValueMap& ResourceManager::getUnitData( const std::string& name ) {
     return _unit_config.at( name ).asValueMap();
+}
+
+const cocos2d::ValueMap& ResourceManager::getTowerData( const std::string& name ) {
+    return _tower_config.at( name ).asValueMap();
 }
 
 const cocos2d::ValueMap& ResourceManager::getBulletData( const std::string& name ) {
@@ -328,6 +340,9 @@ std::string ResourceManager::getPathForResource( const std::string& name, eResou
     }
     else if( type == eResourceType::Character_Back ) {
         return Utils::stringFormat( "characters/%s/%s_b", name.c_str(), name.c_str() );
+    }
+    else if( type == eResourceType::Tower ) {
+        return Utils::stringFormat( "towers/%s", name.c_str() );
     }
     else {
         return std::string( "" );

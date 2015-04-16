@@ -1273,6 +1273,7 @@ void BEUIGameCondition::onTypeItemClicked(Ref *sender) {
     _typeListView->setVisible(false);
 }
 
+//conversation action ui
 BEUIConversationAction::BEUIConversationAction(Node *root, const BEPopupEventHandler& handler): BEUIBase(root, handler) {
     _listPanel = getPanelFrom("panel_list", _root);
     _infoPanel = getPanelFrom("panel_info", _root);
@@ -1365,6 +1366,84 @@ void BEUIConversationAction::onDeleteButtonClicked(Ref *sender) {
     _speechListView->removeCurrentIndex();
 }
 
+
+//story action ui
+BEUIStoryAction::BEUIStoryAction(Node *root, const BEPopupEventHandler& handler): BEUIBase(root, handler) {
+    _listPanel = getPanelFrom("panel_list", _root);
+    _infoPanel = getPanelFrom("panel_info", _root);
+    _filterTextField = getTextFieldFrom("input_filter", _listPanel);
+    _contentTextField = getTextFieldFrom("input_content", _infoPanel);
+    _tf_line = getTextFieldFrom("tf_line", _infoPanel);
+    _cb_left_or_right = getCheckBoxFrom( "cb_left_or_right", _infoPanel );
+    _addButton = getButtonFrom("button_add", _infoPanel);
+    _okButton = getButtonFrom("button_ok", _infoPanel);
+    _cancelButton = getButtonFrom("button_cancel", _infoPanel);
+    _deleteButton = getButtonFrom("button_delete", _root);
+    _sourceListView = BEFilterListView::create(Size(500, 700), nullptr, _filterTextField);
+    _sourceListView->setDelegate(this);
+    _sourceListView->setPosition(Vec2(0, 50));
+    _storiesListView= BEDefaultListView::create(Size(500, 600), nullptr);
+    _storiesListView->setPosition(Vec2(1100, 100));
+    _root->addChild(_storiesListView);
+    _listPanel->addChild(_sourceListView);
+    bindOKHandler(_okButton);
+    bindCancelHandler(_cancelButton);
+    _addButton->addClickEventListener(CC_CALLBACK_1(BEUIStoryAction::onAddButtonClicked, this));
+    _deleteButton->addClickEventListener(CC_CALLBACK_1(BEUIStoryAction::onDeleteButtonClicked, this));
+}
+
+void BEUIStoryAction::reset() {
+    _sourceListView->cleanAndReset();
+    _storiesListView->cleanAndReset();
+    _action = EditorStoryActionPtr(new EditorStoryAction());
+    _currentStory = EditorStoryPtr(new EditorStory());
+}
+
+void BEUIStoryAction::loadStorySource(const std::vector<std::pair<std::string, std::string>>& sources) {
+    _sources = sources;
+    _sourceListView->updateData();
+}
+
+EditorStoryActionPtr BEUIStoryAction::getAction() {
+    return _action;
+}
+
+std::string BEUIStoryAction::searchNameAtIndex(int index) {
+    auto pair = _sources[index];
+    return pair.second;
+}
+
+std::string BEUIStoryAction::displayNameAtIndex(int index) {
+    auto pair = _sources[index];
+    if (pair.first == "name_source") {
+        return Utils::stringFormat("name:%s", pair.second.c_str());
+    } else if (pair.first == "tag_source") {
+        return Utils::stringFormat("tag:%s", pair.second.c_str());
+    } else {
+        return pair.second;
+    }
+}
+
+int BEUIStoryAction::itemCount() {
+    return (int)_sources.size();
+}
+
+void BEUIStoryAction::onAddButtonClicked(Ref *sender) {
+    int index = _sourceListView->getCurrentIndexForFullItems();
+    _currentStory->SpeakerName = _sources[index].second;
+    _currentStory->Line = _tf_line->getString();
+    _currentStory->LeftOrRight = _cb_left_or_right->isSelected();
+    _action->Stories.push_back(_currentStory);
+    _storiesListView->addItem(_currentStory->Line);
+    _currentStory = EditorStoryPtr(new EditorStory());
+}
+
+void BEUIStoryAction::onDeleteButtonClicked(Ref *sender) {
+    int index = _storiesListView->getCurrentIndex();
+    _action->Stories.erase(_action->Stories.begin() + index);
+    _storiesListView->removeCurrentIndex();
+}
+
 //BEUIConversationTrigger::BEUIConversationTrigger(Node *root, const BEPopupEventHandler& handler): BEUIBase(root, handler) {
 //    _stateButton = getButtonFrom("button_state", _root);
 //    _okButton = getButtonFrom("button_ok", _root);
@@ -1429,6 +1508,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     _waveActionPanel = getPanelFrom(kWaveActionPanel, _popupContainer);
     _gameConditionPanel = getPanelFrom(kGameConditionPanel, _popupContainer);
     _conversationActionPanel = getPanelFrom(kConversationActionPanel, _popupContainer);
+    _storyActionPanel = getPanelFrom( kStoryActionPanel, _popupContainer );
 //    _conversationChangePanel = getPanelFrom(kConversationChangePanel, _popupContainer);
     _commandHandler = commandHandler;
     _newEventButton->addClickEventListener([this](Ref *sender) {
@@ -1462,6 +1542,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     waveActionUI = new BEUIWaveAction(_waveActionPanel, handler);
     gameConditionUI = new BEUIGameCondition(_gameConditionPanel, handler);
     conversationActionUI = new BEUIConversationAction(_conversationActionPanel, handler);
+    storyActionUI = new BEUIStoryAction( _storyActionPanel, handler );
 //    conversationChangeUI = new BEUIConversationTrigger(_conversationChangePanel, handler);
     hideAllPopups();
 }
@@ -1482,6 +1563,7 @@ BEEditorMainUI::~BEEditorMainUI() {
     delete waveActionUI;
     delete gameConditionUI;
     delete conversationActionUI;
+    delete storyActionUI;
 //    delete conversationChangeUI;
 }
 
@@ -1501,6 +1583,7 @@ void BEEditorMainUI::hideAllPopups() {
     waveActionUI->setVisible(false);
     gameConditionUI->setVisible(false);
     conversationActionUI->setVisible(false);
+    storyActionUI->setVisible( false );
 //    conversationChangeUI->setVisible(false);
 }
 

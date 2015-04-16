@@ -37,7 +37,7 @@ bool JumpText::init( const std::string& text, const std::string& type, bool is_c
         text_label = Label::createWithCharMap( "ui/number_heal.png", 33, 40, 43 );
     }
     else if( type == "damage" ) {
-        if( unit_camp == eUnitCamp::Player ) {
+        if( unit_camp == eTargetCamp::Player ) {
             text_label = Label::createWithCharMap( "ui/number_player_damage.png", 33, 40, 43 );
         }
         else {

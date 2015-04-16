@@ -48,10 +48,16 @@
 		50D7C97017EBBEEC005D0B91 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D7C96F17EBBEEC005D0B91 /* IOKit.framework */; };
 		521A8E6A19F0C3AC00D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6819F0C3AC00D177D7 /* Default-667h@2x.png */; };
 		521A8E6B19F0C3AC00D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6919F0C3AC00D177D7 /* Default-736h@3x.png */; };
+		76021A971ADCBC7A00B639BA /* TowerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A951ADCBC7A00B639BA /* TowerNode.cpp */; };
+		76021A981ADCBC7A00B639BA /* TowerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A951ADCBC7A00B639BA /* TowerNode.cpp */; };
+		76021A9B1ADCBDE100B639BA /* ElementData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A991ADCBDE100B639BA /* ElementData.cpp */; };
+		76021A9C1ADCBDE100B639BA /* ElementData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A991ADCBDE100B639BA /* ElementData.cpp */; };
 		7631FA361AC2A92B00CAB9C8 /* LightShield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */; };
 		7631FA371AC2A92B00CAB9C8 /* LightShield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */; };
 		7631FA3A1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */; };
 		7631FA3B1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */; };
+		7694AB7C1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */; };
+		7694AB7D1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */; };
 		76E21D8D1AC5137B006714AD /* Equipment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8B1AC5137B006714AD /* Equipment.cpp */; };
 		76E21D8E1AC5137B006714AD /* Equipment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8B1AC5137B006714AD /* Equipment.cpp */; };
 		76E21D911AC52924006714AD /* DarkPierce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8F1AC52924006714AD /* DarkPierce.cpp */; };
@@ -80,16 +86,20 @@
 		76EA0D2F1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */; };
 		76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
 		76EADAF81AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
+		76EC48FE1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */; };
+		76EC48FF1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */; };
 		76ED99D31AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */; };
 		76ED99D41AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */; };
 		76ED99D71AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */; };
 		76ED99D81AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */; };
+		76EF6B301ADE4CDF003E84EF /* PenetrateSpear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */; };
+		76EF6B311ADE4CDF003E84EF /* PenetrateSpear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */; };
+		76EF6B341ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */; };
+		76EF6B351ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */; };
 		76EFF5BD1AD37E5800690CFE /* AtomFart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */; };
 		76EFF5BE1AD37E5800690CFE /* AtomFart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */; };
 		76EFF5C11AD396C300690CFE /* FatalThrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */; };
 		76EFF5C21AD396C300690CFE /* FatalThrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */; };
-		98531A761AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
-		98531A771AA2C14100A37BFE /* src in Resources */ = {isa = PBXBuildFile; fileRef = 98531A751AA2C14100A37BFE /* src */; };
 		9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
 		9859D1CC1A7B4B8700FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
 		9859D1D21A7B4C0300FF6D82 /* Battle.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1CE1A7B4C0300FF6D82 /* Battle.pb.cc */; };
@@ -488,11 +498,17 @@
 		50D7C96F17EBBEEC005D0B91 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		521A8E6819F0C3AC00D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6919F0C3AC00D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
+		76021A951ADCBC7A00B639BA /* TowerNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerNode.cpp; sourceTree = "<group>"; };
+		76021A961ADCBC7A00B639BA /* TowerNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerNode.h; sourceTree = "<group>"; };
+		76021A991ADCBDE100B639BA /* ElementData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementData.cpp; sourceTree = "<group>"; };
+		76021A9A1ADCBDE100B639BA /* ElementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementData.h; sourceTree = "<group>"; };
 		76148F211AC54D9300235C7B /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../lib/lib/libboost_system.a; sourceTree = "<group>"; };
 		7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightShield.cpp; sourceTree = "<group>"; };
 		7631FA351AC2A92B00CAB9C8 /* LightShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightShield.h; sourceTree = "<group>"; };
 		7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GiantSword.cpp; sourceTree = "<group>"; };
 		7631FA391AC2A94000CAB9C8 /* GiantSword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiantSword.h; sourceTree = "<group>"; };
+		7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerAttackBehavior.cpp; sourceTree = "<group>"; };
+		7694AB7B1ADD1C11006CA4A9 /* TowerAttackBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerAttackBehavior.h; sourceTree = "<group>"; };
 		76E21D8B1AC5137B006714AD /* Equipment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Equipment.cpp; sourceTree = "<group>"; };
 		76E21D8C1AC5137B006714AD /* Equipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Equipment.h; sourceTree = "<group>"; };
 		76E21D8F1AC52924006714AD /* DarkPierce.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DarkPierce.cpp; sourceTree = "<group>"; };
@@ -518,15 +534,20 @@
 		76EA0D2D1ACBCAEA00EDD10D /* MissileShowers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissileShowers.h; sourceTree = "<group>"; };
 		76EADAF51AC4018200E00BFA /* Trigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trigger.cpp; sourceTree = "<group>"; };
 		76EADAF61AC4018200E00BFA /* Trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trigger.h; sourceTree = "<group>"; };
+		76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIStoryLayer.cpp; sourceTree = "<group>"; };
+		76EC48FD1ADB605F00C9F17B /* UIStoryLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIStoryLayer.h; sourceTree = "<group>"; };
 		76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FireWhirl.cpp; sourceTree = "<group>"; };
 		76ED99D21AD4D0B60047D5A9 /* FireWhirl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireWhirl.h; sourceTree = "<group>"; };
 		76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeathSlice.cpp; sourceTree = "<group>"; };
 		76ED99D61AD4DB8F0047D5A9 /* DeathSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeathSlice.h; sourceTree = "<group>"; };
+		76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PenetrateSpear.cpp; sourceTree = "<group>"; };
+		76EF6B2F1ADE4CDF003E84EF /* PenetrateSpear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PenetrateSpear.h; sourceTree = "<group>"; };
+		76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuntingIntuition.cpp; sourceTree = "<group>"; };
+		76EF6B331ADE4EC8003E84EF /* HuntingIntuition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuntingIntuition.h; sourceTree = "<group>"; };
 		76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomFart.cpp; sourceTree = "<group>"; };
 		76EFF5BC1AD37E5800690CFE /* AtomFart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomFart.h; sourceTree = "<group>"; };
 		76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FatalThrow.cpp; sourceTree = "<group>"; };
 		76EFF5C01AD396C300690CFE /* FatalThrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatalThrow.h; sourceTree = "<group>"; };
-		98531A751AA2C14100A37BFE /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../src; sourceTree = "<group>"; };
 		98598B141A10BF7F0075D0EC /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
 		98598B151A10BF7F0075D0EC /* CycledList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CycledList.cpp; path = ../Classes/CycledList.cpp; sourceTree = "<group>"; };
 		98598B161A10BF7F0075D0EC /* CycledList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CycledList.h; path = ../Classes/CycledList.h; sourceTree = "<group>"; };
@@ -1050,6 +1071,10 @@
 				76ED99D21AD4D0B60047D5A9 /* FireWhirl.h */,
 				76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */,
 				76ED99D61AD4DB8F0047D5A9 /* DeathSlice.h */,
+				76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */,
+				76EF6B2F1ADE4CDF003E84EF /* PenetrateSpear.h */,
+				76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */,
+				76EF6B331ADE4EC8003E84EF /* HuntingIntuition.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -1058,8 +1083,12 @@
 			isa = PBXGroup;
 			children = (
 				9871DBEB1ABADCD6009B8EC9 /* skill */,
+				76021A991ADCBDE100B639BA /* ElementData.cpp */,
+				76021A9A1ADCBDE100B639BA /* ElementData.h */,
 				988B52A61AA42C7A00FB7B21 /* UnitNode.cpp */,
 				988B52A71AA42C7A00FB7B21 /* UnitNode.h */,
+				76021A951ADCBC7A00B639BA /* TowerNode.cpp */,
+				76021A961ADCBC7A00B639BA /* TowerNode.h */,
 				986A553C1AA559F70051B0B9 /* TargetNode.cpp */,
 				986A553D1AA559F70051B0B9 /* TargetNode.h */,
 				986A55401AA55A390051B0B9 /* BuildingNode.cpp */,
@@ -1102,6 +1131,8 @@
 				98A366CA1AA84E8400393B8E /* UIBattleMenuLayer.h */,
 				98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */,
 				98EBBEF41AABF73B00ADB84A /* UIBattleFloatLayer.h */,
+				76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */,
+				76EC48FD1ADB605F00C9F17B /* UIStoryLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;
@@ -1137,6 +1168,8 @@
 				987185941AAFF1BC00533C3E /* PlayerSkillBehavior.cpp */,
 				987185951AAFF1BC00533C3E /* PlayerSkillBehavior.h */,
 				987185981AB0506000533C3E /* BehaviorHeader.h */,
+				7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */,
+				7694AB7B1ADD1C11006CA4A9 /* TowerAttackBehavior.h */,
 			);
 			name = behavior;
 			path = ../Classes/behavior;
@@ -1607,7 +1640,6 @@
 		F293BC4615EB859D00256477 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				98531A751AA2C14100A37BFE /* src */,
 				E848F2301A23660600DAECF0 /* res */,
 			);
 			name = Resources;
@@ -1740,7 +1772,6 @@
 				98E3B64C1A73A77A00B5BEBB /* descriptor.proto in Resources */,
 				5023817617EBBE3400990C9B /* Icon.icns in Resources */,
 				E848F2331A23660600DAECF0 /* res in Resources */,
-				98531A771AA2C14100A37BFE /* src in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1755,7 +1786,6 @@
 				5091733617ECE17A00D62437 /* Icon-29.png in Resources */,
 				5023811917EBBCAC00990C9B /* Default-568h@2x.png in Resources */,
 				5091733917ECE17A00D62437 /* Icon-58.png in Resources */,
-				98531A761AA2C14100A37BFE /* src in Resources */,
 				521A8E6B19F0C3AC00D177D7 /* Default-736h@3x.png in Resources */,
 				521A8E6A19F0C3AC00D177D7 /* Default-667h@2x.png in Resources */,
 				5023811F17EBBCAC00990C9B /* Icon-152.png in Resources */,
@@ -1819,6 +1849,7 @@
 				988B52EC1AA4491600FB7B21 /* BehaviorBase.cpp in Sources */,
 				988B52F11AA44ABD00FB7B21 /* ResourceManager.cpp in Sources */,
 				98E3B6761A73A77A00B5BEBB /* atomicops_internals_x86_msvc.cc in Sources */,
+				7694AB7D1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */,
 				76E21D8E1AC5137B006714AD /* Equipment.cpp in Sources */,
 				98E3B65E1A73A77A00B5BEBB /* printer.cc in Sources */,
 				E829419F1A5D68C00076E856 /* EditorVisionNode.cpp in Sources */,
@@ -1865,6 +1896,7 @@
 				987336151AB6840200694B53 /* JumpText.cpp in Sources */,
 				98E61DD31AB6A674005DE093 /* HpBar.cpp in Sources */,
 				E87412F71A0B55DF003EBD0B /* BoidsPolygon.cpp in Sources */,
+				76EF6B311ADE4CDF003E84EF /* PenetrateSpear.cpp in Sources */,
 				988B52E71AA4461700FB7B21 /* UIControlLayer.cpp in Sources */,
 				98E3B67C1A73A77A00B5BEBB /* stringprintf.cc in Sources */,
 				76ED99D81AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */,
@@ -1888,6 +1920,7 @@
 				E87412F61A0B55DB003EBD0B /* NavMesh.cpp in Sources */,
 				E807DF601A4D642B004F76DA /* CycledList.cpp in Sources */,
 				988B52E31AA445EF00FB7B21 /* UIBattleLayer.cpp in Sources */,
+				76021A9C1ADCBDE100B639BA /* ElementData.cpp in Sources */,
 				E8676E411A7B734000F927E5 /* Profile.cpp in Sources */,
 				986A55761AA565A60051B0B9 /* PlayerInfo.cpp in Sources */,
 				E87413081A0B5629003EBD0B /* TmxPolyline.cpp in Sources */,
@@ -1900,6 +1933,7 @@
 				98EBBEF61AABF73B00ADB84A /* UIBattleFloatLayer.cpp in Sources */,
 				E874130C1A0B5629003EBD0B /* TmxUtil.cpp in Sources */,
 				E86CDE941A1F3D21004FBDA2 /* Collidable.cpp in Sources */,
+				76EC48FF1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */,
 				76EFF5C21AD396C300690CFE /* FatalThrow.cpp in Sources */,
 				E87413161A0B5647003EBD0B /* gzclose.c in Sources */,
 				E87413171A0B5647003EBD0B /* gzlib.c in Sources */,
@@ -1929,6 +1963,7 @@
 				98E3B65A1A73A77A00B5BEBB /* coded_stream.cc in Sources */,
 				98E3B6521A73A77A00B5BEBB /* extension_set.cc in Sources */,
 				988B52BF1AA42FB700FB7B21 /* Updatable.cpp in Sources */,
+				76EF6B351ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */,
 				98E3B66E1A73A77A00B5BEBB /* reflection_ops.cc in Sources */,
 				E874130A1A0B5629003EBD0B /* TmxTile.cpp in Sources */,
 				E874131C1A0B5647003EBD0B /* inflate.c in Sources */,
@@ -1936,6 +1971,7 @@
 				E867B1BA1A36EDCD00EF8088 /* Border.cpp in Sources */,
 				E874130E1A0B5630003EBD0B /* tinyxml.cpp in Sources */,
 				98742E671ABBD31B0087D13D /* BarrageOfArrow.cpp in Sources */,
+				76021A981ADCBC7A00B639BA /* TowerNode.cpp in Sources */,
 				98E3B6721A73A77A00B5BEBB /* service.cc in Sources */,
 				E87413431A0BBB02003EBD0B /* EditMode.cpp in Sources */,
 				7631FA3B1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */,
@@ -1978,6 +2014,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76EA0D2E1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */,
+				7694AB7C1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */,
 				986A55421AA55A390051B0B9 /* BuildingNode.cpp in Sources */,
 				986A55701AA565430051B0B9 /* BoidsConstant.cpp in Sources */,
 				98E3B66B1A73A77A00B5BEBB /* message_lite.cc in Sources */,
@@ -1986,7 +2023,9 @@
 				98E3B6711A73A77A00B5BEBB /* service.cc in Sources */,
 				9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */,
 				987A83721ABBE1540093940D /* CrazyShoot.cpp in Sources */,
+				76021A971ADCBC7A00B639BA /* TowerNode.cpp in Sources */,
 				98E3B6731A73A77A00B5BEBB /* atomicops_internals_x86_gcc.cc in Sources */,
+				76EF6B301ADE4CDF003E84EF /* PenetrateSpear.cpp in Sources */,
 				9880121A1A36A3140096D1EC /* CycledList.cpp in Sources */,
 				98EBBF001AAC863500ADB84A /* MapLogic.cpp in Sources */,
 				98E3B6671A73A77A00B5BEBB /* zero_copy_stream_impl_lite.cc in Sources */,
@@ -2023,6 +2062,7 @@
 				9868BBA91AB2F64D002ED7A1 /* DamageCalculate.cpp in Sources */,
 				E84197C21A09226300F5DF36 /* tinyxml.cpp in Sources */,
 				E898E7521A529393001189FF /* MapDebugger.cpp in Sources */,
+				76EF6B341ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */,
 				76E414671ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */,
 				E84197C61A09226300F5DF36 /* TmxImage.cpp in Sources */,
 				9880121E1A36A3490096D1EC /* CmdLineDebugger.cpp in Sources */,
@@ -2132,10 +2172,12 @@
 				E84197D71A09226300F5DF36 /* gzlib.c in Sources */,
 				E84197CC1A09226300F5DF36 /* TmxPolygon.cpp in Sources */,
 				5023811817EBBCAC00990C9B /* AppController.mm in Sources */,
+				76EC48FE1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */,
 				98E3B6811A73A77A00B5BEBB /* substitute.cc in Sources */,
 				98E3B6571A73A77A00B5BEBB /* generated_message_util.cc in Sources */,
 				9859D1D21A7B4C0300FF6D82 /* Battle.pb.cc in Sources */,
 				76EFF5BD1AD37E5800690CFE /* AtomFart.cpp in Sources */,
+				76021A9B1ADCBDE100B639BA /* ElementData.cpp in Sources */,
 				986A55621AA562C30051B0B9 /* SceneManager.cpp in Sources */,
 				E87413481A0BBB39003EBD0B /* EditorModel.cpp in Sources */,
 				988283001A3019EA0071D233 /* Border.cpp in Sources */,

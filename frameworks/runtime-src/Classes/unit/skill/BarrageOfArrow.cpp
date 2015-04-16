@@ -83,7 +83,7 @@ void BarrageOfArrow::updateFrame( float delta ) {
                     DamageCalculate* calculator = DamageCalculate::create( "BarrageOfArrow", _base_damage );
                     DirectionalBulletNode* bullet = DirectionalBulletNode::create( _owner, bullet_data, calculator, ValueMap() );
                     battle_layer->addBullet( bullet->getBulletId(), bullet );
-                    bullet->shootAlong( dir, _range / _speed, _owner );
+                    bullet->shootAlong( dir, _range / _speed );
                 }
             }
             

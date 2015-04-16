@@ -55,7 +55,7 @@ void Impetus::begin() {
     
     UnitNode* target_unit = dynamic_cast<UnitNode*>( _owner->getChasingTarget() );
     if( target_unit == nullptr || target_unit->getPosition().distance( _owner->getPosition() ) > _range ) {
-        Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getUnitCamp(), init_pos, init_pos, _range );
+        Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getTargetCamp(), init_pos, init_pos, _range );
         int size = (int)candidates.size();
         if( size > 0 ) {
             int rand = Utils::randomNumber( size ) - 1;
@@ -72,7 +72,7 @@ void Impetus::begin() {
         bullet_data["will_miss"] = Value( false );
         DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_IMPETUS, _damage );
         BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, buff_data );
-        bullet->shootAt( _owner, target_unit );
+        bullet->shootAt( target_unit );
     }
 }
 

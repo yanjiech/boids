@@ -23,8 +23,7 @@
     },
     "deploy_units" :
     [
-        "1",
-        "2"
+        "6"
     ],
     "units" :
     {
@@ -134,6 +133,30 @@
                     "name" : "BatSwarm",
                     "level" : 1
                 }
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
+        },
+        "6" :
+        {
+            "name" : "hippolyta",
+            "level" : 40,
+            "skills" :
+            [
+                {
+                    "name" : "PenetrateSpear",
+                    "level" : 3
+                },
+                {
+                    "name" : "HuntingIntuition",
+                    "level" : 3
+                }
+
             ],
             "equips" :
             {

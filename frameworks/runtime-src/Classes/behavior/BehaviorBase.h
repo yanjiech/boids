@@ -16,11 +16,13 @@
 #define BEHAVIOR_NAME_SKILL "skill"
 #define BEHAVIOR_NAME_IDLE "idle"
 
+class TargetNode;
 class UnitNode;
+class TowerNode;
 
 class BehaviorBase : public cocos2d::Ref {
 protected:
-    UnitNode* _unit_node;
+    TargetNode* _target_node;
     
     bool _is_enabled;
     
@@ -28,11 +30,11 @@ public:
     BehaviorBase();
     virtual ~BehaviorBase();
     
-    virtual bool init( UnitNode* unit_node );
+    virtual bool init( TargetNode* target_node );
     virtual bool behave( float delta = 0 );
     
-    UnitNode* getUnitNode() { return _unit_node; }
-    void setUnitNode( UnitNode* unit_node ) { _unit_node = unit_node; }
+    TargetNode* getTargetNode() { return _target_node; }
+    void setTargetNode( TargetNode* target_node ) { _target_node = target_node; }
     
     bool isEnabled() { return _is_enabled; }
     void setEnabled( bool b ) { _is_enabled = b; }

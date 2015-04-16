@@ -64,6 +64,25 @@ public:
     void setBuffData( const cocos2d::ValueMap& data ) { _data = data; }
 };
 
+class ElementData;
+
+class AttributeBuff : public Buff {
+private:
+    ElementData* _unit_data;
+    
+public:
+    AttributeBuff();
+    virtual ~AttributeBuff();
+    
+    static AttributeBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
+};
+
 class BurnBuff : public Buff {
 public:
     BurnBuff();

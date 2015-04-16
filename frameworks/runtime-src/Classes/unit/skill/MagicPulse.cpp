@@ -90,7 +90,7 @@ void MagicPulse::begin() {
     
     UnitNode* target_unit = dynamic_cast<UnitNode*>( _owner->getChasingTarget() );
     if( target_unit == nullptr || Math::isPositionInRange( target_unit->getPosition(), _owner->getPosition(), _range + target_unit->getUnitData()->collide ) || Terrain::getInstance()->isBlocked( _owner->getPosition(), target_unit->getPosition() ) ) {
-        Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _owner->getPosition(), _range );
+        Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _owner->getPosition(), _range );
         int size = (int)candidates.size();
         if( size > 0 ) {
             int rand = Utils::randomNumber( size ) - 1;

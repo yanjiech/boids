@@ -40,7 +40,7 @@ bool DamageCalculate::init( const std::string& calculator_name, float base_damag
     return true;
 }
 
-cocos2d::ValueMap DamageCalculate::calculateDamage( class UnitData* atker_data, class UnitData* defer_data ) {
+cocos2d::ValueMap DamageCalculate::calculateDamage( class ElementData* atker_data, class ElementData* defer_data ) {
     cocos2d::ValueMap ret;
     
     do {
@@ -72,7 +72,7 @@ cocos2d::ValueMap DamageCalculate::calculateDamage( class UnitData* atker_data, 
     return ret;
 }
 
-cocos2d::ValueMap DamageCalculate::calculateDamageWithoutMiss( class UnitData* atker_data, class UnitData* defer_data ) {
+cocos2d::ValueMap DamageCalculate::calculateDamageWithoutMiss( class ElementData* atker_data, class ElementData* defer_data ) {
     cocos2d::ValueMap ret;
     
     do {
@@ -97,7 +97,7 @@ cocos2d::ValueMap DamageCalculate::calculateDamageWithoutMiss( class UnitData* a
     return ret;
 }
 
-float DamageCalculate::calculateDamage( const std::string calculator_name, float base_damage, class UnitData* atker_data, class UnitData* defer_data ) {
+float DamageCalculate::calculateDamage( const std::string calculator_name, float base_damage, class ElementData* atker_data, class ElementData* defer_data ) {
     if( calculator_name == "normal" ) {
         return ( base_damage + atker_data->atk ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
     }

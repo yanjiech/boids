@@ -39,31 +39,35 @@ bool SkillBehavior::init( UnitNode* unit_node ) {
 }
 
 bool SkillBehavior::behave( float delta ) {
-    if( _unit_node->isDying() ) {
+    UnitNode* unit_node = dynamic_cast<UnitNode*>( _target_node );
+    if( unit_node->isDying() ) {
         return true;
     }
-    if( _unit_node->isUnderControl() ) {
+    if( unit_node->isUnderControl() ) {
         return true;
     }
-    if( _unit_node->isCasting() ) {
+    if( unit_node->isCasting() ) {
         return true;
     }
-    if( _unit_node->isConcentrateOnWalk() ) {
+    if( unit_node->isCharging() ) {
+        return false;
+    }
+    if( unit_node->isConcentrateOnWalk() ) {
         return false;
     }
     
-    if( _unit_node->getChasingTarget() != nullptr ) {
-        cocos2d::Point target_pos = _unit_node->getChasingTarget()->getPosition();
-        cocos2d::Point unit_pos = _unit_node->getPosition();
+    if( unit_node->getChasingTarget() != nullptr ) {
+        cocos2d::Point target_pos = unit_node->getChasingTarget()->getPosition();
+        cocos2d::Point unit_pos = unit_node->getPosition();
         float distance = target_pos.distance( unit_pos );
         _elapse += delta;
         if( _elapse >= 1.0f ) {
             _elapse = 0;
-            int skill_count = _unit_node->getSkills().size();
+            int skill_count = (int)unit_node->getSkills().size();
             for( int i = 0; i < skill_count; i++ ) {
-                float range = _unit_node->getSkillRangeById( i );
-                if( ( distance <= range || range == 0 ) && _unit_node->isSkillReadyById( i ) && Utils::randomFloat() < 0.5 ) {
-                    _unit_node->useSkill( i, _unit_node->getUnitDirection(), 0 );
+                float range = unit_node->getSkillRangeById( i );
+                if( ( distance <= range || range == 0 ) && unit_node->isSkillReadyById( i ) && Utils::randomFloat() < 0.5 ) {
+                    unit_node->useSkill( i, unit_node->getUnitDirection(), 0, 0 );
                     return true;
                 }
             }

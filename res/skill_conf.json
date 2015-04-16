@@ -143,6 +143,15 @@
         "max_range" : 300.0,
         "stun" : 2.0
     },
+    "HuntingIntuition" :
+    {
+        "multi_action" : false,
+        "hint" : "none",
+        "cd" : 6.0,
+        "buff_duration" : 5.0,
+        "cri_up" : 0.05,
+        "hit_up" : 0.05
+    },
     "Impetus" :
     {
         "multi_action" : false,
@@ -220,6 +229,18 @@
         "count" : 6,
         "buff_duration" : 2.0,
         "interval" : 0.08
+    },
+    "PenetrateSpear" :
+    {
+        "multi_action" : false,
+        "hint" : "arrow",
+        "damage" : [ 10.0, 40.0, 100.0 ],
+        "cd" : 6.0,
+        "max_time" : 3.0,
+        "max_extra" : 0.3,
+        "bullet_speed" : 1200.0,
+        "bullet_name" : "penetrate_spear",
+        "touch_down_cast" : true
     },
     "FireWhirl" :
     {

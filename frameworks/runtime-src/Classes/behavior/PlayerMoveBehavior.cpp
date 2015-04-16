@@ -42,44 +42,45 @@ bool PlayerMoveBehavior::init( UnitNode* unit_node ) {
 }
 
 bool PlayerMoveBehavior::behave( float delta ) {
-    if( _unit_node->isDying() ) {
+    UnitNode* unit_node = dynamic_cast<UnitNode*>( _target_node );
+    if( unit_node->isDying() ) {
         return true;
     }
-    if( _unit_node->isUnderControl() ) {
+    if( unit_node->isUnderControl() ) {
         return true;
     }
-    BattleLayer* battle_layer = _unit_node->getBattleLayer();
+    BattleLayer* battle_layer = unit_node->getBattleLayer();
     cocos2d::Point control_dir = battle_layer->getControlLayer()->getJoyStickDirection();
-    float move_speed = _unit_node->getUnitData()->move_speed;
-    if( _unit_node->shouldCatchUp() ) {
-        Point last_pos = _unit_node->getPosition();
-        _unit_node->findPathToPosition( battle_layer->getLeaderUnit()->getPosition() );
-        _unit_node->walkAlongWalkPath( move_speed * DEFAULT_CATCH_UP_SPEED_FACTOR * delta );
+    float move_speed = unit_node->getUnitData()->move_speed;
+    if( unit_node->shouldCatchUp() ) {
+        Point last_pos = unit_node->getPosition();
+        unit_node->findPathToPosition( battle_layer->getLeaderUnit()->getPosition() );
+        unit_node->walkAlongWalkPath( move_speed * DEFAULT_CATCH_UP_SPEED_FACTOR * delta );
         return true;
     }
     if( control_dir.x != 0 || control_dir.y != 0 ) {
-        Point new_pos = _unit_node->getPosition() + control_dir * delta * move_speed;
-        _unit_node->walkTo( new_pos );
+        Point new_pos = unit_node->getPosition() + control_dir * delta * move_speed;
+        unit_node->walkTo( new_pos );
         return true;
     }
-    if( _unit_node->isAttacking() ) {
+    if( unit_node->isAttacking() ) {
         return true;
     }
-    if( _unit_node->getChasingTarget() == nullptr ) {
-        if( _unit_node->getSightGroup() != "" ) {
-            cocos2d::Vector<UnitNode*> same_sight_group_units = _unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( _unit_node->getUnitCamp(), _unit_node->getSightGroup() );
+    if( unit_node->getChasingTarget() == nullptr ) {
+        if( unit_node->getSightGroup() != "" ) {
+            cocos2d::Vector<UnitNode*> same_sight_group_units = unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( unit_node->getTargetCamp(), unit_node->getSightGroup() );
             for( auto u : same_sight_group_units ) {
                 if( u->getChasingTarget() != nullptr ) {
-                    _unit_node->setChasingTarget( u->getChasingTarget() );
+                    unit_node->setChasingTarget( u->getChasingTarget() );
                     break;
                 }
             }
         }
     }
-    if( _unit_node->getChasingTarget() ) {
-        Point last_pos = _unit_node->getPosition();
-        _unit_node->findPathToPosition( _unit_node->getChasingTarget()->getPosition() );
-        _unit_node->walkAlongWalkPath( move_speed * delta );
+    if( unit_node->getChasingTarget() ) {
+        Point last_pos = unit_node->getPosition();
+        unit_node->findPathToPosition( unit_node->getChasingTarget()->getPosition() );
+        unit_node->walkAlongWalkPath( move_speed * delta );
         return true;
     }
     return false;

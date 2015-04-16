@@ -1,0 +1,31 @@
+{
+    "arrow_tower": {
+        "atk": 32.0, 
+        "atkgr": 14.0, 
+        "attackspeed": 1.0, 
+        "bullet_name": "arrow", 
+        "collide": 40.0, 
+        "cri": 3.0, 
+        "crigr": 3.9, 
+        "def": 20.0, 
+        "defgr": 11.0, 
+        "displayname": "箭塔", 
+        "dodge": 7.0, 
+        "dodgegr": 2.3, 
+        "hit": 22.0, 
+        "hitgr": 3.1, 
+        "hp": 290.0, 
+        "hpgr": 127.0, 
+        "id": 800001, 
+        "movespeed": 0.0, 
+        "mp": 100.0, 
+        "mpgr": 20.0, 
+        "name": "arrow_tower", 
+        "range": 500.0, 
+        "rec": 0.5, 
+        "recgr": 0.23, 
+        "scale": 1.0, 
+        "ten": 1.0, 
+        "tengr": 3.0
+    }
+}

@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 
-typedef std::function<float(float, class UnitData*, class UnitData*)> DamageCalculator;
+typedef std::function<float(float, class ElementData*, class ElementData*)> DamageCalculator;
 
 class DamageCalculate : public cocos2d::Ref {
 private:
@@ -27,10 +27,10 @@ public:
     static DamageCalculate* create( const std::string& calculator_name, float base_damage );
     virtual bool init( const std::string& calculator_name, float base_damage );
     
-    cocos2d::ValueMap calculateDamage( class UnitData* atker_data, class UnitData* defer_data );
-    cocos2d::ValueMap calculateDamageWithoutMiss( class UnitData* atker_data, class UnitData* defer_data );
+    cocos2d::ValueMap calculateDamage( class ElementData* atker_data, class ElementData* defer_data );
+    cocos2d::ValueMap calculateDamageWithoutMiss( class ElementData* atker_data, class ElementData* defer_data );
     
-    static float calculateDamage( const std::string calculator_name, float base_damage, class UnitData* atker_data, class UnitData* defer_data );
+    static float calculateDamage( const std::string calculator_name, float base_damage, class ElementData* atker_data, class ElementData* defer_data );
     
     static float calculateResistance( float def, float negl, float neglp );
     

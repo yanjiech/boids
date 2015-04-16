@@ -21,6 +21,8 @@
 #include <map>
 #include "../unit/skill/SkillNode.h"
 #include "../unit/BlockNode.h"
+#include "../unit/TowerNode.h"
+#include "UIStoryLayer.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,
@@ -33,7 +35,8 @@ enum eBattleSubLayer {
     ToastLayer = 8,
     ControlLayer = 9,
     BattleUILayer = 10,
-    BattleMenuLayer = 11
+    BattleStoryLayer = 11,
+    BattleMenuLayer = 12
 };
 
 enum eBattleState {
@@ -42,7 +45,8 @@ enum eBattleState {
     BattleLose = 3,
     BattlePrepare = 4,
     BattlePaused = 5,
-    BattleRunning = 6
+    BattleRunning = 6,
+    BattleStory = 7
 };
 
 enum eCameraMode {
@@ -51,10 +55,13 @@ enum eCameraMode {
     CameraModeFixed = 3
 };
 
-typedef cocos2d::Map<std::string, UnitNode*> UnitMap;
-typedef cocos2d::Map<std::string, BulletNode*> BulletMap;
 
 class BattleLayer : public cocos2d::Layer, public boids::Updatable {
+public:
+    typedef cocos2d::Map<std::string, UnitNode*> UnitMap;
+    typedef cocos2d::Map<std::string, BulletNode*> BulletMap;
+    typedef cocos2d::Map<std::string, TowerNode*> TowerMap;
+    
 private:
     MapLogic* _map_logic;
     MapData* _map_data;
@@ -75,6 +82,7 @@ private:
     UIBattleMenuLayer* _battle_menu_layer;
     UIControlLayer* _control_layer;
     cocos2d::TMXTiledMap* _tmx_map;
+    UIStoryLayer* _story_layer;
     
     eBattleState _state;
     
@@ -83,6 +91,8 @@ private:
     UnitMap _dead_units;
     
     BulletMap _bullets;
+    
+    TowerMap _towers;
     
     cocos2d::Map<std::string, BlockNode*> _block_nodes;
     
@@ -95,6 +105,8 @@ private:
     int zorderForPositionOnObjectLayer( const cocos2d::Point& pos );
     
     void reorderObjectLayer();
+    
+    void updateTowers( float delta );
     
 public:
     static eBattleState getBattleStateFromString( const std::string& str );
@@ -134,24 +146,28 @@ public:
     
     UnitNode* getLeaderUnit();
     
-    cocos2d::Vector<UnitNode*> getAliveOpponents( eUnitCamp camp );
-    cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eUnitCamp camp );
+    cocos2d::Vector<UnitNode*> getAliveOpponents( eTargetCamp camp );
+    cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eTargetCamp camp );
     
     cocos2d::Vector<UnitNode*> getAliveUnitsInRoundRange( const cocos2d::Point& center, float radius );
     
-    cocos2d::Vector<UnitNode*> getAliveAllyInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );
+    cocos2d::Vector<UnitNode*> getAliveAllyInRange( eTargetCamp camp, const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveUnitsByTag( const std::string& tag );
     cocos2d::Vector<UnitNode*> getAliveUnitsByName( const std::string& name );
-    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& center, float radius );
-    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eUnitCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius );
-    cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eUnitCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle );
-    cocos2d::Vector<UnitNode*> getAliveUnitsByCampAndSightGroup( eUnitCamp camp, const std::string& sight_group );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& center, float radius );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eTargetCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle );
+    cocos2d::Vector<UnitNode*> getAliveUnitsByCampAndSightGroup( eTargetCamp camp, const std::string& sight_group );
+    
+    const TowerMap& getAllTowers() { return _towers; }
+    cocos2d::Vector<TowerNode*> getAliveTowersInRange( eTargetCamp camp, const cocos2d::Point& center, float range );
+    cocos2d::Vector<TowerNode*> getAliveTowersInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float range );
     
     const cocos2d::Map<std::string, BlockNode*>& getBlockNodes() { return _block_nodes; }
     void addBlockNode( BlockNode* block_node );
     void removeBlockNode( BlockNode* block_node );
     
-    UnitNode* getAliveUnitByDeployId( int deploy_id );
+    TargetNode* getAliveTargetByDeployId( int deploy_id );
     
     bool addBullet( int key, BulletNode* bullet );
     void removeBullet( int key );
@@ -176,6 +192,8 @@ public:
     void deployUnit( UnitNode* unit, const cocos2d::Point& pos, const std::string& sight_group );
     void deployUnits( const cocos2d::Vector<UnitNode*>& units, const cocos2d::Rect& area, const std::string& sight_group );
     
+    void deployTower( TowerNode* tower, const cocos2d::Point& pos );
+    
     void adjustCamera();
     void centerCameraToPosition( const cocos2d::Point& pos );
     
@@ -188,6 +206,9 @@ public:
     bool isPositionOK( cocos2d::Point pos, float radius );
     
     void clearChasingTarget( TargetNode* unit );
+    
+    void startStory( const cocos2d::ValueMap& story_data );
+    void endStory();
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

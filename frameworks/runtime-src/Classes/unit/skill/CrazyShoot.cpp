@@ -58,7 +58,7 @@ void CrazyShoot::updateFrame( float delta ) {
             _elapse = 0;
             BattleLayer* battle_layer = _owner->getBattleLayer();
             
-            cocos2d::Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _owner->getPosition(), _range );
+            cocos2d::Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _owner->getPosition(), _range );
             int size = (int)candidates.size();
             if( size > 0 ) {
                 int i = Utils::randomNumber( size ) - 1;
@@ -69,7 +69,7 @@ void CrazyShoot::updateFrame( float delta ) {
                 DamageCalculate* calculator = DamageCalculate::create( "CrazyShoot", _base_damage );
                 BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, ValueMap() );
                 battle_layer->addBullet( bullet->getBulletId(), bullet );
-                bullet->shootAt( _owner, target_unit );
+                bullet->shootAt( target_unit );
             }
             
             if( ++_current_count >= _count ) {

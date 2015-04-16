@@ -35,6 +35,10 @@ typedef std::shared_ptr<EditorVisionTrigger> EditorVisionTriggerPtr;
 typedef std::shared_ptr<EditorWaveAction> EditorWaveActionPtr;
 typedef std::shared_ptr<EditorGameCondition> EditorGameConditionPtr;
 typedef std::shared_ptr<EditorConversationAction> EditorConversationActionPtr;
+
+typedef std::shared_ptr<EditorStory> EditorStoryPtr;
+typedef std::shared_ptr<EditorStoryAction> EditorStoryActionPtr;
+
 //typedef std::shared_ptr<EditorConversationChangeTrigger> EditorConversationChangeTriggerPtr;
 
 #endif

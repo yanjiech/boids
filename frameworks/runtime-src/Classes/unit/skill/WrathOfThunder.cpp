@@ -48,7 +48,7 @@ void WrathOfThunder::updateFrame( float delta ) {
 
 void WrathOfThunder::begin() {
     BattleLayer* battle_layer = _owner->getBattleLayer();
-    cocos2d::Vector<UnitNode*> units = battle_layer->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _range );
+    cocos2d::Vector<UnitNode*> units = battle_layer->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _range );
     int c = 0;
     for( auto u : units ) {
         std::string resource = "effects/zeus_skill_1";

@@ -39,12 +39,16 @@ public:
     
     UnitNode* getOwner() { return _unit_node; }
     
-    void activate( const cocos2d::Point& dir, float range_per );
+    void activate( const cocos2d::Point& dir, float range_per, float duration = 0 );
     
     void showHint( const cocos2d::Point& dir, float range_per );
     void hideHint();
     
     virtual void updateFrame( float delta );
+    
+    bool shouldCastOnTouchDown();
+    
+    bool isSkillReady();
 };
 
 class UIBattleLayer : public cocos2d::Layer {
@@ -57,6 +61,8 @@ private:
     
     cocos2d::Point _touch_down_pos;
     cocos2d::Touch* _touch;
+    
+    float _touch_down_duration;
     
 public:
     UIBattleLayer();

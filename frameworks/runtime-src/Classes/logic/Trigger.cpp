@@ -151,7 +151,7 @@ void UnitChangeTrigger::updateTrigger( class MapLogic* map_logic, class UnitNode
     std::string source_value = _trigger_data.at( "source_value" ).asString();
     
     if( source_type == UNIT_SOURCE_TYPE ) {
-        if( unit_node->getUnitCamp() == UnitNode::getCampByString( source_value ) ) {
+        if( unit_node->getTargetCamp() == UnitNode::getCampByString( source_value ) ) {
             ++_current_count;
         }
     }

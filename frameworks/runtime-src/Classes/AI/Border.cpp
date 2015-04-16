@@ -27,7 +27,7 @@ bool Border::willCollide(cocos2d::Point pos, float radius)
 	return (Fuzzy::_equalLess(Geometry::distanceSqrToLine(pos, src, dst), radius * radius));
 }
 
-bool Border::willCollide(UnitNode* unit, cocos2d::Point unit_new_pos)
+bool Border::willCollide(TargetNode* unit, cocos2d::Point unit_new_pos)
 {
 	//相切也算碰撞；但起点和角重合的情况比较特殊（终点和角重合的情况好像没关系。画了一些图觉得是这样的。如果发现有问题要优先检查这里）
 	//从障碍物里出到障碍物的情况要排除掉，这种情况是允许的。至于为什么进到障碍物里面了，这个方法就先不用考虑了，也许是误差吧

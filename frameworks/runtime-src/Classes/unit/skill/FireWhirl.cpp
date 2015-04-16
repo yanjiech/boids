@@ -63,7 +63,7 @@ void FireWhirl::updateFrame( float delta ) {
                 
                 DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_FIRE_WHIRL, _damage );
                 
-                Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _range );
+                Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _range );
                 
                 for( auto itr = candidates.begin(); itr != candidates.end(); ++itr ) {
                     UnitNode* target_unit = *itr;

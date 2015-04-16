@@ -58,6 +58,9 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     else if( buff_type == BUFF_TYPE_SLOW ) {
         ret = SlowBuff::create( owner, data );
     }
+    else if( buff_type == BUFF_TYPE_ATTRIBUTE ) {
+        ret = AttributeBuff::create( owner, data );
+    }
     return ret;
 }
 
@@ -93,6 +96,58 @@ void Buff::setOwner( UnitNode* owner ) {
     CC_SAFE_RELEASE( _owner );
     _owner = owner;
     CC_SAFE_RETAIN( _owner );
+}
+
+//attribute buff
+AttributeBuff::AttributeBuff() {
+    
+}
+
+AttributeBuff::~AttributeBuff() {
+    
+}
+
+AttributeBuff* AttributeBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    AttributeBuff* ret = new AttributeBuff();
+    if( ret && ret->init( owner, data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool AttributeBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    if( !Buff::create( owner, data ) ) {
+        return false;
+    }
+    
+    _unit_data = ElementData::create( ValueMap() );
+    const ValueMap& attributes = data.at( "attributes" ).asValueMap();
+    for( auto pair : attributes ) {
+        _unit_data->setAttribute( pair.first, pair.second.asString() );
+    }
+    
+    return true;
+}
+
+void AttributeBuff::updateFrame( float delta ) {
+    Buff::updateFrame( delta );
+    if( _elapse > _duration ) {
+        this->end();
+    }
+}
+
+void AttributeBuff::begin() {
+    _owner->getTargetData()->add( _unit_data );
+    Buff::begin();
+}
+
+void AttributeBuff::end() {
+    _owner->getTargetData()->sub( _unit_data );
+    Buff::end();
 }
 
 PoisonBuff::PoisonBuff() {
