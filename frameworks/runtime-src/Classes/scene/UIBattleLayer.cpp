@@ -143,6 +143,10 @@ bool UISkillNode::shouldCastOnTouchDown() {
     return _unit_node->shouldSkillCastOnTouchDown( 0 );
 }
 
+bool UISkillNode::isSkillReady() {
+    return _unit_node->isSkillReadyById( 0 );
+}
+
 UIBattleLayer::UIBattleLayer() {
     
 }
@@ -191,7 +195,7 @@ bool UIBattleLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event )
             _selected_skill->showHint( Point::ZERO, 0 );
             _touch_down_pos = this->convertTouchToNodeSpace( touch );
             _touch_down_duration = 0;
-            if( _selected_skill->shouldCastOnTouchDown() ) {
+            if( _selected_skill->shouldCastOnTouchDown() && _selected_skill->isSkillReady() ) {
                 _selected_skill->getOwner()->setCharging( true );
             }
             return true;
@@ -242,8 +246,8 @@ void UIBattleLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event )
             range_per = ( distance - MIN_SWIPE_DISTANCE ) / ( MAX_SWIPE_DISTANCE - MIN_SWIPE_DISTANCE );
         }
         _selected_skill->hideHint();
-        if( _selected_skill->shouldCastOnTouchDown() ) {
-            _selected_skill->getOwner()->setCharging( true );
+        if( _selected_skill->shouldCastOnTouchDown() && _selected_skill->isSkillReady() ) {
+            _selected_skill->getOwner()->setCharging( false );
         }
         _selected_skill->activate( dir, range_per );
         

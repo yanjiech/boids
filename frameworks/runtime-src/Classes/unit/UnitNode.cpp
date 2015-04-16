@@ -1146,6 +1146,11 @@ void UnitNode::setConcentrateOnWalk( bool b ) {
     }
 }
 
+void UnitNode::setCharging( bool b ) {
+    _is_charging = b;
+    this->changeUnitState( _state );
+}
+
 //private methods
 
 void UnitNode::updateBuffs( float delta ) {

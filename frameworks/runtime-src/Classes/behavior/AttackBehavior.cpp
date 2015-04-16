@@ -49,6 +49,9 @@ bool AttackBehavior::behave( float delta ) {
     if( unit_node->isAttacking() || unit_node->isCasting() ) {
         return true;
     }
+    if( unit_node->isCharging() ) {
+        return false;
+    }
     if( unit_node->isHarmless() ) {
         return false;
     }

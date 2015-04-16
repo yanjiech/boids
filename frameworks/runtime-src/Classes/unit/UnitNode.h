@@ -299,7 +299,7 @@ public:
     void setConcentrateOnWalk( bool b );
     
     bool isCharging() { return _is_charging; }
-    void setCharging( bool b ) { _is_charging = b; }
+    void setCharging( bool b );
     
     //debug
     cocos2d::DrawNode* _custom_draw;

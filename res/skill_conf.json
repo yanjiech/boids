@@ -232,7 +232,7 @@
     },
     "PenetrateSpear" :
     {
-        "multi_action" : true,
+        "multi_action" : false,
         "hint" : "arrow",
         "damage" : [ 10.0, 40.0, 100.0 ],
         "cd" : 6.0,

@@ -49,6 +49,9 @@ bool SkillBehavior::behave( float delta ) {
     if( unit_node->isCasting() ) {
         return true;
     }
+    if( unit_node->isCharging() ) {
+        return false;
+    }
     if( unit_node->isConcentrateOnWalk() ) {
         return false;
     }
@@ -60,11 +63,11 @@ bool SkillBehavior::behave( float delta ) {
         _elapse += delta;
         if( _elapse >= 1.0f ) {
             _elapse = 0;
-            int skill_count = unit_node->getSkills().size();
+            int skill_count = (int)unit_node->getSkills().size();
             for( int i = 0; i < skill_count; i++ ) {
                 float range = unit_node->getSkillRangeById( i );
                 if( ( distance <= range || range == 0 ) && unit_node->isSkillReadyById( i ) && Utils::randomFloat() < 0.5 ) {
-                    unit_node->useSkill( i, unit_node->getUnitDirection(), 0 );
+                    unit_node->useSkill( i, unit_node->getUnitDirection(), 0, 0 );
                     return true;
                 }
             }

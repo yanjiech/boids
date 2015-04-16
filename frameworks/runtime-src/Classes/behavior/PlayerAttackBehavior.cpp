@@ -50,6 +50,9 @@ bool PlayerAttackBehavior::behave( float delta ) {
     if( unit_node->isCasting() ) {
         return true;
     }
+    if( unit_node->isCharging() ) {
+        return false;
+    }
     if( unit_node->isAttacking() ) {
         return false;
     }

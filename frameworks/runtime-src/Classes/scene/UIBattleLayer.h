@@ -47,6 +47,8 @@ public:
     virtual void updateFrame( float delta );
     
     bool shouldCastOnTouchDown();
+    
+    bool isSkillReady();
 };
 
 class UIBattleLayer : public cocos2d::Layer {
