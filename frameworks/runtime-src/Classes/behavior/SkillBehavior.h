@@ -16,11 +16,11 @@ private:
     float _elapse;
     
 public:
-    SkillBehavior( UnitNode* unit_node );
+    SkillBehavior();
     virtual ~SkillBehavior();
     
     static SkillBehavior* create( UnitNode* unit_node );
-    virtual bool init();
+    virtual bool init( UnitNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

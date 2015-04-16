@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-PlayerMoveBehavior::PlayerMoveBehavior( UnitNode* unit_node ) : BehaviorBase( unit_node ) {
+PlayerMoveBehavior::PlayerMoveBehavior()  {
     
 }
 
@@ -23,8 +23,8 @@ PlayerMoveBehavior::~PlayerMoveBehavior() {
 }
 
 PlayerMoveBehavior* PlayerMoveBehavior::create( UnitNode* unit_node ) {
-    PlayerMoveBehavior* ret = new PlayerMoveBehavior( unit_node );
-    if( ret && ret->init() ) {
+    PlayerMoveBehavior* ret = new PlayerMoveBehavior();
+    if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
         return ret;
     }
@@ -34,8 +34,8 @@ PlayerMoveBehavior* PlayerMoveBehavior::create( UnitNode* unit_node ) {
     }
 }
 
-bool PlayerMoveBehavior::init() {
-    if( !BehaviorBase::init() ) {
+bool PlayerMoveBehavior::init( UnitNode* unit_node ) {
+    if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }
     return true;
@@ -48,21 +48,21 @@ bool PlayerMoveBehavior::behave( float delta ) {
     if( _unit_node->isUnderControl() ) {
         return true;
     }
-    if( !_unit_node->isMovable() ) {
-        return true;
-    }
     BattleLayer* battle_layer = _unit_node->getBattleLayer();
     cocos2d::Point control_dir = battle_layer->getControlLayer()->getJoyStickDirection();
     float move_speed = _unit_node->getUnitData()->move_speed;
     if( _unit_node->shouldCatchUp() ) {
         Point last_pos = _unit_node->getPosition();
         _unit_node->findPathToPosition( battle_layer->getLeaderUnit()->getPosition() );
-        _unit_node->walkAlongPath( move_speed * DEFAULT_CATCH_UP_SPEED_FACTOR * delta );
+        _unit_node->walkAlongWalkPath( move_speed * DEFAULT_CATCH_UP_SPEED_FACTOR * delta );
         return true;
     }
     if( control_dir.x != 0 || control_dir.y != 0 ) {
         Point new_pos = _unit_node->getPosition() + control_dir * delta * move_speed;
         _unit_node->walkTo( new_pos );
+        return true;
+    }
+    if( _unit_node->isAttacking() ) {
         return true;
     }
     if( _unit_node->getChasingTarget() == nullptr ) {
@@ -79,7 +79,7 @@ bool PlayerMoveBehavior::behave( float delta ) {
     if( _unit_node->getChasingTarget() ) {
         Point last_pos = _unit_node->getPosition();
         _unit_node->findPathToPosition( _unit_node->getChasingTarget()->getPosition() );
-        _unit_node->walkAlongPath( move_speed * delta );
+        _unit_node->walkAlongWalkPath( move_speed * delta );
         return true;
     }
     return false;

@@ -24,7 +24,6 @@
 #define UNIT_STATE_HOLD_APPEAR "unit_hold_appear"
 #define UNIT_STATE_MOVE_TO "unit_move"
 #define UNIT_STATE_PATROL_TO "unit_patrol"
-#define UNIT_STATE_PATROL "unit_patrol"
 #define UNIT_STATE_DISAPPEAR "unit_disappear"
 #define UNIT_STATE_IDLE "unit_idle"
 #define UNIT_STATE_DIE "unit_die"
@@ -42,20 +41,6 @@
 #define UNIT_CAMP_WILD "wild"
 #define UNIT_CAMP_OPPONENT "opponent"
 
-#define SKILL_NAME_WRATH_OF_THUNDER "WrathOfThunder"
-#define SKILL_NAME_LIGHTNING_CHAIN "LightningChain"
-#define SKILL_NAME_BARRAGE_OF_ARROW "BarrageOfArrow"
-#define SKILL_NAME_CRAZYSHOOT "CrazyShoot"
-#define SKILL_NAME_GIANT_SWORD "GiantSword"
-#define SKILL_NAME_LIGHTSHIELD "LightShield"
-#define SKILL_NAME_DARK_PIERCE "DarkPierce"
-#define SKILL_NAME_BAT_SWARM "BatSwarm"
-#define SKILL_NAME_NATURESATTENDANTS "NaturesAttendants"
-#define SKILL_NAME_IMPETUS "Impetus"
-#define SKILL_NAME_BONESRAIN "BonesRain"
-#define SKILL_NAME_MAGIC_PULSE "MagicPulse"
-#define SKILL_NAME_MISSILE_SHOWERS "MissileShowers"
-
 #define GAME_TASK_TYPE_LIMITED_TIME "limited_time"
 #define GAME_TASK_TYPE_SURVIVE "survive"
 #define GAME_TASK_TYPE_ELIMINATE_UNIT "eliminate_unit"
@@ -67,6 +52,7 @@
 #define BUFF_TYPE_PIERCE "buff_pierce"
 #define BUFF_TYPE_BURN "buff_burn"
 #define BUFF_TYPE_POISON "buff_poison"
+#define BUFF_TYPE_SLOW "buff_slow"
 
 #define EVENT_TRIGGER_TYPE_MAP_INIT "map_init"
 #define EVENT_TRIGGER_TYPE_UNIT_CHANGE "unit_change"
@@ -81,6 +67,7 @@
 #define EVENT_STATE_TRIGGER "event_trigger"
 #define EVENT_STATE_FINISH "event_finish"
 #define EVENT_STATE_ENABLE "event_enable"
+#define EVENT_STATE_DISABLE "event_disable"
 
 #define GAME_TASK_STATE_UNSTARTED "task_unstart"
 #define GAME_TASK_STATE_STARTED "task_start"
@@ -104,5 +91,23 @@
 
 #define VISION_STATE_ENABLED  "enabled"
 #define VISION_STATE_DISABLED "disabled"
+
+#define SKILL_NAME_WRATH_OF_THUNDER "WrathOfThunder"
+#define SKILL_NAME_LIGHTNING_CHAIN "LightningChain"
+#define SKILL_NAME_BARRAGE_OF_ARROW "BarrageOfArrow"
+#define SKILL_NAME_CRAZYSHOOT "CrazyShoot"
+#define SKILL_NAME_GIANT_SWORD "GiantSword"
+#define SKILL_NAME_LIGHTSHIELD "LightShield"
+#define SKILL_NAME_DARK_PIERCE "DarkPierce"
+#define SKILL_NAME_BAT_SWARM "BatSwarm"
+#define SKILL_NAME_NATURESATTENDANTS "NaturesAttendants"
+#define SKILL_NAME_IMPETUS "Impetus"
+#define SKILL_NAME_BONESRAIN "BonesRain"
+#define SKILL_NAME_MAGIC_PULSE "MagicPulse"
+#define SKILL_NAME_MISSILE_SHOWERS "MissileShowers"
+#define SKILL_NAME_ATOM_FART "AtomFart"
+#define SKILL_NAME_FATAL_THROW "FatalThrow"
+#define SKILL_NAME_FIRE_WHIRL "FireWhirl"
+#define SKILL_NAME_DEATH_SLICE "DeathSlice"
 
 #endif /* defined(__Boids__BoidsConstant__) */

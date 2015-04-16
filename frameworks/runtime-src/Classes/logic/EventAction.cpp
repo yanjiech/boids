@@ -9,6 +9,7 @@
 #include "EventAction.h"
 #include "../util/CocosUtils.h"
 #include "../scene/BattleLayer.h"
+#include "../AI/Path.h"
 
 using namespace cocos2d;
 
@@ -55,7 +56,6 @@ EventAction* EventAction::create( const cocos2d::ValueMap& action_data, class Ma
 bool EventAction::init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger  ) {
     _action_data = action_data;
     _map_logic = map_logic;
-    _trigger = trigger;
     std::string meta = _action_data.at( "meta" ).asString();
     std::vector<std::string> str_vector;
     Utils::split( meta, str_vector, ',' );
@@ -73,6 +73,8 @@ bool EventAction::init( const cocos2d::ValueMap& action_data, class MapLogic* ma
     _should_recycle = false;
     
     _action_name = CocosUtils::getNextGlobalBoidsEventActionId();
+    
+    this->setTriggerName( trigger->getEventTriggerName() );
     return true;
 }
 
@@ -86,6 +88,14 @@ bool EventAction::start( cocos2d::Map<std::string, cocos2d::Ref*> params, bool a
     return false;
 }
 
+void EventAction::pause() {
+    _is_running = false;
+}
+
+void EventAction::resume() {
+    _is_running = true;
+}
+
 void EventAction::stop() {
     if( _is_running ) {
         _should_recycle = true;
@@ -94,13 +104,13 @@ void EventAction::stop() {
 }
 
 void EventAction::updateFrame( float delta ) {
-    if( _is_running ) {
+    if( !_should_recycle && _is_running ) {
         _accumulator += delta;
         if( ( _current_round == 0 && _accumulator > _delay ) || ( _current_round > 0 && _accumulator > _interval ) ) {
             _accumulator = 0;
             bool finish = false;
+            ++_current_round;
             if( !this->isInfinite() ) {
-                ++_current_round;
                 finish = _current_round > _repeat;
             }
             if( _callback ) {
@@ -153,7 +163,7 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
     BattleLayer* battle_layer = _map_logic->getBattleLayer();
     
     cocos2d::Vector<UnitNode*> source_units;
-    bool should_perform_changes = false;
+    bool should_perform_changes = true;
     std::string source_type = _action_data.at( "source_type" ).asString();
     std::string source_value = _action_data.at( "source_value" ).asString();
     std::string unit_state = "";
@@ -303,13 +313,35 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
     
     if( should_perform_changes ) {
         for( auto u : source_units ) {
-            if( unit_state == UNIT_STATE_MOVE_TO ) {
-                
+            if( unit_state == UNIT_STATE_MOVE_TO || unit_state == UNIT_STATE_PATROL_TO ) {
+                Path* path = Path::create( INT_MAX );
+                std::string pos_name = _action_data.at( "position_name" ).asString();
+                do {
+                    ValueMap area = battle_layer->getMapData()->getAreaMapByName( pos_name );
+                    if( area.empty() ) {
+                        break;
+                    }
+                    const ValueMap& rect_data = area.at( "rect" ).asValueMap();
+                    float x = rect_data.at( "x" ).asFloat();
+                    float y = rect_data.at( "y" ).asFloat();
+                    float width = rect_data.at( "width" ).asFloat();
+                    float height = rect_data.at( "height" ).asFloat();
+                    Point to_pos = Point( x + width / 2, y + height / 2 );
+                    path->steps.push_back( to_pos );
+                    auto itr = area.find( "prev_pos" );
+                    if( itr != area.end() ) {
+                        pos_name = itr->second.asString();
+                    }
+                    else {
+                        break;
+                    }
+                }while( true );
+                u->setTourPath( path );
+                if( unit_state == UNIT_STATE_MOVE_TO ) {
+                    u->setConcentrateOnWalk( true );
+                }
             }
-            else if( unit_state == UNIT_STATE_PATROL ) {
-                
-            }
-            else {
+            else if( unit_state == UNIT_STATE_DIE ) {
                 
             }
             if( show_hp ) {
@@ -434,8 +466,19 @@ void EventChangeAction::onActionTriggered( bool finish ) {
     EventAction::onActionTriggered( finish );
     
     const std::string& event_name = _action_data.at( "event_name" ).asString();
-    bool enabled = _action_data.at( "event_state" ).asString() == EVENT_STATE_ENABLE;
-    _map_logic->setTriggersEnabledOfName( event_name, enabled );
+    int event_state = 0;
+    std::string state_string = _action_data.at( "event_state" ).asString();
+    if( state_string == EVENT_STATE_ENABLE ) {
+        event_state = 0;
+    }
+    else if( state_string == EVENT_STATE_DISABLE ) {
+        event_state = 1;
+    }
+    else if( state_string == EVENT_STATE_FINISH ) {
+        event_state = 2;
+    }
+    _map_logic->setActionStateByName( event_name, event_state );
+    _map_logic->setTriggerStateByName( event_name, event_state );
 }
 
 //vision change action

@@ -126,6 +126,12 @@ public:
         float dy = ( pos.y - center.y ) * DISTANCE_Y_FACTOR;
         return dx * dx + dy * dy <= range * range;
     }
+    
+    static bool isPositionInRoundRange( const cocos2d::Point& pos, const cocos2d::Point& center, float range ) {
+        float dx = pos.x - center.x;
+        float dy = ( pos.y - center.y );
+        return dx * dx + dy * dy <= range * range;
+    }
 };
 
 class Geometry

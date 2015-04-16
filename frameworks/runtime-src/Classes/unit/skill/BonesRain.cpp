@@ -64,9 +64,10 @@ void BonesRain::updateFrame( float delta ) {
             
             ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( bullet_name );
             bullet_data["damage_radius"] = Value( _radius );
+            bullet_data["will_miss"] = Value( false );
             
             DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_BONESRAIN, _damage );
-            FixedPosBulletNode* bullet = FixedPosBulletNode::create( _owner, bullet_data, calculator, nullptr );
+            FixedPosBulletNode* bullet = FixedPosBulletNode::create( _owner, bullet_data, calculator, ValueMap() );
             bullet->shootAtPosition( pos );
             
             std::string resource = "effects/skeleton_king_skill_1/cross";

@@ -22,15 +22,20 @@ class BehaviorBase : public cocos2d::Ref {
 protected:
     UnitNode* _unit_node;
     
+    bool _is_enabled;
+    
 public:
-    BehaviorBase( UnitNode* unit_node );
+    BehaviorBase();
     virtual ~BehaviorBase();
     
-    virtual bool init();
+    virtual bool init( UnitNode* unit_node );
     virtual bool behave( float delta = 0 );
     
     UnitNode* getUnitNode() { return _unit_node; }
     void setUnitNode( UnitNode* unit_node ) { _unit_node = unit_node; }
+    
+    bool isEnabled() { return _is_enabled; }
+    void setEnabled( bool b ) { _is_enabled = b; }
 };
 
 #endif /* defined(__Boids__BehaviorBase__) */

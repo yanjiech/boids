@@ -27,17 +27,13 @@ protected:
     
     int _target_id;
     
-    int _source_id;
-    
-    int _source_camp;
-    
     float _speed;
     
-    class UnitData* _unit_data;
+    class UnitNode* _source_unit;
     
     DamageCalculate* _damage_calculator;
     
-    class Buff* _buff;
+    cocos2d::ValueMap _buff_data;
     
     cocos2d::Point _target_pos;
     
@@ -57,8 +53,20 @@ protected:
     
     bool _should_recycle;
     
+    bool _show_hit_effect;
+    std::string _hit_name;
+    std::string _hit_type;
+    
+    bool _show_bomb_effect;
+    std::string _bomb_name;
+    std::string _bomb_type;
+    
+    float _hit_scale;
+    
+    bool _will_miss;
+    
 protected:
-    void shoot( class UnitNode* source );
+    void shoot( class UnitNode* source, int emit_pos_type = 0 );
     
     bool doesHitTarget( const cocos2d::Point& source_pos, const cocos2d::Point& target_pos, float delta );
     
@@ -68,10 +76,10 @@ public:
     
     static int getNextBulletId();
     
-    static BulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
-    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
+    static BulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
+    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
     
-    virtual void shootAt( class UnitNode* source, class TargetNode* target );
+    virtual void shootAt( class UnitNode* source, class TargetNode* target, int emit_pos_type = 0 );
     virtual void shootAtPosition( class UnitNode* source, const cocos2d::Point& pos );
     
     virtual void updateFrame( float delta );
@@ -82,34 +90,56 @@ public:
     int getTargetId() { return _target_id; }
     void setTargetId( int target_id ) { _target_id = target_id; }
     
-    int getSourceId() { return _source_id; }
-    void setSourceId( int source_id ) { _source_id = source_id; }
-    
-    int getSourceCamp() { return _source_camp; }
-    void setSourceCamp( int camp ) { _source_camp = camp; }
-    
-    void setUnitData( class UnitData* unit_data );
+    void setSourceUnit( class UnitNode* source_unit );
     void setDamageCalculator( DamageCalculate* calculator );
-    void setBuff( class Buff* buff );
     
     void setShouldRecycle( bool b );
     bool shouldRecycle() { return _should_recycle; }
+    
+    float getDuration() { return _duration; }
+    void setDuration( float duration ) { _duration = duration; }
+    
+    virtual void hitTarget( class UnitNode* target_unit, bool with_buff = false );
 };
 
 class DirectionalBulletNode : public BulletNode {
 private:
     cocos2d::Point _dir;
-    float _duration;
     cocos2d::ValueMapIntKey _excluded_targets;
     
 public:
     DirectionalBulletNode();
     virtual ~DirectionalBulletNode();
     
-    static DirectionalBulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
-    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
+    static DirectionalBulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
+    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
     
     void shootAlong( const cocos2d::Point& dir, float duration, class UnitNode* source_unit );
+    
+    virtual void updateFrame( float delta );
+};
+
+class DirectionalLastingBulletNode : public BulletNode {
+private:
+    cocos2d::Point _dir;
+    cocos2d::Point _to_pos;
+    float _last_distance_to_pos;
+    
+    bool _reach_to_pos;
+    
+    float _damage_interval;
+    float _damage_elapse;
+    
+    cocos2d::ValueMapIntKey _excluded_targets;
+    
+public:
+    DirectionalLastingBulletNode();
+    virtual ~DirectionalLastingBulletNode();
+    
+    static DirectionalLastingBulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
+    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
+    
+    void shootTo( const cocos2d::Point& from_pos, const cocos2d::Point& to_pos );
     
     virtual void updateFrame( float delta );
 };
@@ -119,28 +149,14 @@ public:
     FixedPosBulletNode();
     virtual ~FixedPosBulletNode();
     
-    static FixedPosBulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
-    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, class Buff* buff );
+    static FixedPosBulletNode* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data);
+    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
     
     virtual void shootAtPosition( const cocos2d::Point& pos );
     virtual void updateFrame( float delta );
     
     void onSkeletonAnimationEvent( int track_index, spEvent* event );
     void onSkeletonAnimationCompleted( int track_index );
-};
-
-class HealBullet : public BulletNode {
-private:
-    float _duration;
-    
-public:
-    HealBullet();
-    virtual ~HealBullet();
-    
-    static HealBullet* create( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator );
-    virtual bool init( class UnitNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculator* damage_calculator );
-    
-    virtual void updateFrame( float delta );
 };
 
 #endif /* defined(__Boids__BulletNode__) */

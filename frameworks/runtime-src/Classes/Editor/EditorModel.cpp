@@ -34,6 +34,9 @@ rapidjson::Value& EditorPosition::toJson(rapidjson::Document::AllocatorType& all
     if (this->Tag.length() > 0) {
         _json.AddMember("tag", this->Tag.c_str(), allocator);
     }
+    if( PrevPos != "" ) {
+        _json.AddMember( "prev_pos", this->PrevPos.c_str(), allocator );
+    }
     return _json;
 }
 
@@ -49,6 +52,9 @@ void EditorPosition::loadJson(const rapidjson::Value& value) {
         this->Tag = value["tag"].GetString();
     } else {
         this->Tag = "";
+    }
+    if( value.HasMember( "prev_pos" ) ) {
+        this->PrevPos = value["prev_pos"].GetString();
     }
 }
 

@@ -15,6 +15,7 @@
 #include "EditorModelDefines.h"
 
 extern const char *kInputNamePanel;
+extern const char* kCreatePositionPanel;
 extern const char *kTriggerOptionsPanel;
 extern const char *kActionOptionsPanel;
 extern const char *kUnitActionPanel;

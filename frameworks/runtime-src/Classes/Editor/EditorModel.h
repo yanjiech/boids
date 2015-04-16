@@ -27,6 +27,7 @@ public:
     cocos2d::Rect Rect;
     std::string Name;
     std::string Tag;
+    std::string PrevPos;
     EditorPosition(cocos2d::Rect rect, const std::string& name):Rect(rect), Name(name), Tag("") {}
     EditorPosition(const EditorPosition& pos):Rect(pos.Rect), Name(pos.Name), Tag(pos.Tag) {}
     EditorPosition() {}

@@ -10,7 +10,7 @@
 #include "../unit/UnitNode.h"
 #include "../Utils.h"
 
-SkillBehavior::SkillBehavior( UnitNode* unit_node ) : BehaviorBase( unit_node ) {
+SkillBehavior::SkillBehavior() {
     
 }
 
@@ -19,8 +19,8 @@ SkillBehavior::~SkillBehavior() {
 }
 
 SkillBehavior* SkillBehavior::create( UnitNode* unit_node ) {
-    SkillBehavior* ret = new SkillBehavior( unit_node );
-    if( ret && ret->init() ) {
+    SkillBehavior* ret = new SkillBehavior();
+    if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
         return ret;
     }
@@ -30,8 +30,8 @@ SkillBehavior* SkillBehavior::create( UnitNode* unit_node ) {
     }
 }
 
-bool SkillBehavior::init() {
-    if( !BehaviorBase::init() ) {
+bool SkillBehavior::init( UnitNode* unit_node ) {
+    if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }
     _elapse = 0;
@@ -47,6 +47,9 @@ bool SkillBehavior::behave( float delta ) {
     }
     if( _unit_node->isCasting() ) {
         return true;
+    }
+    if( _unit_node->isConcentrateOnWalk() ) {
+        return false;
     }
     
     if( _unit_node->getChasingTarget() != nullptr ) {

@@ -35,6 +35,8 @@ public:
     Buff();
     virtual ~Buff();
     
+    virtual Buff* clone();
+    
     static Buff* create( UnitNode* owner, const cocos2d::ValueMap& data );
     virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
     
@@ -66,8 +68,6 @@ class BurnBuff : public Buff {
 public:
     BurnBuff();
     virtual ~BurnBuff();
-    
-    
 };
 
 class PoisonBuff : public Buff {
@@ -76,6 +76,23 @@ public:
     virtual ~PoisonBuff();
     
     static PoisonBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
+};
+
+class SlowBuff : public Buff {
+private:
+    float _slow_percent;
+    
+public:
+    SlowBuff();
+    virtual ~SlowBuff();
+    
+    static SlowBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
     virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
     
     virtual void updateFrame( float delta );

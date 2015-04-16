@@ -62,7 +62,9 @@ void GiantSword::begin() {
     _owner->getBattleLayer()->addToOnGroundLayer( bottom_component, bottom_pos, 0 );
     
     DamageCalculate* calculator = DamageCalculate::create( "GiantSword", _damage );
-    FixedPosBulletNode* bullet = FixedPosBulletNode::create( _owner, ResourceManager::getInstance()->getBulletData( "saber_bullet" ), calculator, nullptr );
+    ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( "saber_bullet" );
+    bullet_data["will_miss"] = Value( false );
+    FixedPosBulletNode* bullet = FixedPosBulletNode::create( _owner, bullet_data, calculator, ValueMap() );
     bullet->shootAtPosition( _owner->getPosition() + _dir * _range );
 }
 

@@ -64,6 +64,8 @@ public:
     const cocos2d::Vector<Trigger*>& getTriggers() { return _triggers; }
     
     void addTrigger( Trigger* trigger );
+    
+    std::string getEventTriggerName() { return _event_data.at( "name" ).asString(); }
 };
 
 #endif /* defined(__Boids__EventTrigger__) */

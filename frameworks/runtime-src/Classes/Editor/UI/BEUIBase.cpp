@@ -12,6 +12,7 @@ using namespace cocos2d;
 using namespace cocostudio;
 
 const char *kInputNamePanel = "popup_inputName";
+const char *kCreatePositionPanel = "popup_new_position";
 const char *kTriggerOptionsPanel = "popup_triggerOptions";
 const char *kActionOptionsPanel = "popup_actionOptions";
 const char *kUnitActionPanel = "popup_unitAction";

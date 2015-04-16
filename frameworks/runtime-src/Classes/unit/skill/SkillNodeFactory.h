@@ -22,6 +22,10 @@
 #include "BonesRain.h"
 #include "MagicPulse.h"
 #include "MissileShowers.h"
+#include "AtomFart.h"
+#include "FatalThrow.h"
+#include "FireWhirl.h"
+#include "DeathSlice.h"
 
 class SkillNodeFactory {
 public:

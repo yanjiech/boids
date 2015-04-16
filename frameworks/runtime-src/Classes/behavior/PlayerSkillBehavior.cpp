@@ -12,7 +12,7 @@
 
 #define DEFAULT_CATCH_UP_DISTANCE 80.0
 
-PlayerSkillBehavior::PlayerSkillBehavior( class UnitNode* unit_node ) : BehaviorBase( unit_node ) {
+PlayerSkillBehavior::PlayerSkillBehavior() {
 
 }
 
@@ -21,8 +21,8 @@ PlayerSkillBehavior::~PlayerSkillBehavior() {
 }
 
 PlayerSkillBehavior* PlayerSkillBehavior::create( class UnitNode* unit_node ) {
-    PlayerSkillBehavior* ret = new PlayerSkillBehavior( unit_node );
-    if( ret && ret->init() ) {
+    PlayerSkillBehavior* ret = new PlayerSkillBehavior();
+    if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
         return ret;
     }
@@ -32,8 +32,8 @@ PlayerSkillBehavior* PlayerSkillBehavior::create( class UnitNode* unit_node ) {
     }
 }
 
-bool PlayerSkillBehavior::init() {
-    if( !BehaviorBase::init() ) {
+bool PlayerSkillBehavior::init( UnitNode* unit_node ) {
+    if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }
     _elapse = 0;

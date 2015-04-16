@@ -58,16 +58,17 @@ void MissileShowers::updateFrame( float delta ) {
             ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( "rattletrap_bullet" );
             DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_MISSILE_SHOWERS, _damage );
             bullet_data["damage_radius"] = Value( _radius );
+            bullet_data["will_miss"] = Value( false );
             Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getUnitCamp(), _owner->getPosition(), _owner->getPosition(), _range );
             int size = candidates.size();
             if( size > 0 ) {
                 UnitNode* target_unit = candidates.at( Utils::randomNumber( size ) - 1 );
-                BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, nullptr );
+                BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, ValueMap() );
                 bullet->shootAt( _owner, target_unit );
             }
             else {
                 bullet_data["track_target"] = Value( false );
-                BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, nullptr );
+                BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, ValueMap() );
                 float rand_angle = Utils::randomFloat() * M_PI * 2;
                 float range = _range;
                 Point center = _owner->getPosition();

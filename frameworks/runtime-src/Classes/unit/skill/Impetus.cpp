@@ -68,10 +68,10 @@ void Impetus::begin() {
         buff_data["duration"] = Value( _buff_duration );
         buff_data["damage"] = Value( _buff_damage );
         buff_data["buff_name"] = Value( SKILL_NAME_IMPETUS );
-        PoisonBuff* buff = PoisonBuff::create( _owner, buff_data );
-        const ValueMap& bullet_data = ResourceManager::getInstance()->getBulletData( "enchantress_skill_javelin" );
+        ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( "enchantress_skill_javelin" );
+        bullet_data["will_miss"] = Value( false );
         DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_IMPETUS, _damage );
-        BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, buff );
+        BulletNode* bullet = BulletNode::create( _owner, bullet_data, calculator, buff_data );
         bullet->shootAt( _owner, target_unit );
     }
 }

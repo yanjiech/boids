@@ -21,8 +21,15 @@ public:
     UIBattleMenuLayer();
     virtual ~UIBattleMenuLayer();
     
-    static UIBattleMenuLayer* create( BattleLayer* battle_layer );
-    virtual bool init( BattleLayer* battle_layer );
+    static UIBattleMenuLayer* create( BattleLayer* battle_layer, const std::string& result );
+    virtual bool init( BattleLayer* battle_layer, const std::string& result );
+    
+    virtual bool onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event );
+    virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );
+    virtual void onTouchCancelled( cocos2d::Touch* touch, cocos2d::Event* event );
+    virtual void onTouchEned( cocos2d::Touch* touch, cocos2d::Event* event );
+    
+    void onConfirmTouched( cocos2d::Ref* sender );
 };
 
 #endif /* defined(__Boids__UIBattleMenuLayer__) */

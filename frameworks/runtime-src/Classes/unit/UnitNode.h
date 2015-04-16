@@ -109,7 +109,10 @@ private:
     eUnitState _state;
     eUnitState _next_state;
     eUnitFace _face;
+    
+    //share sight
     std::string _sight_group;
+    
     cocos2d::Point _born_position;
     
     bool _show_hp;
@@ -144,12 +147,10 @@ private:
     
     bool _should_catch_up;
     
-    std::unique_ptr<Path> _walk_path;
+    Path* _walk_path;
     
-    bool _is_concentrate_on_walk;
-    
-    bool _is_movable;
-    
+    Path* _tour_path;
+
     int _relax_frames;
     
     float _wander_radius;
@@ -161,6 +162,10 @@ private:
     cocos2d::ValueMap _using_skill_params;
     
     cocos2d::ValueVector _unit_tags;
+    
+    UnitNode* _guard_target;
+    
+    bool _is_concentrate_on_walk;
     
 private:
     void updateComponents( float delta );
@@ -185,6 +190,7 @@ public:
     void onSkeletonAnimationEvent( int track_index, spEvent* event );
     
     BattleLayer* getBattleLayer() { return _battle_layer; }
+    
     
     int getDeployId() { return _deploy_id; }
     void setDeployId( int deploy_id ) { _deploy_id = deploy_id; }
@@ -228,6 +234,7 @@ public:
     cocos2d::Point getLocalEmitPos();
     cocos2d::Point getLocalHeadPos();
     
+    cocos2d::Point getBonePos( const std::string& bone_name );
     cocos2d::Point getLocalBonePos( const std::string& bone_name );
     
     void appear();
@@ -236,6 +243,7 @@ public:
     void onDying();
     
     UnitData* getUnitData() { return _unit_data; }
+    void setUnitData( UnitData* unit_data );
     
     void takeDamage( const cocos2d::ValueMap& result, int source_id );
     void takeDamage( float amount, bool is_cri, bool is_miss, int source_id );
@@ -286,7 +294,12 @@ public:
     void removeBehavior( const std::string& key );
     
     void walkTo( const cocos2d::Point& new_pos );
-    void walkAlongPath( float distance );
+    
+    void walkAlongPath( Path* path, float distance );
+    void walkAlongWalkPath( float distance );
+    void walkAlongTourPath( float distance );
+    
+    cocos2d::Point pushToward( const cocos2d::Point& dir, float distance );
     
     bool isUnderControl();
     bool isCasting();
@@ -301,9 +314,6 @@ public:
     void evaluateCatchUp();
     
     void findPathToPosition( const cocos2d::Point& pos, int validate_frames = INT_MAX );
-    
-    bool isConcentrateOnWalk() { return _is_concentrate_on_walk; }
-    void setConcentrateOnWalk( bool b ) { _is_concentrate_on_walk = b; }
     
     bool isHarmless();
     
@@ -323,9 +333,6 @@ public:
     
     cocos2d::ValueVector getUnitTags() { return _unit_tags; }
     
-    bool isMovable() { return _is_movable; }
-    void setMovable( bool b ) { _is_movable = b; }
-    
     bool isFoeOfCamp( eUnitCamp opponent_camp );
     
     bool needRelax();
@@ -335,7 +342,11 @@ public:
     float getWanderRadius() { return _wander_radius; }
     void setWanderRadius( float radius ) { _wander_radius = radius; }
     
-    void setWalkPath( const Path& path );
+    Path* getWalkPath() { return _walk_path; }
+    void setWalkPath( Path* path );
+    
+    Path* getTourPath() { return _tour_path; }
+    void setTourPath( Path* path );
     
     void jumpNumber( float amount, const std::string& type, bool is_critical, const std::string& name );
     
@@ -355,6 +366,19 @@ public:
     bool isAlive();
     
     void makeSpeech( const std::string& content, float duration );
+    
+    UnitNode* getGuardTarget() { return _guard_target; }
+    void setGuardTarget( UnitNode* guard_target );
+    
+    cocos2d::Point getGuardCenter();
+    
+    bool isConcentrateOnWalk() { return _is_concentrate_on_walk; }
+    void setConcentrateOnWalk( bool b );
+    
+    //debug
+    cocos2d::DrawNode* _custom_draw;
+    void drawDirection();
+    cocos2d::DrawNode* _new_dir_draw;
 };
 
 #endif /* defined(__Boids__UnitNode__) */

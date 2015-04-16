@@ -37,9 +37,9 @@ EditorTypeManager::EditorTypeManager() {
     _unitPopupType = EditorTypePtr(new EditorType());
     _triggerRelationType = EditorTypePtr(new EditorType());
     
-    _eventTriggerState->_typeVector = { "event_trigger", "event_finish" };
+    _eventTriggerState->_typeVector = { "event_enable", "event_disable", "event_finish" };
     
-    _eventActionState->_typeVector = { "action_disable", "action_enable" };
+    _eventActionState->_typeVector = { "event_enable", "event_disable", "event_finish" };
     
     _gameState->_typeVector = { "game_start", "game_win" };
     

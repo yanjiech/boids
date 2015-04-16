@@ -767,7 +767,7 @@
         "recgr": 0.2, 
         "scale": 1.0, 
         "skills": [
-            "ShredderSaucer"
+            "DeathSlice"
         ], 
         "ten": 3.0, 
         "tengr": 2.9
@@ -1078,7 +1078,8 @@
         "recgr": 0.2, 
         "scale": 1.0, 
         "skills": [
-            "AtomFart"
+            "AtomFart",
+            "FatalThrow"
         ], 
         "ten": 3.0, 
         "tengr": 2.9
@@ -2115,7 +2116,10 @@
         "rec": 0.5, 
         "recgr": 0.2, 
         "scale": 1.0, 
-        "skills": [], 
+        "skills":
+            [
+                "FireWhirl"
+            ], 
         "ten": 0.0, 
         "tengr": 1.1
     }, 

@@ -76,11 +76,12 @@ void BarrageOfArrow::updateFrame( float delta ) {
                 
                 //add arrow components
                 ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( "vanhelsing_skill_bullet" );
+                bullet_data["will_miss"] = Value( false );
                 for( int i = 0; i < _count_per_wave; ++i ) {
                     float angle = ( ( i - ( _count_per_wave - 1 ) / 2.0f ) ) * ( CC_DEGREES_TO_RADIANS( _angle ) / ( _count_per_wave - 1 ) ) + _dir_angle;
                     Point dir = Point( cosf( angle ), sinf( angle ) );
                     DamageCalculate* calculator = DamageCalculate::create( "BarrageOfArrow", _base_damage );
-                    DirectionalBulletNode* bullet = DirectionalBulletNode::create( _owner, bullet_data, calculator, nullptr );
+                    DirectionalBulletNode* bullet = DirectionalBulletNode::create( _owner, bullet_data, calculator, ValueMap() );
                     battle_layer->addBullet( bullet->getBulletId(), bullet );
                     bullet->shootAlong( dir, _range / _speed, _owner );
                 }

@@ -71,7 +71,7 @@ bool EventTrigger::init( class MapLogic* map_logic, const ValueMap& event_data )
 }
 
 void EventTrigger::updateFrame( float delta ) {
-    if( _is_enabled ) {
+    if( !_should_recycle && _is_enabled ) {
         for( auto trigger : _triggers ) {
             trigger->updateFrame( delta );
         }
@@ -136,6 +136,7 @@ void EventTrigger::moveOn() {
         }
         else {
             this->setEnabled( false );
+            this->setShouldRecycle( true );
         }
     }
 }

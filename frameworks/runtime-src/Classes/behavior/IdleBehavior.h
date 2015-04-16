@@ -13,11 +13,11 @@
 
 class IdleBehavior : public BehaviorBase {
 public:
-    IdleBehavior( UnitNode* unit_node );
+    IdleBehavior();
     virtual ~IdleBehavior();
     
     static IdleBehavior* create( UnitNode* unit_node );
-    virtual bool init();
+    virtual bool init( UnitNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

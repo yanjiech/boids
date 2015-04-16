@@ -23,14 +23,15 @@
     },
     "deploy_units" :
     [
-        "1"
+        "1",
+        "2"
     ],
     "units" :
     {
         "1" :
         {
             "name" : "vanhelsing",
-            "level" : 10,
+            "level" : 30,
             "skills" :
             [
                 {
@@ -53,7 +54,7 @@
         "2" :
         {
             "name" : "zeus",
-            "level" : 10,
+            "level" : 20,
             "skills" :
             [
                 {
@@ -76,7 +77,7 @@
         "3" :
         {
             "name" : "enchantress",
-            "level" : 20,
+            "level" : 2,
             "skills" :
             [
                 {
@@ -144,12 +145,16 @@
         },
         "100" :
         {
-            "name" : "skeleton_king",
-            "level" : 5,
+            "name" : "human_king",
+            "level" : 2,
             "skills" :
             [
                 {
-                    "name" : "BonesRain",
+                    "name" : "AtomFart",
+                    "level" : 1
+                },
+                {
+                    "name" : "FatalThrow",
                     "level" : 1
                 }
             ],
@@ -183,12 +188,31 @@
         },
         "102" :
         {
-            "name" : "rattletrap",
+            "name" : "women_fire_wizard",
             "level" : 40,
             "skills" :
             [
                 {
-                    "name" : "MissileShowers",
+                    "name" : "FireWhirl",
+                    "level" : 3
+                }
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
+        },
+        "103" :
+        {
+            "name" : "goblin_shredder",
+            "level" : 40,
+            "skills" :
+            [
+                {
+                    "name" : "DeathSlice",
                     "level" : 3
                 }
             ],

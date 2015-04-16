@@ -9,7 +9,7 @@
 #include "IdleBehavior.h"
 #include "../unit/UnitNode.h"
 
-IdleBehavior::IdleBehavior( UnitNode* unit_node ) : BehaviorBase( unit_node ) {
+IdleBehavior::IdleBehavior() {
     
 }
 
@@ -18,8 +18,8 @@ IdleBehavior::~IdleBehavior() {
 }
 
 IdleBehavior* IdleBehavior::create( UnitNode* unit_node ) {
-    IdleBehavior* ret = new IdleBehavior( unit_node );
-    if( ret && ret->init() ) {
+    IdleBehavior* ret = new IdleBehavior();
+    if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
         return ret;
     }
@@ -29,8 +29,8 @@ IdleBehavior* IdleBehavior::create( UnitNode* unit_node ) {
     }
 }
 
-bool IdleBehavior::init() {
-    if( !BehaviorBase::init() ) {
+bool IdleBehavior::init( UnitNode* unit_node ) {
+    if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }
     return true;

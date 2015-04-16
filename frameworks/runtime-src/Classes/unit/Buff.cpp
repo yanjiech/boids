@@ -33,6 +33,10 @@ Buff::~Buff() {
     
 }
 
+Buff* Buff::clone() {
+    return Buff::create( _owner, _data );
+}
+
 Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     Buff* ret = nullptr;
     std::string buff_type = data.at( "buff_type" ).asString();
@@ -43,13 +47,16 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
         
     }
     else if( buff_type == BUFF_TYPE_BURN ) {
-        
+        ret = BurnBuff::create( owner, data );
     }
     else if( buff_type == BUFF_TYPE_PIERCE ) {
         ret = PierceBuff::create( owner, data );
     }
     else if( buff_type == BUFF_TYPE_POISON ) {
-        
+        ret = PoisonBuff::create( owner, data );
+    }
+    else if( buff_type == BUFF_TYPE_SLOW ) {
+        ret = SlowBuff::create( owner, data );
     }
     return ret;
 }
@@ -125,6 +132,56 @@ void PoisonBuff::begin() {
 
 void PoisonBuff::end() {
     Buff::end();
+}
+
+//slow buff
+SlowBuff::SlowBuff() {
+    
+}
+SlowBuff::~SlowBuff() {
+    
+}
+
+SlowBuff* SlowBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    SlowBuff* ret = new SlowBuff();
+    if( ret && ret->init( owner, data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool SlowBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    if( !Buff::init( owner, data ) ) {
+        return false;
+    }
+    
+    _slow_percent = data.at( "slow_percent" ).asFloat();
+    
+    return true;
+}
+
+void SlowBuff::updateFrame( float delta ) {
+    Buff::updateFrame( delta );
+    
+    if( _elapse > _duration ) {
+        this->end();
+    }
+}
+
+void SlowBuff::begin() {
+    Buff::begin();
+    
+    _owner->getUnitData()->move_speed *= _slow_percent;
+}
+
+void SlowBuff::end() {
+    Buff::end();
+    
+    _owner->getUnitData()->move_speed /= _slow_percent;
 }
 
 ShieldBuff::ShieldBuff() {
@@ -251,7 +308,7 @@ void PierceBuff::begin() {
     bat_component->setAnimation( 0, "animation", true );
     bat_component->setPosition( _owner->getLocalHeadPos() );
     
-    resource = "effects/blood";
+    resource = "effects/bullets/blood_hit";
     skeleton = ArmatureManager::getInstance()->createArmature( resource );
     TimeLimitSpineComponent* blood_component = TimeLimitSpineComponent::create( _duration, skeleton, _buff_id + "_blood", true );
     _owner->addUnitComponent( blood_component, blood_component->getName(), eComponentLayer::OverObject );
