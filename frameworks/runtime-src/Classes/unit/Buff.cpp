@@ -10,6 +10,7 @@
 #include "UnitNode.h"
 #include "UnitNodeComponent.h"
 #include "../Utils.h"
+#include "BulletNode.h"
 
 using namespace cocos2d;
 
@@ -44,7 +45,7 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
         ret = ShieldBuff::create( owner, data );
     }
     else if( buff_type == BUFF_TYPE_STUN ) {
-        
+        ret = StunBuff::create( owner, data );
     }
     else if( buff_type == BUFF_TYPE_BURN ) {
         ret = BurnBuff::create( owner, data );
@@ -61,11 +62,15 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     else if( buff_type == BUFF_TYPE_ATTRIBUTE ) {
         ret = AttributeBuff::create( owner, data );
     }
+    else if( buff_type == BUFF_TYPE_TAG  ) {
+        ret = TagBuff::create( owner, data );
+    }
     return ret;
 }
 
 bool Buff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     _should_recycle = false;
+    _buff_type = data.at( "buff_type" ).asString();
     _duration = data.at( "duration" ).asFloat();
     _elapse = 0;
     _buff_id = Utils::stringFormat( "%s_%d", data.at( "buff_name" ).asString().c_str(), Buff::getNextBuffId() );
@@ -150,6 +155,52 @@ void AttributeBuff::end() {
     Buff::end();
 }
 
+//stun buff
+StunBuff::StunBuff() {
+    
+}
+
+StunBuff::~StunBuff() {
+    
+}
+
+StunBuff* StunBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    StunBuff* ret = new StunBuff();
+    if( ret && ret->init( owner, data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool StunBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    if( !Buff::init( owner, data ) ) {
+        return false;
+    }
+    
+    return true;
+}
+
+void StunBuff::updateFrame( float delta ) {
+    Buff::updateFrame( delta );
+    if( _elapse > _duration ) {
+        this->end();
+    }
+}
+
+void StunBuff::begin() {
+    Buff::begin();
+}
+
+void StunBuff::end() {
+    Buff::end();
+}
+
+
+//poison buff
 PoisonBuff::PoisonBuff() {
     
 }
@@ -382,5 +433,70 @@ void PierceBuff::end() {
     _owner->removeUnitComponent( _buff_id + "_f" );
     
     _owner->changeUnitState( eUnitState::Idle, true );
+}
+
+//tag buff
+TagBuff::TagBuff() :
+_component( nullptr )
+{
     
+}
+
+TagBuff::~TagBuff() {
+    
+}
+
+TagBuff* TagBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    TagBuff* ret = new TagBuff();
+    if( ret && ret->init( owner, data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool TagBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    if( !Buff::init( owner, data ) ) {
+        return false;
+    }
+    
+    _tag = data.at( "tag" ).asString();
+    
+    auto itr = data.find( "effect_name" );
+    if( itr != data.end() ) {
+        std::string effect_name = itr->second.asString();
+        
+        std::string resource = "effects/" + effect_name;
+        spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+        _component = TimeLimitSpineComponent::create( INT_MAX, skeleton, _buff_id, true );
+        _owner->addUnitComponent( _component, _component->getName(), eComponentLayer::OverObject );
+    }
+    
+    return true;
+}
+
+void TagBuff::updateFrame( float delta ) {
+    Buff::updateFrame( delta );
+    if( _elapse > _duration ) {
+        this->end();
+    }
+}
+
+void TagBuff::begin() {
+    Buff::begin();
+    _owner->addUnitTag( _tag );
+    if( _component ) {
+        _component->setAnimation( 0, "animation", true );
+    }
+}
+
+void TagBuff::end() {
+    Buff::end();
+    _owner->removeUnitTag( _tag );
+    if( _component ) {
+        _component->setDuration( 0 );
+    }
 }

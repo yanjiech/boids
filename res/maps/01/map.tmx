@@ -186,7 +186,7 @@
   <object id="137" name="arrow_tower" type="TowerNode" x="1182" y="570" width="80" height="80">
    <ellipse/>
   </object>
-  <object id="2" name="b1" type="BlockNode" gid="2147483670" x="2551.33" y="667.606">
+  <object id="2" name="b1" type="SpriteBlockNode" gid="2147483670" x="2551.33" y="667.606">
    <properties>
     <property name="enabled" value="true"/>
    </properties>

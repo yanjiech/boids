@@ -61,6 +61,7 @@ public:
     typedef cocos2d::Map<std::string, UnitNode*> UnitMap;
     typedef cocos2d::Map<std::string, BulletNode*> BulletMap;
     typedef cocos2d::Map<std::string, TowerNode*> TowerMap;
+    typedef cocos2d::Map<int, BlockNode*> BlockMap;
     
 private:
     MapLogic* _map_logic;
@@ -94,7 +95,7 @@ private:
     
     TowerMap _towers;
     
-    cocos2d::Map<std::string, BlockNode*> _block_nodes;
+    BlockMap _block_nodes;
     
     int _next_deploy_id;
     
@@ -163,7 +164,7 @@ public:
     cocos2d::Vector<TowerNode*> getAliveTowersInRange( eTargetCamp camp, const cocos2d::Point& center, float range );
     cocos2d::Vector<TowerNode*> getAliveTowersInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float range );
     
-    const cocos2d::Map<std::string, BlockNode*>& getBlockNodes() { return _block_nodes; }
+    const BlockMap& getBlockNodes() { return _block_nodes; }
     void addBlockNode( BlockNode* block_node );
     void removeBlockNode( BlockNode* block_node );
     
@@ -205,7 +206,7 @@ public:
     cocos2d::Point getAvailablePosition( float radius, const cocos2d::Rect& region );
     bool isPositionOK( cocos2d::Point pos, float radius );
     
-    void clearChasingTarget( TargetNode* unit );
+    void clearChasingTarget( TargetNode* target );
     
     void startStory( const cocos2d::ValueMap& story_data );
     void endStory( UIStoryLayer* story );

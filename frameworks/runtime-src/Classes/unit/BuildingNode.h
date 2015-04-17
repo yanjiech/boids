@@ -25,6 +25,8 @@ public:
     
     void setCenter( const cocos2d::Point& center ) { _center = center; }
     const cocos2d::Point& getCenter() { return _center; }
+    
+    virtual void updateFrame( float delta ) {}
 };
 
 #endif /* defined(__Boids__BuildingNode__) */

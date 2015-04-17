@@ -3,197 +3,110 @@
         {
             "name": "player_start",
             "rect": {
-                "x": 57.4843,
-                "y": 424.188,
-                "width": 130.45,
-                "height": 53.2457
+                "x": -22.3875,
+                "y": 348.314,
+                "width": 158.138,
+                "height": 107.824
             }
         },
         {
-            "name": "01",
+            "name": "monster1",
             "rect": {
-                "x": 577.952,
-                "y": 670.457,
-                "width": 117.142,
-                "height": 58.5692
+                "x": 561.053,
+                "y": 638.238,
+                "width": 122.197,
+                "height": 97.0413
             }
         },
         {
-            "name": "02",
+            "name": "monster2",
             "rect": {
-                "x": 684.439,
-                "y": 221.863,
-                "width": 130.453,
-                "height": 67.8875
+                "x": 775.5,
+                "y": 188.976,
+                "width": 119.803,
+                "height": 77.872
             }
         },
         {
-            "name": "03",
+            "name": "monster3",
             "rect": {
-                "x": 1364.66,
-                "y": 520.04,
-                "width": 146.426,
-                "height": 47.9204
+                "x": 1373.32,
+                "y": 507.653,
+                "width": 118.606,
+                "height": 98.2399
             }
         },
         {
-            "name": "comehere",
+            "name": "monster4",
             "rect": {
-                "x": 1721.4,
-                "y": -29.72,
-                "width": 126.46,
-                "height": 1071.57
+                "x": 1412.85,
+                "y": 217.731,
+                "width": 184.497,
+                "height": 107.824
+            },
+            "tag": "group1"
+        },
+        {
+            "name": "monster5",
+            "rect": {
+                "x": 1827.37,
+                "y": 671.787,
+                "width": 214.447,
+                "height": 121.001
+            },
+            "tag": "group1"
+        },
+        {
+            "name": "monster6",
+            "rect": {
+                "x": 2015.46,
+                "y": 555.578,
+                "width": 180.899,
+                "height": 116.209
+            },
+            "tag": "group2"
+        },
+        {
+            "name": "monster7",
+            "rect": {
+                "x": 2464.72,
+                "y": 1004.84,
+                "width": 167.727,
+                "height": 116.209
+            },
+            "tag": "group2"
+        },
+        {
+            "name": "event1",
+            "rect": {
+                "x": 1646.47,
+                "y": -41.0439,
+                "width": 109.021,
+                "height": 1085.42
             }
         },
         {
-            "name": "06",
+            "name": "event2",
             "rect": {
-                "x": 1903.76,
-                "y": 360.306,
-                "width": 139.772,
-                "height": 77.2059
-            }
-        },
-        {
-            "name": "07",
-            "rect": {
-                "x": 2112.75,
-                "y": 546.668,
-                "width": 131.782,
-                "height": 70.5502
-            }
-        },
-        {
-            "name": "comehere_02",
-            "rect": {
-                "x": 2516.09,
-                "y": 642.509,
-                "width": 202.333,
-                "height": 147.758
-            }
-        },
-        {
-            "name": "add01",
-            "rect": {
-                "x": 2329.73,
-                "y": 1024.55,
-                "width": 117.138,
-                "height": 70.552
-            }
-        },
-        {
-            "name": "10",
-            "rect": {
-                "x": 3205.62,
-                "y": 200.572,
-                "width": 117.142,
-                "height": 67.8893
-            }
-        },
-        {
-            "name": "11",
-            "rect": {
-                "x": 3487.82,
-                "y": 778.291,
-                "width": 127.789,
-                "height": 77.2059
-            }
-        },
-        {
-            "name": "comehere03",
-            "rect": {
-                "x": 3526.19,
-                "y": 411.812,
-                "width": 148.556,
-                "height": 129.387
+                "x": 2626.47,
+                "y": 562.765,
+                "width": 213.25,
+                "height": 176.112
             }
         },
         {
             "name": "boss",
             "rect": {
-                "x": 3238.66,
+                "x": 3161.99,
                 "y": 494.476,
-                "width": 203.668,
-                "height": 140.169
-            }
-        },
-        {
-            "name": "09",
-            "rect": {
-                "x": 1263.1,
-                "y": 662.198,
-                "width": 233.618,
-                "height": 117.407
-            }
-        },
-        {
-            "name": "01add",
-            "rect": {
-                "x": 741.956,
-                "y": 725.693,
-                "width": 92.2502,
-                "height": 68.2883
+                "width": 168.92,
+                "height": 119.805
             }
         }
     ],
     "events": [
         {
-            "name": "01",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "02",
-                    "unit_count": 1,
-                    "unit_level": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "02wolf",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                },
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "02",
-                    "unit_count": 1,
-                    "unit_level": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "01goblin",
+            "name": "monster1",
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -211,15 +124,46 @@
                     "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
-                    "position_name": "01",
-                    "unit_count": 2,
+                    "position_name": "monster1",
+                    "unit_count": 1,
                     "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
         },
         {
-            "name": "09wolf_goblin",
+            "name": "event1",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "event1",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_tag": "group1",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "story1",
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -232,41 +176,35 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "09",
-                    "unit_count": 1,
-                    "unit_level": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "goblin",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "09",
-                    "unit_count": 1,
-                    "unit_level": 1,
-                    "popup_type": "normal"
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "1231231231",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "1231231231",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "1231231231",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "1231231231",
+                            "speaker": "goblin_auntie"
+                        }
+                    ],
+                    "name": "story1"
                 }
             ]
         }
     ],
     "units": [
-        "goblin",
-        "wild_wolf"
-    ],
-    "tasks": [
-        {
-            "type": "primary_win",
-            "name": "main",
-            "desc": "哦呵呵",
-            "title": "杀死boss"
-        }
+        "goblin"
     ]
 }
