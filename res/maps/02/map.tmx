@@ -67,7 +67,7 @@
    <image width="500" height="300" source="muwu_01.png"/>
   </tile>
   <tile id="20">
-   <image width="364" height="214" source="muqiao.png"/>
+   <image width="364" height="214" source="muqiao_01.png"/>
   </tile>
  </tileset>
  <objectgroup name="background">

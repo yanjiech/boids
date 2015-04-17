@@ -604,7 +604,7 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
         }
         else if( _chasing_target == nullptr ) {
             TargetNode* atker = _battle_layer->getAliveTargetByDeployId( source_id );
-            if( atker && atker->isAttackable() ) {
+            if( atker && atker->isAttackable() && atker->isAlive() ) {
                 this->setChasingTarget( atker );
             }
         }
@@ -1007,6 +1007,22 @@ bool UnitNode::isUnitInDirectView( UnitNode* unit ) {
     return true;
 }
 
+void UnitNode::addUnitTag( const std::string& tag ) {
+    _unit_tags.push_back( Value( tag ) );
+}
+
+void UnitNode::removeUnitTag( const std::string& tag ) {
+    auto itr = _unit_tags.begin();
+    while( itr != _unit_tags.end() ) {
+        if( itr->asString() == tag ) {
+            itr = _unit_tags.erase( itr );
+        }
+        else {
+            ++itr;
+        }
+    }
+}
+
 void UnitNode::setUnitTags( const std::string& tag_string ) {
     _unit_tags.clear();
     std::vector<std::string> tags;
@@ -1152,6 +1168,7 @@ void UnitNode::setConcentrateOnWalk( bool b ) {
 void UnitNode::setCharging( bool b ) {
     _is_charging = b;
     this->changeUnitState( _state, true );
+    this->setChasingTarget( nullptr );
 }
 
 //private methods

@@ -10,6 +10,7 @@
 #include "UnitNode.h"
 #include "../BoidsMath.h"
 #include "../AI/Terrain.h"
+#include "../ArmatureManager.h"
 
 using namespace cocos2d;
 
@@ -22,7 +23,57 @@ BlockNode::~BlockNode() {
 }
 
 BlockNode* BlockNode::create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
-    BlockNode* ret = new BlockNode();
+    BlockNode* ret = nullptr;
+    std::string block_type = obj_properties.at( "type" ).asString();
+    if( block_type == "SpineBlockNode" ) {
+        ret = SpineBlockNode::create( grid_properties, obj_properties );
+    }
+    else if( block_type == "SpriteBlockNode" ) {
+        ret = SpriteBlockNode::create( grid_properties, obj_properties );
+    }
+    
+    return ret;
+}
+
+bool BlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    if( !TargetNode::init() ) {
+        return false;
+    }
+    
+    const ValueMap& boundary_data = grid_properties.at( "boundary" ).asValueMap();
+    _boundaries.loadFromValueMap( boundary_data );
+    _boundaries.name = boundary_data.at( "name" ).asString();
+    
+    _block_name = obj_properties.at( "name" ).asString();
+    
+    return true;
+}
+
+void BlockNode::setEnabled( bool b ) {
+    _is_enabled = b;
+    if( _is_enabled ) {
+        for( auto pair : Terrain::getInstance()->getMeshes() ) {
+            pair.second->removeCollidablePolygon( _boundaries.name );
+        }
+    }
+    else {
+        for( auto pair : Terrain::getInstance()->getMeshes() ) {
+            pair.second->addCollidablePolygon( _boundaries );
+        }
+    }
+}
+
+//sprite block node
+SpriteBlockNode::SpriteBlockNode() {
+    
+}
+
+SpriteBlockNode::~SpriteBlockNode() {
+    
+}
+
+SpriteBlockNode* SpriteBlockNode::create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    SpriteBlockNode* ret = new SpriteBlockNode();
     if( ret && ret->init( grid_properties, obj_properties ) ) {
         ret->autorelease();
         return ret;
@@ -33,11 +84,11 @@ BlockNode* BlockNode::create( const cocos2d::ValueMap& grid_properties, const co
     }
 }
 
-bool BlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
-    if( !TargetNode::init() ) {
+bool SpriteBlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    if( !BlockNode::init( grid_properties, obj_properties ) ) {
         return false;
     }
-
+    
     std::string frame_name = grid_properties.at( "source" ).asString();
     
     _normal_sprite = Sprite::createWithSpriteFrameName( frame_name );
@@ -69,9 +120,58 @@ bool BlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::V
         _destroyed_sprite->setFlippedX( true );
     }
     
-    const ValueMap& boundary_data = grid_properties.at( "boundary" ).asValueMap();
-    _boundaries.loadFromValueMap( boundary_data );
-    _boundaries.name = boundary_data.at( "name" ).asString();
+    auto itr = obj_properties.find( "enabled" );
+    if( itr != obj_properties.end() ) {
+        this->setEnabled( itr->second.asBool() );
+    }
+    else {
+        this->setEnabled( true );
+    }
+    
+    return true;
+}
+
+void SpriteBlockNode::setEnabled( bool b ) {
+    BlockNode::setEnabled( b );
+    if( _is_enabled ) {
+        _normal_sprite->setVisible( true );
+        _destroyed_sprite->setVisible( false );
+    }
+    else {
+        _normal_sprite->setVisible( false );
+        _destroyed_sprite->setVisible( true );
+    }
+}
+
+//spine block node
+SpineBlockNode::SpineBlockNode() {
+    
+}
+
+SpineBlockNode::~SpineBlockNode() {
+    
+}
+
+SpineBlockNode* SpineBlockNode::create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    SpineBlockNode* ret = new SpineBlockNode();
+    if( ret && ret->init( grid_properties, obj_properties ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool SpineBlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    if( !BlockNode::init( grid_properties, obj_properties ) ) {
+        return false;
+    }
+    
+    std::string resource = "buidings/" + grid_properties.at( "source" ).asString();
+    _skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    this->addChild( _skeleton );
     
     auto itr = obj_properties.find( "enabled" );
     if( itr != obj_properties.end() ) {
@@ -81,25 +181,16 @@ bool BlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::V
         this->setEnabled( true );
     }
     
-    _block_name = obj_properties.at( "name" ).asString();
-    
     return true;
 }
 
-void BlockNode::setEnabled( bool b ) {
-    _is_enabled = b;
+void SpineBlockNode::setEnabled( bool b ) {
+    BlockNode::setEnabled( b );
+    
     if( _is_enabled ) {
-        _normal_sprite->setVisible( true );
-        _destroyed_sprite->setVisible( false );
-        for( auto pair : Terrain::getInstance()->getMeshes() ) {
-            pair.second->removeCollidablePolygon( _boundaries.name );
-        }
+        _skeleton->setAnimation( 0, "open", false );
     }
     else {
-        _normal_sprite->setVisible( false );
-        _destroyed_sprite->setVisible( true );
-        for( auto pair : Terrain::getInstance()->getMeshes() ) {
-            pair.second->addCollidablePolygon( _boundaries );
-        }
+        _skeleton->setAnimation( 0, "close", false );
     }
 }

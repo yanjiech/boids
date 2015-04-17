@@ -485,13 +485,14 @@ TargetNode* BattleLayer::getAliveTargetByDeployId( int deploy_id ) {
 }
 
 void BattleLayer::addBlockNode( BlockNode* block_node ) {
-    _block_nodes.insert( block_node->getBlockName(), block_node );
+    block_node->setDeployId( BattleLayer::getNextDeployId() );
+    _block_nodes.insert( block_node->getDeployId(), block_node );
     this->addToOnGroundLayer( block_node, block_node->getPosition(), this->zorderForPositionOnObjectLayer( block_node->getPosition() ) );
 }
 
 void BattleLayer::removeBlockNode( BlockNode* block_node ) {
     block_node->removeFromParent();
-    _block_nodes.erase( block_node->getBlockName() );
+    _block_nodes.erase( block_node->getDeployId() );
 }
 
 bool BattleLayer::addBullet( int key, BulletNode* bullet ) {
@@ -723,10 +724,10 @@ bool BattleLayer::isPositionOK( cocos2d::Point pos, float radius ) {
     return false;
 }
 
-void BattleLayer::clearChasingTarget( TargetNode* unit ) {
+void BattleLayer::clearChasingTarget( TargetNode* target ) {
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
-        if( unit->getChasingTarget() == unit ) {
+        if( unit->getChasingTarget() == target ) {
             unit->setChasingTarget( nullptr );
         }
     }
@@ -790,7 +791,7 @@ void BattleLayer::parseMapObjects() {
             grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
         }
         
-        if( type == "BlockNode" ) {
+        if( type.find( "BlockNode" ) != std::string::npos ) {
             std::string name = obj_properties.at( "name" ).asString();
             ValueMap boundary = physics_group->getObject( name );
             boundary["map_height"] = Value( _tmx_map->getContentSize().height );

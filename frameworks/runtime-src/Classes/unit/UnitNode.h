@@ -254,6 +254,8 @@ public:
     
     bool isUnitInDirectView( UnitNode* unit );
     
+    void addUnitTag( const std::string& tag );
+    void removeUnitTag( const std::string& tag );
     void setUnitTags( const std::string& tag_string );
     bool hasUnitTag( const std::string& tag_name );
     

@@ -90,14 +90,18 @@ bool PlayerAttackBehavior::behave( float delta ) {
         }
     }
     
+    unit_node->setChasingTarget( chasing_target );
     if( chasing_target == nullptr ) {
         return false;
     }
-    if( !unit_node->canAttack( chasing_target ) ) {
-        unit_node->setChasingTarget( chasing_target );
-        return false;
+    else {
+        if( unit_node->canAttack( chasing_target ) ) {
+            unit_node->attack( chasing_target );
+        }
+        else {
+            return false;
+        }
     }
     
-    unit_node->attack( chasing_target );
     return true;
 }

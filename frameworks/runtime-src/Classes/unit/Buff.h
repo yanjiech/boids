@@ -83,6 +83,20 @@ public:
     virtual void end();
 };
 
+class StunBuff : public Buff {
+public:
+    StunBuff();
+    virtual ~StunBuff();
+    
+    static StunBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
+};
+
 class BurnBuff : public Buff {
 public:
     BurnBuff();
@@ -148,6 +162,24 @@ public:
     virtual ~PierceBuff();
     
     static PierceBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
+};
+
+class TagBuff : public Buff {
+private:
+    std::string _tag;
+    class TimeLimitSpineComponent* _component;
+    
+public:
+    TagBuff();
+    virtual ~TagBuff();
+    
+    static TagBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
     virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
     
     virtual void updateFrame( float delta );
