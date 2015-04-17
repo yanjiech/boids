@@ -70,7 +70,7 @@ const std::string& MapData::getMapData() {
     return _mapData;
 }
 
-cocos2d::Sprite* MapData::spriteFromObject( TMXTiledMap* map, cocos2d::Value& o, bool createFromCache ) {
+cocos2d::Sprite* MapData::spriteFromObject( TMXTiledMap* map, const cocos2d::Value& o, bool createFromCache ) {
     auto object = o.asValueMap();
     int gid = object.at("gid").asInt();
     if( gid != 0 ) {

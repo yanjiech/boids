@@ -70,3 +70,36 @@ bool BuildingNode::init(  const cocos2d::ValueMap& grid_properties, const cocos2
     
     return true;
 }
+
+//buff building node
+BuffBuildingNode::BuffBuildingNode() {
+    
+}
+
+BuffBuildingNode::~BuffBuildingNode() {
+    
+}
+
+BuffBuildingNode* BuffBuildingNode::create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    BuffBuildingNode* ret = new BuffBuildingNode();
+    if( ret && ret->init( grid_properties, obj_properties ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool BuffBuildingNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    if( !BuildingNode::init( grid_properties, obj_properties ) ) {
+        return false;
+    }
+    
+    return true;
+}
+
+void BuffBuildingNode::updateFrame( float delta ) {
+    
+}

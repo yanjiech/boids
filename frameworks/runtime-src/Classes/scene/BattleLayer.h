@@ -102,6 +102,7 @@ private:
     float _game_time;
 private:
     void parseMapObjects();
+    void parseMapElementWithData( const cocos2d::Value& data, eBattleSubLayer layer );
     
     int zorderForPositionOnObjectLayer( const cocos2d::Point& pos );
     
@@ -165,7 +166,7 @@ public:
     cocos2d::Vector<TowerNode*> getAliveTowersInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float range );
     
     const BlockMap& getBlockNodes() { return _block_nodes; }
-    void addBlockNode( BlockNode* block_node );
+    void addBlockNode( BlockNode* block_node, eBattleSubLayer layer );
     void removeBlockNode( BlockNode* block_node );
     
     TargetNode* getAliveTargetByDeployId( int deploy_id );
@@ -189,6 +190,8 @@ public:
     void addToOverObjectLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder );
     void addToOnGroundLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder );
     void addToFloatLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder );
+    
+    void addToLayer( cocos2d::Node* node, eBattleSubLayer layer, const cocos2d::Point& pos, int local_zorder );
     
     void deployUnit( UnitNode* unit, const cocos2d::Point& pos, const std::string& sight_group );
     void deployUnits( const cocos2d::Vector<UnitNode*>& units, const cocos2d::Rect& area, const std::string& sight_group );

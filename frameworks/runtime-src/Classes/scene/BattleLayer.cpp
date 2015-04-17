@@ -77,7 +77,7 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         cocos2d::Point origin = Director::getInstance()->getVisibleOrigin();
         cocos2d::Size size = Director::getInstance()->getVisibleSize();
     
-        _tmx_map = map_data->generateTiledMapWithFlags( 3 );
+        _tmx_map = map_data->generateTiledMapWithFlags( 1 );
         _tmx_map->setPosition( origin );
         this->addChild( _tmx_map, 0, eBattleSubLayer::MapLayer );
         
@@ -484,10 +484,10 @@ TargetNode* BattleLayer::getAliveTargetByDeployId( int deploy_id ) {
     return nullptr;
 }
 
-void BattleLayer::addBlockNode( BlockNode* block_node ) {
+void BattleLayer::addBlockNode( BlockNode* block_node, eBattleSubLayer layer ) {
     block_node->setDeployId( BattleLayer::getNextDeployId() );
     _block_nodes.insert( block_node->getDeployId(), block_node );
-    this->addToOnGroundLayer( block_node, block_node->getPosition(), this->zorderForPositionOnObjectLayer( block_node->getPosition() ) );
+    this->addToLayer( block_node, layer, block_node->getPosition(), this->zorderForPositionOnObjectLayer( block_node->getPosition() ) );
 }
 
 void BattleLayer::removeBlockNode( BlockNode* block_node ) {
@@ -604,6 +604,22 @@ void BattleLayer::addToOnGroundLayer( cocos2d::Node* node, const cocos2d::Point&
 void BattleLayer::addToFloatLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder ) {
     node->setPosition( pos );
     _float_layer->addChild( node, local_zorder );
+}
+
+void BattleLayer::addToLayer( cocos2d::Node* node, eBattleSubLayer layer, const cocos2d::Point& pos, int local_zorder ) {
+    switch( layer ) {
+        case eBattleSubLayer::OnGroundLayer:
+            this->addToOnGroundLayer( node, pos, local_zorder );
+            break;
+        case eBattleSubLayer::ObjectLayer:
+            this->addToObjectLayer( node, pos, pos );
+            break;
+        case eBattleSubLayer::EffectLayer:
+            this->addToEffectLayer( node, pos, local_zorder );
+            break;
+        default:
+            break;
+    }
 }
 
 void BattleLayer::deployUnit( UnitNode* unit, const cocos2d::Point& pos, const std::string& sight_group ) {
@@ -747,81 +763,100 @@ void BattleLayer::endStory( UIStoryLayer* story ) {
 }
 
 //private methods
-void BattleLayer::parseMapObjects() {
-    const ValueVector& objects = _tmx_map->getObjectGroup( "vision" )->getObjects();
+
+void BattleLayer::parseMapElementWithData( const Value& data, eBattleSubLayer layer ) {
     const TMXObjectGroup* physics_group = _tmx_map->getObjectGroup( "physics" );
-    for( ValueVector::const_iterator itr = objects.begin(); itr != objects.end(); ++itr ) {
-        const ValueMap& obj_properties = itr->asValueMap();
-        int gid = 0;
-        std::string type = "";
+    const ValueMap& obj_properties = data.asValueMap();
+    int gid = 0;
+    std::string type = "";
+    
+    auto sitr = obj_properties.find( "gid" );
+    if( sitr != obj_properties.end() ) {
+        gid = sitr->second.asInt();
+    }
+    
+    sitr = obj_properties.find( "type" );
+    if( sitr != obj_properties.end() ) {
+        type = sitr->second.asString();
+    }
+    
+    ValueMap grid_properties;
+    
+    if( gid != 0 ) {
+        bool flipped_horizontally = false;
+        bool flipped_vertically = false;
+        bool flipped_diagonally = false;
+        if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
+            flipped_horizontally = true;
+            gid &= 0x7fffffff;
+        }
+        if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
+            flipped_vertically = true;
+            gid &= 0xbfffffff;
+        }
+        if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
+            flipped_diagonally = true;
+            gid &= 0xdfffffff;
+        }
         
-        auto sitr = obj_properties.find( "gid" );
+        Value properties = _tmx_map->getPropertiesForGID( gid );
+        grid_properties = properties.asValueMap();
+        grid_properties["flipped_horizontally"] = Value( flipped_horizontally );
+        grid_properties["flipped_vertically"] = Value( flipped_vertically );
+        grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
+    }
+    
+    if( type.find( "BlockNode" ) != std::string::npos ) {
+        std::string name = obj_properties.at( "name" ).asString();
+        ValueMap boundary = physics_group->getObject( name );
+        boundary["map_height"] = Value( _tmx_map->getContentSize().height );
+        if( !boundary.empty() ) {
+            grid_properties["boundary"] = Value( boundary );
+            BlockNode* block_node = BlockNode::create( grid_properties, obj_properties );
+            this->addBlockNode( block_node, layer );
+        }
+    }
+    else if( type == "TowerNode" ) {
+        ValueMap tower_data;
+        tower_data["name"] = obj_properties.at( "name" );
+        sitr = obj_properties.find( "level" );
         if( sitr != obj_properties.end() ) {
-            gid = sitr->second.asInt();
-        }
-        
-        sitr = obj_properties.find( "type" );
-        if( sitr != obj_properties.end() ) {
-            type = sitr->second.asString();
-        }
-        
-        ValueMap grid_properties;
-        
-        if( gid != 0 ) {
-            bool flipped_horizontally = false;
-            bool flipped_vertically = false;
-            bool flipped_diagonally = false;
-            if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
-                flipped_horizontally = true;
-                gid &= 0x7fffffff;
-            }
-            if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
-                flipped_vertically = true;
-                gid &= 0xbfffffff;
-            }
-            if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
-                flipped_diagonally = true;
-                gid &= 0xdfffffff;
-            }
-            
-            Value properties = _tmx_map->getPropertiesForGID( gid );
-            grid_properties = properties.asValueMap();
-            grid_properties["flipped_horizontally"] = Value( flipped_horizontally );
-            grid_properties["flipped_vertically"] = Value( flipped_vertically );
-            grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
-        }
-        
-        if( type.find( "BlockNode" ) != std::string::npos ) {
-            std::string name = obj_properties.at( "name" ).asString();
-            ValueMap boundary = physics_group->getObject( name );
-            boundary["map_height"] = Value( _tmx_map->getContentSize().height );
-            if( !boundary.empty() ) {
-                grid_properties["boundary"] = Value( boundary );
-                BlockNode* block_node = BlockNode::create( grid_properties, obj_properties );
-                this->addBlockNode( block_node );
-            }
-        }
-        else if( type == "TowerNode" ) {
-            ValueMap tower_data;
-            tower_data["name"] = obj_properties.at( "name" );
-            sitr = obj_properties.find( "level" );
-            if( sitr != obj_properties.end() ) {
-                tower_data["level"] = sitr->second;
-            }
-            else {
-                tower_data["level"] = Value( 1 );
-            }
-            float x = obj_properties.at( "x" ).asFloat();
-            float y = obj_properties.at( "y" ).asFloat();
-            float width = obj_properties.at( "width" ).asFloat();
-            float height = obj_properties.at( "height" ).asFloat();
-            TowerNode* tower = TowerNode::create( this, tower_data );
-            tower->setTargetCamp( eTargetCamp::Enemy );
-            this->deployTower( tower, Point( x + width / 2, y + height / 2 ) );
+            tower_data["level"] = sitr->second;
         }
         else {
-            BuildingNode* building = BuildingNode::create( grid_properties, obj_properties );
-            this->addToObjectLayer( building, building->getPosition(), building->getPosition() + building->getCenter() );
+            tower_data["level"] = Value( 1 );
+        }
+        float x = obj_properties.at( "x" ).asFloat();
+        float y = obj_properties.at( "y" ).asFloat();
+        float width = obj_properties.at( "width" ).asFloat();
+        float height = obj_properties.at( "height" ).asFloat();
+        TowerNode* tower = TowerNode::create( this, tower_data );
+        tower->setTargetCamp( eTargetCamp::Enemy );
+        this->deployTower( tower, Point( x + width / 2, y + height / 2 ) );
+    }
+    else if( type.find( "BuildingNode" ) != std::string::npos ) {
+        BuildingNode* building = BuildingNode::create( grid_properties, obj_properties );
+        this->addToLayer( building, layer, building->getPosition(), this->zorderForPositionOnObjectLayer( building->getPosition() ) );
+    }
+    else {
+        Sprite* sp = _map_data->spriteFromObject( _tmx_map, data, true );
+        if( sp ) {
+            this->addToLayer( sp, layer, sp->getPosition(), this->zorderForPositionOnObjectLayer( sp->getPosition() ) );
+        }
+    }
+}
+
+void BattleLayer::parseMapObjects() {
+    const ValueVector& objects = _tmx_map->getObjectGroup( "vision" )->getObjects();
+    for( ValueVector::const_iterator itr = objects.begin(); itr != objects.end(); ++itr ) {
+        this->parseMapElementWithData( *itr, eBattleSubLayer::ObjectLayer );
+    }
+    
+    TMXObjectGroup* onground_group = _tmx_map->getObjectGroup( "onground" );
+    if( onground_group ) {
+        const ValueVector& onground_objects = onground_group->getObjects();
+        for( auto itr = onground_objects.begin(); itr != onground_objects.end(); ++itr ) {
+            this->parseMapElementWithData( *itr, eBattleSubLayer::OnGroundLayer );
         }
     }
 }
