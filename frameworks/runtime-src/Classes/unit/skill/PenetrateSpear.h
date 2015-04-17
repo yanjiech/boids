@@ -12,6 +12,14 @@
 #include "SkillNode.h"
 
 class PenetrateSpear : public SkillNode {
+private:
+    float _damage;
+    float _duration;
+    float _speed;
+    float _range;
+    float _damage_radius;
+    std::string _bullet_name;
+    
 public:
     PenetrateSpear();
     virtual ~PenetrateSpear();

@@ -208,7 +208,7 @@ public:
     void clearChasingTarget( TargetNode* unit );
     
     void startStory( const cocos2d::ValueMap& story_data );
-    void endStory();
+    void endStory( UIStoryLayer* story );
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

@@ -294,6 +294,19 @@ void MapLogic::onUnitMoved( class UnitNode* unit_node ) {
     }
 }
 
+void MapLogic::onStoryChange( const std::string& story_name, const std::string& story_state ) {
+    ValueMap update_data;
+    update_data["trigger_type"] = Value( EVENT_TRIGGER_TYPE_STORY_CHANGE );
+    update_data["story_name"] = Value( story_name );
+    update_data["story_state"] = Value( story_state );
+    
+    for( auto trigger : _triggers ) {
+        if( trigger->isEnabled() ) {
+            trigger->activateTriggerByConditions( update_data, nullptr );
+        }
+    }
+}
+
 int MapLogic::getUnitAppearCountByCamp( int camp ) {
     auto itr = _unit_appear_count_by_camp.find( camp );
     if( itr != _unit_appear_count_by_camp.end() ) {

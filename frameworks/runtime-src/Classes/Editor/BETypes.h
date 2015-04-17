@@ -49,6 +49,7 @@ public:
     EditorTypePtr getConversationState() { return _conversationState; }
     EditorTypePtr getUnitPopupType() { return _unitPopupType; }
     EditorTypePtr getTriggerRelationType() { return _triggerRelationType; }
+    EditorTypePtr getStoryStateType() { return _storyStateType; }
 protected:
     EditorTypePtr _eventTriggerState;
     EditorTypePtr _eventActionState;
@@ -68,6 +69,8 @@ protected:
     EditorTypePtr _conversationState;
     EditorTypePtr _unitPopupType;
     EditorTypePtr _triggerRelationType;
+    EditorTypePtr _storyStateType;
+    
     static EditorTypeManager *_instance;
 };
 

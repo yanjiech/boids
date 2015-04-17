@@ -127,12 +127,12 @@ public:
     void setActive( bool b ) { _is_active = b; }
 };
 
-class ConversationChangeTrigger : public Trigger {
+class StoryChangeTrigger : public Trigger {
 public:
-    ConversationChangeTrigger();
-    virtual ~ConversationChangeTrigger();
+    StoryChangeTrigger();
+    virtual ~StoryChangeTrigger();
     
-    static ConversationChangeTrigger* create( const cocos2d::ValueMap& data );
+    static StoryChangeTrigger* create( const cocos2d::ValueMap& data );
     virtual bool init( const cocos2d::ValueMap& data );
 };
 

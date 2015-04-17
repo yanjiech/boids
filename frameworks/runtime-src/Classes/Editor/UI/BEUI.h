@@ -480,6 +480,8 @@ private:
     cocos2d::ui::TextField *_filterTextField;
     cocos2d::ui::TextField *_contentTextField;
     
+    cocos2d::ui::TextField* _tf_story_name;
+    
     cocos2d::ui::TextField* _tf_line;
     cocos2d::ui::CheckBox* _cb_left_or_right;
     
@@ -513,6 +515,23 @@ private:
 //    void onStateItemClicked(cocos2d::Ref *sender);
 //};
 
+class BEUIStoryChangeTrigger : public BEUIBase {
+public:
+    BEUIStoryChangeTrigger(cocos2d::Node *root, const BEPopupEventHandler& handler);
+    virtual void reset();
+    void loadStories(const std::vector<std::string>& conversations);
+    EditorStoryChangeTriggerPtr getTrigger();
+private:
+    cocos2d::ui::Button *_stateButton;
+    cocos2d::ui::Button *_okButton;
+    cocos2d::ui::Button *_cancelButton;
+    BETypeListView *_stateListView;
+    BEListView *_storyListView;
+
+    void onStateButtonClicked(cocos2d::Ref *sender);
+    void onStateItemClicked(cocos2d::Ref *sender);
+};
+
 class BEEditorMainUI : public BEUIBase {
 public:
     BEEditorMainUI(cocos2d::Node *root, const BEPopupEventHandler& handler, const BEEditorCommandHandler& commandHandler);
@@ -534,6 +553,7 @@ public:
     BEUIConversationAction *conversationActionUI;
     BEUIStoryAction* storyActionUI;
 //    BEUIConversationTrigger *conversationChangeUI;
+    BEUIStoryChangeTrigger* storyChangeTriggerUI;
     virtual void reset();
     void hideAllPopups();
     
@@ -563,6 +583,7 @@ private:
     cocos2d::ui::Layout *_gameConditionPanel;
     cocos2d::ui::Layout *_conversationActionPanel;
     cocos2d::ui::Layout *_storyActionPanel;
+    cocos2d::ui::Layout *_storyChangePanel;
     
     BEEditorCommandHandler _commandHandler;
 };

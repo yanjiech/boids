@@ -145,6 +145,7 @@ void TowerNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_
         //dying
         if( _target_data->current_hp <= 0 ) {
             this->changeTowerState( eTowerState::TowerStateDie );
+            _battle_layer->clearChasingTarget( this );
         }
     }
 }

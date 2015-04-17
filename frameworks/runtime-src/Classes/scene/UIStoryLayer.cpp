@@ -54,7 +54,7 @@ bool UIStoryLayer::init( const StoryEndCallback& callback ) {
     
     Sprite* forest_bg = Sprite::create( "ui/dialog/duihuakuang_forest.png" );
     forest_bg->setPosition( Point( origin.x + size.width / 2, origin.y + forest_bg->getContentSize().height / 2 ) );
-    this->addChild( forest_bg, 0 );
+    this->addChild( forest_bg, 1 );
     
     Sprite* dialog_frame = Sprite::create( "ui/dialog/duihuakuang_01.png" );
     dialog_frame->setPosition( Point( origin.x + size.width / 2, origin.y + dialog_frame->getContentSize().height / 2 + 50.0 ) );
@@ -186,6 +186,7 @@ void UIStoryLayer::setMaxLettersPerRow( int count ) {
 }
 
 void UIStoryLayer::setStoryData( const cocos2d::ValueMap& data ) {
+    _story_name = data.at( "name" ).asString();
     _story_data = data.at( "story_data" ).asValueVector();
     this->reset();
     this->gotoNextLine();
@@ -201,7 +202,7 @@ void UIStoryLayer::setSpeaker( const std::string& name, bool left_or_right ) {
         _sp_speaker->removeFromParentAndCleanup( true );
     }
     _sp_speaker = Sprite::create( speaker_resource );
-    this->addChild( _sp_speaker, 1 );
+    this->addChild( _sp_speaker, 0 );
     
     Point origin = Director::getInstance()->getVisibleOrigin();
     Size size = Director::getInstance()->getVisibleSize();
@@ -221,7 +222,7 @@ bool UIStoryLayer::gotoNextLine() {
     if( _current_line_index >= _story_data.size() ) {
         this->setEnabled( false );
         if( _callback ) {
-            _callback();
+            _callback( this );
         }
         return false;
     }

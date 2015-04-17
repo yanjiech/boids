@@ -1374,6 +1374,7 @@ BEUIStoryAction::BEUIStoryAction(Node *root, const BEPopupEventHandler& handler)
     _filterTextField = getTextFieldFrom("input_filter", _listPanel);
     _contentTextField = getTextFieldFrom("input_content", _infoPanel);
     _tf_line = getTextFieldFrom("tf_line", _infoPanel);
+    _tf_story_name = getTextFieldFrom( "tf_story_name", _infoPanel );
     _cb_left_or_right = getCheckBoxFrom( "cb_left_or_right", _infoPanel );
     _addButton = getButtonFrom("button_add", _infoPanel);
     _okButton = getButtonFrom("button_ok", _infoPanel);
@@ -1401,10 +1402,12 @@ void BEUIStoryAction::reset() {
 
 void BEUIStoryAction::loadStorySource(const std::vector<std::pair<std::string, std::string>>& sources) {
     _sources = sources;
+    _sources.push_back( std::make_pair( "name_source", "goblin_mom" ) );
     _sourceListView->updateData();
 }
 
 EditorStoryActionPtr BEUIStoryAction::getAction() {
+    _action->Name = _tf_story_name->getString();
     return _action;
 }
 
@@ -1484,7 +1487,49 @@ void BEUIStoryAction::onDeleteButtonClicked(Ref *sender) {
 //    _stateListView->setVisible(false);
 //}
 
+//story change trigger
+BEUIStoryChangeTrigger::BEUIStoryChangeTrigger(cocos2d::Node *root, const BEPopupEventHandler& handler) :  BEUIBase(root, handler) {
+    _stateButton = getButtonFrom("button_state", _root);
+    _okButton = getButtonFrom("button_ok", _root);
+    _cancelButton = getButtonFrom("button_cancel", _root);
+    _stateListView = popupTypeListFromButton(_stateButton, EditorTypeManager::getInstance()->getStoryStateType(), CC_CALLBACK_1(BEUIStoryChangeTrigger::onStateItemClicked, this));
+    _stateListView->setVisible(false);
+    _storyListView = BEDefaultListView::create(Size(400, 400), nullptr);
+    _storyListView->setPosition(Vec2(0, 200));
+    _root->addChild(_storyListView);
+    _stateButton->addClickEventListener(CC_CALLBACK_1(BEUIStoryChangeTrigger::onStateButtonClicked, this));
+    bindOKHandler(_okButton);
+    bindCancelHandler(_cancelButton);
+}
 
+void BEUIStoryChangeTrigger::reset() {
+    _storyListView->cleanAndReset();
+    _stateListView->reset();
+    _stateButton->setTitleText("story_end");
+}
+
+void BEUIStoryChangeTrigger::loadStories(const std::vector<std::string>& stories) {
+    _storyListView->addItems(stories);
+}
+
+EditorStoryChangeTriggerPtr BEUIStoryChangeTrigger::getTrigger() {
+    auto trigger = EditorStoryChangeTriggerPtr(new EditorStoryChangeTrigger());
+    trigger->StoryName = _storyListView->getCurrentName();
+    trigger->State = _stateListView->getCurrentType();
+    return trigger;
+}
+
+void BEUIStoryChangeTrigger::onStateButtonClicked(cocos2d::Ref *sender) {
+    _stateListView->setVisible(true);
+}
+
+void BEUIStoryChangeTrigger::onStateItemClicked(cocos2d::Ref *sender) {
+    _stateButton->setTitleText(_stateListView->getCurrentType());
+    _stateListView->setVisible(false);
+}
+
+
+//editor main ui
 BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, const BEEditorCommandHandler& commandHandler):BEUIBase(root, handler) {
     _menuPanel = getPanelFrom("panel_menu", _root);
     _popupContainer = _root->getChildByName("node_popupContainer");
@@ -1510,6 +1555,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     _conversationActionPanel = getPanelFrom(kConversationActionPanel, _popupContainer);
     _storyActionPanel = getPanelFrom( kStoryActionPanel, _popupContainer );
 //    _conversationChangePanel = getPanelFrom(kConversationChangePanel, _popupContainer);
+    _storyChangePanel = getPanelFrom( kStoryChangePanel, _popupContainer );
     _commandHandler = commandHandler;
     _newEventButton->addClickEventListener([this](Ref *sender) {
         this->_commandHandler(EditorCommandType::NewEvent, sender);
@@ -1543,6 +1589,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     gameConditionUI = new BEUIGameCondition(_gameConditionPanel, handler);
     conversationActionUI = new BEUIConversationAction(_conversationActionPanel, handler);
     storyActionUI = new BEUIStoryAction( _storyActionPanel, handler );
+    storyChangeTriggerUI = new BEUIStoryChangeTrigger( _storyChangePanel, handler );
 //    conversationChangeUI = new BEUIConversationTrigger(_conversationChangePanel, handler);
     hideAllPopups();
 }
@@ -1564,6 +1611,7 @@ BEEditorMainUI::~BEEditorMainUI() {
     delete gameConditionUI;
     delete conversationActionUI;
     delete storyActionUI;
+    delete storyChangeTriggerUI;
 //    delete conversationChangeUI;
 }
 
@@ -1584,6 +1632,7 @@ void BEEditorMainUI::hideAllPopups() {
     gameConditionUI->setVisible(false);
     conversationActionUI->setVisible(false);
     storyActionUI->setVisible( false );
+    storyChangeTriggerUI->setVisible( false );
 //    conversationChangeUI->setVisible(false);
 }
 

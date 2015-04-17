@@ -13,9 +13,11 @@
 
 class UIStoryLayer : public cocos2d::Layer {
 public:
-    typedef std::function<void()> StoryEndCallback;
+    typedef std::function<void(UIStoryLayer* story)> StoryEndCallback;
     
 private:
+    std::string _story_name;
+    
     bool _is_enabled;
     cocos2d::ValueVector _story_data;
     
@@ -50,6 +52,9 @@ public:
     virtual void updateFrame( float delta );
     
     void reset();
+    
+    const std::string& getStoryName() { return _story_name; }
+    void setStoryName( const std::string& name ) { _story_name = name; }
     
     void showLetters( int count );
     

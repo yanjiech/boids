@@ -311,6 +311,19 @@ void EditorVisionTrigger::loadJson(const rapidjson::Value& value) {
 //    State = value["state"].GetString();
 //}
 
+rapidjson::Value& EditorStoryChangeTrigger::toJson(rapidjson::Document::AllocatorType& allocator) {
+    EditorTriggerBase::toJson(allocator);
+    _json.AddMember("story_name", StoryName.c_str(), allocator);
+    _json.AddMember("story_state", State.c_str(), allocator);
+    return _json;
+}
+
+void EditorStoryChangeTrigger::loadJson(const rapidjson::Value& value) {
+    EditorTriggerBase::loadJson(value);
+    this->StoryName = value["story_name"].GetString();
+    this->State = value["story_state"].GetString();
+}
+
 rapidjson::Value& EditorActionMeta::toJson(rapidjson::Document::AllocatorType& allocator) {
     int repeat = IsInfinite ? -1 : RepeatTimes;
     std::string value = Utils::stringFormat("%d,%.2f,%.2f", repeat, Delay, Interval);
@@ -637,12 +650,13 @@ rapidjson::Value& EditorStoryAction::toJson(rapidjson::Document::AllocatorType& 
         stories.PushBack( story->toJson( allocator), allocator );
     }
     _json.AddMember( "story_data", stories, allocator );
-    
+    _json.AddMember( "name", Name.c_str(), allocator );
     return _json;
 }
 
 void EditorStoryAction::loadJson( const rapidjson::Value& value ) {
     EditorActionBase::loadJson( value );
+    Name = value["name"].GetString();
     const rapidjson::Value& stories = value["story_data"];
     assert( stories.IsArray() );
     Stories.clear();
@@ -691,6 +705,9 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
             }
             else if( triggerType == "unit_stay" ) {
                 trigger = std::shared_ptr<EditorUnitStayTrigger>( new EditorUnitStayTrigger() );
+            }
+            else if( triggerType == "story_change" ) {
+                trigger = std::shared_ptr<EditorStoryChangeTrigger>( new EditorStoryChangeTrigger() );
             }
             else if (triggerType == "map_init") {
                 trigger = std::shared_ptr<EditorMapInitTrigger>(new EditorMapInitTrigger());

@@ -11,6 +11,8 @@
 
 using namespace cocos2d;
 
+#define DEFAULT_HINT_LENGTH 360.0f
+
 #define MIN_SWIPE_DISTANCE 20.0
 #define MAX_SWIPE_DISTANCE 200.0
 
@@ -65,9 +67,31 @@ bool UISkillNode::init( BattleLayer* battle_layer, UnitNode* unit_node ) {
     _hint_type = _unit_node->getSkillHintTypeById( 0 );
     _range = _unit_node->getSkillRangeById( 0 );
     _hint_d_pos = Point::ZERO;
+    
+    Value v_min_range = unit_node->getSkill( 0 )->getAttribute( "min_range" );
+    if( !v_min_range.isNull() ) {
+        _min_range = v_min_range.asFloat();
+    }
+    else {
+        _min_range = 0;
+    }
+    
+    Value v_max_range = unit_node->getSkill( 0 )->getAttribute( "max_range" );
+    if( !v_max_range.isNull() ) {
+        _max_range = v_max_range.asFloat();
+    }
+    else {
+        _max_range = 0;
+    }
+    
+    Value v_max_charge_time = unit_node->getSkill( 0 )->getAttribute( "max_time" );
+    if( !v_max_charge_time.isNull() ) {
+        _max_charge_time = v_max_charge_time.asFloat();
+    }
+    else {
+        _max_charge_time = 0;
+    }
     if( _hint_type == "dyn_circle" ) {
-        _min_range = unit_node->getSkillMinRangeById( 0 );
-        _max_range = unit_node->getSkillMaxRangeById( 0 );
         _radius = unit_node->getSkillRadiusById( 0 );
     }
     
@@ -147,6 +171,21 @@ bool UISkillNode::isSkillReady() {
     return _unit_node->isSkillReadyById( 0 );
 }
 
+cocos2d::Value UISkillNode::getSkillAttribute( const std::string& key ) {
+    return _unit_node->getSkill( 0 )->getAttribute( key );
+}
+
+void UISkillNode::setChargeTime( float time ) {
+    if( _hint_effect != nullptr && _max_charge_time != 0 ) {
+        float percent = time / _max_charge_time;
+        if( percent > 1.0f ) {
+            percent = 1.0f;
+        }
+        float length = _min_range + ( _max_range - _min_range ) * percent;
+        _hint_effect->setScaleX( length / DEFAULT_HINT_LENGTH );
+    }
+}
+
 UIBattleLayer::UIBattleLayer() {
     
 }
@@ -197,6 +236,7 @@ bool UIBattleLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event )
             _touch_down_duration = 0;
             if( _selected_skill->shouldCastOnTouchDown() && _selected_skill->isSkillReady() ) {
                 _selected_skill->getOwner()->setCharging( true );
+                _selected_skill->setChargeTime( 0 );
             }
             return true;
         }
@@ -246,10 +286,15 @@ void UIBattleLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event )
             range_per = ( distance - MIN_SWIPE_DISTANCE ) / ( MAX_SWIPE_DISTANCE - MIN_SWIPE_DISTANCE );
         }
         _selected_skill->hideHint();
-        if( _selected_skill->shouldCastOnTouchDown() && _selected_skill->isSkillReady() ) {
-            _selected_skill->getOwner()->setCharging( false );
+        if( _selected_skill->shouldCastOnTouchDown() ) {
+            if( _selected_skill->getOwner()->isCharging() && _selected_skill->isSkillReady() ) {
+                _selected_skill->getOwner()->setCharging( false );
+                _selected_skill->activate( dir, range_per, _touch_down_duration );
+            }
         }
-        _selected_skill->activate( dir, range_per );
+        else {
+            _selected_skill->activate( dir, range_per );
+        }
         
         _is_touch_began = false;
         _touch = nullptr;
@@ -263,6 +308,7 @@ void UIBattleLayer::updateFrame( float delta ) {
     }
     if( _is_touch_began ) {
         _touch_down_duration += delta;
+        _selected_skill->setChargeTime( _touch_down_duration );
     }
 }
 
