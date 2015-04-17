@@ -120,6 +120,21 @@ void EditMode::loadVisionObjects() {
     _visionObjects.clear();
     _visionTags.clear();
     std::set<std::string> tags;
+    
+    auto ongroundObjectGroup = _map->getObjectGroup("onground");
+    for (auto object : ongroundObjectGroup->getObjects()) {
+        auto vm = object.asValueMap();
+        auto name = vm["name"].asString();
+        auto type = vm["type"].asString();
+        if (name.length() && type.length()) {
+            _visionObjects.push_back(name);
+        }
+        auto tag = vm["tag"].asString();
+        if (tag.length()) {
+            tags.insert(tag);
+        }
+    }
+    
     auto visionObjectGroup = _map->getObjectGroup("vision");
     for (auto object : visionObjectGroup->getObjects()) {
         auto vm = object.asValueMap();

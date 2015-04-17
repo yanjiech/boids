@@ -29,4 +29,15 @@ public:
     virtual void updateFrame( float delta ) {}
 };
 
+class BuffBuildingNode : public BuildingNode {
+public:
+    BuffBuildingNode();
+    virtual ~BuffBuildingNode();
+    
+    static BuffBuildingNode* create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    virtual bool init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    
+    virtual void updateFrame( float delta );
+};
+
 #endif /* defined(__Boids__BuildingNode__) */
