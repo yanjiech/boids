@@ -35,6 +35,8 @@ public:
     cocos2d::ValueVector getAreasVectorByTag( const std::string& tag_name );
     cocos2d::ValueMap getAreaMapByPosition( const cocos2d::Point& pos );
     
+    cocos2d::Sprite* spriteFromObject( cocos2d::TMXTiledMap* map, const cocos2d::Value& o, bool createFromCache );
+    
 private:
     cocos2d::ValueMap _map_json;
     cocos2d::ValueMap _meta_json;
@@ -45,8 +47,6 @@ private:
     std::vector<std::string> _plistList;
     
     void preprocessMapData();
-    
-    cocos2d::Sprite* spriteFromObject( cocos2d::TMXTiledMap* map, cocos2d::Value& o, bool createFromCache );
 };
 
 #endif /* defined(__Boids__MapData__) */
