@@ -75,7 +75,7 @@ void AtomFart::begin() {
         unit->addBuff( buff->getBuffId(), buff );
         
         ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getTargetData(), unit->getTargetData() );
-        unit->takeDamage( result, _owner->getDeployId() );
+        unit->takeDamage( result, _owner );
         
         Point push_dir = unit->getPosition() - _owner->getPosition();
         push_dir.normalize();

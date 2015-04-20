@@ -98,7 +98,8 @@ _state( eUnitState::Unknown_Unit_State ),
 _guard_target( nullptr ),
 _walk_path( nullptr ),
 _tour_path( nullptr ),
-_is_charging( false )
+_is_charging( false ),
+_charging_effect( nullptr )
 {
 }
 
@@ -290,6 +291,10 @@ void UnitNode::updateFrame( float delta ) {
     this->updateBuffs( delta );
     this->updateSkills( delta );
     this->evaluateCatchUp();
+    
+    if( _is_charging && _charging_effect != nullptr ) {
+        _charging_effect->setPosition( this->getLocalBonePos( "ChargingPoint" ) );
+    }
 }
 
 void UnitNode::onSkeletonAnimationStart( int track_index ) {
@@ -541,7 +546,11 @@ cocos2d::Point UnitNode::getBonePos( const std::string& bone_name ) {
 }
 
 cocos2d::Point UnitNode::getLocalBonePos( const std::string& bone_name ) {
-    return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, bone_name );
+    Point pos = ArmatureManager::getInstance()->getBonePosition( _current_skeleton, bone_name );
+    if( this->getCurrentSkeleton()->getRotationSkewY() > 0 ) {
+        pos = Point( -pos.x, pos.y );
+    }
+    return pos;
 }
 
 void UnitNode::appear() {
@@ -571,19 +580,15 @@ void UnitNode::onDying() {
     this->addUnitComponent( component, component->getName(), eComponentLayer::BelowObject );
 }
 
-void UnitNode::takeDamage( const cocos2d::ValueMap& result, int source_id ) {
-    this->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), source_id );
+void UnitNode::takeDamage( const cocos2d::ValueMap& result, TargetNode* atker ) {
+    this->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), atker );
 }
 
-void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_id ) {
+void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* atker ) {
     if( this->isAttackable() && _target_data->current_hp > 0 ) {
         float damage = amount;
         for( auto itr = _buffs.begin(); itr != _buffs.end(); ++itr ) {
-            ShieldBuff* buff = dynamic_cast<ShieldBuff*>( itr->second );
-            if( buff ) {
-                damage = buff->absorbDamage( amount );
-                break;
-            }
+            damage = itr->second->filterDamage( damage, atker );
         }
         _target_data->current_hp -= damage;
         
@@ -603,7 +608,6 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_i
             this->changeUnitState( eUnitState::Dying );
         }
         else if( _chasing_target == nullptr ) {
-            TargetNode* atker = _battle_layer->getAliveTargetByDeployId( source_id );
             if( atker && atker->isAttackable() && atker->isAlive() ) {
                 this->setChasingTarget( atker );
             }
@@ -672,10 +676,14 @@ void UnitNode::applyCustomChange( const std::string& content_string ) {
     }
 }
 
-void UnitNode::addBuff( const std::string& buff_id, Buff* buff ) {
-    if( !this->hasBuff( buff_id ) ) {
-        _buffs.insert( buff_id, buff );
+void UnitNode::addBuff( const std::string& buff_id, Buff* buff, bool replace ) {
+    if( replace ) {
+        Buff* buff = this->getBuffOfType( buff->getBuffType() );
+        if( buff ) {
+            buff->end();
+        }
     }
+    _buffs.insert( buff_id, buff );
 }
 
 void UnitNode::removeBuff( const std::string& buff_id ) {
@@ -689,13 +697,26 @@ bool UnitNode::hasBuff( const std::string& buff_id ) {
     auto itr = _buffs.find( buff_id );
     return itr != _buffs.end();
 }
+
+bool UnitNode::hasBuffOfType( const std::string& buff_type ) {
+    return this->getBuffOfType( buff_type ) != nullptr;
+}
+
+Buff* UnitNode::getBuffOfType( const std::string& buff_type ) {
+    for( auto itr = _buffs.begin(); itr != _buffs.end(); ++itr ) {
+        if( itr->second->getBuffType() == buff_type ) {
+            return itr->second;
+        }
+    }
+    return nullptr;
+}
     
 void UnitNode::removeAllBuffs() {
     _buffs.clear();
 }
 
 void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_per, float duration ) {
-    if( !this->isDying() && !this->isCasting() ) {
+    if( !this->isDying() && !this->isCasting() && this->getNextUnitState() != eUnitState::Casting ) {
         Point sk_dir = dir;
         if( sk_dir.x != 0 || sk_dir.y != 0 ) {
             this->changeUnitDirection( dir );
@@ -970,7 +991,7 @@ void UnitNode::onAttacking() {
             if( target_unit ) {
                 DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
                 ValueMap result = damage_calculator->calculateDamage( _target_data, target_unit->getTargetData() );
-                target_unit->takeDamage( result, _deploy_id );
+                target_unit->takeDamage( result, this );
                 
                 if( !result.at( "miss" ).asBool() ) {
                     std::string hit_resource = "effects/bullets/default_hit";
@@ -1005,40 +1026,6 @@ bool UnitNode::isUnitInDirectView( UnitNode* unit ) {
         return false;
     }
     return true;
-}
-
-void UnitNode::addUnitTag( const std::string& tag ) {
-    _unit_tags.push_back( Value( tag ) );
-}
-
-void UnitNode::removeUnitTag( const std::string& tag ) {
-    auto itr = _unit_tags.begin();
-    while( itr != _unit_tags.end() ) {
-        if( itr->asString() == tag ) {
-            itr = _unit_tags.erase( itr );
-        }
-        else {
-            ++itr;
-        }
-    }
-}
-
-void UnitNode::setUnitTags( const std::string& tag_string ) {
-    _unit_tags.clear();
-    std::vector<std::string> tags;
-    Utils::split( tag_string, tags, ',' );
-    for( auto str : tags ) {
-        _unit_tags.push_back( Value( str ) );
-    }
-}
-
-bool UnitNode::hasUnitTag( const std::string& tag_name ) {
-    for( auto itr = _unit_tags.begin(); itr != _unit_tags.end(); ++itr ) {
-        if( itr->asString() == tag_name ) {
-            return true;
-        }
-    }
-    return false;
 }
 
 bool UnitNode::needRelax() {
@@ -1165,10 +1152,24 @@ void UnitNode::setConcentrateOnWalk( bool b ) {
     }
 }
 
-void UnitNode::setCharging( bool b ) {
+void UnitNode::setCharging( bool b, std::string effect_resource ) {
     _is_charging = b;
     this->changeUnitState( _state, true );
-    this->setChasingTarget( nullptr );
+    if( b && !effect_resource.empty() ) {
+        if( _charging_effect != nullptr ) {
+            _charging_effect->setDuration( 0 );
+        }
+        spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( effect_resource );
+        std::string name = Utils::stringFormat( "UnitCharging_%d", BulletNode::getNextBulletId() );
+        _charging_effect = TimeLimitSpineComponent::create( INT_MAX, skeleton, name, true );
+        _charging_effect->setPosition( this->getLocalBonePos( "ChargingPoint" ) );
+        _charging_effect->setAnimation( 0, "animation", true );
+        this->addUnitComponent( _charging_effect, name, eComponentLayer::OverObject );
+    }
+    else if( !b && _charging_effect != nullptr ) {
+        _charging_effect->setDuration( 0 );
+        _charging_effect = nullptr;
+    }
 }
 
 //private methods

@@ -42,6 +42,8 @@ protected:
 public:
 	std::string name;
 	static const std::string _enlarged_name_suffix;
+    
+    cocos2d::Point center;
 
 	BoidsPolygon() {}
 	void addNewVertex(float x, float y);

@@ -78,7 +78,7 @@ void MagicPulse::updateFrame( float delta ) {
                     _damage_elapse = 0;
                     DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_MAGIC_PULSE, _damage );
                     ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getUnitData(), _target_unit->getUnitData() );
-                    _target_unit->takeDamage( result, _owner->getDeployId() );
+                    _target_unit->takeDamage( result, _owner );
                 }
             }
         }

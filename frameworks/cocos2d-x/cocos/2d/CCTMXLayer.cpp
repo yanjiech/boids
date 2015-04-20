@@ -58,7 +58,13 @@ bool TMXLayer::initWithTilesetInfo(TMXTilesetInfo *tilesetInfo, TMXLayerInfo *la
     Texture2D *texture = nullptr;
     if( tilesetInfo )
     {
-        texture = Director::getInstance()->getTextureCache()->addImage(tilesetInfo->_sourceImage.c_str());
+        std::string sourceImage = tilesetInfo->_sourceImage;
+        size_t i = sourceImage.find_last_of( '/' );
+        if( i != std::string::npos ) {
+            sourceImage = sourceImage.substr( i + 1, sourceImage.size() - i - 1 );
+        }
+        
+        texture = Director::getInstance()->getTextureCache()->addImage( sourceImage.c_str() );
     }
 
     if (SpriteBatchNode::initWithTexture(texture, static_cast<ssize_t>(capacity)))

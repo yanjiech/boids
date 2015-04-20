@@ -199,22 +199,20 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
         tag_name = itr->second.asString();
     }
     
-    std::vector<std::string> buffs_to_add;
-    std::vector<std::string> buffs_to_remove;
+    ValueMap buff_data;
     itr = _action_data.find( "buff_name" );
     if( itr != _action_data.end() ) {
-        std::vector<std::string> buff_names;
-        std::string buff_names_string = itr->second.asString();
-        Utils::split( buff_names_string, buff_names, ',' );
-        for( auto str : buff_names ) {
-            std::string buff_name = str.substr( 2, str.length() );
-            std::string opt = str.substr( 1, 1 );
-            if( opt == "+" ) {
-                buffs_to_add.push_back( buff_name );
-            }
-            else if( opt == "-" ) {
-                buffs_to_remove.push_back( buff_name );
-            }
+        buff_data["buff_name"] = itr->second;
+        buff_data["buff_type"] = _action_data.at( "buff_type" );
+        std::string buff_params = _action_data.at( "buff_params" ).asString();
+        
+        std::vector<std::string> buff_param_pairs;
+        Utils::split( buff_params, buff_param_pairs, ',' );
+        
+        for( auto pair_str : buff_param_pairs ) {
+            std::vector<std::string> pair;
+            Utils::split( pair_str, pair, ':' );
+            buff_data[pair[0]] = Value( pair[1] );
         }
     }
     if( source_type == UNIT_SOURCE_TYPE ) {
@@ -286,6 +284,12 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                         unit_data["tag_string"] = Value( tag_name );
                         
                         UnitNode* unit = UnitNode::create( battle_layer, unit_data );
+                        if( !buff_data.empty() ) {
+                            Buff* buff = Buff::create( unit, buff_data );
+                            unit->addBuff( buff->getBuffId(), buff );
+                            buff->begin();
+                        }
+                        
                         deploy_units.pushBack( unit );
                         
                         AttackBehavior* attack_behavior = AttackBehavior::create( unit );

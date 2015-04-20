@@ -79,6 +79,7 @@ void ResourceManager::loadAllData() {
 
 void ResourceManager::loadDefaultData() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->addSpriteFramesWithFile( "maps/map_images/base_terrain.plist", "maps/map_images/base_terrain.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/building_1.plist", "maps/map_images/building_1.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/building_2.plist", "maps/map_images/building_2.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/building_3.plist", "maps/map_images/building_3.png" );

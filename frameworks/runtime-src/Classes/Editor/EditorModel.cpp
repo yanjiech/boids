@@ -392,6 +392,8 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
     }
     if (this->BuffChanged) {
         _json.AddMember("buff_name", BuffName.c_str(), allocator);
+        _json.AddMember( "buff_type", BuffType.c_str(), allocator );
+        _json.AddMember( "buff_params", BuffParams.c_str(), allocator );
     }
     if (this->PositionName != "") {
         _json.AddMember("position_name", PositionName.c_str(), allocator);
@@ -466,7 +468,12 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
     }
     if (value.HasMember("buff_changed")) {
         this->BuffChanged = value["buff_changed"].GetBool();
-        this->BuffName = this->BuffChanged ? value["buff_name"].GetString() : "";
+        if( this->BuffChanged ) {
+            this->BuffName = value["buff_name"].GetString();
+            this->BuffType = value["buff_type"].GetString();
+            this->BuffParams = value["buff_params"].GetString();
+        }
+        
     } else if (value.HasMember("buff_name")) {
         this->BuffName = value["buff_name"].GetString();
         this->BuffChanged = true;

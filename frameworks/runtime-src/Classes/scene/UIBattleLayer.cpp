@@ -235,7 +235,7 @@ bool UIBattleLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event )
             _touch_down_pos = this->convertTouchToNodeSpace( touch );
             _touch_down_duration = 0;
             if( _selected_skill->shouldCastOnTouchDown() && _selected_skill->isSkillReady() ) {
-                _selected_skill->getOwner()->setCharging( true );
+                _selected_skill->getOwner()->setCharging( true, _selected_skill->getSkillAttribute( "charging_effect" ).asString() );
                 _selected_skill->setChargeTime( 0 );
             }
             return true;

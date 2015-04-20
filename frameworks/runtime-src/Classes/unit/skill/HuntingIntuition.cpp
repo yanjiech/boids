@@ -7,7 +7,8 @@
 //
 
 #include "HuntingIntuition.h"
-#include "../UnitNode.h"
+#include "../../scene/BattleLayer.h"
+#include "../../Utils.h"
 
 using namespace cocos2d;
 
@@ -48,10 +49,6 @@ void HuntingIntuition::updateFrame( float delta ) {
 }
 
 void HuntingIntuition::begin() {
-    
-}
-
-void HuntingIntuition::end() {
     ValueMap data;
     data["duration"] = Value( _buff_duration );
     data["buff_type"] = Value( BUFF_TYPE_ATTRIBUTE );
@@ -67,4 +64,15 @@ void HuntingIntuition::end() {
     AttributeBuff* buff = AttributeBuff::create( _owner, data );
     _owner->addBuff( buff->getBuffId(), buff );
     buff->begin();
+    
+    std::string resource = "effects/hippolyta_skill_2";
+    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    std::string name = Utils::stringFormat( "%s_%d", SKILL_NAME_HUNTING_INTUITION, BulletNode::getNextBulletId() );
+    UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( skeleton, name, true );
+    component->setPosition( Point::ZERO );
+    component->setAnimation( 0, "animation", false );
+    _owner->addUnitComponent( component, name, eComponentLayer::OverObject );
+}
+
+void HuntingIntuition::end() {
 }

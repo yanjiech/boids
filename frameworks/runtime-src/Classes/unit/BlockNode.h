@@ -10,7 +10,6 @@
 #define __Boids__BlockNode__
 
 #include "TargetNode.h"
-#include "../AI/Collidable.h"
 #include "../AI/BoidsPolygon.h"
 #include "spine/spine-cocos2dx.h"
 

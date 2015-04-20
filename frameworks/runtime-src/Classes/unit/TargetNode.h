@@ -41,6 +41,8 @@ protected:
     BattleLayer* _battle_layer;
     eTargetCamp _camp;
     
+    cocos2d::ValueVector _unit_tags;
+    
 protected:
     virtual void updateComponents( float delta );
     
@@ -84,8 +86,8 @@ public:
     virtual cocos2d::Point getBonePos( const std::string& bone_name ) { return cocos2d::Point::ZERO; }
     virtual cocos2d::Point getLocalBonePos( const std::string& bone_name ) { return cocos2d::Point::ZERO; }
     
-    virtual void takeDamage( const cocos2d::ValueMap& result, int source_id ) {}
-    virtual void takeDamage( float amount, bool is_cri, bool is_miss, int source_id ) {}
+    virtual void takeDamage( const cocos2d::ValueMap& result, TargetNode* atker ) {}
+    virtual void takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* atker ) {}
     
     virtual bool canAttack( TargetNode* target_node ) { return false; }
     
@@ -96,6 +98,12 @@ public:
     virtual int getPriority() const { return 0; }
     
     bool isFoeOfCamp( eTargetCamp opponent_camp );
+    
+    cocos2d::ValueVector getUnitTags() { return _unit_tags; }
+    void addUnitTag( const std::string& tag );
+    void removeUnitTag( const std::string& tag );
+    void setUnitTags( const std::string& tag_string );
+    bool hasUnitTag( const std::string& tag_name );
 };
 
 #endif /* defined(__Boids__TargetNode__) */

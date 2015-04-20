@@ -66,7 +66,7 @@ void DarkPierce::begin() {
         
         DamageCalculate* calculator = DamageCalculate::create( "DarkPirce", _damage );
         ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getUnitData(), target_unit->getUnitData() );
-        target_unit->takeDamage( result, _owner->getDeployId() );
+        target_unit->takeDamage( result, _owner );
         candidates.erase( rand );
         --size;
     }

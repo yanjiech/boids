@@ -195,7 +195,12 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     _tagTextField = getTextFieldFrom("input_tag", _infoPanel);
     _buffCheckBox = getCheckBoxFrom("checkbox_buff", _infoPanel);
     _buffLabel = getLabelFrom("text_buff", _infoPanel);
-    _buffTextField = getTextFieldFrom("input_buff", _infoPanel);
+    
+    //buff
+    _tf_buff_name = getTextFieldFrom("tf_buff_name", _infoPanel);
+    _tf_buff_type = getTextFieldFrom( "tf_buff_type", _infoPanel );
+    _tf_buff_params = getTextFieldFrom( "tf_buff_params", _infoPanel );
+    
     _addButton = getButtonFrom("button_add", _infoPanel);
     _deleteButton = getButtonFrom("button_delete", _root);
     _addButton->addClickEventListener(CC_CALLBACK_1(BEUIUnitAction::onAddButtonClicked, this));
@@ -268,8 +273,9 @@ void BEUIUnitAction::reset() {
     _changeShowHPCheckBox->setSelected(false);
     _showHPCheckBox->setSelected(false);
     _buffCheckBox->setSelected(false);
-    _buffTextField->setString("");
-    _buffTextField->setPlaceHolder("Buff Name");
+    _tf_buff_name->setString("");
+    _tf_buff_type->setString( "" );
+    _tf_buff_params->setString( "" );
     _tagCheckBox->setSelected(false);
     _tagTextField->setString("");
     _tagTextField->setPlaceHolder("Tag Name");
@@ -384,7 +390,9 @@ void BEUIUnitAction::renderAction(EditorUnitActionPtr action) {
     }
     if (action->BuffChanged) {
         _buffCheckBox->setSelected(true);
-        _buffTextField->setString(action->BuffName);
+        _tf_buff_name->setString( action->BuffName );
+        _tf_buff_type->setString( action->BuffType );
+        _tf_buff_params->setString( action->BuffParams );
     }
     _bossCheckBox->setSelected(action->IsBoss);
     _customTextField->setString(action->CustomChange);
@@ -425,7 +433,9 @@ void BEUIUnitAction::onAddButtonClicked(Ref *sender) {
     _action->CustomChange = _customTextField->getString();
     _action->UnitLevel = Utils::toInt( _levelTextField->getString() );
     if (_action->BuffChanged) {
-        _action->BuffName = _buffTextField->getString();
+        _action->BuffName = _tf_buff_name->getString();
+        _action->BuffType = _tf_buff_type->getString();
+        _action->BuffParams = _tf_buff_params->getString();
     }
     if (_action->TagChanged) {
         _action->TagName = _tagTextField->getString();

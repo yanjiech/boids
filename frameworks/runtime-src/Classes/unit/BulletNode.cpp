@@ -283,7 +283,7 @@ void BulletNode::hitTarget( class TargetNode *target_unit, bool with_buff ) {
     else {
         result = _damage_calculator->calculateDamageWithoutMiss( _source_unit->getTargetData(), target_unit->getTargetData() );
     }
-    target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "miss" ).asBool(), result.at( "cri" ).asBool(), _source_unit->getDeployId() );
+    target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "miss" ).asBool(), result.at( "cri" ).asBool(), _source_unit );
     
     UnitNode* unit = dynamic_cast<UnitNode*>( target_unit );
     if( unit && with_buff && !_buff_data.empty() ) {
@@ -617,7 +617,7 @@ void FixedPosBulletNode::onSkeletonAnimationEvent( int track_index, spEvent* eve
     Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), this->getPosition(), _damage_radius );
     for( auto u : candidates ) {
         ValueMap result = _damage_calculator->calculateDamageWithoutMiss( _source_unit->getTargetData(), u->getTargetData() );
-        u->takeDamage( result, _source_unit->getDeployId() );
+        u->takeDamage( result, _source_unit );
         
         //hit effect
         if( show_hit_effect ) {

@@ -276,6 +276,7 @@ void TMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
             _recordFirstGID = false;
             
             tmxMapInfo->parseXMLFile(externalTilesetFilename.c_str());
+            tmxMapInfo->setParentElement( TMXPropertyTileSet );
         }
         else
         {
@@ -307,6 +308,7 @@ void TMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 
             tmxMapInfo->getTilesets().pushBack(tileset);
             tileset->release();
+            tmxMapInfo->setParentElement( TMXPropertyTileSet );
         }
     }
     else if (elementName == "tile")
@@ -516,7 +518,7 @@ void TMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
             std::string propertyName = attributeDict["name"].asString();
             dict[propertyName] = attributeDict["value"];
         }
-        else if ( tmxMapInfo->getParentElement() == TMXPropertyTile ) 
+        else if ( tmxMapInfo->getParentElement() == TMXPropertyTile )
         {
             ValueMap& dict = tmxMapInfo->getTileProperties().at(tmxMapInfo->getParentGID()).asValueMap();
 

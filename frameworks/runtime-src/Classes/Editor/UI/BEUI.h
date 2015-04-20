@@ -124,7 +124,9 @@ private:
     cocos2d::ui::TextField *_tagTextField;
     cocos2d::ui::CheckBox *_buffCheckBox;
     cocos2d::ui::Text *_buffLabel;
-    cocos2d::ui::TextField *_buffTextField;
+    cocos2d::ui::TextField* _tf_buff_name;
+    cocos2d::ui::TextField* _tf_buff_type;
+    cocos2d::ui::TextField* _tf_buff_params;
     cocos2d::ui::Button *_addButton;
     cocos2d::ui::Button *_deleteButton;
     cocos2d::ui::TextField *_filterTextField;

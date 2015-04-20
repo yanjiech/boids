@@ -68,7 +68,7 @@ void FireWhirl::updateFrame( float delta ) {
                 for( auto itr = candidates.begin(); itr != candidates.end(); ++itr ) {
                     UnitNode* target_unit = *itr;
                     ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getUnitData(), target_unit->getUnitData() );
-                    target_unit->takeDamage( result, _owner->getDeployId() );
+                    target_unit->takeDamage( result, _owner );
                 }
             }
         }

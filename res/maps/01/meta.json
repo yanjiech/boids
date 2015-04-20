@@ -170,6 +170,9 @@
                     "position_name": "02",
                     "unit_count": 1,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -199,6 +202,9 @@
                     "position_name": "02",
                     "unit_count": 1,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -226,6 +232,9 @@
                     "position_name": "01",
                     "unit_count": 1,
                     "unit_level": 3,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -252,6 +261,9 @@
                     "position_name": "09",
                     "unit_count": 1,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -264,6 +276,9 @@
                     "position_name": "09",
                     "unit_count": 1,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -302,6 +317,9 @@
                     "position_name": "11",
                     "unit_count": 1,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -314,6 +332,9 @@
                     "position_name": "10",
                     "unit_count": 1,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -342,6 +363,9 @@
                     "is_boss": true,
                     "custom_change": "hp:3000.0",
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -374,6 +398,9 @@
                     "position_name": "03",
                     "unit_count": 2,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -386,6 +413,9 @@
                     "position_name": "06",
                     "unit_count": 2,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -418,6 +448,9 @@
                     "position_name": "add01",
                     "unit_count": 2,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -431,6 +464,9 @@
                     "position_name": "07",
                     "unit_count": 2,
                     "unit_level": 2,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -763,6 +799,9 @@
                     "position_name": "01",
                     "unit_count": 1,
                     "unit_level": 1,
+                    "buff_name": "red_tag",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
