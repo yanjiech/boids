@@ -54,8 +54,8 @@ public:
     
     void changeTowerState( eTowerState new_state );
     
-    virtual void takeDamage( const cocos2d::ValueMap& result, int source_id );
-    virtual void takeDamage( float amount, bool is_cri, bool is_miss, int source_id );
+    virtual void takeDamage( const cocos2d::ValueMap& result, TargetNode* atker );
+    virtual void takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* atker );
     
     bool isBulletLoaded() { return _is_bullet_loaded; }
 

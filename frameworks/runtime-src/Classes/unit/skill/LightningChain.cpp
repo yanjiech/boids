@@ -112,7 +112,7 @@ void LightningChain::updateFrame( float delta ) {
                     
                     DamageCalculate* damage_calculator = DamageCalculate::create( SKILL_NAME_LIGHTNING_CHAIN, _base_damage );
                     ValueMap result = damage_calculator->calculateDamage( _owner->getUnitData(), u->getUnitData() );
-                    u->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), _owner->getDeployId() );
+                    u->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), _owner );
                     
                     _exclude_targets.push_back( Value( uid ) );
                     break;

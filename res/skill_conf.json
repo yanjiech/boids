@@ -242,6 +242,7 @@
         "max_extra" : 0.3,
         "bullet_speed" : 1200.0,
         "bullet_name" : "penetrate_spear",
+        "charging_effect" : "effects/hippolyta_skill_1/charge",
         "touch_down_cast" : true,
         "radius" : 80.0
     },

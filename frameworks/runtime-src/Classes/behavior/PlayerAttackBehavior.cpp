@@ -92,16 +92,26 @@ bool PlayerAttackBehavior::behave( float delta ) {
     
     unit_node->setChasingTarget( chasing_target );
     if( chasing_target == nullptr ) {
+        if( unit_node->getSightGroup() != "" ) {
+            cocos2d::Vector<UnitNode*> same_sight_group_units = unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( unit_node->getTargetCamp(), unit_node->getSightGroup() );
+            for( auto u : same_sight_group_units ) {
+                if( u->getChasingTarget() != nullptr ) {
+                    unit_node->setChasingTarget( u->getChasingTarget() );
+                    break;
+                }
+            }
+        }
+    }
+    if( chasing_target == nullptr ) {
         return false;
     }
     else {
         if( unit_node->canAttack( chasing_target ) ) {
             unit_node->attack( chasing_target );
+            return true;
         }
         else {
             return false;
         }
     }
-    
-    return true;
 }

@@ -7,6 +7,9 @@
 //
 
 #include "TargetNode.h"
+#include "../Utils.h"
+
+using namespace cocos2d;
 
 TargetNode::TargetNode() :
 _target_data( nullptr ),
@@ -158,6 +161,40 @@ bool TargetNode::isFoeOfCamp( eTargetCamp opponent_camp ) {
     }
     else if( camp == eTargetCamp::Wild ) {
         if( opponent_camp == eTargetCamp::Player || opponent_camp == eTargetCamp::Ally || opponent_camp == eTargetCamp::Enemy ) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void TargetNode::addUnitTag( const std::string& tag ) {
+    _unit_tags.push_back( Value( tag ) );
+}
+
+void TargetNode::removeUnitTag( const std::string& tag ) {
+    auto itr = _unit_tags.begin();
+    while( itr != _unit_tags.end() ) {
+        if( itr->asString() == tag ) {
+            itr = _unit_tags.erase( itr );
+        }
+        else {
+            ++itr;
+        }
+    }
+}
+
+void TargetNode::setUnitTags( const std::string& tag_string ) {
+    _unit_tags.clear();
+    std::vector<std::string> tags;
+    Utils::split( tag_string, tags, ',' );
+    for( auto str : tags ) {
+        _unit_tags.push_back( Value( str ) );
+    }
+}
+
+bool TargetNode::hasUnitTag( const std::string& tag_name ) {
+    for( auto itr = _unit_tags.begin(); itr != _unit_tags.end(); ++itr ) {
+        if( itr->asString() == tag_name ) {
             return true;
         }
     }

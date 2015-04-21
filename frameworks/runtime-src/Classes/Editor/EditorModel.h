@@ -224,6 +224,8 @@ public:
     std::string PositionTag;
     std::string TagName;
     std::string BuffName;
+    std::string BuffType;
+    std::string BuffParams;
     std::string ClassName;
     std::string CustomChange;
     std::string PopupType;

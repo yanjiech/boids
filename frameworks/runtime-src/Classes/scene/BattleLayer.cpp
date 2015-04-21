@@ -157,7 +157,7 @@ void BattleLayer::reset() {
 }
 
 void BattleLayer::updateFrame( float delta ) {
-    if( _state != eBattleState::BattlePaused && _state != eBattleState::BattleStory ) {
+    if( _state == eBattleState::BattleRunning ) {
         //update skill
         SkillCache::getInstance()->updateFrame( delta );
         _skill_ui_layer->updateFrame( delta );
@@ -171,6 +171,9 @@ void BattleLayer::updateFrame( float delta ) {
                 this->onUnitDisappear( unit );
             }
         }
+        
+        this->updateBuildings( delta );
+        this->updateTowers( delta );
         
         //handle newly dying units which need to be removed from alive list
         UnitMap unit_map = this->getAliveUnits();
@@ -194,13 +197,6 @@ void BattleLayer::updateFrame( float delta ) {
         for( auto pair : _dead_units ) {
             UnitNode* unit = pair.second;
             unit->updateFrame( delta );
-        }
-        
-        for( auto pair : _towers ) {
-            TowerNode* tower = pair.second;
-            if( tower->isAlive() ) {
-                tower->updateFrame( delta );
-            }
         }
         
         //recycle effects
@@ -530,6 +526,24 @@ void BattleLayer::updateBullets( float delta ) {
     }
 }
 
+void BattleLayer::updateTowers( float delta ) {
+    for( auto pair : _towers ) {
+        TowerNode* tower = pair.second;
+        if( tower->isAlive() ) {
+            tower->updateFrame( delta );
+        }
+    }
+}
+
+void BattleLayer::updateBuildings( float delta ) {
+    for( auto pair : _buildings ) {
+        BuildingNode* building = pair.second;
+        if( building->isEnabled() ) {
+            building->updateFrame( delta );
+        }
+    }
+}
+
 void BattleLayer::onUnitAppear( UnitNode* unit ) {
     eTargetCamp camp = unit->getTargetCamp();
     if( camp == eTargetCamp::Player ) {
@@ -574,11 +588,9 @@ bool BattleLayer::isPositionInVision( const cocos2d::Point& pos ) {
     return false;
 }
 
-void BattleLayer::addToObjectLayer( cocos2d::Node* node, const cocos2d::Point& pos, const cocos2d::Point& center ) {
-    int zorder = this->zorderForPositionOnObjectLayer( pos );
+void BattleLayer::addToObjectLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder ) {
     node->setPosition( pos );
-    node->setLocalZOrder( zorder );
-    _object_layer->addChild( node );
+    _object_layer->addChild( node, local_zorder );
 }
 
 void BattleLayer::addToEffectLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder ) {
@@ -612,7 +624,7 @@ void BattleLayer::addToLayer( cocos2d::Node* node, eBattleSubLayer layer, const 
             this->addToOnGroundLayer( node, pos, local_zorder );
             break;
         case eBattleSubLayer::ObjectLayer:
-            this->addToObjectLayer( node, pos, pos );
+            this->addToObjectLayer( node, pos, local_zorder );
             break;
         case eBattleSubLayer::EffectLayer:
             this->addToEffectLayer( node, pos, local_zorder );
@@ -627,7 +639,7 @@ void BattleLayer::deployUnit( UnitNode* unit, const cocos2d::Point& pos, const s
     unit->setDeployId( deploy_id );
     unit->setSightGroup( sight_group );
     unit->setBornPos( pos );
-    this->addToObjectLayer( unit, pos, pos );
+    this->addToObjectLayer( unit, pos, this->zorderForPositionOnObjectLayer( pos ) );
     
     this->onUnitAppear( unit );
 }
@@ -642,8 +654,15 @@ void BattleLayer::deployUnits( const cocos2d::Vector<UnitNode*>& units, const co
 void BattleLayer::deployTower( TowerNode* tower, const cocos2d::Point& pos ) {
     int deploy_id = this->getNextDeployId();
     tower->setDeployId( deploy_id );
-    this->addToObjectLayer( tower, pos, pos );
-    _towers.insert( Utils::stringFormat( "%d", deploy_id ), tower );
+    this->addToObjectLayer( tower, pos, this->zorderForPositionOnObjectLayer( pos ) );
+    _towers.insert( deploy_id, tower );
+}
+
+void BattleLayer::deployBuilding( BuildingNode* building, const cocos2d::Point& pos, eBattleSubLayer layer ) {
+    int deploy_id = this->getNextDeployId();
+    building->setDeployId( deploy_id );
+    this->addToLayer( building, layer, pos, this->zorderForPositionOnObjectLayer( building->getCenter() ) );
+    _buildings.insert( deploy_id, building );
 }
 
 void BattleLayer::adjustCamera() {
@@ -764,8 +783,7 @@ void BattleLayer::endStory( UIStoryLayer* story ) {
 
 //private methods
 
-void BattleLayer::parseMapElementWithData( const Value& data, eBattleSubLayer layer ) {
-    const TMXObjectGroup* physics_group = _tmx_map->getObjectGroup( "physics" );
+void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Value& data, eBattleSubLayer layer ) {
     const ValueMap& obj_properties = data.asValueMap();
     int gid = 0;
     std::string type = "";
@@ -807,8 +825,8 @@ void BattleLayer::parseMapElementWithData( const Value& data, eBattleSubLayer la
     }
     
     if( type.find( "BlockNode" ) != std::string::npos ) {
-        std::string name = obj_properties.at( "name" ).asString();
-        ValueMap boundary = physics_group->getObject( name );
+        std::string name = obj_properties.at( "name" ).asString() + "_collide";
+        ValueMap boundary = group->getObject( name );
         boundary["map_height"] = Value( _tmx_map->getContentSize().height );
         if( !boundary.empty() ) {
             grid_properties["boundary"] = Value( boundary );
@@ -835,10 +853,18 @@ void BattleLayer::parseMapElementWithData( const Value& data, eBattleSubLayer la
         this->deployTower( tower, Point( x + width / 2, y + height / 2 ) );
     }
     else if( type.find( "BuildingNode" ) != std::string::npos ) {
-        BuildingNode* building = BuildingNode::create( grid_properties, obj_properties );
-        this->addToLayer( building, layer, building->getPosition(), this->zorderForPositionOnObjectLayer( building->getPosition() ) );
+        std::string name = obj_properties.at( "name" ).asString() + "_collide";
+        ValueMap boundary = group->getObject( name );
+        boundary["map_height"] = Value( _tmx_map->getContentSize().height );
+        if( !boundary.empty() ) {
+            grid_properties["boundary"] = Value( boundary );
+        }
+        BuildingNode* building = BuildingNode::create( this, grid_properties, obj_properties );
+        if( building ) {
+            this->deployBuilding( building, building->getPosition(), layer );
+        }
     }
-    else {
+    else if( type.empty() ) {
         Sprite* sp = _map_data->spriteFromObject( _tmx_map, data, true );
         if( sp ) {
             this->addToLayer( sp, layer, sp->getPosition(), this->zorderForPositionOnObjectLayer( sp->getPosition() ) );
@@ -847,16 +873,19 @@ void BattleLayer::parseMapElementWithData( const Value& data, eBattleSubLayer la
 }
 
 void BattleLayer::parseMapObjects() {
-    const ValueVector& objects = _tmx_map->getObjectGroup( "vision" )->getObjects();
-    for( ValueVector::const_iterator itr = objects.begin(); itr != objects.end(); ++itr ) {
-        this->parseMapElementWithData( *itr, eBattleSubLayer::ObjectLayer );
+    const TMXObjectGroup* vision_group = _tmx_map->getObjectGroup( "vision" );
+    if( vision_group ) {
+        const ValueVector& objects = vision_group->getObjects();
+        for( ValueVector::const_iterator itr = objects.begin(); itr != objects.end(); ++itr ) {
+            this->parseMapElementWithData( vision_group, *itr, eBattleSubLayer::ObjectLayer );
+        }
     }
     
     TMXObjectGroup* onground_group = _tmx_map->getObjectGroup( "onground" );
     if( onground_group ) {
         const ValueVector& onground_objects = onground_group->getObjects();
         for( auto itr = onground_objects.begin(); itr != onground_objects.end(); ++itr ) {
-            this->parseMapElementWithData( *itr, eBattleSubLayer::OnGroundLayer );
+            this->parseMapElementWithData( onground_group, *itr, eBattleSubLayer::OnGroundLayer );
         }
     }
 }

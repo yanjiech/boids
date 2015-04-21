@@ -51,13 +51,13 @@ bool MoveBehavior::behave( float delta ) {
     
     float move_speed = unit_node->getUnitData()->move_speed;
     
-    if( unit_node->getChasingTarget() ) {
+    if( unit_node->getChasingTarget() != nullptr ) {
         Point last_pos = unit_node->getPosition();
         unit_node->findPathToPosition( unit_node->getChasingTarget()->getPosition() );
         unit_node->walkAlongWalkPath( move_speed * delta );
         return true;
     }
-    if( unit_node->getTourPath() ) {
+    if( unit_node->getTourPath() != nullptr ) {
         unit_node->walkAlongTourPath( move_speed * delta );
         return true;
     }

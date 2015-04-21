@@ -126,11 +126,11 @@ void TowerNode::changeTowerState( eTowerState new_state ) {
     }
 }
 
-void TowerNode::takeDamage( const cocos2d::ValueMap& result, int source_id ) {
-    this->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), source_id );
+void TowerNode::takeDamage( const cocos2d::ValueMap& result, TargetNode* atker ) {
+    this->takeDamage( result.at( "damage" ).asFloat(), result.at( "cri" ).asBool(), result.at( "miss" ).asBool(), atker );
 }
 
-void TowerNode::takeDamage( float amount, bool is_cri, bool is_miss, int source_id ) {
+void TowerNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* atker ) {
     if( this->isAttackable() && _target_data->current_hp > 0 ) {
         _target_data->current_hp -= amount;
         

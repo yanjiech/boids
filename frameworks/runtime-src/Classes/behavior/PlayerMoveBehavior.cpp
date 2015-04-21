@@ -63,21 +63,13 @@ bool PlayerMoveBehavior::behave( float delta ) {
         unit_node->walkTo( new_pos );
         return true;
     }
+    if( unit_node->isCharging() ) {
+        return false;
+    }
     if( unit_node->isAttacking() ) {
         return true;
     }
-    if( unit_node->getChasingTarget() == nullptr ) {
-        if( unit_node->getSightGroup() != "" ) {
-            cocos2d::Vector<UnitNode*> same_sight_group_units = unit_node->getBattleLayer()->getAliveUnitsByCampAndSightGroup( unit_node->getTargetCamp(), unit_node->getSightGroup() );
-            for( auto u : same_sight_group_units ) {
-                if( u->getChasingTarget() != nullptr ) {
-                    unit_node->setChasingTarget( u->getChasingTarget() );
-                    break;
-                }
-            }
-        }
-    }
-    if( unit_node->getChasingTarget() ) {
+    if( unit_node->getChasingTarget() != nullptr ) {
         Point last_pos = unit_node->getPosition();
         unit_node->findPathToPosition( unit_node->getChasingTarget()->getPosition() );
         unit_node->walkAlongWalkPath( move_speed * delta );

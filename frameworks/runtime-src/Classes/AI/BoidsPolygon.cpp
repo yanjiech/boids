@@ -59,6 +59,7 @@ void BoidsPolygon::loadFromTmxObject(Tmx::Object* ob, float map_height)
 }
 
 void BoidsPolygon::loadFromValueMap( const cocos2d::ValueMap& data, float map_height ) {
+    float minx = FLT_MAX, miny = FLT_MAX, maxx = -FLT_MAX, maxy = -FLT_MAX;
     const cocos2d::ValueVector& points = data.at( "points" ).asValueVector();
     float base_x = data.at( "x" ).asFloat();
     float base_y = data.at( "y" ).asFloat();
@@ -68,9 +69,23 @@ void BoidsPolygon::loadFromValueMap( const cocos2d::ValueMap& data, float map_he
     
     for( auto itr = points.begin(); itr != points.end(); ++itr ) {
         const cocos2d::ValueMap& pos_pair = itr->asValueMap();
-        this->addNewVertex( base_x + pos_pair.at( "x" ).asFloat(), base_y - pos_pair.at( "y" ).asFloat() );
+        float x = base_x + pos_pair.at( "x" ).asFloat();
+        float y = base_y - pos_pair.at( "y" ).asFloat();
+        if( x < minx ) {
+            minx = x;
+        }
+        if( x > maxx ) {
+            maxx = x;
+        }
+        if( y < miny ) {
+            miny = y;
+        }
+        if( y > maxy ) {
+            maxy = y;
+        }
+        this->addNewVertex( x, y );
     }
-    
+    this->center = Point( ( minx + maxx ) / 2.0f, ( miny + maxy ) / 2.0f );
     this->makeSureClockwise();
 }
 
@@ -398,7 +413,6 @@ box BoidsPolygon::getBoundingBox()
 	return box(point(minx, miny), point(maxx, maxy));
 }
 
-//该方法必须是凸多边形才管用，且多边形的点得是逆时针顺序存的
 bool BoidsPolygon::coversPoint(cocos2d::Point pt)
 {
 	for (PolygonPointPtr ptr = ap;;)

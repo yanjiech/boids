@@ -13,6 +13,7 @@
 #include "../constant/BoidsConstant.h"
 
 class UnitNode;
+class TargetNode;
 
 class Buff : public cocos2d::Ref {
 protected:
@@ -44,6 +45,10 @@ public:
     
     virtual void begin();
     virtual void end();
+    
+    virtual float filterDamage( float damage, TargetNode* atker ) { return damage; }
+    
+    bool isInfinite() { return _duration < 0; }
     
     bool shouldRecycle() { return _should_recycle; }
     void setShouldRecycle( bool b ) { _should_recycle = b; }
@@ -150,7 +155,7 @@ public:
     virtual void begin();
     virtual void end();
     
-    int absorbDamage( float damage );
+    virtual float filterDamage( float damage, TargetNode* atker );
     
     int getAbsorb() { return _absorb; }
     void setAbsorb( float value ) { _absorb = value; }
@@ -171,7 +176,7 @@ public:
 };
 
 class TagBuff : public Buff {
-private:
+protected:
     std::string _tag;
     class TimeLimitSpineComponent* _component;
     
@@ -183,6 +188,21 @@ public:
     virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
     
     virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
+};
+
+class TagProtectBuff : public TagBuff {
+public:
+    TagProtectBuff();
+    virtual ~TagProtectBuff();
+    
+    static TagProtectBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    virtual float filterDamage( float damage, TargetNode* atker );
     
     virtual void begin();
     virtual void end();

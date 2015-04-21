@@ -65,6 +65,9 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     else if( buff_type == BUFF_TYPE_TAG  ) {
         ret = TagBuff::create( owner, data );
     }
+    else if( buff_type == BUFF_TYPE_TAG_PROTECT ) {
+        ret = TagProtectBuff::create( owner, data );
+    }
     return ret;
 }
 
@@ -80,7 +83,7 @@ bool Buff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 }
 
 void Buff::updateFrame( float delta ) {
-    if( !_should_recycle ) {
+    if( !_should_recycle && !this->isInfinite() ) {
         _elapse += delta;
     }
 }
@@ -125,7 +128,7 @@ AttributeBuff* AttributeBuff::create( UnitNode* owner, const cocos2d::ValueMap& 
 }
 
 bool AttributeBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
-    if( !Buff::create( owner, data ) ) {
+    if( !Buff::init( owner, data ) ) {
         return false;
     }
     
@@ -140,7 +143,7 @@ bool AttributeBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 
 void AttributeBuff::updateFrame( float delta ) {
     Buff::updateFrame( delta );
-    if( _elapse > _duration ) {
+    if( !this->isInfinite() && _elapse > _duration ) {
         this->end();
     }
 }
@@ -186,7 +189,7 @@ bool StunBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 
 void StunBuff::updateFrame( float delta ) {
     Buff::updateFrame( delta );
-    if( _elapse > _duration ) {
+    if( !this->isInfinite() && _elapse > _duration ) {
         this->end();
     }
 }
@@ -273,7 +276,7 @@ bool SlowBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 void SlowBuff::updateFrame( float delta ) {
     Buff::updateFrame( delta );
     
-    if( _elapse > _duration ) {
+    if( !this->isInfinite() && _elapse > _duration ) {
         this->end();
     }
 }
@@ -322,7 +325,7 @@ bool ShieldBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     
 void ShieldBuff::updateFrame( float delta ) {
     Buff::updateFrame( delta );
-    if( _elapse > _duration ) {
+    if( !this->isInfinite() && _elapse > _duration ) {
         this->end();
     }
 }
@@ -346,7 +349,7 @@ void ShieldBuff::end() {
     Buff::end();
 }
 
-int ShieldBuff::absorbDamage( float damage ) {
+float ShieldBuff::filterDamage( float damage, TargetNode* atker ) {
     float ret = 0;
     if( _absorb < damage ) {
         _absorb = 0;
@@ -385,7 +388,7 @@ bool PierceBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 
 void PierceBuff::updateFrame( float delta ) {
     Buff::updateFrame( delta );
-    if( _elapse > _duration ) {
+    if( !this->isInfinite() && _elapse > _duration ) {
         this->end();
     }
 }
@@ -463,7 +466,7 @@ bool TagBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
         return false;
     }
     
-    _tag = data.at( "tag" ).asString();
+    _tag = data.at( "buff_param" ).asString();
     
     auto itr = data.find( "effect_name" );
     if( itr != data.end() ) {
@@ -480,7 +483,7 @@ bool TagBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
 
 void TagBuff::updateFrame( float delta ) {
     Buff::updateFrame( delta );
-    if( _elapse > _duration ) {
+    if( !this->isInfinite() && _elapse > _duration ) {
         this->end();
     }
 }
@@ -494,6 +497,81 @@ void TagBuff::begin() {
 }
 
 void TagBuff::end() {
+    Buff::end();
+    _owner->removeUnitTag( _tag );
+    if( _component ) {
+        _component->setDuration( 0 );
+    }
+}
+
+//tag protect buff
+TagProtectBuff::TagProtectBuff()
+{
+    
+}
+
+TagProtectBuff::~TagProtectBuff() {
+    
+}
+
+TagProtectBuff* TagProtectBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    TagProtectBuff* ret = new TagProtectBuff();
+    if( ret && ret->init( owner, data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool TagProtectBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    if( !TagBuff::init( owner, data ) ) {
+        return false;
+    }
+    
+    _tag = data.at( "buff_param" ).asString();
+    
+    auto itr = data.find( "effect_name" );
+    if( itr != data.end() ) {
+        std::string effect_name = itr->second.asString();
+        
+        std::string resource = "effects/" + effect_name;
+        spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+        _component = TimeLimitSpineComponent::create( INT_MAX, skeleton, _buff_id, true );
+        _owner->addUnitComponent( _component, _component->getName(), eComponentLayer::OverObject );
+    }
+    
+    return true;
+}
+
+void TagProtectBuff::updateFrame( float delta ) {
+    Buff::updateFrame( delta );
+    if( !this->isInfinite() && _elapse > _duration ) {
+        this->end();
+    }
+}
+
+float TagProtectBuff::filterDamage( float damage, TargetNode* atker ) {
+    std::string tag_break = _tag;
+    if( atker && atker->hasUnitTag( tag_break ) ) {
+        return damage;
+    }
+    else {
+        return 1;
+    }
+}
+
+void TagProtectBuff::begin() {
+    Buff::begin();
+    _owner->addUnitTag( _tag );
+    if( _component ) {
+        _component->setAnimation( 0, "animation", true );
+    }
+}
+
+void TagProtectBuff::end() {
     Buff::end();
     _owner->removeUnitTag( _tag );
     if( _component ) {

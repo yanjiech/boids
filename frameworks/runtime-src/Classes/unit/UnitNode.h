@@ -109,13 +109,12 @@ private:
     
     cocos2d::ValueMap _using_skill_params;
     
-    cocos2d::ValueVector _unit_tags;
-    
     UnitNode* _guard_target;
     
     bool _is_concentrate_on_walk;
     
     bool _is_charging;
+    TimeLimitSpineComponent* _charging_effect;
     
 private:
     void updateBuffs( float delta );
@@ -185,8 +184,8 @@ public:
     UnitData* getUnitData();
     void setUnitData( UnitData* unit_data );
     
-    virtual void takeDamage( const cocos2d::ValueMap& result, int source_id );
-    virtual void takeDamage( float amount, bool is_cri, bool is_miss, int source_id );
+    virtual void takeDamage( const cocos2d::ValueMap& result, TargetNode* atker );
+    virtual void takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* atker );
     
     void takeHeal( const cocos2d::ValueMap& result, int source_id );
     void takeHeal( float amount, bool is_cri, int source_id );
@@ -201,9 +200,11 @@ public:
     
     void applyCustomChange( const std::string& content_string );
     
-    void addBuff( const std::string& buff_id, Buff* buff );
+    void addBuff( const std::string& buff_id, Buff* buff, bool replace = false );
     void removeBuff( const std::string& buff_id );
     bool hasBuff( const std::string& buff_id );
+    bool hasBuffOfType( const std::string& buff_type );
+    Buff* getBuffOfType( const std::string& buff_type );
     void removeAllBuffs();
     
     void useSkill( int skill_id, const cocos2d::Point& dir, float range_per, float duration = 0 );
@@ -254,13 +255,6 @@ public:
     
     bool isUnitInDirectView( UnitNode* unit );
     
-    void addUnitTag( const std::string& tag );
-    void removeUnitTag( const std::string& tag );
-    void setUnitTags( const std::string& tag_string );
-    bool hasUnitTag( const std::string& tag_name );
-    
-    cocos2d::ValueVector getUnitTags() { return _unit_tags; }
-    
     bool needRelax();
     
     cocos2d::Point getNextWanderPos();
@@ -303,7 +297,7 @@ public:
     void setConcentrateOnWalk( bool b );
     
     bool isCharging() { return _is_charging; }
-    void setCharging( bool b );
+    void setCharging( bool b, std::string effect_resource = "" );
     
     //debug
     cocos2d::DrawNode* _custom_draw;

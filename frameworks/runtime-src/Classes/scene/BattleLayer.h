@@ -60,8 +60,9 @@ class BattleLayer : public cocos2d::Layer, public boids::Updatable {
 public:
     typedef cocos2d::Map<std::string, UnitNode*> UnitMap;
     typedef cocos2d::Map<std::string, BulletNode*> BulletMap;
-    typedef cocos2d::Map<std::string, TowerNode*> TowerMap;
+    typedef cocos2d::Map<int, TowerNode*> TowerMap;
     typedef cocos2d::Map<int, BlockNode*> BlockMap;
+    typedef cocos2d::Map<int, BuildingNode*> BuildingMap;
     
 private:
     MapLogic* _map_logic;
@@ -94,6 +95,7 @@ private:
     BulletMap _bullets;
     
     TowerMap _towers;
+    BuildingMap _buildings;
     
     BlockMap _block_nodes;
     
@@ -102,13 +104,14 @@ private:
     float _game_time;
 private:
     void parseMapObjects();
-    void parseMapElementWithData( const cocos2d::Value& data, eBattleSubLayer layer );
+    void parseMapElementWithData( const cocos2d::TMXObjectGroup* group, const cocos2d::Value& data, eBattleSubLayer layer );
     
     int zorderForPositionOnObjectLayer( const cocos2d::Point& pos );
     
     void reorderObjectLayer();
     
     void updateTowers( float delta );
+    void updateBuildings( float delta );
     
 public:
     static eBattleState getBattleStateFromString( const std::string& str );
@@ -183,7 +186,7 @@ public:
     
     bool isPositionInVision( const cocos2d::Point& pos );
     
-    void addToObjectLayer( cocos2d::Node* node, const cocos2d::Point& pos, const cocos2d::Point& center );
+    void addToObjectLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder );
     
     void addToEffectLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder );
     void addToBelowObjectLayer( cocos2d::Node* node, const cocos2d::Point& pos, int local_zorder );
@@ -197,6 +200,8 @@ public:
     void deployUnits( const cocos2d::Vector<UnitNode*>& units, const cocos2d::Rect& area, const std::string& sight_group );
     
     void deployTower( TowerNode* tower, const cocos2d::Point& pos );
+    
+    void deployBuilding( BuildingNode* building, const cocos2d::Point& pos, eBattleSubLayer layer );
     
     void adjustCamera();
     void centerCameraToPosition( const cocos2d::Point& pos );

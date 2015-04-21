@@ -55,6 +55,7 @@
 #define BUFF_TYPE_SLOW "buff_slow"
 #define BUFF_TYPE_ATTRIBUTE "buff_attribute"
 #define BUFF_TYPE_TAG "buff_tag"
+#define BUFF_TYPE_TAG_PROTECT "buff_tag_protect"
 
 #define EVENT_TRIGGER_TYPE_MAP_INIT "map_init"
 #define EVENT_TRIGGER_TYPE_UNIT_CHANGE "unit_change"
