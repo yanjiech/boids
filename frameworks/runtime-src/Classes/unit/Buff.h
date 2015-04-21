@@ -86,6 +86,9 @@ public:
     
     virtual void begin();
     virtual void end();
+    
+    ElementData* getElementData();
+    void setElementData( ElementData* data );
 };
 
 class StunBuff : public Buff {

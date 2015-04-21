@@ -63,6 +63,7 @@ private:
     eUnitState _state;
     eUnitState _next_state;
     eUnitFace _face;
+    bool _unit_state_changed;
     
     //share sight
     std::string _sight_group;
@@ -71,8 +72,6 @@ private:
     
     bool _show_hp;
     bool _is_boss;
-    
-    bool _unit_state_changed;
     
     spine::SkeletonAnimation* _front;
     spine::SkeletonAnimation* _back;
@@ -158,8 +157,8 @@ public:
     const cocos2d::Point& getUnitDirection() { return _direction; }
     void setUnitDirection( const cocos2d::Point& direction ) { _direction = direction; }
     
-    TargetNode* getChasingTarget() { return _chasing_target; }
-    void setChasingTarget( TargetNode* target ) { _chasing_target = target; }
+    TargetNode* getChasingTarget();
+    void setChasingTarget( TargetNode* target );
     
     void changeUnitState( eUnitState new_state, bool force = false );
     void applyUnitState();
@@ -182,7 +181,6 @@ public:
     void onDying();
     
     UnitData* getUnitData();
-    void setUnitData( UnitData* unit_data );
     
     virtual void takeDamage( const cocos2d::ValueMap& result, TargetNode* atker );
     virtual void takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* atker );
@@ -228,6 +226,7 @@ public:
     cocos2d::Point pushToward( const cocos2d::Point& dir, float distance );
     
     bool isUnderControl();
+    bool willCast();
     bool isCasting();
     bool isAttacking();
     bool isWalking();

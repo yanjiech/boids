@@ -292,6 +292,8 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                         
                         deploy_units.pushBack( unit );
                         
+                        SkillBehavior* skill_behavior = SkillBehavior::create( unit );
+                        unit->addBehavior( BEHAVIOR_NAME_SKILL, skill_behavior );
                         AttackBehavior* attack_behavior = AttackBehavior::create( unit );
                         unit->addBehavior( BEHAVIOR_NAME_ATTACK, attack_behavior );
                         MoveBehavior* move_behavior = MoveBehavior::create( unit );

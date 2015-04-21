@@ -154,7 +154,8 @@ void BuffBuildingNode::updateFrame( float delta ) {
         else {
             _elapse += delta;
             if( _elapse > _duration ) {
-                for( auto itr = candidates.begin(); itr != candidates.end(); ++itr ) {
+                Vector<UnitNode*> units = _battle_layer->getAliveUnitsByCamp( eTargetCamp::Player );
+                for( auto itr = units.begin(); itr != units.end(); ++itr ) {
                     UnitNode* unit = *itr;
                     Buff* buff = Buff::create( unit, _buff_data );
                     unit->addBuff( buff->getBuffId(), buff );

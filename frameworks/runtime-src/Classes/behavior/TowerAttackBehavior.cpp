@@ -19,7 +19,7 @@ TowerAttackBehavior::~TowerAttackBehavior() {
     
 }
 
-TowerAttackBehavior* TowerAttackBehavior::create( TowerNode* tower ) {
+TowerAttackBehavior* TowerAttackBehavior::create( TargetNode* tower ) {
     TowerAttackBehavior* ret = new TowerAttackBehavior();
     if( ret && ret->init( tower ) ) {
         ret->autorelease();
@@ -31,7 +31,7 @@ TowerAttackBehavior* TowerAttackBehavior::create( TowerNode* tower ) {
     }
 }
 
-bool TowerAttackBehavior::init( TowerNode* tower ) {
+bool TowerAttackBehavior::init( TargetNode* tower ) {
     if( !BehaviorBase::init( tower ) ) {
         return false;
     }

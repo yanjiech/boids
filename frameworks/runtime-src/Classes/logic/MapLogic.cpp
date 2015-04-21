@@ -24,9 +24,10 @@ MapLogic::~MapLogic() {
     
 }
 
-MapLogic* MapLogic::retainedCreate( BattleLayer* battle_layer ) {
+MapLogic* MapLogic::create( BattleLayer* battle_layer ) {
     MapLogic* ret = new MapLogic();
     if( ret && ret->init( battle_layer ) ) {
+        ret->autorelease();
         return ret;
     }
     else {

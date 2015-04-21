@@ -16,8 +16,8 @@ public:
     MoveBehavior();
     virtual ~MoveBehavior();
     
-    static MoveBehavior* create( UnitNode* unit_node );
-    virtual bool init( UnitNode* unit_node );
+    static MoveBehavior* create( TargetNode* unit_node );
+    virtual bool init( TargetNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

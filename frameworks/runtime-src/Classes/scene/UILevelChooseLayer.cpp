@@ -19,9 +19,7 @@ _map_data( nullptr ) {
 }
 
 UILevelChooseLayer::~UILevelChooseLayer() {
-    if( _map_data ) {
-        _map_data->release();
-    }
+    CC_SAFE_RELEASE( _map_data );
 }
 
 UILevelChooseLayer* UILevelChooseLayer::create() {
@@ -103,7 +101,7 @@ void UILevelChooseLayer::onLevelTouched( cocos2d::Ref* sender, cocos2d::ui::Widg
         int tag = node->getTag();
         const ValueMap& level_config = ResourceManager::getInstance()->getLevelConfig();
         const ValueMap& level_obj = level_config.at( "levels" ).asValueVector().at( tag - 1 ).asValueMap();
-        MapData* new_map_data = new MapData( level_obj.at( "path" ).asString() );
+        MapData* new_map_data = MapData::create( level_obj.at( "path" ).asString() );
         this->setMapData( new_map_data );
         _is_pvp = false;
         auto itr = level_obj.find( "is_pvp" );
@@ -136,8 +134,7 @@ void UILevelChooseLayer::onLevelTouched( cocos2d::Ref* sender, cocos2d::ui::Widg
 }
 
 void UILevelChooseLayer::setMapData( MapData* map_data ) {
-    if( _map_data ) {
-        _map_data->release();
-    }
+    CC_SAFE_RELEASE( _map_data );
     _map_data = map_data;
+    CC_SAFE_RETAIN( _map_data );
 }

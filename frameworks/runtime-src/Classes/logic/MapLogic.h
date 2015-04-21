@@ -52,7 +52,7 @@ public:
     MapLogic();
     ~MapLogic();
     
-    static MapLogic* retainedCreate( BattleLayer* battle_layer );
+    static MapLogic* create( BattleLayer* battle_layer );
     
     virtual bool init( BattleLayer* battle_layer );
     

@@ -107,12 +107,14 @@ void Buff::setOwner( UnitNode* owner ) {
 }
 
 //attribute buff
-AttributeBuff::AttributeBuff() {
+AttributeBuff::AttributeBuff() :
+_unit_data( nullptr )
+{
     
 }
 
 AttributeBuff::~AttributeBuff() {
-    
+    CC_SAFE_RELEASE( _unit_data );
 }
 
 AttributeBuff* AttributeBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
@@ -132,11 +134,12 @@ bool AttributeBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
         return false;
     }
     
-    _unit_data = ElementData::create( ValueMap() );
+    ElementData* unit_data = ElementData::create( ValueMap() );
     const ValueMap& attributes = data.at( "attributes" ).asValueMap();
     for( auto pair : attributes ) {
-        _unit_data->setAttribute( pair.first, pair.second.asString() );
+        unit_data->setAttribute( pair.first, pair.second.asString() );
     }
+    this->setElementData( unit_data );
     
     return true;
 }
@@ -156,6 +159,16 @@ void AttributeBuff::begin() {
 void AttributeBuff::end() {
     _owner->getTargetData()->sub( _unit_data );
     Buff::end();
+}
+
+ElementData* AttributeBuff::getElementData() {
+    return _unit_data;
+}
+
+void AttributeBuff::setElementData( ElementData* data ) {
+    CC_SAFE_RELEASE( _unit_data );
+    _unit_data = data;
+    CC_SAFE_RETAIN( _unit_data );
 }
 
 //stun buff

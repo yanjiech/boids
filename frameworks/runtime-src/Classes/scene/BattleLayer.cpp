@@ -40,12 +40,8 @@ BattleLayer::BattleLayer() : _map_data( nullptr ), _map_logic( nullptr ) {
 }
 
 BattleLayer::~BattleLayer() {
-    if( _map_data ) {
-        _map_data->release();
-    }
-    if( _map_logic ) {
-        _map_logic->release();
-    }
+    CC_SAFE_RELEASE_NULL( _map_data );
+    CC_SAFE_RELEASE_NULL( _map_logic );
 }
 
 BattleLayer* BattleLayer::create( MapData* map_data, bool is_pvp ) {
@@ -65,8 +61,7 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         return false;
     }
     do {
-        _map_data = map_data;
-        _map_data->retain();
+        this->setMapData( map_data );
         
         std::set<float> all_collide_radius;
         all_collide_radius.insert( 30.0f );
@@ -130,7 +125,7 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
 void BattleLayer::setup() {
     this->reset();
     this->parseMapObjects();
-    MapLogic* new_map_logic = MapLogic::retainedCreate( this );
+    MapLogic* new_map_logic = MapLogic::create( this );
     this->setMapLogic( new_map_logic );
     _game_time = 0;
 }
@@ -145,15 +140,21 @@ void BattleLayer::reset() {
     _float_layer->reset();
     _toast_layer->removeAllChildren();
     _skill_ui_layer->removeAllSkillNodes();
+    _story_layer->reset();
     
     //clear units
+    _player_units.clear();
     _alive_units.clear();
     _dead_units.clear();
     
     _bullets.clear();
     _towers.clear();
+    _buildings.clear();
+    _block_nodes.clear();
     
     _next_deploy_id = 0;
+    
+    CC_SAFE_RELEASE_NULL( _map_logic );
 }
 
 void BattleLayer::updateFrame( float delta ) {
@@ -270,10 +271,15 @@ void BattleLayer::quitBattle() {
 }
 
 void BattleLayer::setMapLogic( MapLogic* map_logic ) {
-    if( _map_logic ) {
-        _map_logic->release();
-    }
+    CC_SAFE_RELEASE( _map_logic );
     _map_logic = map_logic;
+    CC_SAFE_RETAIN( _map_logic );
+}
+
+void BattleLayer::setMapData( MapData* map_data ) {
+    CC_SAFE_RELEASE( _map_data );
+    _map_data = map_data;
+    CC_SAFE_RETAIN( _map_data );
 }
 
 UnitNode* BattleLayer::getLeaderUnit() {

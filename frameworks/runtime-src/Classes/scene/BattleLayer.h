@@ -135,6 +135,7 @@ public:
     void quitBattle();
     
     void setMapLogic( MapLogic* map_logic );
+    void setMapData( MapData* map_data );
     
     eBattleState getState() { return _state; }
     void setState( eBattleState new_state ) { _state = new_state; }

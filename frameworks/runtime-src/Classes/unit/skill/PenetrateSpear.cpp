@@ -70,6 +70,7 @@ void PenetrateSpear::begin() {
     ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( _bullet_name );
     bullet_data["speed"] = Value( _speed );
     bullet_data["damage_radius"] = Value( _damage_radius );
+    bullet_data["will_miss"] = Value( false );
     
     Point dir = _owner->getUnitDirection();
     

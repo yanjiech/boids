@@ -19,8 +19,8 @@ public:
     PlayerSkillBehavior();
     virtual ~PlayerSkillBehavior();
     
-    static PlayerSkillBehavior* create( class UnitNode* unit_node );
-    virtual bool init( UnitNode* unit_node );
+    static PlayerSkillBehavior* create( class TargetNode* unit_node );
+    virtual bool init( TargetNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

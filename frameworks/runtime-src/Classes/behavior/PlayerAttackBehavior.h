@@ -16,8 +16,8 @@ public:
     PlayerAttackBehavior();
     virtual ~PlayerAttackBehavior();
     
-    static PlayerAttackBehavior* create( class UnitNode* unit_node );
-    virtual bool init( UnitNode* unit_node );
+    static PlayerAttackBehavior* create( class TargetNode* unit_node );
+    virtual bool init( TargetNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

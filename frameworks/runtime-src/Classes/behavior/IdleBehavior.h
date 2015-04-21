@@ -16,8 +16,8 @@ public:
     IdleBehavior();
     virtual ~IdleBehavior();
     
-    static IdleBehavior* create( UnitNode* unit_node );
-    virtual bool init( UnitNode* unit_node );
+    static IdleBehavior* create( TargetNode* unit_node );
+    virtual bool init( TargetNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

@@ -21,6 +21,10 @@ class MapData : public cocos2d::Ref {
 public:
     MapData(const std::string& path);
     virtual ~MapData();
+    
+    static MapData* create( const std::string& path );
+    virtual bool init( const std::string& path );
+    
     const std::string& getMetaData();
     void dumpMetaData(const std::string& content);
     const std::string& getMapData();

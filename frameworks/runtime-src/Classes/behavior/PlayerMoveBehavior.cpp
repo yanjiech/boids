@@ -22,7 +22,7 @@ PlayerMoveBehavior::~PlayerMoveBehavior() {
     
 }
 
-PlayerMoveBehavior* PlayerMoveBehavior::create( UnitNode* unit_node ) {
+PlayerMoveBehavior* PlayerMoveBehavior::create( TargetNode* unit_node ) {
     PlayerMoveBehavior* ret = new PlayerMoveBehavior();
     if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
@@ -34,7 +34,7 @@ PlayerMoveBehavior* PlayerMoveBehavior::create( UnitNode* unit_node ) {
     }
 }
 
-bool PlayerMoveBehavior::init( UnitNode* unit_node ) {
+bool PlayerMoveBehavior::init( TargetNode* unit_node ) {
     if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }
@@ -52,7 +52,8 @@ bool PlayerMoveBehavior::behave( float delta ) {
     BattleLayer* battle_layer = unit_node->getBattleLayer();
     cocos2d::Point control_dir = battle_layer->getControlLayer()->getJoyStickDirection();
     float move_speed = unit_node->getUnitData()->move_speed;
-    if( unit_node->shouldCatchUp() ) {
+    
+    if( unit_node->shouldCatchUp() && !unit_node->isCharging() ) {
         Point last_pos = unit_node->getPosition();
         unit_node->findPathToPosition( battle_layer->getLeaderUnit()->getPosition() );
         unit_node->walkAlongWalkPath( move_speed * DEFAULT_CATCH_UP_SPEED_FACTOR * delta );

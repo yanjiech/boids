@@ -21,7 +21,7 @@ MoveBehavior::~MoveBehavior() {
     
 }
 
-MoveBehavior* MoveBehavior::create( UnitNode* unit_node ) {
+MoveBehavior* MoveBehavior::create( TargetNode* unit_node ) {
     MoveBehavior* ret = new MoveBehavior();
     if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
@@ -33,7 +33,7 @@ MoveBehavior* MoveBehavior::create( UnitNode* unit_node ) {
     }
 }
 
-bool MoveBehavior::init( UnitNode* unit_node ) {
+bool MoveBehavior::init( TargetNode* unit_node ) {
     if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }

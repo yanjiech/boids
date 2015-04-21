@@ -19,7 +19,7 @@ AttackBehavior::AttackBehavior() {
 AttackBehavior::~AttackBehavior() {
 }
 
-AttackBehavior* AttackBehavior::create( UnitNode* unit_node ) {
+AttackBehavior* AttackBehavior::create( TargetNode* unit_node ) {
     AttackBehavior* ret = new AttackBehavior();
     if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
@@ -31,7 +31,7 @@ AttackBehavior* AttackBehavior::create( UnitNode* unit_node ) {
     }
 }
 
-bool AttackBehavior::init( UnitNode* unit_node ) {
+bool AttackBehavior::init( TargetNode* unit_node ) {
     if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }

@@ -164,15 +164,12 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
-                    "source_value": "wild_wolf",
+                    "source_value": "human_king",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "02",
                     "unit_count": 1,
-                    "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
+                    "unit_level": 30,
                     "popup_type": "normal"
                 }
             ]

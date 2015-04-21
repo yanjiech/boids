@@ -228,17 +228,20 @@ bool UIBattleLayer::init( BattleLayer* battle_layer ) {
 bool UIBattleLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event ) {
     if( _is_touch_began == false ) {
         _selected_skill = this->skillNodeForTouch( touch );
-        if( _selected_skill != nullptr ) {
+        if( _selected_skill != nullptr && _selected_skill->isSkillReady() && !_selected_skill->getOwner()->isCasting() && !_selected_skill->getOwner()->willCast() ) {
             _is_touch_began = true;
             _touch = touch;
-            _selected_skill->showHint( Point::ZERO, 0 );
             _touch_down_pos = this->convertTouchToNodeSpace( touch );
             _touch_down_duration = 0;
-            if( _selected_skill->shouldCastOnTouchDown() && _selected_skill->isSkillReady() ) {
+            _selected_skill->showHint( Point::ZERO, 0 );
+            if( _selected_skill->shouldCastOnTouchDown() ) {
                 _selected_skill->getOwner()->setCharging( true, _selected_skill->getSkillAttribute( "charging_effect" ).asString() );
                 _selected_skill->setChargeTime( 0 );
             }
             return true;
+        }
+        else {
+            _selected_skill = nullptr;
         }
     }
     return false;

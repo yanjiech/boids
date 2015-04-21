@@ -32,7 +32,7 @@ bool TargetNode::init() {
 
 void TargetNode::updateFrame( float delta ) {
     do {
-        if( !this->isDying() ) {
+        if( this->isAlive() ) {
             //skill
             auto itr = _behaviors.find( BEHAVIOR_NAME_SKILL );
             if( itr != _behaviors.end() && itr->second->isEnabled() ) {

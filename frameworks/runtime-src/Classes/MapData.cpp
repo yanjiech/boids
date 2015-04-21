@@ -40,6 +40,22 @@ MapData::MapData(const std::string& path) {
 MapData::~MapData() {
 }
 
+MapData* MapData::create( const std::string& path ) {
+    MapData* ret = new MapData( path );
+    if( ret && ret->init( path ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool MapData::init( const std::string& path ) {
+    return true;
+}
+
 const std::string& MapData::getMetaData() {
     return _metaData;
 }

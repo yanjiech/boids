@@ -95,11 +95,13 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
 
 UnitNode::UnitNode() :
 _state( eUnitState::Unknown_Unit_State ),
+_next_state( eUnitState::Unknown_Unit_State ),
 _guard_target( nullptr ),
 _walk_path( nullptr ),
 _tour_path( nullptr ),
 _is_charging( false ),
-_charging_effect( nullptr )
+_charging_effect( nullptr ),
+_chasing_target( nullptr )
 {
 }
 
@@ -107,6 +109,7 @@ UnitNode::~UnitNode() {
     CC_SAFE_RELEASE( _guard_target );
     CC_SAFE_RELEASE( _walk_path );
     CC_SAFE_RELEASE( _tour_path );
+    CC_SAFE_RELEASE( _chasing_target );
 }
 
 eTargetCamp UnitNode::getCampByString( const std::string& camp_string ) {
@@ -151,8 +154,8 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     
     _battle_layer = battle_layer;
     
-    UnitData* ud = UnitData::create( unit_data );
-    this->setUnitData( ud );
+    UnitData* target_data = UnitData::create( unit_data );
+    this->setTargetData( dynamic_cast<ElementData*>( target_data ) );
     
     _direction = Point::ZERO;
     
@@ -195,20 +198,20 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         }
     }
     
-    if( ud->is_double_face ) {
-        std::string resource = res_manager->getPathForResource( ud->name, eResourceType::Character_Double_Face );
+    if( target_data->is_double_face ) {
+        std::string resource = res_manager->getPathForResource( target_data->name, eResourceType::Character_Double_Face );
         _front = ArmatureManager::getInstance()->createArmature( resource );
         _back = nullptr;
     }
     else {
-        std::string front_res = res_manager->getPathForResource( ud->name, eResourceType::Character_Front );
+        std::string front_res = res_manager->getPathForResource( target_data->name, eResourceType::Character_Front );
         _front = ArmatureManager::getInstance()->createArmature( front_res );
-        std::string back_res = res_manager->getPathForResource( ud->name, eResourceType::Character_Back );
+        std::string back_res = res_manager->getPathForResource( target_data->name, eResourceType::Character_Back );
         _back = ArmatureManager::getInstance()->createArmature( back_res );
         
     }
     if( _front ) {
-        _front->setScale( ud->scale );
+        _front->setScale( target_data->scale );
         _front->setStartListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationStart, this ) );
         _front->setCompleteListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationCompleted, this ) );
         _front->setEventListener( CC_CALLBACK_2( UnitNode::onSkeletonAnimationEvent, this ) );
@@ -218,7 +221,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     }
     
     if( _back ) {
-        _back->setScale( ud->scale );
+        _back->setScale( target_data->scale );
         _back->setStartListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationStart, this ) );
         _back->setCompleteListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationCompleted, this ) );
         _back->setEventListener( CC_CALLBACK_2( UnitNode::onSkeletonAnimationEvent, this ) );
@@ -227,7 +230,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     
     //shadow
     _shadow = Sprite::createWithSpriteFrameName( "unit_shadow.png" );
-    _shadow->setScale( ud->collide / DEFAULT_SHADOW_RADIUS );
+    _shadow->setScale( target_data->collide / DEFAULT_SHADOW_RADIUS );
     this->addChild( _shadow, eComponentLayer::MostBelow );
     
     _same_dir_frame_count = 0;
@@ -244,7 +247,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     _new_dir_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::BLUE );
     this->addChild( _new_dir_draw, 10001 );
     
-    _custom_draw->drawCircle( Point::ZERO, ud->collide, 360, 100, false, Color4F::RED );
+    _custom_draw->drawCircle( Point::ZERO, target_data->collide, 360, 100, false, Color4F::RED );
     //end debug
     
     _face = eUnitFace::Back;
@@ -284,11 +287,12 @@ void UnitNode::updateFrame( float delta ) {
     }
     
     ++_same_dir_frame_count;
+    this->updateBuffs( delta );
     TargetNode::updateFrame( delta );
     
     this->applyUnitState();
     
-    this->updateBuffs( delta );
+    
     this->updateSkills( delta );
     this->evaluateCatchUp();
     
@@ -369,8 +373,21 @@ void UnitNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
     }
 }
 
+TargetNode* UnitNode::getChasingTarget() {
+    if( _chasing_target && _chasing_target->isDying() ) {
+        this->setChasingTarget( nullptr );
+    }
+    return _chasing_target;
+}
+
+void UnitNode::setChasingTarget( TargetNode* target ) {
+    CC_SAFE_RELEASE( _chasing_target );
+    _chasing_target = target;
+    CC_SAFE_RETAIN( _chasing_target );
+}
+
 void UnitNode::changeUnitState( eUnitState new_state, bool force ) {
-    if( _state >= eUnitState::Dying && new_state < _state ) {
+    if( ( _state >= eUnitState::Dying || _next_state >= eUnitState::Dying ) && new_state < _state ) {
         return;
     }
     if( force || ( ( _next_state == eUnitState::Unknown_Unit_State && new_state != _state ) || new_state >= eUnitState::Dying ) ) {
@@ -574,6 +591,8 @@ void UnitNode::onDisappearEnd() {
 }
 
 void UnitNode::onDying() {
+    this->removeAllBuffs();
+    this->removeAllComponents();
     Sprite* blood = Sprite::createWithSpriteFrameName( "unit_deadblood.png" );
     UnitNodeFadeoutComponent* component = UnitNodeFadeoutComponent::create( blood, "dead_blood", 3.0f, 0, true );
     component->setPosition( Point::ZERO );
@@ -585,15 +604,16 @@ void UnitNode::takeDamage( const cocos2d::ValueMap& result, TargetNode* atker ) 
 }
 
 void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* atker ) {
-    if( this->isAttackable() && _target_data->current_hp > 0 ) {
+    UnitData* unit_data = dynamic_cast<UnitData*>( _target_data );
+    if( this->isAttackable() && unit_data->current_hp > 0 ) {
         float damage = amount;
         for( auto itr = _buffs.begin(); itr != _buffs.end(); ++itr ) {
             damage = itr->second->filterDamage( damage, atker );
         }
-        _target_data->current_hp -= damage;
+        unit_data->current_hp -= damage;
         
-        if( _target_data->current_hp <= 0 ) {
-            _target_data->current_hp = 0;
+        if( unit_data->current_hp <= 0 ) {
+            unit_data->current_hp = 0;
         }
         
         //jump damage number
@@ -604,8 +624,9 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* 
         _hp_bar->setPercentage( _target_data->current_hp / _target_data->hp * 100.0f );
         
         //dying
-        if( _target_data->current_hp == 0 ) {
+        if( unit_data->current_hp == 0 ) {
             this->changeUnitState( eUnitState::Dying );
+            _battle_layer->clearChasingTarget( this );
         }
         else if( _chasing_target == nullptr ) {
             if( atker && atker->isAttackable() && atker->isAlive() ) {
@@ -712,11 +733,14 @@ Buff* UnitNode::getBuffOfType( const std::string& buff_type ) {
 }
     
 void UnitNode::removeAllBuffs() {
+    for( auto pair : _buffs ) {
+        pair.second->end();
+    }
     _buffs.clear();
 }
 
 void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_per, float duration ) {
-    if( !this->isDying() && !this->isCasting() && this->getNextUnitState() != eUnitState::Casting ) {
+    if( !this->isDying() && !this->isCasting() ) {
         Point sk_dir = dir;
         if( sk_dir.x != 0 || sk_dir.y != 0 ) {
             this->changeUnitDirection( dir );
@@ -724,6 +748,7 @@ void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_pe
         else {
             sk_dir = this->getUnitDirection();
         }
+        _using_skill_params.clear();
         _using_skill_params["dir_x"] = Value( sk_dir.x );
         _using_skill_params["dir_y"] = Value( sk_dir.y );
         _using_skill_params["touch_down_duration"] = Value( duration );
@@ -893,6 +918,10 @@ bool UnitNode::isUnderControl() {
     return _state == eUnitState::UnderControl;
 }
 
+bool UnitNode::willCast() {
+    return _next_state == eUnitState::Casting;
+}
+
 bool UnitNode::isCasting() {
     return _state == eUnitState::Casting;
 }
@@ -1060,17 +1089,12 @@ UnitData* UnitNode::getUnitData() {
     return dynamic_cast<UnitData*>( _target_data );
 }
 
-void UnitNode::setUnitData( UnitData* unit_data ) {
-    this->setTargetData( unit_data );
-}
-
 void UnitNode::jumpNumber( float amount, const std::string& type, bool is_critical, const std::string& name ) {
     JumpText* jump_text = JumpText::create( Utils::toStr( (int)amount ), type, is_critical, _camp, name );
     this->addUnitComponent( jump_text, name, eComponentLayer::OverObject );
     jump_text->setPosition( this->getLocalHeadPos() );
     jump_text->start( is_critical );
 }
-
 
 Skill* UnitNode::getSkill( int sk_id ) {
     return _skills.at( sk_id );
@@ -1153,22 +1177,24 @@ void UnitNode::setConcentrateOnWalk( bool b ) {
 }
 
 void UnitNode::setCharging( bool b, std::string effect_resource ) {
-    _is_charging = b;
-    this->changeUnitState( _state, true );
-    if( b && !effect_resource.empty() ) {
-        if( _charging_effect != nullptr ) {
-            _charging_effect->setDuration( 0 );
+    if( !this->isCasting() && !this->willCast() ) {
+        _is_charging = b;
+        this->changeUnitState( _state, true );
+        if( b && !effect_resource.empty() ) {
+            if( _charging_effect != nullptr ) {
+                _charging_effect->setDuration( 0 );
+            }
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( effect_resource );
+            std::string name = Utils::stringFormat( "UnitCharging_%d", BulletNode::getNextBulletId() );
+            _charging_effect = TimeLimitSpineComponent::create( INT_MAX, skeleton, name, true );
+            _charging_effect->setPosition( this->getLocalBonePos( "ChargingPoint" ) );
+            _charging_effect->setAnimation( 0, "animation", true );
+            this->addUnitComponent( _charging_effect, name, eComponentLayer::OverObject );
         }
-        spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( effect_resource );
-        std::string name = Utils::stringFormat( "UnitCharging_%d", BulletNode::getNextBulletId() );
-        _charging_effect = TimeLimitSpineComponent::create( INT_MAX, skeleton, name, true );
-        _charging_effect->setPosition( this->getLocalBonePos( "ChargingPoint" ) );
-        _charging_effect->setAnimation( 0, "animation", true );
-        this->addUnitComponent( _charging_effect, name, eComponentLayer::OverObject );
-    }
-    else if( !b && _charging_effect != nullptr ) {
-        _charging_effect->setDuration( 0 );
-        _charging_effect = nullptr;
+        else if( !b && _charging_effect != nullptr ) {
+            _charging_effect->setDuration( 0 );
+            _charging_effect = nullptr;
+        }
     }
 }
 

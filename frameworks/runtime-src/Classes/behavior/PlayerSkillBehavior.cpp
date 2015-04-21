@@ -7,8 +7,10 @@
 //
 
 #include "PlayerSkillBehavior.h"
-#include "../unit/UnitNode.h"
+#include "../scene/BattleLayer.h"
 #include "../Utils.h"
+
+using namespace cocos2d;
 
 #define DEFAULT_CATCH_UP_DISTANCE 80.0
 
@@ -20,7 +22,7 @@ PlayerSkillBehavior::~PlayerSkillBehavior() {
     
 }
 
-PlayerSkillBehavior* PlayerSkillBehavior::create( class UnitNode* unit_node ) {
+PlayerSkillBehavior* PlayerSkillBehavior::create( class TargetNode* unit_node ) {
     PlayerSkillBehavior* ret = new PlayerSkillBehavior();
     if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
@@ -32,7 +34,7 @@ PlayerSkillBehavior* PlayerSkillBehavior::create( class UnitNode* unit_node ) {
     }
 }
 
-bool PlayerSkillBehavior::init( UnitNode* unit_node ) {
+bool PlayerSkillBehavior::init( TargetNode* unit_node ) {
     if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }
@@ -48,13 +50,15 @@ bool PlayerSkillBehavior::behave( float delta ) {
     if( unit_node->isUnderControl() ) {
         return true;
     }
-    if( unit_node->isCasting() ) {
+    if( unit_node->isCasting() || unit_node->willCast() ) {
         return true;
     }
     if( unit_node->isCharging() ) {
         return false;
     }
-    if( unit_node->isWalking() ) {
+    BattleLayer* battle_layer = unit_node->getBattleLayer();
+    Point control_dir = battle_layer->getControlLayer()->getJoyStickDirection();
+    if( control_dir.x != 0 || control_dir.y != 0 ) {
         return false;
     }
     

@@ -16,8 +16,8 @@ public:
     PlayerMoveBehavior();
     virtual ~PlayerMoveBehavior();
     
-    static PlayerMoveBehavior* create( UnitNode* unit_node );
-    virtual bool init( UnitNode* unit_node );
+    static PlayerMoveBehavior* create( TargetNode* unit_node );
+    virtual bool init( TargetNode* unit_node );
     
     virtual bool behave( float delta = 0 );
 };

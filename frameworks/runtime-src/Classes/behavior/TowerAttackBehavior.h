@@ -16,8 +16,8 @@ public:
     TowerAttackBehavior();
     virtual ~TowerAttackBehavior();
     
-    static TowerAttackBehavior* create( TowerNode* tower );
-    virtual bool init( TowerNode* tower );
+    static TowerAttackBehavior* create( TargetNode* tower );
+    virtual bool init( TargetNode* tower );
     
     virtual bool behave( float delta = 0 );
 };

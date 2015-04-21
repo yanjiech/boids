@@ -17,7 +17,7 @@ IdleBehavior::~IdleBehavior() {
     
 }
 
-IdleBehavior* IdleBehavior::create( UnitNode* unit_node ) {
+IdleBehavior* IdleBehavior::create( TargetNode* unit_node ) {
     IdleBehavior* ret = new IdleBehavior();
     if( ret && ret->init( unit_node ) ) {
         ret->autorelease();
@@ -29,7 +29,7 @@ IdleBehavior* IdleBehavior::create( UnitNode* unit_node ) {
     }
 }
 
-bool IdleBehavior::init( UnitNode* unit_node ) {
+bool IdleBehavior::init( TargetNode* unit_node ) {
     if( !BehaviorBase::init( unit_node ) ) {
         return false;
     }

@@ -46,7 +46,7 @@ bool SkillBehavior::behave( float delta ) {
     if( unit_node->isUnderControl() ) {
         return true;
     }
-    if( unit_node->isCasting() ) {
+    if( unit_node->isCasting() || unit_node->willCast() ) {
         return true;
     }
     if( unit_node->isCharging() ) {
