@@ -164,9 +164,10 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
-                    "source_value": "human_king",
+                    "source_value": "bomb_goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "position_name": "02",
                     "unit_count": 1,
                     "unit_level": 30,
@@ -196,12 +197,10 @@
                     "source_value": "wild_wolf",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "position_name": "02",
                     "unit_count": 1,
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -225,13 +224,11 @@
                     "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "tag_name": "goblin_talker",
                     "position_name": "01",
                     "unit_count": 1,
                     "unit_level": 3,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -255,12 +252,10 @@
                     "source_value": "wild_wolf",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "position_name": "09",
                     "unit_count": 1,
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -270,12 +265,10 @@
                     "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "position_name": "09",
                     "unit_count": 1,
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -311,12 +304,10 @@
                     "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "position_name": "11",
                     "unit_count": 1,
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -326,12 +317,10 @@
                     "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "position_name": "10",
                     "unit_count": 1,
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -360,9 +349,6 @@
                     "is_boss": true,
                     "custom_change": "hp:3000.0",
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -391,13 +377,11 @@
                     "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "tag_name": "goblin_lead",
                     "position_name": "03",
                     "unit_count": 2,
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -407,12 +391,10 @@
                     "source_value": "wild_wolf",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "position_name": "06",
                     "unit_count": 2,
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -441,13 +423,11 @@
                     "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "tag_name": "boss_guard",
                     "position_name": "add01",
                     "unit_count": 2,
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 },
                 {
@@ -457,13 +437,11 @@
                     "source_value": "wild_wolf",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "tag_name": "boss_guard",
                     "position_name": "07",
                     "unit_count": 2,
                     "unit_level": 2,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
                 }
             ]
@@ -735,6 +713,7 @@
                     "source_type": "tag_source",
                     "source_value": "boss_guard",
                     "unit_state": "unit_move",
+                    "show_hp": false,
                     "position_name": "patrol1",
                     "unit_level": 1,
                     "popup_type": "normal"
@@ -793,13 +772,40 @@
                     "source_value": "bomb_goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
+                    "show_hp": false,
                     "position_name": "01",
                     "unit_count": 1,
                     "unit_level": 1,
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag_protect",
-                    "buff_params": "duration:-1,buff_param:red",
                     "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "map_init",
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_king",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "patrol1",
+                    "unit_count": 1,
+                    "unit_level": 20,
+                    "popup_type": "normal",
+                    "skill_1_level": 2,
+                    "skill_2_level": 2
                 }
             ]
         }
@@ -807,6 +813,7 @@
     "units": [
         "bomb_goblin",
         "goblin",
+        "human_king",
         "wild_wolf"
     ],
     "tasks": [

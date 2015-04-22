@@ -17,5 +17,7 @@
 #include "PlayerAttackBehavior.h"
 #include "PlayerSkillBehavior.h"
 #include "TowerAttackBehavior.h"
+#include "GuardAttackBehavior.h"
+#include "GuardMoveBehavior.h"
 
 #endif

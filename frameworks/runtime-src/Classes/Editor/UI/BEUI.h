@@ -113,7 +113,6 @@ private:
     cocos2d::ui::CheckBox *_showHPCheckBox;
     cocos2d::ui::CheckBox *_changeTypeCheckBox;
     cocos2d::ui::CheckBox *_changeStateCheckBox;
-    cocos2d::ui::CheckBox *_changeShowHPCheckBox;
     cocos2d::ui::Button *_ok;
     cocos2d::ui::Button *_cancel;
     cocos2d::ui::Text *_countLabel;
@@ -127,6 +126,13 @@ private:
     cocos2d::ui::TextField* _tf_buff_name;
     cocos2d::ui::TextField* _tf_buff_type;
     cocos2d::ui::TextField* _tf_buff_params;
+    
+    //skill
+    cocos2d::ui::CheckBox* _cb_skill_1;
+    cocos2d::ui::CheckBox* _cb_skill_2;
+    cocos2d::ui::TextField* _tf_skill_1_level;
+    cocos2d::ui::TextField* _tf_skill_2_level;
+    
     cocos2d::ui::Button *_addButton;
     cocos2d::ui::Button *_deleteButton;
     cocos2d::ui::TextField *_filterTextField;
@@ -161,7 +167,6 @@ private:
     void adjustUIForState(const std::string& state);
     void onTypeButtonClicked(cocos2d::Ref *sender);
     void onStateButtonClicked(cocos2d::Ref *sender);
-    void onToggleShowHP(cocos2d::Ref *sender, cocos2d::ui::CheckBox::EventType et);
     void togglePositionUI(bool visible);
     void toggleCountUI(bool visible);
     void toggleBossUI(bool visible);

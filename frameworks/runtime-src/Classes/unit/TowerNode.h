@@ -11,6 +11,7 @@
 
 #include "TargetNode.h"
 #include "spine/spine-cocos2dx.h"
+#include "../AI/BoidsPolygon.h"
 
 enum eTowerState {
     TowerStateUnknown = 0,
@@ -28,6 +29,10 @@ private:
     eTowerState _state;
     
     bool _is_bullet_loaded;
+    
+    BoidsPolygon _boundaries;
+    
+    bool _is_collidable;
     
 private:
     void reloadBullet( float delta );
@@ -65,6 +70,9 @@ public:
     
     virtual bool isAlive();
     virtual bool isDying();
+    
+    bool isCollidable() { return _is_collidable; }
+    void setCollidable( bool b );
 };
 
 #endif /* defined(__Boids__TowerNode__) */

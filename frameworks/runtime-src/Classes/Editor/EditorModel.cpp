@@ -384,9 +384,7 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
     if (this->StateChanged) {
         _json.AddMember("unit_state", UnitState.c_str(), allocator);
     }
-    if (this->ShowHPChanged) {
-        _json.AddMember("show_hp", ShowHP, allocator);
-    }
+    _json.AddMember("show_hp", ShowHP, allocator);
     if (this->TagChanged) {
         _json.AddMember("tag_name", TagName.c_str(), allocator);
     }
@@ -420,6 +418,12 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
     if (this->PopupType.length() > 0) {
         _json.AddMember("popup_type", PopupType.c_str(), allocator);
     }
+    if( this->SkillOneLevel != 0 ) {
+        _json.AddMember( "skill_1_level", SkillOneLevel, allocator );
+    }
+    if( this->SkillTwoLevel != 0 ) {
+        _json.AddMember( "skill_2_level", SkillTwoLevel, allocator );
+    }
     
     return _json;
 }
@@ -446,15 +450,8 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->TypeChanged = false;
         this->UnitType = "";
     }
-    if (value.HasMember("show_hp_changed")) {
-        this->ShowHPChanged = value["show_hp_changed"].GetBool();
-        this->ShowHP = this->ShowHPChanged ? value["show_hp"].GetBool() : false;
-    } else if (value.HasMember("show_hp")) {
-        this->ShowHPChanged = true;
+    if (value.HasMember("show_hp")) {
         this->ShowHP = value["show_hp"].GetBool();
-    } else {
-        this->ShowHPChanged = false;
-        this->ShowHP = false;
     }
     if (value.HasMember("tag_changed")) {
         this->TagChanged = value["tag_changed"].GetBool();
@@ -513,6 +510,19 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
     } else {
         this->PopupType = "normal";
     }
+    if( value.HasMember( "skill_1_level" ) ) {
+        this->SkillOneLevel = value["skill_1_level"].GetInt();
+    }
+    else {
+        this->SkillOneLevel = 0;
+    }
+    if( value.HasMember( "skill_2_level" ) ) {
+        this->SkillTwoLevel = value["skill_2_level"].GetInt();
+    }
+    else {
+        this->SkillTwoLevel = 0;
+    }
+    
     this->UnitCount = value.HasMember("unit_count") ? value["unit_count"].GetInt() : 0;
     this->PositionName = value.HasMember("position_name") ? value["position_name"].GetString() : "";
     this->PositionTag = value.HasMember("position_tag") ? value["position_tag"].GetString() : "";

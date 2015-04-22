@@ -109,6 +109,7 @@ private:
     cocos2d::ValueMap _using_skill_params;
     
     UnitNode* _guard_target;
+    float _guard_range;
     
     bool _is_concentrate_on_walk;
     
@@ -289,6 +290,9 @@ public:
     
     UnitNode* getGuardTarget() { return _guard_target; }
     void setGuardTarget( UnitNode* guard_target );
+    
+    float getGuardRange() { return _guard_range; }
+    void setGuardRange( float range ) { _guard_range = range; }
     
     cocos2d::Point getGuardCenter();
     

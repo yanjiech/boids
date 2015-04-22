@@ -840,9 +840,8 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
             this->addBlockNode( block_node, layer );
         }
     }
-    else if( type == "TowerNode" ) {
-        ValueMap tower_data;
-        tower_data["name"] = obj_properties.at( "name" );
+    else if( type.find( "tower" ) != std::string::npos ) {
+        ValueMap tower_data = obj_properties;
         sitr = obj_properties.find( "level" );
         if( sitr != obj_properties.end() ) {
             tower_data["level"] = sitr->second;
@@ -850,13 +849,16 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
         else {
             tower_data["level"] = Value( 1 );
         }
-        float x = obj_properties.at( "x" ).asFloat();
-        float y = obj_properties.at( "y" ).asFloat();
-        float width = obj_properties.at( "width" ).asFloat();
-        float height = obj_properties.at( "height" ).asFloat();
+
+        std::string name = obj_properties.at( "name" ).asString() + "_collide";
+        ValueMap boundary = group->getObject( name );
+        boundary["map_height"] = Value( _tmx_map->getContentSize().height );
+        if( !boundary.empty() ) {
+            tower_data["boundary"] = Value( boundary );
+        }
+        
         TowerNode* tower = TowerNode::create( this, tower_data );
-        tower->setTargetCamp( eTargetCamp::Enemy );
-        this->deployTower( tower, Point( x + width / 2, y + height / 2 ) );
+        this->deployTower( tower, tower->getPosition() );
     }
     else if( type.find( "BuildingNode" ) != std::string::npos ) {
         std::string name = obj_properties.at( "name" ).asString() + "_collide";

@@ -12,6 +12,7 @@
 #include "JumpText.h"
 #include "ElementData.h"
 #include "../manager/ResourceManager.h"
+#include "../AI/Terrain.h"
 
 using namespace cocos2d;
 
@@ -45,10 +46,22 @@ bool TowerNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& tower_
     _battle_layer = battle_layer;
     
     std::string name = tower_data.at( "name" ).asString();
+    std::string type = tower_data.at( "type" ).asString();
     int level = tower_data.at( "level" ).asInt();
-    ValueMap vm = ResourceManager::getInstance()->getTowerData( name );
+    ValueMap vm = ResourceManager::getInstance()->getTowerData( type );
     vm["name"] = Value( name );
     vm["level"] = Value( level );
+    
+    auto itr = tower_data.find( "boundary" );
+    if( itr != tower_data.end() ) {
+        const ValueMap& boundary_data = itr->second.asValueMap();
+        _boundaries.loadFromValueMap( boundary_data );
+        _boundaries.name = boundary_data.at( "name" ).asString();
+        this->setPosition( _boundaries.center );
+    }
+    else {
+        this->setPosition( this->getPosition() );
+    }
     
     ElementData* target_data = ElementData::create( vm );
     this->setTargetData( target_data );
@@ -56,7 +69,7 @@ bool TowerNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& tower_
     _elapse = 0;
     this->setTowerState( eTowerState::TowerStateIdle );
     
-    std::string resource = ResourceManager::getInstance()->getPathForResource( name, eResourceType::Tower );
+    std::string resource = ResourceManager::getInstance()->getPathForResource( type, eResourceType::Tower );
     _skeleton = ArmatureManager::getInstance()->createArmature( resource );
     this->addChild( _skeleton, eComponentLayer::Object );
     Rect bounding_box = _skeleton->getBoundingBox();
@@ -64,6 +77,8 @@ bool TowerNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& tower_
     
     TowerAttackBehavior* attack_behavior = TowerAttackBehavior::create( this );
     this->addBehavior( BEHAVIOR_NAME_ATTACK, attack_behavior );
+    
+    this->setTargetCamp( eTargetCamp::Enemy );
     
     return true;
 }
@@ -170,6 +185,20 @@ bool TowerNode::isAlive() {
 
 bool TowerNode::isDying() {
     return _state >= eTowerState::TowerStateDie;
+}
+
+void TowerNode::setCollidable( bool b ) {
+    _is_collidable = b;
+    if( _is_collidable ) {
+        for( auto pair : Terrain::getInstance()->getMeshes() ) {
+            pair.second->addCollidablePolygon( _boundaries );
+        }
+    }
+    else {
+        for( auto pair : Terrain::getInstance()->getMeshes() ) {
+            pair.second->removeCollidablePolygon( _boundaries.name );
+        }
+    }
 }
 
 //private methods

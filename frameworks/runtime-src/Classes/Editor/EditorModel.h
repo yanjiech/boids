@@ -222,6 +222,8 @@ public:
     std::string UnitType;
     std::string PositionName;
     std::string PositionTag;
+    int SkillOneLevel;
+    int SkillTwoLevel;
     std::string TagName;
     std::string BuffName;
     std::string BuffType;
@@ -232,14 +234,13 @@ public:
     bool ShowHP;
     bool StateChanged;
     bool TypeChanged;
-    bool ShowHPChanged;
     bool TagChanged;
     bool BuffChanged;
     bool IsBoss;
 	bool UnPushable;
     int UnitCount;
     int UnitLevel;
-    EditorUnitAction(): EditorActionBase("unit_change"), StateChanged(false), TypeChanged(false), ShowHPChanged(false), TagChanged(false), BuffChanged(false), IsBoss(false), UnPushable(false), ClassName("LogicUnit"),
+    EditorUnitAction(): EditorActionBase("unit_change"), StateChanged(false), TypeChanged(false), TagChanged(false), BuffChanged(false), IsBoss(false), UnPushable(false), ClassName("LogicUnit"),
     SourceValue(""), PositionName(""), PositionTag(""), TagName(""), BuffName(""), UnitCount(0), PopupType("normal") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);

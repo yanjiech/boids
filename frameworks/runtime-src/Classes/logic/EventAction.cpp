@@ -272,6 +272,18 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                         custom_change = itr->second.asString();
                     }
                     
+                    int skill_1_level = 0;
+                    itr = _action_data.find( "skill_1_level" );
+                    if( itr != _action_data.end() ) {
+                        skill_1_level = itr->second.asInt();
+                    }
+                    
+                    int skill_2_level = 0;
+                    itr = _action_data.find( "skill_2_level" );
+                    if( itr != _action_data.end() ) {
+                        skill_2_level = itr->second.asInt();
+                    }
+                    
                     cocos2d::Vector<UnitNode*> deploy_units;
                     for( int i = 0; i < unit_count; ++i ) {
                         ValueMap unit_data;
@@ -282,6 +294,20 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                         unit_data["hold_position"] = Value( hold_position );
                         unit_data["unit_camp"] = Value( unit_type );
                         unit_data["tag_string"] = Value( tag_name );
+                        ValueVector skills;
+                        if( skill_1_level != 0 ) {
+                            ValueMap skill_data;
+                            skill_data["skill_id"] = Value( 0 );
+                            skill_data["level"] = Value( skill_1_level );
+                            skills.push_back( Value( skill_data ) );
+                        }
+                        if( skill_2_level != 0 ) {
+                            ValueMap skill_data;
+                            skill_data["skill_id"] = Value( 1 );
+                            skill_data["level"] = Value( skill_2_level );
+                            skills.push_back( Value( skill_data ) );
+                        }
+                        unit_data["skills"] = Value( skills );
                         
                         UnitNode* unit = UnitNode::create( battle_layer, unit_data );
                         if( !buff_data.empty() ) {

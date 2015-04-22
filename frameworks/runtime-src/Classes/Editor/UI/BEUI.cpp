@@ -186,7 +186,6 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     _showHPCheckBox = getCheckBoxFrom("checkbox_showHP", _infoPanel);
     _changeTypeCheckBox = getCheckBoxFrom("checkbox_changeType", _infoPanel);
     _changeStateCheckBox = getCheckBoxFrom("checkbox_changeState", _infoPanel);
-    _changeShowHPCheckBox = getCheckBoxFrom("checkbox_changeShowHP", _infoPanel);
     _showHPTitleLabel = getLabelFrom("text_showHP", _infoPanel);
     _countLabel = getLabelFrom("text_count", _infoPanel);
     _countTextField = getTextFieldFrom("input_count", _infoPanel);
@@ -213,6 +212,12 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     
     _levelTextField = getTextFieldFrom( "tf_level", _infoPanel );
     
+    _cb_skill_1 = getCheckBoxFrom( "cb_skill_1", _infoPanel );
+    _cb_skill_2 = getCheckBoxFrom( "cb_skill_2", _infoPanel );
+    
+    _tf_skill_1_level = getTextFieldFrom( "tf_skill_1_level", _infoPanel );
+    _tf_skill_2_level = getTextFieldFrom( "tf_skill_2_level", _infoPanel );
+    
     _groupListView = BEFilterListView::create(Size(500, 600), CC_CALLBACK_1(BEUIUnitAction::onGroupItemClicked, this), _filterTextField);
     _groupListView->setDelegate(this);
     _groupListView->setPosition(Vec2(0, 100));
@@ -234,7 +239,6 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     bindSelectPositionHandler(_selectPositionButton);
     bindOKHandler(_ok);
     bindCancelHandler(_cancel);
-    _showHPCheckBox->addEventListener(CC_CALLBACK_2(BEUIUnitAction::onToggleShowHP, this));
     _popupButton = getButtonFrom("button_choosePopup", _infoPanel);
     _popupButton->addClickEventListener(CC_CALLBACK_1(BEUIUnitAction::onPopupButtonClicked, this));
     _popupListView = popupTypeListFromButton(_popupButton, EditorTypeManager::getInstance()->getUnitPopupType(), CC_CALLBACK_1(BEUIUnitAction::onPopupItemClicked, this));
@@ -270,7 +274,6 @@ void BEUIUnitAction::reset() {
     _countTextField->setString("1");
     _customTextField->setString("");
     _levelTextField->setString( "1" );
-    _changeShowHPCheckBox->setSelected(false);
     _showHPCheckBox->setSelected(false);
     _buffCheckBox->setSelected(false);
     _tf_buff_name->setString("");
@@ -376,10 +379,7 @@ void BEUIUnitAction::renderAction(EditorUnitActionPtr action) {
         _stateButton->setTitleText(action->UnitState);
         this->adjustUIForState(action->UnitState);
     }
-    if (action->ShowHPChanged) {
-        _changeShowHPCheckBox->setSelected(true);
-        _showHPCheckBox->setSelected(action->ShowHP);
-    }
+    _showHPCheckBox->setSelected(action->ShowHP);
     if (action->TypeChanged) {
         _changeTypeCheckBox->setSelected(true);
         _typeButton->setTitleText(action->UnitType);
@@ -393,6 +393,14 @@ void BEUIUnitAction::renderAction(EditorUnitActionPtr action) {
         _tf_buff_name->setString( action->BuffName );
         _tf_buff_type->setString( action->BuffType );
         _tf_buff_params->setString( action->BuffParams );
+    }
+    if( _action->SkillOneLevel != 0 ) {
+        _cb_skill_1->setSelected( true );
+        _tf_skill_1_level->setString( Utils::stringFormat( "%d", _action->SkillOneLevel ) );
+    }
+    if( _action->SkillTwoLevel != 0 ) {
+        _cb_skill_2->setSelected( true );
+        _tf_skill_2_level->setString( Utils::stringFormat( "%d", _action->SkillTwoLevel ) );
     }
     _bossCheckBox->setSelected(action->IsBoss);
     _customTextField->setString(action->CustomChange);
@@ -415,11 +423,16 @@ void BEUIUnitAction::onAddButtonClicked(Ref *sender) {
     _action->PositionTag = _positionTag;
     _action->StateChanged = _changeStateCheckBox->isSelected();
     _action->TypeChanged = _changeTypeCheckBox->isSelected();
-    _action->ShowHPChanged = _changeShowHPCheckBox->isSelected();
+    _action->ShowHP = _showHPCheckBox->isSelected();
     _action->TagChanged = _tagCheckBox->isSelected();
     _action->BuffChanged = _buffCheckBox->isSelected();
     _action->PopupType = _popupListView->getCurrentType();
+    //skill
+    _action->SkillOneLevel = _cb_skill_1->isSelected() ? Utils::toInt( _tf_skill_1_level->getString() ) : 0;
+    _action->SkillTwoLevel = _cb_skill_2->isSelected() ? Utils::toInt( _tf_skill_2_level->getString() ) : 0;
+    
     int idx = _groupListView->getCurrentIndexForFullItems();
+    
     if (_editMode) {
         auto action = _editableActions[idx];
         _action->SourceType = action->SourceType;
@@ -543,14 +556,6 @@ void BEUIUnitAction::onPopupItemClicked(Ref *sender) {
 
 void BEUIUnitAction::onPopupButtonClicked(Ref *sender) {
     _popupListView->setVisible(true);
-}
-
-void BEUIUnitAction::onToggleShowHP(Ref *sender, ui::CheckBox::EventType et) {
-    if (et == ui::CheckBox::EventType::SELECTED) {
-        _action->ShowHP = true;
-    } else {
-        _action->ShowHP = false;
-    }
 }
 
 void BEUIUnitAction::togglePositionUI(bool visible) {

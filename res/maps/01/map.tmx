@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="125" height="37" tilewidth="32" tileheight="32" nextobjectid="142">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="125" height="37" tilewidth="32" tileheight="32" nextobjectid="144">
  <tileset firstgid="1" name="vision" tilewidth="500" tileheight="485">
   <tile id="0">
    <image width="67" height="75" source="dijinghuojian_01 (8).png"/>
@@ -67,13 +67,16 @@
   <tile id="21">
    <image width="440" height="433" source="langtuteng_01.png"/>
   </tile>
+  <tile id="22">
+   <image width="166" height="308" source="shaota_01.png"/>
+  </tile>
  </tileset>
- <tileset firstgid="23" name="terrain" tilewidth="32" tileheight="32">
+ <tileset firstgid="24" name="terrain" tilewidth="32" tileheight="32">
   <image source="base_terrain.png" width="256" height="256"/>
  </tileset>
  <layer name="terrain" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1bERwkAQBMHP4gWOBA4gB6T8g2OjoK64NsboCGaOMZZ0Sdc0+e+9pi3d0p1b+JGe6ZV2buF3+qQjndzCFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cv/UXlHiNeA==
+   eJzt1bERwkAQBMEP4wWOBA4gB6T8c2OjoK64NsboCGaOMZZ0Sdc0+e+9pi3d0p1b+JGe6ZV2buF3+qQjndzCFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cv/UXqR+fiQ==
   </data>
  </layer>
  <objectgroup name="onground">
@@ -131,7 +134,6 @@
   <object id="50" gid="11" x="940.394" y="1026.76"/>
   <object id="51" gid="14" x="1053" y="1231"/>
   <object id="52" gid="12" x="1273.97" y="1073.06"/>
-  <object id="53" gid="13" x="1425" y="1167"/>
   <object id="54" gid="12" x="1751.67" y="71"/>
   <object id="55" gid="14" x="-151" y="1211"/>
   <object id="56" gid="2147483653" x="1633" y="652"/>
@@ -149,9 +151,7 @@
   <object id="70" gid="4" x="3956" y="246"/>
   <object id="71" gid="2147483650" x="3786.33" y="317.667"/>
   <object id="72" gid="2" x="3755.67" y="337.667"/>
-  <object id="73" gid="1" x="3357" y="1002"/>
   <object id="77" gid="2147483653" x="3453" y="1081"/>
-  <object id="88" gid="2147483650" x="3403" y="1017"/>
   <object id="92" gid="2147483665" x="1165" y="319"/>
   <object id="93" gid="18" x="2729" y="1011"/>
   <object id="94" gid="18" x="3389" y="547"/>
@@ -159,25 +159,6 @@
   <object id="96" gid="2147483663" x="1479" y="613"/>
   <object id="97" gid="15" x="2433" y="177"/>
   <object id="98" gid="20" x="1261" y="193"/>
-  <object id="119" gid="16" x="3435" y="663"/>
-  <object id="120" gid="16" x="3476" y="618"/>
-  <object id="121" gid="16" x="3523" y="567"/>
-  <object id="122" gid="16" x="3513" y="514"/>
-  <object id="123" gid="16" x="3472" y="462"/>
-  <object id="124" gid="16" x="3424" y="462"/>
-  <object id="125" gid="16" x="3384" y="466"/>
-  <object id="126" gid="16" x="3356" y="489"/>
-  <object id="127" gid="16" x="3310" y="509"/>
-  <object id="128" gid="16" x="3287" y="522"/>
-  <object id="129" gid="16" x="3301" y="566"/>
-  <object id="130" gid="16" x="3330" y="603"/>
-  <object id="132" gid="16" x="3367" y="639"/>
-  <object id="133" gid="16" x="3400" y="647"/>
-  <object id="134" gid="16" x="3504" y="599"/>
-  <object id="135" gid="16" x="3495" y="488"/>
-  <object id="137" name="arrow_tower" type="TowerNode" x="1183" y="521" width="80" height="80">
-   <ellipse/>
-  </object>
   <object id="139" name="RedStone1" type="BuffBuildingNode" gid="22" x="1572" y="1044">
    <properties>
     <property name="buff_duration" value="-1"/>
@@ -191,10 +172,18 @@
   <object id="140" name="RedStone1_collide" type="collide" x="1554" y="946">
    <polygon points="-25,8 181,-169 490,-82 409,106 188,66"/>
   </object>
+  <object id="142" name="t1" type="arrow_tower" gid="23" x="1295" y="639">
+   <properties>
+    <property name="level" value="1"/>
+   </properties>
+  </object>
+  <object id="143" name="t1_collide" type="collide" x="1283" y="571">
+   <polygon points="0,22 96,74 194,25 96,-33"/>
+  </object>
  </objectgroup>
  <objectgroup name="physics">
   <object id="99" name="c1" type="collide" x="0" y="403">
-   <polygon points="0,0 72,16 117.333,144 194.667,172 221.333,154.667 221.333,116 253.333,4 321.333,-20 389.333,-22.6667 461.333,25.3333 504,38.6667 542.667,18.6667 544,4 513.333,-45.3333 686.667,-121.333 668,-145.333 581.333,-198.667 677.333,-252 761.333,-225.333 796,-229.333 873.333,-204 930.667,-213.333 1028,-196 1090.67,-190.667 1133.33,-206.667 1205.33,-197.333 1286.67,-216 1318.67,-234.667 1322.67,-266.667 1472,-212 1546.67,-245.333 1586.67,-238.667 1676,-297.333 1732,-289.333 1837.33,-318.667 1866.67,-360 1846.67,-381.333 1813.33,-452 0,-450.667"/>
+   <polygon points="0,0 72,16 117.333,144 194.667,172 221.333,154.667 221.333,116 253.333,4 321.333,-20 389.333,-22.6667 461.333,25.3333 504,38.6667 542.667,18.6667 529.993,-34.2263 690.369,-125.035 596.142,-194.965 677.333,-252 761.333,-225.333 796,-229.333 878.886,-311.368 1065.8,-313.296 1102.05,-242.279 1179.61,-295.523 1210.77,-356.689 1314.97,-358.695 1322.67,-266.667 1472,-212 1546.67,-245.333 1586.67,-238.667 1676,-297.333 1732,-289.333 1837.33,-318.667 1866.67,-360 1846.67,-381.333 1757.17,-395.843 -4.01123,-394.51"/>
   </object>
   <object id="100" name="c2" type="collide" x="1174" y="291">
    <polygon points="0,0 42,16 100,-16 36,-38"/>
@@ -211,26 +200,20 @@
   <object id="104" name="c6" type="collide" x="2120" y="249">
    <polygon points="0,0 32,12 42,-12 16,-18"/>
   </object>
-  <object id="105" name="c7" type="collide" x="1630" y="639">
-   <polygon points="0,0 146,20 226,-14 108,-68"/>
-  </object>
   <object id="106" name="c8" type="collide" x="2" y="971">
-   <polygon points="0,0 90,28 118,16 154,20 218,22 254,36 410,88 442,84 466,104 466,114 436,150 378,212 -4,210"/>
+   <polygon points="0,0 90,28 257.483,-0.23586 257.416,67.8989 95.0453,89.8315 61.1127,220.022 -4,210"/>
   </object>
   <object id="107" name="c9" type="collide" x="794" y="1145">
-   <polygon points="12,34 -24,-16 34,-56 78,-76 104,-78 158,-148 186,-180 224,-176 244,-150 352,-158 396,-192 524,-116 588,-104 531,36"/>
-  </object>
-  <object id="112" name="c14" type="collide" x="3130" y="1013">
-   <polygon points="0,0 -4,-24 250,-68 344,-32 346,4 196,110 124,96 6,50"/>
+   <polygon points="12,34 -24,-16 11.193,-54.2456 62.2105,-56.7018 133.825,-72.7368 158,-148 180.737,-195.789 231.018,-191.789 263.298,-137.719 348.491,-136.947 436.351,-44.6316 548.561,-140.561 598.526,-93.4737 531,36"/>
   </object>
   <object id="114" name="c16" type="collide" x="3394" y="55">
-   <polygon points="0,0 120,36 208,100 260,172 274,234 322,260 338,328 414,350 552,338 604,222 602,-106 102,-104"/>
+   <polygon points="228.64,4.01123 120,36 208,100 260,172 274,234 322,260 394.157,223.708 454.112,213.618 560.022,221.674 604,222 597.989,-57.8652 294.539,-55.8652"/>
   </object>
   <object id="115" name="c17" type="collide" x="2942" y="-47">
-   <polygon points="0,0 -38,58 -60,114 -62,170 -70,220 -82,262 -108,312 -140,354 -162,386 -196,414 -240,438 -178,454 -124,480 -82,510 -54,552 -34,578 0,548 36,484 68,430 104,356 124,304 134,246 134,170 148,130 172,96 228,64 274,30 300,-4 190,-6"/>
+   <polygon points="-24.0674,56.1572 -60,114 -70,220 -108,312 -140,354 -196,414 -240,438 -178,454 -124,480 -82,510 -54,552 -34,578 0,548 36,484 68,430 104,356 134,246 134,170 295.989,60.1797"/>
   </object>
   <object id="116" name="c18" type="collide" x="2526" y="513">
-   <polygon points="15,-5 27,-28 74,-26 112,-10 146,12 180,32 210,58 220,84 238,110 230,130 212,148 180,174 122,222 94,242 64,260 22,286 -28,322 -62,338 -98,364 -128,386 -152,420 -168,460 -182,516 -182,548 -176,604 -182,664 -473,666 -462,564 -440,492 -418,426 -386,372 -350,314 -304,250 -208,170 -114,102 -74,70 -22,32 -2,8"/>
+   <polygon points="27,-28 74,-26 112,-10 180,32 210,58 238,110 180,174 122,222 64,260 22,286 -28,322 -98,364 -128,386 -168,460 -182,548 -176,604 -182,664 -473,666 -462,564 -440,492 -418,426 -386,372 -350,314 -304,250 -208,170 -114,102 -74,70 -22,32"/>
   </object>
  </objectgroup>
 </map>

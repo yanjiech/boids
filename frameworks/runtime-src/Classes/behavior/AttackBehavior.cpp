@@ -85,13 +85,14 @@ bool AttackBehavior::behave( float delta ) {
         }
     }
     
+    unit_node->setChasingTarget( chasing_target );
+    
     if( chasing_target != nullptr ) {
         if( unit_node->canAttack( chasing_target ) ) {
             unit_node->attack( chasing_target );
             return true;
         }
         else {
-            unit_node->setChasingTarget( chasing_target );
             return false;
         }
     }

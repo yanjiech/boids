@@ -36,7 +36,16 @@ Skill* Skill::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
 
 bool Skill::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     _owner = owner;
-    this->setSkillName( data.at( "name" ).asString() );
+    auto itr = data.find( "name" );
+    if( itr != data.end() ) {
+        this->setSkillName( itr->second.asString() );
+    }
+    else {
+        itr = data.find( "skill_id" );
+        int skill_id = itr->second.asInt();
+        this->setSkillName( _owner->getUnitData()->skill_names.at( skill_id ) );
+    }
+    
     this->setSkillLevel( data.at( "level" ).asInt() );
     this->setSkillState( eSkillState::SkillStateLoading );
     _elapse = 0;

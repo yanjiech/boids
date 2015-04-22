@@ -8,7 +8,6 @@
 
 #include "PlayerSkillBehavior.h"
 #include "../scene/BattleLayer.h"
-#include "../Utils.h"
 
 using namespace cocos2d;
 

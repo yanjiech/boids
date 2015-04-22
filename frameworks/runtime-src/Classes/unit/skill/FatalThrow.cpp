@@ -9,6 +9,7 @@
 #include "FatalThrow.h"
 #include "../../scene/BattleLayer.h"
 #include "../../manager/ResourceManager.h"
+#include "../../behavior/BehaviorHeader.h"
 
 using namespace cocos2d;
 
@@ -110,6 +111,11 @@ void FatalThrow::begin() {
     
     UnitNode* flamingo = UnitNode::create( battle_layer, unit_data );
     flamingo->setGuardTarget( _owner );
+    flamingo->setGuardRange( _range );
+    flamingo->addBehavior( BEHAVIOR_NAME_ATTACK, GuardAttackBehavior::create( flamingo ) );
+    flamingo->addBehavior( BEHAVIOR_NAME_MOVE, GuardMoveBehavior::create( flamingo ) );
+    flamingo->addBehavior( BEHAVIOR_NAME_IDLE, IdleBehavior::create( flamingo ) );
+    
     if( _owner->getTargetCamp() == eTargetCamp::Player ) {
         flamingo->setTargetCamp( eTargetCamp::Ally );
     }

@@ -52,6 +52,10 @@
 		76021A981ADCBC7A00B639BA /* TowerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A951ADCBC7A00B639BA /* TowerNode.cpp */; };
 		76021A9B1ADCBDE100B639BA /* ElementData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A991ADCBDE100B639BA /* ElementData.cpp */; };
 		76021A9C1ADCBDE100B639BA /* ElementData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A991ADCBDE100B639BA /* ElementData.cpp */; };
+		760626291AE78CF600833342 /* GuardMoveBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 760626271AE78CF600833342 /* GuardMoveBehavior.cpp */; };
+		7606262A1AE78CF600833342 /* GuardMoveBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 760626271AE78CF600833342 /* GuardMoveBehavior.cpp */; };
+		7606262D1AE78D1E00833342 /* GuardAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7606262B1AE78D1D00833342 /* GuardAttackBehavior.cpp */; };
+		7606262E1AE78D1E00833342 /* GuardAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7606262B1AE78D1D00833342 /* GuardAttackBehavior.cpp */; };
 		7631FA361AC2A92B00CAB9C8 /* LightShield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */; };
 		7631FA371AC2A92B00CAB9C8 /* LightShield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */; };
 		7631FA3A1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */; };
@@ -502,6 +506,10 @@
 		76021A961ADCBC7A00B639BA /* TowerNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerNode.h; sourceTree = "<group>"; };
 		76021A991ADCBDE100B639BA /* ElementData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementData.cpp; sourceTree = "<group>"; };
 		76021A9A1ADCBDE100B639BA /* ElementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementData.h; sourceTree = "<group>"; };
+		760626271AE78CF600833342 /* GuardMoveBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GuardMoveBehavior.cpp; sourceTree = "<group>"; };
+		760626281AE78CF600833342 /* GuardMoveBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardMoveBehavior.h; sourceTree = "<group>"; };
+		7606262B1AE78D1D00833342 /* GuardAttackBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GuardAttackBehavior.cpp; sourceTree = "<group>"; };
+		7606262C1AE78D1D00833342 /* GuardAttackBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardAttackBehavior.h; sourceTree = "<group>"; };
 		76148F211AC54D9300235C7B /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../lib/lib/libboost_system.a; sourceTree = "<group>"; };
 		7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightShield.cpp; sourceTree = "<group>"; };
 		7631FA351AC2A92B00CAB9C8 /* LightShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightShield.h; sourceTree = "<group>"; };
@@ -1170,6 +1178,10 @@
 				987185981AB0506000533C3E /* BehaviorHeader.h */,
 				7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */,
 				7694AB7B1ADD1C11006CA4A9 /* TowerAttackBehavior.h */,
+				760626271AE78CF600833342 /* GuardMoveBehavior.cpp */,
+				760626281AE78CF600833342 /* GuardMoveBehavior.h */,
+				7606262B1AE78D1D00833342 /* GuardAttackBehavior.cpp */,
+				7606262C1AE78D1D00833342 /* GuardAttackBehavior.h */,
 			);
 			name = behavior;
 			path = ../Classes/behavior;
@@ -1860,6 +1872,7 @@
 				989143721A81D15E007A5D45 /* ReplayComparer.cpp in Sources */,
 				98E3B6501A73A77A00B5BEBB /* dynamic_message.cc in Sources */,
 				E87739461A11D6D4007A8EC3 /* BEUI.cpp in Sources */,
+				7606262A1AE78CF600833342 /* GuardMoveBehavior.cpp in Sources */,
 				986A55681AA5640D0051B0B9 /* CommonUtils.cpp in Sources */,
 				E898E7531A529393001189FF /* MapDebugger.cpp in Sources */,
 				98E3B6621A73A77A00B5BEBB /* tokenizer.cc in Sources */,
@@ -1876,6 +1889,7 @@
 				E87413071A0B5629003EBD0B /* TmxPolygon.cpp in Sources */,
 				E84FA27F1A28A079008A3891 /* GrassMonitor.cpp in Sources */,
 				E87413551A0BD01D003EBD0B /* EditorHelper.cpp in Sources */,
+				7606262E1AE78D1E00833342 /* GuardAttackBehavior.cpp in Sources */,
 				E822BAD51A14C8CC00C4C05E /* EditorPositionNode.cpp in Sources */,
 				E87413721A0DFA3C003EBD0B /* BEUIBase.cpp in Sources */,
 				E893DB501A1B74BA00B74590 /* MapData.cpp in Sources */,
@@ -2098,6 +2112,7 @@
 				5023812417EBBCAC00990C9B /* main.m in Sources */,
 				986A55821AA57D850051B0B9 /* AttackBehavior.cpp in Sources */,
 				988B52A81AA42C7A00FB7B21 /* UnitNode.cpp in Sources */,
+				760626291AE78CF600833342 /* GuardMoveBehavior.cpp in Sources */,
 				989143711A81D15E007A5D45 /* ReplayComparer.cpp in Sources */,
 				9871DBF61ABADF7F009B8EC9 /* LightningChain.cpp in Sources */,
 				76EFF5C11AD396C300690CFE /* FatalThrow.cpp in Sources */,
@@ -2175,6 +2190,7 @@
 				76EC48FE1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */,
 				98E3B6811A73A77A00B5BEBB /* substitute.cc in Sources */,
 				98E3B6571A73A77A00B5BEBB /* generated_message_util.cc in Sources */,
+				7606262D1AE78D1E00833342 /* GuardAttackBehavior.cpp in Sources */,
 				9859D1D21A7B4C0300FF6D82 /* Battle.pb.cc in Sources */,
 				76EFF5BD1AD37E5800690CFE /* AtomFart.cpp in Sources */,
 				76021A9B1ADCBDE100B639BA /* ElementData.cpp in Sources */,

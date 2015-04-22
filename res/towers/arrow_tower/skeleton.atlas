@@ -1,19 +1,26 @@
 
 skeleton.png
-size: 512,512
+size: 1024,512
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 posunshaota_01
   rotate: false
-  xy: 2, 2
+  xy: 2, 170
+  size: 290, 336
+  orig: 290, 336
+  offset: 0, 0
+  index: -1
+posunshaota_02
+  rotate: false
+  xy: 294, 170
   size: 290, 336
   orig: 290, 336
   offset: 0, 0
   index: -1
 shaota_01
-  rotate: false
-  xy: 294, 30
+  rotate: true
+  xy: 2, 2
   size: 166, 308
   orig: 166, 308
   offset: 0, 0
