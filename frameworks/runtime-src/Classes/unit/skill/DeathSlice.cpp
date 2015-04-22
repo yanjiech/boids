@@ -8,7 +8,7 @@
 
 #include "DeathSlice.h"
 #include "../../scene/BattleLayer.h"
-#include "ResourceManager.h"
+#include "../../manager/ResourceManager.h"
 
 using namespace cocos2d;
 

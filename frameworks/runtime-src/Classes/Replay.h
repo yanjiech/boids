@@ -7,8 +7,6 @@
 #include "cocos2d.h"
 #include <cstdint>
 
-//现在录像假设是固定帧率
-
 class SnapshotUnit : public cocos2d::Point
 {
 public:
@@ -37,15 +35,13 @@ class ReplayData
 public:
 	unsigned _frameRate, _snapshotInterval, _finishFrame;
 	std::string _terrainHashHex;
-	std::vector<tJoystick> joysticks; //因为数据来自lua，为避免和第一遍玩的时候不一致所以就直接存double
+	std::vector<tJoystick> joysticks; 
 	std::vector<tSkill> skills;
 	std::vector<Snapshot*> snapshots;
 
 	void resetData();
 };
 
-//存这些key的目的：以后录像格式有微调时，只要这些key不变，那么以前的录像说不定还能放。
-//当然放出来行为估计不一样，因为逻辑代码一直在改。但有时候也许不一定为了行为一样，可能只是为了测试，那么老录像只要还能起到测试作用，行为稍有变化也不需要重录
 #define _REPLAY_FRAME_RATE (1)
 #define _REPLAY_TERRAIN_HASH_HEX (2)
 #define _REPLAY_SNAPSHOT_INTERVAL (3)

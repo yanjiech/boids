@@ -423,6 +423,36 @@
     <ClInclude Include="..\Classes\CmdLineDebuggerLua.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\constant\DebugMacros.h" />
+    <ClInclude Include="..\Classes\unit\BlockNode.h" />
+    <ClInclude Include="..\Classes\unit\skill\AtomFart.h" />
+    <ClInclude Include="..\Classes\unit\skill\BonesRain.h" />
+    <ClInclude Include="..\Classes\unit\skill\DeathSlice.h" />
+    <ClInclude Include="..\Classes\unit\skill\FatalThrow.h" />
+    <ClInclude Include="..\Classes\unit\skill\FireWhirl.h" />
+    <ClInclude Include="..\Classes\unit\skill\Impetus.h" />
+    <ClInclude Include="..\Classes\unit\skill\MagicPulse.h" />
+    <ClInclude Include="..\Classes\unit\skill\MissileShowers.h" />
+    <ClInclude Include="..\Classes\unit\skill\NaturesAttendants.h" />
+    <ClInclude Include="..\Classes\unit\skill\SkillCache.h" />
+    <ClInclude Include="..\Classes\behavior\TowerAttackBehavior.h">
+      <Filter>Classes\behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\unit\ElementData.h">
+      <Filter>Classes\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\unit\TowerNode.h">
+      <Filter>Classes\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\unit\skill\HuntingIntuition.h">
+      <Filter>Classes\unit\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\unit\skill\PenetrateSpear.h">
+      <Filter>Classes\unit\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\UIStoryLayer.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -760,6 +790,36 @@
     </ClCompile>
     <ClCompile Include="..\Classes\CmdLineDebugger.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\constant\DebugMacros.cpp" />
+    <ClCompile Include="..\Classes\unit\BlockNode.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\AtomFart.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\BonesRain.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\DeathSlice.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\FatalThrow.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\FireWhirl.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\Impetus.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\MagicPulse.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\MissileShowers.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\NaturesAttendants.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\SkillCache.cpp" />
+    <ClCompile Include="..\Classes\behavior\TowerAttackBehavior.cpp">
+      <Filter>Classes\behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\unit\TowerNode.cpp">
+      <Filter>Classes\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\unit\ElementData.cpp">
+      <Filter>Classes\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\unit\skill\PenetrateSpear.cpp">
+      <Filter>Classes\unit\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\unit\skill\HuntingIntuition.cpp">
+      <Filter>Classes\unit\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\UIStoryLayer.cpp">
+      <Filter>Classes\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

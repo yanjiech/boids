@@ -19,10 +19,10 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
 #ifdef USE_WIN32_CONSOLE
-    AllocConsole();
-    freopen("CONIN$", "r", stdin);
-	freopen("debug.log", "w", stdout);
-	freopen("err.log", "w", stderr);
+    //AllocConsole();
+    //freopen("CONIN$", "r", stdin);
+	//freopen("debug.log", "w", stdout);
+	//freopen("err.log", "w", stderr);
     //freopen("CONOUT$", "w", stdout);
 	//freopen("CONOUT$", "w", stderr);
 
@@ -34,24 +34,24 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     // create the application instance
     AppDelegate app;
 
-	if (std::string(lpCmdLine, 2) == "-t")
+	/*if (std::string(lpCmdLine, 2) == "-t")
 	{
 		char r1[100], r2[100];
 		sscanf(lpCmdLine + 2, " %s%s", r1, r2);
 		ReplayComparer rc;
 		rc.compare(r1, r2);
-	}
+	}*/
 
     int ret = Application::getInstance()->run();
 
 #ifdef USE_WIN32_CONSOLE
-	CmdLineDebugger::getInstance()->stopListen();
+	/*CmdLineDebugger::getInstance()->stopListen();
 
     if (!ret)
     {
         system("pause");
     }
-    FreeConsole();
+    FreeConsole();*/
 #endif
 
     return ret;
