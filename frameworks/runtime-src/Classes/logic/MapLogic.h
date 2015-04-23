@@ -10,14 +10,10 @@
 #define __Boids__MapLogic__
 
 #include "cocos2d.h"
-#include "../interface/Updatable.h"
 #include "EventTrigger.h"
 #include "EventAction.h"
 #include "GameTask.h"
-#include <map>
 
-class UnitNode;
-class TargetNode;
 class BattleLayer;
 
 #define GAME_STATE_UNSTART "game_unstart"
@@ -25,7 +21,7 @@ class BattleLayer;
 #define GAME_STATE_LOSE "game_lose"
 #define GAME_STATE_WIN "game_win"
 
-class MapLogic : public cocos2d::Ref, public boids::Updatable {
+class MapLogic : public cocos2d::Ref {
 private:
     BattleLayer* _battle_layer;
     

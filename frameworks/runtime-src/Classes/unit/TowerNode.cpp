@@ -39,11 +39,9 @@ TowerNode* TowerNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap
 }
 
 bool TowerNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& tower_data ) {
-    if( !TargetNode::init() ) {
+    if( !TargetNode::init( battle_layer ) ) {
         return false;
     }
-    
-    _battle_layer = battle_layer;
     
     std::string name = tower_data.at( "name" ).asString();
     std::string type = tower_data.at( "type" ).asString();
@@ -80,6 +78,8 @@ bool TowerNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& tower_
     
     this->setTargetCamp( eTargetCamp::Enemy );
     
+    this->setCollidable( true );
+    
     return true;
 }
 
@@ -111,27 +111,17 @@ cocos2d::Point TowerNode::getLocalBonePos( const std::string& bone_name ) {
     return ArmatureManager::getInstance()->getBonePosition( _skeleton, bone_name );
 }
 
-bool TowerNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir ) {
-    Vec2 unit_to_this = this->getPosition() - unit->getPosition();
-    float unit_dir_to_center = old_dir.cross( unit_to_this );
-
-    if( unit_dir_to_center > 0 ) {
-        new_dir = Geometry::clockwisePerpendicularVecToLine( unit_to_this );
-    }
-    else {
-        new_dir = Geometry::anticlockwisePerpendicularVecToLine( unit_to_this );
-    }
-    
-    new_dir.normalize();
-    
-    return true;
-}
-
 void TowerNode::changeTowerState( eTowerState new_state ) {
     if( _state != new_state ) {
         this->setTowerState( new_state );
         
         switch( _state ) {
+            case eTowerState::TowerStateAttack:
+                _skeleton->setAnimation( 0, "Attack", false );
+                break;
+            case eTowerState::TowerStateIdle:
+                _skeleton->setAnimation( 0, "Idle", true );
+                break;
             case eTowerState::TowerStateDie:
                 _skeleton->setAnimation( 0, "Die", false );
                 break;
@@ -189,14 +179,14 @@ bool TowerNode::isDying() {
 
 void TowerNode::setCollidable( bool b ) {
     _is_collidable = b;
-    if( _is_collidable ) {
+    if( !_is_collidable ) {
         for( auto pair : Terrain::getInstance()->getMeshes() ) {
-            pair.second->addCollidablePolygon( _boundaries );
+            pair.second->removeCollidablePolygon( _boundaries.name );
         }
     }
     else {
         for( auto pair : Terrain::getInstance()->getMeshes() ) {
-            pair.second->removeCollidablePolygon( _boundaries.name );
+            pair.second->addCollidablePolygon( _boundaries );
         }
     }
 }
@@ -210,4 +200,79 @@ void TowerNode::reloadBullet( float delta ) {
             _elapse = 0;
         }
     }
+}
+
+//thorn node
+ThornNode::ThornNode() {
+    
+}
+
+ThornNode::~ThornNode() {
+    
+}
+
+ThornNode* ThornNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& thorn_data ) {
+    ThornNode* ret = new ThornNode();
+    if( ret && ret->init( battle_layer, thorn_data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool ThornNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& thorn_data ) {
+    if( !TowerNode::init( battle_layer, thorn_data ) ) {
+        return false;
+    }
+    
+    this->setAttackable( false );
+    this->setCollidable( false );
+    
+    _skeleton->setEventListener( CC_CALLBACK_2( ThornNode::onSkeletonAnimationEvent, this ) );
+    this->changeTowerState( eTowerState::TowerStateAttack );
+    
+    _boundaries.drawSketchOn( _battle_layer->getDrawNode() );
+    
+    return true;
+}
+
+void ThornNode::updateFrame( float delta ) {
+    if( _state == eTowerState::TowerStateIdle ) {
+        this->reloadBullet( delta );
+        if( isBulletLoaded() ) {
+            this->changeTowerState( eTowerState::TowerStateAttack );
+        }
+    }
+}
+
+void ThornNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
+    spTrackEntry* entry = _skeleton->getCurrent();
+    std::string animation_name = std::string( entry->animation->name );
+    std::string event_name = std::string( event->data->name );
+    if( ( animation_name == "Attack" || animation_name == "OnAttacking" ) ) {
+        this->doAttack();
+    }
+}
+
+void ThornNode::doAttack() {
+    Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( this->getTargetCamp(), this->getPosition(), this->getTargetData()->atk_range );
+    DamageCalculate* calculator = DamageCalculate::create( "normal", 0 );
+    for( auto unit : candidates ) {
+        ValueMap result = calculator->calculateDamage( this->getTargetData(), unit->getTargetData() );
+        unit->takeDamage( result, this );
+        
+        std::string resource = "effects/bullets/blood_hit";
+        std::string name = Utils::stringFormat( "ThornHit_%d", BulletNode::getNextBulletId() );
+        spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+        UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( skeleton, name, true );
+        component->setPosition( unit->getLocalHitPos() );
+        unit->addUnitComponent( component, name, eComponentLayer::OverObject );
+        component->setAnimation( 0, "animation", false );
+    }
+    
+    this->setTowerState( eTowerState::TowerStateIdle );
+    _is_bullet_loaded = false;
 }

@@ -131,6 +131,15 @@
         "interval" : [ 3.0, 3.0 ],
         "damage" : [ 50.0, 100.0, 200.0]
     },
+    "GasBomb" :
+    {
+        "multi_action" : true,
+        "hint" : "circle",
+        "cd" : 5.0,
+        "range" : 700.0,
+        "interval" : 2.0,
+        "damage" : [ 50.0, 100.0, 200.0 ]
+    },
     "GiantSword" :
     {
         "multi_action" : false,

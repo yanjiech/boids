@@ -11,7 +11,6 @@
 
 #include "TargetNode.h"
 #include "../AI/BoidsPolygon.h"
-#include "spine/spine-cocos2dx.h"
 
 class BlockNode : public TargetNode {
 protected:

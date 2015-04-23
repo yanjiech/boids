@@ -52,7 +52,8 @@ void EditMode::backMain() {
 
 void EditMode::enterEdit(const std::string& mapFolder) {
     loadUnits();
-    _mapData = std::shared_ptr<MapData>(new MapData(mapFolder));
+    _mapData = std::shared_ptr<MapData>(new MapData());
+    _mapData->init( mapFolder );
 //    _mapData->loadImagesToCache();
     _map = _mapData->generateTiledMapWithFlags(7);
     loadVisionObjects();
@@ -93,7 +94,6 @@ void EditMode::enterEdit(const std::string& mapFolder) {
 
 void EditMode::leaveEdit() {
     _mapData->dumpMetaData(_data.getString());
-    _mapData->removeImagesFromCache();
     _mapData = nullptr;
     _editUI = nullptr;
     backMain();

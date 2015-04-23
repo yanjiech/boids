@@ -10,11 +10,10 @@
 #define __Boids__UIBattleFloatLayer__
 
 #include "cocos2d.h"
-#include "../interface/Updatable.h"
 
 class BattleLayer;
 
-class UIBattleFloatLayer : public cocos2d::Layer, public boids::Updatable {
+class UIBattleFloatLayer : public cocos2d::Layer {
 private:
     BattleLayer* _battle_layer;
     

@@ -32,67 +32,6 @@
 
 using namespace cocos2d;
 
-UnitData::UnitData() {
-    
-}
-
-UnitData::~UnitData() {
-}
-
-UnitData* UnitData::create( const cocos2d::ValueMap& data ) {
-    UnitData* ret = new UnitData();
-    if( ret && ret->init( data ) ) {
-        ret->autorelease();
-        return ret;
-    }
-    else {
-        CC_SAFE_DELETE( ret );
-        return nullptr;
-    }
-}
-
-bool UnitData::init( const cocos2d::ValueMap& data ) {
-    std::string name = data.at( "name" ).asString();
-    int level = data.at( "level" ).asInt();
-    
-    ValueMap unit_config = ResourceManager::getInstance()->getUnitData( name );
-    unit_config["name"] = Value( name );
-    unit_config["level"] = Value( level );
-    
-    if( !ElementData::init( unit_config ) ) {
-        return false;
-    }
-    
-    this->guard_radius = unit_config.at( "guard_radius" ).asFloat();
-    
-    this->recover = unit_config.at( "rec" ).asFloat() + this->level * unit_config.at( "recgr" ).asFloat();
-    this->scale = unit_config.at( "scale" ).asFloat();
-    
-    this->role = unit_config.at( "position" ).asString();
-                                
-    this->is_melee = unit_config.at( "is_melee" ).asBool();
-    this->is_double_face = unit_config.at( "double_face" ).asBool();
-    this->default_face_dir = unit_config.at( "faceleft" ).asInt();
-    
-    const ValueVector& skill_vector = unit_config.at( "skills" ).asValueVector();
-    for( auto itr = skill_vector.begin(); itr != skill_vector.end(); ++itr ) {
-        std::string skl_name = itr->asString();
-        skill_names.push_back( skl_name );
-    }
-    
-    return true;
-}
-
-void UnitData::setAttribute( const std::string& key, const std::string& value ) {
-    ElementData::setAttribute( key, value );
-    if( key == "guard_radius" ) {
-        this->guard_radius = (float)Utils::toDouble( value );
-    }
-    else if( key == "position" ) {
-        this->role = value;
-    }
-}
-
 UnitNode::UnitNode() :
 _state( eUnitState::Unknown_Unit_State ),
 _next_state( eUnitState::Unknown_Unit_State ),
@@ -147,15 +86,13 @@ UnitNode* UnitNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& 
 }
 
 bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_data ) {
-    if( !TargetNode::init() ) {
+    if( !TargetNode::init( battle_layer ) ) {
         return false;
     }
     ResourceManager* res_manager = ResourceManager::getInstance();
     
-    _battle_layer = battle_layer;
-    
     UnitData* target_data = UnitData::create( unit_data );
-    this->setTargetData( dynamic_cast<ElementData*>( target_data ) );
+    this->setTargetData( target_data );
     
     _direction = Point::ZERO;
     
@@ -190,8 +127,13 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     
     itr = unit_data.find( "skills" );
     if( itr != unit_data.end() ) {
+        int i = 0;
+        int count = (int)target_data->skill_names.size();
         const cocos2d::ValueVector& skill_vector = itr->second.asValueVector();
         for( auto sk_itr = skill_vector.begin(); sk_itr != skill_vector.end(); ++sk_itr ) {
+            if( i++ >= count ) {
+                break;
+            }
             const cocos2d::ValueMap& sk_data = sk_itr->asValueMap();
             Skill* skill = Skill::create( this, sk_data );
             _skills.pushBack( skill );

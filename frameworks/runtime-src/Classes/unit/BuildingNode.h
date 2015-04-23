@@ -20,7 +20,6 @@ private:
     BoidsPolygon _boundaries;
     
 protected:
-    bool _is_collidable;
     bool _is_enabled;
     
 public:
@@ -40,11 +39,14 @@ public:
     
     BoidsPolygon& getBoundaries() { return _boundaries; }
     
-    bool isCollidable() { return _is_collidable; }
-    void setCollidable( bool b );
+    virtual void setCollidable( bool b );
     
     bool isEnabled() { return _is_enabled; }
     void setEnabled( bool b ) { _is_enabled = b; }
+    
+    virtual bool willCollide( cocos2d::Point pos, float radius ) { return false; }
+    virtual bool willCollide( TargetNode* unit) { return false; }
+    virtual bool willCollide( TargetNode* unit, cocos2d::Point unit_new_pos ) { return false; }
 };
 
 class BuffBuildingNode : public BuildingNode {

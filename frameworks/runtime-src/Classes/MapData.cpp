@@ -20,28 +20,15 @@
 
 using namespace cocos2d;
 
-MapData::MapData(const std::string& path) {
-    _path = path;
-    auto json = Utils::stringFormat("%s/meta.json", path.c_str());
-    _metaData = FileUtils::getInstance()->getStringFromFile(json);
-    if (_metaData.length() == 0) {
-        _metaData = "{}";
-    }
-    auto mapfile = Utils::stringFormat("%s/map.tmx", path.c_str());
-    _mapData = FileUtils::getInstance()->getStringFromFile(mapfile);
-	if (_mapData.empty())
-	{
-		cocos2d::log("[FATAL] map file(%s) not found or read failed !!", mapfile.c_str());
-		return;
-	}
-    preprocessMapData();
+MapData::MapData() {
+    
 }
 
 MapData::~MapData() {
 }
 
 MapData* MapData::create( const std::string& path ) {
-    MapData* ret = new MapData( path );
+    MapData* ret = new MapData();
     if( ret && ret->init( path ) ) {
         ret->autorelease();
         return ret;
@@ -53,25 +40,25 @@ MapData* MapData::create( const std::string& path ) {
 }
 
 bool MapData::init( const std::string& path ) {
+    _path = path;
+    auto json = Utils::stringFormat("%s/meta.json", path.c_str());
+    _metaData = FileUtils::getInstance()->getStringFromFile(json);
+    if (_metaData.length() == 0) {
+        _metaData = "{}";
+    }
+    auto mapfile = Utils::stringFormat("%s/map.tmx", path.c_str());
+    _mapData = FileUtils::getInstance()->getStringFromFile(mapfile);
+    if (_mapData.empty())
+    {
+        cocos2d::log("[FATAL] map file(%s) not found or read failed !!", mapfile.c_str());
+        return false;
+    }
+    preprocessMapData();
     return true;
 }
 
 const std::string& MapData::getMetaData() {
     return _metaData;
-}
-
-void MapData::loadImagesToCache() {
-    if (_plistList.size() > 0) {
-        for (auto plist : _plistList) {
-            SpriteFrameCache::getInstance()->addSpriteFramesWithFile(plist);
-        }
-    }
-}
-
-void MapData::removeImagesFromCache() {
-    for (auto plist : _plistList) {
-        SpriteFrameCache::getInstance()->removeSpriteFramesFromFile(plist);
-    }
 }
 
 void MapData::dumpMetaData(const std::string& content) {
@@ -216,42 +203,5 @@ cocos2d::ValueMap MapData::getAreaMapByPosition( const cocos2d::Point& pos ) {
 void MapData::preprocessMapData() {
     rapidjson::Document meta_json;
     meta_json.Parse<0>(_metaData.c_str());
-    if (meta_json.HasMember("plist")) {
-        const rapidjson::Value& plist = meta_json["plist"];
-        for (int i = 0; i < plist.Size(); ++i) {
-            _plistList.push_back(plist[i].GetString());
-        }
-    } else {
-        auto mapName = Utils::lastComponentOfPath(_path);
-        auto plist = Utils::stringFormat("maps/%s/vision.plist", mapName.c_str());
-        if (FileUtils::getInstance()->isFileExist(plist)) {
-            _plistList.push_back(plist);
-        } else {
-            int i = 0;
-            while (true) {
-                auto plist = Utils::stringFormat("maps/%s/vision%d.plist", mapName.c_str(), i);
-                if (FileUtils::getInstance()->isFileExist(plist)) {
-                    _plistList.push_back(plist);
-                    ++i;
-                } else {
-                    break;
-                }
-            }
-        }
-        if (_plistList.size()) {
-            rapidjson::Value plistArray;
-            plistArray.SetArray();
-            for (std::string p : _plistList) {
-                rapidjson::Value pnode;
-                pnode.SetString(p.c_str(), meta_json.GetAllocator());
-                plistArray.PushBack(pnode, meta_json.GetAllocator());
-            }
-            meta_json.AddMember("plist", plistArray, meta_json.GetAllocator());
-            rapidjson::StringBuffer buffer;
-            rapidjson::PrettyWriter<rapidjson::GenericStringBuffer<rapidjson::UTF8<>>> writer(buffer);
-            meta_json.Accept(writer);
-            _metaData = buffer.GetString();
-        }
-    }
     _meta_json = CocosUtils::jsonObjectToValueMap( meta_json );
 }

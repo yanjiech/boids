@@ -32,11 +32,10 @@ BuildingNode* BuildingNode::create( BattleLayer* battle_layer, const cocos2d::Va
 }
 
 bool BuildingNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
-    if( !Node::init() ) {
+    if( !TargetNode::init( battle_layer ) ) {
         return false;
     }
     
-    _battle_layer = battle_layer;
     std::string source_name = grid_properties.at( "source" ).asString();
     _displayed_sprite = Sprite::createWithSpriteFrameName( source_name );
     _displayed_sprite->setPosition( Point( _displayed_sprite->getContentSize().width / 2, _displayed_sprite->getContentSize().height / 2 ) );

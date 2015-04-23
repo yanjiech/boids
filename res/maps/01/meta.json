@@ -164,7 +164,8 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
-                    "source_value": "bomb_goblin",
+                    "source_value": "goblin_helicopter",
+                    "skill_1_level": 2,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "show_hp": false,
@@ -748,35 +749,6 @@
                         }
                     ],
                     "name": "goblin_talk"
-                }
-            ]
-        },
-        {
-            "name": "tst",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "story_change",
-                    "story_name": "goblin_talk",
-                    "story_state": "story_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "bomb_goblin",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "01",
-                    "unit_count": 1,
-                    "unit_level": 1,
-                    "popup_type": "normal"
                 }
             ]
         },

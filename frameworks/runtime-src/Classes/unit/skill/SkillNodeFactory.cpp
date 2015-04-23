@@ -69,6 +69,9 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_HUNTING_INTUITION ) {
         ret = HuntingIntuition::create( owner, data );
     }
+    else if( name == SKILL_NAME_GAS_BOMB ) {
+        ret = GasBomb::create( owner, data );
+    }
     
     return ret;
 }

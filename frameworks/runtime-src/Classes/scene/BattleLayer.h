@@ -9,8 +9,6 @@
 #ifndef __Boids__BattleLayer__
 #define __Boids__BattleLayer__
 
-#include "../logic/MapLogic.h"
-#include "../MapData.h"
 #include "UIBattleLayer.h"
 #include "UIControlLayer.h"
 #include "UIBattleMenuLayer.h"
@@ -18,11 +16,12 @@
 #include "../unit/UnitNode.h"
 #include "../unit/BuildingNode.h"
 #include "../unit/BulletNode.h"
-#include <map>
 #include "../unit/skill/SkillNode.h"
 #include "../unit/BlockNode.h"
 #include "../unit/TowerNode.h"
 #include "UIStoryLayer.h"
+#include "../MapData.h"
+#include "../logic/MapLogic.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,
@@ -55,18 +54,16 @@ enum eCameraMode {
     CameraModeFixed = 3
 };
 
+typedef cocos2d::Map<std::string, UnitNode*> UnitMap;
+typedef cocos2d::Map<std::string, BulletNode*> BulletMap;
+typedef cocos2d::Map<int, TowerNode*> TowerMap;
+typedef cocos2d::Map<int, BlockNode*> BlockMap;
+typedef cocos2d::Map<int, BuildingNode*> BuildingMap;
 
-class BattleLayer : public cocos2d::Layer, public boids::Updatable {
-public:
-    typedef cocos2d::Map<std::string, UnitNode*> UnitMap;
-    typedef cocos2d::Map<std::string, BulletNode*> BulletMap;
-    typedef cocos2d::Map<int, TowerNode*> TowerMap;
-    typedef cocos2d::Map<int, BlockNode*> BlockMap;
-    typedef cocos2d::Map<int, BuildingNode*> BuildingMap;
-    
+class BattleLayer : public cocos2d::Layer {
 private:
-    MapLogic* _map_logic;
     MapData* _map_data;
+    MapLogic* _map_logic;
     
     cocos2d::Point _max_map_position;
     cocos2d::Point _min_map_position;
@@ -96,12 +93,14 @@ private:
     
     TowerMap _towers;
     BuildingMap _buildings;
-    
     BlockMap _block_nodes;
     
     int _next_deploy_id;
     
     float _game_time;
+    
+    //debug
+    cocos2d::DrawNode* _draw_node;
 private:
     void parseMapObjects();
     void parseMapElementWithData( const cocos2d::TMXObjectGroup* group, const cocos2d::Value& data, eBattleSubLayer layer );
@@ -114,6 +113,9 @@ private:
     void updateBuildings( float delta );
     
 public:
+    //debug
+    cocos2d::DrawNode* getDrawNode() { return _draw_node; }
+    
     static eBattleState getBattleStateFromString( const std::string& str );
     
     BattleLayer();
@@ -134,8 +136,8 @@ public:
     void restartBattle();
     void quitBattle();
     
-    void setMapLogic( MapLogic* map_logic );
     void setMapData( MapData* map_data );
+    void setMapLogic( MapLogic* map_logic );
     
     eBattleState getState() { return _state; }
     void setState( eBattleState new_state ) { _state = new_state; }
@@ -200,7 +202,7 @@ public:
     void deployUnit( UnitNode* unit, const cocos2d::Point& pos, const std::string& sight_group );
     void deployUnits( const cocos2d::Vector<UnitNode*>& units, const cocos2d::Rect& area, const std::string& sight_group );
     
-    void deployTower( TowerNode* tower, const cocos2d::Point& pos );
+    void deployTower( TowerNode* tower, const cocos2d::Point& pos, eBattleSubLayer layer );
     
     void deployBuilding( BuildingNode* building, const cocos2d::Point& pos, eBattleSubLayer layer );
     

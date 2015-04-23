@@ -81,7 +81,7 @@ bool ReplayComparer::compare(const char* replay1, const char* replay2)
 	ReplayToPlay r1(std::string(replay1) + ".rep", true);
 	ReplayToPlay r2(std::string(replay2) + ".rep", true);
 	cocos2d::log("comparing %s(%d) and %s(%d).", replay1, r1._finishFrame, replay2, r2._finishFrame);
-	Utils::replay_to_play = nullptr; //±ÿ–Î∞—’‚∏ˆ±‰¡ø∏≥ªÿ»•£¨∑Ò‘Ú÷Æ∫Ûlogrµƒ ±∫Úª·≥ˆ¥Ì
+	Utils::replay_to_play = nullptr;
 
 	bool ret = true;
 

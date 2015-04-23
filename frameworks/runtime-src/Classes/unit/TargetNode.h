@@ -13,10 +13,7 @@
 #include "ElementData.h"
 #include "UnitNodeComponent.h"
 #include "../behavior/BehaviorHeader.h"
-#include "../interface/Updatable.h"
 #include "../AI/Collidable.h"
-
-class BattleLayer;
 
 enum eTargetCamp {
     Unknown_Camp = 0,
@@ -27,30 +24,33 @@ enum eTargetCamp {
     NPC = 5
 };
 
-class TargetNode : public cocos2d::Node, public boids::Updatable, public Collidable {
-private:
-    bool _is_attackable;
-    
-    cocos2d::Map<std::string, UnitNodeComponent*> _components;
-    
-    cocos2d::Map<std::string, BehaviorBase*> _behaviors;
-    
+class BattleLayer;
+
+class TargetNode : public cocos2d::Node, public Collidable {
 protected:
     int _deploy_id;
-    ElementData* _target_data;
-    BattleLayer* _battle_layer;
-    eTargetCamp _camp;
     
-    cocos2d::ValueVector _unit_tags;
+    ElementData* _target_data;
+    eTargetCamp _camp;
+    bool _is_attackable;
+    cocos2d::ValueMap _unit_tags;
+    cocos2d::Map<std::string, BehaviorBase*> _behaviors;
+    cocos2d::Map<std::string, UnitNodeComponent*> _components;
+    
+    bool _is_collidable;
+    
+    BattleLayer* _battle_layer;
+
+    int _priority;
     
 protected:
-    virtual void updateComponents( float delta );
+    void updateComponents( float delta );
     
 public:
     TargetNode();
     virtual ~TargetNode();
     
-    virtual bool init();
+    virtual bool init( BattleLayer* battle_layer );
     
     virtual void updateFrame( float delta );
     
@@ -68,7 +68,6 @@ public:
     bool addUnitComponent( UnitNodeComponent* component, const std::string& key, eComponentLayer layer_type );
     void removeUnitComponent( const std::string& key );
     
-    void adjustAllUnitComponents();
     void removeAllUnitComponents();
     
     void addBehavior( const std::string& key, BehaviorBase* behavior );
@@ -95,15 +94,18 @@ public:
     virtual bool willCollide( TargetNode* unit);
     virtual bool willCollide( TargetNode* unit, cocos2d::Point unit_new_pos );
     virtual bool getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir ) { return false; }
-    virtual int getPriority() const { return 0; }
+    virtual int getPriority() const { return _priority; }
     
     bool isFoeOfCamp( eTargetCamp opponent_camp );
     
-    cocos2d::ValueVector getUnitTags() { return _unit_tags; }
+    const cocos2d::ValueMap& getUnitTags() { return _unit_tags; }
     void addUnitTag( const std::string& tag );
     void removeUnitTag( const std::string& tag );
     void setUnitTags( const std::string& tag_string );
     bool hasUnitTag( const std::string& tag_name );
+    
+    virtual bool isCollidable() { return _is_collidable; }
+    virtual void setCollidable( bool b ) { _is_collidable = b; }
 };
 
 #endif /* defined(__Boids__TargetNode__) */

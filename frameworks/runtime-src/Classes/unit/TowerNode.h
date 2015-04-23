@@ -10,7 +10,6 @@
 #define __Boids__TowerNode__
 
 #include "TargetNode.h"
-#include "spine/spine-cocos2dx.h"
 #include "../AI/BoidsPolygon.h"
 
 enum eTowerState {
@@ -21,7 +20,7 @@ enum eTowerState {
 };
 
 class TowerNode : public TargetNode {
-private:
+protected:
     spine::SkeletonAnimation* _skeleton;
     
     float _elapse;
@@ -32,9 +31,9 @@ private:
     
     BoidsPolygon _boundaries;
     
-    bool _is_collidable;
+    bool _is_enabled;
     
-private:
+protected:
     void reloadBullet( float delta );
     
 public:
@@ -51,8 +50,6 @@ public:
     virtual cocos2d::Point getEmitPos();
     virtual cocos2d::Point getBonePos( const std::string& bone_name );
     virtual cocos2d::Point getLocalBonePos( const std::string& bone_name );
-    
-    virtual bool getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir );
     
     eTowerState getTowerState() { return _state; }
     void setTowerState( eTowerState new_state ) { _state = new_state; }
@@ -71,8 +68,29 @@ public:
     virtual bool isAlive();
     virtual bool isDying();
     
-    bool isCollidable() { return _is_collidable; }
-    void setCollidable( bool b );
+    virtual void setCollidable( bool b );
+    
+    bool isEnabled() { return _is_enabled; }
+    void setEnabled( bool b ) { _is_enabled = b; }
+    
+    virtual bool willCollide( cocos2d::Point pos, float radius ) { return false; }
+    virtual bool willCollide( TargetNode* unit) { return false; }
+    virtual bool willCollide( TargetNode* unit, cocos2d::Point unit_new_pos ) { return false; }
+};
+
+class ThornNode : public TowerNode {
+public:
+    ThornNode();
+    virtual ~ThornNode();
+    
+    static ThornNode* create( BattleLayer* battle_layer, const cocos2d::ValueMap& thorn_data );
+    virtual bool init( BattleLayer* battle_layer, const cocos2d::ValueMap& thorn_data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void onSkeletonAnimationEvent( int track_index, spEvent* event );
+    
+    void doAttack();
 };
 
 #endif /* defined(__Boids__TowerNode__) */

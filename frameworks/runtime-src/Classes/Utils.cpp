@@ -21,7 +21,7 @@
 using namespace cocos2d;
 
 void Utils::split(const std::string& input, std::vector<std::string>& output, char delimiter) {
-	output.clear();
+    output.clear();
 
 	std::string s;
 	for (unsigned int i = 0; i < input.size(); ++i)	{

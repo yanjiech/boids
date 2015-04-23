@@ -19,7 +19,7 @@ enum class TMXObjectLayerFlag {
 
 class MapData : public cocos2d::Ref {
 public:
-    MapData(const std::string& path);
+    MapData();
     virtual ~MapData();
     
     static MapData* create( const std::string& path );
@@ -29,8 +29,6 @@ public:
     void dumpMetaData(const std::string& content);
     const std::string& getMapData();
     cocos2d::TMXTiledMap *generateTiledMapWithFlags(int flags);
-    void loadImagesToCache();
-    void removeImagesFromCache();
     
     const cocos2d::ValueMap& getMapJson() { return _map_json; }
     const cocos2d::ValueMap& getMetaJson() { return _meta_json; }
@@ -48,7 +46,6 @@ private:
     std::string _mapData;
     std::string _metaData;
     std::string _path;
-    std::vector<std::string> _plistList;
     
     void preprocessMapData();
 };

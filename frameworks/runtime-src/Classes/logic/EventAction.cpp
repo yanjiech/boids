@@ -559,7 +559,7 @@ void VisionChangeAction::onActionTriggered( bool finish ) {
     std::string source_value = _action_data.at( "source_value" ).asString();
     
     if( source_type == UNIT_SOURCE_NAME ) {
-        const BattleLayer::BlockMap& block_nodes = _map_logic->getBattleLayer()->getBlockNodes();
+        const BlockMap& block_nodes = _map_logic->getBattleLayer()->getBlockNodes();
         for( auto itr = block_nodes.begin(); itr != block_nodes.end(); ++itr ) {
             BlockNode* block_node = itr->second;
             if( block_node->getBlockName() == source_value ) {

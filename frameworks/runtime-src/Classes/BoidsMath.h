@@ -144,7 +144,7 @@ public:
 		float a = dst.y - src.y;
 		float b = src.x - dst.x;
 		float c = dst.x * src.y - src.x * dst.y;
-		return abs(a * pt.x + b * pt.y + c) / sqrt(a * a + b * b);
+		return fabs(a * pt.x + b * pt.y + c) / sqrt(a * a + b * b);
 	}
 
 	static float distanceSqrToLine(const cocos2d::Point& pt, const cocos2d::Point& src, const cocos2d::Point& dst)

@@ -42,7 +42,6 @@ void ResourceManager::destroy() {
 }
 
 void ResourceManager::loadMap( MapData* map_data ) {
-    map_data->loadImagesToCache();
     const ValueMap& meta_json = map_data->getMetaJson();
     
     const ValueVector& unit_names = meta_json.at( "units" ).asValueVector();
@@ -53,7 +52,6 @@ void ResourceManager::loadMap( MapData* map_data ) {
 }
 
 void ResourceManager::purgeMap( MapData* map_data ) {
-    map_data->removeImagesFromCache();
     const ValueMap& meta_json = map_data->getMetaJson();
     
     const ValueVector& unit_names = meta_json.at( "units" ).asValueVector();

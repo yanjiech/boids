@@ -736,6 +736,42 @@
         "ten": 2.0, 
         "tengr": 1.4
     }, 
+    "goblin_helicopter": {
+        "atk": 38.0, 
+        "atkgr": 20.0, 
+        "attackspeed": 2.0, 
+        "collide": 40.0, 
+        "cri": 3.0, 
+        "crigr": 3.5, 
+        "def": 23.0, 
+        "defgr": 16.0, 
+        "displayname": "地精直升机", 
+        "dodge": 5.0, 
+        "dodgegr": 1.7, 
+        "double_face": true, 
+        "faceleft": 3, 
+        "guard_radius": 340.0, 
+        "hit": 21.0, 
+        "hitgr": 3.1, 
+        "hp": 800.0, 
+        "hpgr": 235.0, 
+        "id": 300032, 
+        "is_melee": true, 
+        "movespeed": 180.0, 
+        "mp": 100.0, 
+        "mpgr": 20.0, 
+        "name": "goblin_helicopter", 
+        "position": "", 
+        "range": 340.0, 
+        "rec": 0.5, 
+        "recgr": 0.2, 
+        "scale": 0.8, 
+        "skills": [
+            "GasBomb"
+        ], 
+        "ten": 2.0, 
+        "tengr": 2.7
+    }, 
     "goblin_shredder": {
         "atk": 40.0, 
         "atkgr": 21.0, 
@@ -767,7 +803,7 @@
         "recgr": 0.2, 
         "scale": 1.0, 
         "skills": [
-            "DeathSlice"
+            "ShredderSaucer"
         ], 
         "ten": 3.0, 
         "tengr": 2.9
@@ -976,9 +1012,9 @@
         "recgr": 0.2, 
         "scale": 1.0, 
         "skills": [
-            "PenetrateSpear",
+            "PenetrateSpear", 
             "HuntingIntuition"
-        ],
+        ], 
         "ten": 2.0, 
         "tengr": 3.1
     }, 
@@ -2119,10 +2155,7 @@
         "rec": 0.5, 
         "recgr": 0.2, 
         "scale": 1.0, 
-        "skills":
-            [
-                "FireWhirl"
-            ], 
+        "skills": [], 
         "ten": 0.0, 
         "tengr": 1.1
     }, 

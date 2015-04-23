@@ -1,0 +1,34 @@
+
+skeleton.png
+size: 256,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+daodan
+  rotate: false
+  xy: 132, 71
+  size: 109, 50
+  orig: 109, 50
+  offset: 0, 0
+  index: -1
+daodan01
+  rotate: false
+  xy: 132, 36
+  size: 41, 33
+  orig: 41, 33
+  offset: 0, 0
+  index: -1
+daodan02
+  rotate: true
+  xy: 2, 2
+  size: 17, 40
+  orig: 17, 40
+  offset: 0, 0
+  index: -1
+tw
+  rotate: false
+  xy: 2, 21
+  size: 128, 100
+  orig: 128, 100
+  offset: 0, 0
+  index: -1

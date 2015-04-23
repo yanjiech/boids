@@ -7,13 +7,15 @@
 //
 
 #include "TargetNode.h"
+#include "../scene/BattleLayer.h"
 #include "../Utils.h"
 
 using namespace cocos2d;
 
 TargetNode::TargetNode() :
 _target_data( nullptr ),
-_deploy_id( 0 )
+_deploy_id( 0 ),
+_is_collidable( true )
 {
     
 }
@@ -22,10 +24,11 @@ TargetNode::~TargetNode() {
     CC_SAFE_RELEASE( _target_data );
 }
 
-bool TargetNode::init() {
+bool TargetNode::init( BattleLayer* battle_layer ) {
     if( !Node::init() ) {
         return false;
     }
+    _battle_layer = battle_layer;
     this->setAttackable( true );
     return true;
 }
@@ -106,10 +109,6 @@ void TargetNode::removeUnitComponent( const std::string& key ) {
     }
 }
 
-void TargetNode::adjustAllUnitComponents() {
-    
-}
-
 void TargetNode::removeAllUnitComponents() {
     for( auto pair : _components ) {
         pair.second->removeFromParent();
@@ -168,19 +167,11 @@ bool TargetNode::isFoeOfCamp( eTargetCamp opponent_camp ) {
 }
 
 void TargetNode::addUnitTag( const std::string& tag ) {
-    _unit_tags.push_back( Value( tag ) );
+    _unit_tags[tag] = Value( tag );
 }
 
 void TargetNode::removeUnitTag( const std::string& tag ) {
-    auto itr = _unit_tags.begin();
-    while( itr != _unit_tags.end() ) {
-        if( itr->asString() == tag ) {
-            itr = _unit_tags.erase( itr );
-        }
-        else {
-            ++itr;
-        }
-    }
+    _unit_tags.erase( tag );
 }
 
 void TargetNode::setUnitTags( const std::string& tag_string ) {
@@ -188,15 +179,10 @@ void TargetNode::setUnitTags( const std::string& tag_string ) {
     std::vector<std::string> tags;
     Utils::split( tag_string, tags, ',' );
     for( auto str : tags ) {
-        _unit_tags.push_back( Value( str ) );
+        _unit_tags[str] = Value( str );
     }
 }
 
 bool TargetNode::hasUnitTag( const std::string& tag_name ) {
-    for( auto itr = _unit_tags.begin(); itr != _unit_tags.end(); ++itr ) {
-        if( itr->asString() == tag_name ) {
-            return true;
-        }
-    }
-    return false;
+    return _unit_tags.find( tag_name ) != _unit_tags.end();
 }

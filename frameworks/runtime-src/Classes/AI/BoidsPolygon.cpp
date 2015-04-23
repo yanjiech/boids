@@ -131,7 +131,7 @@ bool BoidsPolygon::operator == (const class BoidsPolygon& other)
 {
 	if (_size != other._size) return false;
 
-	bool equal = true;
+//	bool equal = true;
 
 	PolygonPointPtr p1 = ap;
 	PolygonPointPtr p2 = other.ap;

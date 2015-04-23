@@ -11,6 +11,9 @@
 #include "../manager/SceneManager.h"
 #include "../manager/ResourceManager.h"
 
+#define MAIN_CSB_FILE "level_choose/main/main.csb"
+#define LEVEL_CSB_FILE "level_choose/level/level.csb"
+
 using namespace cocos2d;
 
 UILevelChooseLayer::UILevelChooseLayer() :
@@ -35,9 +38,6 @@ UILevelChooseLayer* UILevelChooseLayer::create() {
 }
 
 bool UILevelChooseLayer::init() {
-#define MAIN_CSB_FILE "level_choose/main/main.csb"
-#define LEVEL_CSB_FILE "level_choose/level/level.csb"
-    
     std::string main_csb_file = FileUtils::getInstance()->fullPathForFilename( MAIN_CSB_FILE );
     _main_node = cocos2d::CSLoader::getInstance()->createNode( main_csb_file );
     this->addChild( _main_node );

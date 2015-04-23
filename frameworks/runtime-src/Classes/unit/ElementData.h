@@ -51,4 +51,25 @@ public:
     void sub( ElementData* other );
 };
 
+class UnitData : public ElementData {
+public:
+    UnitData();
+    virtual ~UnitData();
+    
+    static UnitData* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void setAttribute( const std::string& key, const std::string& value );
+    
+    float guard_radius;
+    
+    std::string role;
+    
+    bool is_melee;
+    bool is_double_face;
+    int default_face_dir;
+    
+    std::vector<std::string> skill_names;
+};
+
 #endif /* defined(__Boids__ElementData__) */

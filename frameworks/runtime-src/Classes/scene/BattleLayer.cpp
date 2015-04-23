@@ -40,8 +40,8 @@ BattleLayer::BattleLayer() : _map_data( nullptr ), _map_logic( nullptr ) {
 }
 
 BattleLayer::~BattleLayer() {
-    CC_SAFE_RELEASE_NULL( _map_data );
-    CC_SAFE_RELEASE_NULL( _map_logic );
+    CC_SAFE_RELEASE( _map_data );
+    CC_SAFE_RELEASE( _map_logic );
 }
 
 BattleLayer* BattleLayer::create( MapData* map_data, bool is_pvp ) {
@@ -109,6 +109,9 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         _story_layer = UIStoryLayer::create( CC_CALLBACK_1( BattleLayer::endStory, this ) );
         this->addChild( _story_layer, eBattleSubLayer::BattleStoryLayer, eBattleSubLayer::BattleStoryLayer );
         
+        _draw_node = DrawNode::create();
+        _tmx_map->addChild( _draw_node, 100000 );
+        
         this->setup();
         
         this->startBattle();
@@ -153,8 +156,6 @@ void BattleLayer::reset() {
     _block_nodes.clear();
     
     _next_deploy_id = 0;
-    
-    CC_SAFE_RELEASE_NULL( _map_logic );
 }
 
 void BattleLayer::updateFrame( float delta ) {
@@ -657,10 +658,10 @@ void BattleLayer::deployUnits( const cocos2d::Vector<UnitNode*>& units, const co
     }
 }
 
-void BattleLayer::deployTower( TowerNode* tower, const cocos2d::Point& pos ) {
+void BattleLayer::deployTower( TowerNode* tower, const cocos2d::Point& pos, eBattleSubLayer layer ) {
     int deploy_id = this->getNextDeployId();
     tower->setDeployId( deploy_id );
-    this->addToObjectLayer( tower, pos, this->zorderForPositionOnObjectLayer( pos ) );
+    this->addToLayer( tower, layer, pos, this->zorderForPositionOnObjectLayer( pos ) );
     _towers.insert( deploy_id, tower );
 }
 
@@ -858,7 +859,27 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
         }
         
         TowerNode* tower = TowerNode::create( this, tower_data );
-        this->deployTower( tower, tower->getPosition() );
+        this->deployTower( tower, tower->getPosition(), layer );
+    }
+    else if( type.find( "thorn" ) != std::string::npos ) {
+        ValueMap tower_data = obj_properties;
+        sitr = obj_properties.find( "level" );
+        if( sitr != obj_properties.end() ) {
+            tower_data["level"] = sitr->second;
+        }
+        else {
+            tower_data["level"] = Value( 1 );
+        }
+        
+        std::string name = obj_properties.at( "name" ).asString() + "_collide";
+        ValueMap boundary = group->getObject( name );
+        boundary["map_height"] = Value( _tmx_map->getContentSize().height );
+        if( !boundary.empty() ) {
+            tower_data["boundary"] = Value( boundary );
+        }
+        
+        ThornNode* tower = ThornNode::create( this, tower_data );
+        this->deployTower( tower, tower->getPosition(), layer );
     }
     else if( type.find( "BuildingNode" ) != std::string::npos ) {
         std::string name = obj_properties.at( "name" ).asString() + "_collide";

@@ -9,10 +9,8 @@
 #include "MapLogic.h"
 #include "../scene/BattleLayer.h"
 #include "../data/PlayerInfo.h"
-#include "../behavior/BehaviorHeader.h"
 #include "../util/CocosUtils.h"
 #include "../constant/BoidsConstant.h"
-#include "MapLogic.h"
 
 using namespace cocos2d;
 
@@ -226,9 +224,9 @@ void MapLogic::onTargetNodeAppear( TargetNode* target_node ) {
         UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
         if( unit_node ) {
             this->increaseUnitAppearCountByCamp( 1, (int)unit_node->getTargetCamp() );
-            cocos2d::ValueVector tags = unit_node->getUnitTags();
+            const cocos2d::ValueMap& tags = unit_node->getUnitTags();
             for( auto itr = tags.begin(); itr != tags.end(); ++itr ) {
-                this->increaseUnitAppearCountByTag( 1, itr->asString() );
+                this->increaseUnitAppearCountByTag( 1, itr->second.asString() );
             }
             this->increaseUnitAppearCountByName( 1, unit_node->getUnitData()->name );
             
@@ -265,9 +263,9 @@ void MapLogic::onTargetNodeDisappear( TargetNode* target_node ) {
         UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
         if( unit_node ) {
             this->increaseUnitDisappearCountByCamp( 1, (int)unit_node->getTargetCamp() );
-            cocos2d::ValueVector tags = unit_node->getUnitTags();
+            const cocos2d::ValueMap& tags = unit_node->getUnitTags();
             for( auto itr = tags.begin(); itr != tags.end(); ++itr ) {
-                this->increaseUnitDisappearCountByTag( 1, itr->asString() );
+                this->increaseUnitDisappearCountByTag( 1, itr->second.asString() );
             }
             this->increaseUnitDisappearCountByName( 1, unit_node->getUnitData()->name );
             

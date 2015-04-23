@@ -10,11 +10,11 @@
 #define __Boids__UnitNode__
 
 #include "TargetNode.h"
-#include "spine/spine-cocos2dx.h"
 #include "Skill.h"
 #include "Buff.h"
 #include "HpBar.h"
 #include "./skill/SkillNode.h"
+#include "../AI/Path.h"
 
 #define DEFAULT_RELAX_FRAMES 45
 
@@ -33,29 +33,6 @@ enum eUnitState {
 enum eUnitFace {
     Front = 1,
     Back = 2
-};
-
-class Path;
-
-class UnitData : public ElementData {
-public:
-    UnitData();
-    virtual ~UnitData();
-    
-    static UnitData* create( const cocos2d::ValueMap& data );
-    virtual bool init( const cocos2d::ValueMap& data );
-    
-    virtual void setAttribute( const std::string& key, const std::string& value );
-    
-    float guard_radius;
-    
-    std::string role;
-    
-    bool is_melee;
-    bool is_double_face;
-    int default_face_dir;
-    
-    std::vector<std::string> skill_names;
 };
 
 class UnitNode : public TargetNode {
@@ -85,8 +62,6 @@ private:
     TargetNode* _chasing_target;
     
     cocos2d::Map<std::string, Buff*> _buffs;
-    
-    int _priority;
     
     int _hesitate_frame;
     
@@ -167,11 +142,11 @@ public:
     void changeUnitDirection( const cocos2d::Point& new_dir );
     void changeFace( eUnitFace face );
     
-    cocos2d::Point getLocalHitPos();
+    virtual cocos2d::Point getLocalHitPos();
     virtual cocos2d::Point getHitPos();
     virtual cocos2d::Point getEmitPos();
-    cocos2d::Point getLocalEmitPos();
-    cocos2d::Point getLocalHeadPos();
+    virtual cocos2d::Point getLocalEmitPos();
+    virtual cocos2d::Point getLocalHeadPos();
     
     virtual cocos2d::Point getBonePos( const std::string& bone_name );
     virtual cocos2d::Point getLocalBonePos( const std::string& bone_name );
@@ -211,9 +186,6 @@ public:
     void endCast();
     
     virtual bool getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir );
-    
-    virtual int getPriority() const { return _priority; }
-    void setPriority( int priority ) { _priority = priority; }
     
     int getHesitateFrame() { return _hesitate_frame; }
     void setHesitateFrame( int hesitate_frame ) { _hesitate_frame = hesitate_frame; }

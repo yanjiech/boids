@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="125" height="37" tilewidth="32" tileheight="32" nextobjectid="144">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="125" height="37" tilewidth="32" tileheight="32" nextobjectid="148">
  <tileset firstgid="1" name="vision" tilewidth="500" tileheight="485">
   <tile id="0">
    <image width="67" height="75" source="dijinghuojian_01 (8).png"/>
@@ -70,13 +70,25 @@
   <tile id="22">
    <image width="166" height="308" source="shaota_01.png"/>
   </tile>
+  <tile id="23">
+   <image width="290" height="166" source="dici00.png"/>
+  </tile>
+  <tile id="24">
+   <image width="291" height="172" source="dici01.png"/>
+  </tile>
+  <tile id="25">
+   <image width="289" height="173" source="dici02.png"/>
+  </tile>
+  <tile id="26">
+   <image width="291" height="170" source="dici03.png"/>
+  </tile>
  </tileset>
- <tileset firstgid="24" name="terrain" tilewidth="32" tileheight="32">
+ <tileset firstgid="28" name="terrain" tilewidth="32" tileheight="32">
   <image source="base_terrain.png" width="256" height="256"/>
  </tileset>
  <layer name="terrain" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1bERwkAQBMEP4wWOBA4gB6T8c2OjoK64NsboCGaOMZZ0Sdc0+e+9pi3d0p1b+JGe6ZV2buF3+qQjndzCFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cv/UXqR+fiQ==
+   eJzt1bERwkAQBMEP5AWOBA4gB6T8M2OjoK64NsboCGaOMZZ0Sdc0+e+9pi3d0p1b+JGe6ZV2buF3+qQjndzCFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cv/UX+7vnzQ==
   </data>
  </layer>
  <objectgroup name="onground">
@@ -87,6 +99,14 @@
   </object>
   <object id="117" name="b1_collide" type="collide" x="2694" y="397">
    <polygon points="0,0 -142,80 -59,96 1,129 49,171 72,219 210,140 160,68 89,24"/>
+  </object>
+  <object id="144" name="dc1" type="steal_thorn" gid="24" x="765.774" y="603.178">
+   <properties>
+    <property name="level" value="20"/>
+   </properties>
+  </object>
+  <object id="145" name="dc1_collide" type="collide" x="768.234" y="525.731">
+   <polygon points="0,0 148.093,77.749 288.782,-1.85117 138.837,-83.3025"/>
   </object>
  </objectgroup>
  <objectgroup name="vision">

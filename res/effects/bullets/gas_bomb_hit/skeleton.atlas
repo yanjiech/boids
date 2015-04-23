@@ -1,0 +1,230 @@
+
+skeleton.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+DY0001
+  rotate: false
+  xy: 1064, 532
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0002
+  rotate: false
+  xy: 1298, 746
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0003
+  rotate: false
+  xy: 1528, 746
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0004
+  rotate: false
+  xy: 1758, 746
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0005
+  rotate: false
+  xy: 1064, 388
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0006
+  rotate: false
+  xy: 1298, 602
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0007
+  rotate: false
+  xy: 1528, 602
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0008
+  rotate: false
+  xy: 1758, 602
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0009
+  rotate: false
+  xy: 1294, 458
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0010
+  rotate: false
+  xy: 1524, 458
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+DY0011
+  rotate: false
+  xy: 1754, 458
+  size: 228, 142
+  orig: 228, 142
+  offset: 0, 0
+  index: -1
+dibao-gm0001
+  rotate: false
+  xy: 830, 676
+  size: 232, 212
+  orig: 232, 212
+  offset: 0, 0
+  index: -1
+dibao-gm0002
+  rotate: false
+  xy: 278, 10
+  size: 232, 212
+  orig: 232, 212
+  offset: 0, 0
+  index: -1
+dibao-gm0003
+  rotate: false
+  xy: 554, 232
+  size: 232, 212
+  orig: 232, 212
+  offset: 0, 0
+  index: -1
+dibao-gm0004
+  rotate: false
+  xy: 830, 462
+  size: 232, 212
+  orig: 232, 212
+  offset: 0, 0
+  index: -1
+dibao-gm0005
+  rotate: false
+  xy: 1064, 676
+  size: 232, 212
+  orig: 232, 212
+  offset: 0, 0
+  index: -1
+dibao-h0001
+  rotate: false
+  xy: 1294, 300
+  size: 212, 156
+  orig: 212, 156
+  offset: 0, 0
+  index: -1
+dibao-h0002
+  rotate: false
+  xy: 1508, 300
+  size: 212, 156
+  orig: 212, 156
+  offset: 0, 0
+  index: -1
+dibao-h0003
+  rotate: false
+  xy: 1722, 300
+  size: 212, 156
+  orig: 212, 156
+  offset: 0, 0
+  index: -1
+dibao-h0004
+  rotate: true
+  xy: 512, 10
+  size: 212, 156
+  orig: 212, 156
+  offset: 0, 0
+  index: -1
+dibao-h0005
+  rotate: true
+  xy: 670, 18
+  size: 212, 156
+  orig: 212, 156
+  offset: 0, 0
+  index: -1
+dibao-h0006
+  rotate: true
+  xy: 788, 232
+  size: 212, 156
+  orig: 212, 156
+  offset: 0, 0
+  index: -1
+dibao-h0007
+  rotate: true
+  xy: 828, 18
+  size: 212, 156
+  orig: 212, 156
+  offset: 0, 0
+  index: -1
+dibao-y0001
+  rotate: false
+  xy: 2, 668
+  size: 274, 220
+  orig: 274, 220
+  offset: 0, 0
+  index: -1
+dibao-y0002
+  rotate: false
+  xy: 2, 446
+  size: 274, 220
+  orig: 274, 220
+  offset: 0, 0
+  index: -1
+dibao-y0003
+  rotate: false
+  xy: 278, 668
+  size: 274, 220
+  orig: 274, 220
+  offset: 0, 0
+  index: -1
+dibao-y0004
+  rotate: false
+  xy: 2, 224
+  size: 274, 220
+  orig: 274, 220
+  offset: 0, 0
+  index: -1
+dibao-y0005
+  rotate: false
+  xy: 278, 446
+  size: 274, 220
+  orig: 274, 220
+  offset: 0, 0
+  index: -1
+dibao-y0006
+  rotate: false
+  xy: 554, 668
+  size: 274, 220
+  orig: 274, 220
+  offset: 0, 0
+  index: -1
+dibao-y0007
+  rotate: false
+  xy: 2, 2
+  size: 274, 220
+  orig: 274, 220
+  offset: 0, 0
+  index: -1
+dibao-y0008
+  rotate: false
+  xy: 278, 224
+  size: 274, 220
+  orig: 274, 220
+  offset: 0, 0
+  index: -1
+dibao-y0009
+  rotate: false
+  xy: 554, 446
+  size: 274, 220
+  orig: 274, 220
+  offset: 0, 0
+  index: -1

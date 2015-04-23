@@ -8,6 +8,7 @@
 
 #include "ElementData.h"
 #include "../Utils.h"
+#include "../manager/ResourceManager.h"
 
 using namespace cocos2d;
 
@@ -171,4 +172,66 @@ void ElementData::sub( ElementData* other ) {
     this->hit -= other->hit;
     this->dodge -= other->dodge;
     this->atk_range -= other->atk_range;
+}
+
+//unit data
+UnitData::UnitData() {
+    
+}
+
+UnitData::~UnitData() {
+}
+
+UnitData* UnitData::create( const cocos2d::ValueMap& data ) {
+    UnitData* ret = new UnitData();
+    if( ret && ret->init( data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UnitData::init( const cocos2d::ValueMap& data ) {
+    std::string name = data.at( "name" ).asString();
+    int level = data.at( "level" ).asInt();
+    
+    ValueMap unit_config = ResourceManager::getInstance()->getUnitData( name );
+    unit_config["name"] = Value( name );
+    unit_config["level"] = Value( level );
+    
+    if( !ElementData::init( unit_config ) ) {
+        return false;
+    }
+    
+    this->guard_radius = unit_config.at( "guard_radius" ).asFloat();
+    
+    this->recover = unit_config.at( "rec" ).asFloat() + this->level * unit_config.at( "recgr" ).asFloat();
+    this->scale = unit_config.at( "scale" ).asFloat();
+    
+    this->role = unit_config.at( "position" ).asString();
+    
+    this->is_melee = unit_config.at( "is_melee" ).asBool();
+    this->is_double_face = unit_config.at( "double_face" ).asBool();
+    this->default_face_dir = unit_config.at( "faceleft" ).asInt();
+    
+    const ValueVector& skill_vector = unit_config.at( "skills" ).asValueVector();
+    for( auto itr = skill_vector.begin(); itr != skill_vector.end(); ++itr ) {
+        std::string skl_name = itr->asString();
+        skill_names.push_back( skl_name );
+    }
+    
+    return true;
+}
+
+void UnitData::setAttribute( const std::string& key, const std::string& value ) {
+    ElementData::setAttribute( key, value );
+    if( key == "guard_radius" ) {
+        this->guard_radius = (float)Utils::toDouble( value );
+    }
+    else if( key == "position" ) {
+        this->role = value;
+    }
 }

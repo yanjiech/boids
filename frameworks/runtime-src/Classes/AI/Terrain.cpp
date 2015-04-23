@@ -138,7 +138,7 @@ bool Terrain::loadTmx(const std::string& tmx_content, class GrassMonitor& grass_
 		movable_y = 0;
 	}
 
-	log("totally %d barriers, %d sight_blockers.", barriers.size(), sight_blockers.size());
+//	log("totally %d barriers, %d sight_blockers.", barriers.size(), sight_blockers.size());
 
 	return true;
 }

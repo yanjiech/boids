@@ -118,5 +118,6 @@
 #define SKILL_NAME_DEATH_SLICE "DeathSlice"
 #define SKILL_NAME_PENETRATE_SPEAR "PenetrateSpear"
 #define SKILL_NAME_HUNTING_INTUITION "HuntingIntuition"
+#define SKILL_NAME_GAS_BOMB "GasBomb"
 
 #endif /* defined(__Boids__BoidsConstant__) */

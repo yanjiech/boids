@@ -36,7 +36,7 @@ BlockNode* BlockNode::create( const cocos2d::ValueMap& grid_properties, const co
 }
 
 bool BlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
-    if( !TargetNode::init() ) {
+    if( !TargetNode::init( nullptr ) ) {
         return false;
     }
     
