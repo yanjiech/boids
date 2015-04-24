@@ -18,7 +18,6 @@
 class Utils {
 
 public:
-	//字符串分割
 	static void split(const std::string& input, std::vector<std::string>& output, char delimiter);
 	static void split(const std::string& input, std::vector<int>& output, char delimiter);
 	static void split(const std::string& input, std::vector<std::pair<int, int>>& output, char delimiter);
@@ -28,7 +27,6 @@ public:
 	static cocos2d::Vec2 pos2Vec2NoParentheses(const std::string& v);
     static float parseValueOrPercent(const std::string& input, bool& isPercent);
 
-	//类型互转
 	static int colorCharToInt(char a1, char a2);
 	static int toInt(std::string v);
 	static std::string toStr(int v);
@@ -40,30 +38,29 @@ public:
 	static cocos2d::Point toCocosPt(point pt);
 	static cocos2d::Vec2 toCocosVec2(const segment& s);
 
-	//编码
+    
 	static std::string toCP936(const std::string& s);
 	static std::string displayableText(const std::string& s);
 	
-	//序列化
+    
 	static bool parseFromBinary(FILE* f, cocos2d::Point& pt);
 	static void serializeToBinary(FILE* f, const cocos2d::Point& pt);
 
-	//STL补充
+	//STL ex
 	template<class T>
 	static bool contains(const std::vector<T>& container, T obj)
 	{
 		return std::find(container.begin(), container.end(), obj) != container.end();
 	}
 
-	//字符串处理
     static std::string stringFormat(const std::string fmt, ...);
 	static std::string encodeHex(const unsigned char* data, unsigned len);
 
-	//调试相关
-	static void logAI(std::string fmt, ...);
-	static void logr(const std::string& content, bool only_save_to_replay); //会存到录像里
 
-	//cocos相关
+	static void logAI(std::string fmt, ...);
+	static void logr(const std::string& content, bool only_save_to_replay); //log replay
+
+	//cocos
 	static cocos2d::Node* getCurrentMapLayer();
 	static cocos2d::DrawNode* getDrawNode();
 	static void clearDrawNode();
@@ -71,18 +68,16 @@ public:
 
 	static void runTest();
 
-	//路径相关
     static std::string lastComponentOfPath(const std::string& path);
 	static std::string getFileNameByTime();
 
-	//随机
-	static int randomNumber(int upper_bound); //返回[1, upper_bound]
-	static float randomFloat(); //返回[0..1)之间浮点数
+	static int randomNumber(int upper_bound); //return [1, upper_bound]
+	static float randomFloat(); //return [0..1) float
 	static unsigned random_i(); //for replay check
 
-	static void initRandom2ByTime(); //用时间初始化一下，使得每台机器能不一样些
-	static int randomNumber2(int upper_bound); //返回[1, upper_bound]。和正常用的randomFloat不共用随机引擎，通常是调试用
-	static float randomFloat2(); //返回[0..1)之间浮点数。和正常用的randomFloat不共用随机引擎，通常是调试用
+	static void initRandom2ByTime();
+	static int randomNumber2(int upper_bound); //return [1, upper_bound], for debug
+	static float randomFloat2(); //return [0..1) float, for debug
 
 	static std::string generateRandomString(int len = 4);
 

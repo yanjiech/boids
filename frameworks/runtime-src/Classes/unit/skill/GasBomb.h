@@ -14,8 +14,19 @@
 class GasBomb : public SkillNode {
 private:
     float _elapse;
+    float _duration;
+    float _shoot_elapse;
     float _interval;
+    float _warning_duration;
     float _damage;
+    float _damage_radius;
+    float _gas_duratoin;
+    float _gas_damage;
+    float _range;
+    
+    cocos2d::Point _shoot_pos;
+    
+    int _stage; //0 load, 1 warn
     
 public:
     GasBomb();

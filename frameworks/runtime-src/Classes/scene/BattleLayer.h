@@ -22,6 +22,7 @@
 #include "UIStoryLayer.h"
 #include "../MapData.h"
 #include "../logic/MapLogic.h"
+#include "../Utils.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,

@@ -19,7 +19,6 @@ BlockNode::BlockNode() {
 }
 
 BlockNode::~BlockNode() {
-    this->setEnabled( false );
 }
 
 BlockNode* BlockNode::create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {

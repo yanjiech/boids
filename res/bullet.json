@@ -66,6 +66,19 @@
         "damage_radius": 50.0,
         "speed": 100.0
     },
+    "gas_bomb":
+    {
+        "name": "gas_bomb",
+        "move_type": "fixed",
+        "body_type": "spine",
+        "need_rotate": false,
+        "hit_type": "spine",
+        "hit_name": "default",
+        "bomb_type": "spine",
+        "bomb_name": "gas_bomb",
+        "damage_radius": 160.0,
+        "speed": 800.0
+    },
     "human_arrow": {
         "name": "human_arrow",
         "move_type": "paracurve",

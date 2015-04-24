@@ -637,3 +637,102 @@ void FixedPosBulletNode::onSkeletonAnimationEvent( int track_index, spEvent* eve
 void FixedPosBulletNode::onSkeletonAnimationCompleted( int track_index ) {
      this->setShouldRecycle( true );
 }
+
+
+//bomb bullet node
+BombBulletNode::BombBulletNode() {
+    
+}
+
+BombBulletNode::~BombBulletNode() {
+    
+}
+
+BombBulletNode* BombBulletNode::create( class TargetNode* shooter, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+    BombBulletNode* ret = new BombBulletNode();
+    if( ret && ret->init( shooter, bullet_data, damage_calculator, buff_data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool BombBulletNode::init( class TargetNode* shooter, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+    if( !DirectionalLastingBulletNode::init( shooter, bullet_data, damage_calculator, buff_data ) ) {
+        return false;
+    }
+    
+    auto itr = bullet_data.find( "lasting_damage" );
+    if( itr != bullet_data.end() ) {
+        _lasting_damage = bullet_data.at( "lasting_damage" ).asFloat();
+    }
+    else {
+        _lasting_damage = 0;
+    }
+    
+    return true;
+}
+
+void BombBulletNode::updateFrame( float delta ) {
+    if( !_should_recycle ) {
+        if( !_reach_to_pos ) {
+            Point new_pos = this->getPosition() + _dir * _speed * delta;
+            float distance = new_pos.distance( _to_pos );
+            if( distance <= HIT_DISTANCE || distance >= _last_distance_to_pos ) {
+                _reach_to_pos = true;
+                this->setPosition( _to_pos );
+                //hit effect
+                if( _show_bomb_effect ) {
+                    //show range effect
+                    std::string hit_resource = Utils::stringFormat( "effects/bullets/%s_hit", _bomb_name.c_str() );
+                    spine::SkeletonAnimation* bomb_effect = ArmatureManager::getInstance()->createArmature( hit_resource );
+                    UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( bomb_effect, Utils::stringFormat( "bullet_%d_hit", BulletNode::getNextBulletId() ), true );
+                    _battle_layer->addToEffectLayer( component, _to_pos, 0 );
+                    component->setAnimation( 0, "animation", false );
+                }
+                
+                //add gas effect
+                auto itr = _bullet_data.find( "gas_resource" );
+                if( itr != _bullet_data.end() ) {
+                    this->setVisible( false );
+                    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( itr->second.asString() );
+                    std::string name = Utils::stringFormat( "BombBullet_%d", BulletNode::getNextBulletId() );
+                    TimeLimitSpineComponent* component = TimeLimitSpineComponent::create( _duration, skeleton, name, true );
+                    component->setAnimation( 0, "animation", true );
+                    _battle_layer->addToLayer( component, eBattleSubLayer::EffectLayer, _to_pos, 0 );
+                    _damage_calculator->setCalculatorName( BULLET_NAME_GAS );
+                    _damage_calculator->setBaseDamage( _lasting_damage );
+                }
+                
+                Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), _to_pos, _damage_radius );
+                for( auto itr = candidates.begin(); itr != candidates.end(); ++itr ) {
+                    this->hitTarget( *itr, true );
+                }
+            }
+            else {
+                _last_distance_to_pos = distance;
+                this->setPosition( new_pos );
+            }
+        }
+        else {
+            _accumulator += delta;
+            if( _accumulator > _duration ) {
+                this->setShouldRecycle( true );
+            }
+            else {
+                _damage_elapse += delta;
+                if( _damage_elapse >= _damage_interval ) {
+                    _damage_elapse = 0;
+                    
+                    Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), _to_pos, _damage_radius );
+                    for( auto itr = candidates.begin(); itr != candidates.end(); ++itr ) {
+                        this->hitTarget( *itr, true );
+                    }
+                }
+            }
+        }
+    }
+}

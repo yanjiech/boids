@@ -120,4 +120,6 @@
 #define SKILL_NAME_HUNTING_INTUITION "HuntingIntuition"
 #define SKILL_NAME_GAS_BOMB "GasBomb"
 
+#define BULLET_NAME_GAS "gas"
+
 #endif /* defined(__Boids__BoidsConstant__) */

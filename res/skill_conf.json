@@ -136,9 +136,14 @@
         "multi_action" : true,
         "hint" : "circle",
         "cd" : 5.0,
+        "duration": 30.0,
         "range" : 700.0,
         "interval" : 2.0,
-        "damage" : [ 50.0, 100.0, 200.0 ]
+        "warning_duration": 2.0,
+        "damage" : [ 50.0, 100.0, 200.0 ],
+        "damage_radius": 160.0,
+        "gas_duration": 3.0,
+        "gas_damage": [ 10.0, 20.0, 30.0 ]
     },
     "GiantSword" :
     {

@@ -955,30 +955,28 @@ void UnitNode::onAttackBegan() {
 }
 
 void UnitNode::onAttacking() {
-    if( _chasing_target ) {
+    TargetNode* target_node = _chasing_target;
+    if( target_node != nullptr ) {
         UnitData* unit_data = dynamic_cast<UnitData*>( _target_data );
         if( unit_data->is_melee ) {
-            UnitNode* target_unit = dynamic_cast<UnitNode*>( _chasing_target );
-            if( target_unit ) {
-                DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
-                ValueMap result = damage_calculator->calculateDamage( _target_data, target_unit->getTargetData() );
-                target_unit->takeDamage( result, this );
-                
-                if( !result.at( "miss" ).asBool() ) {
-                    std::string hit_resource = "effects/bullets/default_hit";
-                    spine::SkeletonAnimation* hit_effect = ArmatureManager::getInstance()->createArmature( hit_resource );
-                    hit_effect->setScale( 0.7f );
-                    UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( hit_effect, Utils::stringFormat( "bullet_%d_hit", BulletNode::getNextBulletId() ), true );
-                    component->setPosition( target_unit->getLocalHitPos() );
-                    target_unit->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
-                    component->setAnimation( 0, "animation", false );
-                }
+            DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
+            ValueMap result = damage_calculator->calculateDamage( _target_data, target_node->getTargetData() );
+            target_node->takeDamage( result, this );
+            
+            if( !result.at( "miss" ).asBool() ) {
+                std::string hit_resource = "effects/bullets/default_hit";
+                spine::SkeletonAnimation* hit_effect = ArmatureManager::getInstance()->createArmature( hit_resource );
+                hit_effect->setScale( 0.7f );
+                UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( hit_effect, Utils::stringFormat( "bullet_%d_hit", BulletNode::getNextBulletId() ), true );
+                component->setPosition( target_node->getLocalHitPos() );
+                target_node->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
+                component->setAnimation( 0, "animation", false );
             }
         }
         else {
             DamageCalculate* damage_calculator = DamageCalculate::create( "normal", 0 );
             BulletNode* bullet = BulletNode::create( this, ResourceManager::getInstance()->getBulletData( _target_data->bullet_name ), damage_calculator, ValueMap() );
-            bullet->shootAt( _chasing_target );
+            bullet->shootAt( target_node );
         }
     }
 }

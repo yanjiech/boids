@@ -120,7 +120,7 @@ public:
 };
 
 class DirectionalLastingBulletNode : public BulletNode {
-private:
+protected:
     cocos2d::Point _dir;
     cocos2d::Point _to_pos;
     float _last_distance_to_pos;
@@ -129,6 +129,8 @@ private:
     
     float _damage_interval;
     float _damage_elapse;
+    
+    float _lasting_damage;
     
     cocos2d::ValueMapIntKey _excluded_targets;
     
@@ -157,6 +159,17 @@ public:
     
     void onSkeletonAnimationEvent( int track_index, spEvent* event );
     void onSkeletonAnimationCompleted( int track_index );
+};
+
+class BombBulletNode : public DirectionalLastingBulletNode {
+public:
+    BombBulletNode();
+    virtual ~BombBulletNode();
+    
+    static BombBulletNode* create( class TargetNode* shooter, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
+    virtual bool init( class TargetNode* shooter, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
+    
+    virtual void updateFrame( float delta );
 };
 
 #endif /* defined(__Boids__BulletNode__) */

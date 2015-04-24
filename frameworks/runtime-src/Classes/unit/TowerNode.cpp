@@ -234,8 +234,6 @@ bool ThornNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& thorn_
     _skeleton->setEventListener( CC_CALLBACK_2( ThornNode::onSkeletonAnimationEvent, this ) );
     this->changeTowerState( eTowerState::TowerStateAttack );
     
-    _boundaries.drawSketchOn( _battle_layer->getDrawNode() );
-    
     return true;
 }
 

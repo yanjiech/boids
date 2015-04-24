@@ -27,6 +27,11 @@ public:
     static DamageCalculate* create( const std::string& calculator_name, float base_damage );
     virtual bool init( const std::string& calculator_name, float base_damage );
     
+    void setCalculatorName( const std::string& name ) { _calculator_name = name; }
+    
+    float getBaseDamage() { return _base_damage; }
+    void setBaseDamage( float damage ) { _base_damage = damage; }
+    
     cocos2d::ValueMap calculateDamage( class ElementData* atker_data, class ElementData* defer_data );
     cocos2d::ValueMap calculateDamageWithoutMiss( class ElementData* atker_data, class ElementData* defer_data );
     

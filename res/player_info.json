@@ -23,7 +23,7 @@
     },
     "deploy_units" :
     [
-        "6"
+        "103"
     ],
     "units" :
     {
@@ -230,12 +230,12 @@
         },
         "103" :
         {
-            "name" : "goblin_shredder",
+            "name" : "goblin_helicopter",
             "level" : 40,
             "skills" :
             [
                 {
-                    "name" : "DeathSlice",
+                    "name" : "GasBomb",
                     "level" : 3
                 }
             ],
