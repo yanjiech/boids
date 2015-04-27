@@ -56,6 +56,8 @@
 		7606262A1AE78CF600833342 /* GuardMoveBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 760626271AE78CF600833342 /* GuardMoveBehavior.cpp */; };
 		7606262D1AE78D1E00833342 /* GuardAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7606262B1AE78D1D00833342 /* GuardAttackBehavior.cpp */; };
 		7606262E1AE78D1E00833342 /* GuardAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7606262B1AE78D1D00833342 /* GuardAttackBehavior.cpp */; };
+		7608FB9F1AEE20EF00823499 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7608FB9D1AEE20EF00823499 /* Item.cpp */; };
+		7608FBA01AEE20EF00823499 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7608FB9D1AEE20EF00823499 /* Item.cpp */; };
 		7631FA361AC2A92B00CAB9C8 /* LightShield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */; };
 		7631FA371AC2A92B00CAB9C8 /* LightShield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */; };
 		7631FA3A1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */; };
@@ -512,6 +514,8 @@
 		760626281AE78CF600833342 /* GuardMoveBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardMoveBehavior.h; sourceTree = "<group>"; };
 		7606262B1AE78D1D00833342 /* GuardAttackBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GuardAttackBehavior.cpp; sourceTree = "<group>"; };
 		7606262C1AE78D1D00833342 /* GuardAttackBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardAttackBehavior.h; sourceTree = "<group>"; };
+		7608FB9D1AEE20EF00823499 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
+		7608FB9E1AEE20EF00823499 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		76148F211AC54D9300235C7B /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../lib/lib/libboost_system.a; sourceTree = "<group>"; };
 		7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightShield.cpp; sourceTree = "<group>"; };
 		7631FA351AC2A92B00CAB9C8 /* LightShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightShield.h; sourceTree = "<group>"; };
@@ -1113,6 +1117,8 @@
 				985F4D1F1AAD49E4008D2EF8 /* Skill.h */,
 				985F4D261AAD72B9008D2EF8 /* Buff.cpp */,
 				985F4D271AAD72B9008D2EF8 /* Buff.h */,
+				7608FB9D1AEE20EF00823499 /* Item.cpp */,
+				7608FB9E1AEE20EF00823499 /* Item.h */,
 				9868BBA31AB2DE57002ED7A1 /* BulletNode.cpp */,
 				9868BBA41AB2DE57002ED7A1 /* BulletNode.h */,
 				987336121AB6840200694B53 /* JumpText.cpp */,
@@ -1888,6 +1894,7 @@
 				988B52A91AA42C7A00FB7B21 /* UnitNode.cpp in Sources */,
 				E874130F1A0B5630003EBD0B /* tinyxmlerror.cpp in Sources */,
 				E87413181A0B5647003EBD0B /* gzread.c in Sources */,
+				7608FBA01AEE20EF00823499 /* Item.cpp in Sources */,
 				E87413131A0B5647003EBD0B /* compress.c in Sources */,
 				E87413041A0B5629003EBD0B /* TmxMap.cpp in Sources */,
 				76E379031ACF792B002DB4F1 /* DebugMacros.cpp in Sources */,
@@ -2130,6 +2137,7 @@
 				98E3B6771A73A77A00B5BEBB /* common.cc in Sources */,
 				98E3B6491A73A77A00B5BEBB /* descriptor.pb.cc in Sources */,
 				987336141AB6840200694B53 /* JumpText.cpp in Sources */,
+				7608FB9F1AEE20EF00823499 /* Item.cpp in Sources */,
 				7631FA3A1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */,
 				76E4146B1ACA9E6A003DB126 /* BonesRain.cpp in Sources */,
 				986A555E1AA561E30051B0B9 /* SceneBase.cpp in Sources */,

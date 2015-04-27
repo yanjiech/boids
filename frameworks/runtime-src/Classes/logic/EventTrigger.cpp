@@ -40,7 +40,6 @@ EventTrigger* EventTrigger::create( class MapLogic* map_logic, const ValueMap& e
 bool EventTrigger::init( class MapLogic* map_logic, const ValueMap& event_data ) {
     this->setMapLogic( map_logic );
     _current_trigger_index = 0;
-    _is_enabled = true;
     _should_recycle = false;
     
     _event_data = event_data;
@@ -58,6 +57,14 @@ bool EventTrigger::init( class MapLogic* map_logic, const ValueMap& event_data )
     }
     else {
         _is_repeat = itr->second.asBool();
+    }
+    
+    itr = event_data.find( "enabled" );
+    if( itr != event_data.end() ) {
+        this->setEnabled( itr->second.asBool() );
+    }
+    else {
+        this->setEnabled( true );
     }
     
     const ValueVector& trigger_data = event_data.at( "triggers" ).asValueVector();

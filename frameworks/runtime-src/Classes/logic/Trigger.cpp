@@ -489,6 +489,10 @@ bool VisionChangeTrigger::init( const cocos2d::ValueMap& data ) {
     return true;
 }
 
+void VisionChangeTrigger::updateTrigger( const cocos2d::ValueMap& update_data ) {
+    
+}
+
 CustomTrigger::CustomTrigger() {
     
 }

@@ -11,6 +11,7 @@
 
 #include "TargetNode.h"
 #include "../AI/BoidsPolygon.h"
+#include "HpBar.h"
 
 class BuildingNode : public TargetNode {
 private:
@@ -57,6 +58,8 @@ private:
     float _elapse;
     
     cocos2d::ValueMap _buff_data;
+    
+    ProgressBar* _progress_bar;
     
 public:
     BuffBuildingNode();

@@ -94,25 +94,27 @@ cocos2d::Sprite* MapData::spriteFromObject( TMXTiledMap* map, const cocos2d::Val
         }
         auto x = object.at("x").asFloat();
         auto y = object.at("y").asFloat();
-        auto p = map->getPropertiesForGID(gid);
+        auto p = map->getPropertiesForGID(gid).asValueMap();
         
-        auto source = p.asValueMap().at("source").asString();
-        Sprite *sprite = nullptr;
-        if (createFromCache) {
-            sprite = Sprite::createWithSpriteFrameName(source);
-        } else {
-            auto spritePath = Utils::stringFormat("%s/%s", this->_path.c_str(), source.c_str());
-            sprite = Sprite::create(spritePath);
+        if( p.find( "source" ) != p.end() ) {
+            auto source = p.at("source").asString();
+            Sprite *sprite = nullptr;
+            if (createFromCache) {
+                sprite = Sprite::createWithSpriteFrameName(source);
+            } else {
+                auto spritePath = Utils::stringFormat("%s/%s", this->_path.c_str(), source.c_str());
+                sprite = Sprite::create(spritePath);
+            }
+            sprite->setAnchorPoint(Vec2::ZERO);
+            sprite->setPosition( Point( x, y ) );
+            if( flipped_horizontally ) {
+                sprite->setFlippedX( true );
+            }
+            if( flipped_vertically ) {
+                sprite->setFlippedY( true );
+            }
+            return sprite;
         }
-        sprite->setAnchorPoint(Vec2::ZERO);
-        sprite->setPosition( Point( x, y ) );
-        if( flipped_horizontally ) {
-            sprite->setFlippedX( true );
-        }
-        if( flipped_vertically ) {
-            sprite->setFlippedY( true );
-        }
-        return sprite;
     }
     return nullptr;
 }

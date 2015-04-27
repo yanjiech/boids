@@ -240,6 +240,11 @@ public:
 	bool UnPushable;
     int UnitCount;
     int UnitLevel;
+    bool IsItemChanged;
+    bool GetOrLoseItem;
+    std::string ItemName;
+    std::string ItemResource;
+    
     EditorUnitAction(): EditorActionBase("unit_change"), StateChanged(false), TypeChanged(false), TagChanged(false), BuffChanged(false), IsBoss(false), UnPushable(false), ClassName("LogicUnit"),
     SourceValue(""), PositionName(""), PositionTag(""), TagName(""), BuffName(""), UnitCount(0), PopupType("normal") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
@@ -329,6 +334,7 @@ class EditorEvent : public EditorBase {
 public:
     EditorEvent();
     std::string Name;
+    bool Enabled;
     std::shared_ptr<EditorTriggerMeta> TriggerMeta;
     std::vector<std::shared_ptr<EditorTriggerBase>> Triggers;
     std::vector<std::shared_ptr<EditorActionBase>> Actions;

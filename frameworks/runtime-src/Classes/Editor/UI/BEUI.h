@@ -45,6 +45,7 @@ public:
     explicit BEUITriggerOptions(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler);
     virtual void reset();
     bool isRepeat() const;
+    bool isEnabled();
     std::string getRelationType() const;
     const std::string& getType();
     void setMetaUIVisible(bool isVisible);
@@ -54,6 +55,7 @@ private:
     cocos2d::ui::Button *_cancel;
     cocos2d::ui::Button *_relationButton;
     cocos2d::ui::CheckBox *_isRepeat;
+    cocos2d::ui::CheckBox *_cb_enabled;
     cocos2d::ui::Text *_isRepeatLabel;
     BETypeListView *_list;
     BETypeListView *_relationList;
@@ -132,6 +134,12 @@ private:
     cocos2d::ui::CheckBox* _cb_skill_2;
     cocos2d::ui::TextField* _tf_skill_1_level;
     cocos2d::ui::TextField* _tf_skill_2_level;
+    
+    //item
+    cocos2d::ui::CheckBox* _cb_item;
+    cocos2d::ui::CheckBox* _cb_item_get_or_lose;
+    cocos2d::ui::TextField* _tf_item_name;
+    cocos2d::ui::TextField* _tf_item_resource;
     
     cocos2d::ui::Button *_addButton;
     cocos2d::ui::Button *_deleteButton;

@@ -7,10 +7,9 @@
 //
 
 #include "BlockNode.h"
-#include "UnitNode.h"
 #include "../BoidsMath.h"
 #include "../AI/Terrain.h"
-#include "../ArmatureManager.h"
+#include "../scene/BattleLayer.h"
 
 using namespace cocos2d;
 
@@ -21,35 +20,96 @@ BlockNode::BlockNode() {
 BlockNode::~BlockNode() {
 }
 
-BlockNode* BlockNode::create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+BlockNode* BlockNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
     BlockNode* ret = nullptr;
     std::string block_type = obj_properties.at( "type" ).asString();
     if( block_type == "SpineBlockNode" ) {
-        ret = SpineBlockNode::create( grid_properties, obj_properties );
+        ret = SpineBlockNode::create( battle_layer, grid_properties, obj_properties );
     }
     else if( block_type == "SpriteBlockNode" ) {
-        ret = SpriteBlockNode::create( grid_properties, obj_properties );
+        ret = SpriteBlockNode::create( battle_layer, grid_properties, obj_properties );
     }
     
     return ret;
 }
 
-bool BlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+bool BlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
     if( !TargetNode::init( nullptr ) ) {
         return false;
     }
     
+    _battle_layer = battle_layer;
     const ValueMap& boundary_data = grid_properties.at( "boundary" ).asValueMap();
     _boundaries.loadFromValueMap( boundary_data );
     _boundaries.name = boundary_data.at( "name" ).asString();
+    _center = _boundaries.center;
     
     _block_name = obj_properties.at( "name" ).asString();
+    
+    auto itr = obj_properties.find( "need_repair" );
+    if( itr != obj_properties.end() ) {
+        _need_repair = itr->second.asBool();
+    }
+    else {
+        _need_repair = false;
+    }
+    
+    if( _need_repair ) {
+        _range = obj_properties.at( "range" ).asFloat();
+        _need_time = obj_properties.at( "need_time" ).asFloat();
+        std::string tag_str = obj_properties.at( "need_tag" ).asString();
+        Utils::split( tag_str, _need_tag, ',' );
+        this->setEnabled( false );
+    }
+    else {
+        itr = obj_properties.find( "enabled" );
+        if( itr != obj_properties.end() ) {
+            this->setEnabled( itr->second.asBool() );
+        }
+        else {
+            this->setEnabled( true );
+        }
+    }
+    _elapse = 0;
+    
+    _progress_bar = ProgressBar::create( Color4F::WHITE, Color4F::WHITE, Size( 290.0f, 10.0f ) );
+    _progress_bar->setBackgroundOpacity( 127 );
+    this->addChild( _progress_bar, 10 );
     
     return true;
 }
 
-void BlockNode::setEnabled( bool b ) {
-    _is_enabled = b;
+void BlockNode::updateFrame( float delta ) {
+    if( _need_repair ) {
+        Vector<UnitNode*> candidates = _battle_layer->getAliveUnitsByCondition( eTargetCamp::Player, _need_tag, _center, _range );
+        int count = (int)candidates.size();
+        if( count == 0 ) {
+            _elapse = 0;
+        }
+        else {
+            _progress_bar->setVisible( true );
+            UnitNode* unit = candidates.at( 0 );
+            if( unit->isIdle() ) {
+                _elapse += delta;
+                if( _elapse >= _need_time ) {
+                    _need_repair = false;
+                    this->setEnabled( true );
+                    this->updateEnabled();
+                    _progress_bar->setVisible( false );
+                }
+                else {
+                    _progress_bar->setPercentage( 100.0f * _elapse / _need_time );
+                }
+            }
+            else {
+                _progress_bar->setVisible( false );
+                _elapse = 0;
+            }
+        }
+    }
+}
+
+void BlockNode::updateEnabled() {
     if( _is_enabled ) {
         for( auto pair : Terrain::getInstance()->getMeshes() ) {
             pair.second->removeCollidablePolygon( _boundaries.name );
@@ -71,9 +131,9 @@ SpriteBlockNode::~SpriteBlockNode() {
     
 }
 
-SpriteBlockNode* SpriteBlockNode::create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+SpriteBlockNode* SpriteBlockNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
     SpriteBlockNode* ret = new SpriteBlockNode();
-    if( ret && ret->init( grid_properties, obj_properties ) ) {
+    if( ret && ret->init( battle_layer, grid_properties, obj_properties ) ) {
         ret->autorelease();
         return ret;
     }
@@ -83,8 +143,8 @@ SpriteBlockNode* SpriteBlockNode::create( const cocos2d::ValueMap& grid_properti
     }
 }
 
-bool SpriteBlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
-    if( !BlockNode::init( grid_properties, obj_properties ) ) {
+bool SpriteBlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    if( !BlockNode::init( battle_layer, grid_properties, obj_properties ) ) {
         return false;
     }
     
@@ -119,19 +179,17 @@ bool SpriteBlockNode::init( const cocos2d::ValueMap& grid_properties, const coco
         _destroyed_sprite->setFlippedX( true );
     }
     
-    auto itr = obj_properties.find( "enabled" );
-    if( itr != obj_properties.end() ) {
-        this->setEnabled( itr->second.asBool() );
-    }
-    else {
-        this->setEnabled( true );
-    }
+    this->updateEnabled();
+    
+    _progress_bar->setPercentage( 0 );
+    _progress_bar->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height + 50.0f ) );
+    _progress_bar->setVisible( false );
     
     return true;
 }
 
-void SpriteBlockNode::setEnabled( bool b ) {
-    BlockNode::setEnabled( b );
+void SpriteBlockNode::updateEnabled() {
+    BlockNode::updateEnabled();
     if( _is_enabled ) {
         _normal_sprite->setVisible( true );
         _destroyed_sprite->setVisible( false );
@@ -151,9 +209,9 @@ SpineBlockNode::~SpineBlockNode() {
     
 }
 
-SpineBlockNode* SpineBlockNode::create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+SpineBlockNode* SpineBlockNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
     SpineBlockNode* ret = new SpineBlockNode();
-    if( ret && ret->init( grid_properties, obj_properties ) ) {
+    if( ret && ret->init( battle_layer, grid_properties, obj_properties ) ) {
         ret->autorelease();
         return ret;
     }
@@ -163,8 +221,8 @@ SpineBlockNode* SpineBlockNode::create( const cocos2d::ValueMap& grid_properties
     }
 }
 
-bool SpineBlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
-    if( !BlockNode::init( grid_properties, obj_properties ) ) {
+bool SpineBlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    if( !BlockNode::init( battle_layer, grid_properties, obj_properties ) ) {
         return false;
     }
     
@@ -172,19 +230,13 @@ bool SpineBlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos
     _skeleton = ArmatureManager::getInstance()->createArmature( resource );
     this->addChild( _skeleton );
     
-    auto itr = obj_properties.find( "enabled" );
-    if( itr != obj_properties.end() ) {
-        this->setEnabled( itr->second.asBool() );
-    }
-    else {
-        this->setEnabled( true );
-    }
+    this->updateEnabled();
     
     return true;
 }
 
-void SpineBlockNode::setEnabled( bool b ) {
-    BlockNode::setEnabled( b );
+void SpineBlockNode::updateEnabled() {
+    BlockNode::updateEnabled();
     
     if( _is_enabled ) {
         _skeleton->setAnimation( 0, "open", false );

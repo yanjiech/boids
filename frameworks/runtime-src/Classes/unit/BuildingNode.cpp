@@ -141,6 +141,12 @@ bool BuffBuildingNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap&
         _buff_data["effect_scale"] = itr->second;
     }
     
+    _progress_bar = ProgressBar::create( Color4F::WHITE, Color4F::WHITE, Size( 290.0f, 10.0f ) );
+    _progress_bar->setBackgroundOpacity( 127 );
+    this->addChild( _progress_bar, 10 );
+    _progress_bar->setPosition( this->getContentSize().width / 2, this->getContentSize().height + 50.0f );
+    _progress_bar->setVisible( false );
+    
     return true;
 }
 
@@ -149,8 +155,10 @@ void BuffBuildingNode::updateFrame( float delta ) {
         Vector<UnitNode*> candidates = _battle_layer->getAliveAllyInRange( eTargetCamp::Player, this->getCenter(), _range );
         if( candidates.size() == 0 ) {
             _elapse = 0;
+            _progress_bar->setVisible( false );
         }
         else {
+            _progress_bar->setVisible( true );
             _elapse += delta;
             if( _elapse > _duration ) {
                 Vector<UnitNode*> units = _battle_layer->getAliveUnitsByCamp( eTargetCamp::Player );
@@ -160,6 +168,10 @@ void BuffBuildingNode::updateFrame( float delta ) {
                     unit->addBuff( buff->getBuffId(), buff );
                     buff->begin();
                 }
+                _progress_bar->setVisible( false );
+            }
+            else {
+                _progress_bar->setPercentage( 100.0f * _elapse / _duration );
             }
         }
     }

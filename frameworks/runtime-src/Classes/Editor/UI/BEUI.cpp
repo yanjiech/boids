@@ -83,6 +83,8 @@ BEUITriggerOptions::BEUITriggerOptions(ui::Layout *root, const BEPopupEventHandl
     _isRepeat = getCheckBoxFrom("checkbox_isRepeat", _root);
     _isRepeatLabel = getLabelFrom("text_isRepeat", _root);
     
+    _cb_enabled = getCheckBoxFrom("cb_enabled", _root);
+    
     Size contentSize = Size(400, 300);
     _list = BETypeListView::create(contentSize, EditorTypeManager::getInstance()->getTriggerType(), nullptr);
     _list->setPosition(Vec2(0, 300));
@@ -96,6 +98,7 @@ void BEUITriggerOptions::reset() {
     _relationList->reset();
     _relationList->setVisible(false);
     _relationButton->setTitleText("then");
+    _cb_enabled->setSelected( true );
     _list->reset();
 }
 
@@ -111,6 +114,10 @@ const std::string& BEUITriggerOptions::getType() {
 
 bool BEUITriggerOptions::isRepeat() const {
     return _isRepeat->isSelected();
+}
+
+bool BEUITriggerOptions::isEnabled() {
+    return _cb_enabled->isSelected();
 }
 
 std::string BEUITriggerOptions::getRelationType() const {
@@ -200,6 +207,12 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     _tf_buff_type = getTextFieldFrom( "tf_buff_type", _infoPanel );
     _tf_buff_params = getTextFieldFrom( "tf_buff_params", _infoPanel );
     
+    //item
+    _cb_item = getCheckBoxFrom( "cb_item", _infoPanel );
+    _cb_item_get_or_lose = getCheckBoxFrom( "cb_item_get_or_lose", _infoPanel );
+    _tf_item_name = getTextFieldFrom( "tf_item_name", _infoPanel );
+    _tf_item_resource = getTextFieldFrom( "tf_item_resource", _infoPanel );
+    
     _addButton = getButtonFrom("button_add", _infoPanel);
     _deleteButton = getButtonFrom("button_delete", _root);
     _addButton->addClickEventListener(CC_CALLBACK_1(BEUIUnitAction::onAddButtonClicked, this));
@@ -286,6 +299,8 @@ void BEUIUnitAction::reset() {
     _bossCheckBox->setSelected(false);
     toggleBossUI(false);
     _popupButton->setTitleText("normal");
+    
+    _cb_item->setSelected( false );
 }
 
 const std::vector<EditorUnitActionPtr>& BEUIUnitAction::getActions() {
@@ -295,6 +310,7 @@ const std::vector<EditorUnitActionPtr>& BEUIUnitAction::getActions() {
 void BEUIUnitAction::loadSourceList(const std::vector<std::pair<std::string, std::string>>& sources) {
     _editMode = false;
     _sourceList = sources;
+    _sourceList.push_back( std::make_pair( "tag_source", "leader" ) );
     _groupListView->updateData();
 }
 
@@ -442,6 +458,10 @@ void BEUIUnitAction::onAddButtonClicked(Ref *sender) {
         _action->SourceType = pair.first;
         _action->SourceValue = pair.second;
     }
+    _action->IsItemChanged = _cb_item->isSelected();
+    _action->GetOrLoseItem = _cb_item_get_or_lose->isSelected();
+    _action->ItemName = _tf_item_name->getString();
+    _action->ItemResource = _tf_item_resource->getString();
     _action->IsBoss = _bossCheckBox->isSelected();
     _action->CustomChange = _customTextField->getString();
     _action->UnitLevel = Utils::toInt( _levelTextField->getString() );

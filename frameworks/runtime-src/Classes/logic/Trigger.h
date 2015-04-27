@@ -146,12 +146,18 @@ public:
 };
 
 class VisionChangeTrigger : public Trigger {
+private:
+    int _need_count;
+    int _current_count;
+    
 public:
     VisionChangeTrigger();
     virtual ~VisionChangeTrigger();
     
     static VisionChangeTrigger* create( const cocos2d::ValueMap& data );
     virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void updateTrigger( const cocos2d::ValueMap& update_data );
 };
 
 class CustomTrigger : public Trigger {

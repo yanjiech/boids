@@ -425,6 +425,12 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
         _json.AddMember( "skill_2_level", SkillTwoLevel, allocator );
     }
     
+    if( this->IsItemChanged ) {
+        _json.AddMember( "item_get_or_lose", GetOrLoseItem, allocator );
+        _json.AddMember( "item_name", ItemName.c_str(), allocator );
+        _json.AddMember( "item_resource", ItemResource.c_str(), allocator );
+    }
+    
     return _json;
 }
 
@@ -521,6 +527,19 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
     }
     else {
         this->SkillTwoLevel = 0;
+    }
+    
+    if( value.HasMember( "item_name" ) ) {
+        this->IsItemChanged = true;
+        this->GetOrLoseItem = value["item_get_or_lose"].GetBool();
+        this->ItemName = value["item_name"].GetString();
+        this->ItemResource = value["item_resource"].GetString();
+    }
+    else {
+        this->IsItemChanged = false;
+        this->GetOrLoseItem = true;
+        this->ItemName = "";
+        this->ItemResource = "";
     }
     
     this->UnitCount = value.HasMember("unit_count") ? value["unit_count"].GetInt() : 0;
@@ -691,6 +710,7 @@ EditorEvent::EditorEvent() {
 rapidjson::Value& EditorEvent::toJson(rapidjson::Document::AllocatorType& allocator) {
     _json.SetObject();
     _json.AddMember("name", this->Name.c_str(), allocator);
+    _json.AddMember( "enabled", this->Enabled, allocator );
     _json.AddMember("trigger_meta", this->TriggerMeta->toJson(allocator), allocator);
     rapidjson::Value triggers;
     triggers.SetArray();
@@ -709,6 +729,7 @@ rapidjson::Value& EditorEvent::toJson(rapidjson::Document::AllocatorType& alloca
 
 void EditorEvent::loadJson(const rapidjson::Value& value) {
     this->Name = value["name"].GetString();
+    this->Enabled = value.HasMember( "enabled" ) ? value["enabled"].GetBool() : true;
     this->TriggerMeta->loadJson(value["trigger_meta"]);
     Triggers.clear();
     const rapidjson::Value& triggers = value["triggers"];

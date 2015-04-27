@@ -11,6 +11,26 @@
 
 #include "cocos2d.h"
 
+class ProgressBar : public cocos2d::Node {
+private:
+    cocos2d::ProgressTimer* _background;
+    cocos2d::ProgressTimer* _cover;
+    
+    float _percentage;
+    
+public:
+    ProgressBar();
+    virtual ~ProgressBar();
+    
+    static ProgressBar* create( const cocos2d::Color4F& bg_color, const cocos2d::Color4F& cover_color, const cocos2d::Size& size );
+    virtual bool init( const cocos2d::Color4F& bg_color, const cocos2d::Color4F& cover_color, const cocos2d::Size& size );
+    
+    void setPercentage( float percentage );
+    float getPercentage();
+    
+    void setBackgroundOpacity( GLubyte opacity );
+};
+
 class HpBar : public cocos2d::Node {
 private:
     cocos2d::ProgressTimer* _background;

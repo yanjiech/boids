@@ -241,7 +241,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_triggerOptions" ActionTag="43" Visible="False" FrameEvent="" Tag="41" LeftMargin="-200.0000" RightMargin="-200.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_triggerOptions" ActionTag="43" FrameEvent="" Tag="41" LeftMargin="-200.0000" RightMargin="-200.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Position X="0.0000" Y="0.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -333,6 +333,29 @@
                     <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                     <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                     <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="cb_enabled" ActionTag="1207796306" FrameEvent="" Tag="262" LeftMargin="30.5000" RightMargin="329.5000" TopMargin="670.0000" BottomMargin="90.0000" TouchEnable="True" CheckedState="True" ctype="CheckBoxObjectData">
+                    <Position X="50.5000" Y="110.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <Size X="40.0000" Y="40.0000" />
+                    <PrePosition X="0.1262" Y="0.1375" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                    <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
+                    <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
+                    <DisableBackFileData Type="Default" Path="Default/CheckBox_Disable.png" />
+                    <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
+                    <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="Text_26" ActionTag="1092242473" FrameEvent="" Tag="263" LeftMargin="76.5000" RightMargin="203.5000" TopMargin="678.0000" BottomMargin="94.0000" FontSize="24" LabelText="生成时运行" ctype="TextObjectData">
+                    <Position X="136.5000" Y="108.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="51" G="102" B="51" />
+                    <Size X="120.0000" Y="28.0000" />
+                    <PrePosition X="0.3413" Y="0.1350" />
+                    <PreSize X="0.0000" Y="0.0000" />
                   </NodeObjectData>
                 </Children>
                 <SingleColor A="255" R="255" G="255" B="255" />
@@ -489,14 +512,14 @@
                 <PrePosition X="0.0000" Y="0.0000" />
                 <PreSize X="0.0000" Y="0.0000" />
                 <Children>
-                  <NodeObjectData Name="panel_info" ActionTag="113" FrameEvent="" Tag="111" LeftMargin="497.5404" RightMargin="502.4596" TopMargin="2.8346" BottomMargin="-2.8346" TouchEnable="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
-                    <Position X="797.5404" Y="397.1654" />
+                  <NodeObjectData Name="panel_info" ActionTag="113" FrameEvent="" Tag="111" LeftMargin="501.5404" RightMargin="398.4596" TopMargin="1.8346" BottomMargin="-1.8346" TouchEnable="True" BackColorAlpha="0" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+                    <Position X="851.5404" Y="398.1654" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <Size X="600.0000" Y="800.0000" />
-                    <PrePosition X="0.4985" Y="0.4965" />
-                    <PreSize X="0.0000" Y="0.0000" />
+                    <Size X="700.0000" Y="800.0000" />
+                    <PrePosition X="0.5322" Y="0.4977" />
+                    <PreSize X="0.4375" Y="1.0000" />
                     <Children>
                       <NodeObjectData Name="button_cancel" ActionTag="127" FrameEvent="" Tag="125" LeftMargin="474.0000" RightMargin="66.0000" TopMargin="750.0000" BottomMargin="10.0000" TouchEnable="True" FontSize="14" ButtonText="取消" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="504.0000" Y="30.0000" />
@@ -510,6 +533,20 @@
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="cb_item" ActionTag="278621332" FrameEvent="" Tag="265" LeftMargin="290.5000" RightMargin="369.5000" TopMargin="357.0000" BottomMargin="403.0000" TouchEnable="True" ctype="CheckBoxObjectData">
+                        <Position X="310.5000" Y="423.0000" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="255" G="255" B="255" />
+                        <Size X="40.0000" Y="40.0000" />
+                        <PrePosition X="0.4436" Y="0.5288" />
+                        <PreSize X="0.0000" Y="0.0000" />
+                        <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
+                        <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
+                        <DisableBackFileData Type="Default" Path="Default/CheckBox_Disable.png" />
+                        <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
+                        <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
                       <NodeObjectData Name="Text_15_Copy" ActionTag="128" FrameEvent="" Tag="126" LeftMargin="212.0000" RightMargin="208.0000" TopMargin="2.0000" BottomMargin="764.0000" FontSize="30" LabelText="改变单位状态" ctype="TextObjectData">
                         <Position X="302.0000" Y="781.0000" />
@@ -635,13 +672,13 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="checkbox_changeState" ActionTag="621" FrameEvent="" Tag="128" LeftMargin="43.0000" RightMargin="517.0000" TopMargin="105.0000" BottomMargin="655.0000" TouchEnable="True" ctype="CheckBoxObjectData">
+                      <NodeObjectData Name="checkbox_changeState" ActionTag="621" FrameEvent="" Tag="128" LeftMargin="43.0000" RightMargin="717.0000" TopMargin="105.0000" BottomMargin="655.0000" TouchEnable="True" ctype="CheckBoxObjectData">
                         <Position X="63.0000" Y="675.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="40.0000" Y="40.0000" />
-                        <PrePosition X="0.1050" Y="0.8438" />
+                        <PrePosition X="0.0787" Y="0.8438" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
                         <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
@@ -838,40 +875,40 @@
                         <PrePosition X="0.3058" Y="0.6542" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_20" ActionTag="1403395084" FrameEvent="" Tag="252" LeftMargin="133.4596" RightMargin="344.5404" TopMargin="488.6654" BottomMargin="277.3346" FontSize="30" LabelText="buff_type" ctype="TextObjectData">
-                        <Position X="194.4596" Y="294.3346" />
+                      <NodeObjectData Name="Text_20" ActionTag="1403395084" FrameEvent="" Tag="252" LeftMargin="50.4596" RightMargin="427.5404" TopMargin="488.6654" BottomMargin="277.3346" FontSize="30" LabelText="buff_type" ctype="TextObjectData">
+                        <Position X="111.4596" Y="294.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="122.0000" Y="34.0000" />
-                        <PrePosition X="0.3241" Y="0.3679" />
+                        <PrePosition X="0.1858" Y="0.3679" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_buff_type" ActionTag="127034880" FrameEvent="" Tag="253" LeftMargin="279.4596" RightMargin="220.5404" TopMargin="493.1654" BottomMargin="279.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="buff type" MaxLengthText="10" ctype="TextFieldObjectData">
-                        <Position X="329.4596" Y="293.3346" />
+                      <NodeObjectData Name="tf_buff_type" ActionTag="127034880" FrameEvent="" Tag="253" LeftMargin="194.4596" RightMargin="305.5404" TopMargin="495.1654" BottomMargin="277.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="buff type" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="244.4596" Y="291.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
                         <Size X="100.0000" Y="27.0000" />
-                        <PrePosition X="0.5491" Y="0.3667" />
+                        <PrePosition X="0.4074" Y="0.3642" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_21" ActionTag="-713919808" FrameEvent="" Tag="254" LeftMargin="92.4596" RightMargin="341.5404" TopMargin="530.6654" BottomMargin="235.3346" FontSize="30" LabelText="buff_params" ctype="TextObjectData">
-                        <Position X="175.4596" Y="252.3346" />
+                      <NodeObjectData Name="Text_21" ActionTag="-713919808" FrameEvent="" Tag="254" LeftMargin="47.4596" RightMargin="386.5404" TopMargin="529.6654" BottomMargin="236.3346" FontSize="30" LabelText="buff_params" ctype="TextObjectData">
+                        <Position X="130.4596" Y="253.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="166.0000" Y="34.0000" />
-                        <PrePosition X="0.2924" Y="0.3154" />
+                        <PrePosition X="0.2174" Y="0.3167" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_buff_params" ActionTag="145099598" FrameEvent="" Tag="255" LeftMargin="276.4596" RightMargin="123.5404" TopMargin="535.1654" BottomMargin="237.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
-                        <Position X="376.4596" Y="251.3346" />
+                      <NodeObjectData Name="tf_buff_params" ActionTag="145099598" FrameEvent="" Tag="255" LeftMargin="226.4596" RightMargin="173.5404" TopMargin="536.1654" BottomMargin="236.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="326.4596" Y="250.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
                         <Size X="200.0000" Y="27.0000" />
-                        <PrePosition X="0.6274" Y="0.3142" />
+                        <PrePosition X="0.5441" Y="0.3129" />
                         <PreSize X="0.3333" Y="0.0338" />
                       </NodeObjectData>
                       <NodeObjectData Name="Text_23" ActionTag="1171578389" FrameEvent="" Tag="256" LeftMargin="120.4596" RightMargin="418.5404" TopMargin="632.1654" BottomMargin="139.8346" FontSize="24" LabelText="技能1" ctype="TextObjectData">
@@ -960,6 +997,47 @@
                         <DisableBackFileData Type="Default" Path="Default/CheckBox_Disable.png" />
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="Text_27" ActionTag="-2115723663" FrameEvent="" Tag="264" LeftMargin="441.4596" RightMargin="67.5404" TopMargin="448.6654" BottomMargin="328.3346" FontSize="20" LabelText="Text Label" ctype="TextObjectData">
+                        <Position X="486.9596" Y="339.8346" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="255" G="255" B="255" />
+                        <Size X="91.0000" Y="23.0000" />
+                        <PrePosition X="0.8116" Y="0.4248" />
+                        <PreSize X="0.0000" Y="0.0000" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="tf_item_resource" ActionTag="801617091" FrameEvent="" Tag="268" LeftMargin="296.9596" RightMargin="103.0404" TopMargin="404.6654" BottomMargin="368.3346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="item_resource" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="446.9596" Y="381.8346" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="0" G="0" B="0" />
+                        <Size X="300.0000" Y="27.0000" />
+                        <PrePosition X="0.6385" Y="0.4773" />
+                        <PreSize X="0.3750" Y="0.0338" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="cb_item_get_or_lose" ActionTag="1242190236" FrameEvent="" Tag="270" LeftMargin="456.9596" RightMargin="203.0404" TopMargin="354.1654" BottomMargin="405.8346" TouchEnable="True" CheckedState="True" ctype="CheckBoxObjectData">
+                        <Position X="476.9596" Y="425.8346" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="255" G="255" B="255" />
+                        <Size X="40.0000" Y="40.0000" />
+                        <PrePosition X="0.6814" Y="0.5323" />
+                        <PreSize X="0.0000" Y="0.0000" />
+                        <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
+                        <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
+                        <DisableBackFileData Type="Default" Path="Default/CheckBox_Disable.png" />
+                        <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
+                        <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
+                      </NodeObjectData>
+                      <NodeObjectData Name="tf_item_name" ActionTag="-1435677362" FrameEvent="" Tag="273" LeftMargin="345.9596" RightMargin="254.0404" TopMargin="361.6654" BottomMargin="411.3346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="item_name" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="395.9596" Y="424.8346" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <CColor A="255" R="0" G="0" B="0" />
+                        <Size X="100.0000" Y="27.0000" />
+                        <PrePosition X="0.5657" Y="0.5310" />
+                        <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
                     </Children>
                     <SingleColor A="255" R="150" G="200" B="255" />

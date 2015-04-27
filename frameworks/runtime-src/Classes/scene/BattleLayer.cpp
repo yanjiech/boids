@@ -176,6 +176,7 @@ void BattleLayer::updateFrame( float delta ) {
         
         this->updateBuildings( delta );
         this->updateTowers( delta );
+        this->updateBlocks( delta );
         
         //handle newly dying units which need to be removed from alive list
         UnitMap unit_map = this->getAliveUnits();
@@ -305,6 +306,29 @@ void BattleLayer::changeState( eBattleState new_state ) {
         this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
         log( "game end: lose" );
     }
+}
+
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCondition( eTargetCamp camp, const std::vector<std::string>& tags, const cocos2d::Point& center, float range ) {
+    cocos2d::Vector<UnitNode*> ret;
+    
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        Point unit_pos = unit->getPosition();
+        if( unit->getTargetCamp() == camp && Math::isPositionInRange( unit_pos, center, range ) ) {
+            bool qualified = true;
+            for( auto str : tags ) {
+                if( !unit->hasUnitTag( str ) ) {
+                    qualified = false;
+                    break;
+                }
+            }
+            
+            if( qualified ) {
+                ret.pushBack( unit );
+            }
+        }
+    }
+    return ret;
 }
 
 cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eTargetCamp camp ) {
@@ -539,6 +563,13 @@ void BattleLayer::updateTowers( float delta ) {
         if( tower->isAlive() ) {
             tower->updateFrame( delta );
         }
+    }
+}
+
+void BattleLayer::updateBlocks( float delta ) {
+    for( auto pair : _block_nodes ) {
+        BlockNode* block = pair.second;
+        block->updateFrame( delta );
     }
 }
 
@@ -837,7 +868,7 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
         boundary["map_height"] = Value( _tmx_map->getContentSize().height );
         if( !boundary.empty() ) {
             grid_properties["boundary"] = Value( boundary );
-            BlockNode* block_node = BlockNode::create( grid_properties, obj_properties );
+            BlockNode* block_node = BlockNode::create( this, grid_properties, obj_properties );
             this->addBlockNode( block_node, layer );
         }
     }

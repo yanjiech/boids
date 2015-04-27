@@ -439,6 +439,7 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             BEUITriggerOptions *ui = (BEUITriggerOptions *)popup;
             if (ctx->Event->Triggers.size() == 0) {
                 ctx->Event->TriggerMeta->IsRepeated = ui->isRepeat();
+                ctx->Event->Enabled = ui->isEnabled();
                 ctx->Event->TriggerMeta->TriggerRelation = ui->getRelationType();
                 auto triggerType = ui->getType();
                 if (triggerType == "map_init") {

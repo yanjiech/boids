@@ -95,6 +95,10 @@
   <object id="2" name="b1" type="SpriteBlockNode" gid="2147483669" x="2552.33" y="618.606">
    <properties>
     <property name="enabled" value="true"/>
+    <property name="need_repair" value="true"/>
+    <property name="need_tag" value="leader,player"/>
+    <property name="need_time" value="2"/>
+    <property name="range" value="500"/>
    </properties>
   </object>
   <object id="117" name="b1_collide" type="collide" x="2694" y="397">

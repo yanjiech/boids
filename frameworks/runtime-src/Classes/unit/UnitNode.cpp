@@ -207,7 +207,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     float hpbar_height = DEFAULT_HP_BAR_HEIGHT;
     
     _hp_bar = HpBar::create( Size( hpbar_width, hpbar_height ) );
-    _hp_bar->setPosition( Point( bounding_box.size.width / 2, bounding_box.size.height * ( 1.0f - _current_skeleton->getAnchorPoint().y ) + 10.0f ) );
+    _hp_bar->setPosition( Point( 0, bounding_box.size.height * ( 1.0f - _current_skeleton->getAnchorPoint().y ) + 10.0f ) );
     this->addChild( _hp_bar, eComponentLayer::OverObject );
     
     itr = unit_data.find( "show_hp" );
@@ -681,6 +681,37 @@ void UnitNode::removeAllBuffs() {
     _buffs.clear();
 }
 
+void UnitNode::addItem( Item* item ) {
+    _items.insert( item->getItemId(), item );
+    Sprite* item_sprite = Sprite::createWithSpriteFrameName( item->getResource() );
+    UnitNodeComponent* component = UnitNodeComponent::create( item_sprite, item->getName(), true );
+    this->addUnitComponent( component, item->getName(), eComponentLayer::OverObject );
+    component->setPosition( Point( 0, this->getBoundingBox().size.height + item_sprite->getContentSize().height ) );
+    this->addUnitTag( item->getName() );
+}
+
+void UnitNode::removeItem( const std::string& item_name ) {
+    for( auto itr = _items.begin(); itr != _items.end(); ++itr ) {
+        if( itr->second->getName() == item_name ) {
+            _items.erase( itr );
+            break;
+        }
+    }
+    if( !this->hasItem( item_name ) ) {
+        this->removeUnitComponent( item_name );
+        this->removeUnitTag( item_name );
+    }
+}
+
+bool UnitNode::hasItem( const std::string& item_name ) {
+    for( auto itr = _items.begin(); itr != _items.end(); ++itr ) {
+        if( itr->second->getName() == item_name ) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_per, float duration ) {
     if( !this->isDying() && !this->isCasting() ) {
         Point sk_dir = dir;
@@ -874,6 +905,10 @@ bool UnitNode::isAttacking() {
 
 bool UnitNode::isWalking() {
     return _state == eUnitState::Walking;
+}
+
+bool UnitNode::isIdle() {
+    return _state == eUnitState::Idle;
 }
 
 bool UnitNode::isDying() {

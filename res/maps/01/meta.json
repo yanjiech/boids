@@ -149,35 +149,8 @@
     ],
     "events": [
         {
-            "name": "01",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "goblin_shredder",
-                    "skill_1_level": 2,
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "02",
-                    "unit_count": 1,
-                    "unit_level": 30,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
             "name": "02wolf",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -208,6 +181,7 @@
         },
         {
             "name": "01goblin",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -236,6 +210,7 @@
         },
         {
             "name": "09wolf_goblin",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -276,6 +251,7 @@
         },
         {
             "name": "destroy_bridge",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -356,6 +332,7 @@
         },
         {
             "name": "trigger_03_06",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -401,54 +378,8 @@
             ]
         },
         {
-            "name": "trigger_add01_07",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_stay",
-                    "source_type": "tag_source",
-                    "source_value": "player",
-                    "position_name": "trigger_add01_07",
-                    "trigger_count": 1,
-                    "duration": 0
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "60,0.00,3.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "goblin",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "tag_name": "boss_guard",
-                    "position_name": "add01",
-                    "unit_count": 2,
-                    "unit_level": 2,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "50,0.00,3.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "tag_name": "boss_guard",
-                    "position_name": "07",
-                    "unit_count": 2,
-                    "unit_level": 2,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
             "name": "win",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -472,51 +403,8 @@
             ]
         },
         {
-            "name": "goblin_talk",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "tag_source",
-                    "source_value": "goblin_talker",
-                    "unit_state": "unit_appear",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "content": "Hey buddy!",
-                            "duration": 3,
-                            "interval": 4
-                        },
-                        {
-                            "content": "Kill me Please!",
-                            "duration": 3,
-                            "interval": 4
-                        },
-                        {
-                            "content": "Your mom is asking you home!",
-                            "duration": 3,
-                            "interval": 4
-                        }
-                    ],
-                    "name": "goblin_1",
-                    "source_type": "tag_source",
-                    "source_value": "goblin_talker",
-                    "is_random_order": true,
-                    "repeat_times": 4
-                }
-            ]
-        },
-        {
             "name": "globlin_attention!",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -550,46 +438,8 @@
             ]
         },
         {
-            "name": "more_goblin",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "tag_source",
-                    "source_value": "goblin_lead",
-                    "unit_state": "unit_appear",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "content": "Attension!",
-                            "duration": 5,
-                            "interval": 5
-                        },
-                        {
-                            "content": "Waves of monster ahead!",
-                            "duration": 5,
-                            "interval": 5
-                        }
-                    ],
-                    "name": "lead_speech",
-                    "source_type": "tag_source",
-                    "source_value": "goblin_lead",
-                    "is_random_order": false,
-                    "repeat_times": 1
-                }
-            ]
-        },
-        {
             "name": "game_lose",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -614,6 +464,7 @@
         },
         {
             "name": "goblin_guard_talker",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -652,41 +503,8 @@
             ]
         },
         {
-            "name": "player_talk",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "tag_source",
-                    "source_value": "boss_guard",
-                    "unit_state": "unit_appear",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "content": "Go to the flowers! Quick!",
-                            "duration": 5,
-                            "interval": 0
-                        }
-                    ],
-                    "name": "leader_speech",
-                    "source_type": "tag_source",
-                    "source_value": "leader",
-                    "is_random_order": false,
-                    "repeat_times": 1
-                }
-            ]
-        },
-        {
             "name": "on_boss_guard_appear",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": true,
                 "trigger_relation": "then"
@@ -723,6 +541,7 @@
         },
         {
             "name": "test",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -753,7 +572,8 @@
             ]
         },
         {
-            "name": "map_init",
+            "name": "ttt",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -767,17 +587,14 @@
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "human_king",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
+                    "source_type": "tag_source",
+                    "source_value": "leader",
                     "show_hp": false,
-                    "position_name": "patrol1",
-                    "unit_count": 1,
-                    "unit_level": 20,
+                    "unit_level": 1,
                     "popup_type": "normal",
-                    "skill_1_level": 2,
-                    "skill_2_level": 2
+                    "item_get_or_lose": true,
+                    "item_name": "road_repair",
+                    "item_resource": "spanner.png"
                 }
             ]
         }
@@ -785,7 +602,6 @@
     "units": [
         "bomb_goblin",
         "goblin",
-        "human_king",
         "wild_wolf"
     ],
     "tasks": [

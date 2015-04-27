@@ -199,6 +199,22 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
         tag_name = itr->second.asString();
     }
     
+    bool get_or_lose_item = true;
+    itr = _action_data.find( "item_get_or_lose" );
+    if( itr != _action_data.end() ) {
+        get_or_lose_item = itr->second.asBool();
+    }
+    std::string item_name = "";
+    itr = _action_data.find( "item_name" );
+    if( itr != _action_data.end() ) {
+        item_name = itr->second.asString();
+    }
+    std::string item_resource = "";
+    itr = _action_data.find( "item_resource" );
+    if( itr != _action_data.end() ) {
+        item_resource = itr->second.asString();
+    }
+    
     ValueMap buff_data;
     itr = _action_data.find( "buff_name" );
     if( itr != _action_data.end() ) {
@@ -391,6 +407,19 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
             if( unit_type != "" ) {
                 u->setTargetCamp( UnitNode::getCampByString( unit_type ) );
             }
+            if( item_name.size() > 0 ) {
+                if( get_or_lose_item ) {
+                    ValueMap item_data;
+                    item_data["item_name"] = Value( item_name );
+                    item_data["item_resource"] = Value( item_resource );
+                    
+                    Item* item = Item::create( item_data );
+                    u->addItem( item );
+                }
+                else {
+                    u->removeItem( item_name );
+                }
+            }
         }
     }
 }
@@ -564,6 +593,7 @@ void VisionChangeAction::onActionTriggered( bool finish ) {
             BlockNode* block_node = itr->second;
             if( block_node->getBlockName() == source_value ) {
                 itr->second->setEnabled( enabled );
+                block_node->updateEnabled();
             }
         }
     }

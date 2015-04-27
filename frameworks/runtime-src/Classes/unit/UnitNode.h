@@ -12,6 +12,7 @@
 #include "TargetNode.h"
 #include "Skill.h"
 #include "Buff.h"
+#include "Item.h"
 #include "HpBar.h"
 #include "./skill/SkillNode.h"
 #include "../AI/Path.h"
@@ -62,6 +63,8 @@ private:
     TargetNode* _chasing_target;
     
     cocos2d::Map<std::string, Buff*> _buffs;
+    
+    cocos2d::Map<int, Item*> _items;
     
     int _hesitate_frame;
     
@@ -181,6 +184,10 @@ public:
     Buff* getBuffOfType( const std::string& buff_type );
     void removeAllBuffs();
     
+    void addItem( Item* item );
+    void removeItem( const std::string& item_name );
+    bool hasItem( const std::string& item_name );
+    
     void useSkill( int skill_id, const cocos2d::Point& dir, float range_per, float duration = 0 );
     void endSkill();
     void endCast();
@@ -203,6 +210,7 @@ public:
     bool isCasting();
     bool isAttacking();
     bool isWalking();
+    bool isIdle();
     virtual bool isDying();
     virtual bool isAlive();
     

@@ -111,7 +111,9 @@ private:
     void reorderObjectLayer();
     
     void updateTowers( float delta );
+    void updateBlocks( float delta );
     void updateBuildings( float delta );
+    void updateBullets( float delta );
     
 public:
     //debug
@@ -155,6 +157,8 @@ public:
     
     UnitNode* getLeaderUnit();
     
+    cocos2d::Vector<UnitNode*> getAliveUnitsByCondition( eTargetCamp camp, const std::vector<std::string>& tags, const cocos2d::Point& center, float range );
+    
     cocos2d::Vector<UnitNode*> getAliveOpponents( eTargetCamp camp );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eTargetCamp camp );
     
@@ -180,8 +184,6 @@ public:
     
     bool addBullet( int key, BulletNode* bullet );
     void removeBullet( int key );
-    
-    void updateBullets( float delta );
     
     void onUnitAppear( UnitNode* unit );
     void onUnitDying( UnitNode* unit );
