@@ -4,6 +4,19 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>chat_popup.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{261,170}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{261,170}}</string>
+                <key>sourceSize</key>
+                <string>{261,170}</string>
+            </dict>
             <key>joystick_back.png</key>
             <dict>
                 <key>frame</key>
@@ -30,19 +43,6 @@
                 <key>sourceSize</key>
                 <string>{105,105}</string>
             </dict>
-            <key>qipao.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{261,170}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{261,170}}</string>
-                <key>sourceSize</key>
-                <string>{261,170}</string>
-            </dict>
             <key>spanner.png</key>
             <dict>
                 <key>frame</key>
@@ -66,7 +66,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d49be8bed8c5964c71d146306754f2e0:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:ed7ca39ea16be613fb20040dba9a8519:1/1$</string>
             <key>textureFileName</key>
             <string>map_common.png</string>
         </dict>

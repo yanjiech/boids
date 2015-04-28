@@ -96,6 +96,9 @@ void BlockNode::updateFrame( float delta ) {
                     this->setEnabled( true );
                     this->updateEnabled();
                     _progress_bar->setVisible( false );
+                    for( auto str : _need_tag ) {
+                        unit->removeItem( str );
+                    }
                 }
                 else {
                     _progress_bar->setPercentage( 100.0f * _elapse / _need_time );

@@ -346,6 +346,20 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                         if( custom_change != "" ) {
                             unit->applyCustomChange( custom_change );
                         }
+                        
+                        if( item_name.size() > 0 ) {
+                            if( get_or_lose_item ) {
+                                ValueMap item_data;
+                                item_data["item_name"] = Value( item_name );
+                                item_data["item_resource"] = Value( item_resource );
+                                
+                                Item* item = Item::create( item_data );
+                                unit->addItem( item );
+                            }
+                            else {
+                                unit->removeItem( item_name );
+                            }
+                        }
                     }
                     
                     std::string sight_group;

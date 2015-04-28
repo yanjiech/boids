@@ -705,6 +705,7 @@ void EditorStoryAction::loadJson( const rapidjson::Value& value ) {
 
 EditorEvent::EditorEvent() {
     TriggerMeta = std::shared_ptr<EditorTriggerMeta>(new EditorTriggerMeta());
+    this->Enabled = true;
 }
 
 rapidjson::Value& EditorEvent::toJson(rapidjson::Document::AllocatorType& allocator) {

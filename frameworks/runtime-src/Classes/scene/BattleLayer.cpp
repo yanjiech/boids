@@ -108,6 +108,7 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         
         _story_layer = UIStoryLayer::create( CC_CALLBACK_1( BattleLayer::endStory, this ) );
         this->addChild( _story_layer, eBattleSubLayer::BattleStoryLayer, eBattleSubLayer::BattleStoryLayer );
+        _story_layer->setVisible( false );
         
         _draw_node = DrawNode::create();
         _tmx_map->addChild( _draw_node, 100000 );
@@ -609,6 +610,17 @@ void BattleLayer::onUnitDying( UnitNode* unit ) {
     _dead_units.insert( key, unit );
     this->clearChasingTarget(  unit );
     _map_logic->onTargetNodeDead( unit );
+    
+    if( unit->hasUnitTag( "leader" ) ) {
+        UnitNode* leader = this->getLeaderUnit();
+        if( leader ) {
+            leader->addUnitTag( "leader" );
+            UnitNode::ItemMap& items = unit->getItems();
+            for( auto pair : items ) {
+                leader->addItem( pair.second );
+            }
+        }
+    }
 }
 
 void BattleLayer::onUnitDisappear( UnitNode* unit ) {

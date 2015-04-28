@@ -681,6 +681,10 @@ void UnitNode::removeAllBuffs() {
     _buffs.clear();
 }
 
+void UnitNode::clearItems() {
+    _items.clear();
+}
+
 void UnitNode::addItem( Item* item ) {
     _items.insert( item->getItemId(), item );
     Sprite* item_sprite = Sprite::createWithSpriteFrameName( item->getResource() );

@@ -128,7 +128,7 @@ TMXTiledMap* MapData::generateTiledMapWithFlags(int flags) {
     
     if ((flags & (int)TMXObjectLayerFlag::OnGround) && map->getObjectGroup("onground") != nullptr) {
         auto onGroundLayer = Layer::create();
-        map->addChild(onGroundLayer, -99, "onGroundLayer");
+        map->addChild(onGroundLayer, 1, "onGroundLayer");
         auto ogObjects = map->getObjectGroup("onground")->getObjects();
         for (auto o : ogObjects) {
             auto sp = this->spriteFromObject( map, o, true );
@@ -140,7 +140,7 @@ TMXTiledMap* MapData::generateTiledMapWithFlags(int flags) {
     
     if ((flags & (int)TMXObjectLayerFlag::Object) && map->getObjectGroup("vision") != nullptr) {
         auto objectLayer = Layer::create();
-        map->addChild(objectLayer, 0, "objectLayer");
+        map->addChild(objectLayer, 2, "objectLayer");
         auto objects = map->getObjectGroup("vision")->getObjects();
         for (auto o : objects) {
             auto sp = this->spriteFromObject( map, o, true );
@@ -178,7 +178,6 @@ cocos2d::ValueVector MapData::getAreasVectorByTag( const std::string& tag_name )
             }
         }
     }
-    return ret;
     return ret;
 }
 

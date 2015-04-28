@@ -37,6 +37,8 @@ enum eUnitFace {
 };
 
 class UnitNode : public TargetNode {
+public:
+    typedef cocos2d::Map<int, Item*> ItemMap;
 private:
     eUnitState _state;
     eUnitState _next_state;
@@ -184,6 +186,8 @@ public:
     Buff* getBuffOfType( const std::string& buff_type );
     void removeAllBuffs();
     
+    ItemMap& getItems() { return _items; }
+    void clearItems();
     void addItem( Item* item );
     void removeItem( const std::string& item_name );
     bool hasItem( const std::string& item_name );
