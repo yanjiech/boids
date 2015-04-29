@@ -523,6 +523,16 @@ void BattleLayer::removeBlockNode( BlockNode* block_node ) {
     _block_nodes.erase( block_node->getDeployId() );
 }
 
+BlockNode* BattleLayer::getBlockNode( const std::string& name ) {
+    for( auto pair : _block_nodes ) {
+        BlockNode* block_node = pair.second;
+        if( block_node->getBlockName() == name ) {
+            return block_node;
+        }
+    }
+    return nullptr;
+}
+
 bool BattleLayer::addBullet( int key, BulletNode* bullet ) {
     std::string k = Utils::stringFormat( "%d", key );
     auto itr = _bullets.find( k );
@@ -874,7 +884,7 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
         grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
     }
     
-    if( type.find( "BlockNode" ) != std::string::npos ) {
+    if( type == "SpriteBlockNode" ) {
         std::string name = obj_properties.at( "name" ).asString() + "_collide";
         ValueMap boundary = group->getObject( name );
         boundary["map_height"] = Value( _tmx_map->getContentSize().height );
@@ -882,6 +892,23 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
             grid_properties["boundary"] = Value( boundary );
             BlockNode* block_node = BlockNode::create( this, grid_properties, obj_properties );
             this->addBlockNode( block_node, layer );
+        }
+    }
+    else if( type == "GroupSpineBlockNode" ) {
+        std::string name = obj_properties.at( "name" ).asString() + "_collide";
+        ValueMap boundary = group->getObject( name );
+        if( !boundary.empty() ) {
+            grid_properties["boundary"] = Value( boundary );
+            
+            BlockNode* block_node = this->getBlockNode( name );
+            if( block_node == nullptr ) {
+                BlockNode::create( this, grid_properties, obj_properties );
+                this->addBlockNode( block_node, layer );
+            }
+            else {
+                GroupSpineBlockNode* group_block = dynamic_cast<GroupSpineBlockNode*>( block_node );
+                
+            }
         }
     }
     else if( type.find( "tower" ) != std::string::npos ) {

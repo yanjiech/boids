@@ -180,6 +180,7 @@ public:
     const BlockMap& getBlockNodes() { return _block_nodes; }
     void addBlockNode( BlockNode* block_node, eBattleSubLayer layer );
     void removeBlockNode( BlockNode* block_node );
+    BlockNode* getBlockNode( const std::string& name );
     
     TargetNode* getAliveTargetByDeployId( int deploy_id );
     

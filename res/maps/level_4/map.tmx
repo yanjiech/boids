@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="92" height="52" tilewidth="64" tileheight="64" nextobjectid="572">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="92" height="52" tilewidth="64" tileheight="64" nextobjectid="606">
  <tileset firstgid="1" name="vision" tilewidth="424" tileheight="537">
   <tile id="0">
    <image width="151" height="127" source="caocong_01.png"/>
@@ -118,13 +118,22 @@
   <tile id="38">
    <image width="171" height="93" source="rail_05.png"/>
   </tile>
+  <tile id="39">
+   <image width="70" height="239" source="blue_door.png"/>
+  </tile>
+  <tile id="40">
+   <image width="70" height="239" source="red_door.png"/>
+  </tile>
+  <tile id="41">
+   <image width="70" height="240" source="yellow_door.png"/>
+  </tile>
  </tileset>
- <tileset firstgid="40" name="terrain" tilewidth="64" tileheight="64">
+ <tileset firstgid="43" name="terrain" tilewidth="64" tileheight="64">
   <image source="base_terrain.png" width="2048" height="2048"/>
  </tileset>
  <layer name="terrain" width="92" height="52">
   <data encoding="base64" compression="zlib">
-   eJzt0TERwDAQwLAHlDJp+dNpUESDM/gEwGtmnt26HvHdfddj6t819e+a+ndN/bum/l1T/66pf9fUv2vq3zX175r6d039u6b+XVP/rql/19S/a+rfNfXvmvp3Tf27pv5dU/+uqX/X1L9r6t819e+a+ndN/bum/l1T/66pf9fUv2vq3zX175r6d039u6b+XVP/rql/19S/a+rfNfXvmvp3Tf27pv5dU/+uqX/X1L9r6t819e+aP7alatU=
+   eJzt0TERwDAQwLBnlDJp+aNpUESDM/gEwGtmnt26HvHdfddj6t819e+a+ndN/bum/l1T/66pf9fUv2vq3zX175r6d039u6b+XVP/rql/19S/a+rfNfXvmvp3Tf27pv5dU/+uqX/X1L9r6t819e+a+ndN/bum/l1T/66pf9fUv2vq3zX175r6d039u6b+XVP/rql/19S/a+rfNfXvmvp3Tf27pv5dU/+uqX/X1L9r6t819e+aP/eVouU=
   </data>
  </layer>
  <objectgroup name="onground">
@@ -161,7 +170,16 @@
   <object id="23" gid="21" x="4296" y="482"/>
   <object id="25" gid="2147483671" x="4920.36" y="916.091"/>
   <object id="26" gid="2147483672" x="5173.39" y="780.636"/>
-  <object id="27" gid="25" x="774" y="652"/>
+  <object id="27" name="yellow_stone_1" type="BuffBuildingNode" gid="25" x="774" y="652">
+   <properties>
+    <property name="buff_duration" value="-1"/>
+    <property name="buff_name" value="yellow_tag"/>
+    <property name="buff_param" value="yellow"/>
+    <property name="buff_type" value="tag_buff"/>
+    <property name="range" value="200"/>
+    <property name="stay_duration" value="2.0"/>
+   </properties>
+  </object>
   <object id="28" gid="2147483674" x="200.848" y="3209.09"/>
   <object id="29" gid="2147483675" x="1595" y="353"/>
   <object id="30" gid="28" x="456.788" y="3157.79"/>
@@ -291,14 +309,12 @@
   <object id="208" gid="34" x="4760.55" y="1923.7"/>
   <object id="209" gid="2147483656" x="2413.97" y="1791.85"/>
   <object id="210" gid="6" x="2932.54" y="1840.24"/>
-  <object id="211" gid="34" x="2064.73" y="1986.61"/>
   <object id="212" gid="8" x="2120.76" y="2792.94"/>
   <object id="213" gid="8" x="4373.61" y="3275.24"/>
   <object id="214" gid="6" x="1924.72" y="1846.3"/>
   <object id="217" gid="2147483682" x="3587.15" y="1473.03"/>
   <object id="218" gid="5" x="2561.58" y="1846.12"/>
   <object id="220" gid="6" x="5400.36" y="313.09"/>
-  <object id="222" gid="2147483682" x="2212" y="1970"/>
   <object id="224" gid="6" x="2647.27" y="1752.36"/>
   <object id="225" gid="2147483679" x="2936" y="1792"/>
   <object id="226" gid="2147483653" x="2467.64" y="2692.79"/>
@@ -332,7 +348,16 @@
   <object id="278" gid="2147483654" x="5080" y="3408"/>
   <object id="281" gid="6" x="1977.55" y="3692.18"/>
   <object id="285" gid="2147483654" x="1572" y="3649"/>
-  <object id="289" gid="15" x="172.784" y="1738.48"/>
+  <object id="289" name="blue_stone_1" type="BuffBuildingNode" gid="15" x="172.784" y="1738.48">
+   <properties>
+    <property name="buff_duration" value="-1"/>
+    <property name="buff_name" value="blue_tag"/>
+    <property name="buff_param" value="blue"/>
+    <property name="buff_type" value="tag_buff"/>
+    <property name="range" value="200"/>
+    <property name="stay_duration" value="2.0"/>
+   </properties>
+  </object>
   <object id="290" gid="16" x="5736" y="1748"/>
   <object id="291" gid="2147483665" x="210.636" y="1071.36"/>
   <object id="292" gid="18" x="116" y="1681"/>
@@ -367,22 +392,6 @@
   <object id="330" gid="2147483676" x="409.273" y="874.727"/>
   <object id="331" gid="12" x="1920.61" y="770.15"/>
   <object id="332" gid="12" x="1254" y="1896"/>
-  <object id="333" gid="34" x="2056" y="2124"/>
-  <object id="334" gid="34" x="2032" y="2248"/>
-  <object id="335" gid="34" x="2024" y="2364"/>
-  <object id="336" gid="34" x="2008" y="2504"/>
-  <object id="337" gid="34" x="2188" y="2092"/>
-  <object id="338" gid="34" x="2180" y="2216"/>
-  <object id="339" gid="34" x="2156" y="2352"/>
-  <object id="340" gid="34" x="2144" y="2484"/>
-  <object id="341" gid="2147483682" x="3616" y="746"/>
-  <object id="344" gid="34" x="3468.73" y="762.61"/>
-  <object id="345" gid="34" x="3436" y="1024"/>
-  <object id="346" gid="34" x="3460" y="900"/>
-  <object id="347" gid="34" x="3584" y="992"/>
-  <object id="349" gid="34" x="3592" y="868"/>
-  <object id="350" gid="34" x="3484.73" y="636.61"/>
-  <object id="351" gid="2147483682" x="3632" y="620"/>
   <object id="354" gid="2147483665" x="-96" y="1285.09"/>
   <object id="355" gid="2147483663" x="186" y="1671.21"/>
   <object id="356" gid="17" x="836" y="1565.09"/>
@@ -428,14 +437,6 @@
   <object id="398" gid="13" x="1088" y="2106.67"/>
   <object id="399" gid="2147483679" x="786" y="1964"/>
   <object id="400" gid="2147483683" x="2536.48" y="3101.58"/>
-  <object id="402" gid="34" x="3489.27" y="2954"/>
-  <object id="403" gid="34" x="3594.91" y="2927.94"/>
-  <object id="404" gid="34" x="3602.12" y="3065.88"/>
-  <object id="405" gid="34" x="3946.79" y="3213.82"/>
-  <object id="406" gid="34" x="3831.39" y="3124"/>
-  <object id="407" gid="34" x="3721.03" y="3167.94"/>
-  <object id="408" gid="34" x="3718.18" y="3033.33"/>
-  <object id="409" gid="34" x="3846.97" y="3282.42"/>
   <object id="411" gid="2147483650" x="2746.12" y="2810.18"/>
   <object id="412" gid="1" x="2161.67" y="3015"/>
   <object id="413" gid="13" x="2266.85" y="3013.46"/>
@@ -482,26 +483,23 @@
   <object id="498" gid="2147483656" x="5233.3" y="166.91"/>
   <object id="499" gid="2147483656" x="5086.21" y="92.85"/>
   <object id="500" gid="5" x="4163.94" y="118.7"/>
-  <object id="501" gid="20" x="4339.6" y="565.092"/>
+  <object id="501" name="red_stone_1" type="BuffBuildingNode" gid="20" x="4339.6" y="565.092">
+   <properties>
+    <property name="buff_duration" value="-1"/>
+    <property name="buff_name" value="red_tag"/>
+    <property name="buff_param" value="red"/>
+    <property name="buff_type" value="tag_buff"/>
+    <property name="range" value="200"/>
+    <property name="stay_duration" value="2.0"/>
+   </properties>
+  </object>
   <object id="502" gid="19" x="707.939" y="1827.94"/>
   <object id="503" gid="2147483654" x="4688.66" y="95"/>
   <object id="504" gid="5" x="4555.94" y="66.7"/>
   <object id="505" gid="2147483654" x="3792.66" y="183"/>
   <object id="506" gid="2147483667" x="678" y="1794"/>
   <object id="535" gid="2147483678" x="2058.45" y="1898.64"/>
-  <object id="536" gid="30" x="2103.33" y="2041.64"/>
   <object id="537" gid="2147483678" x="3968.12" y="3323.39"/>
-  <object id="538" gid="34" x="1688" y="1552"/>
-  <object id="539" gid="34" x="1800" y="1576"/>
-  <object id="540" gid="34" x="1592" y="1632"/>
-  <object id="541" gid="34" x="1728" y="1656"/>
-  <object id="542" gid="34" x="1868" y="1688"/>
-  <object id="543" gid="34" x="1560" y="872"/>
-  <object id="544" gid="34" x="1532" y="964"/>
-  <object id="545" gid="34" x="1512" y="1052"/>
-  <object id="546" gid="34" x="1668" y="820"/>
-  <object id="547" gid="34" x="1656" y="948"/>
-  <object id="548" gid="34" x="1616" y="1072"/>
   <object id="549" gid="34" x="414" y="1074"/>
   <object id="550" gid="34" x="554" y="1120"/>
   <object id="551" gid="34" x="680" y="1162"/>
@@ -511,16 +509,111 @@
   <object id="556" gid="34" x="606" y="1228"/>
   <object id="557" gid="34" x="736" y="1296"/>
   <object id="558" gid="34" x="866" y="1368"/>
-  <object id="559" gid="15" x="4110.3" y="2970.18"/>
-  <object id="560" gid="20" x="3357.06" y="1874.33"/>
-  <object id="561" gid="25" x="5361.82" y="2450.36"/>
+  <object id="559" name="blue_stone_2" type="BuffBuildingNode" gid="15" x="4110.3" y="2970.18">
+   <properties>
+    <property name="buff_duration" value="-1"/>
+    <property name="buff_name" value="blue_tag"/>
+    <property name="buff_param" value="blue"/>
+    <property name="buff_type" value="tag_buff"/>
+    <property name="range" value="200"/>
+    <property name="stay_duration" value="2.0"/>
+   </properties>
+  </object>
+  <object id="560" name="red_stone_2" type="BuffBuildingNode" gid="20" x="3357.06" y="1874.33">
+   <properties>
+    <property name="buff_duration" value="-1"/>
+    <property name="buff_name" value="red_tag"/>
+    <property name="buff_param" value="red"/>
+    <property name="buff_type" value="tag_buff"/>
+    <property name="range" value="200"/>
+    <property name="stay_duration" value="2.0"/>
+   </properties>
+  </object>
+  <object id="561" name="yellow_stone_2" type="BuffBuildingNode" gid="25" x="5361.82" y="2450.36">
+   <properties>
+    <property name="buff_duration" value="-1"/>
+    <property name="buff_name" value="yellow_tag"/>
+    <property name="buff_param" value="yellow"/>
+    <property name="buff_type" value="tag_buff"/>
+    <property name="range" value="200"/>
+    <property name="stay_duration" value="2.0"/>
+   </properties>
+  </object>
   <object id="562" gid="2147483665" x="3615.15" y="2790.91"/>
   <object id="563" gid="2147483667" x="4064" y="3132.73"/>
   <object id="564" gid="19" x="4078.79" y="3178.79"/>
-  <object id="565" gid="2147483666" x="3651.52" y="2945.45"/>
   <object id="569" gid="4" x="5684" y="3560"/>
+  <object id="572" name="red_door" type="GroupSpineBlockNode" gid="41" x="3565" y="945"/>
+  <object id="573" name="red_door" type="GroupSpineBlockNode" gid="41" x="3729" y="739"/>
+  <object id="574" name="red_door" type="GroupSpineBlockNode" gid="41" x="3691" y="793"/>
+  <object id="575" name="red_door" type="GroupSpineBlockNode" gid="41" x="3765" y="683"/>
+  <object id="576" name="red_door" type="GroupSpineBlockNode" gid="41" x="3653" y="841">
+   <properties>
+    <property name="need_repair" value="true"/>
+    <property name="need_tag" value="red_buff"/>
+    <property name="need_time" value="0"/>
+    <property name="range" value="300"/>
+    <property name="resource" value="red_door"/>
+   </properties>
+  </object>
+  <object id="577" name="red_door" type="GroupSpineBlockNode" gid="41" x="3609" y="899"/>
+  <object id="578" name="yellow_door" type="GroupSpineBlockNode" gid="42" x="1563" y="1584"/>
+  <object id="579" name="yellow_door" type="GroupSpineBlockNode" gid="42" x="1621" y="1586"/>
+  <object id="580" name="yellow_door" type="GroupSpineBlockNode" gid="42" x="1681" y="1592"/>
+  <object id="581" name="yellow_door" type="GroupSpineBlockNode" gid="42" x="1745" y="1596">
+   <properties>
+    <property name="need_repair" value="true"/>
+    <property name="need_tag" value="yellow_buff"/>
+    <property name="need_time" value="0"/>
+    <property name="range" value="250"/>
+    <property name="resource" value="yellow_door"/>
+   </properties>
+  </object>
+  <object id="582" name="yellow_door" type="GroupSpineBlockNode" gid="42" x="1805" y="1598"/>
+  <object id="583" name="yellow_door" type="GroupSpineBlockNode" gid="42" x="1867" y="1602"/>
+  <object id="589" name="blue_door" type="GroupSpineBlockNode" gid="40" x="2687" y="2141">
+   <properties>
+    <property name="need_repair" value="true"/>
+    <property name="need_tag" value="yellow"/>
+    <property name="need_time" value="0"/>
+    <property name="range" value="300"/>
+    <property name="resource" value="blue_door"/>
+   </properties>
+  </object>
+  <object id="587" name="blue_door" type="GroupSpineBlockNode" gid="40" x="2797" y="1965"/>
+  <object id="588" name="blue_door" type="GroupSpineBlockNode" gid="40" x="2649" y="2197"/>
+  <object id="592" name="blue_door" type="GroupSpineBlockNode" gid="40" x="2761" y="2021"/>
+  <object id="590" name="blue_door" type="GroupSpineBlockNode" gid="40" x="2613" y="2255"/>
+  <object id="591" name="blue_door" type="GroupSpineBlockNode" gid="40" x="2725" y="2081"/>
+  <object id="593" name="yellow_door_collide" type="collide" x="1572" y="1576">
+   <polygon points="0,0 354,28 356,-24 -4,-48"/>
+  </object>
+  <object id="594" name="blue_door_collide" type="collide" x="2808" y="1908">
+   <polygon points="0,0 -224,350 -170,370 58,18"/>
+  </object>
+  <object id="595" name="red_door_collide" type="collide" x="3776" y="626">
+   <polygon points="0,0 -234,308 -176,340 50,42"/>
+  </object>
+  <object id="596" name="red_stone_1_collide" type="collide" x="4468" y="390">
+   <polygon points="0,0 -144,0 -138,172 134,168 138,-4"/>
+  </object>
+  <object id="597" name="red_stone_2_collide" type="collide" x="3372" y="1752">
+   <polygon points="0,0 -8,112 168,114 164,-4"/>
+  </object>
+  <object id="598" name="blue_stone_2_collide" type="collide" x="4114" y="2862">
+   <polygon points="0,0 4,110 170,106 176,-4"/>
+  </object>
+  <object id="600" name="yellow_stone_2_collide" type="collide" x="5382" y="2354">
+   <polygon points="0,0 0,112 202,118 200,-2"/>
+  </object>
+  <object id="602" name="blue_stone_2_collide" type="collide" x="160" y="1536">
+   <polygon points="0,0 -4,176 290,176 290,-6"/>
+  </object>
+  <object id="605" name="yellow_stone_1_collide" type="collide" x="786" y="516">
+   <polygon points="0,0 -2,126 178,126 180,2"/>
+  </object>
  </objectgroup>
- <objectgroup name="physics" visible="0">
+ <objectgroup name="physics">
   <object id="485" name="c1" type="collide" x="5888.67" y="514.667">
    <polygon points="0,0 -28,10.6667 -141.333,-57.3333 -150.667,-162.667 -190.667,-160 -225.333,-170.667 -240,-204 -273.333,-209.333 -326.667,-224 -322.667,-194.667 -366.667,-169.333 -414.667,-188 -438.667,-188 -502.667,-204 -545.333,-237.333 -476,-300 -477.333,-360 -518.667,-345.333 -565.333,-342.667 -656,-385.333 -653.333,-420 -701.333,-408 -820,-468 -897.333,-429.333 -926.667,-445.333 -981.333,-424 -1041.33,-413.333 -1158.67,-476 -1221.33,-441.333 -1326,-464 -1330.67,-528.667 -1.33333,-512"/>
   </object>
@@ -528,7 +621,7 @@
    <polygon points="-12,-60 -22.6667,13.3333 -52,44 -120,57.3333 -132,132 -196,157.333 -292.667,164.667 -352,72 -464,141.333 -498.667,125.333 -537.333,146.667 -572,144 -608,158.667 -603.333,214.667 -630,248.667 -724,245.333 -700,454.667 -660,538.667 -632,569.333 -624.667,607.333 -670,603.333 -690.667,624.667 -728,636 -754.667,589.333 -818.667,572 -809.333,504 -864,529.333 -1027.33,487.333 -1088,509.333 -1094.67,598.667 -1193.33,672 -1252.67,663.333 -1312,636 -1334.67,652 -1446.67,606.667 -1472,682.667 -1528,720 -1629.33,678.667 -1672,654.667 -1670,528 -1740.67,527.333 -1792,498 -1918.33,500.667 -2033.33,563.667 -2058.83,601.167 -2153.33,642.667 -2162.67,681.333 -2242.67,718.667 -2325.33,708 -2380,626.667 -2453.33,669.333 -2488,680 -2526.67,668 -2578.67,672 -2627.33,720 -2656,737.333 -2693.33,737.333 -2762.67,691.333 -2800.67,688 -2867.33,719.333 -2910.67,706.667 -3000,773.333 -3033.33,761.333 -3061.33,732 -3033.33,528 -2896,494.667 -2898.67,414.667 -2989.33,374.667 -3065.33,358.667 -3053.33,288 -3133.33,266.667 -3138.67,234.667 -3209.33,208 -3217.33,254.667 -3268,282.667 -3342.67,256 -3426.67,208 -3525.33,257.333 -3569.33,238.667 -3669.33,273.333 -3708,262.667 -3754.67,256 -3810.67,256 -3834.67,204 -3780,157.333 -3781.33,102.667 -3801.33,102.667 -3806.67,137.333 -3897.33,184 -4004,217.333 -3976,310.667 -4074.67,369.333 -4090.67,392 -4126.67,397.333 -4220,374.667 -4270.67,374.667 -4265.33,465.333 -4178.67,616 -4176,785.333 -4097.33,786.667 -4066.67,852 -4068,906.667 -4088,921.333 -4124,981.333 -4157.33,980 -4168,1014.67 -4202.67,1036 -4197.33,1061.33 -4290.67,1145.33 -4330.67,1153.33 -4334.67,1200 -4376,1193.33 -4482.67,1226.67 -4573.33,1237.33 -4576,-53.3333 -2378.67,-64"/>
   </object>
   <object id="507" name="c3" type="collide" x="676" y="1784">
-   <polygon points="0,0 32,14 68,52 94,44 142,72 168,70 182,102 102,138 110,156 170,184 238,180 298,210 410,232 458,208 494,226 518,206 602,167 598,71 637,34 761,49 842,6 830,-94 894,-129 874,-299 938,-302 1062,-362 1012,-640 892,-710 634,-572 486,-624 394,-536 374,-266 342,-214 204,-318 122,-250 102,-128 66,-50"/>
+   <polygon points="0,0 32,14 68,52 94,44 142,72 168,70 182,102 102,138 110,156 170,184 238,180 298,210 410,232 458,208 494,226 518,206 602,167 598,71 637,34 761,49 842,6 830,-94 894,-129 874,-299 938,-302 1062,-362 1012,-640 892,-710 634,-572 486,-624 394,-536 310,-402 342,-214 204,-318 122,-250 102,-128 66,-50"/>
   </object>
   <object id="508" name="c4" type="collide" x="916" y="2180">
    <polygon points="0,0 28,14 54,14 74,-8 40,-40 4,-30"/>
@@ -566,8 +659,8 @@
   <object id="532" name="c18" type="collide" x="5543" y="938">
    <polygon points="0,0 61,34 74,25 110,5 120,-39 46,-69 -6,-51"/>
   </object>
-  <object id="567" name="c20" type="collide" x="3675.76" y="2872.73">
-   <polygon points="0,0 45.4545,-3.0303 51.5152,66.6667 -6.06061,66.6667"/>
+  <object id="584" name="c22" type="collide" x="376" y="1070">
+   <polygon points="0,0 594,302 728,110 140,-140"/>
   </object>
  </objectgroup>
 </map>

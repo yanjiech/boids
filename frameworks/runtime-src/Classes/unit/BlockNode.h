@@ -35,8 +35,8 @@ public:
     BlockNode();
     virtual ~BlockNode();
     
-    static BlockNode* create( BattleLayer* _battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
-    virtual bool init( BattleLayer* _battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    static BlockNode* create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    virtual bool init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
     
     virtual void updateFrame( float delta );
     
@@ -66,13 +66,13 @@ public:
     SpriteBlockNode();
     virtual ~SpriteBlockNode();
     
-    static SpriteBlockNode* create( BattleLayer* _battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
-    virtual bool init( BattleLayer* _battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    static SpriteBlockNode* create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    virtual bool init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
     
     virtual void updateEnabled();
 };
 
-class SpineBlockNode : public BlockNode {
+class SpineBlockNode : public cocos2d::Node {
 private:
     spine::SkeletonAnimation* _skeleton;
     
@@ -80,8 +80,27 @@ public:
     SpineBlockNode();
     virtual ~SpineBlockNode();
     
-    static SpineBlockNode* create( BattleLayer* _battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
-    virtual bool init( BattleLayer* _battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    static SpineBlockNode* create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    virtual bool init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    
+    void setAnimation( int track, const std::string& name, int loop );
+    
+    void onSkeletonAnimationCompleted( int track_index );
+};
+
+class GroupSpineBlockNode : public BlockNode {
+private:
+    cocos2d::Vector<SpineBlockNode*> _blocks;
+    
+    
+public:
+    GroupSpineBlockNode();
+    virtual ~GroupSpineBlockNode();
+    
+    static GroupSpineBlockNode* create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    virtual bool init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    
+    void appendSpineNode( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
     
     virtual void updateEnabled();
 };

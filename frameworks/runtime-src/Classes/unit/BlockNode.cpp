@@ -23,8 +23,8 @@ BlockNode::~BlockNode() {
 BlockNode* BlockNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
     BlockNode* ret = nullptr;
     std::string block_type = obj_properties.at( "type" ).asString();
-    if( block_type == "SpineBlockNode" ) {
-        ret = SpineBlockNode::create( battle_layer, grid_properties, obj_properties );
+    if( block_type == "GroupSpineBlockNode" ) {
+        ret = GroupSpineBlockNode::create( battle_layer, grid_properties, obj_properties );
     }
     else if( block_type == "SpriteBlockNode" ) {
         ret = SpriteBlockNode::create( battle_layer, grid_properties, obj_properties );
@@ -211,7 +211,7 @@ void SpriteBlockNode::updateEnabled() {
     }
 }
 
-//spine block node
+//group spine block component
 SpineBlockNode::SpineBlockNode() {
     
 }
@@ -220,8 +220,56 @@ SpineBlockNode::~SpineBlockNode() {
     
 }
 
-SpineBlockNode* SpineBlockNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+SpineBlockNode* SpineBlockNode::create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
     SpineBlockNode* ret = new SpineBlockNode();
+    if( ret && ret->init( grid_properties, obj_properties ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool SpineBlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    if( !Node::init() ) {
+        return false;
+    }
+    
+    std::string resource = obj_properties.at( "resource" ).asString();
+    _skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    _skeleton->setCompleteListener( CC_CALLBACK_1( SpineBlockNode::onSkeletonAnimationCompleted, this ) );
+    this->addChild( _skeleton );
+    
+    return true;
+}
+
+void SpineBlockNode::setAnimation( int track, const std::string& name, int loop ) {
+    if( _skeleton ) {
+        _skeleton->setAnimation( track, name, loop );
+    }
+}
+
+void SpineBlockNode::onSkeletonAnimationCompleted( int track_index ) {
+    spTrackEntry* entry = _skeleton->getCurrent();
+    std::string animation_name = std::string( entry->animation->name );
+    if( animation_name == "Appear" ) {
+        _skeleton->addAnimation( 0, "Idle", true );
+    }
+}
+
+//group spine block node
+GroupSpineBlockNode::GroupSpineBlockNode() {
+    
+}
+
+GroupSpineBlockNode::~GroupSpineBlockNode() {
+    
+}
+
+GroupSpineBlockNode* GroupSpineBlockNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    GroupSpineBlockNode* ret = new GroupSpineBlockNode();
     if( ret && ret->init( battle_layer, grid_properties, obj_properties ) ) {
         ret->autorelease();
         return ret;
@@ -232,27 +280,17 @@ SpineBlockNode* SpineBlockNode::create( BattleLayer* battle_layer, const cocos2d
     }
 }
 
-bool SpineBlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+bool GroupSpineBlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
     if( !BlockNode::init( battle_layer, grid_properties, obj_properties ) ) {
         return false;
     }
     
-    std::string resource = "buidings/" + grid_properties.at( "source" ).asString();
-    _skeleton = ArmatureManager::getInstance()->createArmature( resource );
-    this->addChild( _skeleton );
-    
-    this->updateEnabled();
-    
     return true;
 }
 
-void SpineBlockNode::updateEnabled() {
-    BlockNode::updateEnabled();
+void GroupSpineBlockNode::appendSpineNode( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
     
-    if( _is_enabled ) {
-        _skeleton->setAnimation( 0, "open", false );
-    }
-    else {
-        _skeleton->setAnimation( 0, "close", false );
-    }
+}
+
+void GroupSpineBlockNode::updateEnabled() {
 }
