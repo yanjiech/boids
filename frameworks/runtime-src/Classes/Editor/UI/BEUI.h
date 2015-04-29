@@ -308,6 +308,7 @@ private:
     cocos2d::ui::Button *_stateButton;
     cocos2d::ui::Button *_okButton;
     cocos2d::ui::Button *_cancelButton;
+    cocos2d::ui::TextField* _tf_task_progress;
     BETypeListView *_stateListView;
     BEListView *_taskListView;
     EditorTaskActionPtr _action;

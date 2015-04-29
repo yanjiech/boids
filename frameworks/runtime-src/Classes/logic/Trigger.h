@@ -146,10 +146,6 @@ public:
 };
 
 class VisionChangeTrigger : public Trigger {
-private:
-    int _need_count;
-    int _current_count;
-    
 public:
     VisionChangeTrigger();
     virtual ~VisionChangeTrigger();

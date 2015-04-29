@@ -123,6 +123,14 @@ void BlockNode::updateEnabled() {
             pair.second->addCollidablePolygon( _boundaries );
         }
     }
+    ValueMap update_data;
+    update_data["trigger_type"] = Value( "vision_change" );
+    update_data["source_value"] = Value( _block_name );
+    update_data["vision_state"] = Value( _is_enabled ? VISION_STATE_ENABLED : VISION_STATE_DISABLED );
+    MapLogic* map_logic = _battle_layer->getMapLogic();
+    if( map_logic ) {
+        map_logic->onVisionChanged( update_data );
+    }
 }
 
 //sprite block node

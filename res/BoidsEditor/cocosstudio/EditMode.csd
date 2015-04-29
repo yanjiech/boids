@@ -241,7 +241,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_triggerOptions" ActionTag="43" FrameEvent="" Tag="41" LeftMargin="-200.0000" RightMargin="-200.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_triggerOptions" ActionTag="43" Visible="False" FrameEvent="" Tag="41" LeftMargin="-200.0000" RightMargin="-200.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Position X="0.0000" Y="0.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -503,7 +503,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_unitAction" ActionTag="112" FrameEvent="" Tag="110" LeftMargin="-800.0000" RightMargin="-800.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_unitAction" ActionTag="112" Visible="False" FrameEvent="" Tag="110" LeftMargin="-800.0000" RightMargin="-800.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Position X="0.0000" Y="0.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -521,13 +521,13 @@
                     <PrePosition X="0.5322" Y="0.4977" />
                     <PreSize X="0.4375" Y="1.0000" />
                     <Children>
-                      <NodeObjectData Name="button_cancel" ActionTag="127" FrameEvent="" Tag="125" LeftMargin="474.0000" RightMargin="66.0000" TopMargin="750.0000" BottomMargin="10.0000" TouchEnable="True" FontSize="14" ButtonText="取消" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                      <NodeObjectData Name="button_cancel" ActionTag="127" FrameEvent="" Tag="125" LeftMargin="474.0000" RightMargin="166.0000" TopMargin="750.0000" BottomMargin="10.0000" TouchEnable="True" FontSize="14" ButtonText="取消" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="504.0000" Y="30.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="60.0000" Y="40.0000" />
-                        <PrePosition X="0.8400" Y="0.0375" />
+                        <PrePosition X="0.7200" Y="0.0375" />
                         <PreSize X="0.1000" Y="0.0500" />
                         <TextColor A="255" R="51" G="51" B="51" />
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
@@ -548,123 +548,123 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_15_Copy" ActionTag="128" FrameEvent="" Tag="126" LeftMargin="212.0000" RightMargin="208.0000" TopMargin="2.0000" BottomMargin="764.0000" FontSize="30" LabelText="改变单位状态" ctype="TextObjectData">
+                      <NodeObjectData Name="Text_15_Copy" ActionTag="128" FrameEvent="" Tag="126" LeftMargin="212.0000" RightMargin="308.0000" TopMargin="2.0000" BottomMargin="764.0000" FontSize="30" LabelText="改变单位状态" ctype="TextObjectData">
                         <Position X="302.0000" Y="781.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="21" G="95" B="173" />
                         <Size X="180.0000" Y="34.0000" />
-                        <PrePosition X="0.5033" Y="0.9762" />
+                        <PrePosition X="0.4314" Y="0.9762" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="button_ok" ActionTag="129" FrameEvent="" Tag="127" LeftMargin="389.0000" RightMargin="151.0000" TopMargin="751.0000" BottomMargin="9.0000" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                      <NodeObjectData Name="button_ok" ActionTag="129" FrameEvent="" Tag="127" LeftMargin="389.0000" RightMargin="251.0000" TopMargin="751.0000" BottomMargin="9.0000" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="419.0000" Y="29.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="60.0000" Y="40.0000" />
-                        <PrePosition X="0.6983" Y="0.0362" />
+                        <PrePosition X="0.5986" Y="0.0362" />
                         <PreSize X="0.1000" Y="0.0500" />
                         <TextColor A="255" R="0" G="179" B="255" />
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="button_newPosition" ActionTag="151" FrameEvent="" Tag="149" LeftMargin="43.0000" RightMargin="477.0000" TopMargin="158.0000" BottomMargin="602.0000" TouchEnable="True" FontSize="14" ButtonText="新建位置" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                      <NodeObjectData Name="button_newPosition" ActionTag="151" FrameEvent="" Tag="149" LeftMargin="43.0000" RightMargin="577.0000" TopMargin="158.0000" BottomMargin="602.0000" TouchEnable="True" FontSize="14" ButtonText="新建位置" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="83.0000" Y="622.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="80.0000" Y="40.0000" />
-                        <PrePosition X="0.1383" Y="0.7775" />
+                        <PrePosition X="0.1186" Y="0.7775" />
                         <PreSize X="0.1333" Y="0.0500" />
                         <TextColor A="255" R="0" G="179" B="255" />
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="button_selectPosition" ActionTag="152" FrameEvent="" Tag="150" LeftMargin="150.0000" RightMargin="370.0000" TopMargin="157.0000" BottomMargin="603.0000" TouchEnable="True" FontSize="14" ButtonText="选择位置" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                      <NodeObjectData Name="button_selectPosition" ActionTag="152" FrameEvent="" Tag="150" LeftMargin="150.0000" RightMargin="470.0000" TopMargin="157.0000" BottomMargin="603.0000" TouchEnable="True" FontSize="14" ButtonText="选择位置" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="190.0000" Y="623.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="80.0000" Y="40.0000" />
-                        <PrePosition X="0.3167" Y="0.7788" />
+                        <PrePosition X="0.2714" Y="0.7788" />
                         <PreSize X="0.1333" Y="0.0500" />
                         <TextColor A="255" R="0" G="179" B="255" />
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_type" ActionTag="321" FrameEvent="" Tag="183" LeftMargin="101.0000" RightMargin="379.0000" TopMargin="60.0000" BottomMargin="706.0000" FontSize="30" LabelText="改变类型" ctype="TextObjectData">
+                      <NodeObjectData Name="text_type" ActionTag="321" FrameEvent="" Tag="183" LeftMargin="101.0000" RightMargin="479.0000" TopMargin="60.0000" BottomMargin="706.0000" FontSize="30" LabelText="改变类型" ctype="TextObjectData">
                         <Position X="101.0000" Y="723.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="120.0000" Y="34.0000" />
-                        <PrePosition X="0.1683" Y="0.9038" />
+                        <PrePosition X="0.1443" Y="0.9038" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="button_chooseType" ActionTag="323" FrameEvent="" Tag="185" LeftMargin="247.0000" RightMargin="253.0000" TopMargin="55.0000" BottomMargin="705.0000" TouchEnable="True" FontSize="14" ButtonText="新类型" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                      <NodeObjectData Name="button_chooseType" ActionTag="323" FrameEvent="" Tag="185" LeftMargin="247.0000" RightMargin="353.0000" TopMargin="55.0000" BottomMargin="705.0000" TouchEnable="True" FontSize="14" ButtonText="新类型" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="297.0000" Y="725.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="100.0000" Y="40.0000" />
-                        <PrePosition X="0.4950" Y="0.9063" />
+                        <PrePosition X="0.4243" Y="0.9063" />
                         <PreSize X="0.1667" Y="0.0500" />
                         <TextColor A="255" R="0" G="179" B="255" />
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_state" ActionTag="324" FrameEvent="" Tag="186" LeftMargin="101.0000" RightMargin="379.0000" TopMargin="108.0000" BottomMargin="658.0000" FontSize="30" LabelText="改变状态" ctype="TextObjectData">
+                      <NodeObjectData Name="text_state" ActionTag="324" FrameEvent="" Tag="186" LeftMargin="101.0000" RightMargin="479.0000" TopMargin="108.0000" BottomMargin="658.0000" FontSize="30" LabelText="改变状态" ctype="TextObjectData">
                         <Position X="101.0000" Y="675.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="120.0000" Y="34.0000" />
-                        <PrePosition X="0.1683" Y="0.8438" />
+                        <PrePosition X="0.1443" Y="0.8438" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="button_chooseState" ActionTag="326" FrameEvent="" Tag="188" LeftMargin="246.0000" RightMargin="254.0000" TopMargin="101.0000" BottomMargin="659.0000" TouchEnable="True" FontSize="14" ButtonText="新状态" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                      <NodeObjectData Name="button_chooseState" ActionTag="326" FrameEvent="" Tag="188" LeftMargin="246.0000" RightMargin="354.0000" TopMargin="101.0000" BottomMargin="659.0000" TouchEnable="True" FontSize="14" ButtonText="新状态" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="296.0000" Y="679.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="100.0000" Y="40.0000" />
-                        <PrePosition X="0.4933" Y="0.8487" />
+                        <PrePosition X="0.4229" Y="0.8487" />
                         <PreSize X="0.1667" Y="0.0500" />
                         <TextColor A="255" R="0" G="179" B="255" />
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_showHP" ActionTag="328" FrameEvent="" Tag="190" LeftMargin="113.0000" RightMargin="427.0000" TopMargin="390.0000" BottomMargin="376.0000" FontSize="30" LabelText="显血" ctype="TextObjectData">
+                      <NodeObjectData Name="text_showHP" ActionTag="328" FrameEvent="" Tag="190" LeftMargin="113.0000" RightMargin="527.0000" TopMargin="390.0000" BottomMargin="376.0000" FontSize="30" LabelText="显血" ctype="TextObjectData">
                         <Position X="113.0000" Y="393.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="60.0000" Y="34.0000" />
-                        <PrePosition X="0.1883" Y="0.4913" />
+                        <PrePosition X="0.1614" Y="0.4913" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_position" ActionTag="390" FrameEvent="" Tag="114" LeftMargin="363.0000" RightMargin="17.0000" TopMargin="164.5000" BottomMargin="612.5000" IsCustomSize="True" FontSize="14" LabelText="位置1" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ctype="TextObjectData">
+                      <NodeObjectData Name="text_position" ActionTag="390" FrameEvent="" Tag="114" LeftMargin="363.0000" RightMargin="117.0000" TopMargin="164.5000" BottomMargin="612.5000" IsCustomSize="True" FontSize="14" LabelText="位置1" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ctype="TextObjectData">
                         <Position X="473.0000" Y="624.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
                         <Size X="220.0000" Y="23.0000" />
-                        <PrePosition X="0.7883" Y="0.7800" />
+                        <PrePosition X="0.6757" Y="0.7800" />
                         <PreSize X="0.3667" Y="0.0288" />
                       </NodeObjectData>
-                      <NodeObjectData Name="checkbox_changeType" ActionTag="620" FrameEvent="" Tag="127" LeftMargin="44.0000" RightMargin="516.0000" TopMargin="54.0000" BottomMargin="706.0000" TouchEnable="True" ctype="CheckBoxObjectData">
+                      <NodeObjectData Name="checkbox_changeType" ActionTag="620" FrameEvent="" Tag="127" LeftMargin="44.0000" RightMargin="616.0000" TopMargin="54.0000" BottomMargin="706.0000" TouchEnable="True" ctype="CheckBoxObjectData">
                         <Position X="64.0000" Y="726.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="40.0000" Y="40.0000" />
-                        <PrePosition X="0.1067" Y="0.9075" />
+                        <PrePosition X="0.0914" Y="0.9075" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
                         <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
@@ -672,13 +672,13 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="checkbox_changeState" ActionTag="621" FrameEvent="" Tag="128" LeftMargin="43.0000" RightMargin="717.0000" TopMargin="105.0000" BottomMargin="655.0000" TouchEnable="True" ctype="CheckBoxObjectData">
+                      <NodeObjectData Name="checkbox_changeState" ActionTag="621" FrameEvent="" Tag="128" LeftMargin="43.0000" RightMargin="617.0000" TopMargin="105.0000" BottomMargin="655.0000" TouchEnable="True" ctype="CheckBoxObjectData">
                         <Position X="63.0000" Y="675.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="40.0000" Y="40.0000" />
-                        <PrePosition X="0.0787" Y="0.8438" />
+                        <PrePosition X="0.0900" Y="0.8438" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
                         <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
@@ -686,13 +686,13 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="checkbox_showHP" ActionTag="623" FrameEvent="" Tag="130" LeftMargin="55.0000" RightMargin="505.0000" TopMargin="388.0000" BottomMargin="372.0000" TouchEnable="True" ctype="CheckBoxObjectData">
+                      <NodeObjectData Name="checkbox_showHP" ActionTag="623" FrameEvent="" Tag="130" LeftMargin="55.0000" RightMargin="605.0000" TopMargin="388.0000" BottomMargin="372.0000" TouchEnable="True" ctype="CheckBoxObjectData">
                         <Position X="75.0000" Y="392.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="40.0000" Y="40.0000" />
-                        <PrePosition X="0.1250" Y="0.4900" />
+                        <PrePosition X="0.1071" Y="0.4900" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
                         <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
@@ -700,44 +700,44 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_tag" ActionTag="701" FrameEvent="" Tag="134" LeftMargin="128.0000" RightMargin="424.0000" TopMargin="575.0000" BottomMargin="191.0000" FontSize="30" LabelText="Tag" HorizontalAlignmentType="HT_Center" ctype="TextObjectData">
+                      <NodeObjectData Name="text_tag" ActionTag="701" FrameEvent="" Tag="134" LeftMargin="128.0000" RightMargin="524.0000" TopMargin="575.0000" BottomMargin="191.0000" FontSize="30" LabelText="Tag" HorizontalAlignmentType="HT_Center" ctype="TextObjectData">
                         <Position X="128.0000" Y="208.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="48.0000" Y="34.0000" />
-                        <PrePosition X="0.2133" Y="0.2600" />
+                        <PrePosition X="0.1829" Y="0.2600" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="input_tag" ActionTag="702" FrameEvent="" Tag="135" LeftMargin="200.0000" RightMargin="200.0000" TopMargin="581.5000" BottomMargin="191.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="Tag Name" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="input_tag" ActionTag="702" FrameEvent="" Tag="135" LeftMargin="200.0000" RightMargin="300.0000" TopMargin="581.5000" BottomMargin="191.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="Tag Name" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="300.0000" Y="205.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="51" B="51" />
                         <Size X="200.0000" Y="27.0000" />
-                        <PrePosition X="0.5000" Y="0.2562" />
+                        <PrePosition X="0.4286" Y="0.2562" />
                         <PreSize X="0.3333" Y="0.0338" />
                       </NodeObjectData>
-                      <NodeObjectData Name="button_add" ActionTag="703" FrameEvent="" Tag="136" LeftMargin="412.0000" RightMargin="108.0000" TopMargin="680.0000" BottomMargin="80.0000" TouchEnable="True" FontSize="14" ButtonText="添加" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                      <NodeObjectData Name="button_add" ActionTag="703" FrameEvent="" Tag="136" LeftMargin="412.0000" RightMargin="208.0000" TopMargin="680.0000" BottomMargin="80.0000" TouchEnable="True" FontSize="14" ButtonText="添加" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="452.0000" Y="100.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="80.0000" Y="40.0000" />
-                        <PrePosition X="0.7533" Y="0.1250" />
+                        <PrePosition X="0.6457" Y="0.1250" />
                         <PreSize X="0.1333" Y="0.0500" />
                         <TextColor A="255" R="0" G="179" B="255" />
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="checkbox_buff" ActionTag="705" FrameEvent="" Tag="138" LeftMargin="56.0000" RightMargin="504.0000" TopMargin="444.0000" BottomMargin="316.0000" TouchEnable="True" ctype="CheckBoxObjectData">
+                      <NodeObjectData Name="checkbox_buff" ActionTag="705" FrameEvent="" Tag="138" LeftMargin="56.0000" RightMargin="604.0000" TopMargin="444.0000" BottomMargin="316.0000" TouchEnable="True" ctype="CheckBoxObjectData">
                         <Position X="76.0000" Y="336.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="40.0000" Y="40.0000" />
-                        <PrePosition X="0.1267" Y="0.4200" />
+                        <PrePosition X="0.1086" Y="0.4200" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
                         <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
@@ -745,62 +745,62 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_buff" ActionTag="706" FrameEvent="" Tag="139" LeftMargin="117.0000" RightMargin="342.0000" TopMargin="445.0000" BottomMargin="321.0000" FontSize="30" LabelText="buff_name" ctype="TextObjectData">
+                      <NodeObjectData Name="text_buff" ActionTag="706" FrameEvent="" Tag="139" LeftMargin="117.0000" RightMargin="442.0000" TopMargin="445.0000" BottomMargin="321.0000" FontSize="30" LabelText="buff_name" ctype="TextObjectData">
                         <Position X="117.0000" Y="338.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="141.0000" Y="34.0000" />
-                        <PrePosition X="0.1950" Y="0.4225" />
+                        <PrePosition X="0.1671" Y="0.4225" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_buff_name" ActionTag="707" FrameEvent="" Tag="140" LeftMargin="280.0000" RightMargin="120.0000" TopMargin="449.5000" BottomMargin="323.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="Buff Name" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="tf_buff_name" ActionTag="707" FrameEvent="" Tag="140" LeftMargin="280.0000" RightMargin="220.0000" TopMargin="449.5000" BottomMargin="323.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="Buff Name" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="380.0000" Y="337.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="51" B="51" />
                         <Size X="200.0000" Y="27.0000" />
-                        <PrePosition X="0.6333" Y="0.4212" />
+                        <PrePosition X="0.5429" Y="0.4212" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_count" ActionTag="708" FrameEvent="" Tag="141" LeftMargin="31.0000" RightMargin="469.0000" TopMargin="212.0000" BottomMargin="554.0000" IsCustomSize="True" FontSize="30" LabelText="数量" HorizontalAlignmentType="HT_Center" ctype="TextObjectData">
+                      <NodeObjectData Name="text_count" ActionTag="708" FrameEvent="" Tag="141" LeftMargin="31.0000" RightMargin="569.0000" TopMargin="212.0000" BottomMargin="554.0000" IsCustomSize="True" FontSize="30" LabelText="数量" HorizontalAlignmentType="HT_Center" ctype="TextObjectData">
                         <Position X="81.0000" Y="571.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="100.0000" Y="34.0000" />
-                        <PrePosition X="0.1350" Y="0.7138" />
+                        <PrePosition X="0.1157" Y="0.7138" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="input_count" ActionTag="709" FrameEvent="" Tag="142" LeftMargin="137.0000" RightMargin="413.0000" TopMargin="216.5000" BottomMargin="556.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="1" PlaceHolderText="" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="input_count" ActionTag="709" FrameEvent="" Tag="142" LeftMargin="137.0000" RightMargin="513.0000" TopMargin="216.5000" BottomMargin="556.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="1" PlaceHolderText="" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="162.0000" Y="570.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="51" B="51" />
                         <Size X="50.0000" Y="27.0000" />
-                        <PrePosition X="0.2700" Y="0.7125" />
+                        <PrePosition X="0.2314" Y="0.7125" />
                         <PreSize X="0.0833" Y="0.0338" />
                       </NodeObjectData>
-                      <NodeObjectData Name="button_selectPositionGroup" ActionTag="-1932672576" FrameEvent="" Tag="133" LeftMargin="254.0000" RightMargin="266.0000" TopMargin="159.0000" BottomMargin="601.0000" TouchEnable="True" FontSize="14" ButtonText="选择位置组" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                      <NodeObjectData Name="button_selectPositionGroup" ActionTag="-1932672576" FrameEvent="" Tag="133" LeftMargin="254.0000" RightMargin="366.0000" TopMargin="159.0000" BottomMargin="601.0000" TouchEnable="True" FontSize="14" ButtonText="选择位置组" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="294.0000" Y="621.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="80.0000" Y="40.0000" />
-                        <PrePosition X="0.4900" Y="0.7763" />
+                        <PrePosition X="0.4200" Y="0.7763" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <TextColor A="255" R="0" G="179" B="255" />
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="checkbox_boss" ActionTag="951666827" FrameEvent="" Tag="134" LeftMargin="228.0000" RightMargin="332.0000" TopMargin="206.0000" BottomMargin="554.0000" TouchEnable="True" ctype="CheckBoxObjectData">
+                      <NodeObjectData Name="checkbox_boss" ActionTag="951666827" FrameEvent="" Tag="134" LeftMargin="228.0000" RightMargin="432.0000" TopMargin="206.0000" BottomMargin="554.0000" TouchEnable="True" ctype="CheckBoxObjectData">
                         <Position X="248.0000" Y="574.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="40.0000" Y="40.0000" />
-                        <PrePosition X="0.4133" Y="0.7175" />
+                        <PrePosition X="0.3543" Y="0.7175" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
                         <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
@@ -808,134 +808,134 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_boss" ActionTag="-632070777" FrameEvent="" Tag="135" LeftMargin="280.0000" RightMargin="180.0000" TopMargin="209.0000" BottomMargin="557.0000" IsCustomSize="True" FontSize="30" LabelText="is_boss" HorizontalAlignmentType="HT_Center" ctype="TextObjectData">
+                      <NodeObjectData Name="text_boss" ActionTag="-632070777" FrameEvent="" Tag="135" LeftMargin="280.0000" RightMargin="280.0000" TopMargin="209.0000" BottomMargin="557.0000" IsCustomSize="True" FontSize="30" LabelText="is_boss" HorizontalAlignmentType="HT_Center" ctype="TextObjectData">
                         <Position X="350.0000" Y="574.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="140.0000" Y="34.0000" />
-                        <PrePosition X="0.5833" Y="0.7175" />
+                        <PrePosition X="0.5000" Y="0.7175" />
                         <PreSize X="0.2333" Y="0.0425" />
                       </NodeObjectData>
-                      <NodeObjectData Name="input_class" ActionTag="874515814" FrameEvent="" Tag="141" LeftMargin="377.9983" RightMargin="22.0017" TopMargin="56.5000" BottomMargin="716.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="unit class" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="input_class" ActionTag="874515814" FrameEvent="" Tag="141" LeftMargin="377.9983" RightMargin="122.0017" TopMargin="56.5000" BottomMargin="716.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="unit class" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="377.9983" Y="730.0000" />
                         <Scale ScaleX="1.0000" ScaleY="0.9500" />
                         <AnchorPoint ScaleY="0.5000" />
                         <CColor A="255" R="51" G="51" B="51" />
                         <Size X="200.0000" Y="27.0000" />
-                        <PrePosition X="0.6300" Y="0.9125" />
+                        <PrePosition X="0.5400" Y="0.9125" />
                         <PreSize X="0.3333" Y="0.0338" />
                       </NodeObjectData>
-                      <NodeObjectData Name="input_custom" ActionTag="2133604476" FrameEvent="" Tag="166" LeftMargin="193.0000" RightMargin="7.0000" TopMargin="304.0000" BottomMargin="442.0000" TouchEnable="True" FontSize="16" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="input_custom" ActionTag="2133604476" FrameEvent="" Tag="166" LeftMargin="193.0000" RightMargin="107.0000" TopMargin="304.0000" BottomMargin="442.0000" TouchEnable="True" FontSize="16" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="193.0000" Y="496.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleY="1.0000" />
                         <CColor A="255" R="0" G="0" B="0" />
                         <Size X="400.0000" Y="54.0000" />
-                        <PrePosition X="0.3217" Y="0.6200" />
+                        <PrePosition X="0.2757" Y="0.6200" />
                         <PreSize X="0.6667" Y="0.0675" />
                       </NodeObjectData>
-                      <NodeObjectData Name="button_choosePopup" ActionTag="1141446402" FrameEvent="" Tag="175" LeftMargin="135.0000" RightMargin="365.0000" TopMargin="336.0000" BottomMargin="424.0000" TouchEnable="True" FontSize="14" ButtonText="normal" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                      <NodeObjectData Name="button_choosePopup" ActionTag="1141446402" FrameEvent="" Tag="175" LeftMargin="135.0000" RightMargin="465.0000" TopMargin="336.0000" BottomMargin="424.0000" TouchEnable="True" FontSize="14" ButtonText="normal" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
                         <Position X="185.0000" Y="444.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="100.0000" Y="40.0000" />
-                        <PrePosition X="0.3083" Y="0.5550" />
+                        <PrePosition X="0.2643" Y="0.5550" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <TextColor A="255" R="0" G="179" B="255" />
                         <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                         <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                         <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="text_count_Copy" ActionTag="-673034299" FrameEvent="" Tag="176" LeftMargin="33.0000" RightMargin="467.0000" TopMargin="338.0000" BottomMargin="428.0000" IsCustomSize="True" FontSize="30" LabelText="气泡" HorizontalAlignmentType="HT_Center" ctype="TextObjectData">
+                      <NodeObjectData Name="text_count_Copy" ActionTag="-673034299" FrameEvent="" Tag="176" LeftMargin="33.0000" RightMargin="567.0000" TopMargin="338.0000" BottomMargin="428.0000" IsCustomSize="True" FontSize="30" LabelText="气泡" HorizontalAlignmentType="HT_Center" ctype="TextObjectData">
                         <Position X="83.0000" Y="445.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="100.0000" Y="34.0000" />
-                        <PrePosition X="0.1383" Y="0.5562" />
+                        <PrePosition X="0.1186" Y="0.5562" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_11" ActionTag="-349029091" FrameEvent="" Tag="209" LeftMargin="53.4596" RightMargin="486.5404" TopMargin="257.6654" BottomMargin="508.3346" FontSize="30" LabelText="等级" ctype="TextObjectData">
+                      <NodeObjectData Name="Text_11" ActionTag="-349029091" FrameEvent="" Tag="209" LeftMargin="53.4596" RightMargin="586.5404" TopMargin="257.6654" BottomMargin="508.3346" FontSize="30" LabelText="等级" ctype="TextObjectData">
                         <Position X="83.4596" Y="525.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="60.0000" Y="34.0000" />
-                        <PrePosition X="0.1391" Y="0.6567" />
+                        <PrePosition X="0.1192" Y="0.6567" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_level" ActionTag="-741198842" FrameEvent="" Tag="210" LeftMargin="133.4596" RightMargin="366.5404" TopMargin="263.1654" BottomMargin="509.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="1" PlaceHolderText="input level" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="tf_level" ActionTag="-741198842" FrameEvent="" Tag="210" LeftMargin="133.4596" RightMargin="466.5404" TopMargin="263.1654" BottomMargin="509.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="1" PlaceHolderText="input level" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="183.4596" Y="523.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
                         <Size X="100.0000" Y="27.0000" />
-                        <PrePosition X="0.3058" Y="0.6542" />
+                        <PrePosition X="0.2621" Y="0.6542" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_20" ActionTag="1403395084" FrameEvent="" Tag="252" LeftMargin="50.4596" RightMargin="427.5404" TopMargin="488.6654" BottomMargin="277.3346" FontSize="30" LabelText="buff_type" ctype="TextObjectData">
+                      <NodeObjectData Name="Text_20" ActionTag="1403395084" FrameEvent="" Tag="252" LeftMargin="50.4596" RightMargin="527.5404" TopMargin="488.6654" BottomMargin="277.3346" FontSize="30" LabelText="buff_type" ctype="TextObjectData">
                         <Position X="111.4596" Y="294.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="122.0000" Y="34.0000" />
-                        <PrePosition X="0.1858" Y="0.3679" />
+                        <PrePosition X="0.1592" Y="0.3679" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_buff_type" ActionTag="127034880" FrameEvent="" Tag="253" LeftMargin="194.4596" RightMargin="305.5404" TopMargin="495.1654" BottomMargin="277.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="buff type" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="tf_buff_type" ActionTag="127034880" FrameEvent="" Tag="253" LeftMargin="194.4596" RightMargin="405.5404" TopMargin="495.1654" BottomMargin="277.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="buff type" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="244.4596" Y="291.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
                         <Size X="100.0000" Y="27.0000" />
-                        <PrePosition X="0.4074" Y="0.3642" />
+                        <PrePosition X="0.3492" Y="0.3642" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_21" ActionTag="-713919808" FrameEvent="" Tag="254" LeftMargin="47.4596" RightMargin="386.5404" TopMargin="529.6654" BottomMargin="236.3346" FontSize="30" LabelText="buff_params" ctype="TextObjectData">
+                      <NodeObjectData Name="Text_21" ActionTag="-713919808" FrameEvent="" Tag="254" LeftMargin="47.4596" RightMargin="486.5404" TopMargin="529.6654" BottomMargin="236.3346" FontSize="30" LabelText="buff_params" ctype="TextObjectData">
                         <Position X="130.4596" Y="253.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="166.0000" Y="34.0000" />
-                        <PrePosition X="0.2174" Y="0.3167" />
+                        <PrePosition X="0.1864" Y="0.3167" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_buff_params" ActionTag="145099598" FrameEvent="" Tag="255" LeftMargin="226.4596" RightMargin="173.5404" TopMargin="536.1654" BottomMargin="236.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="tf_buff_params" ActionTag="145099598" FrameEvent="" Tag="255" LeftMargin="226.4596" RightMargin="273.5404" TopMargin="536.1654" BottomMargin="236.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="326.4596" Y="250.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
                         <Size X="200.0000" Y="27.0000" />
-                        <PrePosition X="0.5441" Y="0.3129" />
+                        <PrePosition X="0.4664" Y="0.3129" />
                         <PreSize X="0.3333" Y="0.0338" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_23" ActionTag="1171578389" FrameEvent="" Tag="256" LeftMargin="120.4596" RightMargin="418.5404" TopMargin="632.1654" BottomMargin="139.8346" FontSize="24" LabelText="技能1" ctype="TextObjectData">
+                      <NodeObjectData Name="Text_23" ActionTag="1171578389" FrameEvent="" Tag="256" LeftMargin="120.4596" RightMargin="518.5404" TopMargin="632.1654" BottomMargin="139.8346" FontSize="24" LabelText="技能1" ctype="TextObjectData">
                         <Position X="150.9596" Y="153.8346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="61.0000" Y="28.0000" />
-                        <PrePosition X="0.2516" Y="0.1923" />
+                        <PrePosition X="0.2157" Y="0.1923" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_24" ActionTag="216486533" FrameEvent="" Tag="257" LeftMargin="43.9596" RightMargin="436.0404" TopMargin="296.1654" BottomMargin="475.8346" FontSize="24" LabelText="自定义属性" ctype="TextObjectData">
+                      <NodeObjectData Name="Text_24" ActionTag="216486533" FrameEvent="" Tag="257" LeftMargin="43.9596" RightMargin="536.0404" TopMargin="296.1654" BottomMargin="475.8346" FontSize="24" LabelText="自定义属性" ctype="TextObjectData">
                         <Position X="103.9596" Y="489.8346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="120.0000" Y="28.0000" />
-                        <PrePosition X="0.1733" Y="0.6123" />
+                        <PrePosition X="0.1485" Y="0.6123" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="cb_skill_1" ActionTag="627225719" FrameEvent="" Tag="258" LeftMargin="66.4596" RightMargin="493.5404" TopMargin="625.6654" BottomMargin="134.3346" TouchEnable="True" ctype="CheckBoxObjectData">
+                      <NodeObjectData Name="cb_skill_1" ActionTag="627225719" FrameEvent="" Tag="258" LeftMargin="66.4596" RightMargin="593.5404" TopMargin="625.6654" BottomMargin="134.3346" TouchEnable="True" ctype="CheckBoxObjectData">
                         <Position X="86.4596" Y="154.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="40.0000" Y="40.0000" />
-                        <PrePosition X="0.1441" Y="0.1929" />
+                        <PrePosition X="0.1235" Y="0.1929" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
                         <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
@@ -943,22 +943,22 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_skill_1_level" ActionTag="-1166166613" FrameEvent="" Tag="259" LeftMargin="198.4596" RightMargin="301.5404" TopMargin="634.1654" BottomMargin="138.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="level" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="tf_skill_1_level" ActionTag="-1166166613" FrameEvent="" Tag="259" LeftMargin="198.4596" RightMargin="401.5404" TopMargin="634.1654" BottomMargin="138.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="level" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="248.4596" Y="152.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
                         <Size X="100.0000" Y="27.0000" />
-                        <PrePosition X="0.4141" Y="0.1904" />
+                        <PrePosition X="0.3549" Y="0.1904" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="cb_skill_2" ActionTag="-423682696" FrameEvent="" Tag="260" LeftMargin="66.4596" RightMargin="493.5404" TopMargin="680.6654" BottomMargin="79.3346" TouchEnable="True" ctype="CheckBoxObjectData">
+                      <NodeObjectData Name="cb_skill_2" ActionTag="-423682696" FrameEvent="" Tag="260" LeftMargin="66.4596" RightMargin="593.5404" TopMargin="680.6654" BottomMargin="79.3346" TouchEnable="True" ctype="CheckBoxObjectData">
                         <Position X="86.4596" Y="99.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="40.0000" Y="40.0000" />
-                        <PrePosition X="0.1441" Y="0.1242" />
+                        <PrePosition X="0.1235" Y="0.1242" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
                         <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
@@ -966,31 +966,31 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_25" ActionTag="1061654577" FrameEvent="" Tag="261" LeftMargin="119.9596" RightMargin="419.0404" TopMargin="683.6654" BottomMargin="88.3346" FontSize="24" LabelText="技能2" ctype="TextObjectData">
+                      <NodeObjectData Name="Text_25" ActionTag="1061654577" FrameEvent="" Tag="261" LeftMargin="119.9596" RightMargin="519.0404" TopMargin="683.6654" BottomMargin="88.3346" FontSize="24" LabelText="技能2" ctype="TextObjectData">
                         <Position X="150.4596" Y="102.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="51" G="102" B="51" />
                         <Size X="61.0000" Y="28.0000" />
-                        <PrePosition X="0.2508" Y="0.1279" />
+                        <PrePosition X="0.2149" Y="0.1279" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_skill_2_level" ActionTag="-1757182370" FrameEvent="" Tag="262" LeftMargin="197.4596" RightMargin="302.5404" TopMargin="686.1654" BottomMargin="86.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="level" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <NodeObjectData Name="tf_skill_2_level" ActionTag="-1757182370" FrameEvent="" Tag="262" LeftMargin="197.4596" RightMargin="402.5404" TopMargin="686.1654" BottomMargin="86.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="level" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Position X="247.4596" Y="100.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
                         <Size X="100.0000" Y="27.0000" />
-                        <PrePosition X="0.4124" Y="0.1254" />
+                        <PrePosition X="0.3535" Y="0.1254" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="checkbox_tag" ActionTag="-1803748884" FrameEvent="" Tag="263" LeftMargin="62.4596" RightMargin="497.5404" TopMargin="573.1654" BottomMargin="186.8346" TouchEnable="True" ctype="CheckBoxObjectData">
+                      <NodeObjectData Name="checkbox_tag" ActionTag="-1803748884" FrameEvent="" Tag="263" LeftMargin="62.4596" RightMargin="597.5404" TopMargin="573.1654" BottomMargin="186.8346" TouchEnable="True" ctype="CheckBoxObjectData">
                         <Position X="82.4596" Y="206.8346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="40.0000" Y="40.0000" />
-                        <PrePosition X="0.1374" Y="0.2585" />
+                        <PrePosition X="0.1178" Y="0.2585" />
                         <PreSize X="0.0000" Y="0.0000" />
                         <NormalBackFileData Type="Default" Path="Default/CheckBox_Normal.png" />
                         <PressedBackFileData Type="Default" Path="Default/CheckBox_Press.png" />
@@ -998,13 +998,13 @@
                         <NodeNormalFileData Type="Default" Path="Default/CheckBoxNode_Normal.png" />
                         <NodeDisableFileData Type="Default" Path="Default/CheckBoxNode_Disable.png" />
                       </NodeObjectData>
-                      <NodeObjectData Name="Text_27" ActionTag="-2115723663" FrameEvent="" Tag="264" LeftMargin="441.4596" RightMargin="67.5404" TopMargin="448.6654" BottomMargin="328.3346" FontSize="20" LabelText="Text Label" ctype="TextObjectData">
+                      <NodeObjectData Name="Text_27" ActionTag="-2115723663" FrameEvent="" Tag="264" LeftMargin="441.4596" RightMargin="167.5404" TopMargin="448.6654" BottomMargin="328.3346" FontSize="20" LabelText="Text Label" ctype="TextObjectData">
                         <Position X="486.9596" Y="339.8346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="255" G="255" B="255" />
                         <Size X="91.0000" Y="23.0000" />
-                        <PrePosition X="0.8116" Y="0.4248" />
+                        <PrePosition X="0.6957" Y="0.4248" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
                       <NodeObjectData Name="tf_item_resource" ActionTag="801617091" FrameEvent="" Tag="268" LeftMargin="296.9596" RightMargin="103.0404" TopMargin="404.6654" BottomMargin="368.3346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="item_resource" MaxLengthText="10" ctype="TextFieldObjectData">
@@ -1245,7 +1245,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_taskChange" ActionTag="398" Visible="False" FrameEvent="" Tag="122" LeftMargin="-200.0000" RightMargin="-200.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_taskChange" ActionTag="398" FrameEvent="" Tag="122" LeftMargin="-200.0000" RightMargin="-200.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Position X="0.0000" Y="0.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -1301,6 +1301,24 @@
                     <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
                     <PressedFileData Type="Default" Path="Default/Button_Press.png" />
                     <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="Text_28" ActionTag="1771635535" FrameEvent="" Tag="269" LeftMargin="70.5000" RightMargin="233.5000" TopMargin="610.0000" BottomMargin="162.0000" FontSize="24" LabelText="任务进度" ctype="TextObjectData">
+                    <Position X="118.5000" Y="176.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="51" G="102" B="51" />
+                    <Size X="96.0000" Y="28.0000" />
+                    <PrePosition X="0.2962" Y="0.2200" />
+                    <PreSize X="0.0000" Y="0.0000" />
+                  </NodeObjectData>
+                  <NodeObjectData Name="tf_task_progress" ActionTag="-1230129770" FrameEvent="" Tag="270" LeftMargin="193.5000" RightMargin="106.5000" TopMargin="611.5000" BottomMargin="161.5000" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="0" MaxLengthText="10" ctype="TextFieldObjectData">
+                    <Position X="243.5000" Y="175.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <CColor A="255" R="0" G="0" B="0" />
+                    <Size X="100.0000" Y="27.0000" />
+                    <PrePosition X="0.6087" Y="0.2188" />
+                    <PreSize X="0.0000" Y="0.0000" />
                   </NodeObjectData>
                 </Children>
                 <SingleColor A="255" R="255" G="255" B="255" />

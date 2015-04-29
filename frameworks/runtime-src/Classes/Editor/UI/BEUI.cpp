@@ -935,6 +935,9 @@ BEUITaskStateChange::BEUITaskStateChange(ui::Layout *root, const BEPopupEventHan
     _stateButton = getButtonFrom("button_taskState", _root);
     _okButton = getButtonFrom("button_ok", _root);
     _cancelButton = getButtonFrom("button_cancel", _root);
+    
+    _tf_task_progress = getTextFieldFrom( "tf_task_progress", _root );
+    
     _stateListView = popupTypeListFromButton(_stateButton, EditorTypeManager::getInstance()->getTaskState(), CC_CALLBACK_1(BEUITaskStateChange::onStateListItemClicked, this));
     _stateListView->setVisible(false);
     
@@ -958,6 +961,7 @@ void BEUITaskStateChange::reset() {
 EditorTaskActionPtr BEUITaskStateChange::getAction() {
     _action->TaskState = _stateListView->getCurrentType();
     _action->TaskName = _taskListView->getCurrentName();
+    _action->TaskProgress = atof( _tf_task_progress->getString().c_str() );
     return _action;
 }
 

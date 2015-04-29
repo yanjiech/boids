@@ -54,3 +54,11 @@ void GameTask::setTaskState( const std::string& new_state ) {
         this->setActive( false );
     }
 }
+
+void GameTask::addProgress( float p ) {
+    _progress += p;
+    if( _progress >= 100.0f ) {
+        _progress = 100.0f;
+        this->setTaskState( GAME_TASK_STATE_FINISHED );
+    }
+}

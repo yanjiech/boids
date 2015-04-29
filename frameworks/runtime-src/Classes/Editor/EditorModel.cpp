@@ -553,6 +553,9 @@ rapidjson::Value& EditorTaskAction::toJson(rapidjson::Document::AllocatorType& a
     EditorActionBase::toJson(allocator);
     _json.AddMember("task_name", TaskName.c_str(), allocator);
     _json.AddMember("task_state", TaskState.c_str(), allocator);
+    if( TaskState == "task_progress" ) {
+        _json.AddMember( "progress", TaskProgress, allocator );
+    }
     return _json;
 }
 
@@ -560,6 +563,12 @@ void EditorTaskAction::loadJson(const rapidjson::Value& value) {
     EditorActionBase::loadJson(value);
     this->TaskName = value["task_name"].GetString();
     this->TaskState = value["task_state"].GetString();
+    if( value.HasMember( "progress" ) ) {
+        this->TaskProgress = (float)value["progress"].GetDouble();
+    }
+    else {
+        this->TaskProgress = 0;
+    }
 }
 
 rapidjson::Value& EditorGameAction::toJson(rapidjson::Document::AllocatorType& allocator) {

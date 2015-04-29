@@ -12,6 +12,11 @@
         {
             "name" : "第三关",
             "path" : "maps/level_3"
+        },
+        {
+            "name" : "第四关",
+            "path" : "maps/level_4"
         }
+
     ]
 }

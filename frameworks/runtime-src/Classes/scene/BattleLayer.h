@@ -148,6 +148,7 @@ public:
     void changeState( eBattleState new_state );
     
     MapData* getMapData() { return _map_data; }
+    MapLogic* getMapLogic() { return _map_logic; }
     
     UIControlLayer* getControlLayer() { return _control_layer; }
     

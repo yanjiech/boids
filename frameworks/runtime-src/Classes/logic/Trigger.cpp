@@ -50,6 +50,9 @@ Trigger* Trigger::create( const cocos2d::ValueMap& data ) {
     else if( trigger_type == EVENT_TRIGGER_TYPE_STORY_CHANGE ) {
         ret = StoryChangeTrigger::create( data );
     }
+    else if( trigger_type == EVENT_TRIGGER_TYPE_VISION_CHANGE ) {
+        ret = VisionChangeTrigger::create( data );
+    }
     
     return ret;
 }
@@ -490,7 +493,7 @@ bool VisionChangeTrigger::init( const cocos2d::ValueMap& data ) {
 }
 
 void VisionChangeTrigger::updateTrigger( const cocos2d::ValueMap& update_data ) {
-    
+    Trigger::updateTrigger( update_data );
 }
 
 CustomTrigger::CustomTrigger() {

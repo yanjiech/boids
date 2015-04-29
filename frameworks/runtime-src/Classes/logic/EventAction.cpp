@@ -473,7 +473,12 @@ void TaskChangeAction::onActionTriggered( bool finish ) {
     
     const std::string& task_name = _action_data.at( "task_name" ).asString();
     const std::string& task_state = _action_data.at( "task_state" ).asString();
-    _map_logic->onTaskStateChanged( task_name, task_state );
+    float progress = 0;
+    auto itr = _action_data.find( "progress" );
+    if( itr != _action_data.end() ) {
+        progress = itr->second.asFloat();
+    }
+    _map_logic->onTaskStateChanged( task_name, task_state, progress );
 }
 
 //game change action
@@ -601,6 +606,12 @@ void VisionChangeAction::onActionTriggered( bool finish ) {
     std::string source_type = _action_data.at( "source_type" ).asString();
     std::string source_value = _action_data.at( "source_value" ).asString();
     
+    ValueMap update_data;
+    update_data["trigger_type"] = Value( "vision_change" );
+    update_data["source_type"] = Value( source_type );
+    update_data["source_value"] = Value( source_value );
+    update_data["vision_state"] = Value( vision_state );
+    
     if( source_type == UNIT_SOURCE_NAME ) {
         const BlockMap& block_nodes = _map_logic->getBattleLayer()->getBlockNodes();
         for( auto itr = block_nodes.begin(); itr != block_nodes.end(); ++itr ) {
@@ -608,6 +619,7 @@ void VisionChangeAction::onActionTriggered( bool finish ) {
             if( block_node->getBlockName() == source_value ) {
                 itr->second->setEnabled( enabled );
                 block_node->updateEnabled();
+                _map_logic->onVisionChanged( update_data );
             }
         }
     }

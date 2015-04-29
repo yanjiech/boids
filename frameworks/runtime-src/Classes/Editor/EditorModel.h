@@ -255,6 +255,7 @@ class EditorTaskAction : public EditorActionBase {
 public:
     std::string TaskName;
     std::string TaskState;
+    float TaskProgress;
     EditorTaskAction(): EditorActionBase("task_change") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
