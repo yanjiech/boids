@@ -181,15 +181,15 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     this->setShouldCatchUp( false );
     
     //debug
-    _custom_draw = DrawNode::create();
-    _custom_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::YELLOW );
-    this->addChild( _custom_draw, 10000 );
-    
-    _new_dir_draw = DrawNode::create();
-    _new_dir_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::BLUE );
-    this->addChild( _new_dir_draw, 10001 );
-    
-    _custom_draw->drawCircle( Point::ZERO, target_data->collide, 360, 100, false, Color4F::RED );
+//    _custom_draw = DrawNode::create();
+//    _custom_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::YELLOW );
+//    this->addChild( _custom_draw, 10000 );
+//    
+//    _new_dir_draw = DrawNode::create();
+//    _new_dir_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::BLUE );
+//    this->addChild( _new_dir_draw, 10001 );
+//    
+//    _custom_draw->drawCircle( Point::ZERO, target_data->collide, 360, 100, false, Color4F::RED );
     //end debug
     
     _face = eUnitFace::Back;
@@ -444,7 +444,9 @@ void UnitNode::changeUnitDirection( const cocos2d::Point& new_dir ) {
     }
     Point normalized_dir = new_dir;
     normalized_dir.normalize();
-    _custom_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
+    //debug
+//    _custom_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
+    //end debug
     this->setUnitDirection( normalized_dir );
 }
 
@@ -641,9 +643,9 @@ void UnitNode::applyCustomChange( const std::string& content_string ) {
 
 void UnitNode::addBuff( const std::string& buff_id, Buff* buff, bool replace ) {
     if( replace ) {
-        Buff* buff = this->getBuffOfType( buff->getBuffType() );
-        if( buff ) {
-            buff->end();
+        Buff* old_buff = this->getBuffOfType( buff->getBuffType() );
+        if( old_buff ) {
+            old_buff->end();
         }
     }
     _buffs.insert( buff_id, buff );
@@ -779,7 +781,9 @@ bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d:
     
     new_dir.normalize();
     
-    _new_dir_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
+    //debug
+//    _new_dir_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
+//end debug
     return true;
 }
 

@@ -31,6 +31,8 @@ protected:
     
     ProgressBar* _progress_bar;
     
+    cocos2d::Sprite* _range_sprite;
+    
 public:
     BlockNode();
     virtual ~BlockNode();
@@ -55,6 +57,9 @@ public:
     
     const cocos2d::Point& getCenter() { return _center; }
     void setCenter( const cocos2d::Point& center ) { _center = center; }
+    
+    cocos2d::Sprite* getRangeSprite() { return _range_sprite; }
+    void setRangeSprite( cocos2d::Sprite* image );
 };
 
 class SpriteBlockNode : public BlockNode {
@@ -83,7 +88,7 @@ public:
     static SpineBlockNode* create( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
     virtual bool init( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
     
-    void setAnimation( int track, const std::string& name, int loop );
+    void setAnimation( int track, const std::string& name, bool loop );
     
     void onSkeletonAnimationCompleted( int track_index );
 };
@@ -92,7 +97,6 @@ class GroupSpineBlockNode : public BlockNode {
 private:
     cocos2d::Vector<SpineBlockNode*> _blocks;
     
-    
 public:
     GroupSpineBlockNode();
     virtual ~GroupSpineBlockNode();
@@ -100,6 +104,7 @@ public:
     static GroupSpineBlockNode* create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
     virtual bool init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
     
+    void addBlockNode( SpineBlockNode* block_node );
     void appendSpineNode( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
     
     virtual void updateEnabled();

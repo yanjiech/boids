@@ -123,18 +123,18 @@ void UISkillNode::showHint( const cocos2d::Point& dir, float range_per ) {
     else {
         Point hint_pos = _unit_node->getPosition();
         if( _hint_type == "arrow" ) {
-            _hint_effect = Sprite::create( "ui/skillarrow.png" );
+            _hint_effect = Sprite::createWithSpriteFrameName( "skillarrow.png" );
             _hint_effect->setRotation( angle );
             _hint_effect->setAnchorPoint( Point( 0, 0.5f ) );
             _battle_layer->addToEffectLayer( _hint_effect, hint_pos, 0 );
         }
         else if( _hint_type == "circle" ) {
-            _hint_effect = Sprite::create( "ui/skillcircle.png" );
+            _hint_effect = Sprite::createWithSpriteFrameName( "skillcircle.png" );
             _hint_effect->setScale( _range / 200.0f );
             _battle_layer->addToOnGroundLayer( _hint_effect, hint_pos, 0 );
         }
         else if( _hint_type == "dyn_circle" ) {
-            _hint_effect = Sprite::create( "ui/skillcircle.png" );
+            _hint_effect = Sprite::createWithSpriteFrameName( "skillcircle.png" );
             _hint_effect->setScale( _radius / 200.0f );
             _hint_d_pos = skill_dir * _min_range;
             hint_pos = hint_pos + _hint_d_pos;

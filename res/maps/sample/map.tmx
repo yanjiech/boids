@@ -41,7 +41,7 @@
    <image width="135" height="219" source="songshu_02.png"/>
   </tile>
   <tile id="13">
-   <image width="278" height="383" source="songshu_03.png"/>
+   <image width="283" height="406" source="songshu_03.png"/>
   </tile>
   <tile id="14">
    <image width="64" height="62" source="xiaocao_01.png"/>
@@ -53,7 +53,7 @@
    <image width="35" height="41" source="xiaocao_04.png"/>
   </tile>
   <tile id="17">
-   <image width="81" height="68" source="cao_01.png"/>
+   <image width="72" height="68" source="cao_01.png"/>
   </tile>
   <tile id="18">
    <image width="423" height="485" source="goutourenmuwu_01.png"/>
@@ -84,11 +84,11 @@
   </tile>
  </tileset>
  <tileset firstgid="28" name="terrain" tilewidth="32" tileheight="32">
-  <image source="base_terrain.png" width="256" height="256"/>
+  <image source="base_terrain.png" width="2048" height="2048"/>
  </tileset>
  <layer name="terrain" width="125" height="37">
   <data encoding="base64" compression="zlib">
-   eJzt1bERwkAQBMEP5AWOBA4gB6T8M2OjoK64NsboCGaOMZZ0Sdc0+e+9pi3d0p1b+JGe6ZV2buF3+qQjndzCFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cfs5+zn7Ofs5+zn7Oft7dFf7Cv/UX+7vnzQ==
+   eJzt1bERwkAQBMEP6gWJSZAYoMRActkoqCuujTE6gpljjCVd0jVN/nuvaUu3dOcWfqRneqWdW/idPulIJ7dwhb+wn7Ofs5+zn7Ofs5+zn3d3hb+wn7Ofs5+zn7Ofs5+zn3d3hb+wn7Ofs5+zn7Ofs5+zn3d3hb+wn7Ofs5+zn7Ofs5+zn3d3hb/wb/0FgTJebQ==
   </data>
  </layer>
  <objectgroup name="onground">

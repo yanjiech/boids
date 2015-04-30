@@ -13,7 +13,9 @@
 
 using namespace cocos2d;
 
-BuildingNode::BuildingNode() {
+BuildingNode::BuildingNode() :
+_range_sprite( nullptr )
+{
     
 }
 
@@ -89,6 +91,16 @@ void BuildingNode::setCollidable( bool b ) {
     }
 }
 
+void BuildingNode::setRangeSprite( cocos2d::Sprite* sprite ) {
+    if( _range_sprite ) {
+        _range_sprite->removeFromParentAndCleanup( true );
+    }
+    _range_sprite = sprite;
+    if( _range_sprite ) {
+        _battle_layer->addToBelowObjectLayer( _range_sprite, _center, 100 );
+    }
+}
+
 //buff building node
 BuffBuildingNode::BuffBuildingNode() {
     
@@ -141,6 +153,30 @@ bool BuffBuildingNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap&
         _buff_data["effect_scale"] = itr->second;
     }
     
+    Sprite* sprite = Sprite::createWithSpriteFrameName( "block_range.png" );
+    this->setRangeSprite( sprite );
+    
+    Color3B color = Color3B::WHITE;
+    
+    itr = obj_properties.find( "color_red" );
+    if( itr != obj_properties.end() ) {
+        color.r = itr->second.asByte();
+    }
+    
+    itr = obj_properties.find( "color_green" );
+    if( itr != obj_properties.end() ) {
+        color.g = itr->second.asByte();
+    }
+    
+    itr = obj_properties.find( "color_blue" );
+    if( itr != obj_properties.end() ) {
+        color.b = itr->second.asByte();
+    }
+    
+    sprite->setColor( color );
+    
+    sprite->setScale( _range / 200.0f );
+    
     _progress_bar = ProgressBar::create( Color4F::WHITE, Color4F::WHITE, Size( 290.0f, 10.0f ) );
     _progress_bar->setBackgroundOpacity( 127 );
     this->addChild( _progress_bar, 10 );
@@ -165,7 +201,7 @@ void BuffBuildingNode::updateFrame( float delta ) {
                 for( auto itr = units.begin(); itr != units.end(); ++itr ) {
                     UnitNode* unit = *itr;
                     Buff* buff = Buff::create( unit, _buff_data );
-                    unit->addBuff( buff->getBuffId(), buff );
+                    unit->addBuff( buff->getBuffId(), buff, true );
                     buff->begin();
                 }
                 _progress_bar->setVisible( false );

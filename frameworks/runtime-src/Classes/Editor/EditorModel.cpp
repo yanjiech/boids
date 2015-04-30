@@ -469,13 +469,11 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->TagChanged = false;
         this->TagName = "";
     }
-    if (value.HasMember("buff_changed")) {
-        this->BuffChanged = value["buff_changed"].GetBool();
-        if( this->BuffChanged ) {
-            this->BuffName = value["buff_name"].GetString();
-            this->BuffType = value["buff_type"].GetString();
-            this->BuffParams = value["buff_params"].GetString();
-        }
+    if (value.HasMember("buff_name")) {
+        this->BuffChanged = true;
+        this->BuffName = value["buff_name"].GetString();
+        this->BuffType = value["buff_type"].GetString();
+        this->BuffParams = value["buff_params"].GetString();
         
     } else if (value.HasMember("buff_name")) {
         this->BuffName = value["buff_name"].GetString();

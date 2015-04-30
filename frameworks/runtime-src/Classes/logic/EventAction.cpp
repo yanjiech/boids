@@ -328,7 +328,7 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                         UnitNode* unit = UnitNode::create( battle_layer, unit_data );
                         if( !buff_data.empty() ) {
                             Buff* buff = Buff::create( unit, buff_data );
-                            unit->addBuff( buff->getBuffId(), buff );
+                            unit->addBuff( buff->getBuffId(), buff, true );
                             buff->begin();
                         }
                         
@@ -412,9 +412,6 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
             if( show_hp ) {
                 u->showHP();
             }
-            else {
-                u->hideHP();
-            }
             if( tag_name != "" ) {
                 u->setUnitTags( tag_name );
             }
@@ -433,6 +430,11 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                 else {
                     u->removeItem( item_name );
                 }
+            }
+            if( !buff_data.empty() ) {
+                Buff* buff = Buff::create( u, buff_data );
+                u->addBuff( buff->getBuffId(), buff, true );
+                buff->begin();
             }
         }
     }

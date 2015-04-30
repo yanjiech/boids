@@ -895,19 +895,21 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
         }
     }
     else if( type == "GroupSpineBlockNode" ) {
-        std::string name = obj_properties.at( "name" ).asString() + "_collide";
-        ValueMap boundary = group->getObject( name );
+        std::string name = obj_properties.at( "name" ).asString();
+        std::string boundary_name = name + "_collide";
+        ValueMap boundary = group->getObject( boundary_name );
         if( !boundary.empty() ) {
+            boundary["map_height"] = Value( _tmx_map->getContentSize().height );
             grid_properties["boundary"] = Value( boundary );
             
             BlockNode* block_node = this->getBlockNode( name );
             if( block_node == nullptr ) {
-                BlockNode::create( this, grid_properties, obj_properties );
+                block_node = BlockNode::create( this, grid_properties, obj_properties );
                 this->addBlockNode( block_node, layer );
             }
             else {
                 GroupSpineBlockNode* group_block = dynamic_cast<GroupSpineBlockNode*>( block_node );
-                
+                group_block->appendSpineNode( grid_properties, obj_properties );
             }
         }
     }

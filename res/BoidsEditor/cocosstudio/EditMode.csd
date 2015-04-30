@@ -503,7 +503,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_unitAction" ActionTag="112" Visible="False" FrameEvent="" Tag="110" LeftMargin="-800.0000" RightMargin="-800.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_unitAction" ActionTag="112" FrameEvent="" Tag="110" LeftMargin="-800.0000" RightMargin="-800.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Position X="0.0000" Y="0.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -884,14 +884,14 @@
                         <PrePosition X="0.1592" Y="0.3679" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_buff_type" ActionTag="127034880" FrameEvent="" Tag="253" LeftMargin="194.4596" RightMargin="405.5404" TopMargin="495.1654" BottomMargin="277.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="buff type" MaxLengthText="10" ctype="TextFieldObjectData">
-                        <Position X="244.4596" Y="291.3346" />
+                      <NodeObjectData Name="tf_buff_type" ActionTag="127034880" FrameEvent="" Tag="253" LeftMargin="190.4596" RightMargin="209.5404" TopMargin="494.1654" BottomMargin="278.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="buff type" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="340.4596" Y="292.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
-                        <Size X="100.0000" Y="27.0000" />
-                        <PrePosition X="0.3492" Y="0.3642" />
-                        <PreSize X="0.0000" Y="0.0000" />
+                        <Size X="300.0000" Y="27.0000" />
+                        <PrePosition X="0.4864" Y="0.3654" />
+                        <PreSize X="0.4286" Y="0.0338" />
                       </NodeObjectData>
                       <NodeObjectData Name="Text_21" ActionTag="-713919808" FrameEvent="" Tag="254" LeftMargin="47.4596" RightMargin="486.5404" TopMargin="529.6654" BottomMargin="236.3346" FontSize="30" LabelText="buff_params" ctype="TextObjectData">
                         <Position X="130.4596" Y="253.3346" />
@@ -902,14 +902,14 @@
                         <PrePosition X="0.1864" Y="0.3167" />
                         <PreSize X="0.0000" Y="0.0000" />
                       </NodeObjectData>
-                      <NodeObjectData Name="tf_buff_params" ActionTag="145099598" FrameEvent="" Tag="255" LeftMargin="226.4596" RightMargin="273.5404" TopMargin="536.1654" BottomMargin="236.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
-                        <Position X="326.4596" Y="250.3346" />
+                      <NodeObjectData Name="tf_buff_params" ActionTag="145099598" FrameEvent="" Tag="255" LeftMargin="220.4596" RightMargin="-20.4596" TopMargin="536.1654" BottomMargin="236.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Position X="470.4596" Y="250.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <CColor A="255" R="0" G="0" B="0" />
-                        <Size X="200.0000" Y="27.0000" />
-                        <PrePosition X="0.4664" Y="0.3129" />
-                        <PreSize X="0.3333" Y="0.0338" />
+                        <Size X="500.0000" Y="27.0000" />
+                        <PrePosition X="0.6721" Y="0.3129" />
+                        <PreSize X="0.7143" Y="0.0338" />
                       </NodeObjectData>
                       <NodeObjectData Name="Text_23" ActionTag="1171578389" FrameEvent="" Tag="256" LeftMargin="120.4596" RightMargin="518.5404" TopMargin="632.1654" BottomMargin="139.8346" FontSize="24" LabelText="技能1" ctype="TextObjectData">
                         <Position X="150.9596" Y="153.8346" />
@@ -1245,7 +1245,7 @@
                 <EndColor A="255" R="255" G="255" B="255" />
                 <ColorVector ScaleY="1.0000" />
               </NodeObjectData>
-              <NodeObjectData Name="popup_taskChange" ActionTag="398" FrameEvent="" Tag="122" LeftMargin="-200.0000" RightMargin="-200.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+              <NodeObjectData Name="popup_taskChange" ActionTag="398" Visible="False" FrameEvent="" Tag="122" LeftMargin="-200.0000" RightMargin="-200.0000" TopMargin="-400.0000" BottomMargin="-400.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Position X="0.0000" Y="0.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

@@ -13,7 +13,9 @@
 
 using namespace cocos2d;
 
-BlockNode::BlockNode() {
+BlockNode::BlockNode() :
+_range_sprite( nullptr )
+{
     
 }
 
@@ -39,12 +41,12 @@ bool BlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_p
     }
     
     _battle_layer = battle_layer;
+     _block_name = obj_properties.at( "name" ).asString();
+    
     const ValueMap& boundary_data = grid_properties.at( "boundary" ).asValueMap();
     _boundaries.loadFromValueMap( boundary_data );
     _boundaries.name = boundary_data.at( "name" ).asString();
     _center = _boundaries.center;
-    
-    _block_name = obj_properties.at( "name" ).asString();
     
     auto itr = obj_properties.find( "need_repair" );
     if( itr != obj_properties.end() ) {
@@ -60,6 +62,31 @@ bool BlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_p
         std::string tag_str = obj_properties.at( "need_tag" ).asString();
         Utils::split( tag_str, _need_tag, ',' );
         this->setEnabled( false );
+        
+        Sprite* sprite = Sprite::createWithSpriteFrameName( "block_range.png" );
+        this->setRangeSprite( sprite );
+        sprite->setVisible( false );
+        
+        Color3B color = Color3B::WHITE;
+        
+        itr = obj_properties.find( "color_red" );
+        if( itr != obj_properties.end() ) {
+            color.r = itr->second.asByte();
+        }
+        
+        itr = obj_properties.find( "color_green" );
+        if( itr != obj_properties.end() ) {
+            color.g = itr->second.asByte();
+        }
+        
+        itr = obj_properties.find( "color_blue" );
+        if( itr != obj_properties.end() ) {
+            color.b = itr->second.asByte();
+        }
+        
+        sprite->setColor( color );
+        
+        sprite->setScale( _range / 200.0f );
     }
     else {
         itr = obj_properties.find( "enabled" );
@@ -85,28 +112,33 @@ void BlockNode::updateFrame( float delta ) {
         int count = (int)candidates.size();
         if( count == 0 ) {
             _elapse = 0;
+            _progress_bar->setPercentage( 0 );
+            if( _range_sprite ) {
+                _range_sprite->setVisible( false );
+            }
         }
         else {
             _progress_bar->setVisible( true );
+            if( _range_sprite ) {
+                _range_sprite->setVisible( true );
+            }
             UnitNode* unit = candidates.at( 0 );
-            if( unit->isIdle() ) {
-                _elapse += delta;
-                if( _elapse >= _need_time ) {
-                    _need_repair = false;
-                    this->setEnabled( true );
-                    this->updateEnabled();
-                    _progress_bar->setVisible( false );
-                    for( auto str : _need_tag ) {
-                        unit->removeItem( str );
-                    }
+            
+            _elapse += delta;
+            if( _elapse >= _need_time ) {
+                _need_repair = false;
+                this->setEnabled( true );
+                this->updateEnabled();
+                _progress_bar->setVisible( false );
+                for( auto str : _need_tag ) {
+                    unit->removeItem( str );
                 }
-                else {
-                    _progress_bar->setPercentage( 100.0f * _elapse / _need_time );
+                if( _range_sprite ) {
+                    _range_sprite->setVisible( false );
                 }
             }
             else {
-                _progress_bar->setVisible( false );
-                _elapse = 0;
+                _progress_bar->setPercentage( 100.0f * _elapse / _need_time );
             }
         }
     }
@@ -130,6 +162,16 @@ void BlockNode::updateEnabled() {
     MapLogic* map_logic = _battle_layer->getMapLogic();
     if( map_logic ) {
         map_logic->onVisionChanged( update_data );
+    }
+}
+
+void BlockNode::setRangeSprite( cocos2d::Sprite* image ) {
+    if( _range_sprite ) {
+        _range_sprite->removeFromParentAndCleanup( true );
+    }
+    _range_sprite = image;
+    if( _range_sprite ) {
+        _battle_layer->addToBelowObjectLayer( _range_sprite, _center, 100 );
     }
 }
 
@@ -237,15 +279,18 @@ bool SpineBlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos
         return false;
     }
     
-    std::string resource = obj_properties.at( "resource" ).asString();
+    std::string resource = "blocks/" + obj_properties.at( "name" ).asString();
     _skeleton = ArmatureManager::getInstance()->createArmature( resource );
     _skeleton->setCompleteListener( CC_CALLBACK_1( SpineBlockNode::onSkeletonAnimationCompleted, this ) );
+    Size size = _skeleton->getBoundingBox().size;
     this->addChild( _skeleton );
+    this->setContentSize( size );
+    this->setPosition( Point( obj_properties.at( "x" ).asFloat() + size.width / 2, obj_properties.at( "y" ).asFloat() + size.width / 2 ) );
     
     return true;
 }
 
-void SpineBlockNode::setAnimation( int track, const std::string& name, int loop ) {
+void SpineBlockNode::setAnimation( int track, const std::string& name, bool loop ) {
     if( _skeleton ) {
         _skeleton->setAnimation( track, name, loop );
     }
@@ -284,13 +329,86 @@ bool GroupSpineBlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueM
     if( !BlockNode::init( battle_layer, grid_properties, obj_properties ) ) {
         return false;
     }
+    this->setEnabled( false );
+    
+    this->appendSpineNode( grid_properties, obj_properties );
+    
+    SpineBlockNode* block_node = _blocks.at( 0 );
+
+    this->ignoreAnchorPointForPosition( false );
+    this->setAnchorPoint( Point::ZERO );
+    this->setPosition( Point( obj_properties.at( "x" ).asFloat(), obj_properties.at( "y" ).asFloat() ) );
+    
+    _progress_bar->setPercentage( 0 );
+    _progress_bar->setPosition( Point( 0, block_node->getContentSize().height + 50.0f ) );
+    _progress_bar->setVisible( false );
+    this->setPosition( _center );
+    
+    this->updateEnabled();
     
     return true;
 }
 
+void GroupSpineBlockNode::addBlockNode( SpineBlockNode* block_node ) {
+    _blocks.pushBack( block_node );
+    block_node->setPosition( block_node->getPosition() - _center );
+    this->addChild( block_node );
+}
+
 void GroupSpineBlockNode::appendSpineNode( const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties ) {
+    SpineBlockNode* block_node = SpineBlockNode::create( grid_properties, obj_properties );
+    this->addBlockNode( block_node );
     
+    auto itr = obj_properties.find( "need_repair" );
+    if( itr != obj_properties.end() ) {
+        _need_repair = itr->second.asBool();
+        if( _need_repair ) {
+            _range = obj_properties.at( "range" ).asFloat();
+            _need_time = obj_properties.at( "need_time" ).asFloat();
+            std::string tag_str = obj_properties.at( "need_tag" ).asString();
+            Utils::split( tag_str, _need_tag, ',' );
+            this->setEnabled( false );
+            
+            Sprite* sprite = Sprite::createWithSpriteFrameName( "block_range.png" );
+            this->setRangeSprite( sprite );
+            sprite->setVisible( false );
+            
+            Color3B color = Color3B::WHITE;
+            
+            itr = obj_properties.find( "color_red" );
+            if( itr != obj_properties.end() ) {
+                color.r = itr->second.asByte();
+            }
+            
+            itr = obj_properties.find( "color_green" );
+            if( itr != obj_properties.end() ) {
+                color.g = itr->second.asByte();
+            }
+            
+            itr = obj_properties.find( "color_blue" );
+            if( itr != obj_properties.end() ) {
+                color.b = itr->second.asByte();
+            }
+            
+            sprite->setColor( color );
+            
+            sprite->setScale( _range / 200.0f );
+        }
+    }
+    
+    this->updateEnabled();
 }
 
 void GroupSpineBlockNode::updateEnabled() {
+    BlockNode::updateEnabled();
+    if( _is_enabled ) {
+        for( auto block : _blocks ) {
+            block->setAnimation( 0, "Disappear", false );
+        }
+    }
+    else {
+        for( auto block : _blocks ) {
+            block->setAnimation( 0, "Appear", false );
+        }
+    }
 }
