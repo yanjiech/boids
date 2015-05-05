@@ -150,7 +150,6 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         _front = ArmatureManager::getInstance()->createArmature( front_res );
         std::string back_res = res_manager->getPathForResource( target_data->name, eResourceType::Character_Back );
         _back = ArmatureManager::getInstance()->createArmature( back_res );
-        
     }
     if( _front ) {
         _front->setScale( target_data->scale );
@@ -752,6 +751,8 @@ void UnitNode::endSkill() {
 void UnitNode::endCast() {
     if( this->isCasting() ) {
         _using_skill_params["state"] = Value( "end" );
+        int sk_id = _using_skill_params.at( "skill_id" ).asInt();
+        _skills.at( sk_id )->setSkillNode( nullptr );
         _unit_state_changed = true;
         this->setNextUnitState( eUnitState::Casting );
     }

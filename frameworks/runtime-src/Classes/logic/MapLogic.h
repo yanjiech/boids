@@ -46,7 +46,7 @@ private:
     
 public:
     MapLogic();
-    ~MapLogic();
+    virtual ~MapLogic();
     
     static MapLogic* create( BattleLayer* battle_layer );
     

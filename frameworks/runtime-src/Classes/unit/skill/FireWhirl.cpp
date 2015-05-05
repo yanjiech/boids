@@ -22,9 +22,9 @@ FireWhirl::~FireWhirl() {
     
 }
 
-FireWhirl* FireWhirl::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+FireWhirl* FireWhirl::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     FireWhirl* ret = new FireWhirl();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -34,7 +34,7 @@ FireWhirl* FireWhirl::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     }
 }
 
-bool FireWhirl::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool FireWhirl::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

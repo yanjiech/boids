@@ -212,9 +212,11 @@ bool TimeLimitSpineComponent::init( float duration, spine::SkeletonAnimation* sk
 }
 
 void TimeLimitSpineComponent::updateFrame( float delta ) {
-    _elapse += delta;
-    if( _elapse > _duration ) {
-        this->setShouldRecycle( true );
+    if( _duration >= 0 ) {
+        _elapse += delta;
+        if( _elapse > _duration ) {
+            this->setShouldRecycle( true );
+        }
     }
 }
 

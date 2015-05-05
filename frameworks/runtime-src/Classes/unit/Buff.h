@@ -164,6 +164,22 @@ public:
     void setAbsorb( float value ) { _absorb = value; }
 };
 
+class UndeadBuff : public Buff {
+public:
+    UndeadBuff();
+    virtual ~UndeadBuff();
+    
+    static UndeadBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
+    
+    virtual float filterDamage( float damage, TargetNode* atker );
+};
+
 class PierceBuff : public Buff {
 public:
     PierceBuff();

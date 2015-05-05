@@ -16,9 +16,10 @@
         <iOS_Target Value="BoidsEditor iOS" />
         <iOS_BundleID Value="iPhone Developer: Weifeng Xie (689F9H35WH)" />
         <Platform Value="Android" />
-        <PublishSetting Value="Resource" />
         <FrameworkVersion Value="cocos2d-x-3.4" />
         <IsDebugKeystore Value="True" />
+        <EnableSourceMap Value="False" />
+        <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
     <Item Key="TabsParamsKey">
@@ -28,6 +29,13 @@
           <FilePathData Path="EditMode.csd" />
         </OpenedDocuments>
         <ActiveDocument Path="EditMode.csd" />
+      </Value>
+    </Item>
+    <Item Key="CocosRecentOperation">
+      <Value ctype="CocosRecentOperation">
+        <LastPublishType Value="Resource" />
+        <IsLastPublish Value="True" />
+        <LastRunType Value="Unknown" />
       </Value>
     </Item>
   </Properties>

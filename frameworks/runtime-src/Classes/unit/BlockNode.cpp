@@ -113,6 +113,7 @@ void BlockNode::updateFrame( float delta ) {
         if( count == 0 ) {
             _elapse = 0;
             _progress_bar->setPercentage( 0 );
+            _progress_bar->setVisible( false );
             if( _range_sprite ) {
                 _range_sprite->setVisible( false );
             }

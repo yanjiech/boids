@@ -21,9 +21,9 @@ NaturesAttendants::~NaturesAttendants() {
     
 }
 
-NaturesAttendants* NaturesAttendants::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+NaturesAttendants* NaturesAttendants::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     NaturesAttendants* ret = new NaturesAttendants();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -33,7 +33,7 @@ NaturesAttendants* NaturesAttendants::create( UnitNode* owner, const cocos2d::Va
     }
 }
 
-bool NaturesAttendants::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool NaturesAttendants::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

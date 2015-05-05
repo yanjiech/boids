@@ -71,7 +71,6 @@ bool UIBattleMenuLayer::init( BattleLayer* battle_layer, const std::string& resu
 }
 
 void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender ) {
-    Terrain::getInstance()->release();
     SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
 }
 

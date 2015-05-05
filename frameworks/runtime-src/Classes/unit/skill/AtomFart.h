@@ -22,8 +22,8 @@ public:
     AtomFart();
     virtual ~AtomFart();
     
-    static AtomFart* create( UnitNode* owner, const cocos2d::ValueMap& data );
-    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    static AtomFart* create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
     
     virtual void updateFrame( float delta );
     

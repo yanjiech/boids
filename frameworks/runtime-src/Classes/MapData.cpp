@@ -25,6 +25,7 @@ MapData::MapData() {
 }
 
 MapData::~MapData() {
+    
 }
 
 MapData* MapData::create( const std::string& path ) {

@@ -48,6 +48,10 @@
 		50D7C97017EBBEEC005D0B91 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50D7C96F17EBBEEC005D0B91 /* IOKit.framework */; };
 		521A8E6A19F0C3AC00D177D7 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6819F0C3AC00D177D7 /* Default-667h@2x.png */; };
 		521A8E6B19F0C3AC00D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6919F0C3AC00D177D7 /* Default-736h@3x.png */; };
+		76009E7D1AF863C8007DF026 /* NinthLife.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76009E7B1AF863C8007DF026 /* NinthLife.cpp */; };
+		76009E7E1AF863C8007DF026 /* NinthLife.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76009E7B1AF863C8007DF026 /* NinthLife.cpp */; };
+		76009E811AF86414007DF026 /* CrazyScratch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76009E7F1AF86414007DF026 /* CrazyScratch.cpp */; };
+		76009E821AF86414007DF026 /* CrazyScratch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76009E7F1AF86414007DF026 /* CrazyScratch.cpp */; };
 		76021A971ADCBC7A00B639BA /* TowerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A951ADCBC7A00B639BA /* TowerNode.cpp */; };
 		76021A981ADCBC7A00B639BA /* TowerNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A951ADCBC7A00B639BA /* TowerNode.cpp */; };
 		76021A9B1ADCBDE100B639BA /* ElementData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76021A991ADCBDE100B639BA /* ElementData.cpp */; };
@@ -64,6 +68,8 @@
 		7631FA3B1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */; };
 		7694AB7C1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */; };
 		7694AB7D1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */; };
+		76B578F51AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
+		76B578F61AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76E21D8D1AC5137B006714AD /* Equipment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8B1AC5137B006714AD /* Equipment.cpp */; };
 		76E21D8E1AC5137B006714AD /* Equipment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8B1AC5137B006714AD /* Equipment.cpp */; };
 		76E21D911AC52924006714AD /* DarkPierce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8F1AC52924006714AD /* DarkPierce.cpp */; };
@@ -506,6 +512,10 @@
 		50D7C96F17EBBEEC005D0B91 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		521A8E6819F0C3AC00D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6919F0C3AC00D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
+		76009E7B1AF863C8007DF026 /* NinthLife.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NinthLife.cpp; sourceTree = "<group>"; };
+		76009E7C1AF863C8007DF026 /* NinthLife.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NinthLife.h; sourceTree = "<group>"; };
+		76009E7F1AF86414007DF026 /* CrazyScratch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CrazyScratch.cpp; sourceTree = "<group>"; };
+		76009E801AF86414007DF026 /* CrazyScratch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrazyScratch.h; sourceTree = "<group>"; };
 		76021A951ADCBC7A00B639BA /* TowerNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerNode.cpp; sourceTree = "<group>"; };
 		76021A961ADCBC7A00B639BA /* TowerNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerNode.h; sourceTree = "<group>"; };
 		76021A991ADCBDE100B639BA /* ElementData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementData.cpp; sourceTree = "<group>"; };
@@ -523,6 +533,8 @@
 		7631FA391AC2A94000CAB9C8 /* GiantSword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiantSword.h; sourceTree = "<group>"; };
 		7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerAttackBehavior.cpp; sourceTree = "<group>"; };
 		7694AB7B1ADD1C11006CA4A9 /* TowerAttackBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerAttackBehavior.h; sourceTree = "<group>"; };
+		76B578F31AF7743600D7E783 /* TransitionLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionLayer.cpp; sourceTree = "<group>"; };
+		76B578F41AF7743600D7E783 /* TransitionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionLayer.h; sourceTree = "<group>"; };
 		76E21D8B1AC5137B006714AD /* Equipment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Equipment.cpp; sourceTree = "<group>"; };
 		76E21D8C1AC5137B006714AD /* Equipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Equipment.h; sourceTree = "<group>"; };
 		76E21D8F1AC52924006714AD /* DarkPierce.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DarkPierce.cpp; sourceTree = "<group>"; };
@@ -1093,6 +1105,10 @@
 				76EF6B331ADE4EC8003E84EF /* HuntingIntuition.h */,
 				76FF5A9C1AE8CD80008B721E /* GasBomb.cpp */,
 				76FF5A9D1AE8CD80008B721E /* GasBomb.h */,
+				76009E7B1AF863C8007DF026 /* NinthLife.cpp */,
+				76009E7C1AF863C8007DF026 /* NinthLife.h */,
+				76009E7F1AF86414007DF026 /* CrazyScratch.cpp */,
+				76009E801AF86414007DF026 /* CrazyScratch.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -1153,6 +1169,8 @@
 				98EBBEF41AABF73B00ADB84A /* UIBattleFloatLayer.h */,
 				76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */,
 				76EC48FD1ADB605F00C9F17B /* UIStoryLayer.h */,
+				76B578F31AF7743600D7E783 /* TransitionLayer.cpp */,
+				76B578F41AF7743600D7E783 /* TransitionLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;
@@ -1869,6 +1887,7 @@
 				98E3B5E41A739AF800B5BEBB /* pvp.pb.cc in Sources */,
 				986A55711AA565430051B0B9 /* BoidsConstant.cpp in Sources */,
 				98E3B6861A73A77A00B5BEBB /* unknown_field_set.cc in Sources */,
+				76009E7E1AF863C8007DF026 /* NinthLife.cpp in Sources */,
 				98EBBF091AAC866A00ADB84A /* EventTrigger.cpp in Sources */,
 				988B52EC1AA4491600FB7B21 /* BehaviorBase.cpp in Sources */,
 				988B52F11AA44ABD00FB7B21 /* ResourceManager.cpp in Sources */,
@@ -1983,6 +2002,7 @@
 				98EBBEFC1AAC3CF400ADB84A /* UnitNodeComponent.cpp in Sources */,
 				98B4024D1AAEB9B900F4FE09 /* BattleLayer.cpp in Sources */,
 				E87413191A0B5647003EBD0B /* gzwrite.c in Sources */,
+				76B578F61AF7743600D7E783 /* TransitionLayer.cpp in Sources */,
 				E848F2421A246C2D00DAECF0 /* Trace.cpp in Sources */,
 				98E3B65C1A73A77A00B5BEBB /* gzip_stream.cc in Sources */,
 				E87412FD1A0B55FB003EBD0B /* ArmatureManager.cpp in Sources */,
@@ -2022,6 +2042,7 @@
 				76FF5A9F1AE8CD80008B721E /* GasBomb.cpp in Sources */,
 				76ED99D41AD4D0B60047D5A9 /* FireWhirl.cpp in Sources */,
 				E87413101A0B5630003EBD0B /* tinyxmlparser.cpp in Sources */,
+				76009E821AF86414007DF026 /* CrazyScratch.cpp in Sources */,
 				98E3B64A1A73A77A00B5BEBB /* descriptor.pb.cc in Sources */,
 				987185971AAFF1BC00533C3E /* PlayerSkillBehavior.cpp in Sources */,
 				98E3B6701A73A77A00B5BEBB /* repeated_field.cc in Sources */,
@@ -2057,6 +2078,7 @@
 				76EF6B301ADE4CDF003E84EF /* PenetrateSpear.cpp in Sources */,
 				9880121A1A36A3140096D1EC /* CycledList.cpp in Sources */,
 				98EBBF001AAC863500ADB84A /* MapLogic.cpp in Sources */,
+				76009E811AF86414007DF026 /* CrazyScratch.cpp in Sources */,
 				98E3B6671A73A77A00B5BEBB /* zero_copy_stream_impl_lite.cc in Sources */,
 				E84197E01A09226300F5DF36 /* zutil.c in Sources */,
 				E84197C81A09226300F5DF36 /* TmxLayer.cpp in Sources */,
@@ -2121,6 +2143,7 @@
 				9859D1DB1A7B4E8400FF6D82 /* Counter.cpp in Sources */,
 				E88DE6BB1A0103FC005E1ABA /* Utils.cpp in Sources */,
 				98E3B6611A73A77A00B5BEBB /* tokenizer.cc in Sources */,
+				76B578F51AF7743600D7E783 /* TransitionLayer.cpp in Sources */,
 				98E3B67B1A73A77A00B5BEBB /* stringprintf.cc in Sources */,
 				76E379021ACF792B002DB4F1 /* DebugMacros.cpp in Sources */,
 				986A558A1AA57DBF0051B0B9 /* IdleBehavior.cpp in Sources */,
@@ -2199,6 +2222,7 @@
 				E84197EC1A09E73200F5DF36 /* BoidsMath.cpp in Sources */,
 				E84197D91A09226300F5DF36 /* gzwrite.c in Sources */,
 				E84197D01A09226300F5DF36 /* TmxTileset.cpp in Sources */,
+				76009E7D1AF863C8007DF026 /* NinthLife.cpp in Sources */,
 				E84197DD1A09226300F5DF36 /* inftrees.c in Sources */,
 				E84197D71A09226300F5DF36 /* gzlib.c in Sources */,
 				E84197CC1A09226300F5DF36 /* TmxPolygon.cpp in Sources */,
@@ -2371,7 +2395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2389,7 +2413,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
-				PROVISIONING_PROFILE = "d953645f-b7be-499c-ba62-1a4ace3cc99c";
+				PROVISIONING_PROFILE = "fa1ae143-78e4-4095-9d01-19b8cce7dd41";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";
@@ -2401,7 +2425,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2418,7 +2442,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
-				PROVISIONING_PROFILE = "d953645f-b7be-499c-ba62-1a4ace3cc99c";
+				PROVISIONING_PROFILE = "fa1ae143-78e4-4095-9d01-19b8cce7dd41";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";

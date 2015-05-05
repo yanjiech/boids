@@ -117,8 +117,6 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         
         this->startBattle();
         
-        _map_logic->onMapInit();
-        
         this->schedule( CC_CALLBACK_1( BattleLayer::updateFrame, this ), "battle_update"  );
         
         return true;
@@ -131,6 +129,7 @@ void BattleLayer::setup() {
     this->parseMapObjects();
     MapLogic* new_map_logic = MapLogic::create( this );
     this->setMapLogic( new_map_logic );
+    _map_logic->onMapInit();
     _game_time = 0;
 }
 
@@ -233,7 +232,6 @@ void BattleLayer::updateFrame( float delta ) {
         this->reorderObjectLayer();
         this->adjustCamera();
     }
-    
     else if( _state == eBattleState::BattleStory ) {
         _story_layer->updateFrame( delta );
     }
@@ -241,6 +239,7 @@ void BattleLayer::updateFrame( float delta ) {
     if( _state == BattleRunning ) {
         _game_time += delta;
         _map_logic->updateFrame( delta );
+        this->checkState();
     }
 }
 
@@ -270,7 +269,6 @@ void BattleLayer::restartBattle() {
 }
 
 void BattleLayer::quitBattle() {
-    Terrain::getInstance()->release();
 }
 
 void BattleLayer::setMapLogic( MapLogic* map_logic ) {
@@ -297,16 +295,20 @@ UnitNode* BattleLayer::getLeaderUnit() {
 
 void BattleLayer::changeState( eBattleState new_state ) {
     this->setState( new_state );
+}
+
+bool BattleLayer::checkState() {
     if( _state == eBattleState::BattleWin ) {
         _battle_menu_layer = UIBattleMenuLayer::create( this, "You Win! @ @!" );
         this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
-        log( "game end: win" );
+        return false;
     }
     else if( _state == eBattleState::BattleLose ) {
         _battle_menu_layer = UIBattleMenuLayer::create( this, "You Lose! @ @!" );
         this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
-        log( "game end: lose" );
+        return false;
     }
+    return true;
 }
 
 cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCondition( eTargetCamp camp, const std::vector<std::string>& tags, const cocos2d::Point& center, float range ) {
@@ -420,7 +422,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp ca
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
             if( Math::isPositionInRange( unit->getPosition(), center, radius + unit->getUnitData()->collide ) ) {
-                ret.pushBack( unit );
+                ret.pushBack( unit ); 
             }
         }
     }
@@ -447,7 +449,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInSector( eTargetCamp c
         UnitNode* unit = pair.second;
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
-            if( Math::isPointInSector( unit_pos, center, dir, unit->getUnitData()->collide, 120.0f ) || Math::isPointInSector( unit_pos, center, dir, radius + unit->getUnitData()->collide, angle ) ) {
+            if( Math::isPointInSector( unit_pos, center, dir, radius + unit->getUnitData()->collide, angle ) ) {
                 ret.pushBack( unit );
             }
         }

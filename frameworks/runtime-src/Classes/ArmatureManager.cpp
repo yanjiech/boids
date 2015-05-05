@@ -30,10 +30,10 @@ void ArmatureManager::loadArmatureData(const std::string& resourceName) {
         return;
     }
     
-    std::string atlasFile, jsonFile, binaryFile;
+    std::string atlasFile, jsonFile;
     atlasFile = Utils::stringFormat("%s/skeleton.atlas", resourceName.c_str());
     jsonFile = Utils::stringFormat("%s/skeleton.json", resourceName.c_str());
-    binaryFile = Utils::stringFormat("%s/skeleton.skel", resourceName.c_str());
+//    binaryFile = Utils::stringFormat("%s/skeleton.skel", resourceName.c_str());
     ArmatureData data;
 	data._atlasData = spAtlas_createFromFile(atlasFile.c_str(), 0);
     spSkeletonJson* json = spSkeletonJson_create(data._atlasData);
@@ -54,13 +54,17 @@ void ArmatureManager::unloadArmatureData(const std::string& resourceName) {
 }
 
 void ArmatureManager::clearArmatureData() {
+    for( auto pair : _collection ) {
+        spSkeletonData_dispose( pair.second._skeletonData);
+        spAtlas_dispose( pair.second._atlasData );
+    }
     _collection.clear();
 }
 
 spine::SkeletonAnimation *ArmatureManager::createArmature(const std::string& resourceName) {
     auto it = _collection.find(resourceName);
     if (it == _collection.end()) {
-        loadArmatureData(resourceName);
+        this->loadArmatureData(resourceName);
         it = _collection.find(resourceName);
     }
     auto data = it->second;

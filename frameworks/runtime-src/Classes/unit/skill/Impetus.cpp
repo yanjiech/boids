@@ -21,9 +21,9 @@ Impetus::~Impetus() {
     
 }
 
-Impetus* Impetus::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+Impetus* Impetus::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     Impetus* ret = new Impetus();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -33,7 +33,7 @@ Impetus* Impetus::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     }
 }
 
-bool Impetus::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool Impetus::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

@@ -29,6 +29,8 @@
 #include "PenetrateSpear.h"
 #include "HuntingIntuition.h"
 #include "GasBomb.h"
+#include "CrazyScratch.h"
+#include "NinthLife.h"
 
 class SkillNodeFactory {
 public:

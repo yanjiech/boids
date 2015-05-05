@@ -161,16 +161,19 @@ bool BuffBuildingNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap&
     itr = obj_properties.find( "color_red" );
     if( itr != obj_properties.end() ) {
         color.r = itr->second.asByte();
+        _buff_data["color_red"] = itr->second;
     }
     
     itr = obj_properties.find( "color_green" );
     if( itr != obj_properties.end() ) {
         color.g = itr->second.asByte();
+        _buff_data["color_green"] = itr->second;
     }
     
     itr = obj_properties.find( "color_blue" );
     if( itr != obj_properties.end() ) {
         color.b = itr->second.asByte();
+        _buff_data["color_blue"] = itr->second;
     }
     
     sprite->setColor( color );

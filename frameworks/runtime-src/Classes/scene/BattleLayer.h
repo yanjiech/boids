@@ -146,6 +146,7 @@ public:
     void setState( eBattleState new_state ) { _state = new_state; }
     
     void changeState( eBattleState new_state );
+    bool checkState();
     
     MapData* getMapData() { return _map_data; }
     MapLogic* getMapLogic() { return _map_logic; }

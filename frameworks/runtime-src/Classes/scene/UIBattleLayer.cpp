@@ -171,6 +171,10 @@ bool UISkillNode::isSkillReady() {
     return _unit_node->isSkillReadyById( 0 );
 }
 
+Skill* UISkillNode::getSkill() {
+    return _unit_node->getSkill( 0 );
+}
+
 cocos2d::Value UISkillNode::getSkillAttribute( const std::string& key ) {
     return _unit_node->getSkill( 0 )->getAttribute( key );
 }
@@ -228,20 +232,32 @@ bool UIBattleLayer::init( BattleLayer* battle_layer ) {
 bool UIBattleLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event ) {
     if( _is_touch_began == false ) {
         _selected_skill = this->skillNodeForTouch( touch );
-        if( _selected_skill != nullptr && _selected_skill->isSkillReady() && !_selected_skill->getOwner()->isCasting() && !_selected_skill->getOwner()->willCast() ) {
-            _is_touch_began = true;
-            _touch = touch;
-            _touch_down_pos = this->convertTouchToNodeSpace( touch );
-            _touch_down_duration = 0;
-            _selected_skill->showHint( Point::ZERO, 0 );
-            if( _selected_skill->shouldCastOnTouchDown() ) {
-                _selected_skill->getOwner()->setCharging( true, _selected_skill->getSkillAttribute( "charging_effect" ).asString() );
-                _selected_skill->setChargeTime( 0 );
+        if( _selected_skill != nullptr ) {
+            Skill* skill = _selected_skill->getSkill();
+            if( skill->isSkillReady() && !_selected_skill->getOwner()->isCasting() && !_selected_skill->getOwner()->willCast() ) {
+                _is_touch_began = true;
+                _touch = touch;
+                _touch_down_pos = this->convertTouchToNodeSpace( touch );
+                _touch_down_duration = 0;
+                _selected_skill->showHint( Point::ZERO, 0 );
+                if( _selected_skill->shouldCastOnTouchDown() ) {
+                    _selected_skill->getOwner()->setCharging( true, _selected_skill->getSkillAttribute( "charging_effect" ).asString() );
+                    _selected_skill->setChargeTime( 0 );
+                }
+                return true;
             }
-            return true;
-        }
-        else {
-            _selected_skill = nullptr;
+            else if( skill->hasExtraDamage() ){
+                UnitNode* owner = _selected_skill->getOwner();
+                _selected_skill = nullptr;
+                SkillNode* skill_node = skill->getSkillNode();
+                if( skill_node != nullptr && skill->isCasting() ) {
+                    skill_node->refreshDamage();
+                    return true;
+                }
+                else if( owner->isCasting() ) {
+                    return true;
+                }
+            }
         }
     }
     return false;

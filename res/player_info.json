@@ -23,8 +23,7 @@
     },
     "deploy_units" :
     [
-        "1",
-        "3"
+        "7"
     ],
     "units" :
     {
@@ -155,6 +154,30 @@
                 },
                 {
                     "name" : "HuntingIntuition",
+                    "level" : 3
+                }
+
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
+        },
+        "7" :
+        {
+            "name" : "kyle",
+            "level" : 40,
+            "skills" :
+            [
+                {
+                    "name" : "CrazyScratch",
+                    "level" : 3
+                },
+                {
+                    "name" : "NinthLife",
                     "level" : 3
                 }
 

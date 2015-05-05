@@ -173,7 +173,6 @@ EditorActionMetaPtr BEUIActionOptions::getMeta() {
 }
 
 BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& handler):BEUIBase(root, handler), _groupListView(nullptr), _typeListView(nullptr), _stateListView(nullptr) {
-    
     _infoPanel = getPanelFrom("panel_info", _root);
     _groupListPanel = getPanelFrom("panel_groupList", _root);
     _ok = getButtonFrom("button_ok", _infoPanel);
@@ -189,6 +188,9 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     _selectPositionButton = getButtonFrom("button_selectPosition", _infoPanel);
     _selectPositionGroupButton = getButtonFrom("button_selectPositionGroup", _infoPanel);
     _positionLabel = getLabelFrom("text_position", _infoPanel);
+    
+    _cb_change_show_hp = getCheckBoxFrom( "cb_change_show_hp", _infoPanel );
+    _cb_change_bubble = getCheckBoxFrom( "cb_change_bubble", _infoPanel );
     
     _showHPCheckBox = getCheckBoxFrom("checkbox_showHP", _infoPanel);
     _changeTypeCheckBox = getCheckBoxFrom("checkbox_changeType", _infoPanel);
@@ -299,6 +301,9 @@ void BEUIUnitAction::reset() {
     _bossCheckBox->setSelected(false);
     toggleBossUI(false);
     _popupButton->setTitleText("normal");
+    
+    _cb_change_show_hp->setSelected( false );
+    _cb_change_bubble->setSelected( false );
     
     _cb_item->setSelected( false );
 }
@@ -439,10 +444,19 @@ void BEUIUnitAction::onAddButtonClicked(Ref *sender) {
     _action->PositionTag = _positionTag;
     _action->StateChanged = _changeStateCheckBox->isSelected();
     _action->TypeChanged = _changeTypeCheckBox->isSelected();
-    _action->ShowHP = _showHPCheckBox->isSelected();
+    
+    //show hp
+    _action->ChangeShowHP = _cb_change_show_hp->isSelected();
+    if( _action->ChangeShowHP ) {
+        _action->ShowHP = _showHPCheckBox->isSelected();
+    }
+    
     _action->TagChanged = _tagCheckBox->isSelected();
-    _action->BuffChanged = _buffCheckBox->isSelected();
-    _action->PopupType = _popupListView->getCurrentType();
+
+    _action->ChangeBubble = _cb_change_bubble->isSelected();
+    if( _action->ChangeBubble ) {
+        _action->PopupType = _popupListView->getCurrentType();
+    }
     //skill
     _action->SkillOneLevel = _cb_skill_1->isSelected() ? Utils::toInt( _tf_skill_1_level->getString() ) : 0;
     _action->SkillTwoLevel = _cb_skill_2->isSelected() ? Utils::toInt( _tf_skill_2_level->getString() ) : 0;
@@ -465,6 +479,8 @@ void BEUIUnitAction::onAddButtonClicked(Ref *sender) {
     _action->IsBoss = _bossCheckBox->isSelected();
     _action->CustomChange = _customTextField->getString();
     _action->UnitLevel = Utils::toInt( _levelTextField->getString() );
+    
+    _action->BuffChanged = _buffCheckBox->isSelected();
     if (_action->BuffChanged) {
         _action->BuffName = _tf_buff_name->getString();
         _action->BuffType = _tf_buff_type->getString();

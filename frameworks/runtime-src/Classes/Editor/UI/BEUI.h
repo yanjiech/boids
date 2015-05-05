@@ -112,6 +112,8 @@ private:
     cocos2d::ui::Button *_selectPositionGroupButton;
     cocos2d::ui::Text *_positionLabel;
     cocos2d::ui::Text *_showHPTitleLabel;
+    cocos2d::ui::CheckBox* _cb_change_show_hp;
+    cocos2d::ui::CheckBox* _cb_change_bubble;
     cocos2d::ui::CheckBox *_showHPCheckBox;
     cocos2d::ui::CheckBox *_changeTypeCheckBox;
     cocos2d::ui::CheckBox *_changeStateCheckBox;

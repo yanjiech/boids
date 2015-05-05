@@ -19,9 +19,9 @@ LightShield::~LightShield() {
     
 }
 
-LightShield* LightShield::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+LightShield* LightShield::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     LightShield* ret = new LightShield();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -31,7 +31,7 @@ LightShield* LightShield::create( UnitNode* owner, const cocos2d::ValueMap& data
     }
 }
 
-bool LightShield::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool LightShield::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

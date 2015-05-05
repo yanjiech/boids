@@ -384,7 +384,9 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
     if (this->StateChanged) {
         _json.AddMember("unit_state", UnitState.c_str(), allocator);
     }
-    _json.AddMember("show_hp", ShowHP, allocator);
+    if( this->ChangeShowHP ) {
+        _json.AddMember("show_hp", ShowHP, allocator);
+    }
     if (this->TagChanged) {
         _json.AddMember("tag_name", TagName.c_str(), allocator);
     }
@@ -415,7 +417,7 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
         _json.AddMember("custom_change", CustomChange.c_str(), allocator);
     }
     _json.AddMember( "unit_level", this->UnitLevel, allocator );
-    if (this->PopupType.length() > 0) {
+    if( this->ChangeBubble ) {
         _json.AddMember("popup_type", PopupType.c_str(), allocator);
     }
     if( this->SkillOneLevel != 0 ) {
@@ -457,7 +459,11 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->UnitType = "";
     }
     if (value.HasMember("show_hp")) {
+        this->ChangeShowHP = true;
         this->ShowHP = value["show_hp"].GetBool();
+    }
+    else {
+        this->ChangeShowHP = false;
     }
     if (value.HasMember("tag_changed")) {
         this->TagChanged = value["tag_changed"].GetBool();
@@ -469,19 +475,20 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->TagChanged = false;
         this->TagName = "";
     }
+    
     if (value.HasMember("buff_name")) {
         this->BuffChanged = true;
         this->BuffName = value["buff_name"].GetString();
         this->BuffType = value["buff_type"].GetString();
         this->BuffParams = value["buff_params"].GetString();
-        
-    } else if (value.HasMember("buff_name")) {
-        this->BuffName = value["buff_name"].GetString();
-        this->BuffChanged = true;
-    } else {
+    }
+    else {
         this->BuffChanged = false;
         this->BuffName = "";
+        this->BuffType = "";
+        this->BuffParams = "";
     }
+    
     if (value.HasMember("is_boss")) {
         this->IsBoss = value["is_boss"].GetBool();
     } else {
@@ -510,8 +517,10 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->UnitLevel = 1;
     }
     if (value.HasMember("popup_type")) {
+        this->ChangeBubble = true;
         this->PopupType = value["popup_type"].GetString();
     } else {
+        this->ChangeBubble = false;
         this->PopupType = "normal";
     }
     if( value.HasMember( "skill_1_level" ) ) {

@@ -87,9 +87,7 @@ void EventTrigger::updateFrame( float delta ) {
 }
 
 void EventTrigger::setMapLogic( class MapLogic* map_logic ) {
-    CC_SAFE_RELEASE( _map_logic );
     _map_logic = map_logic;
-    CC_SAFE_RETAIN( _map_logic );
 }
 
 void EventTrigger::setEnabled( bool b ) {

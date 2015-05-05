@@ -179,6 +179,7 @@
     <property name="color_blue" value="0"/>
     <property name="color_green" value="255"/>
     <property name="color_red" value="255"/>
+    <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="250"/>
     <property name="stay_duration" value="2.0"/>
    </properties>
@@ -360,6 +361,7 @@
     <property name="color_blue" value="255"/>
     <property name="color_green" value="255"/>
     <property name="color_red" value="0"/>
+    <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="250"/>
     <property name="stay_duration" value="2.0"/>
    </properties>
@@ -498,6 +500,7 @@
     <property name="color_blue" value="0"/>
     <property name="color_green" value="0"/>
     <property name="color_red" value="255"/>
+    <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="250"/>
     <property name="stay_duration" value="2.0"/>
    </properties>
@@ -527,6 +530,7 @@
     <property name="color_blue" value="255"/>
     <property name="color_green" value="255"/>
     <property name="color_red" value="0"/>
+    <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="200"/>
     <property name="stay_duration" value="2.0"/>
    </properties>
@@ -540,6 +544,7 @@
     <property name="color_blue" value="0"/>
     <property name="color_green" value="0"/>
     <property name="color_red" value="255"/>
+    <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="200"/>
     <property name="stay_duration" value="2.0"/>
    </properties>
@@ -553,6 +558,7 @@
     <property name="color_blue" value="0"/>
     <property name="color_green" value="255"/>
     <property name="color_red" value="255"/>
+    <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="200"/>
     <property name="stay_duration" value="2.0"/>
    </properties>

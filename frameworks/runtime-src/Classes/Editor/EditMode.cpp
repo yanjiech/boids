@@ -534,6 +534,7 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             action->ActionMeta = ctx->ActionMeta;
             ctx->Event->Actions.push_back(action);
             ctx->addOperation(EditorOperation::SetAction);
+            _stories.push_back( action->Name );
         }
 //        else if (op == EditorOperation::SetConverSationTrigger) {
 //            auto trigger = _editUI->conversationChangeUI->getTrigger();

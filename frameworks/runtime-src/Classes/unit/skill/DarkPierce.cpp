@@ -20,9 +20,9 @@ DarkPierce::~DarkPierce() {
     
 }
 
-DarkPierce* DarkPierce::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+DarkPierce* DarkPierce::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     DarkPierce* ret = new DarkPierce();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -32,7 +32,7 @@ DarkPierce* DarkPierce::create( UnitNode* owner, const cocos2d::ValueMap& data )
     }
 }
 
-bool DarkPierce::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool DarkPierce::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

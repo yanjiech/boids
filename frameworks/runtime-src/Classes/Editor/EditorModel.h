@@ -231,6 +231,8 @@ public:
     std::string ClassName;
     std::string CustomChange;
     std::string PopupType;
+    bool ChangeShowHP;
+    bool ChangeBubble;
     bool ShowHP;
     bool StateChanged;
     bool TypeChanged;

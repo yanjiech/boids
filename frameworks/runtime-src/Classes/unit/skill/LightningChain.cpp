@@ -23,9 +23,9 @@ LightningChain::~LightningChain() {
     CC_SAFE_RELEASE( _target_node );
 }
 
-LightningChain* LightningChain::create( UnitNode* owner, const cocos2d::ValueMap& data, UnitNode* target_node ) {
+LightningChain* LightningChain::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     LightningChain* ret = new LightningChain();
-    if( ret && ret->init( owner, data, target_node ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -35,7 +35,7 @@ LightningChain* LightningChain::create( UnitNode* owner, const cocos2d::ValueMap
     }
 }
 
-bool LightningChain::init( UnitNode* owner, const cocos2d::ValueMap& data, UnitNode* target_node ) {
+bool LightningChain::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }
@@ -48,7 +48,7 @@ bool LightningChain::init( UnitNode* owner, const cocos2d::ValueMap& data, UnitN
     _current_count = 0;
     _interval = data.at( "interval" ).asFloat();
     _elapse = _interval;
-    this->setTargetNode( target_node );
+    this->setTargetNode( dynamic_cast<UnitNode*>( owner->getChasingTarget() ) );
     _last_pos = _owner->getEmitPos();
     return true;
 }

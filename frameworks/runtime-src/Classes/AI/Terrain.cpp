@@ -302,7 +302,7 @@ void Terrain::generateMeshAndSaveBinary(const std::set<float>& all_collide_radiu
 {	
 	if (f)
 	{
-		uint32_t mesh_count = all_collide_radius.size();
+		uint32_t mesh_count = (uint32_t)all_collide_radius.size();
 		fwrite(&mesh_count, 4, 1, f);
 	}
 
@@ -335,6 +335,7 @@ void Terrain::release()
 	{
 		delete kvp.second;
 	}
+    meshes.clear();
 
 	for (auto narrow : narrows)
 	{

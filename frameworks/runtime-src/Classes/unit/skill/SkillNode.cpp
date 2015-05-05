@@ -13,7 +13,6 @@
 using namespace cocos2d;
 
 SkillNode::SkillNode() :
-_should_recycle( false ),
 _owner( nullptr )
 {
     
@@ -37,7 +36,7 @@ SkillNode* SkillNode::create( UnitNode* owner ) {
 
 bool SkillNode::init( UnitNode* owner ) {
     this->setOwner( owner );
-    
+    _should_recycle = false;
     return true;
 }
 

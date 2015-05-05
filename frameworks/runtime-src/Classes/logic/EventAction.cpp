@@ -81,7 +81,7 @@ bool EventAction::init( const cocos2d::ValueMap& action_data, class MapLogic* ma
     return true;
 }
 
-bool EventAction::start( cocos2d::Map<std::string, cocos2d::Ref*> params, bool auto_unschedule ) {
+bool EventAction::start( const cocos2d::Map<std::string, cocos2d::Ref*>& params, bool auto_unschedule ) {
     if( !_is_running ) {
         _params = params;
         _auto_unschedule = auto_unschedule;
@@ -175,10 +175,15 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
         unit_state = itr->second.asString();
     }
     
+    bool change_show_hp;
     bool show_hp = false;
     itr = _action_data.find( "show_hp" );
     if( itr != _action_data.end() ) {
         show_hp = itr->second.asBool();
+        change_show_hp = true;
+    }
+    else {
+        change_show_hp = false;
     }
     
     std::string unit_type = "";
@@ -409,8 +414,13 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
             else if( unit_state == UNIT_STATE_DIE ) {
                 
             }
-            if( show_hp ) {
-                u->showHP();
+            if( change_show_hp ) {
+                if( show_hp ) {
+                    u->showHP();
+                }
+                else {
+                    u->hideHP();
+                }
             }
             if( tag_name != "" ) {
                 u->setUnitTags( tag_name );
