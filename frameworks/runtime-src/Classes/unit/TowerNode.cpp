@@ -256,7 +256,7 @@ void ThornNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
 }
 
 void ThornNode::doAttack() {
-    Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( this->getTargetCamp(), this->getPosition(), this->getTargetData()->atk_range );
+    Vector<UnitNode*> candidates = _battle_layer->getAliveUnitsInRange( this->getPosition(), this->getTargetData()->atk_range );
     DamageCalculate* calculator = DamageCalculate::create( "normal", 0 );
     for( auto unit : candidates ) {
         ValueMap result = calculator->calculateDamage( this->getTargetData(), unit->getTargetData() );

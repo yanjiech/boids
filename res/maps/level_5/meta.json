@@ -1,0 +1,15 @@
+{
+    "positions": [
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 4085.86,
+                "y": 696.742,
+                "width": 113.813,
+                "height": 116.808
+            }
+        }
+    ],
+    "events": [],
+    "units": []
+}

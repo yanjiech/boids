@@ -28,6 +28,8 @@ public:
     
     std::string getName();
     std::string getResource();
+    
+    void removeFromUnit( class UnitNode* owner );
 };
 
 #endif /* defined(__Boids__Item__) */

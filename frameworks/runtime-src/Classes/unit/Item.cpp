@@ -7,6 +7,7 @@
 //
 
 #include "Item.h"
+#include "UnitNode.h"
 #include "BulletNode.h"
 
 using namespace cocos2d;
@@ -43,4 +44,9 @@ std::string Item::getName() {
 
 std::string Item::getResource() {
     return _item_data["item_resource"].asString();
+}
+
+void Item::removeFromUnit( class UnitNode* owner ) {
+    owner->removeUnitComponent( this->getName() );
+    owner->removeUnitTag( this->getName() );
 }

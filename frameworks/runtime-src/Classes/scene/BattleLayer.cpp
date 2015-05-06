@@ -346,6 +346,20 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eTargetCamp camp ) {
     return ret;
 }
 
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsInRange( const cocos2d::Point& center, float range ) {
+    cocos2d::Vector<UnitNode*> ret;
+    
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        Point unit_pos = unit->getPosition();
+        if( Math::isPositionInRange( unit->getPosition(), center, range + unit->getUnitData()->collide ) ) {
+            ret.pushBack( unit );
+        }
+    }
+    
+    return ret;
+}
+
 cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsInRoundRange( const cocos2d::Point& center, float radius ) {
     cocos2d::Vector<UnitNode*> ret;
     
@@ -970,7 +984,8 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
     else if( type.empty() ) {
         Sprite* sp = _map_data->spriteFromObject( _tmx_map, data, true );
         if( sp ) {
-            this->addToLayer( sp, layer, sp->getPosition(), this->zorderForPositionOnObjectLayer( sp->getPosition() ) );
+            Point center = Point( sp->getContentSize().width / 2, sp->getContentSize().width / 3.4 ) + sp->getPosition();
+            this->addToLayer( sp, layer, sp->getPosition(), this->zorderForPositionOnObjectLayer( center ) );
         }
     }
 }

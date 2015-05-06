@@ -280,7 +280,12 @@ bool SpineBlockNode::init( const cocos2d::ValueMap& grid_properties, const cocos
         return false;
     }
     
-    std::string resource = "blocks/" + obj_properties.at( "name" ).asString();
+    std::string source = grid_properties.at( "source" ).asString();
+    size_t p = source.find( ".png" );
+    if( p != std::string::npos ) {
+        source = source.substr( 0, p );
+    }
+    std::string resource = "blocks/" + source;
     _skeleton = ArmatureManager::getInstance()->createArmature( resource );
     _skeleton->setCompleteListener( CC_CALLBACK_1( SpineBlockNode::onSkeletonAnimationCompleted, this ) );
     Size size = _skeleton->getBoundingBox().size;

@@ -164,6 +164,7 @@ public:
     cocos2d::Vector<UnitNode*> getAliveOpponents( eTargetCamp camp );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eTargetCamp camp );
     
+    cocos2d::Vector<UnitNode*> getAliveUnitsInRange( const cocos2d::Point& center, float range );
     cocos2d::Vector<UnitNode*> getAliveUnitsInRoundRange( const cocos2d::Point& center, float radius );
     
     cocos2d::Vector<UnitNode*> getAliveAllyInRange( eTargetCamp camp, const cocos2d::Point& center, float radius );

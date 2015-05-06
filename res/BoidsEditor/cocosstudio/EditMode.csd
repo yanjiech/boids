@@ -972,14 +972,14 @@
                         <OutlineColor A="255" R="255" G="0" B="0" />
                         <ShadowColor A="255" R="255" G="127" B="80" />
                       </AbstractNodeData>
-                      <AbstractNodeData Name="tf_buff_params" ActionTag="145099598" Tag="255" IconVisible="False" LeftMargin="220.4596" RightMargin="-20.4596" TopMargin="536.1654" BottomMargin="236.8346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
-                        <Size X="500.0000" Y="27.0000" />
+                      <AbstractNodeData Name="tf_buff_params" ActionTag="145099598" Tag="255" IconVisible="False" LeftMargin="219.4596" RightMargin="-19.4596" TopMargin="517.6654" BottomMargin="222.3346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
+                        <Size X="500.0000" Y="60.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="470.4596" Y="250.3346" />
+                        <Position X="469.4596" Y="252.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="0" G="0" B="0" />
-                        <PrePosition X="0.6721" Y="0.3129" />
-                        <PreSize X="0.7143" Y="0.0338" />
+                        <PrePosition X="0.6707" Y="0.3154" />
+                        <PreSize X="0.7143" Y="0.0750" />
                       </AbstractNodeData>
                       <AbstractNodeData Name="Text_23" ActionTag="1171578389" Tag="256" IconVisible="False" LeftMargin="120.4596" RightMargin="518.5404" TopMargin="632.1654" BottomMargin="139.8346" FontSize="24" LabelText="技能1" ctype="TextObjectData">
                         <Size X="61.0000" Y="28.0000" />

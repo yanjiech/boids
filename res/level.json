@@ -16,6 +16,14 @@
         {
             "name" : "第四关",
             "path" : "maps/level_4"
+        },
+        {
+            "name" : "第五关",
+            "path" : "maps/level_5"
+        },
+        {
+            "name" : "第六关",
+            "path" : "maps/level_6"
         }
 
     ]

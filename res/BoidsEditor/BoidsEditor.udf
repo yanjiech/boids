@@ -22,15 +22,6 @@
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
-    <Item Key="TabsParamsKey">
-      <Value ctype="TabsInfo">
-        <OpenedDocuments>
-          <FilePathData Path="Main.csd" />
-          <FilePathData Path="EditMode.csd" />
-        </OpenedDocuments>
-        <ActiveDocument Path="EditMode.csd" />
-      </Value>
-    </Item>
     <Item Key="CocosRecentOperation">
       <Value ctype="CocosRecentOperation">
         <LastPublishType Value="Resource" />

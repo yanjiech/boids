@@ -698,13 +698,10 @@ void UnitNode::addItem( Item* item ) {
 void UnitNode::removeItem( const std::string& item_name ) {
     for( auto itr = _items.begin(); itr != _items.end(); ++itr ) {
         if( itr->second->getName() == item_name ) {
+            itr->second->removeFromUnit( this );
             _items.erase( itr );
             break;
         }
-    }
-    if( !this->hasItem( item_name ) ) {
-        this->removeUnitComponent( item_name );
-        this->removeUnitTag( item_name );
     }
 }
 
