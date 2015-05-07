@@ -185,6 +185,8 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\behavior\AttackBehavior.h" />
     <ClInclude Include="..\Classes\behavior\BehaviorBase.h" />
     <ClInclude Include="..\Classes\behavior\BehaviorHeader.h" />
+    <ClInclude Include="..\Classes\behavior\GuardAttackBehavior.h" />
+    <ClInclude Include="..\Classes\behavior\GuardMoveBehavior.h" />
     <ClInclude Include="..\Classes\behavior\IdleBehavior.h" />
     <ClInclude Include="..\Classes\behavior\MoveBehavior.h" />
     <ClInclude Include="..\Classes\behavior\PlayerAttackBehavior.h" />
@@ -286,6 +288,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\unit\skill\DeathSlice.h" />
     <ClInclude Include="..\Classes\unit\skill\FatalThrow.h" />
     <ClInclude Include="..\Classes\unit\skill\FireWhirl.h" />
+    <ClInclude Include="..\Classes\unit\skill\GasBomb.h" />
     <ClInclude Include="..\Classes\unit\skill\GiantSword.h" />
     <ClInclude Include="..\Classes\unit\skill\HuntingIntuition.h" />
     <ClInclude Include="..\Classes\unit\skill\Impetus.h" />
@@ -322,6 +325,8 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\ArmatureManager.cpp" />
     <ClCompile Include="..\Classes\behavior\AttackBehavior.cpp" />
     <ClCompile Include="..\Classes\behavior\BehaviorBase.cpp" />
+    <ClCompile Include="..\Classes\behavior\GuardAttackBehavior.cpp" />
+    <ClCompile Include="..\Classes\behavior\GuardMoveBehavior.cpp" />
     <ClCompile Include="..\Classes\behavior\IdleBehavior.cpp" />
     <ClCompile Include="..\Classes\behavior\MoveBehavior.cpp" />
     <ClCompile Include="..\Classes\behavior\PlayerAttackBehavior.cpp" />
@@ -419,6 +424,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\unit\skill\DeathSlice.cpp" />
     <ClCompile Include="..\Classes\unit\skill\FatalThrow.cpp" />
     <ClCompile Include="..\Classes\unit\skill\FireWhirl.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\GasBomb.cpp" />
     <ClCompile Include="..\Classes\unit\skill\GiantSword.cpp" />
     <ClCompile Include="..\Classes\unit\skill\HuntingIntuition.cpp" />
     <ClCompile Include="..\Classes\unit\skill\Impetus.cpp" />

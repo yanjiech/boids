@@ -77,7 +77,7 @@
         "bomb_type": "spine",
         "bomb_name": "gas_bomb",
         "damage_radius": 160.0,
-        "speed": 800.0
+        "speed": 1200.0
     },
     "human_arrow": {
         "name": "human_arrow",

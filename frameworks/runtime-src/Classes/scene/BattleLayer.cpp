@@ -714,7 +714,7 @@ cocos2d::Point BattleLayer::getAvailablePosition( float radius, const cocos2d::R
     cocos2d::Rect temp_region = region;
     
 #define RETRY_TIMES_BEFORE_ENLARGE (10)
-#define MAX_ENLARGE_TIMES (50) //扩展30次还没位置的话，九成是地图有问题啊。。
+#define MAX_ENLARGE_TIMES (50) 
     int enlarge_time = 0;
     
     while( true ) {

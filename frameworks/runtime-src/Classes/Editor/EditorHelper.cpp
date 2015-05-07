@@ -13,8 +13,8 @@ using namespace cocos2d;
 Rect EditorHelper::rectFromTwoPoint(Point p1, Point p2) {
     float width = fabsf(p2.x - p1.x);
     float height = fabsf(p2.y - p1.y);
-    float x = fminf(p1.x, p2.x);
-    float y = fminf(p1.y, p2.y);
+    float x = std::min(p1.x, p2.x);
+    float y = std::min(p1.y, p2.y);
     return Rect(x, y, width, height);
 }
 
