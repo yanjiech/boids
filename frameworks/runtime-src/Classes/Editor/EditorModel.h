@@ -231,6 +231,8 @@ public:
     std::string ClassName;
     std::string CustomChange;
     std::string PopupType;
+    bool ChangeShowHP;
+    bool ChangeBubble;
     bool ShowHP;
     bool StateChanged;
     bool TypeChanged;
@@ -240,6 +242,11 @@ public:
 	bool UnPushable;
     int UnitCount;
     int UnitLevel;
+    bool IsItemChanged;
+    bool GetOrLoseItem;
+    std::string ItemName;
+    std::string ItemResource;
+    
     EditorUnitAction(): EditorActionBase("unit_change"), StateChanged(false), TypeChanged(false), TagChanged(false), BuffChanged(false), IsBoss(false), UnPushable(false), ClassName("LogicUnit"),
     SourceValue(""), PositionName(""), PositionTag(""), TagName(""), BuffName(""), UnitCount(0), PopupType("normal") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
@@ -250,6 +257,7 @@ class EditorTaskAction : public EditorActionBase {
 public:
     std::string TaskName;
     std::string TaskState;
+    float TaskProgress;
     EditorTaskAction(): EditorActionBase("task_change") {}
     virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
     virtual void loadJson(const rapidjson::Value& value);
@@ -329,6 +337,7 @@ class EditorEvent : public EditorBase {
 public:
     EditorEvent();
     std::string Name;
+    bool Enabled;
     std::shared_ptr<EditorTriggerMeta> TriggerMeta;
     std::vector<std::shared_ptr<EditorTriggerBase>> Triggers;
     std::vector<std::shared_ptr<EditorActionBase>> Actions;

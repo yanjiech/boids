@@ -150,7 +150,6 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         _front = ArmatureManager::getInstance()->createArmature( front_res );
         std::string back_res = res_manager->getPathForResource( target_data->name, eResourceType::Character_Back );
         _back = ArmatureManager::getInstance()->createArmature( back_res );
-        
     }
     if( _front ) {
         _front->setScale( target_data->scale );
@@ -181,15 +180,15 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     this->setShouldCatchUp( false );
     
     //debug
-    _custom_draw = DrawNode::create();
-    _custom_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::YELLOW );
-    this->addChild( _custom_draw, 10000 );
-    
-    _new_dir_draw = DrawNode::create();
-    _new_dir_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::BLUE );
-    this->addChild( _new_dir_draw, 10001 );
-    
-    _custom_draw->drawCircle( Point::ZERO, target_data->collide, 360, 100, false, Color4F::RED );
+//    _custom_draw = DrawNode::create();
+//    _custom_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::YELLOW );
+//    this->addChild( _custom_draw, 10000 );
+//    
+//    _new_dir_draw = DrawNode::create();
+//    _new_dir_draw->drawLine( Point::ZERO, Point( 100.0, 0 ), Color4F::BLUE );
+//    this->addChild( _new_dir_draw, 10001 );
+//    
+//    _custom_draw->drawCircle( Point::ZERO, target_data->collide, 360, 100, false, Color4F::RED );
     //end debug
     
     _face = eUnitFace::Back;
@@ -207,7 +206,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     float hpbar_height = DEFAULT_HP_BAR_HEIGHT;
     
     _hp_bar = HpBar::create( Size( hpbar_width, hpbar_height ) );
-    _hp_bar->setPosition( Point( bounding_box.size.width / 2, bounding_box.size.height * ( 1.0f - _current_skeleton->getAnchorPoint().y ) + 10.0f ) );
+    _hp_bar->setPosition( Point( 0, bounding_box.size.height * ( 1.0f - _current_skeleton->getAnchorPoint().y ) + 10.0f ) );
     this->addChild( _hp_bar, eComponentLayer::OverObject );
     
     itr = unit_data.find( "show_hp" );
@@ -444,7 +443,9 @@ void UnitNode::changeUnitDirection( const cocos2d::Point& new_dir ) {
     }
     Point normalized_dir = new_dir;
     normalized_dir.normalize();
-    _custom_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
+    //debug
+//    _custom_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
+    //end debug
     this->setUnitDirection( normalized_dir );
 }
 
@@ -641,9 +642,9 @@ void UnitNode::applyCustomChange( const std::string& content_string ) {
 
 void UnitNode::addBuff( const std::string& buff_id, Buff* buff, bool replace ) {
     if( replace ) {
-        Buff* buff = this->getBuffOfType( buff->getBuffType() );
-        if( buff ) {
-            buff->end();
+        Buff* old_buff = this->getBuffOfType( buff->getBuffType() );
+        if( old_buff ) {
+            old_buff->end();
         }
     }
     _buffs.insert( buff_id, buff );
@@ -681,6 +682,38 @@ void UnitNode::removeAllBuffs() {
     _buffs.clear();
 }
 
+void UnitNode::clearItems() {
+    _items.clear();
+}
+
+void UnitNode::addItem( Item* item ) {
+    _items.insert( item->getItemId(), item );
+    Sprite* item_sprite = Sprite::createWithSpriteFrameName( item->getResource() );
+    UnitNodeComponent* component = UnitNodeComponent::create( item_sprite, item->getName(), true );
+    this->addUnitComponent( component, item->getName(), eComponentLayer::OverObject );
+    component->setPosition( Point( 0, this->getBoundingBox().size.height + item_sprite->getContentSize().height ) );
+    this->addUnitTag( item->getName() );
+}
+
+void UnitNode::removeItem( const std::string& item_name ) {
+    for( auto itr = _items.begin(); itr != _items.end(); ++itr ) {
+        if( itr->second->getName() == item_name ) {
+            itr->second->removeFromUnit( this );
+            _items.erase( itr );
+            break;
+        }
+    }
+}
+
+bool UnitNode::hasItem( const std::string& item_name ) {
+    for( auto itr = _items.begin(); itr != _items.end(); ++itr ) {
+        if( itr->second->getName() == item_name ) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_per, float duration ) {
     if( !this->isDying() && !this->isCasting() ) {
         Point sk_dir = dir;
@@ -715,6 +748,8 @@ void UnitNode::endSkill() {
 void UnitNode::endCast() {
     if( this->isCasting() ) {
         _using_skill_params["state"] = Value( "end" );
+        int sk_id = _using_skill_params.at( "skill_id" ).asInt();
+        _skills.at( sk_id )->setSkillNode( nullptr );
         _unit_state_changed = true;
         this->setNextUnitState( eUnitState::Casting );
     }
@@ -744,7 +779,9 @@ bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d:
     
     new_dir.normalize();
     
-    _new_dir_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
+    //debug
+//    _new_dir_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
+//end debug
     return true;
 }
 
@@ -874,6 +911,10 @@ bool UnitNode::isAttacking() {
 
 bool UnitNode::isWalking() {
     return _state == eUnitState::Walking;
+}
+
+bool UnitNode::isIdle() {
+    return _state == eUnitState::Idle;
 }
 
 bool UnitNode::isDying() {

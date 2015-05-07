@@ -12,18 +12,7 @@
 #include "cocos2d.h"
 #include <vector>
 #include "../util/CommonUtils.h"
-
-enum eSceneName {
-    SceneUnknown = 0,
-    SceneLevelChoose = 1,
-    SceneBattle
-};
-
-class SceneConfig {
-public:
-    std::vector<cocos2d::Ref*> ref_params;
-    cocos2d::ValueMap value_params;
-};
+#include "../scene/TransitionLayer.h"
 
 class SceneManager {
 private:

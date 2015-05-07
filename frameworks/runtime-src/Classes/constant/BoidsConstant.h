@@ -48,6 +48,7 @@
 #define GAME_TASK_TYPE_ESCAPE "escape"
 
 #define BUFF_TYPE_SHIELD "buff_shield"
+#define BUFF_TYPE_UNDEAD "buff_undead"
 #define BUFF_TYPE_STUN "buff_stun"
 #define BUFF_TYPE_PIERCE "buff_pierce"
 #define BUFF_TYPE_BURN "buff_burn"
@@ -118,6 +119,8 @@
 #define SKILL_NAME_DEATH_SLICE "DeathSlice"
 #define SKILL_NAME_PENETRATE_SPEAR "PenetrateSpear"
 #define SKILL_NAME_HUNTING_INTUITION "HuntingIntuition"
+#define SKILL_NAME_CRAZY_SCRATCH "CrazyScratch"
+#define SKILL_NAME_NINTH_LIFE "NinthLife"
 #define SKILL_NAME_GAS_BOMB "GasBomb"
 
 #define BULLET_NAME_GAS "gas"

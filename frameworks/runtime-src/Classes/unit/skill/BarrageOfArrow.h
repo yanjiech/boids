@@ -30,8 +30,8 @@ public:
     BarrageOfArrow();
     virtual ~BarrageOfArrow();
     
-    static BarrageOfArrow* create( UnitNode* owner, const cocos2d::ValueMap& data );
-    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    static BarrageOfArrow* create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
     
     virtual void updateFrame( float delta );
     

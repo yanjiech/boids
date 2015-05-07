@@ -19,9 +19,9 @@ WrathOfThunder::~WrathOfThunder() {
     
 }
 
-WrathOfThunder* WrathOfThunder::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+WrathOfThunder* WrathOfThunder::create( UnitNode* owner, const cocos2d::ValueMap& data,const cocos2d::ValueMap& params ) {
     WrathOfThunder* ret = new WrathOfThunder();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -31,7 +31,7 @@ WrathOfThunder* WrathOfThunder::create( UnitNode* owner, const cocos2d::ValueMap
     }
 }
 
-bool WrathOfThunder::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool WrathOfThunder::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

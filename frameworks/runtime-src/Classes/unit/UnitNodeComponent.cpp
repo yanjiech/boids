@@ -212,9 +212,11 @@ bool TimeLimitSpineComponent::init( float duration, spine::SkeletonAnimation* sk
 }
 
 void TimeLimitSpineComponent::updateFrame( float delta ) {
-    _elapse += delta;
-    if( _elapse > _duration ) {
-        this->setShouldRecycle( true );
+    if( _duration >= 0 ) {
+        _elapse += delta;
+        if( _elapse > _duration ) {
+            this->setShouldRecycle( true );
+        }
     }
 }
 
@@ -277,9 +279,9 @@ void TimeLimitWanderSpineComponent::updateFrame( float delta ) {
             _gravity_point = Utils::randomPositionInRange( center, _range );
         }
         
-        if( !Math::isPositionInRange( this->getPosition(), center, _range ) ) {
-            _speed = Point::ZERO;
-        }
+//        if( !Math::isPositionInRange( this->getPosition(), center, _range ) ) {
+//            _speed *= 0.1f;
+//        }
         
         float d = center.distance( this->getPosition() );
         float ratio = 0.5f + d * 1.5 / _range;

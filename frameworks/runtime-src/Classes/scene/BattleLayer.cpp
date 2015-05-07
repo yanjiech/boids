@@ -108,6 +108,7 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         
         _story_layer = UIStoryLayer::create( CC_CALLBACK_1( BattleLayer::endStory, this ) );
         this->addChild( _story_layer, eBattleSubLayer::BattleStoryLayer, eBattleSubLayer::BattleStoryLayer );
+        _story_layer->setVisible( false );
         
         _draw_node = DrawNode::create();
         _tmx_map->addChild( _draw_node, 100000 );
@@ -115,8 +116,6 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         this->setup();
         
         this->startBattle();
-        
-        _map_logic->onMapInit();
         
         this->schedule( CC_CALLBACK_1( BattleLayer::updateFrame, this ), "battle_update"  );
         
@@ -130,6 +129,7 @@ void BattleLayer::setup() {
     this->parseMapObjects();
     MapLogic* new_map_logic = MapLogic::create( this );
     this->setMapLogic( new_map_logic );
+    _map_logic->onMapInit();
     _game_time = 0;
 }
 
@@ -176,6 +176,7 @@ void BattleLayer::updateFrame( float delta ) {
         
         this->updateBuildings( delta );
         this->updateTowers( delta );
+        this->updateBlocks( delta );
         
         //handle newly dying units which need to be removed from alive list
         UnitMap unit_map = this->getAliveUnits();
@@ -231,7 +232,6 @@ void BattleLayer::updateFrame( float delta ) {
         this->reorderObjectLayer();
         this->adjustCamera();
     }
-    
     else if( _state == eBattleState::BattleStory ) {
         _story_layer->updateFrame( delta );
     }
@@ -239,6 +239,7 @@ void BattleLayer::updateFrame( float delta ) {
     if( _state == BattleRunning ) {
         _game_time += delta;
         _map_logic->updateFrame( delta );
+        this->checkState();
     }
 }
 
@@ -268,7 +269,6 @@ void BattleLayer::restartBattle() {
 }
 
 void BattleLayer::quitBattle() {
-    Terrain::getInstance()->release();
 }
 
 void BattleLayer::setMapLogic( MapLogic* map_logic ) {
@@ -295,16 +295,43 @@ UnitNode* BattleLayer::getLeaderUnit() {
 
 void BattleLayer::changeState( eBattleState new_state ) {
     this->setState( new_state );
+}
+
+bool BattleLayer::checkState() {
     if( _state == eBattleState::BattleWin ) {
         _battle_menu_layer = UIBattleMenuLayer::create( this, "You Win! @ @!" );
         this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
-        log( "game end: win" );
+        return false;
     }
     else if( _state == eBattleState::BattleLose ) {
         _battle_menu_layer = UIBattleMenuLayer::create( this, "You Lose! @ @!" );
         this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
-        log( "game end: lose" );
+        return false;
     }
+    return true;
+}
+
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCondition( eTargetCamp camp, const std::vector<std::string>& tags, const cocos2d::Point& center, float range ) {
+    cocos2d::Vector<UnitNode*> ret;
+    
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        Point unit_pos = unit->getPosition();
+        if( unit->getTargetCamp() == camp && Math::isPositionInRange( unit_pos, center, range ) ) {
+            bool qualified = true;
+            for( auto str : tags ) {
+                if( !unit->hasUnitTag( str ) ) {
+                    qualified = false;
+                    break;
+                }
+            }
+            
+            if( qualified ) {
+                ret.pushBack( unit );
+            }
+        }
+    }
+    return ret;
 }
 
 cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eTargetCamp camp ) {
@@ -316,6 +343,20 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eTargetCamp camp ) {
             ret.pushBack( unit );
         }
     }
+    return ret;
+}
+
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsInRange( const cocos2d::Point& center, float range ) {
+    cocos2d::Vector<UnitNode*> ret;
+    
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        Point unit_pos = unit->getPosition();
+        if( Math::isPositionInRange( unit->getPosition(), center, range + unit->getUnitData()->collide ) ) {
+            ret.pushBack( unit );
+        }
+    }
+    
     return ret;
 }
 
@@ -395,7 +436,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp ca
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
             if( Math::isPositionInRange( unit->getPosition(), center, radius + unit->getUnitData()->collide ) ) {
-                ret.pushBack( unit );
+                ret.pushBack( unit ); 
             }
         }
     }
@@ -422,7 +463,7 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInSector( eTargetCamp c
         UnitNode* unit = pair.second;
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
-            if( Math::isPointInSector( unit_pos, center, dir, unit->getUnitData()->collide, 120.0f ) || Math::isPointInSector( unit_pos, center, dir, radius + unit->getUnitData()->collide, angle ) ) {
+            if( Math::isPointInSector( unit_pos, center, dir, radius + unit->getUnitData()->collide, angle ) ) {
                 ret.pushBack( unit );
             }
         }
@@ -498,6 +539,16 @@ void BattleLayer::removeBlockNode( BlockNode* block_node ) {
     _block_nodes.erase( block_node->getDeployId() );
 }
 
+BlockNode* BattleLayer::getBlockNode( const std::string& name ) {
+    for( auto pair : _block_nodes ) {
+        BlockNode* block_node = pair.second;
+        if( block_node->getBlockName() == name ) {
+            return block_node;
+        }
+    }
+    return nullptr;
+}
+
 bool BattleLayer::addBullet( int key, BulletNode* bullet ) {
     std::string k = Utils::stringFormat( "%d", key );
     auto itr = _bullets.find( k );
@@ -542,6 +593,13 @@ void BattleLayer::updateTowers( float delta ) {
     }
 }
 
+void BattleLayer::updateBlocks( float delta ) {
+    for( auto pair : _block_nodes ) {
+        BlockNode* block = pair.second;
+        block->updateFrame( delta );
+    }
+}
+
 void BattleLayer::updateBuildings( float delta ) {
     for( auto pair : _buildings ) {
         BuildingNode* building = pair.second;
@@ -578,6 +636,17 @@ void BattleLayer::onUnitDying( UnitNode* unit ) {
     _dead_units.insert( key, unit );
     this->clearChasingTarget(  unit );
     _map_logic->onTargetNodeDead( unit );
+    
+    if( unit->hasUnitTag( "leader" ) ) {
+        UnitNode* leader = this->getLeaderUnit();
+        if( leader ) {
+            leader->addUnitTag( "leader" );
+            UnitNode::ItemMap& items = unit->getItems();
+            for( auto pair : items ) {
+                leader->addItem( pair.second );
+            }
+        }
+    }
 }
 
 void BattleLayer::onUnitDisappear( UnitNode* unit ) {
@@ -831,14 +900,33 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
         grid_properties["flipped_diagonally"] = Value( flipped_diagonally );
     }
     
-    if( type.find( "BlockNode" ) != std::string::npos ) {
+    if( type == "SpriteBlockNode" ) {
         std::string name = obj_properties.at( "name" ).asString() + "_collide";
         ValueMap boundary = group->getObject( name );
         boundary["map_height"] = Value( _tmx_map->getContentSize().height );
         if( !boundary.empty() ) {
             grid_properties["boundary"] = Value( boundary );
-            BlockNode* block_node = BlockNode::create( grid_properties, obj_properties );
+            BlockNode* block_node = BlockNode::create( this, grid_properties, obj_properties );
             this->addBlockNode( block_node, layer );
+        }
+    }
+    else if( type == "GroupSpineBlockNode" ) {
+        std::string name = obj_properties.at( "name" ).asString();
+        std::string boundary_name = name + "_collide";
+        ValueMap boundary = group->getObject( boundary_name );
+        if( !boundary.empty() ) {
+            boundary["map_height"] = Value( _tmx_map->getContentSize().height );
+            grid_properties["boundary"] = Value( boundary );
+            
+            BlockNode* block_node = this->getBlockNode( name );
+            if( block_node == nullptr ) {
+                block_node = BlockNode::create( this, grid_properties, obj_properties );
+                this->addBlockNode( block_node, layer );
+            }
+            else {
+                GroupSpineBlockNode* group_block = dynamic_cast<GroupSpineBlockNode*>( block_node );
+                group_block->appendSpineNode( grid_properties, obj_properties );
+            }
         }
     }
     else if( type.find( "tower" ) != std::string::npos ) {
@@ -896,7 +984,8 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
     else if( type.empty() ) {
         Sprite* sp = _map_data->spriteFromObject( _tmx_map, data, true );
         if( sp ) {
-            this->addToLayer( sp, layer, sp->getPosition(), this->zorderForPositionOnObjectLayer( sp->getPosition() ) );
+            Point center = Point( sp->getContentSize().width / 2, sp->getContentSize().width / 3.4 ) + sp->getPosition();
+            this->addToLayer( sp, layer, sp->getPosition(), this->zorderForPositionOnObjectLayer( center ) );
         }
     }
 }

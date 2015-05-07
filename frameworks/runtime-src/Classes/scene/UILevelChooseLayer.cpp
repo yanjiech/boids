@@ -79,10 +79,14 @@ bool UILevelChooseLayer::init() {
 
 void UILevelChooseLayer::onStartButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        SceneConfig scene_config;
-        scene_config.ref_params.push_back( _map_data );
-        scene_config.value_params["is_pvp"] = Value( _is_pvp );
-        SceneManager::getInstance()->transitToScene( eSceneName::SceneBattle, &scene_config );
+        cocos2d::Vector<cocos2d::Ref*> a_ref_params;
+        a_ref_params.pushBack( _map_data );
+        
+        cocos2d::ValueMap a_value_params;
+        a_value_params["is_pvp"] = Value( _is_pvp );
+        
+        SceneConfig* scene_config = SceneConfig::create( a_ref_params, a_value_params );
+        SceneManager::getInstance()->transitToScene( eSceneName::SceneBattle, scene_config );
     }
 }
 

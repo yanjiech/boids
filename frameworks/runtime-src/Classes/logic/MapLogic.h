@@ -46,7 +46,7 @@ private:
     
 public:
     MapLogic();
-    ~MapLogic();
+    virtual ~MapLogic();
     
     static MapLogic* create( BattleLayer* battle_layer );
     
@@ -63,9 +63,11 @@ public:
     void onMapInit();
     
     void onEventChanged( const std::string& event_name, const std::string& event_state );
-    void onTaskStateChanged( const std::string& task_name, const std::string& task_state );
+    void onTaskStateChanged( const std::string& task_name, const std::string& task_state, float progress );
     void onCustomTrigger( const std::string& trigger_name );
     void onConversationStateChanged( const std::string& trigger_name, const std::string& trigger_state );
+    
+    void onVisionChanged( const cocos2d::ValueMap& update_data );
     
     void addEventAction( EventAction* action, const std::string& key );
     void removeEventAction( const std::string& key );

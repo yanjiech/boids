@@ -111,7 +111,9 @@ private:
     void reorderObjectLayer();
     
     void updateTowers( float delta );
+    void updateBlocks( float delta );
     void updateBuildings( float delta );
+    void updateBullets( float delta );
     
 public:
     //debug
@@ -144,8 +146,10 @@ public:
     void setState( eBattleState new_state ) { _state = new_state; }
     
     void changeState( eBattleState new_state );
+    bool checkState();
     
     MapData* getMapData() { return _map_data; }
+    MapLogic* getMapLogic() { return _map_logic; }
     
     UIControlLayer* getControlLayer() { return _control_layer; }
     
@@ -155,9 +159,12 @@ public:
     
     UnitNode* getLeaderUnit();
     
+    cocos2d::Vector<UnitNode*> getAliveUnitsByCondition( eTargetCamp camp, const std::vector<std::string>& tags, const cocos2d::Point& center, float range );
+    
     cocos2d::Vector<UnitNode*> getAliveOpponents( eTargetCamp camp );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eTargetCamp camp );
     
+    cocos2d::Vector<UnitNode*> getAliveUnitsInRange( const cocos2d::Point& center, float range );
     cocos2d::Vector<UnitNode*> getAliveUnitsInRoundRange( const cocos2d::Point& center, float radius );
     
     cocos2d::Vector<UnitNode*> getAliveAllyInRange( eTargetCamp camp, const cocos2d::Point& center, float radius );
@@ -175,13 +182,12 @@ public:
     const BlockMap& getBlockNodes() { return _block_nodes; }
     void addBlockNode( BlockNode* block_node, eBattleSubLayer layer );
     void removeBlockNode( BlockNode* block_node );
+    BlockNode* getBlockNode( const std::string& name );
     
     TargetNode* getAliveTargetByDeployId( int deploy_id );
     
     bool addBullet( int key, BulletNode* bullet );
     void removeBullet( int key );
-    
-    void updateBullets( float delta );
     
     void onUnitAppear( UnitNode* unit );
     void onUnitDying( UnitNode* unit );

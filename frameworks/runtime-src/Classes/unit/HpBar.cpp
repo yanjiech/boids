@@ -21,6 +21,78 @@ using namespace cocos2d;
 #define H_MARGIN 1.0f
 #define V_MARGIN 1.0f
 
+ProgressTimer* createProgressTimer( const cocos2d::Color4F& color, const cocos2d::Size& size ) {
+    cocos2d::ProgressTimer* bar = nullptr;
+    RenderTexture* texture = RenderTexture::create( 1.0f, 1.0f );
+    texture->beginWithClear( color.r, color.g, color.b, color.a );
+    texture->end();
+    Sprite* sp = Sprite::createWithTexture( texture->getSprite()->getTexture() );
+    bar = ProgressTimer::create( sp );
+    bar->setType( cocos2d::ProgressTimer::Type::BAR );
+    bar->setMidpoint( Point( 0, 0.5f ) );
+    bar->setBarChangeRate( Point( 1.0f, 0 ) );
+    bar->setPercentage( 100.0f );
+    bar->setScale( size.width, size.height );
+    return bar;
+}
+
+ProgressBar::ProgressBar() {
+    
+}
+
+ProgressBar::~ProgressBar() {
+    
+}
+
+ProgressBar* ProgressBar::create( const cocos2d::Color4F& bg_color, const cocos2d::Color4F& cover_color, const cocos2d::Size& size ) {
+    ProgressBar* ret = new ProgressBar();
+    if( ret && ret->init( bg_color, cover_color, size ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool ProgressBar::init( const cocos2d::Color4F& bg_color, const cocos2d::Color4F& cover_color, const cocos2d::Size& size ) {
+    if( !Node::init() ) {
+        return false;
+    }
+    
+    this->ignoreAnchorPointForPosition( false );
+    this->setAnchorPoint( Point( 0.5f, 0.5f ) );
+    this->setContentSize( size );
+    
+    _percentage = 100.0f;
+    
+    _background = createProgressTimer( bg_color, size );
+    _background->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
+    this->addChild( _background, 1 );
+    
+    _cover = createProgressTimer( cover_color, size );
+    _cover->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
+    this->addChild( _cover, 2 );
+    
+    return true;
+}
+
+void ProgressBar::setPercentage( float percentage ) {
+    if( _percentage != percentage ) {
+        _percentage = percentage;
+        _cover->setPercentage( _percentage );
+    }
+}
+
+float ProgressBar::getPercentage() {
+    return _percentage;
+}
+
+void ProgressBar::setBackgroundOpacity( GLubyte opacity ) {
+    _background->setOpacity( opacity );
+}
+
 HpBar::HpBar() {
     
 }
@@ -53,9 +125,13 @@ bool HpBar::init( const cocos2d::Size& size ) {
     Size inner_size = Size( size.width - 2 * H_MARGIN, size.height - 2 * V_MARGIN );
     
     _background = this->addBar( Color4F( 0, 0, 0, 1.0f ), size, BACKGROUND_TEXTURE_NAME );
+    _background->setPosition( Point( size.width / 2, size.height / 2 ) );
     _red_bar = this->addBar( Color4F( 1.0f, 0, 0, 1.0f ), inner_size, RED_TEXTURE_NAME );
+    _red_bar->setPosition( Point( size.width / 2, size.height / 2 ) );
     _yellow_bar = this->addBar( Color4F( 1.0f, 1.0f, 0, 1.0f ), inner_size, YELLOW_TEXTURE_NAME );
+    _yellow_bar->setPosition( Point( size.width / 2, size.height / 2 ) );
     _green_bar = this->addBar( Color4F( 0, 1.0f, 0.1843f, 1.0f ), inner_size, GREEN_TEXTUER_NAME );
+    _green_bar->setPosition( Point( size.width / 2, size.height / 2 ) );
     
     _percentage = 100.0f;
     this->updateVisible();
@@ -107,7 +183,6 @@ ProgressTimer* HpBar::addBar( const cocos2d::Color4F& color, const cocos2d::Size
     bar->setMidpoint( Point( 0, 0.5f ) );
     bar->setBarChangeRate( Point( 1.0f, 0 ) );
     bar->setPercentage( 100.0f );
-    bar->setPosition( Point::ZERO );
     bar->setScale( size.width, size.height );
     this->addChild( bar );
     return bar;

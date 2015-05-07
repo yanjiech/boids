@@ -83,6 +83,8 @@ BEUITriggerOptions::BEUITriggerOptions(ui::Layout *root, const BEPopupEventHandl
     _isRepeat = getCheckBoxFrom("checkbox_isRepeat", _root);
     _isRepeatLabel = getLabelFrom("text_isRepeat", _root);
     
+    _cb_enabled = getCheckBoxFrom("cb_enabled", _root);
+    
     Size contentSize = Size(400, 300);
     _list = BETypeListView::create(contentSize, EditorTypeManager::getInstance()->getTriggerType(), nullptr);
     _list->setPosition(Vec2(0, 300));
@@ -96,6 +98,7 @@ void BEUITriggerOptions::reset() {
     _relationList->reset();
     _relationList->setVisible(false);
     _relationButton->setTitleText("then");
+    _cb_enabled->setSelected( true );
     _list->reset();
 }
 
@@ -111,6 +114,10 @@ const std::string& BEUITriggerOptions::getType() {
 
 bool BEUITriggerOptions::isRepeat() const {
     return _isRepeat->isSelected();
+}
+
+bool BEUITriggerOptions::isEnabled() {
+    return _cb_enabled->isSelected();
 }
 
 std::string BEUITriggerOptions::getRelationType() const {
@@ -166,7 +173,6 @@ EditorActionMetaPtr BEUIActionOptions::getMeta() {
 }
 
 BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& handler):BEUIBase(root, handler), _groupListView(nullptr), _typeListView(nullptr), _stateListView(nullptr) {
-    
     _infoPanel = getPanelFrom("panel_info", _root);
     _groupListPanel = getPanelFrom("panel_groupList", _root);
     _ok = getButtonFrom("button_ok", _infoPanel);
@@ -182,6 +188,9 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     _selectPositionButton = getButtonFrom("button_selectPosition", _infoPanel);
     _selectPositionGroupButton = getButtonFrom("button_selectPositionGroup", _infoPanel);
     _positionLabel = getLabelFrom("text_position", _infoPanel);
+    
+    _cb_change_show_hp = getCheckBoxFrom( "cb_change_show_hp", _infoPanel );
+    _cb_change_bubble = getCheckBoxFrom( "cb_change_bubble", _infoPanel );
     
     _showHPCheckBox = getCheckBoxFrom("checkbox_showHP", _infoPanel);
     _changeTypeCheckBox = getCheckBoxFrom("checkbox_changeType", _infoPanel);
@@ -199,6 +208,12 @@ BEUIUnitAction::BEUIUnitAction(ui::Layout *root, const BEPopupEventHandler& hand
     _tf_buff_name = getTextFieldFrom("tf_buff_name", _infoPanel);
     _tf_buff_type = getTextFieldFrom( "tf_buff_type", _infoPanel );
     _tf_buff_params = getTextFieldFrom( "tf_buff_params", _infoPanel );
+    
+    //item
+    _cb_item = getCheckBoxFrom( "cb_item", _infoPanel );
+    _cb_item_get_or_lose = getCheckBoxFrom( "cb_item_get_or_lose", _infoPanel );
+    _tf_item_name = getTextFieldFrom( "tf_item_name", _infoPanel );
+    _tf_item_resource = getTextFieldFrom( "tf_item_resource", _infoPanel );
     
     _addButton = getButtonFrom("button_add", _infoPanel);
     _deleteButton = getButtonFrom("button_delete", _root);
@@ -286,6 +301,11 @@ void BEUIUnitAction::reset() {
     _bossCheckBox->setSelected(false);
     toggleBossUI(false);
     _popupButton->setTitleText("normal");
+    
+    _cb_change_show_hp->setSelected( false );
+    _cb_change_bubble->setSelected( false );
+    
+    _cb_item->setSelected( false );
 }
 
 const std::vector<EditorUnitActionPtr>& BEUIUnitAction::getActions() {
@@ -295,6 +315,7 @@ const std::vector<EditorUnitActionPtr>& BEUIUnitAction::getActions() {
 void BEUIUnitAction::loadSourceList(const std::vector<std::pair<std::string, std::string>>& sources) {
     _editMode = false;
     _sourceList = sources;
+    _sourceList.push_back( std::make_pair( "tag_source", "leader" ) );
     _groupListView->updateData();
 }
 
@@ -423,10 +444,19 @@ void BEUIUnitAction::onAddButtonClicked(Ref *sender) {
     _action->PositionTag = _positionTag;
     _action->StateChanged = _changeStateCheckBox->isSelected();
     _action->TypeChanged = _changeTypeCheckBox->isSelected();
-    _action->ShowHP = _showHPCheckBox->isSelected();
+    
+    //show hp
+    _action->ChangeShowHP = _cb_change_show_hp->isSelected();
+    if( _action->ChangeShowHP ) {
+        _action->ShowHP = _showHPCheckBox->isSelected();
+    }
+    
     _action->TagChanged = _tagCheckBox->isSelected();
-    _action->BuffChanged = _buffCheckBox->isSelected();
-    _action->PopupType = _popupListView->getCurrentType();
+
+    _action->ChangeBubble = _cb_change_bubble->isSelected();
+    if( _action->ChangeBubble ) {
+        _action->PopupType = _popupListView->getCurrentType();
+    }
     //skill
     _action->SkillOneLevel = _cb_skill_1->isSelected() ? Utils::toInt( _tf_skill_1_level->getString() ) : 0;
     _action->SkillTwoLevel = _cb_skill_2->isSelected() ? Utils::toInt( _tf_skill_2_level->getString() ) : 0;
@@ -442,9 +472,15 @@ void BEUIUnitAction::onAddButtonClicked(Ref *sender) {
         _action->SourceType = pair.first;
         _action->SourceValue = pair.second;
     }
+    _action->IsItemChanged = _cb_item->isSelected();
+    _action->GetOrLoseItem = _cb_item_get_or_lose->isSelected();
+    _action->ItemName = _tf_item_name->getString();
+    _action->ItemResource = _tf_item_resource->getString();
     _action->IsBoss = _bossCheckBox->isSelected();
     _action->CustomChange = _customTextField->getString();
     _action->UnitLevel = Utils::toInt( _levelTextField->getString() );
+    
+    _action->BuffChanged = _buffCheckBox->isSelected();
     if (_action->BuffChanged) {
         _action->BuffName = _tf_buff_name->getString();
         _action->BuffType = _tf_buff_type->getString();
@@ -915,6 +951,9 @@ BEUITaskStateChange::BEUITaskStateChange(ui::Layout *root, const BEPopupEventHan
     _stateButton = getButtonFrom("button_taskState", _root);
     _okButton = getButtonFrom("button_ok", _root);
     _cancelButton = getButtonFrom("button_cancel", _root);
+    
+    _tf_task_progress = getTextFieldFrom( "tf_task_progress", _root );
+    
     _stateListView = popupTypeListFromButton(_stateButton, EditorTypeManager::getInstance()->getTaskState(), CC_CALLBACK_1(BEUITaskStateChange::onStateListItemClicked, this));
     _stateListView->setVisible(false);
     
@@ -938,6 +977,7 @@ void BEUITaskStateChange::reset() {
 EditorTaskActionPtr BEUITaskStateChange::getAction() {
     _action->TaskState = _stateListView->getCurrentType();
     _action->TaskName = _taskListView->getCurrentName();
+    _action->TaskProgress = atof( _tf_task_progress->getString().c_str() );
     return _action;
 }
 

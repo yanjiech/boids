@@ -20,9 +20,9 @@ HuntingIntuition::~HuntingIntuition() {
     
 }
 
-HuntingIntuition* HuntingIntuition::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+HuntingIntuition* HuntingIntuition::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     HuntingIntuition* ret = new HuntingIntuition();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -32,7 +32,7 @@ HuntingIntuition* HuntingIntuition::create( UnitNode* owner, const cocos2d::Valu
     }
 }
 
-bool HuntingIntuition::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool HuntingIntuition::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

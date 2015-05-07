@@ -35,6 +35,8 @@ public:
     
     virtual void begin();
     virtual void end();
+    
+    virtual void refreshDamage() {}
 };
 
 #endif /* defined(__Boids__SkillNode__) */

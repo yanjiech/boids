@@ -21,9 +21,9 @@ CrazyShoot::~CrazyShoot() {
     
 }
 
-CrazyShoot* CrazyShoot::create(  UnitNode* owner, const cocos2d::ValueMap& data ) {
+CrazyShoot* CrazyShoot::create(  UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     CrazyShoot* ret = new CrazyShoot();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -33,7 +33,7 @@ CrazyShoot* CrazyShoot::create(  UnitNode* owner, const cocos2d::ValueMap& data 
     }
 }
 
-bool CrazyShoot::init(  UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool CrazyShoot::init(  UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

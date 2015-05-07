@@ -152,6 +152,8 @@ public:
     
     static VisionChangeTrigger* create( const cocos2d::ValueMap& data );
     virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void updateTrigger( const cocos2d::ValueMap& update_data );
 };
 
 class CustomTrigger : public Trigger {

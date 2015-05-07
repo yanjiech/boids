@@ -22,9 +22,9 @@ MissileShowers::~MissileShowers() {
     
 }
 
-MissileShowers* MissileShowers::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+MissileShowers* MissileShowers::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     MissileShowers* ret = new MissileShowers();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -34,7 +34,7 @@ MissileShowers* MissileShowers::create( UnitNode* owner, const cocos2d::ValueMap
     }
 }
 
-bool MissileShowers::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool MissileShowers::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

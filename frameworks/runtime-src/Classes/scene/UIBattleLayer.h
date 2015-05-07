@@ -54,6 +54,8 @@ public:
     cocos2d::Value getSkillAttribute( const std::string& key );
     
     void setChargeTime( float time );
+    
+    class Skill* getSkill();
 };
 
 class UIBattleLayer : public cocos2d::Layer {

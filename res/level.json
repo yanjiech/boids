@@ -3,11 +3,28 @@
     [
         {
             "name" : "第一排第一关",
-            "path" : "maps/01"
+            "path" : "maps/sample"
         },
         {
             "name" : "第二关",
-            "path" : "maps/02"
+            "path" : "maps/level_2"
+        },
+        {
+            "name" : "第三关",
+            "path" : "maps/level_3"
+        },
+        {
+            "name" : "第四关",
+            "path" : "maps/level_4"
+        },
+        {
+            "name" : "第五关",
+            "path" : "maps/level_5"
+        },
+        {
+            "name" : "第六关",
+            "path" : "maps/level_6"
         }
+
     ]
 }

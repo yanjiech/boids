@@ -59,10 +59,10 @@ public:
     UnitNode* getOwner();
     void setOwner( UnitNode* owner );
     
-    const std::string getBuffId() { return _buff_id; }
+    const std::string& getBuffId() { return _buff_id; }
     void setBuffId( const std::string& new_id ) { _buff_id = new_id; }
     
-    const std::string getBuffType() { return _buff_type; }
+    const std::string& getBuffType() { return _buff_type; }
     void setBuffType( const std::string& buff_type ) { _buff_type = buff_type; }
     
     const cocos2d::ValueMap& getBuffData() { return _data; }
@@ -162,6 +162,22 @@ public:
     
     int getAbsorb() { return _absorb; }
     void setAbsorb( float value ) { _absorb = value; }
+};
+
+class UndeadBuff : public Buff {
+public:
+    UndeadBuff();
+    virtual ~UndeadBuff();
+    
+    static UndeadBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
+    
+    virtual float filterDamage( float damage, TargetNode* atker );
 };
 
 class PierceBuff : public Buff {

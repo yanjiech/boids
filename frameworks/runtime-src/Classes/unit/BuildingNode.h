@@ -11,6 +11,7 @@
 
 #include "TargetNode.h"
 #include "../AI/BoidsPolygon.h"
+#include "HpBar.h"
 
 class BuildingNode : public TargetNode {
 private:
@@ -18,6 +19,8 @@ private:
     cocos2d::Point _center;
     cocos2d::Sprite* _displayed_sprite;
     BoidsPolygon _boundaries;
+    
+    cocos2d::Sprite* _range_sprite;
     
 protected:
     bool _is_enabled;
@@ -47,6 +50,9 @@ public:
     virtual bool willCollide( cocos2d::Point pos, float radius ) { return false; }
     virtual bool willCollide( TargetNode* unit) { return false; }
     virtual bool willCollide( TargetNode* unit, cocos2d::Point unit_new_pos ) { return false; }
+    
+    cocos2d::Sprite* getRangeSprite() { return _range_sprite; }
+    void setRangeSprite( cocos2d::Sprite* sprite );
 };
 
 class BuffBuildingNode : public BuildingNode {
@@ -57,6 +63,8 @@ private:
     float _elapse;
     
     cocos2d::ValueMap _buff_data;
+    
+    ProgressBar* _progress_bar;
     
 public:
     BuffBuildingNode();

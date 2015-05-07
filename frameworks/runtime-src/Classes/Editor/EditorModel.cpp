@@ -384,7 +384,9 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
     if (this->StateChanged) {
         _json.AddMember("unit_state", UnitState.c_str(), allocator);
     }
-    _json.AddMember("show_hp", ShowHP, allocator);
+    if( this->ChangeShowHP ) {
+        _json.AddMember("show_hp", ShowHP, allocator);
+    }
     if (this->TagChanged) {
         _json.AddMember("tag_name", TagName.c_str(), allocator);
     }
@@ -415,7 +417,7 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
         _json.AddMember("custom_change", CustomChange.c_str(), allocator);
     }
     _json.AddMember( "unit_level", this->UnitLevel, allocator );
-    if (this->PopupType.length() > 0) {
+    if( this->ChangeBubble ) {
         _json.AddMember("popup_type", PopupType.c_str(), allocator);
     }
     if( this->SkillOneLevel != 0 ) {
@@ -423,6 +425,12 @@ rapidjson::Value& EditorUnitAction::toJson(rapidjson::Document::AllocatorType& a
     }
     if( this->SkillTwoLevel != 0 ) {
         _json.AddMember( "skill_2_level", SkillTwoLevel, allocator );
+    }
+    
+    if( this->IsItemChanged ) {
+        _json.AddMember( "item_get_or_lose", GetOrLoseItem, allocator );
+        _json.AddMember( "item_name", ItemName.c_str(), allocator );
+        _json.AddMember( "item_resource", ItemResource.c_str(), allocator );
     }
     
     return _json;
@@ -451,7 +459,11 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->UnitType = "";
     }
     if (value.HasMember("show_hp")) {
+        this->ChangeShowHP = true;
         this->ShowHP = value["show_hp"].GetBool();
+    }
+    else {
+        this->ChangeShowHP = false;
     }
     if (value.HasMember("tag_changed")) {
         this->TagChanged = value["tag_changed"].GetBool();
@@ -463,21 +475,20 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->TagChanged = false;
         this->TagName = "";
     }
-    if (value.HasMember("buff_changed")) {
-        this->BuffChanged = value["buff_changed"].GetBool();
-        if( this->BuffChanged ) {
-            this->BuffName = value["buff_name"].GetString();
-            this->BuffType = value["buff_type"].GetString();
-            this->BuffParams = value["buff_params"].GetString();
-        }
-        
-    } else if (value.HasMember("buff_name")) {
-        this->BuffName = value["buff_name"].GetString();
+    
+    if (value.HasMember("buff_name")) {
         this->BuffChanged = true;
-    } else {
+        this->BuffName = value["buff_name"].GetString();
+        this->BuffType = value["buff_type"].GetString();
+        this->BuffParams = value["buff_params"].GetString();
+    }
+    else {
         this->BuffChanged = false;
         this->BuffName = "";
+        this->BuffType = "";
+        this->BuffParams = "";
     }
+    
     if (value.HasMember("is_boss")) {
         this->IsBoss = value["is_boss"].GetBool();
     } else {
@@ -506,8 +517,10 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->UnitLevel = 1;
     }
     if (value.HasMember("popup_type")) {
+        this->ChangeBubble = true;
         this->PopupType = value["popup_type"].GetString();
     } else {
+        this->ChangeBubble = false;
         this->PopupType = "normal";
     }
     if( value.HasMember( "skill_1_level" ) ) {
@@ -523,6 +536,19 @@ void EditorUnitAction::loadJson(const rapidjson::Value& value) {
         this->SkillTwoLevel = 0;
     }
     
+    if( value.HasMember( "item_name" ) ) {
+        this->IsItemChanged = true;
+        this->GetOrLoseItem = value["item_get_or_lose"].GetBool();
+        this->ItemName = value["item_name"].GetString();
+        this->ItemResource = value["item_resource"].GetString();
+    }
+    else {
+        this->IsItemChanged = false;
+        this->GetOrLoseItem = true;
+        this->ItemName = "";
+        this->ItemResource = "";
+    }
+    
     this->UnitCount = value.HasMember("unit_count") ? value["unit_count"].GetInt() : 0;
     this->PositionName = value.HasMember("position_name") ? value["position_name"].GetString() : "";
     this->PositionTag = value.HasMember("position_tag") ? value["position_tag"].GetString() : "";
@@ -534,6 +560,9 @@ rapidjson::Value& EditorTaskAction::toJson(rapidjson::Document::AllocatorType& a
     EditorActionBase::toJson(allocator);
     _json.AddMember("task_name", TaskName.c_str(), allocator);
     _json.AddMember("task_state", TaskState.c_str(), allocator);
+    if( TaskState == "task_progress" ) {
+        _json.AddMember( "progress", TaskProgress, allocator );
+    }
     return _json;
 }
 
@@ -541,6 +570,12 @@ void EditorTaskAction::loadJson(const rapidjson::Value& value) {
     EditorActionBase::loadJson(value);
     this->TaskName = value["task_name"].GetString();
     this->TaskState = value["task_state"].GetString();
+    if( value.HasMember( "progress" ) ) {
+        this->TaskProgress = (float)value["progress"].GetDouble();
+    }
+    else {
+        this->TaskProgress = 0;
+    }
 }
 
 rapidjson::Value& EditorGameAction::toJson(rapidjson::Document::AllocatorType& allocator) {
@@ -686,11 +721,13 @@ void EditorStoryAction::loadJson( const rapidjson::Value& value ) {
 
 EditorEvent::EditorEvent() {
     TriggerMeta = std::shared_ptr<EditorTriggerMeta>(new EditorTriggerMeta());
+    this->Enabled = true;
 }
 
 rapidjson::Value& EditorEvent::toJson(rapidjson::Document::AllocatorType& allocator) {
     _json.SetObject();
     _json.AddMember("name", this->Name.c_str(), allocator);
+    _json.AddMember( "enabled", this->Enabled, allocator );
     _json.AddMember("trigger_meta", this->TriggerMeta->toJson(allocator), allocator);
     rapidjson::Value triggers;
     triggers.SetArray();
@@ -709,6 +746,7 @@ rapidjson::Value& EditorEvent::toJson(rapidjson::Document::AllocatorType& alloca
 
 void EditorEvent::loadJson(const rapidjson::Value& value) {
     this->Name = value["name"].GetString();
+    this->Enabled = value.HasMember( "enabled" ) ? value["enabled"].GetBool() : true;
     this->TriggerMeta->loadJson(value["trigger_meta"]);
     Triggers.clear();
     const rapidjson::Value& triggers = value["triggers"];

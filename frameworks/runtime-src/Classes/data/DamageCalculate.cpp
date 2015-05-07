@@ -13,6 +13,8 @@
 
 using namespace cocos2d;
 
+#define CRITICAL_FACTOR 1.5f
+
 DamageCalculate::DamageCalculate() {
     
 }
@@ -61,7 +63,7 @@ cocos2d::ValueMap DamageCalculate::calculateDamage( class ElementData* atker_dat
             damage = DamageCalculate::calculateDamage( _calculator_name, _base_damage, atker_data, defer_data );
         }
         if( this->doesCritical( atker_data->critical, defer_data->tenacity, atker_data->level, defer_data->level ) ) {
-            damage *= 2.0f;
+            damage *= CRITICAL_FACTOR;
             ret["cri"] = Value( true );
         }
         else {
@@ -86,7 +88,7 @@ cocos2d::ValueMap DamageCalculate::calculateDamageWithoutMiss( class ElementData
             damage = DamageCalculate::calculateDamage( _calculator_name, _base_damage, atker_data, defer_data );
         }
         if( this->doesCritical( atker_data->critical, defer_data->tenacity, atker_data->level, defer_data->level ) ) {
-            damage *= 2.0f;
+            damage *= CRITICAL_FACTOR;
             ret["cri"] = Value( true );
         }
         else {
@@ -119,11 +121,11 @@ float DamageCalculate::calculateDamage( const std::string calculator_name, float
 }
 
 float DamageCalculate::calculateResistance( float def, float negl, float neglp ) {
-    return 1.0 - powf( ( def - negl ) * ( 1.0f - neglp ), 0.4f ) / 100.0;
+    return 1.0f - powf( ( def - negl ) * ( 1.0f - neglp ), 0.4f ) / 100.0f;
 }
 
 bool DamageCalculate::doesHit( float hit, float dodge, float atker_level, float defer_level ) {
-    float hit_chance = 1.0f - dodge / ( hit + dodge ) * 2.0f * defer_level / ( atker_level + defer_level );
+    float hit_chance = hit / ( hit + dodge ) * 2.0f * atker_level / ( atker_level + defer_level );
     float rand = Utils::randomFloat();
     return rand <= hit_chance;
 }
@@ -131,7 +133,7 @@ bool DamageCalculate::doesHit( float hit, float dodge, float atker_level, float 
 bool DamageCalculate::doesCritical( float cri, float ten, float atker_level, float defer_level ) {
     float chance = 0;
     if( cri > ten ) {
-        chance = ( cri - ten ) / ( ten * 2.0f + 1.0f ) * 2.0 * atker_level / ( 80.0 + atker_level );
+        chance = ( cri - ten ) / ( ten * 2.0f + 1.0f ) * 2.0 * atker_level / ( defer_level + atker_level );
     }
     else {
         chance = 1.0 / ( ten * 2.0f * ( 80.0f - defer_level ) );

@@ -10,6 +10,7 @@
 #define __Boids__Skill__
 
 #include "cocos2d.h"
+#include "./skill/SkillNode.h"
 
 enum eSkillState {
     SkillStateLoading = 1,
@@ -32,6 +33,8 @@ private:
     cocos2d::ValueMap _skill_data;
     
     UnitNode* _owner;
+    
+    SkillNode* _skill_node;
 public:
     Skill();
     virtual ~Skill();
@@ -60,6 +63,7 @@ public:
     void setSkillState( eSkillState new_state ) { _state = new_state; }
     
     bool isSkillReady();
+    bool isCasting();
     
     float getSkillCD();
     
@@ -73,10 +77,13 @@ public:
     std::string getChargingEffectPos();
     
     bool shouldContinue();
-    
     bool shouldCastOnTouchDown();
+    bool hasExtraDamage();
     
     cocos2d::Value getAttribute( const std::string& key );
+    
+    SkillNode* getSkillNode() { return _skill_node; }
+    void setSkillNode( SkillNode* skill_node ) { _skill_node = skill_node; }
 };
 
 #endif /* defined(__Boids__Skill__) */

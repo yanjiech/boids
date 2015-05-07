@@ -23,9 +23,9 @@ BarrageOfArrow::~BarrageOfArrow() {
 
 }
 
-BarrageOfArrow* BarrageOfArrow::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+BarrageOfArrow* BarrageOfArrow::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     BarrageOfArrow* ret = new BarrageOfArrow();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -35,7 +35,7 @@ BarrageOfArrow* BarrageOfArrow::create( UnitNode* owner, const cocos2d::ValueMap
     }
 }
 
-bool BarrageOfArrow::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool BarrageOfArrow::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }
