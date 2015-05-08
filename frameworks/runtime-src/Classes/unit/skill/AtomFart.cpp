@@ -19,9 +19,9 @@ AtomFart::~AtomFart() {
     
 }
 
-AtomFart* AtomFart::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+AtomFart* AtomFart::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     AtomFart* ret = new AtomFart();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -31,7 +31,7 @@ AtomFart* AtomFart::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     }
 }
 
-bool AtomFart::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool AtomFart::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

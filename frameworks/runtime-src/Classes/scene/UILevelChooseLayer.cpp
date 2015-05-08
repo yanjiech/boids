@@ -11,7 +11,7 @@
 #include "../manager/SceneManager.h"
 #include "../manager/ResourceManager.h"
 
-#define MAIN_CSB_FILE "level_choose/main/main.csb"
+#define MAIN_CSB_FILE "homePage/homePage.csb"
 #define LEVEL_CSB_FILE "level_choose/level/level.csb"
 
 using namespace cocos2d;
@@ -47,7 +47,7 @@ bool UILevelChooseLayer::init() {
     this->addChild( _level_node );
     _level_node->setVisible( false );
     
-    _scrollview = dynamic_cast<ui::ScrollView*>( _main_node->getChildByName( "scrollView" ) );
+    _scrollview = dynamic_cast<ui::ScrollView*>( _main_node->getChildByName( "mapScrollView" ) );
     _background_node = dynamic_cast<Sprite*>( _level_node->getChildByName( "background" ) );
     _back_button = dynamic_cast<ui::Button*>( _background_node->getChildByName( "backButton" ) );
     _back_button->addTouchEventListener( CC_CALLBACK_2( UILevelChooseLayer::onBackButtonTouched, this ) );
@@ -79,10 +79,14 @@ bool UILevelChooseLayer::init() {
 
 void UILevelChooseLayer::onStartButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        SceneConfig scene_config;
-        scene_config.ref_params.push_back( _map_data );
-        scene_config.value_params["is_pvp"] = Value( _is_pvp );
-        SceneManager::getInstance()->transitToScene( eSceneName::SceneBattle, &scene_config );
+        cocos2d::Vector<cocos2d::Ref*> a_ref_params;
+        a_ref_params.pushBack( _map_data );
+        
+        cocos2d::ValueMap a_value_params;
+        a_value_params["is_pvp"] = Value( _is_pvp );
+        
+        SceneConfig* scene_config = SceneConfig::create( a_ref_params, a_value_params );
+        SceneManager::getInstance()->transitToScene( eSceneName::SceneBattle, scene_config );
     }
 }
 

@@ -49,10 +49,13 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
         }
     }
     
-    const ValueVector& events_json = meta_json.at( "events" ).asValueVector();
-    for( auto itr = events_json.begin(); itr != events_json.end(); ++itr ) {
-        EventTrigger* trigger = EventTrigger::create( this, itr->asValueMap() );
-        _triggers.pushBack( trigger );
+    sitr = meta_json.find( "events" );
+    if( sitr != meta_json.end() ) {
+        const ValueVector& events_json = sitr->second.asValueVector();
+        for( auto itr = events_json.begin(); itr != events_json.end(); ++itr ) {
+            EventTrigger* trigger = EventTrigger::create( this, itr->asValueMap() );
+            _triggers.pushBack( trigger );
+        }
     }
     
     return true;
@@ -130,10 +133,15 @@ void MapLogic::onMapInit() {
     }
 }
 
-void MapLogic::onTaskStateChanged( const std::string& task_name, const std::string& task_state ) {
+void MapLogic::onTaskStateChanged( const std::string& task_name, const std::string& task_state, float progress ) {
     for( auto task : _game_tasks ) {
         if( task->isActive() && task->getTaskName() == task_name ) {
-            task->setTaskState( task_state );
+            if( task_state == "task_progress" ) {
+                task->addProgress( progress );
+            }
+            else {
+                task->setTaskState( task_state );
+            }
             if( task->isPrimary() && !task->isActive() ) {
                 if( task->getTaskState() == GAME_TASK_STATE_FINISHED ) {
                     _battle_layer->changeState( eBattleState::BattleWin );
@@ -166,6 +174,14 @@ void MapLogic::onConversationStateChanged( const std::string& trigger_name, cons
             conditions["name"] = Value( trigger_name );
             conditions["state"] = Value( trigger_state );
             trigger->activateTriggerByConditions( conditions, nullptr );
+        }
+    }
+}
+
+void MapLogic::onVisionChanged( const cocos2d::ValueMap& update_data ) {
+    for( auto trigger : _triggers ) {
+        if( trigger->isEnabled() ) {
+            trigger->activateTriggerByConditions( update_data, nullptr );
         }
     }
 }

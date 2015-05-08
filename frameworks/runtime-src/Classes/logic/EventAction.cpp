@@ -81,7 +81,7 @@ bool EventAction::init( const cocos2d::ValueMap& action_data, class MapLogic* ma
     return true;
 }
 
-bool EventAction::start( cocos2d::Map<std::string, cocos2d::Ref*> params, bool auto_unschedule ) {
+bool EventAction::start( const cocos2d::Map<std::string, cocos2d::Ref*>& params, bool auto_unschedule ) {
     if( !_is_running ) {
         _params = params;
         _auto_unschedule = auto_unschedule;
@@ -175,10 +175,15 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
         unit_state = itr->second.asString();
     }
     
+    bool change_show_hp;
     bool show_hp = false;
     itr = _action_data.find( "show_hp" );
     if( itr != _action_data.end() ) {
         show_hp = itr->second.asBool();
+        change_show_hp = true;
+    }
+    else {
+        change_show_hp = false;
     }
     
     std::string unit_type = "";
@@ -197,6 +202,22 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
     itr = _action_data.find( "tag_name" );
     if( itr != _action_data.end() ) {
         tag_name = itr->second.asString();
+    }
+    
+    bool get_or_lose_item = true;
+    itr = _action_data.find( "item_get_or_lose" );
+    if( itr != _action_data.end() ) {
+        get_or_lose_item = itr->second.asBool();
+    }
+    std::string item_name = "";
+    itr = _action_data.find( "item_name" );
+    if( itr != _action_data.end() ) {
+        item_name = itr->second.asString();
+    }
+    std::string item_resource = "";
+    itr = _action_data.find( "item_resource" );
+    if( itr != _action_data.end() ) {
+        item_resource = itr->second.asString();
     }
     
     ValueMap buff_data;
@@ -312,7 +333,7 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                         UnitNode* unit = UnitNode::create( battle_layer, unit_data );
                         if( !buff_data.empty() ) {
                             Buff* buff = Buff::create( unit, buff_data );
-                            unit->addBuff( buff->getBuffId(), buff );
+                            unit->addBuff( buff->getBuffId(), buff, true );
                             buff->begin();
                         }
                         
@@ -329,6 +350,20 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                         
                         if( custom_change != "" ) {
                             unit->applyCustomChange( custom_change );
+                        }
+                        
+                        if( item_name.size() > 0 ) {
+                            if( get_or_lose_item ) {
+                                ValueMap item_data;
+                                item_data["item_name"] = Value( item_name );
+                                item_data["item_resource"] = Value( item_resource );
+                                
+                                Item* item = Item::create( item_data );
+                                unit->addItem( item );
+                            }
+                            else {
+                                unit->removeItem( item_name );
+                            }
                         }
                     }
                     
@@ -379,17 +414,37 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
             else if( unit_state == UNIT_STATE_DIE ) {
                 
             }
-            if( show_hp ) {
-                u->showHP();
-            }
-            else {
-                u->hideHP();
+            if( change_show_hp ) {
+                if( show_hp ) {
+                    u->showHP();
+                }
+                else {
+                    u->hideHP();
+                }
             }
             if( tag_name != "" ) {
                 u->setUnitTags( tag_name );
             }
             if( unit_type != "" ) {
                 u->setTargetCamp( UnitNode::getCampByString( unit_type ) );
+            }
+            if( item_name.size() > 0 ) {
+                if( get_or_lose_item ) {
+                    ValueMap item_data;
+                    item_data["item_name"] = Value( item_name );
+                    item_data["item_resource"] = Value( item_resource );
+                    
+                    Item* item = Item::create( item_data );
+                    u->addItem( item );
+                }
+                else {
+                    u->removeItem( item_name );
+                }
+            }
+            if( !buff_data.empty() ) {
+                Buff* buff = Buff::create( u, buff_data );
+                u->addBuff( buff->getBuffId(), buff, true );
+                buff->begin();
             }
         }
     }
@@ -430,7 +485,12 @@ void TaskChangeAction::onActionTriggered( bool finish ) {
     
     const std::string& task_name = _action_data.at( "task_name" ).asString();
     const std::string& task_state = _action_data.at( "task_state" ).asString();
-    _map_logic->onTaskStateChanged( task_name, task_state );
+    float progress = 0;
+    auto itr = _action_data.find( "progress" );
+    if( itr != _action_data.end() ) {
+        progress = itr->second.asFloat();
+    }
+    _map_logic->onTaskStateChanged( task_name, task_state, progress );
 }
 
 //game change action
@@ -558,12 +618,20 @@ void VisionChangeAction::onActionTriggered( bool finish ) {
     std::string source_type = _action_data.at( "source_type" ).asString();
     std::string source_value = _action_data.at( "source_value" ).asString();
     
+    ValueMap update_data;
+    update_data["trigger_type"] = Value( "vision_change" );
+    update_data["source_type"] = Value( source_type );
+    update_data["source_value"] = Value( source_value );
+    update_data["vision_state"] = Value( vision_state );
+    
     if( source_type == UNIT_SOURCE_NAME ) {
         const BlockMap& block_nodes = _map_logic->getBattleLayer()->getBlockNodes();
         for( auto itr = block_nodes.begin(); itr != block_nodes.end(); ++itr ) {
             BlockNode* block_node = itr->second;
             if( block_node->getBlockName() == source_value ) {
                 itr->second->setEnabled( enabled );
+                block_node->updateEnabled();
+                _map_logic->onVisionChanged( update_data );
             }
         }
     }

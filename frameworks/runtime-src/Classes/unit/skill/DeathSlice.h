@@ -25,8 +25,8 @@ public:
     DeathSlice();
     virtual ~DeathSlice();
     
-    static DeathSlice* create( UnitNode* owner, const cocos2d::ValueMap& data );
-    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    static DeathSlice* create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
     
     virtual void updateFrame( float delta );
     

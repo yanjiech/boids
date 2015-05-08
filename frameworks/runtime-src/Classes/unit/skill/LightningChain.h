@@ -31,8 +31,8 @@ public:
     LightningChain();
     virtual ~LightningChain();
     
-    static LightningChain* create( UnitNode* owner, const cocos2d::ValueMap& data, UnitNode* target_node );
-    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data, UnitNode* target_node );
+    static LightningChain* create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
     
     UnitNode* getTargetNode();
     void setTargetNode( UnitNode* target_node );

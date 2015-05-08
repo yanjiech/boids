@@ -209,10 +209,12 @@ void UIStoryLayer::setSpeaker( const std::string& name, bool left_or_right ) {
     if( left_or_right ) {
         _sp_speaker->setAnchorPoint( Point( 0, 0 ) );
         _sp_speaker->setPosition( Point( origin.x + 50.0f, 0 ) );
+        _sp_speaker->setFlippedX( true );
     }
     else {
         _sp_speaker->setAnchorPoint( Point( 1.0f, 0 ) );
         _sp_speaker->setPosition( Point( origin.x + size.width - 50.0f, 0 ) );
+        _sp_speaker->setFlippedX( false );
     }
 }
 

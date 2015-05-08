@@ -24,9 +24,9 @@ FatalThrow::~FatalThrow() {
     CC_SAFE_RELEASE( _flamingo );
 }
 
-FatalThrow* FatalThrow::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+FatalThrow* FatalThrow::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     FatalThrow* ret = new FatalThrow();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -36,7 +36,7 @@ FatalThrow* FatalThrow::create( UnitNode* owner, const cocos2d::ValueMap& data )
     }
 }
 
-bool FatalThrow::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool FatalThrow::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

@@ -23,14 +23,16 @@
     },
     "deploy_units" :
     [
-        "103"
+        "3",
+        "5",
+        "7"
     ],
     "units" :
     {
         "1" :
         {
             "name" : "vanhelsing",
-            "level" : 30,
+            "level" : 40,
             "skills" :
             [
                 {
@@ -76,7 +78,7 @@
         "3" :
         {
             "name" : "enchantress",
-            "level" : 2,
+            "level" : 6,
             "skills" :
             [
                 {
@@ -122,7 +124,7 @@
         "5" :
         {
             "name" : "dracula",
-            "level" : 1,
+            "level" : 6,
             "skills" :
             [
                 {
@@ -154,6 +156,30 @@
                 },
                 {
                     "name" : "HuntingIntuition",
+                    "level" : 3
+                }
+
+            ],
+            "equips" :
+            {
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
+            }
+        },
+        "7" :
+        {
+            "name" : "kyle",
+            "level" : 6,
+            "skills" :
+            [
+                {
+                    "name" : "CrazyScratch",
+                    "level" : 3
+                },
+                {
+                    "name" : "NinthLife",
                     "level" : 3
                 }
 

@@ -68,19 +68,31 @@ void Skill::updateFrame( float delta ) {
 }
 
 void Skill::activate( const cocos2d::ValueMap& params ) {
-    _elapse = 0;
     this->setSkillState( eSkillState::SkillStateCasting );
     SkillNode* skill_node = SkillNodeFactory::createSkillNode( _skill_name, _owner, _skill_data, params );
     skill_node->begin();
+    
+    Value extra = this->getAttribute( "extra_damage" );
+    if( extra != Value::Null && extra.asBool() ) {
+        this->setSkillNode( skill_node );
+    }
+    else {
+        _elapse = 0;
+    }
 }
 
 void Skill::reload() {
     _elapse = 0;
+    this->setSkillNode( nullptr );
     this->setSkillState( eSkillState::SkillStateLoading );
 }
 
 bool Skill::isSkillReady() {
     return _state == eSkillState::SkillStateReady;
+}
+
+bool Skill::isCasting() {
+    return _state == eSkillState::SkillStateCasting;
 }
 
 float Skill::getSkillCD() {
@@ -144,11 +156,11 @@ bool Skill::shouldContinue() {
 }
 
 bool Skill::shouldCastOnTouchDown() {
-    auto itr = _skill_data.find( "touch_down_cast" );
-    if( itr != _skill_data.end() ) {
-        return itr->second.asBool();
-    }
-    return false;
+    return _skill_data["touch_down_cast"].asBool();
+}
+
+bool Skill::hasExtraDamage() {
+    return _skill_data["extra_damage"].asBool();
 }
 
 cocos2d::Value Skill::getAttribute( const std::string& key ) {

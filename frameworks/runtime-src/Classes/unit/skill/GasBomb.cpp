@@ -20,9 +20,9 @@ GasBomb::~GasBomb() {
     
 }
 
-GasBomb* GasBomb::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+GasBomb* GasBomb::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     GasBomb* ret = new GasBomb();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -32,7 +32,7 @@ GasBomb* GasBomb::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     }
 }
 
-bool GasBomb::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool GasBomb::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

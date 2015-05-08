@@ -26,9 +26,9 @@ MagicPulse::~MagicPulse() {
     
 }
 
-MagicPulse* MagicPulse::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+MagicPulse* MagicPulse::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     MagicPulse* ret = new MagicPulse();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -38,7 +38,7 @@ MagicPulse* MagicPulse::create( UnitNode* owner, const cocos2d::ValueMap& data )
     }
 }
 
-bool MagicPulse::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool MagicPulse::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

@@ -18,9 +18,9 @@ BatSwarm::~BatSwarm() {
     
 }
 
-BatSwarm* BatSwarm::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+BatSwarm* BatSwarm::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     BatSwarm* ret = new BatSwarm();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -30,7 +30,7 @@ BatSwarm* BatSwarm::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     }
 }
 
-bool BatSwarm::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool BatSwarm::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

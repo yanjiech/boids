@@ -1,1163 +1,235 @@
 {
-    "desc": "前线已经被哥布林占领，男爵竟然还躲在后方享乐！",
-    "tasks": [
-        {
-            "name": "1",
-            "desc": "找到男爵的线索"
-        },
-        {
-            "name": "2",
-            "desc": "3分钟内完成任务"
-        },
-        {
-            "name": "3",
-            "desc": "全员不死"
-        }
-    ],
     "positions": [
         {
-            "name": "2",
+            "name": "player_start",
             "rect": {
-                "x": 672.699,
-                "y": 2277.55,
-                "width": 126.457,
-                "height": 84.3051
+                "x": 5434.05,
+                "y": 2138.38,
+                "width": 116.808,
+                "height": 118.805
             }
         },
         {
-            "name": "3",
+            "name": "orange_01",
             "rect": {
-                "x": 1012.14,
-                "y": 2043.49,
-                "width": 144.207,
-                "height": 87.6338
+                "x": 4998.36,
+                "y": 3042.89,
+                "width": 81.8657,
+                "height": 73.8787
             }
         },
         {
-            "name": "4",
+            "name": "orange_02",
             "rect": {
-                "x": 427.547,
-                "y": 1602,
-                "width": 100.945,
-                "height": 72.105
+                "x": 4576.06,
+                "y": 2346.04,
+                "width": 105.826,
+                "height": 103.829
             }
         },
         {
-            "name": "5",
+            "name": "red_01",
             "rect": {
-                "x": 1133.06,
-                "y": 1596.45,
-                "width": 129.787,
-                "height": 93.1801
+                "x": 3922.13,
+                "y": 2511.76,
+                "width": 73.8784,
+                "height": 75.8755
             }
         },
         {
-            "name": "6",
+            "name": "red_02",
             "rect": {
-                "x": 1554.58,
-                "y": 1593.12,
-                "width": 109.822,
-                "height": 79.8685
+                "x": 2622.27,
+                "y": 2436.89,
+                "width": 85.8589,
+                "height": 91.8489
             }
         },
         {
-            "name": "7",
+            "name": "red_03",
             "rect": {
-                "x": 1361.57,
-                "y": 1197.11,
-                "width": 151.972,
-                "height": 106.491
+                "x": 1983.32,
+                "y": 2126.4,
+                "width": 99.8359,
+                "height": 95.8425
             }
         },
         {
-            "name": "8",
+            "name": "yellow_01",
             "rect": {
-                "x": 652.737,
-                "y": 1239.26,
-                "width": 120.911,
-                "height": 80.9781
+                "x": 1195.61,
+                "y": 2581.65,
+                "width": 90.8508,
+                "height": 87.8555
             }
         },
         {
-            "name": "9",
+            "name": "blue_01",
             "rect": {
-                "x": 874.593,
-                "y": 906.474,
-                "width": 185.252,
-                "height": 100.945
+                "x": 1920.42,
+                "y": 1134.03,
+                "width": 108.821,
+                "height": 115.81
             }
         },
         {
-            "name": "10",
+            "name": "yellow_03",
             "rect": {
-                "x": 388.728,
-                "y": 1005.2,
-                "width": 102.053,
-                "height": 79.8685
+                "x": 731.374,
+                "y": 1196.92,
+                "width": 80.8672,
+                "height": 89.8524
             }
         },
         {
-            "name": "11",
+            "name": "blue_02",
             "rect": {
-                "x": 227.879,
-                "y": 417.197,
-                "width": 173.049,
-                "height": 109.82
+                "x": 526.71,
+                "y": 1771.98,
+                "width": 92.8473,
+                "height": 99.8358
             }
         },
         {
-            "name": "12",
+            "name": "blue_03",
             "rect": {
-                "x": 1158.57,
-                "y": 326.153,
-                "width": 166.395,
-                "height": 96.5087
-            }
-        },
-        {
-            "name": "14",
-            "rect": {
-                "x": 2160.26,
-                "y": 383.837,
-                "width": 161.956,
-                "height": 100.945
-            }
-        },
-        {
-            "name": "15",
-            "rect": {
-                "x": 2880.19,
-                "y": 433.92,
-                "width": 128.676,
-                "height": 100.945
-            }
-        },
-        {
-            "name": "16",
-            "rect": {
-                "x": 3388.24,
-                "y": 403.967,
-                "width": 119.803,
-                "height": 89.853
-            }
-        },
-        {
-            "name": "17",
-            "rect": {
-                "x": 3027.72,
-                "y": 660.213,
-                "width": 113.145,
-                "height": 79.8685
-            }
-        },
-        {
-            "name": "18",
-            "rect": {
-                "x": 2126.98,
-                "y": 939.754,
-                "width": 166.395,
-                "height": 104.272
-            }
-        },
-        {
-            "name": "19",
-            "rect": {
-                "x": 2427.59,
-                "y": 1304.71,
-                "width": 145.318,
-                "height": 102.053
-            }
-        },
-        {
-            "name": "20",
-            "rect": {
-                "x": 2064.86,
-                "y": 1617.53,
-                "width": 184.141,
-                "height": 122.022
-            }
-        },
-        {
-            "name": "21",
-            "rect": {
-                "x": 1878.5,
-                "y": 2023.36,
-                "width": 198.563,
-                "height": 112.038
-            }
-        },
-        {
-            "name": "23",
-            "rect": {
-                "x": 2961.16,
-                "y": 2239.84,
-                "width": 164.176,
-                "height": 104.272
-            }
-        },
-        {
-            "name": "24",
-            "rect": {
-                "x": 2828.05,
-                "y": 1935.89,
-                "width": 158.629,
-                "height": 98.7261
-            }
-        },
-        {
-            "name": "25",
-            "rect": {
-                "x": 3160.83,
-                "y": 1720.69,
-                "width": 174.16,
-                "height": 104.274
-            }
-        },
-        {
-            "name": "26",
-            "rect": {
-                "x": 3248.47,
-                "y": 1910.21,
-                "width": 168.61,
-                "height": 107.601
-            }
-        },
-        {
-            "name": "26",
-            "rect": {
-                "x": 3051.02,
-                "y": 1190.45,
-                "width": 137.552,
-                "height": 95.399
-            }
-        },
-        {
-            "name": "27",
-            "rect": {
-                "x": 3202.99,
-                "y": 1382.36,
-                "width": 137.552,
-                "height": 92.0704
-            }
-        },
-        {
-            "name": "28",
-            "rect": {
-                "x": 3474.77,
-                "y": 1363.5,
-                "width": 110.926,
-                "height": 69.884
-            }
-        },
-        {
-            "name": "1",
-            "rect": {
-                "x": 573.973,
-                "y": 1932.56,
-                "width": 150.864,
-                "height": 103.164
-            }
-        },
-        {
-            "name": "8.1",
-            "rect": {
-                "x": 1006.58,
-                "y": 1222.62,
-                "width": 119.803,
-                "height": 82.0878
-            }
-        },
-        {
-            "name": "9.1",
-            "rect": {
-                "x": 1085.35,
-                "y": 1085.07,
-                "width": 120.911,
-                "height": 73.2128
-            }
-        },
-        {
-            "name": "13",
-            "rect": {
-                "x": 1703.22,
-                "y": 413.787,
-                "width": 128.679,
-                "height": 79.8703
-            }
-        },
-        {
-            "name": "11.1",
-            "rect": {
-                "x": 616.119,
-                "y": 323.935,
-                "width": 128.676,
-                "height": 87.6339
-            }
-        },
-        {
-            "name": "13.1",
-            "rect": {
-                "x": 1541.26,
-                "y": 317.278,
-                "width": 133.118,
-                "height": 80.9781
-            }
-        },
-        {
-            "name": "15.1",
-            "rect": {
-                "x": 2491.93,
-                "y": 251.829,
-                "width": 187.471,
-                "height": 89.8512
-            }
-        },
-        {
-            "name": "19.1",
-            "rect": {
-                "x": 2133.62,
-                "y": 1351.3,
-                "width": 141.987,
-                "height": 102.053
-            }
-        },
-        {
-            "name": "21.1",
-            "rect": {
-                "x": 1587.86,
-                "y": 2116.71,
-                "width": 117.584,
-                "height": 84.3051
-            }
-        },
-        {
-            "name": "22",
-            "rect": {
-                "x": 2319.98,
-                "y": 1783.92,
-                "width": 158.629,
-                "height": 93.1799
-            }
-        },
-        {
-            "name": "heros_come",
-            "rect": {
-                "x": 2343.2,
-                "y": 2155.04,
-                "width": 316.31,
-                "height": 286.36
+                "x": 2666.19,
+                "y": 1251.83,
+                "width": 76.8738,
+                "height": 80.8671
             }
         },
         {
             "name": "boss",
             "rect": {
-                "x": 3085.4,
-                "y": 1110.17,
-                "width": 219.64,
-                "height": 120.912
+                "x": 4428.3,
+                "y": 1081.11,
+                "width": 107.823,
+                "height": 109.82
             }
         },
         {
-            "name": "player_start",
+            "name": "boss_guard_01",
             "rect": {
-                "x": 9.3313,
-                "y": 1210,
-                "width": 134.222,
-                "height": 73.2129
+                "x": 4185.7,
+                "y": 1323.71,
+                "width": 92.8472,
+                "height": 85.859
             }
         },
         {
-            "name": "5_say",
+            "name": "boss_guard_02",
             "rect": {
-                "x": 18.2127,
-                "y": 1614.9,
-                "width": 827.531,
-                "height": 214.092
+                "x": 4833.63,
+                "y": 1115.06,
+                "width": 93.8457,
+                "height": 84.8606
             }
         },
         {
-            "name": "9.1_say",
+            "name": "boss_guard_03",
             "rect": {
-                "x": 1040.98,
-                "y": 1547.24,
-                "width": 633.406,
-                "height": 77.6511
+                "x": 4794.7,
+                "y": 745.665,
+                "width": 96.8408,
+                "height": 89.8523
             }
         },
         {
-            "name": "10_say",
+            "name": "boss_guard_04",
             "rect": {
-                "x": 429.763,
-                "y": 1166.75,
-                "width": 817.543,
-                "height": 94.2896
+                "x": 4090.85,
+                "y": 862.473,
+                "width": 97.8394,
+                "height": 91.849
             }
         },
         {
-            "name": "say15.1",
+            "name": "trigger_boss",
             "rect": {
-                "x": 1809.72,
-                "y": 9.76001,
-                "width": 100.945,
-                "height": 583.485
+                "x": 3433.93,
+                "y": 926.368,
+                "width": 213.649,
+                "height": 785.709
+            }
+        },
+        {
+            "name": "orange_03",
+            "rect": {
+                "x": 2421.6,
+                "y": 2145.37,
+                "width": 71.8818,
+                "height": 72.8801
+            }
+        },
+        {
+            "name": "orange_04",
+            "rect": {
+                "x": 765.319,
+                "y": 2496.79,
+                "width": 77.872,
+                "height": 77.8721
+            }
+        },
+        {
+            "name": "orange_05",
+            "rect": {
+                "x": 284.109,
+                "y": 1456.5,
+                "width": 77.872,
+                "height": 77.8721
+            }
+        },
+        {
+            "name": "orange_06",
+            "rect": {
+                "x": 1241.54,
+                "y": 933.357,
+                "width": 84.8606,
+                "height": 88.854
+            }
+        },
+        {
+            "name": "orange_07",
+            "rect": {
+                "x": 3030.6,
+                "y": 164.62,
+                "width": 101.833,
+                "height": 93.8458
+            }
+        },
+        {
+            "name": "orange_08",
+            "rect": {
+                "x": 2924.77,
+                "y": 1365.65,
+                "width": 77.8721,
+                "height": 76.8735
+            }
+        },
+        {
+            "name": "orange_09",
+            "rect": {
+                "x": 5352.78,
+                "y": 706.729,
+                "width": 83.8623,
+                "height": 89.8524
+            }
+        },
+        {
+            "name": "yellow_02",
+            "rect": {
+                "x": 1560.25,
+                "y": 1336.3,
+                "width": 95.8425,
+                "height": 100.834
             }
         }
     ],
     "events": [
         {
-            "name": "6",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "scarecrow",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "6",
-                    "unit_count": 2,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "scarecrow",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "7",
-                    "unit_count": 2,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "scarecrow",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "18",
-                    "unit_count": 2,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "scarecrow",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "20",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "4",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "4",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "3",
-                    "unit_count": 2,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "10",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "women_wizard",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "say_2.5",
-                    "position_name": "10",
-                    "unit_count": 2,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "8",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "8",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "say_1",
-                    "position_name": "5",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "1",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "1",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "5",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "8.1",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "8.1",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "9",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "9",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "9",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "9.1",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "women_wizard",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "say_2",
-                    "position_name": "9.1",
-                    "unit_count": 2,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "12_14",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "12",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "14",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "11",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "11",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "11.1",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "11.1",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "13",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "13",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "13.1",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "13.1",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "15.1",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "say_5",
-                    "position_name": "15.1",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "16",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "15",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "women_wizard",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "say_4",
-                    "position_name": "15",
-                    "unit_count": 2,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "17",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "hammer_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "say_3",
-                    "position_name": "17",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "15jia",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "15",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "19.1",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "19",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "19.1",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "21",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "21.1",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "21.1",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "26",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "hammer_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "bossis,say_8",
-                    "position_name": "26",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "23",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "24",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "say_6",
-                    "position_name": "23",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "bossis,say_7",
-                    "position_name": "25",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "2728",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "bossis",
-                    "position_name": "27",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "bossis",
-                    "position_name": "28",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "footman",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "tag_name": "bossis",
-                    "position_name": "27",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "22",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "hammer_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "22",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "boss_appear",
+            "name": "lose_trigger",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -1165,11 +237,95 @@
             "triggers": [
                 {
                     "trigger_type": "unit_change",
-                    "source_type": "type_source",
+                    "source_type": "tag_source",
                     "source_value": "player",
-                    "unit_state": "unit_move",
-                    "position_name": "heros_come",
-                    "trigger_count": 1
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "main_win",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "story_01",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：这里感觉阴森森的！",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：你也有害怕的时候！",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：我才不怕！",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "骷髅王：kakaka...kekeke...",
+                            "speaker": "skeleton_king"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：啊啊啊啊啊啊！",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉....",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：咦？那边的水晶好像在发光！",
+                            "speaker": "enchantress"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：也许跟前面的门有关！",
+                            "speaker": "dracula"
+                        }
+                    ],
+                    "name": "story_01"
+                }
+            ]
+        },
+        {
+            "name": "orange_monster",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
                 }
             ],
             "actions": [
@@ -1177,20 +333,397 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
-                    "source_value": "hammer_warrior",
+                    "source_value": "white_ghost",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
-                    "tag_name": "boss_gandalf,bossis",
+                    "show_hp": false,
+                    "position_name": "orange_01",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_02",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_03",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_04",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_05",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_06",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_08",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_09",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_07",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "buff_monster",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "red_01",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "red_02",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "red_03",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "yellow_01",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "yellow_01",
+                    "unit_count": 1,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "yellow_02",
+                    "unit_count": 3,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "yellow_03",
+                    "unit_count": 3,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "blue_01",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "blue_02",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "story_02",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "trigger_boss",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": false,
+                            "line": "骷髅王：凡人！竟敢来盗我的宝石！拿命来！",
+                            "speaker": "skeleton_king"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：......",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：听不到你吐槽，总觉得不太舒服...",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：小心！注意骷髅王身上的状态！",
+                            "speaker": "enchantress"
+                        }
+                    ],
+                    "name": "story_02"
+                }
+            ]
+        },
+        {
+            "name": "trigger_boss",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_02",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "win_trigger",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_king",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": true,
+                    "tag_name": "boss",
                     "position_name": "boss",
                     "unit_count": 1,
                     "is_boss": true,
+                    "custom_change": "hp:8000",
+                    "unit_level": 5,
                     "popup_type": "normal",
-					"custom_change": "scale:1.8,hp:1000"
+                    "skill_1_level": 2
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "boss_guard_03",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "boss_guard_02",
+                    "unit_count": 1,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "boss_guard_01",
+                    "unit_count": 2,
+                    "unit_level": 4,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "boss_guard_04",
+                    "unit_count": 1,
+                    "unit_level": 4,
+                    "popup_type": "normal"
                 }
             ]
         },
         {
-            "name": "boss_talk",
+            "name": "boss_buff_red",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -1199,55 +732,27 @@
                 {
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
-                    "source_value": "boss_gandalf",
+                    "source_value": "boss",
                     "unit_state": "unit_appear",
                     "trigger_count": 1
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "boss_gandalf",
-                            "content": "谁敢惊动我尊贵的男爵殿下，给我拿下！",
-                            "camera_move": true,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "boss_talk"
-                }
-            ]
-        },
-        {
-            "name": "final_a",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "boss_talk",
-                    "state": "conversation_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "-1,0.00,30.00",
                     "action_type": "unit_change",
                     "source_type": "tag_source",
-                    "source_value": "bossis",
-                    "unit_state": "unit_patrol",
-                    "position_name": "heros_come",
+                    "source_value": "boss",
+                    "buff_name": "damage_off",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:red,effect_resource:buff_ball,color_red:255",
                     "popup_type": "normal"
                 }
             ]
         },
         {
-            "name": "win",
+            "name": "boss_buff_yellow",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -1256,181 +761,91 @@
                 {
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
-                    "source_value": "boss_gandalf",
-                    "unit_state": "unit_disappear",
+                    "source_value": "boss",
+                    "unit_state": "unit_appear",
                     "trigger_count": 1
                 }
             ],
             "actions": [
                 {
-                    "meta": "-1,0.00,0.00",
-                    "action_type": "game_change",
-                    "game_state": "game_win"
-                }
-            ]
-        },
-        {
-            "name": "5_say",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "type_source",
-                    "source_value": "player",
-                    "unit_state": "unit_move",
-                    "position_name": "5_say",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "say_1",
-                            "content": "男爵喜欢吃什么，男爵喜欢喝什么...",
-                            "camera_move": false,
-                            "duration": 3.5
-                        }
-                    ],
-                    "name": "say_1"
-                }
-            ]
-        },
-        {
-            "name": "9.1_say",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "type_source",
-                    "source_value": "player",
-                    "unit_state": "unit_move",
-                    "position_name": "9.1_say",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "say_2",
-                            "content": "男爵昨晚穿得好得体哦~",
-                            "camera_move": false,
-                            "duration": 3
-                        }
-                    ],
-                    "name": "say_2"
-                }
-            ]
-        },
-        {
-            "name": "10_say",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "type_source",
-                    "source_value": "player",
-                    "unit_state": "unit_move",
-                    "position_name": "10_say",
-                    "trigger_count": 1
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "tag_source",
-                            "source": "say_2.5",
-                            "content": "大胆，你们是谁！",
-                            "camera_move": false,
-                            "duration": 1
-                        }
-                    ],
-                    "name": "say_2.5"
-                }
-            ]
-        },
-        {
-            "name": "player_speak01",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "say_1",
-                    "state": "conversation_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
-                        {
-                            "source_type": "player_source",
-                            "source": "player",
-                            "content": "不如给男爵大人来点刺激的",
-                            "camera_move": true,
-                            "duration": 2
-                        }
-                    ],
-                    "name": "player_speak01"
-                }
-            ]
-        },
-        {
-            "name": "10a",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "conversation_change",
-                    "name": "say_2.5",
-                    "state": "conversation_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "-1,10.00,30.00",
                     "action_type": "unit_change",
                     "source_type": "tag_source",
-                    "source_value": "say_2.5",
-                    "unit_state": "unit_patrol",
-                    "position_name": "8.1",
+                    "source_value": "boss",
+                    "buff_name": "damage_off",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:yellow,effect_resource:buff_ball,color_green:255,color_red:255",
                     "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "boss_buff_blue",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "-1,20.00,30.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "buff_name": "damage_off",
+                    "buff_type": "buff_tag_protect",
+                    "buff_params": "duration:-1,buff_param:blue,effect_resource:buff_ball,color_green:255,color_blue:255",
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "win_trigger",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "main_win",
+                    "task_state": "task_finished"
                 }
             ]
         }
     ],
     "units": [
-        "archer",
-        "footman",
-        "gandalf",
-        "hammer_warrior",
-        "scarecrow",
-        "wild_wolf",
-        "women_wizard"
+        "dead_archer",
+        "skeleton_king",
+        "skeleton_warrior",
+        "white_ghost"
+    ],
+    "tasks": [
+        {
+            "type": "primary_win",
+            "name": "main_win",
+            "desc": "kill_boss",
+            "title": "kill boss"
+        }
     ]
 }

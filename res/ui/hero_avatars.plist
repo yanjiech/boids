@@ -7,7 +7,7 @@
             <key>dracula_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,690},{170,170}}</string>
+                <string>{{174,518},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>gandalf_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,518},{170,170}}</string>
+                <string>{{2,690},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -42,6 +42,19 @@
                 <string>{{0,0},{170,170}}</string>
                 <key>sourceSize</key>
                 <string>{170,170}</string>
+            </dict>
+            <key>kyle_avatar.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,518},{170,170}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{15,15},{170,170}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
             </dict>
             <key>panda_avatar.png</key>
             <dict>
@@ -118,7 +131,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5549ecabf633e8af40b8f3dcf1032115:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:ceecc05f04cd462eb98d4e93b98525d6:1/1$</string>
             <key>textureFileName</key>
             <string>hero_avatars.png</string>
         </dict>

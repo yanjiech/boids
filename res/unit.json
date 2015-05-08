@@ -20,7 +20,7 @@
         "hpgr": 129.0, 
         "id": 100024, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "aladdin", 
@@ -31,13 +31,14 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "anubies": {
         "atk": 38.0, 
         "atkgr": 20.0, 
         "attackspeed": 2.0, 
-        "bullet_name": "purple_ball", 
+        "bullet_name": "pink_ball", 
         "collide": 40.0, 
         "cri": 3.0, 
         "crigr": 3.5, 
@@ -55,7 +56,7 @@
         "hpgr": 235.0, 
         "id": 300032, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "anubies", 
@@ -63,13 +64,14 @@
         "range": 340.0, 
         "rec": 0.5, 
         "recgr": 0.2, 
-        "scale": 1.0, 
+        "scale": 0.7, 
         "skills": [
             "DeathTornado", 
             "DeathField"
         ], 
         "ten": 2.0, 
-        "tengr": 2.7
+        "tengr": 2.7, 
+        "view_range": 1000.0
     }, 
     "archer": {
         "atk": 15.0, 
@@ -93,7 +95,7 @@
         "hpgr": 80.0, 
         "id": 300024, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "archer", 
@@ -104,7 +106,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "athena": {
         "atk": 25.0, 
@@ -127,7 +130,7 @@
         "hpgr": 141.0, 
         "id": 100012, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "athena", 
@@ -138,7 +141,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 3.0, 
-        "tengr": 3.4
+        "tengr": 3.4, 
+        "view_range": 1000.0
     }, 
     "axe_orc": {
         "atk": 19.0, 
@@ -161,7 +165,7 @@
         "hpgr": 90.0, 
         "id": 300010, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "axe_orc", 
@@ -172,7 +176,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "bomb_goblin": {
         "atk": 15.0, 
@@ -196,7 +201,7 @@
         "hpgr": 80.0, 
         "id": 300019, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "bomb_goblin", 
@@ -207,7 +212,8 @@
         "scale": 0.7, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "dead_archer": {
         "atk": 14.0, 
@@ -231,7 +237,7 @@
         "hpgr": 40.0, 
         "id": 300012, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "dead_archer", 
@@ -242,7 +248,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "desert_thief": {
         "atk": 15.0, 
@@ -265,7 +272,7 @@
         "hpgr": 10.0, 
         "id": 300002, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "desert_thief", 
@@ -276,7 +283,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "desert_thief_leader": {
         "atk": 20.0, 
@@ -299,7 +307,7 @@
         "hpgr": 80.0, 
         "id": 300003, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "desert_thief_leader", 
@@ -312,7 +320,8 @@
             "Boomerang"
         ], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "djinn": {
         "atk": 28.0, 
@@ -336,7 +345,7 @@
         "hpgr": 115.0, 
         "id": 100025, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "djinn", 
@@ -347,7 +356,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "dracula": {
         "atk": 38.0, 
@@ -370,7 +380,7 @@
         "hpgr": 135.0, 
         "id": 100020, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "dracula", 
@@ -384,7 +394,8 @@
             "BatSwarm"
         ], 
         "ten": 3.0, 
-        "tengr": 2.8
+        "tengr": 2.8, 
+        "view_range": 1000.0
     }, 
     "elf_archer": {
         "atk": 25.0, 
@@ -407,7 +418,7 @@
         "hpgr": 70.0, 
         "id": 300025, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "elf_archer", 
@@ -418,7 +429,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "elf_pikeman": {
         "atk": 22.0, 
@@ -441,7 +453,7 @@
         "hpgr": 75.0, 
         "id": 300023, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "elf_pikeman", 
@@ -452,7 +464,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "enchantress": {
         "atk": 32.0, 
@@ -476,7 +489,7 @@
         "hpgr": 114.0, 
         "id": 100028, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "enchantress", 
@@ -490,7 +503,8 @@
             "Impetus"
         ], 
         "ten": 3.0, 
-        "tengr": 3.2
+        "tengr": 3.2, 
+        "view_range": 1000.0
     }, 
     "evil_wizard": {
         "atk": 25.0, 
@@ -514,7 +528,7 @@
         "hpgr": 100.0, 
         "id": 300008, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "evil_wizard", 
@@ -527,7 +541,8 @@
             "EvilInvoke"
         ], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "fat_vampire": {
         "atk": 10.0, 
@@ -550,7 +565,7 @@
         "hpgr": 120.0, 
         "id": 300016, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "fat_vampire", 
@@ -561,7 +576,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "flamingo": {
         "atk": 17.0, 
@@ -584,7 +600,7 @@
         "hpgr": 50.0, 
         "id": 400002, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "flamingo", 
@@ -595,7 +611,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "footman": {
         "atk": 20.0, 
@@ -618,7 +635,7 @@
         "hpgr": 80.0, 
         "id": 300021, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "footman", 
@@ -629,7 +646,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "frankenstein": {
         "atk": 33.0, 
@@ -652,7 +670,7 @@
         "hpgr": 133.0, 
         "id": 100021, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "frankenstein", 
@@ -663,7 +681,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.3
+        "tengr": 3.3, 
+        "view_range": 1000.0
     }, 
     "gandalf": {
         "atk": 28.0, 
@@ -687,7 +706,7 @@
         "hpgr": 113.0, 
         "id": 100019, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "gandalf", 
@@ -700,7 +719,8 @@
             "EagleAttack"
         ], 
         "ten": 2.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "goblin": {
         "atk": 12.0, 
@@ -723,7 +743,7 @@
         "hpgr": 120.0, 
         "id": 300018, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "goblin", 
@@ -734,13 +754,14 @@
         "scale": 0.7, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.4
+        "tengr": 1.4, 
+        "view_range": 1000.0
     }, 
     "goblin_helicopter": {
         "atk": 38.0, 
         "atkgr": 20.0, 
         "attackspeed": 2.0, 
-        "collide": 40.0, 
+        "collide": 50.0, 
         "cri": 3.0, 
         "crigr": 3.5, 
         "def": 23.0, 
@@ -757,7 +778,7 @@
         "hpgr": 235.0, 
         "id": 300032, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "goblin_helicopter", 
@@ -765,12 +786,13 @@
         "range": 340.0, 
         "rec": 0.5, 
         "recgr": 0.2, 
-        "scale": 0.8, 
+        "scale": 0.7, 
         "skills": [
             "GasBomb"
         ], 
         "ten": 2.0, 
-        "tengr": 2.7
+        "tengr": 2.7, 
+        "view_range": 1000.0
     }, 
     "goblin_shredder": {
         "atk": 40.0, 
@@ -793,7 +815,7 @@
         "hpgr": 250.0, 
         "id": 300035, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "goblin_shredder", 
@@ -806,41 +828,8 @@
             "DeathSlice"
         ], 
         "ten": 3.0, 
-        "tengr": 2.9
-    }, 
-    "guanyu": {
-        "atk": 32.0, 
-        "atkgr": 14.0, 
-        "attackspeed": 2.0, 
-        "collide": 40.0, 
-        "cri": 3.0, 
-        "crigr": 3.9, 
-        "def": 20.0, 
-        "defgr": 11.0, 
-        "displayname": "关羽", 
-        "dodge": 7.0, 
-        "dodgegr": 2.3, 
-        "double_face": false, 
-        "faceleft": 3, 
-        "guard_radius": 260.0, 
-        "hit": 22.0, 
-        "hitgr": 3.1, 
-        "hp": 290.0, 
-        "hpgr": 127.0, 
-        "id": 100001, 
-        "is_melee": true, 
-        "movespeed": 180.0, 
-        "mp": 100.0, 
-        "mpgr": 20.0, 
-        "name": "guanyu", 
-        "position": "", 
-        "range": 80.0, 
-        "rec": 0.5, 
-        "recgr": 0.23, 
-        "scale": 1.0, 
-        "skills": [], 
-        "ten": 1.0, 
-        "tengr": 3.0
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "hades": {
         "atk": 32.0, 
@@ -864,7 +853,7 @@
         "hpgr": 110.0, 
         "id": 100010, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "hades", 
@@ -875,7 +864,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "hahide": {
         "atk": 29.0, 
@@ -898,7 +888,7 @@
         "hpgr": 125.0, 
         "id": 100007, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "hahide", 
@@ -909,7 +899,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "hammer_warrior": {
         "atk": 30.0, 
@@ -932,7 +923,7 @@
         "hpgr": 160.0, 
         "id": 300027, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "hammer_warrior", 
@@ -943,7 +934,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.9
+        "tengr": 1.9, 
+        "view_range": 1000.0
     }, 
     "hideyoshi": {
         "atk": 26.0, 
@@ -967,7 +959,7 @@
         "hpgr": 110.0, 
         "id": 100006, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "hideyoshi", 
@@ -978,7 +970,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 2.8
+        "tengr": 2.8, 
+        "view_range": 1000.0
     }, 
     "hippolyta": {
         "atk": 28.0, 
@@ -1002,7 +995,7 @@
         "hpgr": 110.0, 
         "id": 100004, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "hippolyta", 
@@ -1016,7 +1009,8 @@
             "HuntingIntuition"
         ], 
         "ten": 2.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "hook": {
         "atk": 29.0, 
@@ -1039,7 +1033,7 @@
         "hpgr": 132.0, 
         "id": 100015, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "hook", 
@@ -1050,7 +1044,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.5
+        "tengr": 3.5, 
+        "view_range": 1000.0
     }, 
     "human_assassin": {
         "atk": 20.0, 
@@ -1073,7 +1068,7 @@
         "hpgr": 80.0, 
         "id": 300022, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "human_assassin", 
@@ -1084,13 +1079,14 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "human_king": {
         "atk": 40.0, 
         "atkgr": 21.0, 
         "attackspeed": 2.0, 
-        "collide": 40.0, 
+        "collide": 50.0, 
         "cri": 3.0, 
         "crigr": 3.6, 
         "def": 30.0, 
@@ -1107,7 +1103,7 @@
         "hpgr": 250.0, 
         "id": 300034, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "human_king", 
@@ -1117,11 +1113,12 @@
         "recgr": 0.2, 
         "scale": 1.0, 
         "skills": [
-            "AtomFart",
+            "AtomFart", 
             "FatalThrow"
         ], 
         "ten": 3.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "jasmine": {
         "atk": 27.0, 
@@ -1144,7 +1141,7 @@
         "hpgr": 131.0, 
         "id": 100026, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "jasmine", 
@@ -1155,7 +1152,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 3.0, 
-        "tengr": 3.6
+        "tengr": 3.6, 
+        "view_range": 1000.0
     }, 
     "joker": {
         "atk": 28.0, 
@@ -1179,7 +1177,7 @@
         "hpgr": 112.0, 
         "id": 100022, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "joker", 
@@ -1190,7 +1188,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 3.2
+        "tengr": 3.2, 
+        "view_range": 1000.0
     }, 
     "knight": {
         "atk": 30.0, 
@@ -1213,7 +1212,7 @@
         "hpgr": 160.0, 
         "id": 300026, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "knight", 
@@ -1224,7 +1223,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.9
+        "tengr": 1.9, 
+        "view_range": 1000.0
     }, 
     "kobold": {
         "atk": 13.0, 
@@ -1247,7 +1247,7 @@
         "hpgr": 100.0, 
         "id": 300007, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "kobold", 
@@ -1258,7 +1258,46 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
+    }, 
+    "kyle": {
+        "atk": 32.0, 
+        "atkgr": 14.0, 
+        "attackspeed": 2.0, 
+        "collide": 40.0, 
+        "cri": 3.0, 
+        "crigr": 3.9, 
+        "def": 20.0, 
+        "defgr": 11.0, 
+        "displayname": "猫女", 
+        "dodge": 7.0, 
+        "dodgegr": 2.3, 
+        "double_face": false, 
+        "faceleft": 3, 
+        "guard_radius": 260.0, 
+        "hit": 22.0, 
+        "hitgr": 3.1, 
+        "hp": 290.0, 
+        "hpgr": 127.0, 
+        "id": 100001, 
+        "is_melee": true, 
+        "movespeed": 250.0, 
+        "mp": 100.0, 
+        "mpgr": 20.0, 
+        "name": "kyle", 
+        "position": "", 
+        "range": 80.0, 
+        "rec": 0.5, 
+        "recgr": 0.23, 
+        "scale": 1.0, 
+        "skills": [
+            "CrazyScratch", 
+            "NinthLife"
+        ], 
+        "ten": 1.0, 
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "lvbu": {
         "atk": 35.0, 
@@ -1281,7 +1320,7 @@
         "hpgr": 130.0, 
         "id": 100003, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "lvbu", 
@@ -1292,7 +1331,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.2
+        "tengr": 3.2, 
+        "view_range": 1000.0
     }, 
     "marine": {
         "atk": 27.0, 
@@ -1316,7 +1356,7 @@
         "hpgr": 120.0, 
         "id": 100023, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "marine", 
@@ -1327,7 +1367,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 2.8
+        "tengr": 2.8, 
+        "view_range": 1000.0
     }, 
     "mummy": {
         "atk": 10.0, 
@@ -1350,7 +1391,7 @@
         "hpgr": 10.0, 
         "id": 300001, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "mummy", 
@@ -1361,7 +1402,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 0.8
+        "tengr": 0.8, 
+        "view_range": 1000.0
     }, 
     "nobunaga": {
         "atk": 28.0, 
@@ -1384,7 +1426,7 @@
         "hpgr": 135.0, 
         "id": 100008, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "nobunaga", 
@@ -1395,7 +1437,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.3
+        "tengr": 3.3, 
+        "view_range": 1000.0
     }, 
     "panda": {
         "atk": 27.0, 
@@ -1418,7 +1461,7 @@
         "hpgr": 135.0, 
         "id": 100017, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "panda", 
@@ -1431,7 +1474,8 @@
             "PandaFire"
         ], 
         "ten": 3.0, 
-        "tengr": 3.4
+        "tengr": 3.4, 
+        "view_range": 1000.0
     }, 
     "peterpan": {
         "atk": 30.0, 
@@ -1454,7 +1498,7 @@
         "hpgr": 128.0, 
         "id": 100014, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "peterpan", 
@@ -1465,7 +1509,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.0
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "piper": {
         "atk": 28.0, 
@@ -1489,7 +1534,7 @@
         "hpgr": 111.0, 
         "id": 100013, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "piper", 
@@ -1500,7 +1545,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 3.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "poseidon": {
         "atk": 29.0, 
@@ -1523,7 +1569,7 @@
         "hpgr": 124.0, 
         "id": 100011, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "poseidon", 
@@ -1534,7 +1580,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.0
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "rattletrap": {
         "atk": 15.0, 
@@ -1557,7 +1604,7 @@
         "hpgr": 120.0, 
         "id": 300020, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "rattletrap", 
@@ -1568,7 +1615,8 @@
         "scale": 0.7, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "red_axe_orc": {
         "atk": 22.0, 
@@ -1591,7 +1639,7 @@
         "hpgr": 120.0, 
         "id": 300011, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "red_axe_orc", 
@@ -1602,7 +1650,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "saber": {
         "atk": 32.0, 
@@ -1625,7 +1674,7 @@
         "hpgr": 128.0, 
         "id": 100018, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "saber", 
@@ -1639,7 +1688,8 @@
             "LightShield"
         ], 
         "ten": 1.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "sandworm": {
         "atk": 0.0, 
@@ -1662,7 +1712,7 @@
         "hpgr": 90.0, 
         "id": 300005, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "sandworm", 
@@ -1673,7 +1723,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "sarutobi": {
         "atk": 27.0, 
@@ -1697,7 +1748,7 @@
         "hpgr": 112.0, 
         "id": 100005, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "sarutobi", 
@@ -1708,7 +1759,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 3.0, 
-        "tengr": 3.0
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "scarecrow": {
         "atk": 10.0, 
@@ -1731,7 +1783,7 @@
         "hpgr": 20.0, 
         "id": 300015, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "scarecrow", 
@@ -1742,7 +1794,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "skeleton": {
         "atk": 0.0, 
@@ -1765,7 +1818,7 @@
         "hpgr": 60.0, 
         "id": 300028, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "skeleton", 
@@ -1776,7 +1829,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.9
+        "tengr": 1.9, 
+        "view_range": 1000.0
     }, 
     "skeleton_king": {
         "atk": 40.0, 
@@ -1799,7 +1853,7 @@
         "hpgr": 250.0, 
         "id": 300033, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "skeleton_king", 
@@ -1812,7 +1866,8 @@
             "BonesRain"
         ], 
         "ten": 3.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "skeleton_warrior": {
         "atk": 20.0, 
@@ -1835,7 +1890,7 @@
         "hpgr": 80.0, 
         "id": 300029, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "skeleton_warrior", 
@@ -1846,7 +1901,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "tentacle": {
         "atk": 8.0, 
@@ -1869,7 +1925,7 @@
         "hpgr": 15.0, 
         "id": 300004, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "tentacle", 
@@ -1880,7 +1936,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 0.8
+        "tengr": 0.8, 
+        "view_range": 1000.0
     }, 
     "thin_vampire": {
         "atk": 13.0, 
@@ -1903,7 +1960,7 @@
         "hpgr": 90.0, 
         "id": 300017, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "thin_vampire", 
@@ -1914,7 +1971,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "thor": {
         "atk": 30.0, 
@@ -1937,7 +1995,7 @@
         "hpgr": 132.0, 
         "id": 100027, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "thor", 
@@ -1948,7 +2006,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.2
+        "tengr": 3.2, 
+        "view_range": 1000.0
     }, 
     "vanhelsing": {
         "atk": 30.0, 
@@ -1972,7 +2031,7 @@
         "hpgr": 113.0, 
         "id": 100016, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "vanhelsing", 
@@ -1986,7 +2045,8 @@
             "CrazyShoot"
         ], 
         "ten": 2.0, 
-        "tengr": 3.0
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "villager": {
         "atk": 17.0, 
@@ -2009,7 +2069,7 @@
         "hpgr": 50.0, 
         "id": 400001, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "villager", 
@@ -2020,7 +2080,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "werewolf": {
         "atk": 28.0, 
@@ -2043,7 +2104,7 @@
         "hpgr": 90.0, 
         "id": 300014, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "werewolf", 
@@ -2054,7 +2115,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.5
+        "tengr": 1.5, 
+        "view_range": 1000.0
     }, 
     "white_ghost": {
         "atk": 12.0, 
@@ -2077,7 +2139,7 @@
         "hpgr": 45.0, 
         "id": 300009, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "white_ghost", 
@@ -2088,7 +2150,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "wild_wolf": {
         "atk": 14.0, 
@@ -2111,7 +2174,7 @@
         "hpgr": 15.0, 
         "id": 300013, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "wild_wolf", 
@@ -2122,7 +2185,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "women_fire_wizard": {
         "atk": 25.0, 
@@ -2146,7 +2210,7 @@
         "hpgr": 60.0, 
         "id": 300031, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "women_fire_wizard", 
@@ -2157,7 +2221,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "women_wizard": {
         "atk": 25.0, 
@@ -2181,7 +2246,7 @@
         "hpgr": 60.0, 
         "id": 300030, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "women_wizard", 
@@ -2192,7 +2257,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "zeus": {
         "atk": 30.0, 
@@ -2216,7 +2282,7 @@
         "hpgr": 112.0, 
         "id": 100009, 
         "is_melee": false, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "zeus", 
@@ -2230,7 +2296,8 @@
             "LightningChain"
         ], 
         "ten": 2.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "zhangfei": {
         "atk": 28.0, 
@@ -2253,7 +2320,7 @@
         "hpgr": 138.0, 
         "id": 100002, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "zhangfei", 
@@ -2264,7 +2331,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 3.3
+        "tengr": 3.3, 
+        "view_range": 1000.0
     }, 
     "zombie": {
         "atk": 15.0, 
@@ -2287,7 +2355,7 @@
         "hpgr": 11.0, 
         "id": 300006, 
         "is_melee": true, 
-        "movespeed": 180.0, 
+        "movespeed": 250.0, 
         "mp": 100.0, 
         "mpgr": 20.0, 
         "name": "zombie", 
@@ -2298,6 +2366,7 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }
 }

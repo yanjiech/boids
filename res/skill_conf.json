@@ -67,6 +67,17 @@
         "range" : 400.0,
         "cd" : 5.0
     },
+    "CrazyScratch" :
+    {
+        "multi_action" : true,
+        "extra_damage" : true,
+        "hint" : "none",
+        "damage" : [ 20.0, 40.0, 80.0 ],
+        "interval" : 0.5,
+        "duration" : 3.0,
+        "range" : 100.0,
+        "cd" : 5.0
+    },
     "DarkPierce" :
     {
         "multi_action" : false,
@@ -232,6 +243,13 @@
         "init_speed" : 300.0,
         "accel" : 600.0,
         "duration" : 10.0
+    },
+    "NinthLife" :
+    {
+        "multi_action" : false,
+        "hint" : "none",
+        "cd" : 5.0,
+        "buff_duration" : [ 5.0, 6.0, 7.0 ]
     },
     "PandaFire" :
     {

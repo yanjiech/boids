@@ -44,6 +44,9 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     if( buff_type == BUFF_TYPE_SHIELD ) {
         ret = ShieldBuff::create( owner, data );
     }
+    else if( buff_type == BUFF_TYPE_UNDEAD ) {
+        ret = UndeadBuff::create( owner, data );
+    }
     else if( buff_type == BUFF_TYPE_STUN ) {
         ret = StunBuff::create( owner, data );
     }
@@ -306,6 +309,7 @@ void SlowBuff::end() {
     _owner->getUnitData()->move_speed /= _slow_percent;
 }
 
+//shield buff
 ShieldBuff::ShieldBuff() {
     
 }
@@ -372,6 +376,70 @@ float ShieldBuff::filterDamage( float damage, TargetNode* atker ) {
     return ret;
 }
 
+//undead buff
+UndeadBuff::UndeadBuff() {
+    
+}
+
+UndeadBuff::~UndeadBuff() {
+    
+}
+
+UndeadBuff* UndeadBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    UndeadBuff* ret = new UndeadBuff();
+    if( ret && ret->init( owner, data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UndeadBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+    if( !Buff::init( owner, data ) ) {
+        return false;
+    }
+    
+    return true;
+}
+
+void UndeadBuff::updateFrame( float delta ) {
+    Buff::updateFrame( delta );
+}
+
+void UndeadBuff::begin() {
+    std::string resource = _data.at( "effect_resource" ).asString();
+    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    auto itr = _data.find( "effect_scale" );
+    if( itr != _data.end() ) {
+        skeleton->setScale( itr->second.asFloat() );
+    }
+    TimeLimitSpineComponent* shield = TimeLimitSpineComponent::create( _duration, skeleton, _buff_id + "_effect", true );
+    shield->setPosition( Point::ZERO );
+    shield->setAnimation( 0, "animation", true );
+    _owner->addUnitComponent( shield, shield->getName(), eComponentLayer::OverObject );
+    
+    Buff::begin();
+}
+
+void UndeadBuff::end() {
+    _owner->removeUnitComponent( _buff_id + "_effect" );
+    Buff::end();
+}
+
+float UndeadBuff::filterDamage( float damage, TargetNode* atker ) {
+    float ret = damage;
+    float c_hp = _owner->getTargetData()->current_hp;
+    if( damage >= c_hp ) {
+        ret = c_hp - 1.0f;
+    }
+    return ret;
+}
+
+
+//pierce buff
 PierceBuff::PierceBuff() {
     
 }
@@ -480,15 +548,45 @@ bool TagBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     }
     
     _tag = data.at( "buff_param" ).asString();
+   
     
-    auto itr = data.find( "effect_name" );
+    auto itr = data.find( "effect_resource" );
     if( itr != data.end() ) {
-        std::string effect_name = itr->second.asString();
+        float duration = data.at( "duration" ).asFloat();
+        std::string effect_resource = itr->second.asString();
+        std::string resource = "effects/" + effect_resource;
+        Color3B color = Color3B::WHITE;
         
-        std::string resource = "effects/" + effect_name;
+        auto sitr = _data.find( "color_red" );
+        if( sitr != _data.end() ) {
+            color.r = sitr->second.asByte();
+        }
+        else {
+            color.r = 0;
+        }
+        
+        sitr = _data.find( "color_green" );
+        if( sitr != _data.end() ) {
+            color.g = sitr->second.asByte();
+        }
+        else {
+            color.g = 0;
+        }
+        
+        sitr = _data.find( "color_blue" );
+        if( sitr != _data.end() ) {
+            color.b = sitr->second.asByte();
+        }
+        else {
+            color.b = 0;
+        }
+        
         spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
-        _component = TimeLimitSpineComponent::create( INT_MAX, skeleton, _buff_id, true );
+        skeleton->setColor( color );
+        _component = TimeLimitSpineComponent::create( duration, skeleton, _buff_id, true );
+        _component->setPosition( _owner->getLocalHitPos() );
         _owner->addUnitComponent( _component, _component->getName(), eComponentLayer::OverObject );
+        _component->setAnimation( 0, "animation", true );
     }
     
     return true;

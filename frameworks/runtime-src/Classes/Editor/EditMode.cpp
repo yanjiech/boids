@@ -70,9 +70,9 @@ void EditMode::enterEdit(const std::string& mapFolder) {
 		Terrain::getInstance()->paintDebugLayer(_map);
 	}
     _draftDrawNode = DrawNode::create();
-    _map->addChild(_draftDrawNode);
+    _map->addChild(_draftDrawNode, 100);
     _positionLayer = Layer::create();
-    _map->addChild(_positionLayer);
+    _map->addChild(_positionLayer, 101);
     for (auto pos : _data.Positions) {
         createPositionOnMap(pos);
     }
@@ -438,7 +438,8 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
         } else if (op == EditorOperation::SetTrigger) {
             BEUITriggerOptions *ui = (BEUITriggerOptions *)popup;
             if (ctx->Event->Triggers.size() == 0) {
-                ctx->Event->TriggerMeta->IsRepeated = ui->isRepeat();
+                ctx->Event->Enabled = ui->isEnabled();
+                ctx->Event->TriggerMeta->IsRepeated = ui->isRepeat(); 
                 ctx->Event->TriggerMeta->TriggerRelation = ui->getRelationType();
                 auto triggerType = ui->getType();
                 if (triggerType == "map_init") {
@@ -533,6 +534,7 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             action->ActionMeta = ctx->ActionMeta;
             ctx->Event->Actions.push_back(action);
             ctx->addOperation(EditorOperation::SetAction);
+            _stories.push_back( action->Name );
         }
 //        else if (op == EditorOperation::SetConverSationTrigger) {
 //            auto trigger = _editUI->conversationChangeUI->getTrigger();
@@ -568,6 +570,7 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
         BEUITriggerOptions *ui = (BEUITriggerOptions *)popup;
         auto triggerType = ui->getType();
         if (ctx->Event->Triggers.size() == 0) {
+            ctx->Event->Enabled = ui->isEnabled();
             ctx->Event->TriggerMeta->IsRepeated = ui->isRepeat();
         }
         if (triggerType == "map_init") {

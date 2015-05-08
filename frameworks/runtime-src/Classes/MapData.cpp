@@ -25,6 +25,7 @@ MapData::MapData() {
 }
 
 MapData::~MapData() {
+    
 }
 
 MapData* MapData::create( const std::string& path ) {
@@ -94,25 +95,27 @@ cocos2d::Sprite* MapData::spriteFromObject( TMXTiledMap* map, const cocos2d::Val
         }
         auto x = object.at("x").asFloat();
         auto y = object.at("y").asFloat();
-        auto p = map->getPropertiesForGID(gid);
+        auto p = map->getPropertiesForGID(gid).asValueMap();
         
-        auto source = p.asValueMap().at("source").asString();
-        Sprite *sprite = nullptr;
-        if (createFromCache) {
-            sprite = Sprite::createWithSpriteFrameName(source);
-        } else {
-            auto spritePath = Utils::stringFormat("%s/%s", this->_path.c_str(), source.c_str());
-            sprite = Sprite::create(spritePath);
+        if( p.find( "source" ) != p.end() ) {
+            auto source = p.at("source").asString();
+            Sprite *sprite = nullptr;
+            if (createFromCache) {
+                sprite = Sprite::createWithSpriteFrameName(source);
+            } else {
+                auto spritePath = Utils::stringFormat("%s/%s", this->_path.c_str(), source.c_str());
+                sprite = Sprite::create(spritePath);
+            }
+            sprite->setAnchorPoint(Vec2::ZERO);
+            sprite->setPosition( Point( x, y ) );
+            if( flipped_horizontally ) {
+                sprite->setFlippedX( true );
+            }
+            if( flipped_vertically ) {
+                sprite->setFlippedY( true );
+            }
+            return sprite;
         }
-        sprite->setAnchorPoint(Vec2::ZERO);
-        sprite->setPosition( Point( x, y ) );
-        if( flipped_horizontally ) {
-            sprite->setFlippedX( true );
-        }
-        if( flipped_vertically ) {
-            sprite->setFlippedY( true );
-        }
-        return sprite;
     }
     return nullptr;
 }
@@ -126,7 +129,7 @@ TMXTiledMap* MapData::generateTiledMapWithFlags(int flags) {
     
     if ((flags & (int)TMXObjectLayerFlag::OnGround) && map->getObjectGroup("onground") != nullptr) {
         auto onGroundLayer = Layer::create();
-        map->addChild(onGroundLayer, -99, "onGroundLayer");
+        map->addChild(onGroundLayer, 1, "onGroundLayer");
         auto ogObjects = map->getObjectGroup("onground")->getObjects();
         for (auto o : ogObjects) {
             auto sp = this->spriteFromObject( map, o, true );
@@ -138,7 +141,7 @@ TMXTiledMap* MapData::generateTiledMapWithFlags(int flags) {
     
     if ((flags & (int)TMXObjectLayerFlag::Object) && map->getObjectGroup("vision") != nullptr) {
         auto objectLayer = Layer::create();
-        map->addChild(objectLayer, 0, "objectLayer");
+        map->addChild(objectLayer, 2, "objectLayer");
         auto objects = map->getObjectGroup("vision")->getObjects();
         for (auto o : objects) {
             auto sp = this->spriteFromObject( map, o, true );
@@ -176,7 +179,6 @@ cocos2d::ValueVector MapData::getAreasVectorByTag( const std::string& tag_name )
             }
         }
     }
-    return ret;
     return ret;
 }
 

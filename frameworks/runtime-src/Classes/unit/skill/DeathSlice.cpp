@@ -20,9 +20,9 @@ DeathSlice::~DeathSlice() {
     
 }
 
-DeathSlice* DeathSlice::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+DeathSlice* DeathSlice::create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     DeathSlice* ret = new DeathSlice();
-    if( ret && ret->init( owner, data ) ) {
+    if( ret && ret->init( owner, data, params ) ) {
         ret->autorelease();
         return ret;
     }
@@ -32,7 +32,7 @@ DeathSlice* DeathSlice::create( UnitNode* owner, const cocos2d::ValueMap& data )
     }
 }
 
-bool DeathSlice::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+bool DeathSlice::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params ) {
     if( !SkillNode::init( owner ) ) {
         return false;
     }

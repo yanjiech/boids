@@ -20,8 +20,8 @@ public:
     LightShield();
     virtual ~LightShield();
     
-    static LightShield* create( UnitNode* owner, const cocos2d::ValueMap& data );
-    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    static LightShield* create( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2d::ValueMap& params );
     
     virtual void updateFrame( float delta );
     

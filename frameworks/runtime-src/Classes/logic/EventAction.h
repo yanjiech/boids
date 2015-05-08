@@ -46,7 +46,7 @@ public:
     
     bool isInfinite() { return _repeat < 0; }
     
-    bool start( const cocos2d::Map<std::string, cocos2d::Ref*> params, bool auto_unschedule );
+    bool start( const cocos2d::Map<std::string, cocos2d::Ref*>& params, bool auto_unschedule );
     void pause();
     void resume();
     void stop();

@@ -26,6 +26,8 @@ protected:
     
     bool _is_active;
     
+    float _progress;
+    
 public:
     GameTask();
     virtual ~GameTask();
@@ -51,6 +53,10 @@ public:
     
     bool isActive() { return _is_active; }
     void setActive( bool b ) { _is_active = b; }
+    
+    void addProgress( float p );
+    float getProgress() { return _progress; }
+    void setProgress( float p ) { _progress = p; }
 };
 
 #endif /* defined(__Boids__GameTask__) */
