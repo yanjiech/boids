@@ -10,12 +10,19 @@
 #define __Boids__UIBattleMenuLayer__
 
 #include "cocos2d.h"
+#include "cocostudio/CocoStudio.h"
+#include "ui/CocosGUI.h"
 
 class BattleLayer;
 
 class UIBattleMenuLayer : public cocos2d::Layer {
 private:
     BattleLayer* _battle_layer;
+    
+    cocos2d::Node* _win_panel;
+    cocos2d::Node* _pause_panel;
+    
+    cocos2d::ui::Button* _btn_pause;
     
 public:
     UIBattleMenuLayer();
@@ -24,12 +31,15 @@ public:
     static UIBattleMenuLayer* create( BattleLayer* battle_layer, const std::string& result );
     virtual bool init( BattleLayer* battle_layer, const std::string& result );
     
-    virtual bool onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event );
-    virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );
-    virtual void onTouchCancelled( cocos2d::Touch* touch, cocos2d::Event* event );
-    virtual void onTouchEned( cocos2d::Touch* touch, cocos2d::Event* event );
+    void onHomeTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    void onRestartTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    void onContinueTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    void onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     
-    void onConfirmTouched( cocos2d::Ref* sender );
+    void showResultPanel();
+    void showPausePanel();
+    
+    void hideMenu();
 };
 
 #endif /* defined(__Boids__UIBattleMenuLayer__) */

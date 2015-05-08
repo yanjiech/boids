@@ -1,4 +1,8 @@
 {
+    "options":
+    {
+        "should_show_fog" : true
+    },
     "positions": [
         {
             "name": "player_start",
@@ -481,7 +485,7 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "tag_source",
-                    "source_value": "leader",
+                    "source_value": "player",
                     "buff_name": "yellow_buff",
                     "buff_type": "buff_tag",
                     "buff_params": "duration:-1,buff_param:yellow,color_red:255,color_green:255,effect_resource:buff_ball",
@@ -586,7 +590,7 @@
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
-                    "source_type": "type_source",
+                    "source_type": "tag_source",
                     "source_value": "player",
                     "buff_name": "blue_tag",
                     "buff_type": "buff_tag",
@@ -660,7 +664,7 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "tag_source",
-                    "source_value": "leader",
+                    "source_value": "player",
                     "buff_name": "red_buff",
                     "buff_type": "buff_tag",
                     "buff_params": "duration:-1,buff_param:red,color_red:255,effect_resource:buff_ball",

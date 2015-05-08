@@ -31,7 +31,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "anubies": {
         "atk": 38.0, 
@@ -63,13 +64,14 @@
         "range": 340.0, 
         "rec": 0.5, 
         "recgr": 0.2, 
-        "scale": 1.0, 
+        "scale": 0.7, 
         "skills": [
             "DeathTornado", 
             "DeathField"
         ], 
         "ten": 2.0, 
-        "tengr": 2.7
+        "tengr": 2.7, 
+        "view_range": 1000.0
     }, 
     "archer": {
         "atk": 15.0, 
@@ -104,7 +106,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "athena": {
         "atk": 25.0, 
@@ -138,7 +141,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 3.0, 
-        "tengr": 3.4
+        "tengr": 3.4, 
+        "view_range": 1000.0
     }, 
     "axe_orc": {
         "atk": 19.0, 
@@ -172,7 +176,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "bomb_goblin": {
         "atk": 15.0, 
@@ -207,7 +212,8 @@
         "scale": 0.7, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "dead_archer": {
         "atk": 14.0, 
@@ -242,7 +248,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "desert_thief": {
         "atk": 15.0, 
@@ -276,7 +283,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "desert_thief_leader": {
         "atk": 20.0, 
@@ -312,7 +320,8 @@
             "Boomerang"
         ], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "djinn": {
         "atk": 28.0, 
@@ -347,7 +356,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "dracula": {
         "atk": 38.0, 
@@ -384,7 +394,8 @@
             "BatSwarm"
         ], 
         "ten": 3.0, 
-        "tengr": 2.8
+        "tengr": 2.8, 
+        "view_range": 1000.0
     }, 
     "elf_archer": {
         "atk": 25.0, 
@@ -418,7 +429,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "elf_pikeman": {
         "atk": 22.0, 
@@ -452,7 +464,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "enchantress": {
         "atk": 32.0, 
@@ -490,7 +503,8 @@
             "Impetus"
         ], 
         "ten": 3.0, 
-        "tengr": 3.2
+        "tengr": 3.2, 
+        "view_range": 1000.0
     }, 
     "evil_wizard": {
         "atk": 25.0, 
@@ -527,7 +541,8 @@
             "EvilInvoke"
         ], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "fat_vampire": {
         "atk": 10.0, 
@@ -561,7 +576,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "flamingo": {
         "atk": 17.0, 
@@ -595,7 +611,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "footman": {
         "atk": 20.0, 
@@ -629,7 +646,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "frankenstein": {
         "atk": 33.0, 
@@ -663,7 +681,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.3
+        "tengr": 3.3, 
+        "view_range": 1000.0
     }, 
     "gandalf": {
         "atk": 28.0, 
@@ -700,7 +719,8 @@
             "EagleAttack"
         ], 
         "ten": 2.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "goblin": {
         "atk": 12.0, 
@@ -734,7 +754,8 @@
         "scale": 0.7, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.4
+        "tengr": 1.4, 
+        "view_range": 1000.0
     }, 
     "goblin_helicopter": {
         "atk": 38.0, 
@@ -770,7 +791,8 @@
             "GasBomb"
         ], 
         "ten": 2.0, 
-        "tengr": 2.7
+        "tengr": 2.7, 
+        "view_range": 1000.0
     }, 
     "goblin_shredder": {
         "atk": 40.0, 
@@ -806,7 +828,8 @@
             "DeathSlice"
         ], 
         "ten": 3.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "hades": {
         "atk": 32.0, 
@@ -841,7 +864,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "hahide": {
         "atk": 29.0, 
@@ -875,7 +899,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "hammer_warrior": {
         "atk": 30.0, 
@@ -909,7 +934,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.9
+        "tengr": 1.9, 
+        "view_range": 1000.0
     }, 
     "hideyoshi": {
         "atk": 26.0, 
@@ -944,7 +970,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 2.8
+        "tengr": 2.8, 
+        "view_range": 1000.0
     }, 
     "hippolyta": {
         "atk": 28.0, 
@@ -982,7 +1009,8 @@
             "HuntingIntuition"
         ], 
         "ten": 2.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "hook": {
         "atk": 29.0, 
@@ -1016,7 +1044,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.5
+        "tengr": 3.5, 
+        "view_range": 1000.0
     }, 
     "human_assassin": {
         "atk": 20.0, 
@@ -1050,7 +1079,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "human_king": {
         "atk": 40.0, 
@@ -1087,7 +1117,8 @@
             "FatalThrow"
         ], 
         "ten": 3.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "jasmine": {
         "atk": 27.0, 
@@ -1121,7 +1152,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 3.0, 
-        "tengr": 3.6
+        "tengr": 3.6, 
+        "view_range": 1000.0
     }, 
     "joker": {
         "atk": 28.0, 
@@ -1156,7 +1188,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 3.2
+        "tengr": 3.2, 
+        "view_range": 1000.0
     }, 
     "knight": {
         "atk": 30.0, 
@@ -1190,7 +1223,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.9
+        "tengr": 1.9, 
+        "view_range": 1000.0
     }, 
     "kobold": {
         "atk": 13.0, 
@@ -1224,7 +1258,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "kyle": {
         "atk": 32.0, 
@@ -1261,7 +1296,8 @@
             "NinthLife"
         ], 
         "ten": 1.0, 
-        "tengr": 3.0
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "lvbu": {
         "atk": 35.0, 
@@ -1295,7 +1331,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.2
+        "tengr": 3.2, 
+        "view_range": 1000.0
     }, 
     "marine": {
         "atk": 27.0, 
@@ -1330,7 +1367,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 2.8
+        "tengr": 2.8, 
+        "view_range": 1000.0
     }, 
     "mummy": {
         "atk": 10.0, 
@@ -1364,7 +1402,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 0.8
+        "tengr": 0.8, 
+        "view_range": 1000.0
     }, 
     "nobunaga": {
         "atk": 28.0, 
@@ -1398,7 +1437,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.3
+        "tengr": 3.3, 
+        "view_range": 1000.0
     }, 
     "panda": {
         "atk": 27.0, 
@@ -1434,7 +1474,8 @@
             "PandaFire"
         ], 
         "ten": 3.0, 
-        "tengr": 3.4
+        "tengr": 3.4, 
+        "view_range": 1000.0
     }, 
     "peterpan": {
         "atk": 30.0, 
@@ -1468,7 +1509,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.0
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "piper": {
         "atk": 28.0, 
@@ -1503,7 +1545,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 3.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "poseidon": {
         "atk": 29.0, 
@@ -1537,7 +1580,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.0
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "rattletrap": {
         "atk": 15.0, 
@@ -1571,7 +1615,8 @@
         "scale": 0.7, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "red_axe_orc": {
         "atk": 22.0, 
@@ -1605,7 +1650,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "saber": {
         "atk": 32.0, 
@@ -1642,7 +1688,8 @@
             "LightShield"
         ], 
         "ten": 1.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "sandworm": {
         "atk": 0.0, 
@@ -1676,7 +1723,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "sarutobi": {
         "atk": 27.0, 
@@ -1711,7 +1759,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 3.0, 
-        "tengr": 3.0
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "scarecrow": {
         "atk": 10.0, 
@@ -1745,7 +1794,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "skeleton": {
         "atk": 0.0, 
@@ -1779,7 +1829,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 1.9
+        "tengr": 1.9, 
+        "view_range": 1000.0
     }, 
     "skeleton_king": {
         "atk": 40.0, 
@@ -1815,7 +1866,8 @@
             "BonesRain"
         ], 
         "ten": 3.0, 
-        "tengr": 2.9
+        "tengr": 2.9, 
+        "view_range": 1000.0
     }, 
     "skeleton_warrior": {
         "atk": 20.0, 
@@ -1849,7 +1901,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "tentacle": {
         "atk": 8.0, 
@@ -1883,7 +1936,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 0.8
+        "tengr": 0.8, 
+        "view_range": 1000.0
     }, 
     "thin_vampire": {
         "atk": 13.0, 
@@ -1917,7 +1971,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "thor": {
         "atk": 30.0, 
@@ -1951,7 +2006,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 2.0, 
-        "tengr": 3.2
+        "tengr": 3.2, 
+        "view_range": 1000.0
     }, 
     "vanhelsing": {
         "atk": 30.0, 
@@ -1989,7 +2045,8 @@
             "CrazyShoot"
         ], 
         "ten": 2.0, 
-        "tengr": 3.0
+        "tengr": 3.0, 
+        "view_range": 1000.0
     }, 
     "villager": {
         "atk": 17.0, 
@@ -2023,7 +2080,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.0
+        "tengr": 1.0, 
+        "view_range": 1000.0
     }, 
     "werewolf": {
         "atk": 28.0, 
@@ -2057,7 +2115,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 1.5
+        "tengr": 1.5, 
+        "view_range": 1000.0
     }, 
     "white_ghost": {
         "atk": 12.0, 
@@ -2091,7 +2150,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "wild_wolf": {
         "atk": 14.0, 
@@ -2125,7 +2185,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }, 
     "women_fire_wizard": {
         "atk": 25.0, 
@@ -2158,12 +2219,10 @@
         "rec": 0.5, 
         "recgr": 0.2, 
         "scale": 1.0, 
-        "skills":
-            [
-                "FireWhirl"
-            ],
+        "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "women_wizard": {
         "atk": 25.0, 
@@ -2198,7 +2257,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.1
+        "tengr": 1.1, 
+        "view_range": 1000.0
     }, 
     "zeus": {
         "atk": 30.0, 
@@ -2236,7 +2296,8 @@
             "LightningChain"
         ], 
         "ten": 2.0, 
-        "tengr": 3.1
+        "tengr": 3.1, 
+        "view_range": 1000.0
     }, 
     "zhangfei": {
         "atk": 28.0, 
@@ -2270,7 +2331,8 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 1.0, 
-        "tengr": 3.3
+        "tengr": 3.3, 
+        "view_range": 1000.0
     }, 
     "zombie": {
         "atk": 15.0, 
@@ -2304,6 +2366,7 @@
         "scale": 1.0, 
         "skills": [], 
         "ten": 0.0, 
-        "tengr": 1.2
+        "tengr": 1.2, 
+        "view_range": 1000.0
     }
 }

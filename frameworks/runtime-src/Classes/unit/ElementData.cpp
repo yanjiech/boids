@@ -31,7 +31,8 @@ tenacity( 0 ),
 hit( 0 ),
 dodge( 0 ),
 atk_range( 0 ),
-bullet_name( "" )
+bullet_name( "" ),
+view_range( 0 )
 {
     
 }
@@ -79,6 +80,11 @@ bool ElementData::init( const cocos2d::ValueMap& data ) {
         }
         else {
             this->bullet_name = "";
+        }
+        
+        itr = data.find( "view_range" );
+        if( itr != data.end() ) {
+            this->view_range = itr->second.asFloat();
         }
     }
     
@@ -136,6 +142,9 @@ void ElementData::setAttribute( const std::string& key, const std::string& value
     else if( key == "ten") {
         this->tenacity = (float)Utils::toDouble( value );
     }
+    else if( key == "view_range" ) {
+        this->view_range = (float)Utils::toDouble( value );
+    }
 }
 
 void ElementData::add( ElementData* other ) {
@@ -154,6 +163,7 @@ void ElementData::add( ElementData* other ) {
     this->hit += other->hit;
     this->dodge += other->dodge;
     this->atk_range += other->atk_range;
+    this->view_range += other->view_range;
 }
 
 void ElementData::sub( ElementData* other ) {
@@ -172,6 +182,7 @@ void ElementData::sub( ElementData* other ) {
     this->hit -= other->hit;
     this->dodge -= other->dodge;
     this->atk_range -= other->atk_range;
+    this->view_range -= other->view_range;
 }
 
 //unit data

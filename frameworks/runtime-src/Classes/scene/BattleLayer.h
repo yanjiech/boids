@@ -31,12 +31,13 @@ enum eBattleSubLayer {
     ObjectLayer = 4,
     OverObjectLayer = 5,
     EffectLayer = 6,
-    FloatLayer = 7,
-    ToastLayer = 8,
-    ControlLayer = 9,
-    BattleUILayer = 10,
-    BattleStoryLayer = 11,
-    BattleMenuLayer = 12
+    FogLayer = 7,
+    FloatLayer = 8,
+    ToastLayer = 9,
+    ControlLayer = 10,
+    BattleUILayer = 11,
+    BattleStoryLayer = 12,
+    BattleMenuLayer = 13
 };
 
 enum eBattleState {
@@ -100,6 +101,10 @@ private:
     
     float _game_time;
     
+    bool _should_show_fog;
+    
+    cocos2d::Sprite* _fog_sprite;
+    
     //debug
     cocos2d::DrawNode* _draw_node;
 private:
@@ -114,6 +119,9 @@ private:
     void updateBlocks( float delta );
     void updateBuildings( float delta );
     void updateBullets( float delta );
+    
+    cocos2d::Sprite* getFogSprite();
+    void updateFogSprite();
     
 public:
     //debug
@@ -228,6 +236,9 @@ public:
     
     void startStory( const cocos2d::ValueMap& story_data );
     void endStory( UIStoryLayer* story );
+    
+    bool shouldShowFog() { return _should_show_fog; }
+    void setShouldShowFog( bool b ) { _should_show_fog = b; }
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

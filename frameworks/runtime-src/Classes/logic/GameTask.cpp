@@ -12,7 +12,9 @@
 
 using namespace cocos2d;
 
-GameTask::GameTask() {
+GameTask::GameTask() :
+_progress( 0 )
+{
     
 }
 
@@ -41,6 +43,7 @@ bool GameTask::init( const cocos2d::ValueMap& data, MapLogic* map_logic ) {
     _task_title = data.at( "title" ).asString();
     _task_desc = data.at( "desc" ).asString();
     _is_primary = ( data.at( "type" ).asString() == "primary_win" );
+    _progress = 0;
     
     return true;
 }

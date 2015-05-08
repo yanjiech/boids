@@ -11,7 +11,7 @@
 #include "../manager/SceneManager.h"
 #include "../manager/ResourceManager.h"
 
-#define MAIN_CSB_FILE "level_choose/main/main.csb"
+#define MAIN_CSB_FILE "homePage/homePage.csb"
 #define LEVEL_CSB_FILE "level_choose/level/level.csb"
 
 using namespace cocos2d;
@@ -47,7 +47,7 @@ bool UILevelChooseLayer::init() {
     this->addChild( _level_node );
     _level_node->setVisible( false );
     
-    _scrollview = dynamic_cast<ui::ScrollView*>( _main_node->getChildByName( "scrollView" ) );
+    _scrollview = dynamic_cast<ui::ScrollView*>( _main_node->getChildByName( "mapScrollView" ) );
     _background_node = dynamic_cast<Sprite*>( _level_node->getChildByName( "background" ) );
     _back_button = dynamic_cast<ui::Button*>( _background_node->getChildByName( "backButton" ) );
     _back_button->addTouchEventListener( CC_CALLBACK_2( UILevelChooseLayer::onBackButtonTouched, this ) );

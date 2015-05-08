@@ -36,7 +36,11 @@ eBattleState BattleLayer::getBattleStateFromString( const std::string& str ) {
     return eBattleState::UnknownBattleState;
 }
 
-BattleLayer::BattleLayer() : _map_data( nullptr ), _map_logic( nullptr ) {
+BattleLayer::BattleLayer() :
+_map_data( nullptr ),
+_map_logic( nullptr ),
+_should_show_fog( false ),
+_fog_sprite( nullptr ) {
 }
 
 BattleLayer::~BattleLayer() {
@@ -68,6 +72,16 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         all_collide_radius.insert( 40.0f );
         all_collide_radius.insert( 50.0f );
         Terrain::getInstance()->parseMap( _map_data->getMapData(), all_collide_radius );
+        
+        const ValueMap& meta_json = _map_data->getMetaJson();
+        auto itr = meta_json.find( "options" );
+        if( itr != meta_json.end() ) {
+            const ValueMap& options = itr->second.asValueMap();
+            itr = options.find( "should_show_fog" );
+            if( itr != options.end() ) {
+                this->setShouldShowFog( itr->second.asBool() );
+            }
+        }
         
         cocos2d::Point origin = Director::getInstance()->getVisibleOrigin();
         cocos2d::Size size = Director::getInstance()->getVisibleSize();
@@ -231,6 +245,10 @@ void BattleLayer::updateFrame( float delta ) {
         
         this->reorderObjectLayer();
         this->adjustCamera();
+        
+        if( _should_show_fog ) {
+            this->updateFogSprite();
+        }
     }
     else if( _state == eBattleState::BattleStory ) {
         _story_layer->updateFrame( delta );
@@ -1024,5 +1042,78 @@ void BattleLayer::reorderObjectLayer() {
     for( auto pair : _dead_units ) {
         UnitNode* unit_node = pair.second;
         unit_node->setLocalZOrder( this->zorderForPositionOnObjectLayer( unit_node->getPosition() ) );
+    }
+}
+
+cocos2d::Sprite* BattleLayer::getFogSprite() {
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        if( unit->getTargetCamp() != eTargetCamp::Player ) {
+            unit->setVisible( false );
+        }
+    }
+    
+    Size size = Director::getInstance()->getVisibleSize();
+    
+    RenderTexture* rt_bg = RenderTexture::create( size.width, size.height );
+    rt_bg->beginWithClear( 0, 0, 0, 0.8f );
+    rt_bg->end();
+    Sprite* bg = Sprite::createWithTexture( rt_bg->getSprite()->getTexture() );
+    
+    Node* stencil = Node::create();
+    
+#define DEFAULT_VIEW_RANGE 400.0
+    for( auto pair : _player_units ) {
+        UnitNode* unit = pair.second;
+        Point pos = unit->getParent()->convertToWorldSpace( unit->getPosition() );
+        Sprite* view_range_sprite = Sprite::createWithSpriteFrameName( "view_range.png" );
+        view_range_sprite->setPosition( pos );
+        float view_range = unit->getTargetData()->view_range;
+        view_range_sprite->setScale( view_range / DEFAULT_VIEW_RANGE );
+        stencil->addChild( view_range_sprite );
+        
+        for( auto spair : _alive_units ) {
+            UnitNode* sunit = spair.second;
+            if( sunit->getTargetCamp() != eTargetCamp::Player && Math::isPositionInRange( sunit->getPosition(), unit->getPosition(), view_range * 0.75f + sunit->getTargetData()->collide ) ) {
+                sunit->setVisible( true );
+            }
+        }
+    }
+    
+    ClippingNode* clip = ClippingNode::create();
+    clip->setAnchorPoint( Point::ZERO);
+    clip->setInverted( true );
+    clip->setStencil( stencil );
+    clip->setAlphaThreshold( 0.9f );
+    
+    bg->setPosition( Point( size.width / 2, size.height / 2 ) );
+    clip->addChild( bg );
+    
+    RenderTexture* tex = RenderTexture::create( size.width, size.height, Texture2D::PixelFormat::RGBA8888, GL_DEPTH24_STENCIL8 );
+    
+    tex->begin();
+    
+    clip->cocos2d::Node::visit();
+    
+    tex->end();
+    
+    Sprite* ret_sprite = Sprite::createWithTexture( tex->getSprite()->getTexture() );
+    ret_sprite->setFlippedY( true );
+    
+    return ret_sprite;
+}
+
+void BattleLayer::updateFogSprite() {
+    Sprite* fog_sprite = this->getFogSprite();
+    if( _fog_sprite == nullptr ) {
+        _fog_sprite = fog_sprite;
+        Point origin = Director::getInstance()->getVisibleOrigin();
+        Size size = Director::getInstance()->getVisibleSize();
+        
+        _fog_sprite->setPosition( origin.x + size.width / 2, origin.y + size.height / 2 );
+        this->addChild( _fog_sprite, eBattleSubLayer::FogLayer );
+    }
+    else {
+        _fog_sprite->setTexture( fog_sprite->getTexture() );
     }
 }

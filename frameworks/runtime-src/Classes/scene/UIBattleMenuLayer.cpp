@@ -13,6 +13,9 @@
 
 using namespace cocos2d;
 
+#define WIN_PANEL_FILE ""
+#define PAUSE_PANEL_FILE ""
+
 UIBattleMenuLayer::UIBattleMenuLayer() {
     
 }
@@ -47,46 +50,53 @@ bool UIBattleMenuLayer::init( BattleLayer* battle_layer, const std::string& resu
     
     _battle_layer = battle_layer;
     
-    Label* lb_result = Label::createWithSystemFont( result, "Arial", 128.0f );
-    lb_result->setColor( Color3B::YELLOW );
-    lb_result->setPosition( Point( origin.x + size.width / 2, origin.y + size.height - 200.0f ) );
-    this->addChild( lb_result );
+    std::string win_panel_file = FileUtils::getInstance()->fullPathForFilename( WIN_PANEL_FILE );
+    _win_panel = cocos2d::CSLoader::getInstance()->createNode( win_panel_file.c_str() );
+    this->addChild( _win_panel );
     
-    Label* lb_confirm = Label::createWithSystemFont( "O K", "Arial", 128.0f );
-    lb_confirm->setColor( Color3B::GREEN );
-    MenuItemLabel* btn_confirm = MenuItemLabel::create( lb_confirm, CC_CALLBACK_1( UIBattleMenuLayer::onConfirmTouched, this ) );
-    Menu* menu = Menu::create( btn_confirm, nullptr );
-    menu->setPosition( Point( origin.x + size.width / 2, origin.y + size.height / 3 ) );
-    this->addChild( menu );
-    
-    auto touch_listener = EventListenerTouchOneByOne::create();
-    touch_listener->setSwallowTouches( true );
-    touch_listener->onTouchBegan = CC_CALLBACK_2( UIBattleMenuLayer::onTouchBegan, this );
-    touch_listener->onTouchMoved = CC_CALLBACK_2( UIBattleMenuLayer::onTouchMoved, this );
-    touch_listener->onTouchCancelled = CC_CALLBACK_2( UIBattleMenuLayer::onTouchCancelled, this );
-    touch_listener->onTouchEnded = CC_CALLBACK_2( UIBattleMenuLayer::onTouchEnded, this );
-    _eventDispatcher->addEventListenerWithSceneGraphPriority( touch_listener, this );
+    std::string pause_panel_file = FileUtils::getInstance()->fullPathForFilename( PAUSE_PANEL_FILE );
+    _pause_panel = cocos2d::CSLoader::getInstance()->createNode( pause_panel_file.c_str() );
+    this->addChild( _pause_panel );
     
     return true;
 }
 
-void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender ) {
-    SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
+void UIBattleMenuLayer::onHomeTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == ui::Widget::TouchEventType::ENDED ) {
+        
+    }
 }
 
-bool UIBattleMenuLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event ) {
-    return true;
+void UIBattleMenuLayer::onRestartTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == ui::Widget::TouchEventType::ENDED ) {
+        
+    }
 }
 
-void UIBattleMenuLayer::onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event ) {
-    
+void UIBattleMenuLayer::onContinueTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == ui::Widget::TouchEventType::ENDED ) {
+        
+    }
 }
 
-void UIBattleMenuLayer::onTouchCancelled( cocos2d::Touch* touch, cocos2d::Event* event ) {
-    
+void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == ui::Widget::TouchEventType::ENDED ) {
+        SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
+    }
 }
 
-void UIBattleMenuLayer::onTouchEned( cocos2d::Touch* touch, cocos2d::Event* event ) {
-    
+void UIBattleMenuLayer::showResultPanel() {
+    _btn_pause->setVisible( false );
+    _win_panel->setVisible( true );
+    _pause_panel->setVisible( false );
 }
 
+void UIBattleMenuLayer::showPausePanel() {
+    _btn_pause->setVisible( false );
+    _win_panel->setVisible( false );
+    _pause_panel->setVisible( true );
+}
+
+void UIBattleMenuLayer::hideMenu() {
+    _btn_pause->setVisible( true );
+}
