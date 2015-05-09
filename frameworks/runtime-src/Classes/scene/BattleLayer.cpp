@@ -124,6 +124,9 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         this->addChild( _story_layer, eBattleSubLayer::BattleStoryLayer, eBattleSubLayer::BattleStoryLayer );
         _story_layer->setVisible( false );
         
+        _battle_menu_layer = UIBattleMenuLayer::create( this );
+        this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
+        
         _draw_node = DrawNode::create();
         _tmx_map->addChild( _draw_node, 100000 );
         
@@ -317,13 +320,11 @@ void BattleLayer::changeState( eBattleState new_state ) {
 
 bool BattleLayer::checkState() {
     if( _state == eBattleState::BattleWin ) {
-        _battle_menu_layer = UIBattleMenuLayer::create( this, "You Win! @ @!" );
-        this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
+        _battle_menu_layer->showResultPanel( true );
         return false;
     }
     else if( _state == eBattleState::BattleLose ) {
-        _battle_menu_layer = UIBattleMenuLayer::create( this, "You Lose! @ @!" );
-        this->addChild( _battle_menu_layer, eBattleSubLayer::BattleMenuLayer, eBattleSubLayer::BattleMenuLayer );
+        _battle_menu_layer->showResultPanel( false );
         return false;
     }
     return true;

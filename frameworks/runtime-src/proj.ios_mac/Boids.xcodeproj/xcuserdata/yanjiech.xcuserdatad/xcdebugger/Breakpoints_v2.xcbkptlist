@@ -72,8 +72,9 @@
                   continueAfterRunningActions = "No"
                   symbolName = "cocostudio::GUIReader::widgetFromBinaryFile(char const*)"
                   moduleName = "Boids Mac"
-                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
-                  timestampString = "448884978.220369"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids-0.1/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+                  timestampString = "452799941.821728"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
@@ -86,8 +87,9 @@
                   continueAfterRunningActions = "No"
                   symbolName = "cocostudio::GUIReader::widgetFromBinaryFile(char const*)"
                   moduleName = "Boids Mac"
-                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
-                  timestampString = "448884978.220995"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids-0.1/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+                  timestampString = "452799941.822376"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
@@ -100,8 +102,9 @@
                   continueAfterRunningActions = "No"
                   symbolName = "cocostudio::GUIReader::widgetFromBinaryFile(char const*)"
                   moduleName = "Boids Mac"
-                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
-                  timestampString = "448884978.221695"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids-0.1/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+                  timestampString = "452799941.822916"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
@@ -114,8 +117,9 @@
                   continueAfterRunningActions = "No"
                   symbolName = "cocostudio::GUIReader::widgetFromBinaryFile(char const*)"
                   moduleName = "Boids Mac"
-                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
-                  timestampString = "448884978.222197"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids-0.1/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+                  timestampString = "452799941.823515"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
@@ -128,13 +132,14 @@
                   continueAfterRunningActions = "No"
                   symbolName = "cocostudio::GUIReader::widgetFromBinaryFile(char const*)"
                   moduleName = "Boids Mac"
-                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
-                  timestampString = "448884978.222864"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids-0.1/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+                  timestampString = "452799941.824139"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
                   endingLineNumber = "426"
-                  offsetFromSymbolStart = "3243">
+                  offsetFromSymbolStart = "3234">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -142,13 +147,14 @@
                   continueAfterRunningActions = "No"
                   symbolName = "cocostudio::GUIReader::widgetFromBinaryFile(char const*)"
                   moduleName = "Boids Mac"
-                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
-                  timestampString = "448884978.223681"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids-0.1/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+                  timestampString = "452799941.824688"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
                   endingLineNumber = "426"
-                  offsetFromSymbolStart = "3561">
+                  offsetFromSymbolStart = "3543">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -156,13 +162,14 @@
                   continueAfterRunningActions = "No"
                   symbolName = "cocostudio::GUIReader::widgetFromBinaryFile(char const*)"
                   moduleName = "Boids Mac"
-                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
-                  timestampString = "448884978.224356"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanjiech/Documents/source_code/Boids-0.1/frameworks/cocos2d-x/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+                  timestampString = "452799941.82505"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "426"
                   endingLineNumber = "426"
-                  offsetFromSymbolStart = "3715">
+                  offsetFromSymbolStart = "3697">
                </Location>
             </Locations>
          </BreakpointContent>

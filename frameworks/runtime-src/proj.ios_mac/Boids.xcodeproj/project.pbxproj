@@ -2272,7 +2272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2287,9 +2287,13 @@
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
 					"$(SRCROOT)/../Classes/Protobuf",
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/include\"",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/Users/chenyanjie/Documents/lib/lib,
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
+				);
 				OTHER_LDFLAGS = (
 					"-image_base",
 					100000000,
@@ -2306,7 +2310,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
@@ -2318,9 +2322,13 @@
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
 					"$(SRCROOT)/../Classes/Protobuf",
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/include\"",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/Users/chenyanjie/Documents/lib/lib,
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
+				);
 				OTHER_LDFLAGS = (
 					"-image_base",
 					100000000,
@@ -2338,7 +2346,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -2359,7 +2367,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d953645f-b7be-499c-ba62-1a4ace3cc99c";
+				PROVISIONING_PROFILE = "e5db4c62-a5b1-4104-89f8-d717fd9ea941";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x $(SRCROOT)/../../cocos2d-x/cocos $(SRCROOT)/../../cocos2d-x/cocos/base $(SRCROOT)/../../cocos2d-x/cocos/physics $(SRCROOT)/../../cocos2d-x/cocos/math/kazmath $(SRCROOT)/../../cocos2d-x/cocos/2d $(SRCROOT)/../../cocos2d-x/cocos/ui $(SRCROOT)/../../cocos2d-x/cocos/network $(SRCROOT)/../../cocos2d-x/cocos/audio/include $(SRCROOT)/../../cocos2d-x/cocos/editor-support $(SRCROOT)/../../cocos2d-x/extensions $(SRCROOT)/../../cocos2d-x/external $(SRCROOT)/../../cocos2d-x/external/chipmunk/include/chipmunk $(SRCROOT)/../../cocos2d-x/external/lua/luajit/include $(SRCROOT)/../../cocos2d-x/external/lua/tolua $(SRCROOT)/../../cocos2d-x/cocos/scripting/lua-bindings/manual $(SRCROOT)/../../cocos2d-x/cocos/scripting/lua-bindings/auto";
 			};
 			name = Debug;
@@ -2369,7 +2377,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2385,7 +2393,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d953645f-b7be-499c-ba62-1a4ace3cc99c";
+				PROVISIONING_PROFILE = "e5db4c62-a5b1-4104-89f8-d717fd9ea941";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x $(SRCROOT)/../../cocos2d-x/cocos $(SRCROOT)/../../cocos2d-x/cocos/base $(SRCROOT)/../../cocos2d-x/cocos/physics $(SRCROOT)/../../cocos2d-x/cocos/math/kazmath $(SRCROOT)/../../cocos2d-x/cocos/2d $(SRCROOT)/../../cocos2d-x/cocos/ui $(SRCROOT)/../../cocos2d-x/cocos/network $(SRCROOT)/../../cocos2d-x/cocos/audio/include $(SRCROOT)/../../cocos2d-x/cocos/editor-support $(SRCROOT)/../../cocos2d-x/extensions $(SRCROOT)/../../cocos2d-x/external $(SRCROOT)/../../cocos2d-x/external/chipmunk/include/chipmunk $(SRCROOT)/../../cocos2d-x/external/lua/luajit/include $(SRCROOT)/../../cocos2d-x/external/lua/tolua $(SRCROOT)/../../cocos2d-x/cocos/scripting/lua-bindings/manual $(SRCROOT)/../../cocos2d-x/cocos/scripting/lua-bindings/auto";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2395,7 +2403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2409,11 +2417,15 @@
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
 					"$(SRCROOT)/../Classes/Protobuf",
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/include\"",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
-				PROVISIONING_PROFILE = "fa1ae143-78e4-4095-9d01-19b8cce7dd41";
+				LIBRARY_SEARCH_PATHS = (
+					/Users/chenyanjie/Documents/lib/lib,
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
+				);
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";
@@ -2425,7 +2437,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2438,11 +2450,15 @@
 					"$(inherited)",
 					/Users/chenyanjie/Documents/lib/include,
 					"$(SRCROOT)/../Classes/Protobuf",
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/include\"",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = /Users/chenyanjie/Documents/lib/lib;
-				PROVISIONING_PROFILE = "fa1ae143-78e4-4095-9d01-19b8cce7dd41";
+				LIBRARY_SEARCH_PATHS = (
+					/Users/chenyanjie/Documents/lib/lib,
+					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
+				);
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";
