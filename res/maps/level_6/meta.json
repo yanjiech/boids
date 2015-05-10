@@ -459,7 +459,7 @@
                     "position_name": "boss_yellow",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:4000",
+                    "custom_change": "hp:2000",
                     "unit_level": 6
                 }
             ]
@@ -565,7 +565,7 @@
                     "position_name": "blue_boss",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:4000",
+                    "custom_change": "hp:2000",
                     "unit_level": 6
                 }
             ]
@@ -638,7 +638,7 @@
                     "position_name": "boss_red",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:5000",
+                    "custom_change": "hp:2000",
                     "unit_level": 6
                 }
             ]
@@ -712,6 +712,7 @@
                     "position_name": "orange_11",
                     "unit_count": 1,
                     "unit_level": 7,
+                    "custom_change": "hp:1000",
                     "skill_1_level": 1
                 },
                 {
@@ -726,7 +727,7 @@
                     "position_name": "boss_final",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:8000",
+                    "custom_change": "hp:3000",
                     "unit_level": 7
                 },
                 {
