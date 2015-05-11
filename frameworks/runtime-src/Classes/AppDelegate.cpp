@@ -66,6 +66,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     FileUtils* file_utils = FileUtils::getInstance();
     file_utils->addSearchPath( "res" );
     file_utils->addSearchPath( "res/ui" );
+    file_utils->addSearchPath( "res/ui/page" );
     file_utils->addSearchPath( "res/maps/map_images" );
     file_utils->addSearchPath( "res/BoidsUI/res" );
     file_utils->addSearchPath( "res/BoidsEditor/res" );

@@ -43,6 +43,10 @@ public:
     void onBackButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     void onLevelTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     
+    void onStoreTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    void onHeroTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    void onTeamSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    
     void setMapData( MapData* map_data );
 };
 

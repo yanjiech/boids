@@ -173,6 +173,12 @@
 		9871DBFB1ABAE1F5009B8EC9 /* SkillNodeFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9871DBF81ABAE1F5009B8EC9 /* SkillNodeFactory.cpp */; };
 		987336141AB6840200694B53 /* JumpText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987336121AB6840200694B53 /* JumpText.cpp */; };
 		987336151AB6840200694B53 /* JumpText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987336121AB6840200694B53 /* JumpText.cpp */; };
+		98733C4A1AFE38A3006B7C37 /* UIHeroManageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98733C481AFE38A3006B7C37 /* UIHeroManageLayer.cpp */; };
+		98733C4B1AFE38A3006B7C37 /* UIHeroManageLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98733C481AFE38A3006B7C37 /* UIHeroManageLayer.cpp */; };
+		98733C4E1AFE3B4B006B7C37 /* TouchableLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */; };
+		98733C4F1AFE3B4B006B7C37 /* TouchableLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */; };
+		98733C521AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98733C501AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp */; };
+		98733C531AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98733C501AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp */; };
 		98742E661ABBD31B0087D13D /* BarrageOfArrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98742E641ABBD31B0087D13D /* BarrageOfArrow.cpp */; };
 		98742E671ABBD31B0087D13D /* BarrageOfArrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 98742E641ABBD31B0087D13D /* BarrageOfArrow.cpp */; };
 		987A83721ABBE1540093940D /* CrazyShoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987A83701ABBE1540093940D /* CrazyShoot.cpp */; };
@@ -642,6 +648,12 @@
 		9871DBF91ABAE1F5009B8EC9 /* SkillNodeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillNodeFactory.h; sourceTree = "<group>"; };
 		987336121AB6840200694B53 /* JumpText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JumpText.cpp; sourceTree = "<group>"; };
 		987336131AB6840200694B53 /* JumpText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpText.h; sourceTree = "<group>"; };
+		98733C481AFE38A3006B7C37 /* UIHeroManageLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIHeroManageLayer.cpp; sourceTree = "<group>"; };
+		98733C491AFE38A3006B7C37 /* UIHeroManageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHeroManageLayer.h; sourceTree = "<group>"; };
+		98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchableLayer.cpp; sourceTree = "<group>"; };
+		98733C4D1AFE3B4B006B7C37 /* TouchableLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchableLayer.h; sourceTree = "<group>"; };
+		98733C501AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIHeroDetailLayer.cpp; sourceTree = "<group>"; };
+		98733C511AFE3CDE006B7C37 /* UIHeroDetailLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHeroDetailLayer.h; sourceTree = "<group>"; };
 		98742E641ABBD31B0087D13D /* BarrageOfArrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BarrageOfArrow.cpp; sourceTree = "<group>"; };
 		98742E651ABBD31B0087D13D /* BarrageOfArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageOfArrow.h; sourceTree = "<group>"; };
 		987A83701ABBE1540093940D /* CrazyShoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CrazyShoot.cpp; sourceTree = "<group>"; };
@@ -1171,6 +1183,12 @@
 				76EC48FD1ADB605F00C9F17B /* UIStoryLayer.h */,
 				76B578F31AF7743600D7E783 /* TransitionLayer.cpp */,
 				76B578F41AF7743600D7E783 /* TransitionLayer.h */,
+				98733C481AFE38A3006B7C37 /* UIHeroManageLayer.cpp */,
+				98733C491AFE38A3006B7C37 /* UIHeroManageLayer.h */,
+				98733C501AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp */,
+				98733C511AFE3CDE006B7C37 /* UIHeroDetailLayer.h */,
+				98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */,
+				98733C4D1AFE3B4B006B7C37 /* TouchableLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;
@@ -1980,6 +1998,7 @@
 				E874130C1A0B5629003EBD0B /* TmxUtil.cpp in Sources */,
 				E86CDE941A1F3D21004FBDA2 /* Collidable.cpp in Sources */,
 				76EC48FF1ADB605F00C9F17B /* UIStoryLayer.cpp in Sources */,
+				98733C531AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp in Sources */,
 				76EFF5C21AD396C300690CFE /* FatalThrow.cpp in Sources */,
 				E87413161A0B5647003EBD0B /* gzclose.c in Sources */,
 				E87413171A0B5647003EBD0B /* gzlib.c in Sources */,
@@ -2012,6 +2031,7 @@
 				988B52BF1AA42FB700FB7B21 /* Updatable.cpp in Sources */,
 				76EF6B351ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */,
 				98E3B66E1A73A77A00B5BEBB /* reflection_ops.cc in Sources */,
+				98733C4F1AFE3B4B006B7C37 /* TouchableLayer.cpp in Sources */,
 				E874130A1A0B5629003EBD0B /* TmxTile.cpp in Sources */,
 				E874131C1A0B5647003EBD0B /* inflate.c in Sources */,
 				986A555F1AA561E30051B0B9 /* SceneBase.cpp in Sources */,
@@ -2032,6 +2052,7 @@
 				985F4D291AAD72B9008D2EF8 /* Buff.cpp in Sources */,
 				76E414741ACAA14F003DB126 /* SkillCache.cpp in Sources */,
 				76E21D921AC52924006714AD /* DarkPierce.cpp in Sources */,
+				98733C4B1AFE38A3006B7C37 /* UIHeroManageLayer.cpp in Sources */,
 				E87413141A0B5647003EBD0B /* crc32.c in Sources */,
 				E874131F1A0B5647003EBD0B /* uncompr.c in Sources */,
 				986A55831AA57D850051B0B9 /* AttackBehavior.cpp in Sources */,
@@ -2086,11 +2107,13 @@
 				98E3B67F1A73A77A00B5BEBB /* strutil.cc in Sources */,
 				76E414771ACAB0B4003DB126 /* MagicPulse.cpp in Sources */,
 				98B4024C1AAEB9B900F4FE09 /* BattleLayer.cpp in Sources */,
+				98733C4E1AFE3B4B006B7C37 /* TouchableLayer.cpp in Sources */,
 				9859D1D41A7B4C0300FF6D82 /* boids.pb.cc in Sources */,
 				E8676E401A7B734000F927E5 /* Profile.cpp in Sources */,
 				5023812517EBBCAC00990C9B /* RootViewController.mm in Sources */,
 				9865FF211A15F87000487EB1 /* Path.cpp in Sources */,
 				E84197C11A09226300F5DF36 /* tinystr.cpp in Sources */,
+				98733C521AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp in Sources */,
 				E84197C01A09226300F5DF36 /* base64.cpp in Sources */,
 				98E3B65D1A73A77A00B5BEBB /* printer.cc in Sources */,
 				E84197CF1A09226300F5DF36 /* TmxTile.cpp in Sources */,
@@ -2194,6 +2217,7 @@
 				98E3B66D1A73A77A00B5BEBB /* reflection_ops.cc in Sources */,
 				E84197C31A09226300F5DF36 /* tinyxmlerror.cpp in Sources */,
 				E84197E91A09228000F5DF36 /* Terrain.cpp in Sources */,
+				98733C4A1AFE38A3006B7C37 /* UIHeroManageLayer.cpp in Sources */,
 				E84197CA1A09226300F5DF36 /* TmxObject.cpp in Sources */,
 				98E3B65B1A73A77A00B5BEBB /* gzip_stream.cc in Sources */,
 				98E3B6631A73A77A00B5BEBB /* zero_copy_stream.cc in Sources */,

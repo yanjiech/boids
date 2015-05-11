@@ -662,7 +662,7 @@
                     "position_name": "boss",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:8000",
+                    "custom_change": "hp:3000",
                     "unit_level": 5,
                     "popup_type": "normal",
                     "skill_1_level": 2
@@ -739,7 +739,7 @@
             ],
             "actions": [
                 {
-                    "meta": "-1,0.00,30.00",
+                    "meta": "-1,0.00,60.00",
                     "action_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "boss",
@@ -768,7 +768,7 @@
             ],
             "actions": [
                 {
-                    "meta": "-1,10.00,30.00",
+                    "meta": "-1,20.00,60.00",
                     "action_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "boss",
@@ -797,7 +797,7 @@
             ],
             "actions": [
                 {
-                    "meta": "-1,20.00,30.00",
+                    "meta": "-1,40.00,60.00",
                     "action_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "boss",

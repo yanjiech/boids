@@ -13,8 +13,8 @@
 
 using namespace cocos2d;
 
-#define WIN_PANEL_FILE "winPage/winPage.csb"
-#define PAUSE_PANEL_FILE "pausePage/pausePage.csb"
+#define WIN_PANEL_FILE "ui/page/ui_win_page.csb"
+#define PAUSE_PANEL_FILE "ui/page/ui_pause_page.csb"
 
 UIBattleMenuLayer::UIBattleMenuLayer() {
     
