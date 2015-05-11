@@ -99,7 +99,6 @@ public:
     
     int getUnitDisappearCountByName( const std::string& name );
     void increaseUnitDisappearCountByName( int count, const std::string& name );
-    
 };
 
 #endif /* defined(__Boids__MapLogic__) */
