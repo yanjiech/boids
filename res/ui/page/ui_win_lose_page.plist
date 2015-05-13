@@ -4,14 +4,27 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>ui_losepage_zi.png</key>
+            <key>ui_general_mask.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{74,50},{760,356}}</string>
+                <string>{{233,884},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{64,64}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>ui_losepage_zi.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,122},{760,356}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{760,356}}</string>
                 <key>sourceSize</key>
@@ -20,11 +33,11 @@
             <key>ui_winpage_biaotou.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{74,408},{758,398}}</string>
+                <string>{{360,122},{758,398}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{758,398}}</string>
                 <key>sourceSize</key>
@@ -33,11 +46,11 @@
             <key>ui_winpage_gold.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{836,50},{118,103}}</string>
+                <string>{{128,884},{118,103}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{118,103}}</string>
                 <key>sourceSize</key>
@@ -46,11 +59,11 @@
             <key>ui_winpage_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{730,808},{156,147}}</string>
+                <string>{{760,122},{156,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{156,147}}</string>
                 <key>sourceSize</key>
@@ -59,15 +72,15 @@
             <key>ui_winpage_progress.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{74,2},{825,46}}</string>
+                <string>{{2,74},{995,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{825,46}}</string>
+                <string>{{0,0},{995,46}}</string>
                 <key>sourceSize</key>
-                <string>{825,46}</string>
+                <string>{995,46}</string>
             </dict>
             <key>ui_winpage_progress_bg.png</key>
             <dict>
@@ -76,7 +89,7 @@
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{1015,70}}</string>
                 <key>sourceSize</key>
@@ -85,7 +98,7 @@
             <key>ui_winpage_star.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{834,408},{124,125}}</string>
+                <string>{{2,884},{124,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -95,32 +108,19 @@
                 <key>sourceSize</key>
                 <string>{124,125}</string>
             </dict>
-            <key>ui_winpage_win_zi.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{74,808},{654,193}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{654,193}}</string>
-                <key>sourceSize</key>
-                <string>{654,193}</string>
-            </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>ui_battle_result.png</string>
+            <string>ui_win_lose_page.png</string>
             <key>size</key>
-            <string>{960,1019}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a74c4b4cad49d3a0949afc8fee092a29:3c183c20594a7f36467a6180c87c4e6a:c0282144979bbb53667dcfc27c3b8370$</string>
+            <string>$TexturePacker:SmartUpdate:7a25614724dd557e45bb3ec6b9aba065:1/1$</string>
             <key>textureFileName</key>
-            <string>ui_battle_result.png</string>
+            <string>ui_win_lose_page.png</string>
         </dict>
     </dict>
 </plist>
