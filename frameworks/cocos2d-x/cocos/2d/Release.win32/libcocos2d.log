@@ -1,0 +1,483 @@
+﻿  AssetsManager.cpp
+  AssetsManagerEx.cpp
+  CCEventAssetsManagerEx.cpp
+  CCEventListenerAssetsManagerEx.cpp
+  Downloader.cpp
+  Manifest.cpp
+  CCControl.cpp
+  CCControlButton.cpp
+  CCControlColourPicker.cpp
+  CCControlHuePicker.cpp
+  CCControlPotentiometer.cpp
+  CCControlSaturationBrightnessPicker.cpp
+  CCControlSlider.cpp
+  CCControlStepper.cpp
+  CCControlSwitch.cpp
+  CCControlUtils.cpp
+  CCInvocation.cpp
+  CCScrollView.cpp
+  CCTableView.cpp
+  CCTableViewCell.cpp
+  CCPhysicsDebugNode.cpp
+  CCPhysicsSprite.cpp
+  ConvertUTF.c
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(105): warning C4056: overflow in floating-point constant arithmetic (..\..\extensions\physics-nodes\CCPhysicsDebugNode.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(111): warning C4056: overflow in floating-point constant arithmetic (..\..\extensions\physics-nodes\CCPhysicsDebugNode.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(105): warning C4056: overflow in floating-point constant arithmetic (..\..\extensions\physics-nodes\CCPhysicsSprite.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(111): warning C4056: overflow in floating-point constant arithmetic (..\..\extensions\physics-nodes\CCPhysicsSprite.cpp)
+  ConvertUTFWrapper.cpp
+  edtaa3func.cpp
+  flatc.cpp
+  idl_gen_cpp.cpp
+  idl_gen_fbs.cpp
+  idl_gen_general.cpp
+  idl_gen_go.cpp
+  idl_gen_text.cpp
+  idl_parser.cpp
+  tinyxml2.cpp
+  ioapi_mem.cpp
+  ioapi.cpp
+  unzip.cpp
+  xxhash.c
+..\..\external\xxhash\xxhash.c(312): warning C4804: '/' : unsafe use of type 'bool' in operation
+  CCAABB.cpp
+  CCAnimate3D.cpp
+  CCAnimation3D.cpp
+  CCAttachNode.cpp
+  CCBillBoard.cpp
+..\3d\CCAnimate3D.cpp(113): warning C4018: '<' : signed/unsigned mismatch
+  CCBundle3D.cpp
+  CCBundleReader.cpp
+..\3d\CCBundleReader.cpp(173): warning C4018: '<=' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(116): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(249): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(375): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(492): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(601): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(698): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(859): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(868): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(927): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(1054): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(1385): warning C4018: '<' : signed/unsigned mismatch
+..\3d\CCBundle3D.cpp(1800): warning C4018: '<' : signed/unsigned mismatch
+  CCFrustum.cpp
+  CCMesh.cpp
+  CCMeshSkin.cpp
+  CCMeshVertexIndexData.cpp
+  CCOBB.cpp
+..\3d\CCMeshSkin.cpp(73): warning C4018: '<' : signed/unsigned mismatch
+  CCObjLoader.cpp
+  CCPlane.cpp
+  CCRay.cpp
+  CCSkeleton3D.cpp
+  CCSprite3D.cpp
+  CCSprite3DMaterial.cpp
+  AudioEngine.cpp
+  AudioCache.cpp
+  AudioEngine-win32.cpp
+..\3d\CCSprite3D.cpp(69): warning C4390: ';' : empty controlled statement found; is this the intent?
+  AudioPlayer.cpp
+  MciPlayer.cpp
+  SimpleAudioEngine.cpp
+  CCAllocatorDiagnostics.cpp
+  CCAllocatorGlobal.cpp
+  CCAllocatorGlobalNewDelete.cpp
+  atitc.cpp
+  base64.cpp
+  CCAsyncTaskPool.cpp
+  CCAutoreleasePool.cpp
+  ccCArray.cpp
+  CCConfiguration.cpp
+  CCConsole.cpp
+  CCData.cpp
+  CCDataVisitor.cpp
+  CCDirector.cpp
+  CCEvent.cpp
+  CCEventAcceleration.cpp
+  CCEventCustom.cpp
+  CCEventDispatcher.cpp
+  CCEventFocus.cpp
+  CCEventKeyboard.cpp
+  CCEventListener.cpp
+  CCEventListenerAcceleration.cpp
+  CCEventListenerCustom.cpp
+  CCEventListenerFocus.cpp
+  CCEventListenerKeyboard.cpp
+  CCEventListenerMouse.cpp
+  CCEventListenerTouch.cpp
+  CCEventMouse.cpp
+  CCEventTouch.cpp
+  ccFPSImages.c
+  CCIMEDispatcher.cpp
+  CCNS.cpp
+  CCProfiling.cpp
+  ccRandom.cpp
+  CCRef.cpp
+  CCScheduler.cpp
+  CCScriptSupport.cpp
+  CCTouch.cpp
+  ccTypes.cpp
+  CCUserDefault.cpp
+  ccUTF8.cpp
+  ccUtils.cpp
+  CCValue.cpp
+..\base\ccUTF8.cpp(234): warning C4996: 'cocos2d::cc_wcslen': was declared deprecated
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\base/ccUTF8.h(130) : see declaration of 'cocos2d::cc_wcslen'
+..\base\ccUTF8.cpp(277): warning C4996: 'cocos2d::cc_wcslen': was declared deprecated
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\base/ccUTF8.h(130) : see declaration of 'cocos2d::cc_wcslen'
+  etc1.cpp
+  pvr.cpp
+  ObjectFactory.cpp
+  s3tc.cpp
+  TGAlib.cpp
+  ZipUtils.cpp
+  cocos2d.cpp
+  CCArray.cpp
+  CCDeprecated.cpp
+  CCDictionary.cpp
+  CCNotificationCenter.cpp
+  CCSet.cpp
+  CCString.cpp
+  CCBAnimationManager.cpp
+  CCBFileLoader.cpp
+  CCBKeyframe.cpp
+  CCBReader.cpp
+  CCBSequence.cpp
+  CCBSequenceProperty.cpp
+  CCControlButtonLoader.cpp
+  CCControlLoader.cpp
+  CCLabelBMFontLoader.cpp
+  CCLabelTTFLoader.cpp
+  CCLayerColorLoader.cpp
+  CCLayerGradientLoader.cpp
+  CCLayerLoader.cpp
+  CCMenuItemImageLoader.cpp
+  CCMenuItemLoader.cpp
+  CCNode+CCBRelativePositioning.cpp
+  CCNodeLoader.cpp
+  CCNodeLoaderLibrary.cpp
+  CCParticleSystemQuadLoader.cpp
+  CCScale9SpriteLoader.cpp
+  CCScrollViewLoader.cpp
+  CCSpriteLoader.cpp
+  CCActionTimeline.cpp
+  CCActionTimelineCache.cpp
+  CCActionTimelineNode.cpp
+  CCFrame.cpp
+..\editor-support\cocostudio\ActionTimeline\CCFrame.cpp(725): warning C4018: '<' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCFrame.cpp(725): warning C4018: '>' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCFrame.cpp(728): warning C4018: '>=' : signed/unsigned mismatch
+  CCNodeReader.cpp
+  CCTimeLine.cpp
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(142): warning C4018: '<' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(144): warning C4018: '>=' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(155): warning C4018: '>=' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(170): warning C4018: '>=' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(170): warning C4018: '<' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(175): warning C4018: '>' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(191): warning C4018: '<' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(217): warning C4018: '<' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(224): warning C4018: '>=' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(248): warning C4018: '>' : signed/unsigned mismatch
+..\editor-support\cocostudio\ActionTimeline\CCTimeLine.cpp(248): warning C4018: '<' : signed/unsigned mismatch
+  CSLoader.cpp
+  CCActionFrame.cpp
+  CCActionFrameEasing.cpp
+  CCActionManagerEx.cpp
+  CCActionNode.cpp
+  CCActionObject.cpp
+  CCArmature.cpp
+  CCArmatureAnimation.cpp
+  CCArmatureDataManager.cpp
+  CCArmatureDefine.cpp
+  CCBatchNode.cpp
+  CCBone.cpp
+  CCColliderDetector.cpp
+  CCComAttribute.cpp
+  CCComAudio.cpp
+  CCComController.cpp
+  CCComRender.cpp
+  CCDataReaderHelper.cpp
+  CCDatas.cpp
+  CCDecorativeDisplay.cpp
+..\editor-support\cocostudio\CCDataReaderHelper.cpp(312): warning C4996: 'cocos2d::FileUtils::getFileData': was declared deprecated
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+..\editor-support\cocostudio\CCDataReaderHelper.cpp(426): warning C4996: 'cocos2d::FileUtils::getFileData': was declared deprecated
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+  CCDisplayFactory.cpp
+  CCDisplayManager.cpp
+  CCInputDelegate.cpp
+  CCProcessBase.cpp
+  CCSGUIReader.cpp
+  CCSkin.cpp
+  CCSpriteFrameCacheHelper.cpp
+  CCSSceneReader.cpp
+  CCTransformHelp.cpp
+  CCTween.cpp
+  CCUtilMath.cpp
+  CocoLoader.cpp
+  DictionaryHelper.cpp
+  FlatBuffersSerialize.cpp
+  TriggerBase.cpp
+  TriggerMng.cpp
+  TriggerObj.cpp
+  WidgetCallBackHandlerProtocol.cpp
+  ArmatureNodeReader.cpp
+  ButtonReader.cpp
+  CheckBoxReader.cpp
+  ComAudioReader.cpp
+  GameMapReader.cpp
+  ImageViewReader.cpp
+  LayoutReader.cpp
+  ListViewReader.cpp
+  LoadingBarReader.cpp
+  NodeReaderDefine.cpp
+  NodeReaderProtocol.cpp
+  NodeReader.cpp
+  PageViewReader.cpp
+  ParticleReader.cpp
+  ProjectNodeReader.cpp
+  ScrollViewReader.cpp
+  SingleNodeReader.cpp
+  SliderReader.cpp
+  SpriteReader.cpp
+  TextAtlasReader.cpp
+  TextBMFontReader.cpp
+  TextFieldReader.cpp
+  TextReader.cpp
+  WidgetReader.cpp
+  CCAffineTransform.cpp
+  CCGeometry.cpp
+  CCVertex.cpp
+  Mat4.cpp
+  MathUtil.cpp
+  Quaternion.cpp
+  TransformUtils.cpp
+  Vec2.cpp
+  Vec3.cpp
+  Vec4.cpp
+  HttpClient.cpp
+  SocketIO.cpp
+E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\network/HttpRequest.h(185): warning C4996: 'cocos2d::network::HttpRequest::setResponseCallback': was declared deprecated (..\network\HttpClient.cpp)
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\network/HttpRequest.h(188) : see declaration of 'cocos2d::network::HttpRequest::setResponseCallback'
+  WebSocket.cpp
+  CCPhysicsBody.cpp
+  CCPhysicsContact.cpp
+E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\network/HttpRequest.h(185): warning C4996: 'cocos2d::network::HttpRequest::setResponseCallback': was declared deprecated (..\network\SocketIO.cpp)
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\network/HttpRequest.h(188) : see declaration of 'cocos2d::network::HttpRequest::setResponseCallback'
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(105): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsContact.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(111): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsContact.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(105): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsBody.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(111): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsBody.cpp)
+  CCPhysicsJoint.cpp
+  CCPhysicsShape.cpp
+  CCPhysicsWorld.cpp
+  CCFileUtils.cpp
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(105): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsJoint.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(111): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsJoint.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(105): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsShape.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(111): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsShape.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(105): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsWorld.cpp)
+e:\code\boids\frameworks\cocos2d-x\external\chipmunk\include\chipmunk\cpBB.h(111): warning C4056: overflow in floating-point constant arithmetic (..\physics\CCPhysicsWorld.cpp)
+  CCGLView.cpp
+  CCImage.cpp
+  CCSAXParser.cpp
+  CCThread.cpp
+  CCGLViewImpl-desktop.cpp
+  CCApplication-win32.cpp
+  CCCommon-win32.cpp
+  CCDevice-win32.cpp
+  CCFileUtils-win32.cpp
+  CCStdC-win32.cpp
+  CCBatchCommand.cpp
+  CCCustomCommand.cpp
+e:\code\boids\frameworks\cocos2d-x\cocos\platform\win32\CCFileUtils-win32.h(102): warning C4996: 'cocos2d::FileUtils::getFileData': was declared deprecated (..\platform\win32\CCFileUtils-win32.cpp)
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+  CCGLProgram.cpp
+  CCGLProgramCache.cpp
+  CCGLProgramState.cpp
+  CCGLProgramStateCache.cpp
+  ccGLStateCache.cpp
+  CCGroupCommand.cpp
+  CCMeshCommand.cpp
+  CCPrimitive.cpp
+  CCPrimitiveCommand.cpp
+  CCQuadCommand.cpp
+  CCRenderCommand.cpp
+..\renderer\CCMeshCommand.cpp(195): warning C4800: 'GLboolean' : forcing value to bool 'true' or 'false' (performance warning)
+..\renderer\CCMeshCommand.cpp(196): warning C4800: 'GLboolean' : forcing value to bool 'true' or 'false' (performance warning)
+  CCRenderer.cpp
+  ccShaders.cpp
+  CCTexture2D.cpp
+  CCTextureAtlas.cpp
+  CCTextureCache.cpp
+..\renderer\CCRenderer.cpp(140): warning C4800: 'GLboolean' : forcing value to bool 'true' or 'false' (performance warning)
+..\renderer\CCRenderer.cpp(141): warning C4800: 'GLboolean' : forcing value to bool 'true' or 'false' (performance warning)
+  CCTrianglesCommand.cpp
+  CCVertexIndexBuffer.cpp
+  CCVertexIndexData.cpp
+  LocalStorage.cpp
+  CocosGUI.cpp
+  UIShaders.cpp
+  UIButton.cpp
+  UICheckBox.cpp
+  UIDeprecated.cpp
+  UIEditBox.cpp
+  UIEditBoxImpl-win32.cpp
+  UIHBox.cpp
+  UIHelper.cpp
+  UIImageView.cpp
+  UILayout.cpp
+  UILayoutComponent.cpp
+  UILayoutManager.cpp
+  UILayoutParameter.cpp
+  UIListView.cpp
+  UILoadingBar.cpp
+  UIPageView.cpp
+  UIRelativeBox.cpp
+  UIRichText.cpp
+  UIScale9Sprite.cpp
+  UIScrollView.cpp
+  UISlider.cpp
+  UIText.cpp
+  UITextAtlas.cpp
+  UITextBMFont.cpp
+  UITextField.cpp
+  UIVBox.cpp
+  UIWebView.cpp
+  UIWidget.cpp
+  CCAction.cpp
+  CCActionCamera.cpp
+  CCActionCatmullRom.cpp
+  CCActionEase.cpp
+  CCActionGrid.cpp
+  CCActionGrid3D.cpp
+  CCActionInstant.cpp
+  CCActionInterval.cpp
+  CCActionManager.cpp
+  CCActionPageTurn3D.cpp
+  CCActionProgressTimer.cpp
+  CCActionTiledGrid.cpp
+  CCActionTween.cpp
+  CCAnimation.cpp
+  CCAnimationCache.cpp
+  CCAtlasNode.cpp
+  CCCamera.cpp
+  CCClippingNode.cpp
+  CCClippingRectangleNode.cpp
+  CCComponent.cpp
+  CCComponentContainer.cpp
+  CCDrawingPrimitives.cpp
+  CCDrawNode.cpp
+  CCFastTMXLayer.cpp
+  CCFastTMXTiledMap.cpp
+  CCFont.cpp
+  CCFontAtlas.cpp
+  CCFontAtlasCache.cpp
+  CCFontCharMap.cpp
+  CCFontFNT.cpp
+  CCFontFreeType.cpp
+  CCGLBufferedNode.cpp
+  CCGrabber.cpp
+  CCGrid.cpp
+  CCLabel.cpp
+  CCLabelAtlas.cpp
+  CCLabelBMFont.cpp
+  CCLabelTextFormatter.cpp
+  CCLabelTTF.cpp
+  CCLayer.cpp
+  CCLight.cpp
+  CCMenu.cpp
+  CCMenuItem.cpp
+  CCMotionStreak.cpp
+  CCNode.cpp
+  CCNodeGrid.cpp
+  CCParallaxNode.cpp
+  CCParticleBatchNode.cpp
+  CCParticleExamples.cpp
+  CCParticleSystem.cpp
+  CCParticleSystemQuad.cpp
+  CCProgressTimer.cpp
+  CCProtectedNode.cpp
+  CCRenderTexture.cpp
+  CCScene.cpp
+  CCSprite.cpp
+  CCSpriteBatchNode.cpp
+  CCSpriteFrame.cpp
+  CCSpriteFrameCache.cpp
+  CCTextFieldTTF.cpp
+  CCTileMapAtlas.cpp
+  CCTMXLayer.cpp
+  CCTMXObjectGroup.cpp
+  CCTMXTiledMap.cpp
+  CCTMXXMLParser.cpp
+  CCTransition.cpp
+  CCTransitionPageTurn.cpp
+  CCTransitionProgress.cpp
+  CCTweenFunction.cpp
+  复制了 1 个文件
+  复制了 1 个文件
+  复制了 4 个文件
+  复制了 1 个文件
+  复制了 1 个文件
+  复制了 2 个文件
+  复制了 1 个文件
+  复制了 2 个文件
+  复制了 2 个文件
+  复制了 2 个文件
+  复制了 2 个文件
+  复制了 2 个文件
+  复制了 2 个文件
+  复制了 6 个文件
+  复制了 2 个文件
+  复制了 1 个文件
+     Creating library E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\libcocos2d.lib and object E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\libcocos2d.exp
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+libjpeg.lib(jcapimin.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcapimin.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcapistd.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcapistd.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcarith.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcarith.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcparam.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcparam.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdatadst.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdatadst.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcinit.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcinit.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcmaster.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcmaster.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcmarker.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcmarker.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcmainct.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcmainct.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcprepct.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcprepct.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jccoefct.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jccoefct.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jccolor.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jccolor.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcsample.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcsample.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jchuff.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jchuff.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcdctmgr.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcdctmgr.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jfdctfst.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jfdctfst.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jfdctflt.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jfdctflt.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jfdctint.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jfdctint.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdapimin.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdapimin.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdapistd.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdapistd.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdarith.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdarith.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdatasrc.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdatasrc.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdmaster.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdmaster.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdinput.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdinput.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdmarker.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdmarker.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdhuff.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdhuff.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdmainct.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdmainct.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdcoefct.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdcoefct.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdpostct.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdpostct.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jddctmgr.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jddctmgr.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jidctfst.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jidctfst.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jidctflt.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jidctflt.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jidctint.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jidctint.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdsample.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdsample.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdcolor.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdcolor.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jquant1.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jquant1.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jquant2.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jquant2.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jdmerge.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jdmerge.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jaricom.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jaricom.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jcomapi.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jcomapi.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jutils.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jutils.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jerror.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jerror.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jmemmgr.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jmemmgr.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+libjpeg.lib(jmemnobs.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'libjpeg.lib(jmemnobs.obj)' or at 'E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\vc110.pdb'; linking object as if no debug info
+  libcocos2d.vcxproj -> E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\libcocos2d.dll
