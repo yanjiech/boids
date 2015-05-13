@@ -9,10 +9,6 @@
 #ifndef __Boids__BoidsConstant__
 #define __Boids__BoidsConstant__
 
-#define FLIPPED_HORIZONTALLY 0x80000000
-#define FLIPPED_VERTICALLY 0x40000000
-#define FLIPPED_DIAGONALLY 0x20000000
-
 #define UNIT_BLEED "unit_bleed"
 
 #define UNIT_SOURCE_NAME "name_source"

@@ -469,12 +469,8 @@ int Value::asInt() const
 
     if (_type == Type::STRING)
     {
-        return atoi(_field.strVal->c_str());
-//        std::stringstream ss;
-//        ss << *_field.strVal;
-//        unsigned int ret;
-//        ss >> ret;
-//        return static_cast<int>( ret );
+        char* end;
+        return static_cast<int>( strtol( _field.strVal->c_str(), &end, 10 ) );
     }
 
     if (_type == Type::FLOAT)

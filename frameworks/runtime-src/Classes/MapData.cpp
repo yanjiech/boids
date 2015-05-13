@@ -81,18 +81,16 @@ cocos2d::Sprite* MapData::spriteFromObject( TMXTiledMap* map, const cocos2d::Val
         bool flipped_horizontally = false;
         bool flipped_vertically = false;
         bool flipped_diagonally = false;
-        if( ( gid & FLIPPED_HORIZONTALLY ) != 0 ) {
+        if( ( gid & kTMXTileHorizontalFlag ) != 0 ) {
             flipped_horizontally = true;
-            gid &= 0x7fffffff;
         }
-        if( ( gid & FLIPPED_VERTICALLY ) != 0 ) {
+        if( ( gid & kTMXTileVerticalFlag ) != 0 ) {
             flipped_vertically = true;
-            gid &= 0xbfffffff;
         }
-        if( ( gid & FLIPPED_DIAGONALLY ) != 0 ) {
+        if( ( gid & kTMXTileDiagonalFlag ) != 0 ) {
             flipped_diagonally = true;
-            gid &= 0xdfffffff;
         }
+        gid &= kTMXFlippedMask;
         auto x = object.at("x").asFloat();
         auto y = object.at("y").asFloat();
         auto p = map->getPropertiesForGID(gid).asValueMap();
