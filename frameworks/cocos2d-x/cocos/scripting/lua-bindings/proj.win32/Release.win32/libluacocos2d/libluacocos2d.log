@@ -1,0 +1,221 @@
+﻿  复制了 2 个文件
+  auxiliar.c
+  buffer.c
+  except.c
+  inet.c
+  io.c
+  luasocket.c
+  luasocket_scripts.c
+  mime.c
+  options.c
+  select.c
+..\..\..\..\external\lua\luasocket\inet.c(254): warning C4133: 'function' : incompatible types - from 'WCHAR *' to 'const char *'
+..\..\..\..\external\lua\luasocket\inet.c(288): warning C4133: 'function' : incompatible types - from 'WCHAR *' to 'const char *'
+  tcp.c
+  timeout.c
+  udp.c
+  wsocket.c
+  tolua_event.c
+  tolua_is.c
+  tolua_map.c
+..\..\..\..\external\lua\luasocket\udp.c(181): warning C4133: 'function' : incompatible types - from 'WCHAR *' to 'const char *'
+..\..\..\..\external\lua\luasocket\udp.c(251): warning C4133: 'function' : incompatible types - from 'WCHAR *' to 'const char *'
+  tolua_push.c
+  tolua_to.c
+  lua_extensions.c
+..\..\..\..\external\lua\luasocket\wsocket.c(431): warning C4133: 'return' : incompatible types - from 'WCHAR *' to 'const char *'
+  LuaEventNode.cpp
+  LuaNodeManager.cpp
+  LuaTouchEventManager.cpp
+  LuaTouchTargetNode.cpp
+  lua_cocos2dx_quick_manual.cpp
+  xxtea.cpp
+  lua_cocos2dx_3d_auto.cpp
+  lua_cocos2dx_audioengine_auto.cpp
+  lua_cocos2dx_auto.cpp
+  lua_cocos2dx_cocosbuilder_auto.cpp
+  lua_cocos2dx_cocosdenshion_auto.cpp
+  lua_cocos2dx_csloader_auto.cpp
+..\auto\lua_cocos2dx_auto.cpp(11189): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_auto.cpp(11231): warning C4083: expected '('; found identifier 'NO'
+  lua_cocos2dx_experimental_auto.cpp
+  lua_cocos2dx_experimental_video_auto.cpp
+  lua_cocos2dx_extension_auto.cpp
+  lua_cocos2dx_physics_auto.cpp
+  lua_cocos2dx_spine_auto.cpp
+  lua_cocos2dx_studio_auto.cpp
+..\auto\lua_cocos2dx_physics_auto.cpp(4918): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_spine_auto.cpp(574): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_spine_auto.cpp(788): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_spine_auto.cpp(805): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_spine_auto.cpp(945): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_spine_auto.cpp(1003): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_spine_auto.cpp(1061): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_spine_auto.cpp(1173): warning C4083: expected '('; found identifier 'NO'
+  lua_cocos2dx_ui_auto.cpp
+  lua_cocos2dx_3d_manual.cpp
+e:\code\boids\frameworks\cocos2d-x\cocos\scripting\lua-bindings\auto\lua_cocos2dx_spine_auto.cpp(1074): warning C4700: uninitialized local variable 'arg0' used
+e:\code\boids\frameworks\cocos2d-x\cocos\scripting\lua-bindings\auto\lua_cocos2dx_spine_auto.cpp(1186): warning C4700: uninitialized local variable 'arg0' used
+e:\code\boids\frameworks\cocos2d-x\cocos\scripting\lua-bindings\auto\lua_cocos2dx_spine_auto.cpp(1016): warning C4700: uninitialized local variable 'arg0' used
+e:\code\boids\frameworks\cocos2d-x\cocos\scripting\lua-bindings\auto\lua_cocos2dx_spine_auto.cpp(958): warning C4700: uninitialized local variable 'arg0' used
+e:\code\boids\frameworks\cocos2d-x\cocos\scripting\lua-bindings\auto\lua_cocos2dx_spine_auto.cpp(791): warning C4700: uninitialized local variable 'arg1' used
+e:\code\boids\frameworks\cocos2d-x\cocos\scripting\lua-bindings\auto\lua_cocos2dx_spine_auto.cpp(811): warning C4700: uninitialized local variable 'arg1' used
+  lua_cocos2dx_audioengine_manual.cpp
+..\manual\3d\lua_cocos2dx_3d_manual.cpp(208): warning C4996: 'lua_cocos2dx_3d_Sprite3D_setBlendFunc01': was declared deprecated
+          ..\manual\3d\lua_cocos2dx_3d_manual.cpp(31) : see declaration of 'lua_cocos2dx_3d_Sprite3D_setBlendFunc01'
+..\manual\3d\lua_cocos2dx_3d_manual.cpp(1483): warning C4018: '<=' : signed/unsigned mismatch
+..\manual\3d\lua_cocos2dx_3d_manual.cpp(1502): warning C4018: '<=' : signed/unsigned mismatch
+..\auto\lua_cocos2dx_ui_auto.cpp(22143): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_ui_auto.cpp(22288): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_ui_auto.cpp(22683): warning C4083: expected '('; found identifier 'NO'
+..\auto\lua_cocos2dx_ui_auto.cpp(22834): warning C4083: expected '('; found identifier 'NO'
+  CCLuaBridge.cpp
+  CCLuaEngine.cpp
+  CCLuaStack.cpp
+  CCLuaValue.cpp
+  Cocos2dxLuaLoader.cpp
+..\manual\CCLuaStack.cpp(810): warning C4996: 'cocos2d::FileUtils::getFileData': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+          e:\code\boids\frameworks\cocos2d-x\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+..\manual\CCLuaStack.cpp(852): warning C4018: '<' : signed/unsigned mismatch
+  LuaOpengl.cpp
+  LuaScriptHandlerMgr.cpp
+  lua_cocos2dx_deprecated.cpp
+..\manual\Cocos2dxLuaLoader.cpp(90): warning C4996: 'cocos2d::FileUtils::getFileData': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+          e:\code\boids\frameworks\cocos2d-x\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+..\manual\Cocos2dxLuaLoader.cpp(98): warning C4996: 'cocos2d::FileUtils::getFileData': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+          e:\code\boids\frameworks\cocos2d-x\cocos\platform/CCFileUtils.h(115) : see declaration of 'cocos2d::FileUtils::getFileData'
+  lua_cocos2dx_experimental_manual.cpp
+..\manual\cocos2d\LuaOpengl.cpp(4431): warning C4996: 'cocos2d::DrawPrimitives::drawPoint': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(88) : see declaration of 'cocos2d::DrawPrimitives::drawPoint'
+..\manual\cocos2d\LuaOpengl.cpp(4466): warning C4018: '<' : signed/unsigned mismatch
+..\manual\cocos2d\LuaOpengl.cpp(4484): warning C4996: 'cocos2d::DrawPrimitives::drawPoints': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(93) : see declaration of 'cocos2d::DrawPrimitives::drawPoints'
+..\manual\cocos2d\LuaOpengl.cpp(4519): warning C4996: 'cocos2d::DrawPrimitives::drawLine': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(96) : see declaration of 'cocos2d::DrawPrimitives::drawLine'
+..\manual\cocos2d\LuaOpengl.cpp(4552): warning C4996: 'cocos2d::DrawPrimitives::drawRect': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(99) : see declaration of 'cocos2d::DrawPrimitives::drawRect'
+..\manual\cocos2d\LuaOpengl.cpp(4592): warning C4996: 'cocos2d::DrawPrimitives::drawSolidRect': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(104) : see declaration of 'cocos2d::DrawPrimitives::drawSolidRect'
+..\manual\cocos2d\LuaOpengl.cpp(4628): warning C4018: '<' : signed/unsigned mismatch
+..\manual\cocos2d\LuaOpengl.cpp(4646): warning C4996: 'cocos2d::DrawPrimitives::drawPoly': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(109) : see declaration of 'cocos2d::DrawPrimitives::drawPoly'
+..\manual\cocos2d\LuaOpengl.cpp(4682): warning C4018: '<' : signed/unsigned mismatch
+..\manual\cocos2d\LuaOpengl.cpp(4708): warning C4996: 'cocos2d::DrawPrimitives::drawSolidPoly': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(113) : see declaration of 'cocos2d::DrawPrimitives::drawSolidPoly'
+..\manual\cocos2d\LuaOpengl.cpp(4752): warning C4996: 'cocos2d::DrawPrimitives::drawCircle': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(116) : see declaration of 'cocos2d::DrawPrimitives::drawCircle'
+..\manual\cocos2d\LuaOpengl.cpp(4790): warning C4996: 'cocos2d::DrawPrimitives::drawSolidCircle': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(120) : see declaration of 'cocos2d::DrawPrimitives::drawSolidCircle'
+..\manual\cocos2d\LuaOpengl.cpp(4832): warning C4996: 'cocos2d::DrawPrimitives::drawQuadBezier': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(127) : see declaration of 'cocos2d::DrawPrimitives::drawQuadBezier'
+..\manual\cocos2d\LuaOpengl.cpp(4879): warning C4996: 'cocos2d::DrawPrimitives::drawCubicBezier': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(133) : see declaration of 'cocos2d::DrawPrimitives::drawCubicBezier'
+..\manual\cocos2d\LuaOpengl.cpp(4925): warning C4996: 'cocos2d::DrawPrimitives::drawCatmullRom': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(139) : see declaration of 'cocos2d::DrawPrimitives::drawCatmullRom'
+..\manual\cocos2d\LuaOpengl.cpp(4971): warning C4996: 'cocos2d::DrawPrimitives::drawCardinalSpline': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(145) : see declaration of 'cocos2d::DrawPrimitives::drawCardinalSpline'
+..\manual\cocos2d\LuaOpengl.cpp(5003): warning C4996: 'cocos2d::DrawPrimitives::setDrawColor4B': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(150) : see declaration of 'cocos2d::DrawPrimitives::setDrawColor4B'
+..\manual\cocos2d\LuaOpengl.cpp(5035): warning C4996: 'cocos2d::DrawPrimitives::setDrawColor4F': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(155) : see declaration of 'cocos2d::DrawPrimitives::setDrawColor4F'
+..\manual\cocos2d\LuaOpengl.cpp(5061): warning C4996: 'cocos2d::DrawPrimitives::setPointSize': was declared deprecated
+          e:\code\boids\frameworks\cocos2d-x\cocos\2d/CCDrawingPrimitives.h(160) : see declaration of 'cocos2d::DrawPrimitives::setPointSize'
+..\manual\cocos2d\LuaOpengl.cpp(5086): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawPoint00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4417) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawPoint00'
+..\manual\cocos2d\LuaOpengl.cpp(5087): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawPoints00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4445) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawPoints00'
+..\manual\cocos2d\LuaOpengl.cpp(5088): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawLine00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4499) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawLine00'
+..\manual\cocos2d\LuaOpengl.cpp(5089): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawRect00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4532) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawRect00'
+..\manual\cocos2d\LuaOpengl.cpp(5090): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawSolidRect00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4565) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawSolidRect00'
+..\manual\cocos2d\LuaOpengl.cpp(5091): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawPoly00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4605) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawPoly00'
+..\manual\cocos2d\LuaOpengl.cpp(5092): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawSolidPoly00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4661) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawSolidPoly00'
+..\manual\cocos2d\LuaOpengl.cpp(5093): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawCircle00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4723) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawCircle00'
+..\manual\cocos2d\LuaOpengl.cpp(5094): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawSolidCircle00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4765) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawSolidCircle00'
+..\manual\cocos2d\LuaOpengl.cpp(5095): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawQuadBezier00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4804) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawQuadBezier00'
+..\manual\cocos2d\LuaOpengl.cpp(5096): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawCubicBezier00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4845) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawCubicBezier00'
+..\manual\cocos2d\LuaOpengl.cpp(5097): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawCatmullRom00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4892) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawCatmullRom00'
+..\manual\cocos2d\LuaOpengl.cpp(5098): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawCardinalSpline00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4938) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawCardinalSpline00'
+..\manual\cocos2d\LuaOpengl.cpp(5099): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawColor4B00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(4984) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawColor4B00'
+..\manual\cocos2d\LuaOpengl.cpp(5100): warning C4996: 'tolua_cocos2d_DrawPrimitives_drawColor4F00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(5016) : see declaration of 'tolua_cocos2d_DrawPrimitives_drawColor4F00'
+..\manual\cocos2d\LuaOpengl.cpp(5101): warning C4996: 'tolua_cocos2d_DrawPrimitives_setPointSize00': was declared deprecated
+          ..\manual\cocos2d\LuaOpengl.cpp(5048) : see declaration of 'tolua_cocos2d_DrawPrimitives_setPointSize00'
+..\manual\cocos2d\lua_cocos2dx_deprecated.cpp(1527): warning C4018: '<' : signed/unsigned mismatch
+  lua_cocos2dx_manual.cpp
+  lua_cocos2dx_physics_manual.cpp
+  CCBProxy.cpp
+  lua_cocos2dx_cocosbuilder_manual.cpp
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(270): warning C4018: '<=' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(419): warning C4018: '<' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(1752): warning C4018: '<=' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(2558): warning C4018: '<=' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(2953): warning C4018: '<' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(3039): warning C4018: '<' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(3118): warning C4018: '<' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(3171): warning C4101: 'tolua_err' : unreferenced local variable
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(3237): warning C4101: 'tolua_err' : unreferenced local variable
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(3328): warning C4018: '<' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(3943): warning C4018: '<=' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(4017): warning C4018: '<=' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(4092): warning C4018: '<=' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(4165): warning C4018: '<=' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(4240): warning C4018: '<=' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(4994): warning C4996: 'tolua_cocos2dx_DrawNode_setBlendFunc01': was declared deprecated
+          ..\manual\cocos2d\lua_cocos2dx_manual.cpp(3507) : see declaration of 'tolua_cocos2dx_DrawNode_setBlendFunc01'
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(5007): warning C4996: 'tolua_cocos2dx_Sprite_setBlendFunc01': was declared deprecated
+          ..\manual\cocos2d\lua_cocos2dx_manual.cpp(3416) : see declaration of 'tolua_cocos2dx_Sprite_setBlendFunc01'
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(5020): warning C4996: 'tolua_cocos2dx_LayerColor_setBlendFunc01': was declared deprecated
+          ..\manual\cocos2d\lua_cocos2dx_manual.cpp(3481) : see declaration of 'tolua_cocos2dx_LayerColor_setBlendFunc01'
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(5046): warning C4996: 'tolua_cocos2dx_ParticleSystem_setBlendFunc01': was declared deprecated
+          ..\manual\cocos2d\lua_cocos2dx_manual.cpp(3494) : see declaration of 'tolua_cocos2dx_ParticleSystem_setBlendFunc01'
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(5089): warning C4996: 'tolua_cocos2dx_SpriteBatchNode_setBlendFunc01': was declared deprecated
+          ..\manual\cocos2d\lua_cocos2dx_manual.cpp(3429) : see declaration of 'tolua_cocos2dx_SpriteBatchNode_setBlendFunc01'
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(5102): warning C4996: 'tolua_cocos2dx_MotionStreak_setBlendFunc01': was declared deprecated
+          ..\manual\cocos2d\lua_cocos2dx_manual.cpp(3442) : see declaration of 'tolua_cocos2dx_MotionStreak_setBlendFunc01'
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(5115): warning C4996: 'tolua_cocos2dx_AtlasNode_setBlendFunc01': was declared deprecated
+          ..\manual\cocos2d\lua_cocos2dx_manual.cpp(3455) : see declaration of 'tolua_cocos2dx_AtlasNode_setBlendFunc01'
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(5128): warning C4996: 'tolua_cocos2dx_ParticleBatchNode_setBlendFunc01': was declared deprecated
+          ..\manual\cocos2d\lua_cocos2dx_manual.cpp(3468) : see declaration of 'tolua_cocos2dx_ParticleBatchNode_setBlendFunc01'
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(6773): warning C4018: '<' : signed/unsigned mismatch
+..\manual\cocos2d\lua_cocos2dx_manual.cpp(7006): warning C4018: '<=' : signed/unsigned mismatch
+  lua_cocos2dx_cocosdenshion_manual.cpp
+  CustomGUIReader.cpp
+  lua-cocos-studio-conversions.cpp
+  lua_cocos2dx_coco_studio_manual.cpp
+  lua_cocos2dx_csloader_manual.cpp
+  lua_cocos2dx_extension_manual.cpp
+  LuaBasicConversions.cpp
+..\manual\cocostudio\lua_cocos2dx_coco_studio_manual.cpp(386): warning C4996: 'cocostudio::Bone::getIgnoreMovementBoneData': was declared deprecated
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\editor-support\cocostudio/CCBone.h(194) : see declaration of 'cocostudio::Bone::getIgnoreMovementBoneData'
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\editor-support\cocostudio/CCBone.h(194) : see declaration of 'cocostudio::Bone::getIgnoreMovementBoneData'
+  lua_cocos2dx_network_manual.cpp
+E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\network/HttpRequest.h(185): warning C4996: 'cocos2d::network::HttpRequest::setResponseCallback': was declared deprecated (..\manual\network\lua_cocos2dx_network_manual.cpp)
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\network/HttpRequest.h(188) : see declaration of 'cocos2d::network::HttpRequest::setResponseCallback'
+  Lua_web_socket.cpp
+  lua_xml_http_request.cpp
+E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\network/HttpRequest.h(185): warning C4996: 'cocos2d::network::HttpRequest::setResponseCallback': was declared deprecated (..\manual\network\lua_xml_http_request.cpp)
+          E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\network/HttpRequest.h(188) : see declaration of 'cocos2d::network::HttpRequest::setResponseCallback'
+  LuaSkeletonAnimation.cpp
+  lua_cocos2dx_spine_manual.cpp
+..\manual\network\lua_xml_http_request.cpp(697): warning C4018: '<' : signed/unsigned mismatch
+  tolua_fix.cpp
+  lua_cocos2dx_experimental_video_manual.cpp
+  lua_cocos2dx_ui_manual.cpp
+..\manual\spine\lua_cocos2dx_spine_manual.cpp(478): warning C4996: 'tolua_spine_SkeletoneAnimation_setBlendFunc': was declared deprecated
+          ..\manual\spine\lua_cocos2dx_spine_manual.cpp(325) : see declaration of 'tolua_spine_SkeletoneAnimation_setBlendFunc'
+  libluacocos2d.vcxproj -> E:\code\Boids\frameworks\runtime-src\proj.win32\Release.win32\libluacocos2d.lib

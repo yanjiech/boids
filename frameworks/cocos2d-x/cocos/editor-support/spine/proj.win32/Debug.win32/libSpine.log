@@ -1,0 +1,40 @@
+﻿生成启动时间为 2015/4/24 14:40:25。
+     1>项目“E:\code\Boids\frameworks\cocos2d-x\cocos\editor-support\spine\proj.win32\libSpine.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\\" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\audio\include" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\editor-support" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\extensions" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\editor-support" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\platform" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\platform\desktop" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\external\glfw3\include\win32" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\external\win32-specific\gles\include\OGLES" /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _LIB /D COCOS2DXWIN32_EXPORTS /D GL_GLEXT_PROTOTYPES /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _VARIADIC_MAX=10 /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc110.pdb" /Gd /TC /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Animation.c ..\AnimationState.c ..\AnimationStateData.c ..\Atlas.c ..\AtlasAttachmentLoader.c ..\Attachment.c ..\AttachmentLoader.c ..\Bone.c ..\BoneData.c ..\BoundingBoxAttachment.c ..\Event.c ..\EventData.c ..\extension.c ..\IkConstraint.c ..\IkConstraintData.c ..\Json.c ..\MeshAttachment.c ..\RegionAttachment.c ..\Skeleton.c ..\SkeletonBounds.c ..\SkeletonData.c ..\SkeletonJson.c ..\Skin.c ..\SkinnedMeshAttachment.c ..\Slot.c ..\SlotData.c
+         Animation.c
+         AnimationState.c
+         AnimationStateData.c
+         Atlas.c
+         AtlasAttachmentLoader.c
+         Attachment.c
+         AttachmentLoader.c
+         Bone.c
+         BoneData.c
+         BoundingBoxAttachment.c
+         Event.c
+         EventData.c
+         extension.c
+         IkConstraint.c
+         IkConstraintData.c
+         Json.c
+         MeshAttachment.c
+         RegionAttachment.c
+         Skeleton.c
+         SkeletonBounds.c
+         SkeletonData.c
+         SkeletonJson.c
+         Skin.c
+         SkinnedMeshAttachment.c
+         Slot.c
+         SlotData.c
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\\" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\audio\include" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\editor-support" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\extensions" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\editor-support" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\platform" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\cocos\platform\desktop" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\external\glfw3\include\win32" /I"E:\code\Boids\frameworks\cocos2d-x\cocos\2d\..\..\external\win32-specific\gles\include\OGLES" /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _LIB /D COCOS2DXWIN32_EXPORTS /D GL_GLEXT_PROTOTYPES /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _VARIADIC_MAX=10 /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc110.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\PolygonBatch.cpp ..\SkeletonAnimation.cpp ..\SkeletonRenderer.cpp "..\spine-cocos2dx.cpp"
+         PolygonBatch.cpp
+         SkeletonAnimation.cpp
+         SkeletonRenderer.cpp
+         spine-cocos2dx.cpp
+     1>已完成生成项目“E:\code\Boids\frameworks\cocos2d-x\cocos\editor-support\spine\proj.win32\libSpine.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:06.55
