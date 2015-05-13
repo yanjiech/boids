@@ -232,6 +232,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\ReplayComparer.h" />
     <ClInclude Include="..\Classes\scene\BattleLayer.h" />
     <ClInclude Include="..\Classes\scene\SceneBase.h" />
+    <ClInclude Include="..\Classes\scene\TransitionLayer.h" />
     <ClInclude Include="..\Classes\scene\UIBattleFloatLayer.h" />
     <ClInclude Include="..\Classes\scene\UIBattleLayer.h" />
     <ClInclude Include="..\Classes\scene\UIBattleMenuLayer.h" />
@@ -277,12 +278,14 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\unit\ElementData.h" />
     <ClInclude Include="..\Classes\unit\Equipment.h" />
     <ClInclude Include="..\Classes\unit\HpBar.h" />
+    <ClInclude Include="..\Classes\unit\Item.h" />
     <ClInclude Include="..\Classes\unit\JumpText.h" />
     <ClInclude Include="..\Classes\unit\Skill.h" />
     <ClInclude Include="..\Classes\unit\skill\AtomFart.h" />
     <ClInclude Include="..\Classes\unit\skill\BarrageOfArrow.h" />
     <ClInclude Include="..\Classes\unit\skill\BatSwarm.h" />
     <ClInclude Include="..\Classes\unit\skill\BonesRain.h" />
+    <ClInclude Include="..\Classes\unit\skill\CrazyScratch.h" />
     <ClInclude Include="..\Classes\unit\skill\CrazyShoot.h" />
     <ClInclude Include="..\Classes\unit\skill\DarkPierce.h" />
     <ClInclude Include="..\Classes\unit\skill\DeathSlice.h" />
@@ -297,6 +300,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClInclude Include="..\Classes\unit\skill\MagicPulse.h" />
     <ClInclude Include="..\Classes\unit\skill\MissileShowers.h" />
     <ClInclude Include="..\Classes\unit\skill\NaturesAttendants.h" />
+    <ClInclude Include="..\Classes\unit\skill\NinthLife.h" />
     <ClInclude Include="..\Classes\unit\skill\PenetrateSpear.h" />
     <ClInclude Include="..\Classes\unit\skill\SkillCache.h" />
     <ClInclude Include="..\Classes\unit\skill\SkillNode.h" />
@@ -366,6 +370,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\ReplayComparer.cpp" />
     <ClCompile Include="..\Classes\scene\BattleLayer.cpp" />
     <ClCompile Include="..\Classes\scene\SceneBase.cpp" />
+    <ClCompile Include="..\Classes\scene\TransitionLayer.cpp" />
     <ClCompile Include="..\Classes\scene\UIBattleFloatLayer.cpp" />
     <ClCompile Include="..\Classes\scene\UIBattleLayer.cpp" />
     <ClCompile Include="..\Classes\scene\UIBattleMenuLayer.cpp" />
@@ -413,12 +418,14 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\unit\ElementData.cpp" />
     <ClCompile Include="..\Classes\unit\Equipment.cpp" />
     <ClCompile Include="..\Classes\unit\HpBar.cpp" />
+    <ClCompile Include="..\Classes\unit\Item.cpp" />
     <ClCompile Include="..\Classes\unit\JumpText.cpp" />
     <ClCompile Include="..\Classes\unit\Skill.cpp" />
     <ClCompile Include="..\Classes\unit\skill\AtomFart.cpp" />
     <ClCompile Include="..\Classes\unit\skill\BarrageOfArrow.cpp" />
     <ClCompile Include="..\Classes\unit\skill\BatSwarm.cpp" />
     <ClCompile Include="..\Classes\unit\skill\BonesRain.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\CrazyScratch.cpp" />
     <ClCompile Include="..\Classes\unit\skill\CrazyShoot.cpp" />
     <ClCompile Include="..\Classes\unit\skill\DarkPierce.cpp" />
     <ClCompile Include="..\Classes\unit\skill\DeathSlice.cpp" />
@@ -433,6 +440,7 @@ xcopy "$(ProjectDir)..\..\cocos2d-x\cocos\scripting\lua-bindings\script\ui" "$(P
     <ClCompile Include="..\Classes\unit\skill\MagicPulse.cpp" />
     <ClCompile Include="..\Classes\unit\skill\MissileShowers.cpp" />
     <ClCompile Include="..\Classes\unit\skill\NaturesAttendants.cpp" />
+    <ClCompile Include="..\Classes\unit\skill\NinthLife.cpp" />
     <ClCompile Include="..\Classes\unit\skill\PenetrateSpear.cpp" />
     <ClCompile Include="..\Classes\unit\skill\SkillCache.cpp" />
     <ClCompile Include="..\Classes\unit\skill\SkillNode.cpp" />

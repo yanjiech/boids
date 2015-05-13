@@ -486,6 +486,18 @@
     <ClInclude Include="..\Classes\behavior\GuardMoveBehavior.h">
       <Filter>Classes\behavior</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\unit\Item.h">
+      <Filter>Classes\unit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\unit\skill\CrazyScratch.h">
+      <Filter>Classes\unit\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\unit\skill\NinthLife.h">
+      <Filter>Classes\unit\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TransitionLayer.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
@@ -886,6 +898,18 @@
     </ClCompile>
     <ClCompile Include="..\Classes\behavior\GuardAttackBehavior.cpp">
       <Filter>Classes\behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\unit\Item.cpp">
+      <Filter>Classes\unit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\unit\skill\NinthLife.cpp">
+      <Filter>Classes\unit\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\unit\skill\CrazyScratch.cpp">
+      <Filter>Classes\unit\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TransitionLayer.cpp">
+      <Filter>Classes\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
