@@ -95,6 +95,13 @@ void ResourceManager::loadDefaultData() {
     frame_cache->addSpriteFramesWithFile( "ui/hero_avatars.plist", "ui/hero_avatars.png" );
     frame_cache->addSpriteFramesWithFile( "effects/bullets/bullets.plist", "effects/bullets/bullets.png" );
     frame_cache->addSpriteFramesWithFile( "effects/fx_unit_common.plist", "effects/fx_unit_common.png" );
+    
+    //ui
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_battle_result.plist", "ui/page/ui_battle_result.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_detail.plist", "ui/page/ui_hero_detail.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_manage.plist", "ui/page/ui_hero_manage.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_home.plist", "ui/page/ui_home.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_pause.plist", "ui/page/ui_pause.png" );
 }
 
 void ResourceManager::loadUnitData() {

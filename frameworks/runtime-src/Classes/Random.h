@@ -9,10 +9,10 @@
 class Random
 {
 private:
-	int _seed;
-	int a;
-	int m;
-	unsigned i;
+	int _seed = 1090616;
+	int a = 48271;
+	int m = 2147483647;
+	unsigned i = 0;
 
 	int gen()
 	{
@@ -21,13 +21,6 @@ private:
 		return _seed;
 	}
 public:
-	Random() : 
-		_seed( 1090616 ),
-		a( 48271 ),
-		m( 2147483647 ),
-		i( 0 ) {
-	}
-
 	void seed(int new_seed)
 	{
 		_seed = new_seed;
@@ -40,7 +33,7 @@ public:
 
 	int randomNumber(int upper_bound)
 	{
-		return gen() % upper_bound; // 
+		return gen() % upper_bound; // 直接这么模可能导致不那么随机，不管了，关系不大吧
 	}
 
 	float randomFloat()

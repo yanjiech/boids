@@ -192,17 +192,17 @@
                     "story_data": [
                         {
                             "left_or_right": true,
-                            "line": "猫女：今天天气好好，我们去晒太阳吧！",
+                            "line": "猫女：财宝不稀罕，这些绿脸怪就够我玩儿一天的了～",
                             "speaker": "kyle"
                         },
                         {
                             "left_or_right": true,
-                            "line": "小鹿：还是赶紧找主人吧！",
+                            "line": "小鹿：找不到财宝，就不能知道主人的下落了...",
                             "speaker": "enchantress"
                         },
                         {
                             "left_or_right": true,
-                            "line": "德古拉：.......",
+                            "line": "德古拉：前面有矿坑，一定是宝藏的所在地！",
                             "speaker": "dracula"
                         }
                     ],
@@ -473,28 +473,18 @@
                     "story_data": [
                         {
                             "left_or_right": false,
-                            "line": "地精撕裂者：何方妖怪！敢闯入我的领域！",
-                            "speaker": "goblin_auntie"
+                            "line": "???：现在淘金的越来越不入眼，就你们这些小胳膊小腿也想来插一脚？",
+                            "speaker": "goblin_shredder"
                         },
                         {
                             "left_or_right": true,
-                            "line": "猫女：哇！！！鬼啊！！！",
+                            "line": "猫女：这只很调皮，快收了它！",
                             "speaker": "kyle"
                         },
                         {
                             "left_or_right": true,
-                            "line": "小鹿：不是刚才那个，这个左脸脸上有颗痣！",
-                            "speaker": "enchantress"
-                        },
-                        {
-                            "left_or_right": false,
-                            "line": "地精撕裂者：难道你们就是杀死四弟的妖怪！拿命来！",
-                            "speaker": "goblin_auntie"
-                        },
-                        {
-                            "left_or_right": true,
-                            "line": "猫女：原来不是鬼！姑奶奶我正好闲的浑身发痒！",
-                            "speaker": "kyle"
+                            "line": "德古拉：怎么，要当宠物养？",
+                            "speaker": "dracula"
                         }
                     ],
                     "name": "story_02"
@@ -520,19 +510,35 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "conversation_action",
-                    "speeches": [
+                    "action_type": "story_action",
+                    "story_data": [
                         {
-                            "content": "这好像是用来修理铁路的工具，找找附近有没有破损的铁路！",
-                            "duration": 5,
-                            "interval": 0
+                            "left_or_right": false,
+                            "line": "???：啊!!!!",
+                            "speaker": "goblin_shredder"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：诶，不经玩...",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：这些是...修理工具？",
+                            "speaker": "enchantress"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：我懂了！修好铁轨，就可以通过矿车进入矿坑~",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：....坑里还有绿脸怪吗？",
+                            "speaker": "enchantress"
                         }
                     ],
-                    "name": "repair_rail",
-                    "source_type": "tag_source",
-                    "source_value": "leader",
-                    "is_random_order": false,
-                    "repeat_times": 1
+                    "name": "story_03"
                 },
                 {
                     "meta": "0,0.00,0.00",

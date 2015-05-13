@@ -36,6 +36,8 @@ public:
     float recover;
     float scale;
     
+    float view_range;
+    
     std::string bullet_name;
     
 public:

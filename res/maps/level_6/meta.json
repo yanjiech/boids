@@ -1,4 +1,8 @@
 {
+    "options":
+    {
+        "should_show_fog" : true
+    },
     "positions": [
         {
             "name": "player_start",
@@ -455,7 +459,7 @@
                     "position_name": "boss_yellow",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:4000",
+                    "custom_change": "hp:2000",
                     "unit_level": 6
                 }
             ]
@@ -481,7 +485,7 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "tag_source",
-                    "source_value": "leader",
+                    "source_value": "player",
                     "buff_name": "yellow_buff",
                     "buff_type": "buff_tag",
                     "buff_params": "duration:-1,buff_param:yellow,color_red:255,color_green:255,effect_resource:buff_ball",
@@ -561,7 +565,7 @@
                     "position_name": "blue_boss",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:4000",
+                    "custom_change": "hp:2000",
                     "unit_level": 6
                 }
             ]
@@ -586,7 +590,7 @@
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
-                    "source_type": "type_source",
+                    "source_type": "tag_source",
                     "source_value": "player",
                     "buff_name": "blue_tag",
                     "buff_type": "buff_tag",
@@ -634,7 +638,7 @@
                     "position_name": "boss_red",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:5000",
+                    "custom_change": "hp:2000",
                     "unit_level": 6
                 }
             ]
@@ -660,7 +664,7 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "tag_source",
-                    "source_value": "leader",
+                    "source_value": "player",
                     "buff_name": "red_buff",
                     "buff_type": "buff_tag",
                     "buff_params": "duration:-1,buff_param:red,color_red:255,effect_resource:buff_ball",
@@ -708,6 +712,7 @@
                     "position_name": "orange_11",
                     "unit_count": 1,
                     "unit_level": 7,
+                    "custom_change": "hp:1000",
                     "skill_1_level": 1
                 },
                 {
@@ -722,7 +727,7 @@
                     "position_name": "boss_final",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:8000",
+                    "custom_change": "hp:3000",
                     "unit_level": 7
                 },
                 {

@@ -184,7 +184,7 @@
     <property name="color_red" value="255"/>
     <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="250"/>
-    <property name="stay_duration" value="2.0"/>
+    <property name="stay_duration" value="1.0"/>
    </properties>
   </object>
   <object id="28" gid="2147483674" x="200.848" y="3209.09"/>
@@ -366,7 +366,7 @@
     <property name="color_red" value="0"/>
     <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="250"/>
-    <property name="stay_duration" value="2.0"/>
+    <property name="stay_duration" value="1.0"/>
    </properties>
   </object>
   <object id="290" gid="16" x="5736" y="1748"/>
@@ -505,7 +505,7 @@
     <property name="color_red" value="255"/>
     <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="250"/>
-    <property name="stay_duration" value="2.0"/>
+    <property name="stay_duration" value="1.0"/>
    </properties>
   </object>
   <object id="502" gid="19" x="707.939" y="1827.94"/>
@@ -526,7 +526,7 @@
     <property name="color_red" value="0"/>
     <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="200"/>
-    <property name="stay_duration" value="2.0"/>
+    <property name="stay_duration" value="1.0"/>
    </properties>
   </object>
   <object id="560" name="red_stone_2" type="BuffBuildingNode" gid="20" x="3802.51" y="2062.21">
@@ -540,7 +540,7 @@
     <property name="color_red" value="255"/>
     <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="200"/>
-    <property name="stay_duration" value="2.0"/>
+    <property name="stay_duration" value="1.0"/>
    </properties>
   </object>
   <object id="561" name="yellow_stone_2" type="BuffBuildingNode" gid="25" x="4749.7" y="2341.27">
@@ -554,7 +554,7 @@
     <property name="color_red" value="255"/>
     <property name="effect_resource" value="buff_ball"/>
     <property name="range" value="200"/>
-    <property name="stay_duration" value="2.0"/>
+    <property name="stay_duration" value="1.0"/>
    </properties>
   </object>
   <object id="562" gid="2147483665" x="3615.15" y="2790.91"/>
@@ -639,7 +639,7 @@
    <polygon points="-26,-4 -22,144 186,144 190,-6"/>
   </object>
   <object id="598" name="blue_stone_2_collide" type="collide" x="4032.18" y="2616.55">
-   <polygon points="-20,-16 -20,146 186,130 186,-18"/>
+   <polygon points="-20,-16 -20,134 186,130 186,-18"/>
   </object>
   <object id="600" name="yellow_stone_2_collide" type="collide" x="4769.88" y="2244.91">
    <polygon points="-46,-38 -38,160 250,158 238,-36"/>

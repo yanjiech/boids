@@ -10,8 +10,10 @@
 #include "../Utils.h"
 #include "../manager/SceneManager.h"
 #include "../manager/ResourceManager.h"
+#include "../data/PlayerInfo.h"
+#include "UIHeroManageLayer.h"
 
-#define MAIN_CSB_FILE "level_choose/main/main.csb"
+#define MAIN_CSB_FILE "ui/page/ui_home_page.csb"
 #define LEVEL_CSB_FILE "level_choose/level/level.csb"
 
 using namespace cocos2d;
@@ -47,7 +49,7 @@ bool UILevelChooseLayer::init() {
     this->addChild( _level_node );
     _level_node->setVisible( false );
     
-    _scrollview = dynamic_cast<ui::ScrollView*>( _main_node->getChildByName( "scrollView" ) );
+    _scrollview = dynamic_cast<ui::ScrollView*>( _main_node->getChildByName( "mapScrollView" ) );
     _background_node = dynamic_cast<Sprite*>( _level_node->getChildByName( "background" ) );
     _back_button = dynamic_cast<ui::Button*>( _background_node->getChildByName( "backButton" ) );
     _back_button->addTouchEventListener( CC_CALLBACK_2( UILevelChooseLayer::onBackButtonTouched, this ) );
@@ -62,6 +64,15 @@ bool UILevelChooseLayer::init() {
     _mission_labels.push_back( mission_label_2 );
     _mission_labels.push_back( mission_label_3 );
     
+    ui::Button* btn_store = dynamic_cast<ui::Button*>( _main_node->getChildByName( "btn_store" ) );
+    btn_store->addTouchEventListener( CC_CALLBACK_2( UILevelChooseLayer::onStoreTouched, this ) );
+    
+    ui::Button* btn_team_skill = dynamic_cast<ui::Button*>( _main_node->getChildByName( "btn_team_skill" ) );
+    btn_team_skill->addTouchEventListener( CC_CALLBACK_2( UILevelChooseLayer::onTeamSkillTouched, this ) );
+    
+    ui::Button* btn_hero = dynamic_cast<ui::Button*>( _main_node->getChildByName( "btn_hero" ) );
+    btn_hero->addTouchEventListener( CC_CALLBACK_2( UILevelChooseLayer::onHeroTouched, this ) );
+    
     _level_info_label = dynamic_cast<ui::Text*>( _background_node->getChildByName( "missionText" ) );
     
     const ValueMap& level_config = ResourceManager::getInstance()->getLevelConfig();
@@ -72,6 +83,21 @@ bool UILevelChooseLayer::init() {
         ui::Button* button = dynamic_cast<ui::Button*>( _scrollview->getChildByName( button_name ) );
         button->setTag( i );
         button->addTouchEventListener( CC_CALLBACK_2( UILevelChooseLayer::onLevelTouched, this ) );
+    }
+    
+    ValueVector deployed_units = PlayerInfo::getInstance()->getPlayerDeployedUnitsInfo();
+    for( int i = 0; i < deployed_units.size(); i++ ) {
+        const ValueMap& info = deployed_units.at( i ).asValueMap();
+        Sprite* shadow = dynamic_cast<Sprite*>( _main_node->getChildByName( Utils::stringFormat( "hero_%d", i + 1 ) ) );
+        if( shadow ) {
+            shadow->setVisible( true );
+            std::string name = info.at( "name" ).asString();
+            std::string resource = ResourceManager::getInstance()->getPathForResource( name, eResourceType::Character_Front );
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+            skeleton->setAnimation( 0, "Walk", true );
+            skeleton->setPosition( Point( shadow->getContentSize().width / 2, shadow->getContentSize().height / 2 ) );
+            shadow->addChild( skeleton );
+        }
     }
     
     return true;
@@ -134,6 +160,24 @@ void UILevelChooseLayer::onLevelTouched( cocos2d::Ref* sender, cocos2d::ui::Widg
         else {
             _level_info_label->setString( "" );
         }
+    }
+}
+
+void UILevelChooseLayer::onStoreTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+    }
+}
+
+void UILevelChooseLayer::onHeroTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        UIHeroManageLayer* hero_layer = UIHeroManageLayer::create();
+        this->addChild( hero_layer, 2 );
+    }
+}
+
+void UILevelChooseLayer::onTeamSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ){
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+
     }
 }
 
