@@ -14,6 +14,10 @@
 #include "../constant/BoidsConstant.h"
 #include "../unit/skill/SkillCache.h"
 
+#define FOG_TILE_SIZE 32
+#define FOG_TILE_SIZE_WIDTH 110
+#define FOG_TILE_SIZE_HEIGHT 128
+
 using namespace cocos2d;
 
 eBattleState BattleLayer::getBattleStateFromString( const std::string& str ) {
@@ -40,12 +44,14 @@ BattleLayer::BattleLayer() :
 _map_data( nullptr ),
 _map_logic( nullptr ),
 _should_show_fog( false ),
-_fog_sprite( nullptr ) {
+_fog_tile_visible_array( nullptr )
+{
 }
 
 BattleLayer::~BattleLayer() {
     CC_SAFE_RELEASE( _map_data );
     CC_SAFE_RELEASE( _map_logic );
+    CC_SAFE_DELETE_ARRAY( _fog_tile_visible_array );
 }
 
 BattleLayer* BattleLayer::create( MapData* map_data, bool is_pvp ) {
@@ -135,6 +141,36 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         this->startBattle();
         
         this->schedule( CC_CALLBACK_1( BattleLayer::updateFrame, this ), "battle_update"  );
+        
+        _fog_node = Node::create();
+        this->addChild( _fog_node, eBattleSubLayer::FogLayer );
+        
+        _fog_x_tile_count = int( ceil( 1920 / FOG_TILE_SIZE ) ) + 1;
+        _fog_y_tile_count = int( ceil( 1080 / FOG_TILE_SIZE ) ) + 1;
+        
+        if( FOG_TILE_SIZE == 32 ) {
+            _fog_texture = Director::getInstance()->getTextureCache()->addImage( "ui/ui_fog_mask_32.png" );
+        }
+        else if( FOG_TILE_SIZE == 64 ) {
+            _fog_texture = Director::getInstance()->getTextureCache()->addImage( "ui/ui_fog_mask_64.png" );
+        }
+        
+        
+        for( int j = 0; j < _fog_y_tile_count; j++ ) {
+            for( int i = 0; i < _fog_x_tile_count; i++ ) {
+                Sprite* sp = Sprite::createWithTexture( _fog_texture, Rect( 0, 0, FOG_TILE_SIZE, FOG_TILE_SIZE ) );
+                sp->setAnchorPoint( Point::ZERO );
+                sp->setPosition( Point( i * FOG_TILE_SIZE, j * FOG_TILE_SIZE ) );
+                
+                _fog_node->addChild( sp );
+                sp->setOpacity( 200 );
+                sp->setTag( j * _fog_x_tile_count + i );
+            }
+        }
+        
+        CC_SAFE_DELETE_ARRAY( _fog_tile_visible_array );
+        _fog_tile_visible_array = new unsigned char[_fog_x_tile_count * _fog_y_tile_count];
+        memset( _fog_tile_visible_array, 0, _fog_x_tile_count * _fog_y_tile_count );
         
         return true;
     }while( 0 );
@@ -249,9 +285,9 @@ void BattleLayer::updateFrame( float delta ) {
         this->reorderObjectLayer();
         this->adjustCamera();
         
-        if( _should_show_fog ) {
+//        if( _should_show_fog ) {
             this->updateFogSprite();
-        }
+//        }
     }
     else if( _state == eBattleState::BattleStory ) {
         _story_layer->updateFrame( delta );
@@ -469,6 +505,20 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp ca
         if( unit->isFoeOfCamp( camp ) ) {
             Point unit_pos = unit->getPosition();
             if( Math::isPositionInRange( unit_pos, center, radius + unit->getUnitData()->collide ) && !Terrain::getInstance()->isBlocked( init_pos, unit_pos ) ) {
+                ret.pushBack( unit );
+            }
+        }
+    }
+    return ret;
+}
+
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRoundRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius ) {
+    cocos2d::Vector<UnitNode*> ret;
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        if( unit->isFoeOfCamp( camp ) ) {
+            Point unit_pos = unit->getPosition();
+            if( Math::isPositionInRoundRange( unit_pos, center, radius + unit->getUnitData()->collide ) && !Terrain::getInstance()->isBlocked( init_pos, unit_pos ) ) {
                 ret.pushBack( unit );
             }
         }
@@ -1046,7 +1096,7 @@ void BattleLayer::reorderObjectLayer() {
     }
 }
 
-cocos2d::Sprite* BattleLayer::getFogSprite() {
+void BattleLayer::updateFogSprite() {
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
         if( unit->getTargetCamp() != eTargetCamp::Player ) {
@@ -1054,67 +1104,43 @@ cocos2d::Sprite* BattleLayer::getFogSprite() {
         }
     }
     
-    Size size = Director::getInstance()->getVisibleSize();
+    memset( _fog_tile_visible_array, 0, _fog_x_tile_count * _fog_y_tile_count );
     
-    RenderTexture* rt_bg = RenderTexture::create( size.width, size.height );
-    rt_bg->beginWithClear( 0, 0, 0, 0.8f );
-    rt_bg->end();
-    Sprite* bg = Sprite::createWithTexture( rt_bg->getSprite()->getTexture() );
-    
-    Node* stencil = Node::create();
-    
-#define DEFAULT_VIEW_RANGE 400.0
     for( auto pair : _player_units ) {
         UnitNode* unit = pair.second;
         Point pos = unit->getParent()->convertToWorldSpace( unit->getPosition() );
-        Sprite* view_range_sprite = Sprite::createWithSpriteFrameName( "view_range.png" );
-        view_range_sprite->setPosition( pos );
-        float view_range = unit->getTargetData()->view_range;
-        view_range_sprite->setScale( view_range / DEFAULT_VIEW_RANGE );
-        stencil->addChild( view_range_sprite );
+        int view_range = unit->getTargetData()->view_range;
         
-        for( auto spair : _alive_units ) {
-            UnitNode* sunit = spair.second;
-            if( sunit->getTargetCamp() != eTargetCamp::Player && Math::isPositionInRange( sunit->getPosition(), unit->getPosition(), view_range * 0.75f + sunit->getTargetData()->collide ) ) {
-                sunit->setVisible( true );
+        int unit_x = pos.x / FOG_TILE_SIZE;
+        int unit_y = pos.y / FOG_TILE_SIZE;
+        
+        int sx = MAX( 0, unit_x - view_range );
+        int ex = MIN( _fog_x_tile_count - 1, unit_x + view_range );
+        int sy = MAX( 0, unit_y - view_range );
+        int ey = MIN( _fog_y_tile_count - 1, unit_y + view_range );
+        
+        for( int x = sx; x < ex; x++ ) {
+            for( int y = sy; y < ey; y++ ) {
+                int tag = y * _fog_x_tile_count + x;
+                _fog_tile_visible_array[tag] |= 0x1;
+                _fog_tile_visible_array[tag+1] |= 0x2;
+                _fog_tile_visible_array[tag+_fog_x_tile_count] |= 0x4;
+                _fog_tile_visible_array[tag+_fog_x_tile_count+1] |= 0x8;
             }
+        }
+        
+        Vector<UnitNode*> candidates = this->getAliveOpponentsInRange( unit->getTargetCamp(), unit->getPosition(), unit->getPosition(), view_range * ( FOG_TILE_SIZE + 3 ) );
+        for( auto u : candidates ) {
+            u->setVisible( true );
         }
     }
     
-    ClippingNode* clip = ClippingNode::create();
-    clip->setAnchorPoint( Point::ZERO);
-    clip->setInverted( true );
-    clip->setStencil( stencil );
-    clip->setAlphaThreshold( 0.9f );
-    
-    bg->setPosition( Point( size.width / 2, size.height / 2 ) );
-    clip->addChild( bg );
-    
-    RenderTexture* tex = RenderTexture::create( size.width, size.height, Texture2D::PixelFormat::RGBA8888, GL_DEPTH24_STENCIL8 );
-    
-    tex->begin();
-    
-    clip->cocos2d::Node::visit();
-    
-    tex->end();
-    
-    Sprite* ret_sprite = Sprite::createWithTexture( tex->getSprite()->getTexture() );
-    ret_sprite->setFlippedY( true );
-    
-    return ret_sprite;
-}
-
-void BattleLayer::updateFogSprite() {
-    Sprite* fog_sprite = this->getFogSprite();
-    if( _fog_sprite == nullptr ) {
-        _fog_sprite = fog_sprite;
-        Point origin = Director::getInstance()->getVisibleOrigin();
-        Size size = Director::getInstance()->getVisibleSize();
-        
-        _fog_sprite->setPosition( origin.x + size.width / 2, origin.y + size.height / 2 );
-        this->addChild( _fog_sprite, eBattleSubLayer::FogLayer );
-    }
-    else {
-        _fog_sprite->setTexture( fog_sprite->getTexture() );
+    for( auto nd : _fog_node->getChildren() ) {
+        Sprite* sp = dynamic_cast<Sprite*>( nd );
+        int tag = sp->getTag();
+        int flag = _fog_tile_visible_array[tag];
+        int x = flag / 4;
+        int y = flag % 4;
+        sp->setTextureRect( Rect( x * FOG_TILE_SIZE, y * FOG_TILE_SIZE, FOG_TILE_SIZE, FOG_TILE_SIZE ) );
     }
 }

@@ -103,7 +103,13 @@ private:
     
     bool _should_show_fog;
     
-    cocos2d::Sprite* _fog_sprite;
+    cocos2d::Node* _fog_node;
+    int _fog_x_tile_count;
+    int _fog_y_tile_count;
+    
+    cocos2d::Texture2D* _fog_texture;
+    
+    unsigned char *_fog_tile_visible_array;
     
     //debug
     cocos2d::DrawNode* _draw_node;
@@ -120,7 +126,6 @@ private:
     void updateBuildings( float delta );
     void updateBullets( float delta );
     
-    cocos2d::Sprite* getFogSprite();
     void updateFogSprite();
     
 public:
@@ -180,6 +185,7 @@ public:
     cocos2d::Vector<UnitNode*> getAliveUnitsByName( const std::string& name );
     cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInRoundRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eTargetCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCampAndSightGroup( eTargetCamp camp, const std::string& sight_group );
     

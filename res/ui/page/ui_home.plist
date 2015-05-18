@@ -20,11 +20,11 @@
             <key>ui_home_dibiao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{478,551},{58,55}}</string>
+                <string>{{140,959},{58,55}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{58,55}}</string>
                 <key>sourceSize</key>
@@ -33,11 +33,11 @@
             <key>ui_home_dibiao2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{418,551},{58,55}}</string>
+                <string>{{83,959},{58,55}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{58,55}}</string>
                 <key>sourceSize</key>
@@ -85,11 +85,11 @@
             <key>ui_home_role_zi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{38,893},{79,34}}</string>
+                <string>{{2,974},{79,34}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{79,34}}</string>
                 <key>sourceSize</key>
@@ -124,7 +124,7 @@
             <key>ui_home_store_btnl.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{742,542},{193,215}}</string>
+                <string>{{745,476},{193,215}}</string>
                 <key>offset</key>
                 <string>{5,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>ui_home_store_zi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{506,463},{79,34}}</string>
+                <string>{{2,893},{79,34}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -146,6 +146,19 @@
                 <string>{{0,0},{79,34}}</string>
                 <key>sourceSize</key>
                 <string>{79,34}</string>
+            </dict>
+            <key>ui_home_talent_zi.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{506,463},{80,34}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,34}}</string>
+                <key>sourceSize</key>
+                <string>{80,34}</string>
             </dict>
             <key>ui_home_task_bg.png</key>
             <dict>
@@ -163,7 +176,7 @@
             <key>ui_home_team_skill_btn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{595,737},{180,180}}</string>
+                <string>{{418,681},{180,180}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -186,23 +199,10 @@
                 <key>sourceSize</key>
                 <string>{180,180}</string>
             </dict>
-            <key>ui_home_team_skill_zi.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,893},{123,34}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{123,34}}</string>
-                <key>sourceSize</key>
-                <string>{123,34}</string>
-            </dict>
             <key>ui_home_title_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{745,476},{221,64}}</string>
+                <string>{{38,893},{221,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>ui_home_warning.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{959,542},{56,56}}</string>
+                <string>{{197,959},{56,56}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,11 +228,11 @@
             <key>ui_home_xiaolu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{418,737},{182,175}}</string>
+                <string>{{742,671},{182,175}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{182,175}}</string>
                 <key>sourceSize</key>
@@ -274,7 +274,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e58b9fb3380c91707bf989a747e5d5be:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:d27e84a24d6a7af9ba58bb9db1a35f41:1/1$</string>
             <key>textureFileName</key>
             <string>ui_home.png</string>
         </dict>

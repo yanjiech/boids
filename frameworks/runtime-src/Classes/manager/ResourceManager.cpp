@@ -102,6 +102,8 @@ void ResourceManager::loadDefaultData() {
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_manage.plist", "ui/page/ui_hero_manage.png" );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_home.plist", "ui/page/ui_home.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_pause.plist", "ui/page/ui_pause.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_common.plist", "ui/ui_common.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_hero_p.plist", "ui/ui_hero_p.png" );
 }
 
 void ResourceManager::loadUnitData() {

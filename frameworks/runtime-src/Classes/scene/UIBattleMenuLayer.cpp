@@ -12,8 +12,10 @@
 #include "../AI/Terrain.h"
 
 using namespace cocos2d;
+using namespace cocostudio::timeline;
 
 #define WIN_PANEL_FILE "ui/page/ui_win_page.csb"
+#define LOSE_PANEL_FILE "ui/page/ui_lose_page.csb"
 #define PAUSE_PANEL_FILE "ui/page/ui_pause_page.csb"
 
 UIBattleMenuLayer::UIBattleMenuLayer() {
@@ -21,7 +23,8 @@ UIBattleMenuLayer::UIBattleMenuLayer() {
 }
 
 UIBattleMenuLayer::~UIBattleMenuLayer() {
-    
+    ActionTimelineCache::getInstance()->removeAction( PAUSE_PANEL_FILE );
+    ActionTimelineCache::getInstance()->removeAction( WIN_PANEL_FILE );
 }
 
 UIBattleMenuLayer* UIBattleMenuLayer::create( BattleLayer* battle_layer ) {
@@ -50,18 +53,35 @@ bool UIBattleMenuLayer::init( BattleLayer* battle_layer ) {
     
     _battle_layer = battle_layer;
     
+    //win panel
     std::string win_panel_file = FileUtils::getInstance()->fullPathForFilename( WIN_PANEL_FILE );
-    _win_panel = cocos2d::CSLoader::getInstance()->createNode( win_panel_file.c_str() );
+    _win_panel = cocos2d::CSLoader::getInstance()->createNode( win_panel_file );
     this->addChild( _win_panel );
     _win_panel->setVisible( false );
     
     ui::Button* btn_confirm = dynamic_cast<ui::Button*>( _win_panel->getChildByName( "btn_ok" ) );
     btn_confirm->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onConfirmTouched, this ) );
     
+    Node* win_effect_node = _win_panel->getChildByName( "nd_light" );
+    _win_effect = ArmatureManager::getInstance()->createArmature( "ui/effect_win" );
+    win_effect_node->addChild( _win_effect );
+    
+    _win_panel_action = ActionTimelineCache::getInstance()->loadAnimationActionWithFlatBuffersFile( win_panel_file );
+    
+    //lose panel
+    std::string lose_panel_file = FileUtils::getInstance()->fullPathForFilename( LOSE_PANEL_FILE );
+    _lose_panel = cocos2d::CSLoader::getInstance()->createNode( lose_panel_file );
+    this->addChild( _lose_panel );
+    _lose_panel->setVisible( false );
+    
+    ui::Button* btn_lose_confirm = dynamic_cast<ui::Button*>( _lose_panel->getChildByName( "btn_ok" ) );
+    btn_lose_confirm->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onConfirmTouched, this ) );
+    
     std::string pause_panel_file = FileUtils::getInstance()->fullPathForFilename( PAUSE_PANEL_FILE );
-    _pause_panel = cocos2d::CSLoader::getInstance()->createNode( pause_panel_file.c_str() );
+    _pause_panel = cocos2d::CSLoader::getInstance()->createNode( pause_panel_file );
     this->addChild( _pause_panel );
     _pause_panel->setVisible( false );
+    _pause_panel_action = ActionTimelineCache::getInstance()->loadAnimationActionWithFlatBuffersFile( pause_panel_file );
     
     ui::Button* btn_home = dynamic_cast<ui::Button*>( _pause_panel->getChildByName( "btn_home" ) );
     btn_home->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onHomeTouched, this ) );
@@ -71,8 +91,8 @@ bool UIBattleMenuLayer::init( BattleLayer* battle_layer ) {
     
     ui::Button* btn_continue = dynamic_cast<ui::Button*>( _pause_panel->getChildByName( "btn_continue" ) );
     btn_continue->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onContinueTouched, this ) );
-    
-    _btn_pause = ui::Button::create( "pause_normal.png", "pause_push.png" );
+
+    _btn_pause = ui::Button::create( "ui_menu_pause_normal.png", "ui_menu_pause_touched.png", "ui_menu_pause_touched.png", cocos2d::ui::Widget::TextureResType::PLIST );
     _btn_pause->setPosition( Point( origin.x + 50.0f, origin.y + size.height - 50.0f ) );
     _btn_pause->setAnchorPoint( Point( 0, 1.0f ) );
     _btn_pause->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onPauseTouched, this ) );
@@ -110,7 +130,10 @@ void UIBattleMenuLayer::onRestartTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
 
 void UIBattleMenuLayer::onContinueTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == ui::Widget::TouchEventType::ENDED ) {
-        this->hideMenu();
+        _pause_panel->stopAction( _pause_panel_action );
+        _pause_panel->runAction( _pause_panel_action );
+        _pause_panel_action->play( "disappear", false );
+        _pause_panel_action->setLastFrameCallFunc( CC_CALLBACK_0( UIBattleMenuLayer::hideMenu, this ) );
     }
 }
 
@@ -122,13 +145,18 @@ void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
 
 void UIBattleMenuLayer::showResultPanel( bool win ) {
     _btn_pause->setVisible( false );
-    _win_panel->setVisible( true );
     _pause_panel->setVisible( false );
     if( win ) {
+        _win_panel->setVisible( true );
+        _lose_panel->setVisible( false );
+        _win_effect->setAnimation( 0, "Idle", true );
+        _win_panel->runAction( _win_panel_action );
+        _win_panel_action->play( "appear", false );
         
     }
     else {
-        
+        _win_panel->setVisible( false );
+        _lose_panel->setVisible( true );
     }
 }
 
@@ -136,6 +164,10 @@ void UIBattleMenuLayer::showPausePanel() {
     _btn_pause->setVisible( false );
     _win_panel->setVisible( false );
     _pause_panel->setVisible( true );
+    _pause_panel_action->clearLastFrameCallFunc();
+    _pause_panel->stopAction( _pause_panel_action );
+    _pause_panel->runAction( _pause_panel_action );
+    _pause_panel_action->play( "appear", false );
 }
 
 void UIBattleMenuLayer::hideMenu() {

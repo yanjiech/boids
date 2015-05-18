@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "spine/spine-cocos2dx.h"
 
 class BattleLayer;
 
@@ -19,10 +20,19 @@ class UIBattleMenuLayer : public cocos2d::Layer {
 private:
     BattleLayer* _battle_layer;
     
-    cocos2d::Node* _win_panel;
     cocos2d::Node* _pause_panel;
+    cocostudio::timeline::ActionTimeline* _pause_panel_action;
     
     cocos2d::ui::Button* _btn_pause;
+    
+    //win panel
+    cocos2d::Node* _win_panel;
+    cocostudio::timeline::ActionTimeline* _win_panel_action;
+    spine::SkeletonAnimation* _win_effect;
+    
+    //lose panel
+    cocos2d::Node* _lose_panel;
+    
     
 public:
     UIBattleMenuLayer();

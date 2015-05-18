@@ -84,7 +84,7 @@ bool ElementData::init( const cocos2d::ValueMap& data ) {
         
         itr = data.find( "view_range" );
         if( itr != data.end() ) {
-            this->view_range = itr->second.asFloat();
+            this->view_range = itr->second.asInt();
         }
     }
     
@@ -143,7 +143,7 @@ void ElementData::setAttribute( const std::string& key, const std::string& value
         this->tenacity = (float)Utils::toDouble( value );
     }
     else if( key == "view_range" ) {
-        this->view_range = (float)Utils::toDouble( value );
+        this->view_range = Utils::toInt( value );
     }
 }
 
