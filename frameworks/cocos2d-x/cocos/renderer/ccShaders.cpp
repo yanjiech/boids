@@ -91,4 +91,29 @@ NS_CC_BEGIN
 #include "ccShader_3D_ColorNormal.frag"
 #include "ccShader_3D_ColorNormalTex.frag"
 
+//custom
+#include "shader_grey_no_mvp.vert"
+#include "shader_grey_no_mvp.frag"
+
+#include "shader_grey.vert"
+#include "shader_grey.frag"
+
+#include "shader_ice_no_mvp.vert"
+#include "shader_ice_no_mvp.frag"
+
+#include "shader_ice.vert"
+#include "shader_ice.frag"
+
+#include "shader_burn_no_mvp.vert"
+#include "shader_burn_no_mvp.frag"
+
+#include "shader_burn.vert"
+#include "shader_burn.frag"
+
+#include "shader_poison_no_mvp.vert"
+#include "shader_poison_no_mvp.frag"
+
+#include "shader_poison.vert"
+#include "shader_poison.frag"
+
 NS_CC_END

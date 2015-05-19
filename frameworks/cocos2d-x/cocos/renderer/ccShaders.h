@@ -79,6 +79,32 @@ extern CC_DLL const GLchar * cc3D_PositionNormalTex_vert;
 extern CC_DLL const GLchar * cc3D_SkinPositionNormalTex_vert;
 extern CC_DLL const GLchar * cc3D_ColorNormalTex_frag;
 extern CC_DLL const GLchar * cc3D_ColorNormal_frag;
+
+//custom
+extern CC_DLL const GLchar * shader_grey_no_mvp_frag;
+extern CC_DLL const GLchar * shader_grey_no_mvp_vert;
+
+extern CC_DLL const GLchar * shader_grey_frag;
+extern CC_DLL const GLchar * shader_grey_vert;
+
+extern CC_DLL const GLchar * shader_ice_no_mvp_frag;
+extern CC_DLL const GLchar * shader_ice_no_mvp_vert;
+
+extern CC_DLL const GLchar * shader_ice_frag;
+extern CC_DLL const GLchar * shader_ice_vert;
+
+extern CC_DLL const GLchar * shader_burn_no_mvp_frag;
+extern CC_DLL const GLchar * shader_burn_no_mvp_vert;
+
+extern CC_DLL const GLchar * shader_burn_frag;
+extern CC_DLL const GLchar * shader_burn_vert;
+
+extern CC_DLL const GLchar * shader_poison_no_mvp_frag;
+extern CC_DLL const GLchar * shader_poison_no_mvp_vert;
+
+extern CC_DLL const GLchar * shader_poison_frag;
+extern CC_DLL const GLchar * shader_poison_vert;
+
 // end of shaders group
 /// @}
 

@@ -39,6 +39,14 @@ THE SOFTWARE.
 NS_CC_BEGIN
 
 enum {
+    kShaderType_grey_no_mvp,
+    kShaderType_ice_no_mvp,
+    kShaderType_burn_no_mvp,
+    kShaderType_poison_no_mvp,
+    kShaderType_grey,
+    kShaderType_ice,
+    kShaderType_burn,
+    kShaderType_poison,
     kShaderType_PositionTextureColor,
     kShaderType_PositionTextureColor_noMVP,
     kShaderType_PositionTextureColorAlphaTest,
@@ -242,6 +250,38 @@ void GLProgramCache::loadDefaultGLPrograms()
     _programs.insert(std::make_pair(GLProgram::SHADER_NAME_POSITION_COLOR_NO_MVP_GRAYSCALE, p));
 #endif
 
+    //custom
+    p = new GLProgram();
+    loadDefaultGLProgram(p, kShaderType_grey);
+    _programs.insert(std::make_pair(GLProgram::SHADER_NAME_GREY, p));
+    
+    p = new GLProgram();
+    loadDefaultGLProgram(p, kShaderType_grey_no_mvp);
+    _programs.insert(std::make_pair(GLProgram::SHADER_NAME_GREY_NO_MVP, p));
+    
+    p = new GLProgram();
+    loadDefaultGLProgram(p, kShaderType_ice);
+    _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ICE, p));
+    
+    p = new GLProgram();
+    loadDefaultGLProgram(p, kShaderType_ice_no_mvp);
+    _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ICE_NO_MVP, p));
+    
+    p = new GLProgram();
+    loadDefaultGLProgram(p, kShaderType_burn);
+    _programs.insert(std::make_pair(GLProgram::SHADER_NAME_BURN, p));
+    
+    p = new GLProgram();
+    loadDefaultGLProgram(p, kShaderType_burn_no_mvp);
+    _programs.insert(std::make_pair(GLProgram::SHADER_NAME_BURN_NO_MVP, p));
+    
+    p = new GLProgram();
+    loadDefaultGLProgram(p, kShaderType_poison);
+    _programs.insert(std::make_pair(GLProgram::SHADER_NAME_POISON, p));
+    
+    p = new GLProgram();
+    loadDefaultGLProgram(p, kShaderType_poison_no_mvp);
+    _programs.insert(std::make_pair(GLProgram::SHADER_NAME_POISON_NO_MVP, p));
 }
 
 void GLProgramCache::reloadDefaultGLPrograms()
@@ -361,6 +401,39 @@ void GLProgramCache::reloadDefaultGLPrograms()
     p = getGLProgram(GLProgram::SHADER_3D_SKINPOSITION_NORMAL_TEXTURE);
     p->reset();
     loadDefaultGLProgram(p, kShaderType_3DSkinPositionNormalTex);
+    
+    //custom
+    p = getGLProgram(GLProgram::SHADER_NAME_GREY);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_grey);
+    
+    p = getGLProgram(GLProgram::SHADER_NAME_GREY_NO_MVP);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_grey_no_mvp);
+    
+    p = getGLProgram(GLProgram::SHADER_NAME_ICE);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_ice);
+    
+    p = getGLProgram(GLProgram::SHADER_NAME_ICE_NO_MVP);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_ice_no_mvp);
+    
+    p = getGLProgram(GLProgram::SHADER_NAME_BURN);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_burn);
+    
+    p = getGLProgram(GLProgram::SHADER_NAME_BURN_NO_MVP);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_burn_no_mvp);
+    
+    p = getGLProgram(GLProgram::SHADER_NAME_POISON);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_poison);
+    
+    p = getGLProgram(GLProgram::SHADER_NAME_POISON_NO_MVP);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_poison_no_mvp);
 }
 
 void GLProgramCache::loadDefaultGLProgram(GLProgram *p, int type)
@@ -449,6 +522,31 @@ void GLProgramCache::loadDefaultGLProgram(GLProgram *p, int type)
             p->initWithByteArrays(ccPositionTextureColor_noMVP_vert, ccUIGrayScale_frag);
             break;
 #endif
+            //custom
+        case kShaderType_grey:
+            p->initWithByteArrays( shader_grey_vert, shader_grey_frag);
+            break;
+        case kShaderType_grey_no_mvp:
+            p->initWithByteArrays(shader_grey_no_mvp_vert, shader_grey_no_mvp_frag);
+            break;
+        case kShaderType_ice:
+            p->initWithByteArrays(shader_ice_vert, shader_ice_frag);
+            break;
+        case kShaderType_ice_no_mvp:
+            p->initWithByteArrays(shader_ice_no_mvp_vert, shader_ice_no_mvp_frag);
+            break;
+        case kShaderType_burn:
+            p->initWithByteArrays(shader_burn_vert, shader_burn_frag);
+            break;
+        case kShaderType_burn_no_mvp:
+            p->initWithByteArrays(shader_burn_no_mvp_vert, shader_burn_no_mvp_frag);
+            break;
+        case kShaderType_poison:
+            p->initWithByteArrays(shader_poison_vert, shader_poison_frag);
+            break;
+        case kShaderType_poison_no_mvp:
+            p->initWithByteArrays(shader_poison_no_mvp_vert, shader_poison_no_mvp_frag);
+            break;
         default:
             CCLOG("cocos2d: %s:%d, error shader type", __FUNCTION__, __LINE__);
             return;

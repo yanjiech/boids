@@ -33,7 +33,6 @@ private:
     //lose panel
     cocos2d::Node* _lose_panel;
     
-    
 public:
     UIBattleMenuLayer();
     virtual ~UIBattleMenuLayer();

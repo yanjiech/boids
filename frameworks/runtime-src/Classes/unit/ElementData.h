@@ -65,11 +65,14 @@ public:
     
     float guard_radius;
     
-    std::string role;
-    
     bool is_melee;
     bool is_double_face;
     int default_face_dir;
+    
+    int star;
+    int price_type;
+    int price;
+    int place;
     
     std::vector<std::string> skill_names;
 };

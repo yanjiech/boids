@@ -94,7 +94,7 @@ bool UILevelChooseLayer::init() {
             std::string name = info.at( "name" ).asString();
             std::string resource = ResourceManager::getInstance()->getPathForResource( name, eResourceType::Character_Front );
             spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
-            skeleton->setAnimation( 0, "Walk", true );
+            skeleton->setAnimation( 0, "Idle", true );
             skeleton->setPosition( Point( shadow->getContentSize().width / 2, shadow->getContentSize().height / 2 ) );
             shadow->addChild( skeleton );
         }

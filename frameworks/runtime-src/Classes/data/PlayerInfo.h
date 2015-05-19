@@ -26,11 +26,15 @@ private:
     PlayerInfo();
     
 public:
-    ~PlayerInfo();
+    virtual ~PlayerInfo();
     
     static PlayerInfo* getInstance();
     
     void loadPlayerInfo();
+    
+    const cocos2d::ValueMap& getAllUnitsInfo();
+    
+    cocos2d::ValueVector getPlayerDeployedUnitsSlotIds();
     
     cocos2d::ValueVector getPlayerDeployedUnitsInfo();
     

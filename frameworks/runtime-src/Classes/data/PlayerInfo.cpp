@@ -37,6 +37,15 @@ void PlayerInfo::loadPlayerInfo() {
     _player_info = CocosUtils::jsonObjectToValueMap( player_info_json );
 }
 
+const cocos2d::ValueMap& PlayerInfo::getAllUnitsInfo() {
+    return _player_info.at( "units" ).asValueMap();
+}
+
+cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitsSlotIds() {
+    ValueVector ret = _player_info.at( "deploy_units" ).asValueVector();
+    return ret;
+}
+
 cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitsInfo() {
     ValueVector ret;
     const ValueMap& player_units = _player_info.at( "units" ).asValueMap();

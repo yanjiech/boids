@@ -142,35 +142,37 @@ bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
         
         this->schedule( CC_CALLBACK_1( BattleLayer::updateFrame, this ), "battle_update"  );
         
-        _fog_node = Node::create();
-        this->addChild( _fog_node, eBattleSubLayer::FogLayer );
-        
-        _fog_x_tile_count = int( ceil( 1920 / FOG_TILE_SIZE ) ) + 1;
-        _fog_y_tile_count = int( ceil( 1080 / FOG_TILE_SIZE ) ) + 1;
-        
-        if( FOG_TILE_SIZE == 32 ) {
-            _fog_texture = Director::getInstance()->getTextureCache()->addImage( "ui/ui_fog_mask_32.png" );
-        }
-        else if( FOG_TILE_SIZE == 64 ) {
-            _fog_texture = Director::getInstance()->getTextureCache()->addImage( "ui/ui_fog_mask_64.png" );
-        }
-        
-        
-        for( int j = 0; j < _fog_y_tile_count; j++ ) {
-            for( int i = 0; i < _fog_x_tile_count; i++ ) {
-                Sprite* sp = Sprite::createWithTexture( _fog_texture, Rect( 0, 0, FOG_TILE_SIZE, FOG_TILE_SIZE ) );
-                sp->setAnchorPoint( Point::ZERO );
-                sp->setPosition( Point( i * FOG_TILE_SIZE, j * FOG_TILE_SIZE ) );
-                
-                _fog_node->addChild( sp );
-                sp->setOpacity( 200 );
-                sp->setTag( j * _fog_x_tile_count + i );
+        if( _should_show_fog ) {
+            _fog_node = Node::create();
+            this->addChild( _fog_node, eBattleSubLayer::FogLayer );
+            
+            _fog_x_tile_count = int( ceil( 1920 / FOG_TILE_SIZE ) ) + 1;
+            _fog_y_tile_count = int( ceil( 1080 / FOG_TILE_SIZE ) ) + 1;
+            
+            if( FOG_TILE_SIZE == 32 ) {
+                _fog_texture = Director::getInstance()->getTextureCache()->addImage( "ui/ui_fog_mask_32.png" );
             }
+            else if( FOG_TILE_SIZE == 64 ) {
+                _fog_texture = Director::getInstance()->getTextureCache()->addImage( "ui/ui_fog_mask_64.png" );
+            }
+            
+            
+            for( int j = 0; j < _fog_y_tile_count; j++ ) {
+                for( int i = 0; i < _fog_x_tile_count; i++ ) {
+                    Sprite* sp = Sprite::createWithTexture( _fog_texture, Rect( 0, 0, FOG_TILE_SIZE, FOG_TILE_SIZE ) );
+                    sp->setAnchorPoint( Point::ZERO );
+                    sp->setPosition( Point( i * FOG_TILE_SIZE, j * FOG_TILE_SIZE ) );
+                    
+                    _fog_node->addChild( sp );
+                    sp->setOpacity( 200 );
+                    sp->setTag( j * _fog_x_tile_count + i );
+                }
+            }
+            
+            CC_SAFE_DELETE_ARRAY( _fog_tile_visible_array );
+            _fog_tile_visible_array = new unsigned char[_fog_x_tile_count * _fog_y_tile_count];
+            memset( _fog_tile_visible_array, 0, _fog_x_tile_count * _fog_y_tile_count );
         }
-        
-        CC_SAFE_DELETE_ARRAY( _fog_tile_visible_array );
-        _fog_tile_visible_array = new unsigned char[_fog_x_tile_count * _fog_y_tile_count];
-        memset( _fog_tile_visible_array, 0, _fog_x_tile_count * _fog_y_tile_count );
         
         return true;
     }while( 0 );
@@ -285,9 +287,9 @@ void BattleLayer::updateFrame( float delta ) {
         this->reorderObjectLayer();
         this->adjustCamera();
         
-//        if( _should_show_fog ) {
+        if( _should_show_fog ) {
             this->updateFogSprite();
-//        }
+        }
     }
     else if( _state == eBattleState::BattleStory ) {
         _story_layer->updateFrame( delta );

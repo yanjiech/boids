@@ -1,6 +1,6 @@
 {
     "gold" : 50000,
-    "diamond" :1000,
+    "diamond" : 1000,
     "team_level" : 1,
     "team_exp" : 0,
     "team_skills" :
@@ -29,54 +29,60 @@
     {
         "1" :
         {
-            "name" : "vanhelsing",
+            "name" : "dracula",
             "level" : 1,
+            "owned" : true,
+            "locked" : false,
             "skills" :
             [
                 {
-                    "name" : "BarrageOfArrow",
+                    "name" : "DarkPierce",
                     "level" : 1
                 },
                 {
-                    "name" : "CrazyShoot",
+                    "name" : "BatSwarm",
                     "level" : 1
                 }
             ],
             "equips" :
             {
-                "weapon" : "1",
-                "armor" : "2",
-                "boot" : "3",
-                "accessory" : "4"
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
             }
-        },
+        }, 
         "2" :
         {
-            "name" : "zeus",
-            "level" : 20,
+            "name" : "kyle",
+            "level" : 1,
+            "owned" : true,
+            "locked" : false,
             "skills" :
             [
                 {
-                    "name" : "WrathOfThunder",
-                    "level" : 1
+                    "name" : "CrazyScratch",
+                    "level" : 3
                 },
                 {
-                    "name" : "LightningChain",
-                    "level" : 1
+                    "name" : "NinthLife",
+                    "level" : 3
                 }
             ],
             "equips" :
             {
-                "weapon" : "1",
-                "armor" : "2",
-                "boot" : "3",
-                "accessory" : "4"
+                "weapon" : "none",
+                "armor" : "none",
+                "boot" : "none",
+                "accessory" : "none"
             }
-        },
+        }, 
         "3" :
         {
             "name" : "enchantress",
-            "level" : 6,
+            "level" : 1,
+            "owned" : true,
+            "locked" : false,
             "skills" :
             [
                 {
@@ -100,6 +106,8 @@
         {
             "name" : "saber",
             "level" : 1,
+            "owned" : false,
+            "locked" : true,
             "skills" :
             [
                 {
@@ -118,34 +126,38 @@
                 "boot" : "none",
                 "accessory" : "none"
             }
-        },
+        }, 
         "5" :
         {
-            "name" : "dracula",
-            "level" : 6,
+            "name" : "vanhelsing",
+            "level" : 1,
+            "owned" : true,
+            "locked" : false,
             "skills" :
             [
                 {
-                    "name" : "DarkPierce",
+                    "name" : "BarrageOfArrow",
                     "level" : 1
                 },
                 {
-                    "name" : "BatSwarm",
+                    "name" : "CrazyShoot",
                     "level" : 1
                 }
             ],
             "equips" :
             {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
+                "weapon" : "1",
+                "armor" : "2",
+                "boot" : "3",
+                "accessory" : "4"
             }
         },
         "6" :
         {
             "name" : "hippolyta",
-            "level" : 40,
+            "level" : 1,
+            "owned" : false,
+            "locked" : true,
             "skills" :
             [
                 {
@@ -165,22 +177,41 @@
                 "boot" : "none",
                 "accessory" : "none"
             }
-        },
+        }, 
         "7" :
         {
-            "name" : "kyle",
-            "level" : 6,
+            "name" : "zeus",
+            "level" : 1,
+            "owned" : false,
+            "locked" : true,
             "skills" :
             [
                 {
-                    "name" : "CrazyScratch",
-                    "level" : 3
+                    "name" : "WrathOfThunder",
+                    "level" : 1
                 },
                 {
-                    "name" : "NinthLife",
-                    "level" : 3
+                    "name" : "LightningChain",
+                    "level" : 1
                 }
-
+            ],
+            "equips" :
+            {
+                "weapon" : "1",
+                "armor" : "2",
+                "boot" : "3",
+                "accessory" : "4"
+            }
+        },
+        "8" :
+        {
+            "name" : "durarara",
+            "level" : 1,
+            "owned" : false,
+            "locked" : true,
+            "skills" :
+            [
+                
             ],
             "equips" :
             {
@@ -190,39 +221,15 @@
                 "accessory" : "none"
             }
         },
-        "100" :
+        "9" :
         {
-            "name" : "human_king",
-            "level" : 2,
+            "name" : "ice_witch",
+            "level" : 1,
+            "owned" : false,
+            "locked" : true,
             "skills" :
             [
-                {
-                    "name" : "AtomFart",
-                    "level" : 1
-                },
-                {
-                    "name" : "FatalThrow",
-                    "level" : 1
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-        },
-        "101" :
-        {
-            "name" : "women_wizard",
-            "level" : 40,
-            "skills" :
-            [
-                {
-                    "name" : "MagicPulse",
-                    "level" : 3
-                }
+                
             ],
             "equips" :
             {
@@ -233,35 +240,15 @@
             }
 
         },
-        "102" :
+        "10" :
         {
-            "name" : "women_fire_wizard",
-            "level" : 40,
+            "name" : "gandalf",
+            "level" : 1,
+            "owned" : false,
+            "locked" : true,
             "skills" :
             [
-                {
-                    "name" : "FireWhirl",
-                    "level" : 3
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-        },
-        "103" :
-        {
-            "name" : "goblin_helicopter",
-            "level" : 40,
-            "skills" :
-            [
-                {
-                    "name" : "GasBomb",
-                    "level" : 3
-                }
+                
             ],
             "equips" :
             {

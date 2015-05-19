@@ -2934,6 +2934,22 @@
 		5E9F61231A3FFE3D0038DE01 /* CCFrustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFrustum.h; sourceTree = "<group>"; };
 		5E9F61241A3FFE3D0038DE01 /* CCPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCPlane.cpp; sourceTree = "<group>"; };
 		5E9F61251A3FFE3D0038DE01 /* CCPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPlane.h; sourceTree = "<group>"; };
+		76E410251B0B215F00518E86 /* shader_burn_no_mvp.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_burn_no_mvp.frag; sourceTree = "<group>"; };
+		76E410261B0B215F00518E86 /* shader_burn_no_mvp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_burn_no_mvp.vert; sourceTree = "<group>"; };
+		76E410271B0B215F00518E86 /* shader_burn.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_burn.frag; sourceTree = "<group>"; };
+		76E410281B0B215F00518E86 /* shader_burn.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_burn.vert; sourceTree = "<group>"; };
+		76E410291B0B215F00518E86 /* shader_grey_no_mvp.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_grey_no_mvp.frag; sourceTree = "<group>"; };
+		76E4102A1B0B215F00518E86 /* shader_grey_no_mvp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_grey_no_mvp.vert; sourceTree = "<group>"; };
+		76E4102B1B0B215F00518E86 /* shader_grey.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_grey.frag; sourceTree = "<group>"; };
+		76E4102C1B0B215F00518E86 /* shader_grey.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_grey.vert; sourceTree = "<group>"; };
+		76E4102D1B0B215F00518E86 /* shader_ice_no_mvp.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_ice_no_mvp.frag; sourceTree = "<group>"; };
+		76E4102E1B0B215F00518E86 /* shader_ice_no_mvp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_ice_no_mvp.vert; sourceTree = "<group>"; };
+		76E4102F1B0B215F00518E86 /* shader_ice.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_ice.frag; sourceTree = "<group>"; };
+		76E410301B0B215F00518E86 /* shader_ice.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_ice.vert; sourceTree = "<group>"; };
+		76E410311B0B215F00518E86 /* shader_poison_no_mvp.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_poison_no_mvp.frag; sourceTree = "<group>"; };
+		76E410321B0B215F00518E86 /* shader_poison_no_mvp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_poison_no_mvp.vert; sourceTree = "<group>"; };
+		76E410331B0B215F00518E86 /* shader_poison.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_poison.frag; sourceTree = "<group>"; };
+		76E410341B0B215F00518E86 /* shader_poison.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_poison.vert; sourceTree = "<group>"; };
 		98E67EF51ABFF74900076CE1 /* Animation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Animation.c; sourceTree = "<group>"; };
 		98E67EF61ABFF74900076CE1 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
 		98E67EF71ABFF74900076CE1 /* AnimationState.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AnimationState.c; sourceTree = "<group>"; };
@@ -4811,6 +4827,22 @@
 		5034CA5D191D591900CE6051 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				76E410251B0B215F00518E86 /* shader_burn_no_mvp.frag */,
+				76E410261B0B215F00518E86 /* shader_burn_no_mvp.vert */,
+				76E410271B0B215F00518E86 /* shader_burn.frag */,
+				76E410281B0B215F00518E86 /* shader_burn.vert */,
+				76E410291B0B215F00518E86 /* shader_grey_no_mvp.frag */,
+				76E4102A1B0B215F00518E86 /* shader_grey_no_mvp.vert */,
+				76E4102B1B0B215F00518E86 /* shader_grey.frag */,
+				76E4102C1B0B215F00518E86 /* shader_grey.vert */,
+				76E4102D1B0B215F00518E86 /* shader_ice_no_mvp.frag */,
+				76E4102E1B0B215F00518E86 /* shader_ice_no_mvp.vert */,
+				76E4102F1B0B215F00518E86 /* shader_ice.frag */,
+				76E410301B0B215F00518E86 /* shader_ice.vert */,
+				76E410311B0B215F00518E86 /* shader_poison_no_mvp.frag */,
+				76E410321B0B215F00518E86 /* shader_poison_no_mvp.vert */,
+				76E410331B0B215F00518E86 /* shader_poison.frag */,
+				76E410341B0B215F00518E86 /* shader_poison.vert */,
 				B20564AA1A6E5744001C1B6E /* ccShader_PositionColorTextureAsPointsize.vert */,
 				B67C624319D4186F00F11FC6 /* ccShader_3D_ColorNormal.frag */,
 				B67C624419D4186F00F11FC6 /* ccShader_3D_ColorNormalTex.frag */,

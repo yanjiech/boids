@@ -114,6 +114,17 @@ public:
         UNIFORM_MAX,
     };
     
+    //custom
+    static const char* SHADER_NAME_GREY_NO_MVP;
+    static const char* SHADER_NAME_POISON_NO_MVP;
+    static const char* SHADER_NAME_BURN_NO_MVP;
+    static const char* SHADER_NAME_ICE_NO_MVP;
+    
+    static const char* SHADER_NAME_GREY;
+    static const char* SHADER_NAME_POISON;
+    static const char* SHADER_NAME_BURN;
+    static const char* SHADER_NAME_ICE;
+    
     static const char* SHADER_NAME_POSITION_TEXTURE_COLOR;
     static const char* SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP;
     static const char* SHADER_NAME_POSITION_TEXTURE_ALPHA_TEST;

@@ -222,11 +222,14 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
     this->recover = unit_config.at( "rec" ).asFloat() + this->level * unit_config.at( "recgr" ).asFloat();
     this->scale = unit_config.at( "scale" ).asFloat();
     
-    this->role = unit_config.at( "position" ).asString();
-    
     this->is_melee = unit_config.at( "is_melee" ).asBool();
     this->is_double_face = unit_config.at( "double_face" ).asBool();
     this->default_face_dir = unit_config.at( "faceleft" ).asInt();
+    
+    this->star = unit_config.at( "star" ).asInt();
+    this->price_type = unit_config.at( "price_type" ).asInt();
+    this->price = unit_config.at( "price" ).asInt();
+    this->place = unit_config.at( "place" ).asInt();
     
     const ValueVector& skill_vector = unit_config.at( "skills" ).asValueVector();
     for( auto itr = skill_vector.begin(); itr != skill_vector.end(); ++itr ) {
@@ -242,7 +245,16 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
     if( key == "guard_radius" ) {
         this->guard_radius = (float)Utils::toDouble( value );
     }
-    else if( key == "position" ) {
-        this->role = value;
+    else if( key == "star" ) {
+        this->star = Utils::toInt( value );
+    }
+    else if( key == "price_type" ) {
+        this->price_type = Utils::toInt( value );
+    }
+    else if( key == "price" ) {
+        this->price = Utils::toInt( value );
+    }
+    else if( key == "place" ) {
+        this->place = Utils::toInt( value );
     }
 }

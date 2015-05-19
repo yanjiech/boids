@@ -78,6 +78,8 @@
 		76E21D961AC5373A006714AD /* BatSwarm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D931AC5373A006714AD /* BatSwarm.cpp */; };
 		76E379021ACF792B002DB4F1 /* DebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E379001ACF792B002DB4F1 /* DebugMacros.cpp */; };
 		76E379031ACF792B002DB4F1 /* DebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E379001ACF792B002DB4F1 /* DebugMacros.cpp */; };
+		76E410231B0ADE2800518E86 /* UIHeroSkillLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E410211B0ADE2800518E86 /* UIHeroSkillLayer.cpp */; };
+		76E410241B0ADE2800518E86 /* UIHeroSkillLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E410211B0ADE2800518E86 /* UIHeroSkillLayer.cpp */; };
 		76E414631ACA7E47003DB126 /* Impetus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414611ACA7E47003DB126 /* Impetus.cpp */; };
 		76E414641ACA7E47003DB126 /* Impetus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414611ACA7E47003DB126 /* Impetus.cpp */; };
 		76E414671ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */; };
@@ -549,6 +551,8 @@
 		76E21D941AC5373A006714AD /* BatSwarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatSwarm.h; sourceTree = "<group>"; };
 		76E379001ACF792B002DB4F1 /* DebugMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugMacros.cpp; sourceTree = "<group>"; };
 		76E379011ACF792B002DB4F1 /* DebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMacros.h; sourceTree = "<group>"; };
+		76E410211B0ADE2800518E86 /* UIHeroSkillLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIHeroSkillLayer.cpp; sourceTree = "<group>"; };
+		76E410221B0ADE2800518E86 /* UIHeroSkillLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHeroSkillLayer.h; sourceTree = "<group>"; };
 		76E414611ACA7E47003DB126 /* Impetus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Impetus.cpp; sourceTree = "<group>"; };
 		76E414621ACA7E47003DB126 /* Impetus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Impetus.h; sourceTree = "<group>"; };
 		76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NaturesAttendants.cpp; sourceTree = "<group>"; };
@@ -1189,6 +1193,8 @@
 				98733C511AFE3CDE006B7C37 /* UIHeroDetailLayer.h */,
 				98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */,
 				98733C4D1AFE3B4B006B7C37 /* TouchableLayer.h */,
+				76E410211B0ADE2800518E86 /* UIHeroSkillLayer.cpp */,
+				76E410221B0ADE2800518E86 /* UIHeroSkillLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;
@@ -1941,6 +1947,7 @@
 				E87413551A0BD01D003EBD0B /* EditorHelper.cpp in Sources */,
 				7606262E1AE78D1E00833342 /* GuardAttackBehavior.cpp in Sources */,
 				E822BAD51A14C8CC00C4C05E /* EditorPositionNode.cpp in Sources */,
+				76E410241B0ADE2800518E86 /* UIHeroSkillLayer.cpp in Sources */,
 				E87413721A0DFA3C003EBD0B /* BEUIBase.cpp in Sources */,
 				E893DB501A1B74BA00B74590 /* MapData.cpp in Sources */,
 				E874131A1A0B5647003EBD0B /* infback.c in Sources */,
@@ -2166,6 +2173,7 @@
 				9859D1DB1A7B4E8400FF6D82 /* Counter.cpp in Sources */,
 				E88DE6BB1A0103FC005E1ABA /* Utils.cpp in Sources */,
 				98E3B6611A73A77A00B5BEBB /* tokenizer.cc in Sources */,
+				76E410231B0ADE2800518E86 /* UIHeroSkillLayer.cpp in Sources */,
 				76B578F51AF7743600D7E783 /* TransitionLayer.cpp in Sources */,
 				98E3B67B1A73A77A00B5BEBB /* stringprintf.cc in Sources */,
 				76E379021ACF792B002DB4F1 /* DebugMacros.cpp in Sources */,

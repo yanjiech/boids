@@ -45,6 +45,16 @@ THE SOFTWARE.
 
 NS_CC_BEGIN
 
+const char* GLProgram::SHADER_NAME_GREY_NO_MVP = "shader_grey_no_mvp";
+const char* GLProgram::SHADER_NAME_POISON_NO_MVP = "shader_poison_no_mvp";
+const char* GLProgram::SHADER_NAME_BURN_NO_MVP = "shader_burn_no_mvp";
+const char* GLProgram::SHADER_NAME_ICE_NO_MVP = "shader_ice_no_mvp";
+
+const char* GLProgram::SHADER_NAME_GREY = "shader_grey";
+const char* GLProgram::SHADER_NAME_POISON = "shader_poison";
+const char* GLProgram::SHADER_NAME_BURN = "shader_burn";
+const char* GLProgram::SHADER_NAME_ICE = "shader_ice";
+
 const char* GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR = "ShaderPositionTextureColor";
 const char* GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP = "ShaderPositionTextureColor_noMVP";
 const char* GLProgram::SHADER_NAME_POSITION_TEXTURE_ALPHA_TEST = "ShaderPositionTextureColorAlphaTest";

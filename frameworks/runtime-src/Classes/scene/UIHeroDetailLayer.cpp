@@ -49,6 +49,8 @@ bool UIHeroDetailLayer::init() {
 
 void UIHeroDetailLayer::onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        this->removeFromParentAndCleanup( true );
+        TouchableLayer* parent = dynamic_cast<TouchableLayer*>( this->getParent() );
+        parent->becomeTopLayer();
+        parent->removeChild( this );
     }
 }
