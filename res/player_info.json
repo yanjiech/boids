@@ -1,7 +1,7 @@
 {
     "gold" : 50000,
     "diamond" : 1000,
-    "team_level" : 1,
+    "team_level" : 10,
     "team_exp" : 0,
     "team_skills" :
     {
@@ -22,9 +22,13 @@
         }
     },
     "deploy_units" :
-    [
-        "1"
-    ],
+    {
+        "1" : "1",
+        "2" : "0",
+        "3" : "l",
+        "4" : "l",
+        "5" : "l"
+    },
     "units" :
     {
         "1" :
@@ -107,7 +111,7 @@
             "name" : "saber",
             "level" : 1,
             "owned" : false,
-            "locked" : true,
+            "locked" : false,
             "skills" :
             [
                 {
@@ -202,43 +206,6 @@
                 "boot" : "3",
                 "accessory" : "4"
             }
-        },
-        "8" :
-        {
-            "name" : "durarara",
-            "level" : 1,
-            "owned" : false,
-            "locked" : true,
-            "skills" :
-            [
-                
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-        },
-        "9" :
-        {
-            "name" : "ice_witch",
-            "level" : 1,
-            "owned" : false,
-            "locked" : true,
-            "skills" :
-            [
-                
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-
         },
         "10" :
         {

@@ -34,11 +34,15 @@ public:
     
     const cocos2d::ValueMap& getAllUnitsInfo();
     
-    cocos2d::ValueVector getPlayerDeployedUnitsSlotIds();
+    const cocos2d::ValueMap& getPlayerDeployedUnitsSlotIds();
     
     cocos2d::ValueVector getPlayerDeployedUnitsInfo();
     
     cocos2d::ValueVector getPlayerDeployedUnitNames();
+    
+    void setDeployUnit( const std::string& slot_id, const std::string& hero_id );
+    
+    cocos2d::ValueMap upgradeHero( const std::string& hero_id, int level );
     
     void gainGold( int gain );
     int getGold();

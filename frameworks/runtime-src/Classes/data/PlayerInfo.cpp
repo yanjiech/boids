@@ -41,20 +41,28 @@ const cocos2d::ValueMap& PlayerInfo::getAllUnitsInfo() {
     return _player_info.at( "units" ).asValueMap();
 }
 
-cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitsSlotIds() {
-    ValueVector ret = _player_info.at( "deploy_units" ).asValueVector();
-    return ret;
+const cocos2d::ValueMap& PlayerInfo::getPlayerDeployedUnitsSlotIds() {
+    return _player_info.at( "deploy_units" ).asValueMap();
 }
 
 cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitsInfo() {
     ValueVector ret;
     const ValueMap& player_units = _player_info.at( "units" ).asValueMap();
-    const ValueVector& player_unit_ids = _player_info.at( "deploy_units" ).asValueVector();
+    const ValueMap& player_unit_ids = this->getPlayerDeployedUnitsSlotIds();
     
-    for( auto itr = player_unit_ids.begin(); itr != player_unit_ids.end(); ++itr ) {
-        auto sitr = player_units.find( itr->asString() );
-        if( sitr != player_units.end() ) {
-            ret.push_back( sitr->second );
+    std::vector<std::string> keys;
+    for( auto pair : player_unit_ids ) {
+        keys.push_back( pair.first );
+    }
+    std::sort( keys.begin(), keys.end(), [&]( const std::string& a, const std::string& b )->bool{ return Utils::toInt( a ) < Utils::toInt( b ); } );
+    
+    for( auto key : keys ) {
+        std::string slot_id = player_unit_ids.at( key ).asString();
+        if( slot_id != "l" & slot_id != "0" ) {
+            auto sitr = player_units.find( slot_id );
+            if( sitr != player_units.end() ) {
+                ret.push_back( sitr->second );
+            }
         }
     }
     return ret;
@@ -63,15 +71,44 @@ cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitsInfo() {
 cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitNames() {
     ValueVector ret;
     const ValueMap& player_units = _player_info.at( "units" ).asValueMap();
-    const ValueVector& player_unit_ids = _player_info.at( "deploy_units" ).asValueVector();
+    const ValueMap& player_unit_ids = this->getPlayerDeployedUnitsSlotIds();
     
-    for( auto itr = player_unit_ids.begin(); itr != player_unit_ids.end(); ++itr ) {
-        auto sitr = player_units.find( itr->asString() );
-        if( sitr != player_units.end() ) {
-            ret.push_back( sitr->second.asValueMap().at( "name" ) );
+    std::vector<std::string> keys;
+    for( auto pair : player_unit_ids ) {
+        keys.push_back( pair.first );
+    }
+    std::sort( keys.begin(), keys.end(), [&]( const std::string& a, const std::string& b )->bool{ return Utils::toInt( a ) < Utils::toInt( b ); } );
+    
+    for( auto key : keys ) {
+        std::string slot_id = player_unit_ids.at( key ).asString();
+        if( slot_id != "l" && slot_id != "0" ) {
+            auto sitr = player_units.find( slot_id );
+            if( sitr != player_units.end() ) {
+                ret.push_back( sitr->second.asValueMap().at( "name" ) );
+            }
         }
     }
     return ret;
+}
+
+void PlayerInfo::setDeployUnit( const std::string& slot_id, const std::string& hero_id ) {
+    ValueMap& player_unit_ids = _player_info.at( "deploy_units" ).asValueMap();
+    auto itr = player_unit_ids.find( slot_id );
+    if( itr != player_unit_ids.end() ) {
+        itr->second = Value( hero_id );
+    }
+}
+
+cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level ) {
+    ValueMap& all_units = _player_info.at( "units" ).asValueMap();
+    auto itr = all_units.find( hero_id );
+    if( itr != all_units.end() ) {
+        ValueMap& unit_data = all_units.at( hero_id ).asValueMap();
+        int old_level = unit_data["level"].asInt();
+        unit_data["level"] = Value( old_level + level );
+        return unit_data;
+    }
+    return ValueMap();
 }
 
 void PlayerInfo::gainGold( int gain ) {

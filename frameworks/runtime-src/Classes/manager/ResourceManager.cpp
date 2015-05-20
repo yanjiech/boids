@@ -121,7 +121,7 @@ void ResourceManager::loadTowerData() {
 }
 
 void ResourceManager::loadUnitLevelupCostData() {
-    std::string data_string = FileUtils::getInstance()->getStringFromFile( "level_up_cost_conf.json" );
+    std::string data_string = FileUtils::getInstance()->getStringFromFile( "upgrade_cost.json" );
     rapidjson::Document unit_levelup_cost_config_json;
     unit_levelup_cost_config_json.Parse<0>( data_string.c_str() );
     _unit_levelup_cost_config = CocosUtils::jsonObjectToValueMap( unit_levelup_cost_config_json );

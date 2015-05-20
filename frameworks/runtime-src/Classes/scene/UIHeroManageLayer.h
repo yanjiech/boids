@@ -17,24 +17,40 @@
 
 class UIHeroManageHeroSlot : public cocos2d::Node {
 private:
+    int _flag;
+    
     cocos2d::Sprite* _hero_avatar;
+    cocos2d::Sprite* _hero_rect_avatar;
     cocos2d::Sprite* _lock_sprite;
     cocos2d::Sprite* _selected_sprite;
+    cocos2d::Sprite* _deployed_sprite;
     
     bool _is_selected;
     bool _is_locked;
     bool _is_owned;
     
+    bool _is_deployed;
+    
     spine::SkeletonAnimation* _hero_skeleton;
     UnitData* _hero_data;
-    std::string _slot_id;
+    std::string _hero_id;
     
 public:
+    enum eHeroSlotType {
+        HeroSlotTypeList = 0,
+        HeroSlotTypeDeployed = 1
+    };
+    
     UIHeroManageHeroSlot();
     virtual ~UIHeroManageHeroSlot();
     
-    static UIHeroManageHeroSlot* create( const cocos2d::ValueMap& data, const std::string& slot_id, int flag );
-    virtual bool init( const cocos2d::ValueMap& data, const std::string& slot_id, int flag );
+    static UIHeroManageHeroSlot* create( const cocos2d::ValueMap& data, const std::string& hero_id, int flag );
+    virtual bool init( const cocos2d::ValueMap& data, const std::string& hero_id, int flag );
+    
+    void loadHeroInfo( const cocos2d::ValueMap& data );
+    
+    int getFlag();
+    void setFlag( int flag );
     
     bool isSelected();
     void setSelected( bool b );
@@ -45,6 +61,9 @@ public:
     bool isOwned();
     void setOwned( bool b );
     
+    bool isDeployed();
+    void setDeployed( bool b );
+    
     spine::SkeletonAnimation* getHeroSkeleton();
     void setHeroSkeleton( spine::SkeletonAnimation* skeleton );
     
@@ -54,8 +73,46 @@ public:
     cocos2d::Sprite* getHeroAvatar();
     void setHeroAvatar( cocos2d::Sprite* avatar );
     
+    cocos2d::Sprite* getHeroRectAvatar();
+    void setHeroRectAvatar( cocos2d::Sprite* avatar );
+    
+    const std::string& getHeroId() { return _hero_id; }
+    void setHeroId( const std::string& hero_id ) { _hero_id = hero_id; }
+};
+
+class UIHeroDeploySlot : public cocos2d::Node {
+private:
+    std::string _slot_id;
+    std::string _hero_id;
+    
+    cocos2d::Sprite* _lock_sprite;
+    cocos2d::Sprite* _selected_sprite;
+    cocos2d::Sprite* _avatar_sprite;
+    
+    bool _is_locked;
+    bool _is_selected;
+    
+public:
+    UIHeroDeploySlot();
+    virtual ~UIHeroDeploySlot();
+    
+    static UIHeroDeploySlot* create( const std::string& slot_id );
+    virtual bool init( const std::string& slot_id );
+    
     const std::string& getSlotId() { return _slot_id; }
     void setSlotId( const std::string& slot_id ) { _slot_id = slot_id; }
+    
+    const std::string& getHeroId() { return _hero_id; }
+    void setHeroId( const std::string& hero_id ) { _hero_id = hero_id; }
+    
+    bool isLocked();
+    void setLocked( bool b );
+    
+    bool isSelected();
+    void setSelected( bool b );
+    
+    cocos2d::Sprite* getAvatar();
+    void setAvatar( cocos2d::Sprite* avatar );
 };
 
 class UIHeroManageLayer : public TouchableLayer {
@@ -98,6 +155,17 @@ private:
     cocos2d::ui::Text* _lb_hero_name;
     
     UIHeroManageHeroSlot* _selected_hero;
+    UIHeroDeploySlot* _selected_deploy_slot;
+    
+    int _current_page;
+    
+    cocos2d::Map<std::string,UIHeroManageHeroSlot*> _hero_slots;
+    cocos2d::Vector<UIHeroDeploySlot*> _deploy_slots;
+    
+    UIHeroManageHeroSlot* heroSlotForTouch( cocos2d::Touch* touch );
+    UIHeroDeploySlot* deploySlotForTouch( cocos2d::Touch* touch );
+    
+    spine::SkeletonAnimation* _upgrade_effect;
     
 public:
     UIHeroManageLayer();
@@ -121,6 +189,11 @@ public:
     virtual void becomeTopLayer();
     
     void setSelectedHero( UIHeroManageHeroSlot* hero );
+    void setSelectedDeploySlot( UIHeroDeploySlot* slot );
+    
+    void turnToPage( int index );
+    
+    void updatePlayerInfo();
     
     virtual bool onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event );
     virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );
