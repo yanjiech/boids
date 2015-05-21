@@ -1,0 +1,167 @@
+
+skeleton.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bi-r
+  rotate: true
+  xy: 358, 2
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
+chi-l
+  rotate: true
+  xy: 842, 162
+  size: 92, 112
+  orig: 92, 112
+  offset: 0, 0
+  index: -1
+chi-r
+  rotate: true
+  xy: 448, 114
+  size: 69, 93
+  orig: 69, 93
+  offset: 0, 0
+  index: -1
+ci02
+  rotate: false
+  xy: 448, 185
+  size: 160, 69
+  orig: 160, 69
+  offset: 0, 0
+  index: -1
+ci03
+  rotate: false
+  xy: 2, 36
+  size: 184, 125
+  orig: 184, 125
+  offset: 0, 0
+  index: -1
+dun
+  rotate: true
+  xy: 279, 151
+  size: 103, 167
+  orig: 103, 167
+  offset: 0, 0
+  index: -1
+er-l
+  rotate: true
+  xy: 403, 50
+  size: 44, 38
+  orig: 44, 38
+  offset: 0, 0
+  index: -1
+jianjia-l
+  rotate: false
+  xy: 268, 14
+  size: 88, 75
+  orig: 88, 75
+  offset: 0, 0
+  index: -1
+jianjia-r
+  rotate: false
+  xy: 543, 115
+  size: 63, 68
+  orig: 63, 68
+  offset: 0, 0
+  index: -1
+kou
+  rotate: false
+  xy: 40, 13
+  size: 24, 21
+  orig: 24, 21
+  offset: 0, 0
+  index: -1
+mang
+  rotate: true
+  xy: 610, 132
+  size: 122, 126
+  orig: 122, 126
+  offset: 0, 0
+  index: -1
+qiang
+  rotate: true
+  xy: 2, 163
+  size: 91, 275
+  orig: 91, 275
+  offset: 0, 0
+  index: -1
+qunbai
+  rotate: false
+  xy: 483, 74
+  size: 34, 38
+  orig: 34, 38
+  offset: 0, 0
+  index: -1
+shen
+  rotate: true
+  xy: 188, 60
+  size: 101, 78
+  orig: 101, 78
+  offset: 0, 0
+  index: -1
+shou-l
+  rotate: false
+  xy: 188, 2
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+shou-r
+  rotate: false
+  xy: 382, 96
+  size: 50, 53
+  orig: 50, 53
+  offset: 0, 0
+  index: -1
+tou
+  rotate: false
+  xy: 738, 147
+  size: 102, 107
+  orig: 102, 107
+  offset: 0, 0
+  index: -1
+tui-l
+  rotate: true
+  xy: 2, 10
+  size: 24, 36
+  orig: 24, 36
+  offset: 0, 0
+  index: -1
+weibo
+  rotate: true
+  xy: 956, 154
+  size: 100, 57
+  orig: 100, 57
+  offset: 0, 0
+  index: -1
+xiabai-l
+  rotate: true
+  xy: 358, 39
+  size: 50, 43
+  orig: 50, 43
+  offset: 0, 0
+  index: -1
+xiabai-m
+  rotate: true
+  xy: 407, 8
+  size: 40, 39
+  orig: 40, 39
+  offset: 0, 0
+  index: -1
+xiabai-r
+  rotate: false
+  xy: 443, 72
+  size: 38, 40
+  orig: 38, 40
+  offset: 0, 0
+  index: -1
+yanzhao
+  rotate: false
+  xy: 268, 91
+  size: 112, 58
+  orig: 112, 58
+  offset: 0, 0
+  index: -1

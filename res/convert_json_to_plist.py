@@ -1,7 +1,10 @@
 import json
+import plistlib
 
 def convert_json_to_plist( in_file, out_file ):
-    
+    root = {}
+    root["name"] = 200
+    plistlib.writePlist( root, out_file )
 
 if __name__ == '__main__':
     convert_json_to_plist( 'bullet.json', 'bullet.plist' )

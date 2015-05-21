@@ -844,6 +844,15 @@ Size Button::getNormalTextureSize() const
 {
     return _normalTextureSize;
 }
+    
+    void Button::switchSpriteFrames() {
+        std::string tex_normal = _disabledFileName;
+        std::string tex_disabled = _normalFileName;
+        this->loadTextureNormal( tex_normal, _normalTexType );
+        this->loadTexturePressed( tex_normal, _pressedTexType );
+        this->loadTextureDisabled( tex_disabled, _disabledTexType );
+    }
+    
 }
 
 NS_CC_END

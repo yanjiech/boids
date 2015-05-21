@@ -207,6 +207,23 @@
                 "accessory" : "4"
             }
         },
+        "8" :
+        {
+            "name" : "durarara",
+            "level" : 1,
+            "owned" : false,
+            "locked" : false,
+            "skills" :
+            [
+            ],
+            "equips" :
+            {
+                "weapon" : "1",
+                "armor" : "2",
+                "boot" : "3",
+                "accessory" : "4"
+            }
+        },
         "10" :
         {
             "name" : "gandalf",

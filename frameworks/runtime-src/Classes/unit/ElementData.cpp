@@ -258,3 +258,31 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
         this->place = Utils::toInt( value );
     }
 }
+
+//equipment data
+EquipmentData::EquipmentData() {
+    
+}
+
+EquipmentData::~EquipmentData() {
+    
+}
+
+EquipmentData* EquipmentData::create( const cocos2d::ValueMap& data ) {
+    EquipmentData* ret = new EquipmentData();
+    if( ret && ret->init( data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool EquipmentData::init( const cocos2d::ValueMap& data ) {
+    return true;
+}
+
+void EquipmentData::setAttribute( const std::string& key, const std::string& value ) {
+}

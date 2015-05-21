@@ -11,6 +11,8 @@
 #include "../util/CocosUtils.h"
 #include "../manager/ResourceManager.h"
 
+#define PLAYER_INFO_DATA_FILE "player_info"
+
 using namespace cocos2d;
 
 PlayerInfo* PlayerInfo::_instance = nullptr;
@@ -31,10 +33,24 @@ PlayerInfo* PlayerInfo::getInstance() {
 }
 
 void PlayerInfo::loadPlayerInfo() {
-    std::string data_string = FileUtils::getInstance()->getStringFromFile( "player_info.json" );
-    rapidjson::Document player_info_json;
-    player_info_json.Parse<0>( data_string.c_str() );
-    _player_info = CocosUtils::jsonObjectToValueMap( player_info_json );
+    FileUtils* file_util = FileUtils::getInstance();
+    std::string plist_file = FileUtils::getInstance()->getWritablePath() + PLAYER_INFO_DATA_FILE + ".plist";
+    if( !file_util->isFileExist( plist_file ) ) {
+        std::string data_string = FileUtils::getInstance()->getStringFromFile( "player_info.json" );
+        rapidjson::Document player_info_json;
+        player_info_json.Parse<0>( data_string.c_str() );
+        _player_info = CocosUtils::jsonObjectToValueMap( player_info_json );
+        file_util->writeToFile( _player_info, plist_file );
+    }
+    else {
+        _player_info = file_util->getValueMapFromFile( plist_file );
+    }
+}
+
+void PlayerInfo::recordPlayerInfo() {
+    FileUtils* file_util = FileUtils::getInstance();
+    std::string plist_file = FileUtils::getInstance()->getWritablePath() + PLAYER_INFO_DATA_FILE + ".plist";
+    file_util->writeToFile( _player_info, plist_file );
 }
 
 const cocos2d::ValueMap& PlayerInfo::getAllUnitsInfo() {
@@ -97,6 +113,7 @@ void PlayerInfo::setDeployUnit( const std::string& slot_id, const std::string& h
     if( itr != player_unit_ids.end() ) {
         itr->second = Value( hero_id );
     }
+    this->recordPlayerInfo();
 }
 
 cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level ) {
@@ -106,6 +123,7 @@ cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level
         ValueMap& unit_data = all_units.at( hero_id ).asValueMap();
         int old_level = unit_data["level"].asInt();
         unit_data["level"] = Value( old_level + level );
+        this->recordPlayerInfo();
         return unit_data;
     }
     return ValueMap();
@@ -114,6 +132,7 @@ cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level
 void PlayerInfo::gainGold( int gain ) {
     int gold = this->getGold();
     _player_info["gold"] = Value( gold + gain );
+    this->recordPlayerInfo();
 }
 
 int PlayerInfo::getGold() {
@@ -123,6 +142,7 @@ int PlayerInfo::getGold() {
 void PlayerInfo::gainDiamond( int gain ) {
     int diamond = this->getDiamond();
     _player_info["diamond"] = Value( diamond + gain );
+    this->recordPlayerInfo();
 }
 
 int PlayerInfo::getDiamond() {
@@ -135,12 +155,9 @@ void PlayerInfo::gainTeamExp( int exp ) {
     _player_info["team_exp"] = Value( team_exp );
     int team_level = this->getTeamLevel();
     int next_team_level = team_level + 1;
-    const ValueVector& team_level_exp_conf = ResourceManager::getInstance()->getTeamLevelExpConfig();
+    const ValueMap& team_level_exp_conf = ResourceManager::getInstance()->getTeamLevelExpConfig();
     if( team_level_exp_conf.size() > next_team_level ) {
-        int next_team_level_exp = team_level_exp_conf[next_team_level-1].asInt();
-        if( team_exp >= next_team_level_exp ) {
-            this->setTeamLevel( next_team_level );
-        }
+        
     }
 }
 

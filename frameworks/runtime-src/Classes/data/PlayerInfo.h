@@ -31,6 +31,7 @@ public:
     static PlayerInfo* getInstance();
     
     void loadPlayerInfo();
+    void recordPlayerInfo();
     
     const cocos2d::ValueMap& getAllUnitsInfo();
     

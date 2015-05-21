@@ -205,6 +205,8 @@ public:
      */
     float getZoomScale()const;
     
+    void switchSpriteFrames();
+    
 CC_CONSTRUCTOR_ACCESS:
     virtual bool init() override;
     virtual bool init(const std::string& normalImage,

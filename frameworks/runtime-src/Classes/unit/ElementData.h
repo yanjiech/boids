@@ -55,14 +55,6 @@ public:
 
 class UnitData : public ElementData {
 public:
-    UnitData();
-    virtual ~UnitData();
-    
-    static UnitData* create( const cocos2d::ValueMap& data );
-    virtual bool init( const cocos2d::ValueMap& data );
-    
-    virtual void setAttribute( const std::string& key, const std::string& value );
-    
     float guard_radius;
     
     bool is_melee;
@@ -75,6 +67,38 @@ public:
     int place;
     
     std::vector<std::string> skill_names;
+    
+public:
+    UnitData();
+    virtual ~UnitData();
+    
+    static UnitData* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void setAttribute( const std::string& key, const std::string& value );
+};
+
+class EquipmentData : public cocos2d::Ref {
+public:
+    int equip_id;
+    std::string display_name;
+    float hp;
+    float mp;
+    float atk;
+    float def;
+    float hit;
+    float dod;
+    float cri;
+    float ten;
+    
+public:
+    EquipmentData();
+    virtual ~EquipmentData();
+    
+    static EquipmentData* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void setAttribute( const std::string& key, const std::string& value );
 };
 
 #endif /* defined(__Boids__ElementData__) */

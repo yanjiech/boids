@@ -508,7 +508,7 @@ void UIHeroManageLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
 void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         _root_node->setVisible( false );
-        UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create();
+        UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create( _selected_hero );
         this->addChild( hero_detail, 2 );
     }
 }
@@ -720,6 +720,14 @@ void UIHeroManageLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* eve
     UIHeroDeploySlot* deploy_slot = this->deploySlotForTouch( touch );
     if( deploy_slot ) {
         this->setSelectedDeploySlot( deploy_slot );
+        std::string hero_id = deploy_slot->getHeroId();
+        auto itr = _hero_slots.find( hero_id );
+        if( itr != _hero_slots.end() ) {
+            this->setSelectedHero( itr->second );
+        }
+        else {
+            this->setSelectedHero( nullptr );
+        }
     }
 }
 
