@@ -1,395 +1,444 @@
 {
-    "105101": {
+    "11005001": {
         "def": 6.0, 
         "display_name": "卫兵铠甲", 
-        "equip_id": 105101, 
-        "hp": 132.0
+        "equip_id": 11005001, 
+        "hp": 132.0, 
+        "name": "weibingkaijia"
     }, 
-    "105201": {
-        "def": 4.0, 
-        "display_name": "卫兵之靴", 
-        "equip_id": 105201, 
-        "hp": 40.0
-    }, 
-    "105301": {
-        "atk": 10.0, 
-        "display_name": "卫兵配剑", 
-        "equip_id": 105301
-    }, 
-    "105401": {
-        "atk": 10.0, 
-        "display_name": "卫兵木弓", 
-        "equip_id": 105401
-    }, 
-    "105501": {
-        "display_name": "卫兵护符", 
-        "equip_id": 105501, 
-        "ten": 6.0
-    }, 
-    "110101": {
+    "11010001": {
         "def": 10.0, 
         "display_name": "精钢铠甲", 
-        "equip_id": 110101, 
-        "hp": 210.0
+        "equip_id": 11010001, 
+        "hp": 210.0, 
+        "name": "jinggangkaijia"
     }, 
-    "110201": {
-        "def": 6.0, 
-        "display_name": "精钢马靴", 
-        "equip_id": 110201, 
-        "hp": 100.0
-    }, 
-    "110301": {
-        "atk": 18.0, 
-        "display_name": "精钢之剑", 
-        "equip_id": 110301
-    }, 
-    "110401": {
-        "atk": 18.0, 
-        "display_name": "精钢重弩", 
-        "equip_id": 110401
-    }, 
-    "110501": {
-        "cri": 10.0, 
-        "display_name": "队长护符", 
-        "equip_id": 110501
-    }, 
-    "120101": {
+    "11020001": {
         "def": 20.0, 
         "display_name": "铁匠板甲", 
-        "equip_id": 120101, 
-        "hp": 350.0
+        "equip_id": 11020001, 
+        "hp": 350.0, 
+        "name": "tiejiangbanjia"
     }, 
-    "120201": {
-        "def": 11.0, 
-        "display_name": "铁匠长靴", 
-        "equip_id": 120201, 
-        "hp": 220.0
-    }, 
-    "120301": {
-        "atk": 35.0, 
-        "display_name": "匠气巨锤", 
-        "equip_id": 120301
-    }, 
-    "120501": {
-        "cri": 27.0, 
-        "display_name": "铁匠戒指", 
-        "equip_id": 120501
-    }, 
-    "125102": {
+    "11025002": {
         "def": 23.0, 
         "display_name": "侍从斗篷", 
-        "equip_id": 125102, 
-        "hp": 460.0
+        "equip_id": 11025002, 
+        "hp": 460.0, 
+        "name": "shicongdoupeng"
     }, 
-    "125202": {
-        "def": 11.0, 
-        "display_name": "木屐", 
-        "equip_id": 125202, 
-        "hp": 250.0
-    }, 
-    "130401": {
-        "atk": 35.0, 
-        "display_name": "匠气十字弩", 
-        "equip_id": 130401
-    }, 
-    "210101": {
+    "12010001": {
         "def": 20.0, 
         "display_name": "白骨之拥", 
-        "equip_id": 210101, 
+        "equip_id": 12010001, 
         "hp": 413.0, 
-        "ten": 20.0
+        "name": "baiguzhiyong"
     }, 
-    "210201": {
-        "def": 11.0, 
-        "display_name": "白骨之履", 
-        "dod": 30.0, 
-        "equip_id": 210201, 
-        "hp": 190.0
-    }, 
-    "210301": {
-        "def": 35.0, 
-        "display_name": "骨剑", 
-        "equip_id": 210301, 
-        "hit": 40.0
-    }, 
-    "210401": {
-        "def": 35.0, 
-        "display_name": "白骨长弓", 
-        "equip_id": 210401, 
-        "hit": 40.0
-    }, 
-    "210501": {
-        "cri": 30.0, 
-        "display_name": "死亡之书", 
-        "equip_id": 210501, 
-        "hit": 40.0
-    }, 
-    "215102": {
+    "12015002": {
         "def": 26.0, 
         "display_name": "巨蜥甲胄", 
-        "equip_id": 215102, 
+        "equip_id": 12015002, 
         "hit": 116.0, 
-        "hp": 520.0
+        "hp": 520.0, 
+        "name": "juxijiazhou"
     }, 
-    "215202": {
-        "def": 16.0, 
-        "display_name": "盗贼飞靴", 
-        "equip_id": 215202, 
-        "hp": 360.0, 
-        "ten": 28.0
-    }, 
-    "220101": {
+    "12020001": {
         "def": 35.0, 
         "display_name": "圣光披甲", 
         "dod": 63.0, 
-        "equip_id": 220101, 
-        "hp": 735.0
+        "equip_id": 12020001, 
+        "hp": 735.0, 
+        "name": "shengguangpijia"
     }, 
-    "220201": {
-        "cri": 53.0, 
-        "def": 21.0, 
-        "display_name": "圣光急速", 
-        "equip_id": 220201, 
-        "hp": 420.0
-    }, 
-    "220301": {
-        "atk": 66.0, 
-        "display_name": "圣光审判", 
-        "equip_id": 220301, 
-        "hit": 145.0
-    }, 
-    "220401": {
-        "atk": 66.0, 
-        "display_name": "圣光长弩", 
-        "equip_id": 220401, 
-        "hit": 145.0
-    }, 
-    "220501": {
-        "display_name": "神圣十字架", 
-        "equip_id": 220501, 
-        "ten": 41.0
-    }, 
-    "225502": {
-        "display_name": "贤者法典", 
-        "dod": 53.0, 
-        "equip_id": 225502, 
-        "ten": 20.0
-    }, 
-    "230101": {
+    "12030001": {
         "def": 51.0, 
         "display_name": "小丑戏服", 
         "dod": 92.0, 
-        "equip_id": 230101, 
-        "hp": 1115.0
+        "equip_id": 12030001, 
+        "hp": 1115.0, 
+        "name": "xiaochouxifu"
     }, 
-    "230201": {
-        "def": 27.0, 
-        "display_name": "小丑拖鞋", 
-        "equip_id": 230201, 
-        "hit": 99.0, 
-        "hp": 592.0
-    }, 
-    "230301": {
-        "atk": 86.0, 
-        "display_name": "小丑腰刀", 
-        "equip_id": 230301, 
-        "hit": 101.0
-    }, 
-    "230401": {
-        "atk": 86.0, 
-        "display_name": "小丑飞镖", 
-        "equip_id": 230401, 
-        "hit": 101.0
-    }, 
-    "230501": {
-        "cri": 76.0, 
-        "display_name": "艺人别针", 
-        "equip_id": 230501, 
-        "ten": 55.0
-    }, 
-    "235102": {
+    "12035002": {
         "def": 56.0, 
         "display_name": "魔物护甲", 
-        "equip_id": 235102, 
+        "equip_id": 12035002, 
         "hp": 1220.0, 
-        "ten": 106.0
+        "name": "mowuhujia"
     }, 
-    "235202": {
-        "def": 32.0, 
-        "display_name": "勇气布鞋", 
-        "equip_id": 235202, 
-        "hp": 699.0, 
-        "ten": 64.0
-    }, 
-    "235302": {
-        "atk": 109.0, 
-        "cri": 87.0, 
-        "display_name": "远古祭司杖", 
-        "equip_id": 235302
-    }, 
-    "315302": {
-        "atk": 48.0, 
-        "cri": 38.0, 
-        "display_name": "血牙", 
-        "equip_id": 315302
-    }, 
-    "315502": {
-        "display_name": "赌徒骰子", 
-        "dod": 46.0, 
-        "equip_id": 315502
-    }, 
-    "320101": {
+    "13020001": {
         "def": 45.0, 
         "display_name": "巨龙之铠", 
         "dod": 90.0, 
-        "equip_id": 320101, 
-        "hp": 1010.0
+        "equip_id": 13020001, 
+        "hp": 1010.0, 
+        "name": "julongzhikai"
     }, 
-    "320201": {
-        "def": 36.0, 
-        "display_name": "巨龙之足", 
-        "equip_id": 320201, 
-        "hp": 690.0, 
-        "ten": 56.0
-    }, 
-    "320301": {
-        "atk": 98.0, 
-        "cri": 75.0, 
-        "display_name": "巨龙战斧", 
-        "equip_id": 320301, 
-        "hit": 110.0
-    }, 
-    "320401": {
-        "atk": 98.0, 
-        "cri": 75.0, 
-        "display_name": "巨龙之翼", 
-        "equip_id": 320401, 
-        "hit": 110.0
-    }, 
-    "320501": {
-        "display_name": "巨龙之眼", 
-        "equip_id": 320501, 
-        "hit": 110.0
-    }, 
-    "325102": {
+    "13025002": {
         "def": 52.0, 
         "display_name": "女巫披风", 
         "dod": 115.0, 
-        "equip_id": 325102, 
-        "hp": 1456.0
+        "equip_id": 13025002, 
+        "hp": 1456.0, 
+        "name": "nvwupifeng"
     }, 
-    "325202": {
-        "cri": 95.0, 
-        "def": 37.0, 
-        "display_name": "爆裂火靴", 
-        "equip_id": 325202, 
-        "hp": 723.0
-    }, 
-    "325302": {
-        "atk": 119.0, 
-        "cri": 123.0, 
-        "display_name": "虚空之刃", 
-        "equip_id": 325302
-    }, 
-    "325502": {
-        "display_name": "九头蛇护符", 
-        "dod": 119.0, 
-        "equip_id": 325502, 
-        "ten": 59.0
-    }, 
-    "330101": {
+    "13030001": {
         "def": 99.0, 
         "display_name": "糜烂之躯", 
         "dod": 183.0, 
-        "equip_id": 330101, 
-        "hp": 2200.0
+        "equip_id": 13030001, 
+        "hp": 2200.0, 
+        "name": "milanzhiqu"
     }, 
-    "330201": {
+    "13035001": {
+        "def": 83.0, 
+        "display_name": "嗜血披肩", 
+        "equip_id": 13035001, 
+        "hit": 234.0, 
+        "hp": 1920.0, 
+        "name": "shixuepijian"
+    }, 
+    "13035002": {
+        "def": 87.0, 
+        "display_name": "强袭盔甲", 
+        "equip_id": 13035002, 
+        "hit": 92.0, 
+        "hp": 1999.0, 
+        "name": "qiangxikaijia"
+    }, 
+    "21005001": {
+        "def": 4.0, 
+        "display_name": "卫兵之靴", 
+        "equip_id": 21005001, 
+        "hp": 40.0, 
+        "name": "weibingzhixue"
+    }, 
+    "21010001": {
+        "def": 6.0, 
+        "display_name": "精钢马靴", 
+        "equip_id": 21010001, 
+        "hp": 100.0, 
+        "name": "jinggangmaxue"
+    }, 
+    "21020001": {
+        "def": 11.0, 
+        "display_name": "铁匠长靴", 
+        "equip_id": 21020001, 
+        "hp": 220.0, 
+        "name": "tiejiangchangxue"
+    }, 
+    "21025002": {
+        "def": 11.0, 
+        "display_name": "木屐", 
+        "equip_id": 21025002, 
+        "hp": 250.0, 
+        "name": "muji"
+    }, 
+    "22010001": {
+        "def": 11.0, 
+        "display_name": "白骨之履", 
+        "dod": 30.0, 
+        "equip_id": 22010001, 
+        "hp": 190.0, 
+        "name": "baiguzhiyong"
+    }, 
+    "22015002": {
+        "def": 16.0, 
+        "display_name": "盗贼飞靴", 
+        "equip_id": 22015002, 
+        "hp": 360.0, 
+        "name": "daozeifeixue"
+    }, 
+    "22020001": {
+        "cri": 53.0, 
+        "def": 21.0, 
+        "display_name": "圣光急速", 
+        "equip_id": 22020001, 
+        "hp": 420.0, 
+        "name": "shengguangjisu"
+    }, 
+    "22030001": {
+        "def": 27.0, 
+        "display_name": "小丑拖鞋", 
+        "equip_id": 22030001, 
+        "hit": 99.0, 
+        "hp": 592.0, 
+        "name": "xiaochoutuoxie"
+    }, 
+    "22035002": {
+        "def": 32.0, 
+        "display_name": "勇气布鞋", 
+        "equip_id": 22035002, 
+        "hp": 699.0, 
+        "name": "yongqibuxie"
+    }, 
+    "23020001": {
+        "def": 36.0, 
+        "display_name": "巨龙之足", 
+        "equip_id": 23020001, 
+        "hp": 690.0, 
+        "name": "julongzhizu"
+    }, 
+    "23025002": {
+        "cri": 95.0, 
+        "def": 37.0, 
+        "display_name": "爆裂火靴", 
+        "equip_id": 23025002, 
+        "hp": 723.0, 
+        "name": "baoliehuoxue"
+    }, 
+    "23030001": {
         "def": 57.0, 
         "display_name": "幽魂之靴", 
-        "equip_id": 330201, 
+        "equip_id": 23030001, 
         "hp": 1110.0, 
-        "ten": 108.0
+        "name": "youhunzhixue"
     }, 
-    "330301": {
+    "23035001": {
+        "def": 52.0, 
+        "display_name": "鲜血覆履", 
+        "equip_id": 23035001, 
+        "hit": 109.0, 
+        "hp": 970.0, 
+        "name": "xianxuefulv"
+    }, 
+    "23035002": {
+        "def": 54.0, 
+        "display_name": "秘银履", 
+        "equip_id": 23035002, 
+        "hit": 74.0, 
+        "hp": 921.0, 
+        "name": "miyinlv"
+    }, 
+    "31005001": {
+        "atk": 10.0, 
+        "display_name": "卫兵配剑", 
+        "equip_id": 31005001, 
+        "name": "weibingpeijian"
+    }, 
+    "31010001": {
+        "atk": 18.0, 
+        "display_name": "精钢之剑", 
+        "equip_id": 31010001, 
+        "name": "jinggangzhijian"
+    }, 
+    "31020001": {
+        "atk": 35.0, 
+        "display_name": "匠气巨锤", 
+        "equip_id": 31020001, 
+        "name": "tiejiangjuchui"
+    }, 
+    "31305001": {
+        "atk": 10.0, 
+        "display_name": "卫兵木弓", 
+        "equip_id": 31305001, 
+        "name": "weibingmugong"
+    }, 
+    "31310001": {
+        "atk": 18.0, 
+        "display_name": "精钢重弩", 
+        "equip_id": 31310001, 
+        "name": "jinggangzhongnu"
+    }, 
+    "31330001": {
+        "atk": 35.0, 
+        "display_name": "匠气十字弩", 
+        "equip_id": 31330001, 
+        "name": "jiangqishizinu"
+    }, 
+    "32010001": {
+        "def": 35.0, 
+        "display_name": "骨剑", 
+        "equip_id": 32010001, 
+        "hit": 40.0, 
+        "name": "gujian"
+    }, 
+    "32020001": {
+        "atk": 66.0, 
+        "display_name": "圣光审判", 
+        "equip_id": 32020001, 
+        "hit": 145.0, 
+        "name": "shengguangshenpan"
+    }, 
+    "32030001": {
+        "atk": 86.0, 
+        "display_name": "小丑腰刀", 
+        "equip_id": 32030001, 
+        "hit": 101.0, 
+        "name": "xiaochouyaodao"
+    }, 
+    "32035002": {
+        "atk": 109.0, 
+        "cri": 87.0, 
+        "display_name": "远古祭司杖", 
+        "equip_id": 32035002, 
+        "name": "yuangujisizhang"
+    }, 
+    "32310001": {
+        "def": 35.0, 
+        "display_name": "白骨长弓", 
+        "equip_id": 32310001, 
+        "hit": 40.0, 
+        "name": "baiguchanggong"
+    }, 
+    "32320001": {
+        "atk": 66.0, 
+        "display_name": "圣光长弩", 
+        "equip_id": 32320001, 
+        "hit": 145.0, 
+        "name": "shengguangchangnu"
+    }, 
+    "32330001": {
+        "atk": 86.0, 
+        "display_name": "小丑飞镖", 
+        "equip_id": 32330001, 
+        "hit": 101.0, 
+        "name": "xiaochoufeibiao"
+    }, 
+    "33015002": {
+        "atk": 48.0, 
+        "cri": 38.0, 
+        "display_name": "血牙", 
+        "equip_id": 33015002, 
+        "name": "xueya"
+    }, 
+    "33020001": {
+        "atk": 98.0, 
+        "cri": 75.0, 
+        "display_name": "巨龙战斧", 
+        "equip_id": 33020001, 
+        "hit": 110.0, 
+        "name": "julongzhanfu"
+    }, 
+    "33025002": {
+        "atk": 119.0, 
+        "cri": 123.0, 
+        "display_name": "虚空之刃", 
+        "equip_id": 33025002, 
+        "name": "xukongzhiren"
+    }, 
+    "33030001": {
         "atk": 191.0, 
         "cri": 151.0, 
         "display_name": "死神之镰", 
-        "equip_id": 330301
+        "equip_id": 33030001, 
+        "name": "sishenzhilian"
     }, 
-    "330401": {
-        "atk": 191.0, 
-        "cri": 151.0, 
-        "display_name": "幽魂长弓", 
-        "equip_id": 330401
-    }, 
-    "330501": {
-        "display_name": "夺魂符咒", 
-        "equip_id": 330501, 
-        "hit": 400.0
-    }, 
-    "335101": {
-        "def": 83.0, 
-        "display_name": "嗜血披肩", 
-        "equip_id": 335101, 
-        "hit": 234.0, 
-        "hp": 1920.0
-    }, 
-    "335102": {
-        "def": 87.0, 
-        "display_name": "强袭盔甲", 
-        "equip_id": 335102, 
-        "hit": 92.0, 
-        "hp": 1999.0, 
-        "ten": 58.0
-    }, 
-    "335201": {
-        "def": 52.0, 
-        "display_name": "鲜血覆履", 
-        "equip_id": 335201, 
-        "hit": 109.0, 
-        "hp": 970.0
-    }, 
-    "335202": {
-        "def": 54.0, 
-        "display_name": "秘银履", 
-        "equip_id": 335202, 
-        "hit": 74.0, 
-        "hp": 921.0, 
-        "ten": 36.0
-    }, 
-    "335301": {
+    "33035001": {
         "atk": 166.0, 
         "cri": 132.0, 
         "display_name": "嗜血双刀", 
-        "equip_id": 335301
+        "equip_id": 33035001, 
+        "name": "shixuechangdao"
     }, 
-    "335302": {
+    "33035002": {
         "atk": 164.0, 
         "display_name": "黄金匕首", 
-        "equip_id": 335302, 
-        "hit": 131.0
+        "equip_id": 33035002, 
+        "hit": 131.0, 
+        "name": "huangjinbishou"
     }, 
-    "335401": {
+    "33320001": {
+        "atk": 98.0, 
+        "cri": 75.0, 
+        "display_name": "巨龙之翼", 
+        "equip_id": 33320001, 
+        "hit": 110.0, 
+        "name": "julongzhiyi"
+    }, 
+    "33330001": {
+        "atk": 191.0, 
+        "cri": 151.0, 
+        "display_name": "幽魂长弓", 
+        "equip_id": 33330001, 
+        "name": "youhunchanggong"
+    }, 
+    "41005001": {
+        "display_name": "卫兵护符", 
+        "equip_id": 41005001, 
+        "name": "weibinghufu"
+    }, 
+    "41010001": {
+        "cri": 10.0, 
+        "display_name": "队长护符", 
+        "equip_id": 41010001, 
+        "name": "duizhanghufu"
+    }, 
+    "41020001": {
+        "cri": 27.0, 
+        "display_name": "铁匠戒指", 
+        "equip_id": 41020001, 
+        "name": "tiejiangjiezhi"
+    }, 
+    "42010001": {
+        "cri": 30.0, 
+        "display_name": "死亡之书", 
+        "equip_id": 42010001, 
+        "hit": 40.0, 
+        "name": "siwangzhishu"
+    }, 
+    "42020001": {
+        "display_name": "神圣十字架", 
+        "equip_id": 42020001, 
+        "name": "shenshengshizijia"
+    }, 
+    "42025002": {
+        "display_name": "贤者法典", 
+        "dod": 53.0, 
+        "equip_id": 42025002, 
+        "name": "xianzhefadian"
+    }, 
+    "42030001": {
+        "cri": 76.0, 
+        "display_name": "艺人别针", 
+        "equip_id": 42030001, 
+        "name": "yirenbiezhen"
+    }, 
+    "43015002": {
+        "display_name": "赌徒骰子", 
+        "dod": 46.0, 
+        "equip_id": 43015002, 
+        "name": "dutushaizi"
+    }, 
+    "43020001": {
+        "display_name": "巨龙之眼", 
+        "equip_id": 43020001, 
+        "hit": 110.0, 
+        "name": "julongzhiyan"
+    }, 
+    "43025002": {
+        "display_name": "九头蛇护符", 
+        "dod": 119.0, 
+        "equip_id": 43025002, 
+        "name": "jiutoushehufu"
+    }, 
+    "43030001": {
+        "display_name": "夺魂符咒", 
+        "equip_id": 43030001, 
+        "hit": 400.0, 
+        "name": "duohunfuzhou"
+    }, 
+    "43035000": {
+        "display_name": "骑士的魔眼", 
+        "equip_id": 43035000, 
+        "hp": 302.0, 
+        "name": "qishidemoyan"
+    }, 
+    "43035002": {
+        "display_name": "招财猫 ", 
+        "equip_id": 43035002, 
+        "name": "zhaocaimao"
+    }, 
+    "43335001": {
         "atk": 166.0, 
         "cri": 132.0, 
         "display_name": "嗜血长鞭", 
-        "equip_id": 335401
+        "equip_id": 43335001, 
+        "name": "shixuechangbian"
     }, 
-    "335500": {
-        "display_name": "骑士的魔眼", 
-        "equip_id": 335500, 
-        "hp": 302.0, 
-        "ten": 57.0
-    }, 
-    "335501": {
+    "53035001": {
         "display_name": "嗜血符咒", 
         "dod": 80.0, 
-        "equip_id": 335501, 
-        "ten": 97.0
-    }, 
-    "335502": {
-        "display_name": "招财猫 ", 
-        "equip_id": 335502
+        "equip_id": 53035001, 
+        "name": "shixuefuzhou"
     }
 }

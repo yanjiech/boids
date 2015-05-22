@@ -13,9 +13,9 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "MapData.h"
-#include <vector>
+#include "TouchableLayer.h"
 
-class UILevelChooseLayer : public cocos2d::Layer {
+class UILevelChooseLayer : public TouchableLayer {
 private:
     cocos2d::Node* _main_node;
     cocos2d::Node* _level_node;
@@ -48,6 +48,10 @@ public:
     void onTeamSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     
     void setMapData( MapData* map_data );
+    
+    void loadDeployedHeros();
+    
+    virtual void becomeTopLayer();
 };
 
 #endif /* defined(__Boids__UILevelChooseLayer__) */

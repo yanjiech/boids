@@ -12,23 +12,35 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "UIHeroManageLayer.h"
-#include "cocostudio/CocoStudio.h"
-#include "ui/CocosGUI.h"
+#include "../unit/ElementData.h"
 
 class UIEquipmentCell : public cocos2d::Node {
 private:
-    bool _is_selected;
-    bool _is_locked;
-    bool _is_in_use;
+    EquipmentData* _equip_data;
     
-    cocos2d::Sprite* _equip_icon;
+    bool _is_selected;
+    
+    cocos2d::Sprite* _selected_sprite;
+    cocos2d::Sprite* _equip_sprite;
     
 public:
     UIEquipmentCell();
     virtual ~UIEquipmentCell();
     
+    static UIEquipmentCell* create( EquipmentData* equip_data );
+    virtual bool init( EquipmentData* equip_data );
+    
     static UIEquipmentCell* create( const cocos2d::ValueMap& data );
     virtual bool init( const cocos2d::ValueMap& data );
+    
+    EquipmentData* getEquipData();
+    void setEquipData( EquipmentData* data );
+    
+    cocos2d::Sprite* getEquipSprite();
+    void setEquipSprite( cocos2d::Sprite* icon );
+    
+    bool isSelected();
+    void setSelected( bool b );
 };
 
 class UIHeroDetailLayer : public TouchableLayer {
@@ -71,6 +83,17 @@ private:
     UIEquipmentCell* _boot_cell;
     UIEquipmentCell* _accessory_cell;
     
+    UIEquipmentCell* _selected_equiped_cell;
+    UIEquipmentCell* _selected_repo_cell;
+    
+    UIEquipmentCell* _target_equiped_cell;
+    
+    bool _is_touch_down;
+    bool _is_dragging;
+    cocos2d::Point _touch_down_pos;
+    
+    cocos2d::Sprite* _drag_equip;
+    
     cocos2d::ui::Button* _btn_prev;
     cocos2d::ui::Button* _btn_next;
     
@@ -91,7 +114,14 @@ private:
     cocos2d::ui::Layout* _pn_boot_tab;
     cocos2d::ui::Layout* _pn_accessory_tab;
     
+    cocos2d::ui::Layout* _pn_equip_area;
+    
     int _current_tab;
+    
+    UIEquipmentCell* equipedCellForTouch( cocos2d::Touch* touch );
+    UIEquipmentCell* repoCellForTouch( cocos2d::Touch* touch );
+    
+    void checkTargetCell();
     
 public:
     UIHeroDetailLayer();
@@ -114,6 +144,15 @@ public:
     void reloadHeroData();
     
     void setCurrentEquiptList( cocos2d::ui::PageView* page_view );
+    
+    void setSelectedEquipedCell( UIEquipmentCell* cell );
+    void setSelectedRepoCell( UIEquipmentCell* cell );
+    void setTargetEquipedCell( UIEquipmentCell* cell );
+    
+    virtual bool onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event );
+    virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );
+    virtual void onTouchCancelled( cocos2d::Touch* touch, cocos2d::Event* event );
+    virtual void onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event );
 };
 
 

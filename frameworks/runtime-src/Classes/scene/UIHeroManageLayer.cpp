@@ -21,14 +21,16 @@
 #define HERO_DEPLOY_CELL_WIDTH 138
 #define HERO_DEPLOY_CELL_HEIGHT 138
 
-#define MIN_DRAG_BIAS 20.0f
-
 using namespace cocos2d;
 
 //hero slot
 UIHeroManageHeroSlot::UIHeroManageHeroSlot() :
 _hero_avatar( nullptr ),
 _hero_data( nullptr ),
+_weapon_data( nullptr ),
+_armor_data( nullptr ),
+_boot_data( nullptr ),
+_accessory_data( nullptr ),
 _hero_skeleton( nullptr ),
 _selected_sprite( nullptr ),
 _hero_rect_avatar( nullptr )
@@ -40,6 +42,10 @@ UIHeroManageHeroSlot::~UIHeroManageHeroSlot() {
     CC_SAFE_RELEASE( _hero_skeleton );
     CC_SAFE_RELEASE( _hero_data );
     CC_SAFE_RELEASE( _hero_rect_avatar );
+    CC_SAFE_RELEASE( _weapon_data );
+    CC_SAFE_RELEASE( _armor_data );
+    CC_SAFE_RELEASE( _boot_data );
+    CC_SAFE_RELEASE( _accessory_data );
 }
 
 UIHeroManageHeroSlot* UIHeroManageHeroSlot::create( const cocos2d::ValueMap& data, const std::string& hero_id, int flag ) {
@@ -210,9 +216,9 @@ UnitData* UIHeroManageHeroSlot::getUnitData() {
 }
 
 void UIHeroManageHeroSlot::setUnitData( UnitData* data ) {
+    CC_SAFE_RETAIN( data );
     CC_SAFE_RELEASE( _hero_data );
     _hero_data = data;
-    CC_SAFE_RETAIN( _hero_data );
 }
 
 cocos2d::Sprite* UIHeroManageHeroSlot::getHeroAvatar() {
@@ -508,15 +514,21 @@ bool UIHeroManageLayer::init() {
 void UIHeroManageLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         this->recordDeployedUnits();
+        TouchableLayer* parent = dynamic_cast<TouchableLayer*>( this->getParent() );
+        if( parent ) {
+            parent->becomeTopLayer();
+        }
         this->removeFromParentAndCleanup( true );
     }
 }
 
 void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        _root_node->setVisible( false );
-        UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create( _selected_hero );
-        this->addChild( hero_detail, 2 );
+        if( _selected_hero != nullptr ) {
+            _root_node->setVisible( false );
+            UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create( _selected_hero );
+            this->addChild( hero_detail, 2 );
+        }
     }
 }
 

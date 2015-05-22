@@ -20,6 +20,7 @@
 #include "JumpText.h"
 #include "ui/CocosGUI.h"
 #include "../BoidsMath.h"
+#include "../data/PlayerInfo.h"
 
 #define DEFAULT_SHADOW_RADIUS 30.0
 #define DEFAULT_HESITATE_FRAMES 5
@@ -40,7 +41,11 @@ _walk_path( nullptr ),
 _tour_path( nullptr ),
 _is_charging( false ),
 _charging_effect( nullptr ),
-_chasing_target( nullptr )
+_chasing_target( nullptr ),
+_weapon( nullptr ),
+_armor( nullptr ),
+_boot( nullptr ),
+_accessory( nullptr )
 {
 }
 
@@ -49,6 +54,10 @@ UnitNode::~UnitNode() {
     CC_SAFE_RELEASE( _walk_path );
     CC_SAFE_RELEASE( _tour_path );
     CC_SAFE_RELEASE( _chasing_target );
+    CC_SAFE_RELEASE( _weapon );
+    CC_SAFE_RELEASE( _armor );
+    CC_SAFE_RELEASE( _boot );
+    CC_SAFE_RELEASE( _accessory );
 }
 
 eTargetCamp UnitNode::getCampByString( const std::string& camp_string ) {
@@ -1176,6 +1185,54 @@ void UnitNode::setCharging( bool b, std::string effect_resource ) {
             _charging_effect->setDuration( 0 );
             _charging_effect = nullptr;
         }
+    }
+}
+
+void UnitNode::setWeapon( Equipment* weapon ) {
+    if( _weapon != nullptr ) {
+        _target_data->sub( _weapon->getEquipData() );
+    }
+    CC_SAFE_RELEASE( _weapon );
+    CC_SAFE_RETAIN( weapon );
+    _weapon = weapon;
+    if( _weapon ) {
+        _target_data->add( _weapon->getEquipData() );
+    }
+}
+
+void UnitNode::setArmor( Equipment* armor ) {
+    if( _armor != nullptr ) {
+        _target_data->sub( _armor->getEquipData() );
+    }
+    CC_SAFE_RELEASE( _armor );
+    CC_SAFE_RETAIN( armor );
+    _armor = armor;
+    if( _armor ) {
+        _target_data->add( _armor->getEquipData() );
+    }
+}
+
+void UnitNode::setBoot( Equipment* boot ) {
+    if( _boot != nullptr ) {
+        _target_data->sub( _boot->getEquipData() );
+    }
+    CC_SAFE_RELEASE( _boot );
+    CC_SAFE_RETAIN( boot );
+    _boot = boot;
+    if( _boot ) {
+        _target_data->add( _boot->getEquipData() );
+    }
+}
+
+void UnitNode::setAccessory( Equipment* accessory ) {
+    if( _accessory != nullptr ) {
+        _target_data->sub( _accessory->getEquipData() );
+    }
+    CC_SAFE_RELEASE( _accessory );
+    CC_SAFE_RETAIN( accessory );
+    _accessory = accessory;
+    if( _accessory ) {
+        _target_data->add( _accessory->getEquipData() );
     }
 }
 

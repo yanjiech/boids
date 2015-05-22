@@ -9,6 +9,7 @@
 #include "ElementData.h"
 #include "../Utils.h"
 #include "../manager/ResourceManager.h"
+#include "../data/PlayerInfo.h"
 
 using namespace cocos2d;
 
@@ -32,13 +33,20 @@ hit( 0 ),
 dodge( 0 ),
 atk_range( 0 ),
 bullet_name( "" ),
-view_range( 0 )
+view_range( 0 ),
+_weapon_data( nullptr ),
+_armor_data( nullptr ),
+_boot_data( nullptr ),
+_accessory_data( nullptr )
 {
     
 }
 
 ElementData::~ElementData() {
-    
+    CC_SAFE_RELEASE( _weapon_data );
+    CC_SAFE_RELEASE( _armor_data );
+    CC_SAFE_RELEASE( _boot_data );
+    CC_SAFE_RELEASE( _accessory_data );
 }
 
 ElementData* ElementData::create( const cocos2d::ValueMap& data ) {
@@ -185,6 +193,104 @@ void ElementData::sub( ElementData* other ) {
     this->view_range -= other->view_range;
 }
 
+void ElementData::add( class EquipmentData* data ) {
+    this->hp += data->hp;
+    this->mp += data->mp;
+    this->atk += data->atk;
+    this->def += data->def;
+    this->hit += data->hit;
+    this->dodge += data->dod;
+    this->critical += data->cri;
+    this->tenacity += data->ten;
+}
+
+void ElementData::sub( class EquipmentData* data ) {
+    this->hp -= data->hp;
+    this->mp -= data->mp;
+    this->atk -= data->atk;
+    this->def -= data->def;
+    this->hit -= data->hit;
+    this->dodge -= data->dod;
+    this->critical -= data->cri;
+    this->tenacity -= data->ten;
+}
+
+EquipmentData* ElementData::getEquipData( eEquipType type ) {
+    switch( type )
+    {
+        case eEquipType::EquipTypeWeapon:
+            return _weapon_data;
+        case eEquipType::EquipTypeArmor:
+            return _armor_data;
+        case eEquipType::EquipTypeBoot:
+            return _boot_data;
+        case eEquipType::EquipTypeAccessory:
+            return _accessory_data;
+        default:
+            break;
+    }
+    return nullptr;
+}
+
+void ElementData::setEquipData( eEquipType type, EquipmentData* data ) {
+    CC_SAFE_RETAIN( data );
+    switch( type )
+    {
+        case eEquipType::EquipTypeWeapon:
+        {
+            if( _weapon_data != nullptr ) {
+                this->sub( _weapon_data );
+                _weapon_data->release();
+            }
+            _weapon_data = data;
+            if( _weapon_data != nullptr ) {
+                this->add( _weapon_data );
+            }
+            break;
+        }
+            
+        case eEquipType::EquipTypeArmor:
+        {
+            if( _armor_data != nullptr ) {
+                this->sub( _armor_data );
+                _armor_data->release();
+            }
+            _armor_data = data;
+            if( _armor_data != nullptr ) {
+                this->add( _armor_data );
+            }
+            break;
+        }
+        case eEquipType::EquipTypeBoot:
+        {
+            if( _boot_data != nullptr ) {
+                this->sub( _boot_data );
+                _boot_data->release();
+            }
+            _boot_data = data;
+            if( _boot_data != nullptr ) {
+                this->add( _boot_data );
+            }
+            break;
+        }
+        case eEquipType::EquipTypeAccessory:
+        {
+            if( _accessory_data != nullptr ) {
+                this->sub( _accessory_data );
+                _accessory_data->release();
+            }
+            _accessory_data = data;
+            if( _accessory_data != nullptr ) {
+                this->add( _accessory_data );
+            }
+            break;
+        }
+        default:
+            CC_SAFE_RELEASE( data );
+            break;
+    }
+}
+
 //unit data
 UnitData::UnitData() {
     
@@ -237,6 +343,40 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
         skill_names.push_back( skl_name );
     }
     
+    const ValueMap& equips = data.at( "equips" ).asValueMap();
+    const ValueMap& all_equips = PlayerInfo::getInstance()->getAllEquipsInfo();
+    auto itr = all_equips.find( equips.at( "weapon" ).asString() );
+    if( itr != all_equips.end() ) {
+        ValueMap eq_data = itr->second.asValueMap();
+        eq_data["obj_id"] = equips.at( "weapon" );
+        EquipmentData* ed = EquipmentData::create( eq_data );
+        this->setEquipData( eEquipType::EquipTypeWeapon, ed );
+    }
+    
+    itr = all_equips.find( equips.at( "armor" ).asString() );
+    if( itr != all_equips.end() ) {
+        ValueMap eq_data = itr->second.asValueMap();
+        eq_data["obj_id"] = equips.at( "armor" );
+        EquipmentData* ed = EquipmentData::create( eq_data );
+        this->setEquipData( eEquipType::EquipTypeArmor, ed );
+    }
+    
+    itr = all_equips.find( equips.at( "boot" ).asString() );
+    if( itr != all_equips.end() ) {
+        ValueMap eq_data = itr->second.asValueMap();
+        eq_data["obj_id"] = equips.at( "boot" );
+        EquipmentData* ed = EquipmentData::create( eq_data );
+        this->setEquipData( eEquipType::EquipTypeBoot, ed );
+    }
+    
+    itr = all_equips.find( equips.at( "accessory" ).asString() );
+    if( itr != all_equips.end() ) {
+        ValueMap eq_data = itr->second.asValueMap();
+        eq_data["obj_id"] = equips.at( "accessory" );
+        EquipmentData* ed = EquipmentData::create( eq_data );
+        this->setEquipData( eEquipType::EquipTypeAccessory, ed );
+    }
+    
     return true;
 }
 
@@ -260,7 +400,16 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
 }
 
 //equipment data
-EquipmentData::EquipmentData() {
+EquipmentData::EquipmentData() :
+hp( 0 ),
+mp( 0 ),
+atk( 0 ),
+def( 0 ),
+hit( 0 ),
+dod( 0 ),
+cri( 0 ),
+ten( 0 )
+{
     
 }
 
@@ -281,8 +430,48 @@ EquipmentData* EquipmentData::create( const cocos2d::ValueMap& data ) {
 }
 
 bool EquipmentData::init( const cocos2d::ValueMap& data ) {
+    this->obj_id = data.at( "obj_id" ).asString();
+    std::string equip_id = data.at( "id" ).asString();
+    const cocos2d::ValueMap& equip_config = ResourceManager::getInstance()->getEquipConfig().at( equip_id ).asValueMap();
+    for( auto pair : equip_config ) {
+        this->setAttribute( pair.first, pair.second );
+    }
+    
     return true;
 }
 
-void EquipmentData::setAttribute( const std::string& key, const std::string& value ) {
+void EquipmentData::setAttribute( const std::string& key, const cocos2d::Value& value ) {
+    if( key == "display_name" ) {
+        this->display_name = value.asString();
+    }
+    else if( key == "equip_id" ) {
+        this->equip_id = value.asInt();
+    }
+    else if( key == "name" ) {
+        this->name = value.asString();
+    }
+    else if( key == "hp" ) {
+        this->hp = value.asFloat();
+    }
+    else if( key == "mp" ) {
+        this->mp = value.asFloat();
+    }
+    else if( key == "atk" ) {
+        this->atk = value.asFloat();
+    }
+    else if( key == "def" ) {
+        this->def = value.asFloat();
+    }
+    else if( key == "hit" ) {
+        this->hit = value.asFloat();
+    }
+    else if( key == "dod" ) {
+        this->dod = value.asFloat();
+    }
+    else if( key == "cri" ) {
+        this->cri = value.asFloat();
+    }
+    else if( key == "ten" ) {
+        this->ten = value.asFloat();
+    }
 }

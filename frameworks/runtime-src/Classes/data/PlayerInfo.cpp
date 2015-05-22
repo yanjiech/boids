@@ -140,6 +140,10 @@ cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level
     return ValueMap();
 }
 
+const cocos2d::ValueMap& PlayerInfo::getAllEquipsInfo() {
+    return _player_info["equips"].asValueMap();
+}
+
 void PlayerInfo::gainGold( int gain ) {
     int gold = this->getGold();
     _player_info["gold"] = Value( gold + gain );

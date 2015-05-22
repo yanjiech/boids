@@ -11,6 +11,38 @@
 
 #include "cocos2d.h"
 
+enum eEquipType {
+    EquipTypeWeapon = 3,
+    EquipTypeArmor = 1,
+    EquipTypeBoot = 2,
+    EquipTypeAccessory = 4
+};
+
+class EquipmentData : public cocos2d::Ref {
+public:
+    std::string obj_id;
+    int equip_id;
+    std::string name;
+    std::string display_name;
+    float hp;
+    float mp;
+    float atk;
+    float def;
+    float hit;
+    float dod;
+    float cri;
+    float ten;
+    
+public:
+    EquipmentData();
+    virtual ~EquipmentData();
+    
+    static EquipmentData* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void setAttribute( const std::string& key, const cocos2d::Value& value );
+};
+
 class ElementData : public cocos2d::Ref {
 public:
     int unit_id;
@@ -40,6 +72,12 @@ public:
     
     std::string bullet_name;
     
+private:
+    EquipmentData* _weapon_data;
+    EquipmentData* _armor_data;
+    EquipmentData* _boot_data;
+    EquipmentData* _accessory_data;
+    
 public:
     ElementData();
     virtual ~ElementData();
@@ -51,6 +89,12 @@ public:
     
     void add( ElementData* other );
     void sub( ElementData* other );
+    
+    void add( EquipmentData* data );
+    void sub( EquipmentData* data );
+    
+    EquipmentData* getEquipData( eEquipType type );
+    void setEquipData( eEquipType type, EquipmentData* data );
 };
 
 class UnitData : public ElementData {
@@ -73,29 +117,6 @@ public:
     virtual ~UnitData();
     
     static UnitData* create( const cocos2d::ValueMap& data );
-    virtual bool init( const cocos2d::ValueMap& data );
-    
-    virtual void setAttribute( const std::string& key, const std::string& value );
-};
-
-class EquipmentData : public cocos2d::Ref {
-public:
-    int equip_id;
-    std::string display_name;
-    float hp;
-    float mp;
-    float atk;
-    float def;
-    float hit;
-    float dod;
-    float cri;
-    float ten;
-    
-public:
-    EquipmentData();
-    virtual ~EquipmentData();
-    
-    static EquipmentData* create( const cocos2d::ValueMap& data );
     virtual bool init( const cocos2d::ValueMap& data );
     
     virtual void setAttribute( const std::string& key, const std::string& value );

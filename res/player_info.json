@@ -50,10 +50,10 @@
             ],
             "equips" :
             {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
+                "weapon" : "3",
+                "armor" : "1",
+                "boot" : "2",
+                "accessory" : "4"
             }
         }, 
         "2" :
@@ -75,8 +75,8 @@
             ],
             "equips" :
             {
-                "weapon" : "none",
-                "armor" : "none",
+                "weapon" : "1",
+                "armor" : "2",
                 "boot" : "none",
                 "accessory" : "none"
             }
@@ -247,27 +247,23 @@
     {
         "1" :
         {
-            "name" : "sword",
-            "level" : 1,
-            "in_use" : true
+            "id" : "11005001",
+            "in_use" : false
         },
         "2" :
         {
-            "name" : "cloth",
-            "level" : 1,
-            "in_use" : true
+            "id" : "21005001",
+            "in_use" : false
         },
         "3" :
         {
-            "name" : "boot",
-            "level" : 1,
-            "in_use" : true
+            "id" : "31005001",
+            "in_use" : false
         },
         "4" :
         {
-            "name" : "cape",
-            "level" : 1,
-            "in_use" : true
+            "id" : "41005001",
+            "in_use" : false
         }
     }
 }

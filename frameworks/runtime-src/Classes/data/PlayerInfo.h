@@ -44,7 +44,14 @@ public:
     void setDeployUnit( const std::string& slot_id, const std::string& hero_id );
     void setDeployUnits( const cocos2d::ValueMap& data );
     
+    void setUnitEquip( const std::string& type, const std::string& obj_id );
+    void updateEquip( const std::string& obj_id, bool in_use );
+    void addEquip( const std::string& obj_id, const std::string& equip_id );
+    void removeEquip( const std::string& obj_id );
+    
     cocos2d::ValueMap upgradeHero( const std::string& hero_id, int level );
+    
+    const cocos2d::ValueMap& getAllEquipsInfo();
     
     void gainGold( int gain );
     int getGold();

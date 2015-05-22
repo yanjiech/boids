@@ -10,17 +10,19 @@
 
 using namespace cocos2d;
 
-Equipment::Equipment() {
+Equipment::Equipment() :
+_equip_data( nullptr )
+{
     
 }
 
 Equipment::~Equipment() {
-    
+    CC_SAFE_RELEASE( _equip_data );
 }
 
-Equipment* Equipment::create( const cocos2d::ValueMap& data ) {
+Equipment* Equipment::create( EquipmentData* equip_data ) {
     Equipment* ret = new Equipment();
-    if( ret && ret->init( data ) ) {
+    if( ret && ret->init( equip_data ) ) {
         ret->autorelease();
         return ret;
     }
@@ -30,6 +32,17 @@ Equipment* Equipment::create( const cocos2d::ValueMap& data ) {
     }
 }
 
-bool Equipment::init( const cocos2d::ValueMap& data ) {
+bool Equipment::init( EquipmentData* equip_data ) {
+    this->setEquipData( equip_data );
     return true;
+}
+
+EquipmentData* Equipment::getEquipData() {
+    return _equip_data;
+}
+
+void Equipment::setEquipData( EquipmentData* data ) {
+    CC_SAFE_RETAIN( data );
+    CC_SAFE_RELEASE( _equip_data );
+    _equip_data = data;
 }

@@ -85,20 +85,7 @@ bool UILevelChooseLayer::init() {
         button->addTouchEventListener( CC_CALLBACK_2( UILevelChooseLayer::onLevelTouched, this ) );
     }
     
-    ValueVector deployed_units = PlayerInfo::getInstance()->getPlayerDeployedUnitsInfo();
-    for( int i = 0; i < deployed_units.size(); i++ ) {
-        const ValueMap& info = deployed_units.at( i ).asValueMap();
-        Sprite* shadow = dynamic_cast<Sprite*>( _main_node->getChildByName( Utils::stringFormat( "hero_%d", i + 1 ) ) );
-        if( shadow ) {
-            shadow->setVisible( true );
-            std::string name = info.at( "name" ).asString();
-            std::string resource = ResourceManager::getInstance()->getPathForResource( name, eResourceType::Character_Front );
-            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
-            skeleton->setAnimation( 0, "Idle", true );
-            skeleton->setPosition( Point( shadow->getContentSize().width / 2, shadow->getContentSize().height / 2 ) );
-            shadow->addChild( skeleton );
-        }
-    }
+    this->loadDeployedHeros();
     
     return true;
 }
@@ -185,4 +172,26 @@ void UILevelChooseLayer::setMapData( MapData* map_data ) {
     CC_SAFE_RELEASE( _map_data );
     _map_data = map_data;
     CC_SAFE_RETAIN( _map_data );
+}
+
+void UILevelChooseLayer::loadDeployedHeros() {
+    ValueVector deployed_units = PlayerInfo::getInstance()->getPlayerDeployedUnitsInfo();
+    for( int i = 0; i < deployed_units.size(); i++ ) {
+        const ValueMap& info = deployed_units.at( i ).asValueMap();
+        Sprite* shadow = dynamic_cast<Sprite*>( _main_node->getChildByName( Utils::stringFormat( "hero_%d", i + 1 ) ) );
+        if( shadow ) {
+            shadow->removeAllChildren();
+            shadow->setVisible( true );
+            std::string name = info.at( "name" ).asString();
+            std::string resource = ResourceManager::getInstance()->getPathForResource( name, eResourceType::Character_Front );
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+            skeleton->setAnimation( 0, "Idle", true );
+            skeleton->setPosition( Point( shadow->getContentSize().width / 2, shadow->getContentSize().height / 2 ) );
+            shadow->addChild( skeleton );
+        }
+    }
+}
+
+void UILevelChooseLayer::becomeTopLayer() {
+    this->loadDeployedHeros();
 }

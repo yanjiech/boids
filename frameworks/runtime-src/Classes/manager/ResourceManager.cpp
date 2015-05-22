@@ -76,6 +76,7 @@ void ResourceManager::purgeMap( MapData* map_data ) {
 void ResourceManager::loadAllData() {
     this->loadDefaultData();
     this->loadUnitData();
+    this->loadEquipData();
     this->loadTowerData();
     this->loadUnitLevelupCostData();
     this->loadBulletData();
@@ -116,6 +117,8 @@ void ResourceManager::loadDefaultData() {
     frame_cache->addSpriteFramesWithFile( "ui/ui_common.plist", "ui/ui_common.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_p.plist", "ui/ui_hero_p.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_f.plist", "ui/ui_hero_f.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_drop.plist", "ui/ui_equip_drop.png" );
 }
 
 void ResourceManager::loadUnitData() {

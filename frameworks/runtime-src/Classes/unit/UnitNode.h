@@ -16,6 +16,7 @@
 #include "HpBar.h"
 #include "./skill/SkillNode.h"
 #include "../AI/Path.h"
+#include "Equipment.h"
 
 #define DEFAULT_RELAX_FRAMES 45
 
@@ -95,6 +96,11 @@ private:
     
     bool _is_charging;
     TimeLimitSpineComponent* _charging_effect;
+    
+    Equipment* _weapon;
+    Equipment* _armor;
+    Equipment* _boot;
+    Equipment* _accessory;
     
 private:
     void updateBuffs( float delta );
@@ -286,6 +292,10 @@ public:
     bool isCharging() { return _is_charging; }
     void setCharging( bool b, std::string effect_resource = "" );
     
+    void setWeapon( Equipment* weapon );
+    void setArmor( Equipment* armor );
+    void setBoot( Equipment* boot );
+    void setAccessory( Equipment* accessory );
     //debug
     cocos2d::DrawNode* _custom_draw;
     void drawDirection();

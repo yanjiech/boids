@@ -15,6 +15,8 @@
 #include "spine/spine-cocos2dx.h"
 #include "../unit/ElementData.h"
 
+#define MIN_DRAG_BIAS 20.0f
+
 class UIHeroManageHeroSlot : public cocos2d::Node {
 private:
     int _flag;
@@ -33,6 +35,10 @@ private:
     
     spine::SkeletonAnimation* _hero_skeleton;
     UnitData* _hero_data;
+    EquipmentData* _weapon_data;
+    EquipmentData* _armor_data;
+    EquipmentData* _boot_data;
+    EquipmentData* _accessory_data;
     std::string _hero_id;
     
 public:
