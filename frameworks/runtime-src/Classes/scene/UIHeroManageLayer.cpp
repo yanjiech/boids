@@ -21,6 +21,8 @@
 #define HERO_DEPLOY_CELL_WIDTH 138
 #define HERO_DEPLOY_CELL_HEIGHT 138
 
+#define MIN_DRAG_BIAS 20.0f
+
 using namespace cocos2d;
 
 //hero slot
@@ -496,11 +498,16 @@ bool UIHeroManageLayer::init() {
     
     this->setSelectedHero( _hero_slots.at( "1" ) );
     
+    _is_dragging = false;
+    _is_touch_down = false;
+    _drag_avatar = nullptr;
+    
     return true;
 }
 
 void UIHeroManageLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        this->recordDeployedUnits();
         this->removeFromParentAndCleanup( true );
     }
 }
@@ -626,9 +633,6 @@ void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero ) {
         }
     }
     else {
-        if( _selected_hero ) {
-            _selected_hero->setSelected( true );
-        }
         _lb_level->setVisible( false );
         _lb_hero_name->setVisible( false );
         _lb_hp->setVisible( false );
@@ -656,6 +660,16 @@ void UIHeroManageLayer::setSelectedDeploySlot( UIHeroDeploySlot* slot ) {
     }
 }
 
+void UIHeroManageLayer::setTargetDeploySlot( UIHeroDeploySlot* slot ) {
+    if( _target_deploy_slot != nullptr && _target_deploy_slot != _selected_deploy_slot ) {
+        _target_deploy_slot->setSelected( false );
+    }
+    _target_deploy_slot = slot;
+    if( _target_deploy_slot != nullptr && _target_deploy_slot != _selected_deploy_slot ) {
+        _target_deploy_slot->setSelected( true );
+    }
+}
+
 void UIHeroManageLayer::turnToPage( int index ) {
     int total_pages = _pv_hero_list->getPages().size();
     if( index >= 0 && index < total_pages ) {
@@ -672,61 +686,140 @@ void UIHeroManageLayer::updatePlayerInfo() {
     _lb_gold->setString( Utils::toStr( player_info->getGold() ) );
 }
 
+void UIHeroManageLayer::recordDeployedUnits() {
+    ValueMap new_info;
+    for( auto slot : _deploy_slots ) {
+        if( !slot->isLocked() ) {
+            new_info[slot->getSlotId()] = Value( slot->getHeroId() );
+        }
+    }
+    PlayerInfo::getInstance()->setDeployUnits( new_info );
+}
+
 bool UIHeroManageLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event ) {
-    return true;
-}
-
-void UIHeroManageLayer::onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event ) {
-    
-}
-
-void UIHeroManageLayer::onTouchCancelled( cocos2d::Touch* touch, cocos2d::Event* event ) {
-    
-}
-
-void UIHeroManageLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event ) {
-    UIHeroManageHeroSlot* hero = this->heroSlotForTouch( touch );
-    if( hero ) {
+    if( !_is_touch_down ) {
+        _target_deploy_slot = nullptr;
+        _touch_down_pos = this->convertTouchToNodeSpace( touch );
+        UIHeroManageHeroSlot* hero = this->heroSlotForTouch( touch );
         this->setSelectedHero( hero );
         
-        if( hero->isOwned() && _selected_deploy_slot != nullptr ) {
-            std::string hero_id = _selected_deploy_slot->getHeroId();
-            UIHeroManageHeroSlot* deployed_hero = nullptr;
-            if( hero_id != "0" ) {
-                deployed_hero = _hero_slots.at( hero_id );
-                deployed_hero->setDeployed( false );
-            }
-            
-            //deploy_slot
-            hero->setDeployed( true );
-            _selected_deploy_slot->setHeroId( hero->getHeroId() );
-            _selected_deploy_slot->setAvatar( hero->getHeroRectAvatar() );
-            //update player info
-            PlayerInfo::getInstance()->setDeployUnit( _selected_deploy_slot->getSlotId(), _selected_deploy_slot->getHeroId() );
-            
-            //unselect duplicated hero
-            for( auto st : _deploy_slots ) {
-                if( st != _selected_deploy_slot && st->getHeroId() == _selected_deploy_slot->getHeroId() ) {
-                    st->setAvatar( nullptr );
-                    st->setHeroId( "0" );
-                    //update player info
-                    PlayerInfo::getInstance()->setDeployUnit( st->getSlotId(), "0" );
-                    break;
+        if( _selected_hero != nullptr ) {
+            _is_touch_down = true;
+            this->setSelectedDeploySlot( nullptr );
+        }
+        else {
+            UIHeroDeploySlot* deploy_slot = this->deploySlotForTouch( touch );
+            if( deploy_slot ) {
+                _is_touch_down = true;
+                this->setSelectedDeploySlot( deploy_slot );
+                std::string hero_id = deploy_slot->getHeroId();
+                auto itr = _hero_slots.find( hero_id );
+                if( itr != _hero_slots.end() ) {
+                    this->setSelectedHero( itr->second );
                 }
+                else {
+                    this->setSelectedHero( nullptr );
+                }
+            }
+            else {
+                this->setSelectedDeploySlot( nullptr );
             }
         }
     }
-    
-    UIHeroDeploySlot* deploy_slot = this->deploySlotForTouch( touch );
-    if( deploy_slot ) {
-        this->setSelectedDeploySlot( deploy_slot );
-        std::string hero_id = deploy_slot->getHeroId();
-        auto itr = _hero_slots.find( hero_id );
-        if( itr != _hero_slots.end() ) {
-            this->setSelectedHero( itr->second );
+    return _is_touch_down;
+}
+
+void UIHeroManageLayer::onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event ) {
+    if( _is_touch_down ) {
+        Point new_pos = this->convertTouchToNodeSpace( touch );
+        if( !_is_dragging ) {
+            if( _selected_hero != nullptr && _selected_hero->isOwned() ) {
+                if( new_pos.distance( _touch_down_pos ) > MIN_DRAG_BIAS ) {
+                    if( _drag_avatar == nullptr ) {
+                        _drag_avatar = Sprite::createWithSpriteFrame( _selected_hero->getHeroAvatar()->getSpriteFrame() );
+                        _drag_avatar->setOpacity( 200 );
+                        this->addChild( _drag_avatar );
+                    }
+                    else {
+                        _drag_avatar->setSpriteFrame( _selected_hero->getHeroAvatar()->getSpriteFrame() );
+                        _drag_avatar->setVisible( true );
+                    }
+                    _drag_avatar->setPosition( new_pos );
+                    _is_dragging = true;
+                }
+            }
         }
-        else {
-            this->setSelectedHero( nullptr );
+        
+        if( _is_dragging ) {
+            _drag_avatar->setPosition( new_pos );
+            UIHeroDeploySlot* slot = this->deploySlotForTouch( touch );
+            this->setTargetDeploySlot( slot );
+        }
+    }
+}
+
+void UIHeroManageLayer::onTouchCancelled( cocos2d::Touch* touch, cocos2d::Event* event ) {
+    _is_touch_down = false;
+    _is_dragging = false;
+    this->setTargetDeploySlot( nullptr );
+    if( _drag_avatar != nullptr ) {
+        _drag_avatar->setVisible( false );
+    }
+}
+
+void UIHeroManageLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event ) {
+    if( _is_touch_down ) {
+        if( _is_dragging ) {
+            UIHeroDeploySlot* slot = this->deploySlotForTouch( touch );
+            if( _selected_deploy_slot != nullptr && _selected_deploy_slot->getHeroId() != "0" ) {
+                //undeploy hero
+                if( slot == nullptr ) {
+                    _selected_deploy_slot->setHeroId( "0" );
+                    _selected_deploy_slot->setAvatar( nullptr );
+                    _selected_hero->setDeployed( false );
+                    this->setSelectedDeploySlot( nullptr );
+                }
+                //exchange hero
+                else if( slot != _selected_deploy_slot ) {
+                    std::string hero_id = slot->getHeroId();
+                    Sprite* avatar = Sprite::createWithSpriteFrame( slot->getAvatar()->getSpriteFrame() );
+                    slot->setAvatar( _selected_deploy_slot->getAvatar() );
+                    slot->setHeroId( _selected_deploy_slot->getHeroId() );
+                    _selected_deploy_slot->setHeroId( hero_id );
+                    _selected_deploy_slot->setAvatar( avatar );
+                    this->setSelectedDeploySlot( slot );
+                }
+            }
+            else {
+                //drag from list
+                if( slot != nullptr ) {
+                    //undeploy old hero
+                    auto itr = _hero_slots.find( slot->getHeroId() );
+                    if( itr != _hero_slots.end() ) {
+                        itr->second->setDeployed( false );
+                    }
+                    //deploy new hero
+                    _selected_hero->setDeployed( true );
+                    //remove duplicated hero in deploy slots
+                    for( auto ds : _deploy_slots ) {
+                        if( ds != slot && ds->getHeroId() == _selected_hero->getHeroId() ) {
+                            ds->setHeroId( "0" );
+                            ds->setAvatar( nullptr );
+                            break;
+                        }
+                    }
+                    
+                    slot->setHeroId( _selected_hero->getHeroId() );
+                    slot->setAvatar( _selected_hero->getHeroRectAvatar() );
+                }
+            }
+            
+            this->setTargetDeploySlot( nullptr );
+        }
+        _is_dragging = false;
+        _is_touch_down = false;
+        if( _drag_avatar ) {
+            _drag_avatar->setVisible( false );
         }
     }
 }
@@ -751,6 +844,20 @@ UIHeroDeploySlot* UIHeroManageLayer::deploySlotForTouch( cocos2d::Touch* touch )
             Point pos = slot->convertTouchToNodeSpace( touch );
             Rect rect = Rect( 0, 0, slot->getContentSize().width, slot->getContentSize().height );
             if( rect.containsPoint( pos ) ) {
+                return slot;
+            }
+        }
+    }
+    return nullptr;
+}
+
+UIHeroDeploySlot* UIHeroManageLayer::deploySlotIntersectsRect( cocos2d::Touch* touch, const cocos2d::Size& size ) {
+    for( auto slot : _deploy_slots ) {
+        if( !slot->isLocked() ) {
+            Point pos = slot->convertTouchToNodeSpace( touch );
+            Rect slot_rect = Rect( 0, 0, slot->getContentSize().width, slot->getContentSize().height );
+            Rect avatar_rect = Rect( pos.x - size.width / 2, pos.y - size.height / 2, size.width, size.height );
+            if( slot_rect.intersectsRect( avatar_rect ) ) {
                 return slot;
             }
         }

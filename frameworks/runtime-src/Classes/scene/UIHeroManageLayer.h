@@ -157,6 +157,8 @@ private:
     UIHeroManageHeroSlot* _selected_hero;
     UIHeroDeploySlot* _selected_deploy_slot;
     
+    UIHeroDeploySlot* _target_deploy_slot;
+    
     int _current_page;
     
     cocos2d::Map<std::string,UIHeroManageHeroSlot*> _hero_slots;
@@ -164,8 +166,14 @@ private:
     
     UIHeroManageHeroSlot* heroSlotForTouch( cocos2d::Touch* touch );
     UIHeroDeploySlot* deploySlotForTouch( cocos2d::Touch* touch );
+    UIHeroDeploySlot* deploySlotIntersectsRect( cocos2d::Touch* touch, const cocos2d::Size& size );
     
     spine::SkeletonAnimation* _upgrade_effect;
+    
+    cocos2d::Point _touch_down_pos;
+    cocos2d::Sprite* _drag_avatar;
+    bool _is_touch_down;
+    bool _is_dragging;
     
 public:
     UIHeroManageLayer();
@@ -190,10 +198,13 @@ public:
     
     void setSelectedHero( UIHeroManageHeroSlot* hero );
     void setSelectedDeploySlot( UIHeroDeploySlot* slot );
+    void setTargetDeploySlot( UIHeroDeploySlot* slot );
     
     void turnToPage( int index );
     
     void updatePlayerInfo();
+    
+    void recordDeployedUnits();
     
     virtual bool onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event );
     virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );

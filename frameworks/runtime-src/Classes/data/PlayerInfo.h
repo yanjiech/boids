@@ -42,6 +42,7 @@ public:
     cocos2d::ValueVector getPlayerDeployedUnitNames();
     
     void setDeployUnit( const std::string& slot_id, const std::string& hero_id );
+    void setDeployUnits( const cocos2d::ValueMap& data );
     
     cocos2d::ValueMap upgradeHero( const std::string& hero_id, int level );
     

@@ -116,6 +116,17 @@ void PlayerInfo::setDeployUnit( const std::string& slot_id, const std::string& h
     this->recordPlayerInfo();
 }
 
+void PlayerInfo::setDeployUnits( const cocos2d::ValueMap& data ) {
+    ValueMap& player_unit_ids = _player_info.at( "deploy_units" ).asValueMap();
+    for( auto pair : data ) {
+        auto itr = player_unit_ids.find( pair.first );
+        if( itr != player_unit_ids.end() ) {
+            itr->second = pair.second;
+        }
+    }
+    this->recordPlayerInfo();
+}
+
 cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level ) {
     ValueMap& all_units = _player_info.at( "units" ).asValueMap();
     auto itr = all_units.find( hero_id );
