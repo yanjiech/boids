@@ -343,38 +343,34 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
         skill_names.push_back( skl_name );
     }
     
-    const ValueMap& equips = data.at( "equips" ).asValueMap();
-    const ValueMap& all_equips = PlayerInfo::getInstance()->getAllEquipsInfo();
-    auto itr = all_equips.find( equips.at( "weapon" ).asString() );
-    if( itr != all_equips.end() ) {
-        ValueMap eq_data = itr->second.asValueMap();
-        eq_data["obj_id"] = equips.at( "weapon" );
-        EquipmentData* ed = EquipmentData::create( eq_data );
-        this->setEquipData( eEquipType::EquipTypeWeapon, ed );
-    }
-    
-    itr = all_equips.find( equips.at( "armor" ).asString() );
-    if( itr != all_equips.end() ) {
-        ValueMap eq_data = itr->second.asValueMap();
-        eq_data["obj_id"] = equips.at( "armor" );
-        EquipmentData* ed = EquipmentData::create( eq_data );
-        this->setEquipData( eEquipType::EquipTypeArmor, ed );
-    }
-    
-    itr = all_equips.find( equips.at( "boot" ).asString() );
-    if( itr != all_equips.end() ) {
-        ValueMap eq_data = itr->second.asValueMap();
-        eq_data["obj_id"] = equips.at( "boot" );
-        EquipmentData* ed = EquipmentData::create( eq_data );
-        this->setEquipData( eEquipType::EquipTypeBoot, ed );
-    }
-    
-    itr = all_equips.find( equips.at( "accessory" ).asString() );
-    if( itr != all_equips.end() ) {
-        ValueMap eq_data = itr->second.asValueMap();
-        eq_data["obj_id"] = equips.at( "accessory" );
-        EquipmentData* ed = EquipmentData::create( eq_data );
-        this->setEquipData( eEquipType::EquipTypeAccessory, ed );
+    //equips
+    auto itr = data.find( "equips" );
+    if( itr != data.end() ) {
+        const ValueMap& equips = data.at( "equips" ).asValueMap();
+        const ValueMap& all_equips = PlayerInfo::getInstance()->getAllEquipsInfo();
+        itr = all_equips.find( equips.at( "weapon" ).asString() );
+        if( itr != all_equips.end() ) {
+            EquipmentData* ed = EquipmentData::create( itr->second.asValueMap() );
+            this->setEquipData( eEquipType::EquipTypeWeapon, ed );
+        }
+        
+        itr = all_equips.find( equips.at( "armor" ).asString() );
+        if( itr != all_equips.end() ) {
+            EquipmentData* ed = EquipmentData::create( itr->second.asValueMap() );
+            this->setEquipData( eEquipType::EquipTypeArmor, ed );
+        }
+        
+        itr = all_equips.find( equips.at( "boot" ).asString() );
+        if( itr != all_equips.end() ) {
+            EquipmentData* ed = EquipmentData::create( itr->second.asValueMap() );
+            this->setEquipData( eEquipType::EquipTypeBoot, ed );
+        }
+        
+        itr = all_equips.find( equips.at( "accessory" ).asString() );
+        if( itr != all_equips.end() ) {
+            EquipmentData* ed = EquipmentData::create( itr->second.asValueMap() );
+            this->setEquipData( eEquipType::EquipTypeAccessory, ed );
+        }
     }
     
     return true;
@@ -400,7 +396,24 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
 }
 
 //equipment data
+std::string EquipmentData::stringFromType( eEquipType type ) {
+    switch( type ) {
+        case eEquipType::EquipTypeWeapon:
+            return "weapon";
+        case eEquipType::EquipTypeArmor:
+            return "armor";
+        case eEquipType::EquipTypeBoot:
+            return "boot";
+        case eEquipType::EquipTypeAccessory:
+            return "accessory";
+        default:
+            return "";
+    }
+}
+
 EquipmentData::EquipmentData() :
+obj_id( "0" ),
+equip_id( 0 ),
 hp( 0 ),
 mp( 0 ),
 atk( 0 ),
@@ -430,11 +443,14 @@ EquipmentData* EquipmentData::create( const cocos2d::ValueMap& data ) {
 }
 
 bool EquipmentData::init( const cocos2d::ValueMap& data ) {
-    this->obj_id = data.at( "obj_id" ).asString();
-    std::string equip_id = data.at( "id" ).asString();
-    const cocos2d::ValueMap& equip_config = ResourceManager::getInstance()->getEquipConfig().at( equip_id ).asValueMap();
-    for( auto pair : equip_config ) {
-        this->setAttribute( pair.first, pair.second );
+    auto itr = data.find( "obj_id" );
+    if( itr != data.end() ) {
+        this->obj_id = itr->second.asString();
+        std::string equip_id = data.at( "id" ).asString();
+        const cocos2d::ValueMap& equip_config = ResourceManager::getInstance()->getEquipConfig().at( equip_id ).asValueMap();
+        for( auto pair : equip_config ) {
+            this->setAttribute( pair.first, pair.second );
+        }
     }
     
     return true;
@@ -446,6 +462,7 @@ void EquipmentData::setAttribute( const std::string& key, const cocos2d::Value& 
     }
     else if( key == "equip_id" ) {
         this->equip_id = value.asInt();
+        this->equip_type = (eEquipType)( this->equip_id / 1e7 );
     }
     else if( key == "name" ) {
         this->name = value.asString();
@@ -473,5 +490,8 @@ void EquipmentData::setAttribute( const std::string& key, const cocos2d::Value& 
     }
     else if( key == "ten" ) {
         this->ten = value.asFloat();
+    }
+    else if( key == "price" ) {
+        this->price = value.asInt();
     }
 }

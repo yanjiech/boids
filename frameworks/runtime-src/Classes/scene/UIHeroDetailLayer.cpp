@@ -8,10 +8,18 @@
 
 #include "UIHeroDetailLayer.h"
 #include "../Utils.h"
+#include "../data/PlayerInfo.h"
+#include "../manager/ResourceManager.h"
 
 using namespace cocos2d;
 
 #define HERO_DETAIL_FILE "ui/page/ui_hero_detail.csb"
+
+#define REPO_CELL_WIDTH 
+#define REPO_CELL_HEIGHT
+
+#define EQUIP_CELL_WIDTH 158
+#define EQUIP_CELL_HEIGHT 144
 
 //equip cell
 UIEquipmentCell::UIEquipmentCell() :
@@ -42,7 +50,7 @@ bool UIEquipmentCell::init( EquipmentData* equip_data ) {
         return false;
     }
     
-    this->setContentSize( Size( 158.0f, 144.0f ) );
+    this->setContentSize( Size( EQUIP_CELL_WIDTH, EQUIP_CELL_HEIGHT ) );
     this->setAnchorPoint( Point( 0.5f, 0.5f ) );
     
     this->setEquipData( equip_data );
@@ -245,7 +253,9 @@ bool UIHeroDetailLayer::init( UIHeroManageHeroSlot* hero ) {
     accessory_node->addChild( _accessory_cell );
     
     _btn_prev = dynamic_cast<ui::Button*>( equip_panel->getChildByName( "leftButton" ) );
+    _btn_prev->addTouchEventListener( CC_CALLBACK_2( UIHeroDetailLayer::onPrevTouched, this ) );
     _btn_next = dynamic_cast<ui::Button*>( equip_panel->getChildByName( "rightButton" ) );
+    _btn_next->addTouchEventListener( CC_CALLBACK_2( UIHeroDetailLayer::onNextTouched, this ) );
     
     _pv_weapon_list = dynamic_cast<ui::PageView*>( equip_panel->getChildByName( "pv_weapon_list" ) );
     ui::Layout* page = ui::Layout::create();
@@ -289,7 +299,7 @@ bool UIHeroDetailLayer::init( UIHeroManageHeroSlot* hero ) {
     this->reloadHeroData();
     
     _current_tab = 0;
-    this->switchToTab( 1 );
+    this->switchToTab( 3 );
     
     return true;
 }
@@ -309,11 +319,20 @@ void UIHeroDetailLayer::onSellTouched( cocos2d::Ref* sender, cocos2d::ui::Widget
 
 void UIHeroDetailLayer::onPrevTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        int cur_page = _current_equip_list->getCurPageIndex();
+        if( this->loadRepoEquips( (eEquipType)_current_tab, cur_page - 1 ) ) {
+            _current_equip_list->scrollToPage( cur_page - 1 );
+        }
     }
 }
 
 void UIHeroDetailLayer::onNextTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
-    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {}
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        int cur_page = _current_equip_list->getCurPageIndex();
+        if( this->loadRepoEquips( (eEquipType)_current_tab, cur_page + 1 ) ) {
+            _current_equip_list->scrollToPage( cur_page + 1 );
+        }
+    }
 }
 
 void UIHeroDetailLayer::onTabTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
@@ -328,21 +347,21 @@ void UIHeroDetailLayer::onTabTouched( cocos2d::Ref* sender, cocos2d::ui::Widget:
 void UIHeroDetailLayer::switchToTab( int i ) {
     if( i != _current_tab ) {
         switch( _current_tab ) {
-            case 1:
+            case 3:
             {
                 _btn_weapon_tab->switchSpriteFrames();
                 _pv_weapon_list->setVisible( false );
                 _pn_weapon_tab->setPosition( Point( _pn_weapon_tab->getPosition().x - 20, _pn_weapon_tab->getPosition().y ) );
                 break;
             }
-            case 2:
+            case 1:
             {
                 _btn_armor_tab->switchSpriteFrames();
                 _pv_armor_list->setVisible( false );
                 _pn_armor_tab->setPosition( Point( _pn_armor_tab->getPosition().x - 20, _pn_armor_tab->getPosition().y ) );
                 break;
             }
-            case 3:
+            case 2:
             {
                 _btn_boot_tab->switchSpriteFrames();
                 _pv_boot_list->setVisible( false );
@@ -361,7 +380,7 @@ void UIHeroDetailLayer::switchToTab( int i ) {
         }
         this->stopAllActions();
         switch( i ) {
-            case 1:
+            case 3:
             {
                 _btn_weapon_tab->switchSpriteFrames();
                 _pv_weapon_list->setVisible( true );
@@ -369,7 +388,7 @@ void UIHeroDetailLayer::switchToTab( int i ) {
                 _current_equip_list = _pv_weapon_list;
                 break;
             }
-            case 2:
+            case 1:
             {
                 _btn_armor_tab->switchSpriteFrames();
                 _pv_armor_list->setVisible( true );
@@ -377,7 +396,7 @@ void UIHeroDetailLayer::switchToTab( int i ) {
                 _current_equip_list = _pv_armor_list;
                 break;
             }
-            case 3:
+            case 2:
             {
                 _btn_boot_tab->switchSpriteFrames();
                 _pv_boot_list->setVisible( true );
@@ -398,6 +417,7 @@ void UIHeroDetailLayer::switchToTab( int i ) {
                 break;
         }
         _current_tab = i;
+        this->loadRepoEquips( (eEquipType)_current_tab, _current_equip_list->getCurPageIndex() );
     }
 }
 
@@ -416,6 +436,34 @@ void UIHeroDetailLayer::reloadHeroData() {
     _lb_cri->setString( Utils::toStr( (int)data->critical ) );
     _lb_ten->setString( Utils::toStr( (int)data->tenacity ) );
     _lb_other->setString( Utils::toStr( (int)data->atk_range ) );
+}
+
+bool UIHeroDetailLayer::loadRepoEquips( eEquipType type, int page_index ) {
+    this->setSelectedRepoCell( nullptr );
+    if( page_index >= 0 ) {
+        int start_index = 6 * page_index;
+        ValueVector data = PlayerInfo::getInstance()->getEquipsByRange( (int)type, start_index, 6, 2 );
+        if( data.size() > 0 ) {
+            if( _current_equip_list->getPages().size() <= page_index ) {
+                ui::Layout* new_page = ui::Layout::create();
+                _current_equip_list->addPage( new_page );
+            }
+            ui::Layout* page = _current_equip_list->getPages().at( page_index );
+            page->removeAllChildren();
+            
+            int i = 0;
+            for( auto itr = data.begin(); itr != data.end(); ++itr ) {
+                UIEquipmentCell* cell = UIEquipmentCell::create( itr->asValueMap() );
+                int col = i % 3;
+                cell->setPosition( Point( ( col + 0.5f ) * EQUIP_CELL_WIDTH + ( col + 1 ) * 30.0f, ( 1.5f - i / 3 ) * EQUIP_CELL_HEIGHT ) );
+                page->addChild( cell );
+                ++i;
+            }
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void UIHeroDetailLayer::setCurrentEquiptList( cocos2d::ui::PageView* page_view ) {
@@ -454,6 +502,7 @@ void UIHeroDetailLayer::setSelectedRepoCell( UIEquipmentCell* cell ) {
     if( _selected_repo_cell != nullptr ) {
         _selected_repo_cell->setSelected( true );
     }
+    this->updateCompareInfo();
 }
 
 void UIHeroDetailLayer::setTargetEquipedCell( UIEquipmentCell* cell ) {
@@ -463,6 +512,70 @@ void UIHeroDetailLayer::setTargetEquipedCell( UIEquipmentCell* cell ) {
     _target_equiped_cell = cell;
     if( _target_equiped_cell != nullptr && _target_equiped_cell != _selected_equiped_cell ) {
         _target_equiped_cell->setSelected( true );
+    }
+}
+
+void UIHeroDetailLayer::updateCompareInfo() {
+    if( _selected_repo_cell != nullptr ) {
+        EquipmentData* old_equip_data = nullptr;
+        EquipmentData* new_equip_data = _selected_repo_cell->getEquipData();
+        eEquipType type = new_equip_data->equip_type;
+        switch( type ) {
+            case EquipTypeWeapon:
+                old_equip_data = _weapon_cell->getEquipData();
+                break;
+            case EquipTypeArmor:
+                old_equip_data = _armor_cell->getEquipData();
+                break;
+            case EquipTypeBoot:
+                old_equip_data = _boot_cell->getEquipData();
+                break;
+            case EquipTypeAccessory:
+                old_equip_data = _accessory_cell->getEquipData();
+                break;
+            default:
+                break;
+        }
+        if( old_equip_data == nullptr ) {
+            old_equip_data = EquipmentData::create( ValueMap() );
+        }
+        
+        this->updateExtraLabel( _lb_hp_extra, new_equip_data->hp - old_equip_data->hp );
+        this->updateExtraLabel( _lb_mp_extra, new_equip_data->mp - old_equip_data->mp );
+        this->updateExtraLabel( _lb_atk_extra, new_equip_data->atk - old_equip_data->atk );
+        this->updateExtraLabel( _lb_def_extra, new_equip_data->def - old_equip_data->def );
+        this->updateExtraLabel( _lb_hit_extra, new_equip_data->hit - old_equip_data->hit );
+        this->updateExtraLabel( _lb_dod_extra, new_equip_data->dod - old_equip_data->dod );
+        this->updateExtraLabel( _lb_cri_extra, new_equip_data->cri - old_equip_data->cri );
+        this->updateExtraLabel( _lb_ten_extra, new_equip_data->ten - old_equip_data->ten );
+        
+    }
+    else {
+        _lb_hp_extra->setVisible( false );
+        _lb_mp_extra->setVisible( false );
+        _lb_atk_extra->setVisible( false );
+        _lb_def_extra->setVisible( false );
+        _lb_hit_extra->setVisible( false );
+        _lb_dod_extra->setVisible( false );
+        _lb_cri_extra->setVisible( false );
+        _lb_ten_extra->setVisible( false );
+    }
+}
+
+void UIHeroDetailLayer::updateExtraLabel( cocos2d::ui::Text* label, int value ) {
+    if( value != 0 ) {
+        label->setVisible( true );
+        if( value > 0 ) {
+            label->setColor( Color3B::GREEN );
+            label->setString( Utils::stringFormat( "+%d", value ) );
+        }
+        else {
+            label->setColor( Color3B::RED );
+            label->setString( Utils::stringFormat( "%d", value ) );
+        }
+    }
+    else {
+        label->setVisible( false );
     }
 }
 
@@ -536,23 +649,45 @@ void UIHeroDetailLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* eve
             this->checkTargetCell();
             
             if( _selected_repo_cell != nullptr ) {
-                
+                if( _target_equiped_cell != nullptr ) {
+                    //change equip
+                    PlayerInfo* player_info = PlayerInfo::getInstance();
+                    std::string hero_id = _hero->getHeroId();
+                    eEquipType type = _selected_repo_cell->getEquipData()->equip_type;
+                    if( _target_equiped_cell->getEquipData() != nullptr ) {
+                        //take off first
+                        player_info->updateEquip( _target_equiped_cell->getEquipData()->obj_id, false );
+                    }
+                    
+                    //take on equip
+                    std::string obj_id = _selected_repo_cell->getEquipData()->obj_id;
+                    player_info->updateEquip( obj_id, true );
+                    ValueMap new_hero_data = player_info->updateUnitEquip( hero_id, EquipmentData::stringFromType( type ), obj_id );
+                    _hero->loadHeroInfo( new_hero_data );
+                    this->reloadHeroData();
+                    _target_equiped_cell->setEquipData( _selected_repo_cell->getEquipData() );
+                    
+                    int cur_page = _current_equip_list->getCurPageIndex();
+                    if( !this->loadRepoEquips( (eEquipType)_current_tab, cur_page ) && cur_page > 0 ) {
+                        _current_equip_list->scrollToPage( cur_page - 1 );
+                    }
+                }
             }
             else if( _selected_equiped_cell != nullptr ) {
                 if( _target_equiped_cell == nullptr ) {
                     //take off equip
-                    if( _selected_equiped_cell == _weapon_cell ) {
-                        
-                    }
-                    else if( _selected_equiped_cell == _armor_cell ) {
-                        
-                    }
-                    else if( _selected_equiped_cell == _boot_cell ) {
-                        
-                    }
-                    else if( _selected_equiped_cell == _accessory_cell ) {
-                        
-                    }
+                    std::string obj_id = _selected_equiped_cell->getEquipData()->obj_id;
+                    eEquipType type = _selected_equiped_cell->getEquipData()->equip_type;
+                    const std::string& hero_id = _hero->getHeroId();
+                    
+                    PlayerInfo* player_info = PlayerInfo::getInstance();
+                    player_info->updateEquip( obj_id, false );
+                    ValueMap new_hero_data = player_info->updateUnitEquip( hero_id, EquipmentData::stringFromType( type ), "0" );
+                    _hero->loadHeroInfo( new_hero_data );
+                    this->reloadHeroData();
+                    
+                    _selected_equiped_cell->setEquipData( nullptr );
+                    this->loadRepoEquips( (eEquipType)_current_tab, _current_equip_list->getCurPageIndex() );
                 }
             }
         }

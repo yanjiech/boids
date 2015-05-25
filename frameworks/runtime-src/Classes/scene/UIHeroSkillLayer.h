@@ -9,17 +9,19 @@
 #ifndef __Boids__UIHeroSkillLayer__
 #define __Boids__UIHeroSkillLayer__
 
-#include "cocos2d.h"
-#include "ui/CocosGUI.h"
-#include "TouchableLayer.h"
+#include "UIHeroManageLayer.h"
 
 class UIHeroSkillLayer : public TouchableLayer {
+private:
+    cocos2d::Node* _root_node;
+    UIHeroManageHeroSlot* _hero;
+    
 public:
     UIHeroSkillLayer();
     virtual ~UIHeroSkillLayer();
     
-    static UIHeroSkillLayer* create();
-    virtual bool init();
+    static UIHeroSkillLayer* create( UIHeroManageHeroSlot* hero );
+    virtual bool init( UIHeroManageHeroSlot* hero );
     
     void onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
 };

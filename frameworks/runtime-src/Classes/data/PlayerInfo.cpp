@@ -127,6 +127,90 @@ void PlayerInfo::setDeployUnits( const cocos2d::ValueMap& data ) {
     this->recordPlayerInfo();
 }
 
+cocos2d::ValueMap PlayerInfo::updateUnitEquip( const std::string& hero_id, const std::string& type, const std::string& obj_id ) {
+    ValueMap& all_heros = _player_info.at( "units" ).asValueMap();
+    auto itr = all_heros.find( hero_id );
+    if( itr != all_heros.end() ) {
+        ValueMap& hero_data = all_heros.at( hero_id ).asValueMap();
+        ValueMap& equip_data = hero_data.at( "equips" ).asValueMap();
+        itr = equip_data.find( type );
+        if( itr != equip_data.end() ) {
+            equip_data.at( type ) = Value( obj_id );
+            this->recordPlayerInfo();
+            return hero_data;
+        }
+    }
+    return ValueMap();
+}
+
+void PlayerInfo::updateEquip( const std::string& obj_id, bool in_use ) {
+    ValueMap& equip_repo = _player_info.at( "equips" ).asValueMap();
+    auto itr = equip_repo.find( obj_id );
+    if( itr != equip_repo.end() ) {
+        equip_repo.at( obj_id ).asValueMap().at( "in_use" ) = Value( in_use );
+        this->recordPlayerInfo();
+    }
+}
+
+void PlayerInfo::addEquip( const std::string& obj_id, const std::string& equip_id ) {
+    ValueMap& equip_repo = _player_info.at( "equips" ).asValueMap();
+    ValueMap equip_data;
+    equip_data["obj_id"] = Value( obj_id );
+    equip_data["in_use"] = Value( false );
+    equip_data["id"] = Value( equip_id );
+    equip_repo.insert( std::make_pair( obj_id, Value( equip_data ) ) );
+    this->recordPlayerInfo();
+}
+
+void PlayerInfo::removeEquip( const std::string& obj_id ) {
+    ValueMap& equip_repo = _player_info.at( "equips" ).asValueMap();
+    equip_repo.erase( obj_id );
+    this->recordPlayerInfo();
+}
+
+cocos2d::ValueVector PlayerInfo::getEquipsByRange( int type, int from, int size, int order ) {
+    ValueVector ret;
+    const ValueMap& all_equips = _player_info.at( "equips" ).asValueMap();
+    ValueVector all_data;
+    for( auto pair : all_equips ) {
+        const ValueMap& equip_data = pair.second.asValueMap();
+        int equip_id = equip_data.at( "id" ).asInt();
+        bool in_use = equip_data.at( "in_use" ).asBool();
+        int equip_type = equip_id / 1e7;
+        if( !in_use && type == equip_type ) {
+            all_data.push_back( Value( equip_data ) );
+        }
+    }
+    
+    if( order == 1 ) {
+        //ascending order
+        std::sort( all_data.begin(), all_data.end(), [&]( const Value& v1, const Value& v2 )->bool {
+            int equip_id_1 = v1.asValueMap().at( "id" ).asInt();
+            int equip_id_2 = v2.asValueMap().at( "id" ).asInt();
+            return equip_id_1 < equip_id_2;
+        } );
+    }
+    else if( order == 2 ) {
+        //descending order
+        std::sort( all_data.begin(), all_data.end(), [&]( const Value& v1, const Value& v2 )->bool {
+            int equip_id_1 = v1.asValueMap().at( "id" ).asInt();
+            int equip_id_2 = v2.asValueMap().at( "id" ).asInt();
+            return equip_id_1 > equip_id_2;
+        } );
+    }
+    
+    int cur_id = from;
+    int total_count = all_data.size();
+    if( from < total_count ) {
+        while( cur_id < total_count && cur_id <= from + size ) {
+            ret.push_back( all_data.at( cur_id ) );
+            ++cur_id;
+        }
+    }
+    
+    return ret;
+}
+
 cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level ) {
     ValueMap& all_units = _player_info.at( "units" ).asValueMap();
     auto itr = all_units.find( hero_id );

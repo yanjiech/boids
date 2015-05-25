@@ -4,35 +4,41 @@
         "display_name": "卫兵铠甲", 
         "equip_id": 11005001, 
         "hp": 132.0, 
-        "name": "weibingkaijia"
+        "name": "weibingkaijia", 
+        "price": 100.0
     }, 
     "11010001": {
         "def": 10.0, 
         "display_name": "精钢铠甲", 
         "equip_id": 11010001, 
         "hp": 210.0, 
-        "name": "jinggangkaijia"
+        "name": "jinggangkaijia", 
+        "price": 100.0
     }, 
     "11020001": {
         "def": 20.0, 
         "display_name": "铁匠板甲", 
         "equip_id": 11020001, 
         "hp": 350.0, 
-        "name": "tiejiangbanjia"
+        "name": "tiejiangbanjia", 
+        "price": 100.0
     }, 
     "11025002": {
         "def": 23.0, 
         "display_name": "侍从斗篷", 
         "equip_id": 11025002, 
         "hp": 460.0, 
-        "name": "shicongdoupeng"
+        "name": "shicongdoupeng", 
+        "price": 100.0
     }, 
     "12010001": {
         "def": 20.0, 
         "display_name": "白骨之拥", 
         "equip_id": 12010001, 
         "hp": 413.0, 
-        "name": "baiguzhiyong"
+        "name": "baiguzhiyong", 
+        "price": 100.0, 
+        "ten": 20.0
     }, 
     "12015002": {
         "def": 26.0, 
@@ -40,7 +46,8 @@
         "equip_id": 12015002, 
         "hit": 116.0, 
         "hp": 520.0, 
-        "name": "juxijiazhou"
+        "name": "juxijiazhou", 
+        "price": 100.0
     }, 
     "12020001": {
         "def": 35.0, 
@@ -48,7 +55,8 @@
         "dod": 63.0, 
         "equip_id": 12020001, 
         "hp": 735.0, 
-        "name": "shengguangpijia"
+        "name": "shengguangpijia", 
+        "price": 100.0
     }, 
     "12030001": {
         "def": 51.0, 
@@ -56,14 +64,17 @@
         "dod": 92.0, 
         "equip_id": 12030001, 
         "hp": 1115.0, 
-        "name": "xiaochouxifu"
+        "name": "xiaochouxifu", 
+        "price": 100.0
     }, 
     "12035002": {
         "def": 56.0, 
         "display_name": "魔物护甲", 
         "equip_id": 12035002, 
         "hp": 1220.0, 
-        "name": "mowuhujia"
+        "name": "mowuhujia", 
+        "price": 100.0, 
+        "ten": 106.0
     }, 
     "13020001": {
         "def": 45.0, 
@@ -71,7 +82,8 @@
         "dod": 90.0, 
         "equip_id": 13020001, 
         "hp": 1010.0, 
-        "name": "julongzhikai"
+        "name": "julongzhikai", 
+        "price": 100.0
     }, 
     "13025002": {
         "def": 52.0, 
@@ -79,7 +91,8 @@
         "dod": 115.0, 
         "equip_id": 13025002, 
         "hp": 1456.0, 
-        "name": "nvwupifeng"
+        "name": "nvwupifeng", 
+        "price": 100.0
     }, 
     "13030001": {
         "def": 99.0, 
@@ -87,7 +100,8 @@
         "dod": 183.0, 
         "equip_id": 13030001, 
         "hp": 2200.0, 
-        "name": "milanzhiqu"
+        "name": "milanzhiqu", 
+        "price": 100.0
     }, 
     "13035001": {
         "def": 83.0, 
@@ -95,7 +109,8 @@
         "equip_id": 13035001, 
         "hit": 234.0, 
         "hp": 1920.0, 
-        "name": "shixuepijian"
+        "name": "shixuepijian", 
+        "price": 100.0
     }, 
     "13035002": {
         "def": 87.0, 
@@ -103,35 +118,41 @@
         "equip_id": 13035002, 
         "hit": 92.0, 
         "hp": 1999.0, 
-        "name": "qiangxikaijia"
+        "name": "qiangxikaijia", 
+        "price": 100.0, 
+        "ten": 58.0
     }, 
     "21005001": {
         "def": 4.0, 
         "display_name": "卫兵之靴", 
         "equip_id": 21005001, 
         "hp": 40.0, 
-        "name": "weibingzhixue"
+        "name": "weibingzhixue", 
+        "price": 100.0
     }, 
     "21010001": {
         "def": 6.0, 
         "display_name": "精钢马靴", 
         "equip_id": 21010001, 
         "hp": 100.0, 
-        "name": "jinggangmaxue"
+        "name": "jinggangmaxue", 
+        "price": 100.0
     }, 
     "21020001": {
         "def": 11.0, 
         "display_name": "铁匠长靴", 
         "equip_id": 21020001, 
         "hp": 220.0, 
-        "name": "tiejiangchangxue"
+        "name": "tiejiangchangxue", 
+        "price": 100.0
     }, 
     "21025002": {
         "def": 11.0, 
         "display_name": "木屐", 
         "equip_id": 21025002, 
         "hp": 250.0, 
-        "name": "muji"
+        "name": "muji", 
+        "price": 100.0
     }, 
     "22010001": {
         "def": 11.0, 
@@ -139,14 +160,17 @@
         "dod": 30.0, 
         "equip_id": 22010001, 
         "hp": 190.0, 
-        "name": "baiguzhiyong"
+        "name": "baiguzhiyong", 
+        "price": 100.0
     }, 
     "22015002": {
         "def": 16.0, 
         "display_name": "盗贼飞靴", 
         "equip_id": 22015002, 
         "hp": 360.0, 
-        "name": "daozeifeixue"
+        "name": "daozeifeixue", 
+        "price": 100.0, 
+        "ten": 28.0
     }, 
     "22020001": {
         "cri": 53.0, 
@@ -154,7 +178,8 @@
         "display_name": "圣光急速", 
         "equip_id": 22020001, 
         "hp": 420.0, 
-        "name": "shengguangjisu"
+        "name": "shengguangjisu", 
+        "price": 100.0
     }, 
     "22030001": {
         "def": 27.0, 
@@ -162,21 +187,26 @@
         "equip_id": 22030001, 
         "hit": 99.0, 
         "hp": 592.0, 
-        "name": "xiaochoutuoxie"
+        "name": "xiaochoutuoxie", 
+        "price": 100.0
     }, 
     "22035002": {
         "def": 32.0, 
         "display_name": "勇气布鞋", 
         "equip_id": 22035002, 
         "hp": 699.0, 
-        "name": "yongqibuxie"
+        "name": "yongqibuxie", 
+        "price": 100.0, 
+        "ten": 64.0
     }, 
     "23020001": {
         "def": 36.0, 
         "display_name": "巨龙之足", 
         "equip_id": 23020001, 
         "hp": 690.0, 
-        "name": "julongzhizu"
+        "name": "julongzhizu", 
+        "price": 100.0, 
+        "ten": 56.0
     }, 
     "23025002": {
         "cri": 95.0, 
@@ -184,14 +214,17 @@
         "display_name": "爆裂火靴", 
         "equip_id": 23025002, 
         "hp": 723.0, 
-        "name": "baoliehuoxue"
+        "name": "baoliehuoxue", 
+        "price": 100.0
     }, 
     "23030001": {
         "def": 57.0, 
         "display_name": "幽魂之靴", 
         "equip_id": 23030001, 
         "hp": 1110.0, 
-        "name": "youhunzhixue"
+        "name": "youhunzhixue", 
+        "price": 100.0, 
+        "ten": 108.0
     }, 
     "23035001": {
         "def": 52.0, 
@@ -199,7 +232,8 @@
         "equip_id": 23035001, 
         "hit": 109.0, 
         "hp": 970.0, 
-        "name": "xianxuefulv"
+        "name": "xianxuefulv", 
+        "price": 100.0
     }, 
     "23035002": {
         "def": 54.0, 
@@ -207,99 +241,115 @@
         "equip_id": 23035002, 
         "hit": 74.0, 
         "hp": 921.0, 
-        "name": "miyinlv"
+        "name": "miyinlv", 
+        "price": 100.0, 
+        "ten": 36.0
     }, 
     "31005001": {
         "atk": 10.0, 
         "display_name": "卫兵配剑", 
         "equip_id": 31005001, 
-        "name": "weibingpeijian"
+        "name": "weibingpeijian", 
+        "price": 100.0
     }, 
     "31010001": {
         "atk": 18.0, 
         "display_name": "精钢之剑", 
         "equip_id": 31010001, 
-        "name": "jinggangzhijian"
+        "name": "jinggangzhijian", 
+        "price": 100.0
     }, 
     "31020001": {
         "atk": 35.0, 
         "display_name": "匠气巨锤", 
         "equip_id": 31020001, 
-        "name": "tiejiangjuchui"
+        "name": "tiejiangjuchui", 
+        "price": 100.0
     }, 
     "31305001": {
         "atk": 10.0, 
         "display_name": "卫兵木弓", 
         "equip_id": 31305001, 
-        "name": "weibingmugong"
+        "name": "weibingmugong", 
+        "price": 100.0
     }, 
     "31310001": {
         "atk": 18.0, 
         "display_name": "精钢重弩", 
         "equip_id": 31310001, 
-        "name": "jinggangzhongnu"
+        "name": "jinggangzhongnu", 
+        "price": 100.0
     }, 
     "31330001": {
         "atk": 35.0, 
         "display_name": "匠气十字弩", 
         "equip_id": 31330001, 
-        "name": "jiangqishizinu"
+        "name": "jiangqishizinu", 
+        "price": 100.0
     }, 
     "32010001": {
         "def": 35.0, 
         "display_name": "骨剑", 
         "equip_id": 32010001, 
         "hit": 40.0, 
-        "name": "gujian"
+        "name": "gujian", 
+        "price": 100.0
     }, 
     "32020001": {
         "atk": 66.0, 
         "display_name": "圣光审判", 
         "equip_id": 32020001, 
         "hit": 145.0, 
-        "name": "shengguangshenpan"
+        "name": "shengguangshenpan", 
+        "price": 100.0
     }, 
     "32030001": {
         "atk": 86.0, 
         "display_name": "小丑腰刀", 
         "equip_id": 32030001, 
         "hit": 101.0, 
-        "name": "xiaochouyaodao"
+        "name": "xiaochouyaodao", 
+        "price": 100.0
     }, 
     "32035002": {
         "atk": 109.0, 
         "cri": 87.0, 
         "display_name": "远古祭司杖", 
         "equip_id": 32035002, 
-        "name": "yuangujisizhang"
+        "name": "yuangujisizhang", 
+        "price": 100.0
     }, 
     "32310001": {
         "def": 35.0, 
         "display_name": "白骨长弓", 
         "equip_id": 32310001, 
         "hit": 40.0, 
-        "name": "baiguchanggong"
+        "name": "baiguchanggong", 
+        "price": 100.0
     }, 
     "32320001": {
         "atk": 66.0, 
         "display_name": "圣光长弩", 
         "equip_id": 32320001, 
         "hit": 145.0, 
-        "name": "shengguangchangnu"
+        "name": "shengguangchangnu", 
+        "price": 100.0
     }, 
     "32330001": {
         "atk": 86.0, 
         "display_name": "小丑飞镖", 
         "equip_id": 32330001, 
         "hit": 101.0, 
-        "name": "xiaochoufeibiao"
+        "name": "xiaochoufeibiao", 
+        "price": 100.0
     }, 
     "33015002": {
         "atk": 48.0, 
         "cri": 38.0, 
         "display_name": "血牙", 
         "equip_id": 33015002, 
-        "name": "xueya"
+        "name": "xueya", 
+        "price": 100.0
     }, 
     "33020001": {
         "atk": 98.0, 
@@ -307,35 +357,40 @@
         "display_name": "巨龙战斧", 
         "equip_id": 33020001, 
         "hit": 110.0, 
-        "name": "julongzhanfu"
+        "name": "julongzhanfu", 
+        "price": 100.0
     }, 
     "33025002": {
         "atk": 119.0, 
         "cri": 123.0, 
         "display_name": "虚空之刃", 
         "equip_id": 33025002, 
-        "name": "xukongzhiren"
+        "name": "xukongzhiren", 
+        "price": 100.0
     }, 
     "33030001": {
         "atk": 191.0, 
         "cri": 151.0, 
         "display_name": "死神之镰", 
         "equip_id": 33030001, 
-        "name": "sishenzhilian"
+        "name": "sishenzhilian", 
+        "price": 100.0
     }, 
     "33035001": {
         "atk": 166.0, 
         "cri": 132.0, 
         "display_name": "嗜血双刀", 
         "equip_id": 33035001, 
-        "name": "shixuechangdao"
+        "name": "shixuechangdao", 
+        "price": 100.0
     }, 
     "33035002": {
         "atk": 164.0, 
         "display_name": "黄金匕首", 
         "equip_id": 33035002, 
         "hit": 131.0, 
-        "name": "huangjinbishou"
+        "name": "huangjinbishou", 
+        "price": 100.0
     }, 
     "33320001": {
         "atk": 98.0, 
@@ -343,102 +398,126 @@
         "display_name": "巨龙之翼", 
         "equip_id": 33320001, 
         "hit": 110.0, 
-        "name": "julongzhiyi"
+        "name": "julongzhiyi", 
+        "price": 100.0
     }, 
     "33330001": {
         "atk": 191.0, 
         "cri": 151.0, 
         "display_name": "幽魂长弓", 
         "equip_id": 33330001, 
-        "name": "youhunchanggong"
+        "name": "youhunchanggong", 
+        "price": 100.0
     }, 
     "41005001": {
         "display_name": "卫兵护符", 
         "equip_id": 41005001, 
-        "name": "weibinghufu"
+        "name": "weibinghufu", 
+        "price": 100.0, 
+        "ten": 6.0
     }, 
     "41010001": {
         "cri": 10.0, 
         "display_name": "队长护符", 
         "equip_id": 41010001, 
-        "name": "duizhanghufu"
+        "name": "duizhanghufu", 
+        "price": 100.0
     }, 
     "41020001": {
         "cri": 27.0, 
         "display_name": "铁匠戒指", 
         "equip_id": 41020001, 
-        "name": "tiejiangjiezhi"
+        "name": "tiejiangjiezhi", 
+        "price": 100.0
     }, 
     "42010001": {
         "cri": 30.0, 
         "display_name": "死亡之书", 
         "equip_id": 42010001, 
         "hit": 40.0, 
-        "name": "siwangzhishu"
+        "name": "siwangzhishu", 
+        "price": 100.0
     }, 
     "42020001": {
         "display_name": "神圣十字架", 
         "equip_id": 42020001, 
-        "name": "shenshengshizijia"
+        "name": "shenshengshizijia", 
+        "price": 100.0, 
+        "ten": 41.0
     }, 
     "42025002": {
         "display_name": "贤者法典", 
         "dod": 53.0, 
         "equip_id": 42025002, 
-        "name": "xianzhefadian"
+        "name": "xianzhefadian", 
+        "price": 100.0, 
+        "ten": 20.0
     }, 
     "42030001": {
         "cri": 76.0, 
         "display_name": "艺人别针", 
         "equip_id": 42030001, 
-        "name": "yirenbiezhen"
+        "name": "yirenbiezhen", 
+        "price": 100.0, 
+        "ten": 55.0
     }, 
     "43015002": {
         "display_name": "赌徒骰子", 
         "dod": 46.0, 
         "equip_id": 43015002, 
-        "name": "dutushaizi"
+        "name": "dutushaizi", 
+        "price": 100.0
     }, 
     "43020001": {
         "display_name": "巨龙之眼", 
         "equip_id": 43020001, 
         "hit": 110.0, 
-        "name": "julongzhiyan"
+        "name": "julongzhiyan", 
+        "price": 100.0
     }, 
     "43025002": {
         "display_name": "九头蛇护符", 
         "dod": 119.0, 
         "equip_id": 43025002, 
-        "name": "jiutoushehufu"
+        "name": "jiutoushehufu", 
+        "price": 100.0, 
+        "ten": 59.0
     }, 
     "43030001": {
         "display_name": "夺魂符咒", 
         "equip_id": 43030001, 
         "hit": 400.0, 
-        "name": "duohunfuzhou"
+        "name": "duohunfuzhou", 
+        "price": 100.0
     }, 
     "43035000": {
         "display_name": "骑士的魔眼", 
         "equip_id": 43035000, 
         "hp": 302.0, 
-        "name": "qishidemoyan"
+        "name": "qishidemoyan", 
+        "price": 100.0, 
+        "ten": 57.0
     }, 
     "43035002": {
         "display_name": "招财猫 ", 
         "equip_id": 43035002, 
-        "name": "zhaocaimao"
+        "name": "zhaocaimao", 
+        "price": 100.0
     }, 
     "43335001": {
         "atk": 166.0, 
         "cri": 132.0, 
         "display_name": "嗜血长鞭", 
         "equip_id": 43335001, 
-        "name": "shixuechangbian"
+        "name": "shixuechangbian", 
+        "price": 100.0
     }, 
     "53035001": {
         "display_name": "嗜血符咒", 
         "dod": 80.0, 
         "equip_id": 53035001, 
-        "name": "shixuefuzhou"
+        "name": "shixuefuzhou", 
+        "price": 100.0, 
+        "ten": 97.0
     }
 }

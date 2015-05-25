@@ -534,9 +534,11 @@ void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widg
 
 void UIHeroManageLayer::onSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        this->setVisible( false );
-        UIHeroSkillLayer* hero_skill = UIHeroSkillLayer::create();
-        this->addChild( hero_skill, 2 );
+        if( _selected_hero != nullptr ) {
+            this->setVisible( false );
+            UIHeroSkillLayer* hero_skill = UIHeroSkillLayer::create( _selected_hero );
+            this->addChild( hero_skill, 2 );
+        }
     }
 }
 

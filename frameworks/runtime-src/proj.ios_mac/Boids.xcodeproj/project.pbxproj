@@ -1191,10 +1191,10 @@
 				98733C491AFE38A3006B7C37 /* UIHeroManageLayer.h */,
 				98733C501AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp */,
 				98733C511AFE3CDE006B7C37 /* UIHeroDetailLayer.h */,
-				98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */,
-				98733C4D1AFE3B4B006B7C37 /* TouchableLayer.h */,
 				76E410211B0ADE2800518E86 /* UIHeroSkillLayer.cpp */,
 				76E410221B0ADE2800518E86 /* UIHeroSkillLayer.h */,
+				98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */,
+				98733C4D1AFE3B4B006B7C37 /* TouchableLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;

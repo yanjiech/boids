@@ -9,10 +9,7 @@
 #ifndef __Boids__UIHeroDetailLayer__
 #define __Boids__UIHeroDetailLayer__
 
-#include "cocostudio/CocoStudio.h"
-#include "ui/CocosGUI.h"
 #include "UIHeroManageLayer.h"
-#include "../unit/ElementData.h"
 
 class UIEquipmentCell : public cocos2d::Node {
 private:
@@ -143,11 +140,16 @@ public:
     
     void reloadHeroData();
     
+    bool loadRepoEquips( eEquipType type, int page_index );
+    
     void setCurrentEquiptList( cocos2d::ui::PageView* page_view );
     
     void setSelectedEquipedCell( UIEquipmentCell* cell );
     void setSelectedRepoCell( UIEquipmentCell* cell );
     void setTargetEquipedCell( UIEquipmentCell* cell );
+    
+    void updateCompareInfo();
+    void updateExtraLabel( cocos2d::ui::Text* label, int value );
     
     virtual bool onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event );
     virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );

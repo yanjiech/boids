@@ -22,6 +22,7 @@ class EquipmentData : public cocos2d::Ref {
 public:
     std::string obj_id;
     int equip_id;
+    eEquipType equip_type;
     std::string name;
     std::string display_name;
     float hp;
@@ -33,7 +34,11 @@ public:
     float cri;
     float ten;
     
+    int price;
+    
 public:
+    static std::string stringFromType( eEquipType type );
+    
     EquipmentData();
     virtual ~EquipmentData();
     
