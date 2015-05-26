@@ -21,6 +21,7 @@ enum eResourceType {
 class ResourceManager {
 private:
     cocos2d::ValueMap _unit_config;
+    cocos2d::ValueMap _talent_config;
     cocos2d::ValueMap _equip_config;
     cocos2d::ValueMap _tower_config;
     cocos2d::ValueMap _unit_levelup_cost_config;
@@ -44,6 +45,7 @@ public:
     static void destroy();
     
     const cocos2d::ValueMap& getUnitConfig() { return _unit_config; }
+    const cocos2d::ValueMap& getTalentConfig() { return _talent_config; }
     const cocos2d::ValueMap& getEquipConfig() { return _equip_config; }
     const cocos2d::ValueMap& getTowerConfig() { return _tower_config; }
     const cocos2d::ValueMap& getUnitLevelupCostConfig() { return _unit_levelup_cost_config; }
@@ -64,6 +66,7 @@ public:
     void loadDefaultData();
     
     void loadUnitData();
+    void loadTalentData();
     void loadEquipData();
     void loadTowerData();
     void loadUnitLevelupCostData();

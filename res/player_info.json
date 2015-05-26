@@ -3,23 +3,29 @@
     "diamond" : 1000,
     "team_level" : 10,
     "team_exp" : 0,
-    "team_skills" :
+    "team_talent" :
     {
-        "assault" :
-        {
-            "name" : "unknown",
-            "level" : 1
-        },
-        "defence" :
-        {
-            "name" : "unknown",
-            "level" : 2
-        },
-        "support" :
-        {
-            "name" : "unknown",
-            "level" : 3
-        }
+        "total_points" : 10,
+        "1" :
+        [
+            "1",
+            "2",
+            "3",
+            "4",
+            "12"
+        ],
+        "2" :
+        [
+            "1",
+            "2",
+            "12"
+        ],
+        "3" :
+        [
+            "2",
+            "3",
+            "5"
+        ]
     },
     "deploy_units" :
     {

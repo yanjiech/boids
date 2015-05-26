@@ -268,16 +268,6 @@ int PlayerInfo::getTeamLevel() {
     return _player_info.at( "team_level" ).asInt();
 }
 
-void PlayerInfo::gainTeamSkillLevel( int lvl_up, const std::string& skill_name ) {
-    ValueMap& skill = this->getTeamSkill( skill_name );
-    int sk_lvl = skill["level"].asInt();
-    skill["level"] = Value( sk_lvl + lvl_up );
-}
-
-ValueMap& PlayerInfo::getTeamSkill( const std::string& skill_name ) {
-    return _player_info.at( "team_skills" ).asValueMap().at( skill_name ).asValueMap();
-}
-
 int PlayerInfo::getLevelUpCost( const std::string& slot ) {
     //todo
     return INT_MAX;
@@ -309,4 +299,30 @@ int PlayerInfo::unitLevelUpByOne( const std::string& slot ) {
         return LEVEL_UP_SUCCESS;
     }
     return LEVEL_UP_ERROR_NOT_FOUND;
+}
+
+int PlayerInfo::getTotalTalentPoints() {
+    return _player_info.at( "team_talent" ).asValueMap().at( "total_points" ).asInt();
+}
+
+void PlayerInfo::setTotalTalentPoints( int points ) {
+    _player_info.at( "team_talent" ).asValueMap().at( "total_points" ) = Value( points );
+}
+
+ValueVector PlayerInfo::getTeamTalent( const std::string& type ) {
+    return _player_info.at( "team_talent" ).asValueMap().at( type ).asValueVector();
+}
+
+void PlayerInfo::setTeamTalent( const std::string& type, const std::string& slot ) {
+    ValueVector& talent = _player_info.at( "team_talent" ).asValueMap().at( type ).asValueVector();
+    bool exist = false;
+    for( auto v : talent ) {
+        if( v.asString() == slot ) {
+            exist = true;
+            break;
+        }
+    }
+    if( !exist ) {
+        talent.push_back( Value( slot ) );
+    }
 }

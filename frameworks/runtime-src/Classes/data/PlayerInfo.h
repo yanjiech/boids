@@ -65,11 +65,14 @@ public:
     void setTeamLevel( int level );
     int getTeamLevel();
     
-    void gainTeamSkillLevel( int lvl_up, const std::string& skill_name );
-    cocos2d::ValueMap& getTeamSkill( const std::string& skill_name );
-    
     int getLevelUpCost( const std::string& slot );
     int unitLevelUpByOne( const std::string& slot );
+    
+    int getTotalTalentPoints();
+    void setTotalTalentPoints( int points );
+    
+    cocos2d::ValueVector getTeamTalent( const std::string& type );
+    void setTeamTalent( const std::string& type, const std::string& slot );
 };
 
 #endif /* defined(__Boids__PlayerInfo__) */

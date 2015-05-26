@@ -70,6 +70,8 @@
 		7694AB7D1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */; };
 		76B578F51AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76B578F61AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
+		76DEA31C1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */; };
+		76DEA31D1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */; };
 		76E21D8D1AC5137B006714AD /* Equipment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8B1AC5137B006714AD /* Equipment.cpp */; };
 		76E21D8E1AC5137B006714AD /* Equipment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8B1AC5137B006714AD /* Equipment.cpp */; };
 		76E21D911AC52924006714AD /* DarkPierce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8F1AC52924006714AD /* DarkPierce.cpp */; };
@@ -543,6 +545,8 @@
 		7694AB7B1ADD1C11006CA4A9 /* TowerAttackBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerAttackBehavior.h; sourceTree = "<group>"; };
 		76B578F31AF7743600D7E783 /* TransitionLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionLayer.cpp; sourceTree = "<group>"; };
 		76B578F41AF7743600D7E783 /* TransitionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionLayer.h; sourceTree = "<group>"; };
+		76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITeamTalentLayer.cpp; sourceTree = "<group>"; };
+		76DEA31B1B14180E0020FC7D /* UITeamTalentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITeamTalentLayer.h; sourceTree = "<group>"; };
 		76E21D8B1AC5137B006714AD /* Equipment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Equipment.cpp; sourceTree = "<group>"; };
 		76E21D8C1AC5137B006714AD /* Equipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Equipment.h; sourceTree = "<group>"; };
 		76E21D8F1AC52924006714AD /* DarkPierce.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DarkPierce.cpp; sourceTree = "<group>"; };
@@ -1195,6 +1199,8 @@
 				76E410221B0ADE2800518E86 /* UIHeroSkillLayer.h */,
 				98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */,
 				98733C4D1AFE3B4B006B7C37 /* TouchableLayer.h */,
+				76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */,
+				76DEA31B1B14180E0020FC7D /* UITeamTalentLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;
@@ -2052,6 +2058,7 @@
 				E874131D1A0B5647003EBD0B /* inftrees.c in Sources */,
 				986A553F1AA559F70051B0B9 /* TargetNode.cpp in Sources */,
 				E87413151A0B5647003EBD0B /* deflate.c in Sources */,
+				76DEA31D1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */,
 				98E3B64E1A73A77A00B5BEBB /* descriptor_database.cc in Sources */,
 				986A555B1AA561730051B0B9 /* UILevelChooseLayer.cpp in Sources */,
 				9859D1CC1A7B4B8700FF6D82 /* TcpClient.cpp in Sources */,
@@ -2092,6 +2099,7 @@
 			files = (
 				76FF5A9E1AE8CD80008B721E /* GasBomb.cpp in Sources */,
 				76EA0D2E1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */,
+				76DEA31C1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */,
 				7694AB7C1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */,
 				986A55421AA55A390051B0B9 /* BuildingNode.cpp in Sources */,
 				986A55701AA565430051B0B9 /* BoidsConstant.cpp in Sources */,
@@ -2435,7 +2443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2469,7 +2477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

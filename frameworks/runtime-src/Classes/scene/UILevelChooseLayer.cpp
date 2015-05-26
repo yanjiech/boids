@@ -12,6 +12,7 @@
 #include "../manager/ResourceManager.h"
 #include "../data/PlayerInfo.h"
 #include "UIHeroManageLayer.h"
+#include "UITeamTalentLayer.h"
 
 #define MAIN_CSB_FILE "ui/page/ui_home_page.csb"
 #define LEVEL_CSB_FILE "level_choose/level/level.csb"
@@ -164,7 +165,8 @@ void UILevelChooseLayer::onHeroTouched( cocos2d::Ref* sender, cocos2d::ui::Widge
 
 void UILevelChooseLayer::onTeamSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ){
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-
+        UITeamTalentLayer* talent_layer = UITeamTalentLayer::create();
+        this->addChild( talent_layer, 2 );
     }
 }
 

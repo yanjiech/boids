@@ -16,6 +16,7 @@
 #include "../util/CocosUtils.h"
 
 #define EQUIP_CONFIG_FILE "equip"
+#define TALENT_CONFIG_FILE "talent"
 #define BULLET_CONFIG_FILE "bullet"
 #define ITEM_CONFIG_FILE "item"
 #define LEVEL_CONFIG_FILE "level"
@@ -76,6 +77,7 @@ void ResourceManager::purgeMap( MapData* map_data ) {
 void ResourceManager::loadAllData() {
     this->loadDefaultData();
     this->loadUnitData();
+    this->loadTalentData();
     this->loadEquipData();
     this->loadTowerData();
     this->loadUnitLevelupCostData();
@@ -110,11 +112,12 @@ void ResourceManager::loadDefaultData() {
     frame_cache->addSpriteFramesWithFile( "effects/fx_unit_common.plist", "effects/fx_unit_common.png" );
     
     //ui
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_common.plist", "ui/page/ui_common.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_detail.plist", "ui/page/ui_hero_detail.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_manage.plist", "ui/page/ui_hero_manage.png" );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_home.plist", "ui/page/ui_home.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_pause.plist", "ui/page/ui_pause.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/page/ui_pause.plist", "ui/page/ui_pause.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_talent.plist", "ui/page/ui_talent.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_skills.plist", "ui/ui_hero_skills.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_p.plist", "ui/ui_hero_p.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_f.plist", "ui/ui_hero_f.png" );
@@ -134,6 +137,21 @@ void ResourceManager::loadUnitData() {
     }
     else {
         _unit_config = file_util->getValueMapFromFile( plist_file );
+    }
+}
+
+void ResourceManager::loadTalentData() {
+    FileUtils* file_util = FileUtils::getInstance();
+    std::string plist_file = FileUtils::getInstance()->getWritablePath() + TALENT_CONFIG_FILE + ".plist";
+    if( !file_util->isFileExist( plist_file ) ) {
+        std::string data_string = file_util->getStringFromFile( "talent.json" );
+        rapidjson::Document config_json;
+        config_json.Parse<0>( data_string.c_str() );
+        _talent_config = CocosUtils::jsonObjectToValueMap( config_json );
+        file_util->writeToFile( _talent_config, plist_file );
+    }
+    else {
+        _talent_config = file_util->getValueMapFromFile( plist_file );
     }
 }
 

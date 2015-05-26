@@ -4,10 +4,10 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>ui_hero_skill_attack.png</key>
+            <key>ui_talent_attack.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{920,716},{101,102}}</string>
+                <string>{{770,838},{101,102}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -17,10 +17,10 @@
                 <key>sourceSize</key>
                 <string>{101,102}</string>
             </dict>
-            <key>ui_hero_skill_balance.png</key>
+            <key>ui_talent_balance.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{770,1194},{106,106}}</string>
+                <string>{{897,716},{106,106}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{106,106}</string>
             </dict>
-            <key>ui_hero_skill_bg.png</key>
+            <key>ui_talent_bg.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{1259,766}}</string>
@@ -43,10 +43,10 @@
                 <key>sourceSize</key>
                 <string>{1259,766}</string>
             </dict>
-            <key>ui_hero_skill_def.png</key>
+            <key>ui_talent_def.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{878,1194},{103,103}}</string>
+                <string>{{897,824},{103,103}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -56,20 +56,7 @@
                 <key>sourceSize</key>
                 <string>{103,103}</string>
             </dict>
-            <key>ui_hero_skill_detail_bg.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{770,716},{354,148}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{354,148}}</string>
-                <key>sourceSize</key>
-                <string>{354,148}</string>
-            </dict>
-            <key>ui_hero_skill_frame.png</key>
+            <key>ui_talent_frame.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{770,542},{185,172}}</string>
@@ -82,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{185,172}</string>
             </dict>
-            <key>ui_hero_skill_frame_focus.png</key>
+            <key>ui_talent_frame_focus.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{770,354},{199,186}}</string>
@@ -95,10 +82,10 @@
                 <key>sourceSize</key>
                 <string>{199,186}</string>
             </dict>
-            <key>ui_hero_skill_skill1.png</key>
+            <key>ui_talent_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{897,1072},{120,125}}</string>
+                <string>{{770,716},{120,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -108,20 +95,7 @@
                 <key>sourceSize</key>
                 <string>{120,125}</string>
             </dict>
-            <key>ui_hero_skill_skill1_hide.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{770,1072},{120,125}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{120,125}}</string>
-                <key>sourceSize</key>
-                <string>{120,125}</string>
-            </dict>
-            <key>ui_hero_skill_small_tab.png</key>
+            <key>ui_talent_small_tab.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{971,354},{83,39}}</string>
@@ -134,20 +108,7 @@
                 <key>sourceSize</key>
                 <string>{83,39}</string>
             </dict>
-            <key>ui_hero_skill_star1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{996,478},{23,21}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{23,21}}</string>
-                <key>sourceSize</key>
-                <string>{23,21}</string>
-            </dict>
-            <key>ui_hero_skill_star2.png</key>
+            <key>ui_talent_star.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{971,478},{23,21}}</string>
@@ -160,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{23,21}</string>
             </dict>
-            <key>ui_hero_skill_star3.png</key>
+            <key>ui_talent_star2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{971,439},{39,37}}</string>
@@ -173,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{39,37}</string>
             </dict>
-            <key>ui_hero_skill_tab.png</key>
+            <key>ui_talent_tab.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{770,178},{232,174}}</string>
@@ -186,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{232,174}</string>
             </dict>
-            <key>ui_hero_skill_tab_focus.png</key>
+            <key>ui_talent_tab_focus.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{770,2},{232,174}}</string>
@@ -205,13 +166,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>ui_hero_skill.png</string>
+            <string>ui_talent.png</string>
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8b7051ffe432e2854561f188298d2a22:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:8b00ec8268ac4cae2ae15021f3f3f8b4:1/1$</string>
             <key>textureFileName</key>
-            <string>ui_hero_skill.png</string>
+            <string>ui_talent.png</string>
         </dict>
     </dict>
 </plist>
