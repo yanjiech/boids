@@ -67,6 +67,9 @@ bool UITeamTalentLayer::init() {
         _talent_states[i].is_selected = false;
         _talent_states[i].is_enabled = false;
         _talent_states[i].cost = 0;
+        
+        ui::Layout* talent = dynamic_cast<ui::Layout*>( _root_node->getChildByTag( i + 1 ) );
+        talent->addTouchEventListener( CC_CALLBACK_2( UITeamTalentLayer::onTalentNodeTouched, this ) );
     }
     
     ui::Text* lb_atk_points = dynamic_cast<ui::Text*>( _root_node->getChildByName( "lb_atk_points" ) );
@@ -113,13 +116,16 @@ void UITeamTalentLayer::onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget
 
 void UITeamTalentLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        
+        this->recordTalentPoints();
+        this->reloadTabContent( _selected_tab );
+        this->updateDisplayedContent();
     }
 }
 
 void UITeamTalentLayer::onResetTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        
+        this->resetAllInvest();
+        this->updateDisplayedContent();
     }
 }
 
@@ -133,6 +139,7 @@ void UITeamTalentLayer::onTalentNodeTouched( cocos2d::Ref* sender, cocos2d::ui::
     }
     else if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         this->hideHint();
+        this->investTalentPoint( talent );
     }
 }
 
@@ -146,6 +153,7 @@ void UITeamTalentLayer::onTabTouched( cocos2d::Ref* sender, cocos2d::ui::Widget:
 void UITeamTalentLayer::switchToTab( int i ) {
     if( i != _selected_tab ) {
         if( _selected_tab != 0 ) {
+            this->resetCurrentInvest();
             ui::Button* last_tab = dynamic_cast<ui::Button*>( _root_node->getChildByTag( _selected_tab * 100 + _selected_tab * 10 + _selected_tab ) );
             if( last_tab ) {
                 last_tab->switchSpriteFrames();
@@ -197,6 +205,8 @@ void UITeamTalentLayer::updateDisplayedContent() {
         ui::Layout* talent = dynamic_cast<ui::Layout*>( _root_node->getChildByTag( p ) );
         bool is_enabled = _talent_states[p-1].is_enabled;
         this->setTalentEnabled( talent, is_enabled );
+        bool is_selectd = _talent_states[p-1].is_selected;
+        this->setTalentSelected( talent, is_selectd );
         ui::Text* lb_cost = dynamic_cast<ui::Text*>( talent->getChildByName( "star_number" ) );
         lb_cost->setString( Utils::toStr( _talent_states[p-1].cost ) );
     }
@@ -216,11 +226,68 @@ void UITeamTalentLayer::showHint( int i ) {
     float y = talent->getPosition().y + _pn_hint->getContentSize().height / 2;
     _pn_hint->setPosition( Point( x, y ) );
     ui::Text* hint = dynamic_cast<ui::Text*>( _pn_hint->getChildByName( "lb_hint" ) );
-    hint->setString( _talent_states[i-1].hint );
+    
+    const ValueMap& talent_config = ResourceManager::getInstance()->getTalentConfig().at( Utils::toStr( _selected_tab ) ).asValueMap().at( Utils::toStr( i ) ).asValueMap();
+    hint->setString( talent_config.at( "desc" ).asString() );
 }
 
 void UITeamTalentLayer::hideHint() {
     _pn_hint->setVisible( false );
+}
+
+void UITeamTalentLayer::investTalentPoint( cocos2d::ui::Layout* talent ) {
+    int tag = talent->getTag();
+    if( !_talent_states[tag-1].is_enabled && !_talent_states[tag-1].is_selected ) {
+        int cost = _talent_states[tag-1].cost;
+        int total_remained_points = _total_points;
+        for( int i = 0; i < 3; i++ ) {
+            total_remained_points -= _total_used_points[i];
+        }
+        if( total_remained_points >= cost ) {
+            _total_used_points[_selected_tab-1] += cost;
+            _talent_states[tag-1].is_selected = true;
+            _talent_states[tag-1].is_enabled = true;
+            this->updateDisplayedContent();
+        }
+    }
+    else if( _talent_states[tag-1].is_selected ) {
+        int cost = _talent_states[tag-1].cost;
+        _total_used_points[_selected_tab-1] -= cost;
+
+        _talent_states[tag-1].is_selected = false;
+        _talent_states[tag-1].is_enabled = false;
+        this->updateDisplayedContent();
+    }
+}
+
+void UITeamTalentLayer::resetCurrentInvest() {
+    for( int i = 0; i < 12; i++ ) {
+        if( _talent_states[i].is_selected ) {
+            _total_used_points[_selected_tab-1] -= _talent_states[i].cost;
+            _talent_states[i].is_selected = false;
+        }
+    }
+}
+
+void UITeamTalentLayer::resetAllInvest() {
+    for( int i = 0; i < 12; i++ ) {
+        if( _talent_states[i].is_enabled || _talent_states[i].is_selected ) {
+            _total_used_points[_selected_tab-1] -= _talent_states[i].cost;
+            _talent_states[i].is_selected = false;
+            _talent_states[i].is_enabled = false;
+        }
+    }
+    PlayerInfo::getInstance()->resetTeamTalent( Utils::toStr( _selected_tab ) );
+}
+
+void UITeamTalentLayer::recordTalentPoints() {
+    ValueVector activated_talents;
+    for( int i = 0; i < 12; i++ ) {
+        if( _talent_states[i].is_enabled ) {
+            activated_talents.push_back( Value( i + 1 ) );
+        }
+    }
+    PlayerInfo::getInstance()->setTeamTalent( Utils::toStr( _selected_tab ), activated_talents );
 }
 
 //private methods

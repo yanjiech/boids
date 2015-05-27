@@ -307,6 +307,7 @@ int PlayerInfo::getTotalTalentPoints() {
 
 void PlayerInfo::setTotalTalentPoints( int points ) {
     _player_info.at( "team_talent" ).asValueMap().at( "total_points" ) = Value( points );
+    this->recordPlayerInfo();
 }
 
 ValueVector PlayerInfo::getTeamTalent( const std::string& type ) {
@@ -324,5 +325,21 @@ void PlayerInfo::setTeamTalent( const std::string& type, const std::string& slot
     }
     if( !exist ) {
         talent.push_back( Value( slot ) );
+        this->recordPlayerInfo();
     }
+}
+
+void PlayerInfo::setTeamTalent( const std::string& type, const cocos2d::ValueVector& talent_vector ) {
+    ValueVector& talent = _player_info.at( "team_talent" ).asValueMap().at( type ).asValueVector();
+    talent.clear();
+    for( auto v : talent_vector ) {
+        talent.push_back( v );
+    }
+    this->recordPlayerInfo();
+}
+
+void PlayerInfo::resetTeamTalent( const std::string& type ) {
+    ValueVector& talent = _player_info.at( "team_talent" ).asValueMap().at( type ).asValueVector();
+    talent.clear();
+    this->recordPlayerInfo();
 }

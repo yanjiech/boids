@@ -73,6 +73,10 @@ public:
     
     cocos2d::ValueVector getTeamTalent( const std::string& type );
     void setTeamTalent( const std::string& type, const std::string& slot );
+    
+    void setTeamTalent( const std::string& type, const cocos2d::ValueVector& talent_vector );
+    
+    void resetTeamTalent( const std::string& type );
 };
 
 #endif /* defined(__Boids__PlayerInfo__) */

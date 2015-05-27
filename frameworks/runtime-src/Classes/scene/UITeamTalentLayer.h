@@ -17,7 +17,6 @@ struct TalentState {
     bool is_selected;
     bool is_enabled;
     int cost;
-    std::string hint;
 };
 
 class UITeamTalentLayer : public TouchableLayer {
@@ -59,6 +58,11 @@ public:
     
     void showHint( int i );
     void hideHint();
+    
+    void investTalentPoint( cocos2d::ui::Layout* talent );
+    void resetCurrentInvest();
+    void resetAllInvest();
+    void recordTalentPoints();
     
 private:
     bool isTalentSelected( cocos2d::ui::Layout* talent );

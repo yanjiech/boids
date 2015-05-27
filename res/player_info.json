@@ -1,11 +1,11 @@
 {
     "gold" : 50000,
     "diamond" : 1000,
-    "team_level" : 10,
+    "team_level" : 20,
     "team_exp" : 0,
     "team_talent" :
     {
-        "total_points" : 10,
+        "total_points" : 100,
         "1" :
         [
             "1",
