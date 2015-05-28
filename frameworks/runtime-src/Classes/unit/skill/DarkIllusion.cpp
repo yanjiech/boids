@@ -46,22 +46,34 @@ bool DarkIllusion::init( UnitNode* owner, const cocos2d::ValueMap& data, const c
     _radius = data.at( "radius" ).asFloat();
     _stun_duration = data.at( "stun_duration" ).asFloat();
     _speed = _range / _duration;
+    _dir = _owner->getUnitDirection();
+    _dir.normalize();
     
     return true;
 }
 
 void DarkIllusion::updateFrame( float delta ) {
     if( !_should_recycle ) {
+        if( _elase == 0 ) {
+            std::string resource = "effects/durarara_skill_1";
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+            std::string name = Utils::stringFormat( "%s_effect", SKILL_NAME_DARK_ILLUSION );
+            _component = TimeLimitSpineComponent::create( _duration, skeleton, name, true );
+            skeleton->getSkeleton()->flipX = ( _dir.x > 0 );
+            _component->setScale( _owner->getUnitScale() );
+            _component->setPosition( _owner->getLocalEmitPos() );
+            _component->setAnimation( 0, "animation", true );
+            _owner->addUnitComponent( _component, _component->getName(), eComponentLayer::OverObject );
+        }
+        
         _elase += delta;
         if( _elase > _duration ) {
             this->end();
         }
         else {
-            Point dir = _owner->getUnitDirection();
-            dir.normalize();
-            Point d_pos = dir * ( _speed * delta );
+            Point d_pos = _dir * ( _speed * delta );
             Point new_pos = _owner->getPosition() + d_pos;
-            
+           
             std::vector<Collidable*> collidables;
             Terrain::getInstance()->getMeshByUnitRadius( _owner->getTargetData()->collide )->getNearbyBorders( _owner->getPosition(), _speed * delta, collidables );
             bool collide = false;
@@ -97,14 +109,14 @@ void DarkIllusion::updateFrame( float delta ) {
                         //push
                         _exclude_targets.push_back( Value( deployed_id ) );
                         Point push_dir = unit->getPosition() - _owner->getPosition();
-                        float cross = dir.cross( push_dir );
+                        float cross = _dir.cross( push_dir );
                         if( cross > 0 ) {
-                            push_dir = Geometry::clockwisePerpendicularVecToLine( dir );
+                            push_dir = Geometry::clockwisePerpendicularVecToLine( _dir );
                         }
                         else {
-                            push_dir = Geometry::anticlockwisePerpendicularVecToLine( dir );
+                            push_dir = Geometry::anticlockwisePerpendicularVecToLine( _dir );
                         }
-                        float push_d = _owner->getTargetData()->collide + unit->getTargetData()->collide - Geometry::distanceToLine( unit->getPosition(), _owner->getPosition(), _owner->getPosition() + dir * 1000.0f );
+                        float push_d = _owner->getTargetData()->collide + unit->getTargetData()->collide - Geometry::distanceToLine( unit->getPosition(), _owner->getPosition(), _owner->getPosition() + _dir * 1000.0f );
                         unit->pushToward( push_dir, push_d );
                         
                         //stun
@@ -124,20 +136,6 @@ void DarkIllusion::updateFrame( float delta ) {
 
 void DarkIllusion::begin() {
     SkillNode::begin();
-    
-    std::string resource = "effects/durarara_skill_1";
-    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
-    std::string name = Utils::stringFormat( "%s_effect", SKILL_NAME_DARK_ILLUSION );
-    _component = TimeLimitSpineComponent::create( _duration, skeleton, name, true );
-    Point dir = _owner->getUnitDirection();
-    skeleton->getSkeleton()->flipX = ( dir.x > 0 );
-    _component->setScale( _owner->getUnitScale() );
-    _component->setPosition( _owner->getLocalEmitPos() );
-    _component->setAnimation( 0, "animation", true );
-    _owner->addUnitComponent( _component, _component->getName(), eComponentLayer::OverObject );
-    
-    Point pt = _owner->getLocalBonePos( "qiang" );
-    log( "qiang pos: %f, %f", pt.x, pt.y );
 }
 
 void DarkIllusion::end() {

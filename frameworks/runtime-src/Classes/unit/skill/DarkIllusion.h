@@ -25,6 +25,8 @@ private:
     
     TimeLimitSpineComponent* _component;
     
+    cocos2d::Point _dir;
+    
 public:
     DarkIllusion();
     virtual ~DarkIllusion();
