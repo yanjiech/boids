@@ -212,10 +212,20 @@ void StunBuff::updateFrame( float delta ) {
 
 void StunBuff::begin() {
     Buff::begin();
+    std::string resource = "effects/stunned";
+    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    std::string name = Utils::stringFormat( "stunned" );
+    _component = TimeLimitSpineComponent::create( _duration, skeleton, name, true );
+    _owner->addUnitComponent( _component, _component->getName(), eComponentLayer::OverObject );
+    _component->setPosition( Point( _owner->getContentSize().width / 2, _owner->getContentSize().height ) );
+    _component->setAnimation( 0, "animation", true );
+    _owner->changeUnitState( eUnitState::UnderControl, true );
 }
 
 void StunBuff::end() {
     Buff::end();
+    _component->setDuration( 0 );
+    _owner->changeUnitState( eUnitState::Idle, true );
 }
 
 

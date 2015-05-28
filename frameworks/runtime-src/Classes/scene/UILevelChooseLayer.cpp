@@ -178,18 +178,26 @@ void UILevelChooseLayer::setMapData( MapData* map_data ) {
 
 void UILevelChooseLayer::loadDeployedHeros() {
     ValueVector deployed_units = PlayerInfo::getInstance()->getPlayerDeployedUnitsInfo();
-    for( int i = 0; i < deployed_units.size(); i++ ) {
-        const ValueMap& info = deployed_units.at( i ).asValueMap();
+    for( int i = 0; i < 5; i++ ) {
         Sprite* shadow = dynamic_cast<Sprite*>( _main_node->getChildByName( Utils::stringFormat( "hero_%d", i + 1 ) ) );
         if( shadow ) {
             shadow->removeAllChildren();
-            shadow->setVisible( true );
-            std::string name = info.at( "name" ).asString();
-            std::string resource = ResourceManager::getInstance()->getPathForResource( name, eResourceType::Character_Front );
-            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
-            skeleton->setAnimation( 0, "Idle", true );
-            skeleton->setPosition( Point( shadow->getContentSize().width / 2, shadow->getContentSize().height / 2 ) );
-            shadow->addChild( skeleton );
+            if( i < deployed_units.size() ) {
+                shadow->setVisible( true );
+                 const ValueMap& info = deployed_units.at( i ).asValueMap();
+                std::string name = info.at( "name" ).asString();
+                std::string resource = ResourceManager::getInstance()->getPathForResource( name, eResourceType::Character_Front );
+                spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+                skeleton->setAnimation( 0, "Idle", true );
+                skeleton->setPosition( Point( shadow->getContentSize().width / 2, shadow->getContentSize().height / 2 ) );
+                shadow->addChild( skeleton );
+                
+                const ValueMap& unit_config = ResourceManager::getInstance()->getUnitData( name );
+                skeleton->setScale( unit_config.at( "scale" ).asFloat() );
+            }
+            else {
+                shadow->setVisible( false );
+            }
         }
     }
 }

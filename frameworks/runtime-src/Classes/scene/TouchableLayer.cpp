@@ -23,6 +23,14 @@ bool TouchableLayer::init() {
         return false;
     }
     
+    _touch_listener = EventListenerTouchOneByOne::create();
+    _touch_listener->setSwallowTouches( true );
+    _touch_listener->onTouchBegan = CC_CALLBACK_2( TouchableLayer::onTouchBegan, this );
+    _touch_listener->onTouchMoved = CC_CALLBACK_2( TouchableLayer::onTouchMoved, this );
+    _touch_listener->onTouchCancelled = CC_CALLBACK_2( TouchableLayer::onTouchCancelled, this );
+    _touch_listener->onTouchEnded = CC_CALLBACK_2( TouchableLayer::onTouchEnded, this );
+    
+    _eventDispatcher->addEventListenerWithSceneGraphPriority( _touch_listener, this );
     return true;
 }
 

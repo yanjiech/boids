@@ -43,7 +43,7 @@ bool Skill::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     else {
         itr = data.find( "skill_id" );
         int skill_id = itr->second.asInt();
-        this->setSkillName( _owner->getUnitData()->skill_names.at( skill_id ) );
+        this->setSkillName( _owner->getUnitData()->skills.at( skill_id ).asValueMap().at( "name" ).asString() );
     }
     
     this->setSkillLevel( data.at( "level" ).asInt() );

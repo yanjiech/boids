@@ -328,7 +328,7 @@
         "dodge": 5.0, 
         "dodgegr": 2.0, 
         "double_face": false, 
-        "faceleft": 0, 
+        "faceleft": 3, 
         "guard_radius": 260.0, 
         "hit": 22.0, 
         "hitgr": 2.8, 
@@ -346,9 +346,10 @@
         "range": 80.0, 
         "rec": 0.5, 
         "recgr": 0.3, 
-        "scale": 1.0, 
+        "scale": 0.7, 
         "skills": [
-            "PandaFire"
+            "DarkIllusion", 
+            "DreadLord"
         ], 
         "star": 1, 
         "ten": 3.0, 

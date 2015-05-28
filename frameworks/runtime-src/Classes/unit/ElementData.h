@@ -115,7 +115,7 @@ public:
     int price;
     int place;
     
-    std::vector<std::string> skill_names;
+    cocos2d::ValueVector skills;
     
 public:
     UnitData();

@@ -134,21 +134,6 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         //with move behavior
     }
     
-    itr = unit_data.find( "skills" );
-    if( itr != unit_data.end() ) {
-        int i = 0;
-        int count = (int)target_data->skill_names.size();
-        const cocos2d::ValueVector& skill_vector = itr->second.asValueVector();
-        for( auto sk_itr = skill_vector.begin(); sk_itr != skill_vector.end(); ++sk_itr ) {
-            if( i++ >= count ) {
-                break;
-            }
-            const cocos2d::ValueMap& sk_data = sk_itr->asValueMap();
-            Skill* skill = Skill::create( this, sk_data );
-            _skills.pushBack( skill );
-        }
-    }
-    
     if( target_data->is_double_face ) {
         std::string resource = res_manager->getPathForResource( target_data->name, eResourceType::Character_Double_Face );
         _front = ArmatureManager::getInstance()->createArmature( resource );
@@ -226,6 +211,12 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         else {
             this->hideHP();
         }
+    }
+    
+    //skill
+    for( auto v : target_data->skills ) {
+        Skill* skill = Skill::create( this, v.asValueMap() );
+        _skills.pushBack( skill );
     }
     
     return true;
@@ -429,25 +420,28 @@ void UnitNode::changeUnitDirection( const cocos2d::Point& new_dir ) {
     
     UnitData* unit_data = dynamic_cast<UnitData*>( _target_data );
     
-    float rotation = 0;
+    int flipped_x = 0;
     if( new_dir.y > 0 ) {
         if( new_dir.x > 0 ) {
-            rotation = ( unit_data->default_face_dir == 2 || unit_data->default_face_dir == 3 ) ? 180.0f : 0;
+            flipped_x = ( unit_data->default_face_dir == 2 || unit_data->default_face_dir == 3 ) ? 1 : 0;
         }
         else {
-            rotation = ( unit_data->default_face_dir == 0 || unit_data->default_face_dir == 1 ) ? 180.0f : 0;
+            flipped_x = ( unit_data->default_face_dir == 0 || unit_data->default_face_dir == 1 ) ? 1 : 0;
         }
     }
     else {
         if( new_dir.x > 0 ) {
-            rotation = ( unit_data->default_face_dir == 1 || unit_data->default_face_dir == 3 ) ? 180.0f : 0;
+            flipped_x = ( unit_data->default_face_dir == 1 || unit_data->default_face_dir == 3 ) ? 1 : 0;
         }
         else {
-            rotation = ( unit_data->default_face_dir == 0 || unit_data->default_face_dir == 2 ) ? 180.0f : 0;
+            flipped_x = ( unit_data->default_face_dir == 0 || unit_data->default_face_dir == 2 ) ? 1 : 0;
         }
     }
-    if( this->getCurrentSkeleton()->getRotationSkewY() != rotation ) {
-        this->getCurrentSkeleton()->setRotationSkewY( rotation );
+    if( this->getCurrentSkeleton()->getSkeleton()->flipX != flipped_x ) {
+        _front->getSkeleton()->flipX = flipped_x;
+        if( _back ) {
+            _back->getSkeleton()->flipX = flipped_x;
+        }
         _same_dir_frame_count = 0;
     }
     Point normalized_dir = new_dir;
@@ -515,11 +509,7 @@ cocos2d::Point UnitNode::getBonePos( const std::string& bone_name ) {
 }
 
 cocos2d::Point UnitNode::getLocalBonePos( const std::string& bone_name ) {
-    Point pos = ArmatureManager::getInstance()->getBonePosition( _current_skeleton, bone_name );
-    if( this->getCurrentSkeleton()->getRotationSkewY() > 0 ) {
-        pos = Point( -pos.x, pos.y );
-    }
-    return pos;
+    return ArmatureManager::getInstance()->getBonePosition( _current_skeleton, bone_name );
 }
 
 void UnitNode::appear() {
@@ -1234,6 +1224,19 @@ void UnitNode::setAccessory( Equipment* accessory ) {
     if( _accessory ) {
         _target_data->add( _accessory->getEquipData() );
     }
+}
+
+void UnitNode::setUnitScale( float scale ) {
+    ScaleTo* scale_to = ScaleTo::create( 0.5f, scale );
+    _front->runAction( scale_to );
+    if( _back != nullptr ) {
+        ScaleTo* scale_to_back = ScaleTo::create( 0.5f, scale );
+        _back->runAction( scale_to_back );
+    }
+}
+
+float UnitNode::getUnitScale() {
+    return _front->getScale();
 }
 
 //private methods

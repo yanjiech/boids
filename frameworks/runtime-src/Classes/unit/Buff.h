@@ -92,6 +92,9 @@ public:
 };
 
 class StunBuff : public Buff {
+private:
+    class TimeLimitSpineComponent* _component;
+    
 public:
     StunBuff();
     virtual ~StunBuff();

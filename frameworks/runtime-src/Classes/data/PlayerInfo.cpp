@@ -111,7 +111,7 @@ void PlayerInfo::setDeployUnit( const std::string& slot_id, const std::string& h
     ValueMap& player_unit_ids = _player_info.at( "deploy_units" ).asValueMap();
     auto itr = player_unit_ids.find( slot_id );
     if( itr != player_unit_ids.end() ) {
-        itr->second = Value( hero_id );
+        player_unit_ids.at( slot_id ) = Value( hero_id );
     }
     this->recordPlayerInfo();
 }
@@ -121,7 +121,7 @@ void PlayerInfo::setDeployUnits( const cocos2d::ValueMap& data ) {
     for( auto pair : data ) {
         auto itr = player_unit_ids.find( pair.first );
         if( itr != player_unit_ids.end() ) {
-            itr->second = pair.second;
+            player_unit_ids.at( pair.first ) = pair.second;
         }
     }
     this->recordPlayerInfo();

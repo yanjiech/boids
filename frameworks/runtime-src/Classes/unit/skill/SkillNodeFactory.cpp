@@ -78,6 +78,12 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_NINTH_LIFE ) {
         ret = NinthLife::create( owner, data, params );
     }
+    else if( name == SKILL_NAME_DARK_ILLUSION ) {
+        ret = DarkIllusion::create( owner, data, params );
+    }
+    else if( name == SKILL_NAME_DREAD_LORD ) {
+        ret = DreadLord::create( owner, data, params );
+    }
     
     return ret;
 }

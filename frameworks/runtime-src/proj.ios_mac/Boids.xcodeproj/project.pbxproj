@@ -98,6 +98,10 @@
 		76E605D41AC6661F0096F69D /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76148F211AC54D9300235C7B /* libboost_system.a */; };
 		76E605D51AC666500096F69D /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E605D21AC665EF0096F69D /* libboost_filesystem.a */; };
 		76E605D61AC666500096F69D /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76148F211AC54D9300235C7B /* libboost_system.a */; };
+		76E67B031B15D5F900E7504C /* DarkIllusion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E67B011B15D5F900E7504C /* DarkIllusion.cpp */; };
+		76E67B041B15D5F900E7504C /* DarkIllusion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E67B011B15D5F900E7504C /* DarkIllusion.cpp */; };
+		76E67B071B15D76300E7504C /* DreadLord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E67B051B15D76300E7504C /* DreadLord.cpp */; };
+		76E67B081B15D76300E7504C /* DreadLord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E67B051B15D76300E7504C /* DreadLord.cpp */; };
 		76EA0D2E1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */; };
 		76EA0D2F1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */; };
 		76EADAF71AC4018200E00BFA /* Trigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EADAF51AC4018200E00BFA /* Trigger.cpp */; };
@@ -570,6 +574,10 @@
 		76E533BE1ACE41430020B825 /* BlockNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockNode.cpp; sourceTree = "<group>"; };
 		76E533BF1ACE41430020B825 /* BlockNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockNode.h; sourceTree = "<group>"; };
 		76E605D21AC665EF0096F69D /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../../../../lib/lib/libboost_filesystem.a; sourceTree = "<group>"; };
+		76E67B011B15D5F900E7504C /* DarkIllusion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DarkIllusion.cpp; sourceTree = "<group>"; };
+		76E67B021B15D5F900E7504C /* DarkIllusion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkIllusion.h; sourceTree = "<group>"; };
+		76E67B051B15D76300E7504C /* DreadLord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DreadLord.cpp; sourceTree = "<group>"; };
+		76E67B061B15D76300E7504C /* DreadLord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreadLord.h; sourceTree = "<group>"; };
 		76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MissileShowers.cpp; sourceTree = "<group>"; };
 		76EA0D2D1ACBCAEA00EDD10D /* MissileShowers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissileShowers.h; sourceTree = "<group>"; };
 		76EADAF51AC4018200E00BFA /* Trigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trigger.cpp; sourceTree = "<group>"; };
@@ -1129,6 +1137,10 @@
 				76009E7C1AF863C8007DF026 /* NinthLife.h */,
 				76009E7F1AF86414007DF026 /* CrazyScratch.cpp */,
 				76009E801AF86414007DF026 /* CrazyScratch.h */,
+				76E67B011B15D5F900E7504C /* DarkIllusion.cpp */,
+				76E67B021B15D5F900E7504C /* DarkIllusion.h */,
+				76E67B051B15D76300E7504C /* DreadLord.cpp */,
+				76E67B061B15D76300E7504C /* DreadLord.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -1992,6 +2004,7 @@
 				E87412FC1A0B55F5003EBD0B /* Utils.cpp in Sources */,
 				5023813317EBBCE400990C9B /* AppDelegate.cpp in Sources */,
 				76EA0D2F1ACBCAEA00EDD10D /* MissileShowers.cpp in Sources */,
+				76E67B041B15D5F900E7504C /* DarkIllusion.cpp in Sources */,
 				76EFF5BE1AD37E5800690CFE /* AtomFart.cpp in Sources */,
 				986A55631AA562C30051B0B9 /* SceneManager.cpp in Sources */,
 				E87412F61A0B55DB003EBD0B /* NavMesh.cpp in Sources */,
@@ -2026,6 +2039,7 @@
 				987A83731ABBE1540093940D /* CrazyShoot.cpp in Sources */,
 				985F4D211AAD49E4008D2EF8 /* Skill.cpp in Sources */,
 				E87413011A0B5629003EBD0B /* TmxImage.cpp in Sources */,
+				76E67B081B15D76300E7504C /* DreadLord.cpp in Sources */,
 				98B402511AAEF12C00F4FE09 /* PlayerMoveBehavior.cpp in Sources */,
 				98E3B6681A73A77A00B5BEBB /* zero_copy_stream_impl_lite.cc in Sources */,
 				E867B1B61A36EDA900EF8088 /* CmdLineDebugger.cpp in Sources */,
@@ -2151,6 +2165,7 @@
 				9868BBA91AB2F64D002ED7A1 /* DamageCalculate.cpp in Sources */,
 				E84197C21A09226300F5DF36 /* tinyxml.cpp in Sources */,
 				E898E7521A529393001189FF /* MapDebugger.cpp in Sources */,
+				76E67B031B15D5F900E7504C /* DarkIllusion.cpp in Sources */,
 				76EF6B341ADE4EC8003E84EF /* HuntingIntuition.cpp in Sources */,
 				76E414671ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */,
 				E84197C61A09226300F5DF36 /* TmxImage.cpp in Sources */,
@@ -2177,6 +2192,7 @@
 				76E414731ACAA14F003DB126 /* SkillCache.cpp in Sources */,
 				98E3B6651A73A77A00B5BEBB /* zero_copy_stream_impl.cc in Sources */,
 				E84197D51A09226300F5DF36 /* deflate.c in Sources */,
+				76E67B071B15D76300E7504C /* DreadLord.cpp in Sources */,
 				E84197DC1A09226300F5DF36 /* inflate.c in Sources */,
 				9859D1DB1A7B4E8400FF6D82 /* Counter.cpp in Sources */,
 				E88DE6BB1A0103FC005E1ABA /* Utils.cpp in Sources */,

@@ -217,10 +217,19 @@
         {
             "name" : "durarara",
             "level" : 1,
-            "owned" : false,
+            "owned" : true,
             "locked" : false,
             "skills" :
             [
+                {
+                    "name" : "DarkIllusion",
+                    "level" : 1
+                },
+                {
+                    "name" : "DreadLord",
+                    "level" : 1
+                }
+
             ],
             "equips" :
             {
@@ -238,7 +247,14 @@
             "locked" : true,
             "skills" :
             [
-                
+                {
+                    "name" : "DarkIllusion",
+                    "level" : 1
+                },
+                {
+                    "name" : "DreadLord",
+                    "level" : 1
+                }
             ],
             "equips" :
             {

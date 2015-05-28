@@ -296,6 +296,10 @@ public:
     void setArmor( Equipment* armor );
     void setBoot( Equipment* boot );
     void setAccessory( Equipment* accessory );
+    
+    void setUnitScale( float scale );
+    float getUnitScale();
+    
     //debug
     cocos2d::DrawNode* _custom_draw;
     void drawDirection();

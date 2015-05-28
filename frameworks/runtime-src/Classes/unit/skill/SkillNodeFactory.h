@@ -31,6 +31,8 @@
 #include "GasBomb.h"
 #include "CrazyScratch.h"
 #include "NinthLife.h"
+#include "DarkIllusion.h"
+#include "DreadLord.h"
 
 class SkillNodeFactory {
 public:

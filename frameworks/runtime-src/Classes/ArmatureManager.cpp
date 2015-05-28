@@ -74,7 +74,8 @@ spine::SkeletonAnimation *ArmatureManager::createArmature(const std::string& res
 Point ArmatureManager::getBonePosition(spine::SkeletonAnimation *animation, const std::string& boneName) {
     auto bone = animation->findBone(boneName);
     if (bone) {
-        return Vec2(bone->worldX, bone->worldY);
+        Vec2 ret( bone->worldX, bone->worldY );
+        return PointApplyAffineTransform( ret, animation->getNodeToParentAffineTransform() );
     }
     return Vec2::ZERO;
 }

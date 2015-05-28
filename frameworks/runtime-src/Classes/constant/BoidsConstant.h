@@ -118,6 +118,8 @@
 #define SKILL_NAME_CRAZY_SCRATCH "CrazyScratch"
 #define SKILL_NAME_NINTH_LIFE "NinthLife"
 #define SKILL_NAME_GAS_BOMB "GasBomb"
+#define SKILL_NAME_DARK_ILLUSION "DarkIllusion"
+#define SKILL_NAME_DREAD_LORD "DreadLord"
 
 #define BULLET_NAME_GAS "gas"
 

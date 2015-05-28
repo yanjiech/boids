@@ -337,12 +337,6 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
     this->price = unit_config.at( "price" ).asInt();
     this->place = unit_config.at( "place" ).asInt();
     
-    const ValueVector& skill_vector = unit_config.at( "skills" ).asValueVector();
-    for( auto itr = skill_vector.begin(); itr != skill_vector.end(); ++itr ) {
-        std::string skl_name = itr->asString();
-        skill_names.push_back( skl_name );
-    }
-    
     //equips
     auto itr = data.find( "equips" );
     if( itr != data.end() ) {
@@ -371,6 +365,12 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
             EquipmentData* ed = EquipmentData::create( itr->second.asValueMap() );
             this->setEquipData( eEquipType::EquipTypeAccessory, ed );
         }
+    }
+    
+    //skills
+    itr = data.find( "skills" );
+    if( itr != data.end() ) {
+        skills = itr->second.asValueVector();
     }
     
     return true;

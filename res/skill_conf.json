@@ -78,6 +78,17 @@
         "range" : 100.0,
         "cd" : 5.0
     },
+    "DarkIllusion":
+    {
+        "multi_action" : true,
+        "hint" : "arrow",
+        "damage" : [ 50.0, 100.0, 200.0 ],
+        "cd" : 5.0,
+        "range" : 300.0,
+        "duration" : 0.5,
+        "stun_duration" : 2.0,
+        "radius" : 80.0
+    },
     "DarkPierce" :
     {
         "multi_action" : false,
@@ -122,6 +133,16 @@
         "delay" : 0.8,
         "duration" : 2.8,
         "range" : 0
+    },
+    "DreadLord" :
+    {
+        "multi_action" : true,
+        "hint" : "none",
+        "cd" : 5.0,
+        "duration" : 5.0,
+        "extra_atk" : [ 50.0, 100.0, 200.0 ],
+        "extra_dod" : [ 30.0, 40.0, 50.0 ],
+        "scale" : 1.2
     },
     "EvilInvoke" :
     {
