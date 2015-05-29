@@ -33,6 +33,8 @@
 #include "NinthLife.h"
 #include "DarkIllusion.h"
 #include "DreadLord.h"
+#include "SnowStorm.h"
+#include "IceDebris.h"
 
 class SkillNodeFactory {
 public:

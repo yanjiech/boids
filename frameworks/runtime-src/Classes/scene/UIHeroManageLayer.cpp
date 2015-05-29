@@ -123,7 +123,7 @@ void UIHeroManageHeroSlot::loadHeroInfo( const cocos2d::ValueMap& data ) {
         }
         
         spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( ResourceManager::getInstance()->getPathForResource( hero_name, eResourceType::Character_Front ) );
-        skeleton->setScale( 1.5f );
+        skeleton->setScale( 1.8f * unit_data->scale );
         this->setHeroSkeleton( skeleton );
     }
 }
@@ -535,7 +535,7 @@ void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widg
 void UIHeroManageLayer::onSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         if( _selected_hero != nullptr ) {
-            this->setVisible( false );
+            _root_node->setVisible( false );
             UIHeroSkillLayer* hero_skill = UIHeroSkillLayer::create( _selected_hero );
             this->addChild( hero_skill, 2 );
         }

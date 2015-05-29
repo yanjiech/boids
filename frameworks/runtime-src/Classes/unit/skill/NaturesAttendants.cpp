@@ -39,7 +39,7 @@ bool NaturesAttendants::init( UnitNode* owner, const cocos2d::ValueMap& data, co
     }
     
     int level = data.at( "level" ).asInt();
-    _heal = data.at( "heal" ).asValueVector().at( level - 1 ).asFloat();
+    _heal = data.at( "hp" ).asValueVector().at( level - 1 ).asFloat();
     _range = data.at( "range" ).asFloat();
     _count = data.at( "count" ).asValueVector().at( level - 1 ).asInt();
     _duration = data.at( "duration" ).asFloat();

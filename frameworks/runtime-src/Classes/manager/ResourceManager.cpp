@@ -91,7 +91,47 @@ void ResourceManager::loadAllData() {
 }
 
 void ResourceManager::loadDefaultData() {
+}
+
+void ResourceManager::unloadDefaultData() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->removeUnusedSpriteFrames();
+}
+
+void ResourceManager::loadUIResource() {
+    SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_common.plist", "ui/page/ui_common.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_detail.plist", "ui/page/ui_hero_detail.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_manage.plist", "ui/page/ui_hero_manage.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_home.plist", "ui/page/ui_home.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_talent.plist", "ui/page/ui_talent.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_hero_skills.plist", "ui/ui_hero_skills.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_skill_icon.plist", "ui/ui_skill_icon.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_hero_p.plist", "ui/ui_hero_p.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_hero_f.plist", "ui/ui_hero_f.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_drop.plist", "ui/ui_equip_drop.png" );
+}
+
+void ResourceManager::unloadUIResource() {
+    SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_common.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_hero_detail.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_hero_manage.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_home.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_talent.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_skills.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_skill_icon.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_p.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_f.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_icon.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_drop.plist" );
+}
+
+void ResourceManager::loadBattleResource() {
+    SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_common.plist", "ui/page/ui_common.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_pause.plist", "ui/page/ui_pause.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/base_terrain.plist", "maps/map_images/base_terrain.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/building_1.plist", "maps/map_images/building_1.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/building_2.plist", "maps/map_images/building_2.png" );
@@ -110,19 +150,30 @@ void ResourceManager::loadDefaultData() {
     frame_cache->addSpriteFramesWithFile( "ui/hero_avatars.plist", "ui/hero_avatars.png" );
     frame_cache->addSpriteFramesWithFile( "effects/bullets/bullets.plist", "effects/bullets/bullets.png" );
     frame_cache->addSpriteFramesWithFile( "effects/fx_unit_common.plist", "effects/fx_unit_common.png" );
-    
-    //ui
-    frame_cache->addSpriteFramesWithFile( "ui/page/ui_common.plist", "ui/page/ui_common.png"  );
-    frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_detail.plist", "ui/page/ui_hero_detail.png"  );
-    frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_manage.plist", "ui/page/ui_hero_manage.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/page/ui_home.plist", "ui/page/ui_home.png"  );
-    frame_cache->addSpriteFramesWithFile( "ui/page/ui_pause.plist", "ui/page/ui_pause.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/page/ui_talent.plist", "ui/page/ui_talent.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_hero_skills.plist", "ui/ui_hero_skills.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_hero_p.plist", "ui/ui_hero_p.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_hero_f.plist", "ui/ui_hero_f.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_drop.plist", "ui/ui_equip_drop.png" );
+}
+
+void ResourceManager::unloadBattleResource() {
+    SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_common.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_pause.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/base_terrain.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/building_1.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/building_2.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/building_3.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/building_4.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/decoration_1.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/decoration_2.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/decoration_3.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/obstacle_1.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/terrain_0.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/terrain_1.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/terrain_2.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/terrain_3.plist" );
+    frame_cache->removeSpriteFramesFromFile( "maps/map_images/towers.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/map_common.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/hero_avatars.plist" );
+    frame_cache->removeSpriteFramesFromFile( "effects/bullets/bullets.plist" );
+    frame_cache->removeSpriteFramesFromFile( "effects/fx_unit_common.plist" );
 }
 
 void ResourceManager::loadUnitData() {

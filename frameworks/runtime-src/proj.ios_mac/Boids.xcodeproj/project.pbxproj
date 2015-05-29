@@ -92,6 +92,10 @@
 		76E414741ACAA14F003DB126 /* SkillCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414711ACAA14F003DB126 /* SkillCache.cpp */; };
 		76E414771ACAB0B4003DB126 /* MagicPulse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414751ACAB0B4003DB126 /* MagicPulse.cpp */; };
 		76E414781ACAB0B4003DB126 /* MagicPulse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E414751ACAB0B4003DB126 /* MagicPulse.cpp */; };
+		76E50B421B180D6F00DA0996 /* SnowStorm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E50B401B180D6F00DA0996 /* SnowStorm.cpp */; };
+		76E50B431B180D6F00DA0996 /* SnowStorm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E50B401B180D6F00DA0996 /* SnowStorm.cpp */; };
+		76E50B461B180FD800DA0996 /* IceDebris.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E50B441B180FD800DA0996 /* IceDebris.cpp */; };
+		76E50B471B180FD800DA0996 /* IceDebris.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E50B441B180FD800DA0996 /* IceDebris.cpp */; };
 		76E533C01ACE41430020B825 /* BlockNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E533BE1ACE41430020B825 /* BlockNode.cpp */; };
 		76E533C11ACE41430020B825 /* BlockNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E533BE1ACE41430020B825 /* BlockNode.cpp */; };
 		76E605D31AC665EF0096F69D /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E605D21AC665EF0096F69D /* libboost_filesystem.a */; };
@@ -571,6 +575,10 @@
 		76E414721ACAA14F003DB126 /* SkillCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillCache.h; sourceTree = "<group>"; };
 		76E414751ACAB0B4003DB126 /* MagicPulse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MagicPulse.cpp; sourceTree = "<group>"; };
 		76E414761ACAB0B4003DB126 /* MagicPulse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicPulse.h; sourceTree = "<group>"; };
+		76E50B401B180D6F00DA0996 /* SnowStorm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SnowStorm.cpp; sourceTree = "<group>"; };
+		76E50B411B180D6F00DA0996 /* SnowStorm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowStorm.h; sourceTree = "<group>"; };
+		76E50B441B180FD800DA0996 /* IceDebris.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IceDebris.cpp; sourceTree = "<group>"; };
+		76E50B451B180FD800DA0996 /* IceDebris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IceDebris.h; sourceTree = "<group>"; };
 		76E533BE1ACE41430020B825 /* BlockNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockNode.cpp; sourceTree = "<group>"; };
 		76E533BF1ACE41430020B825 /* BlockNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockNode.h; sourceTree = "<group>"; };
 		76E605D21AC665EF0096F69D /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../../../../lib/lib/libboost_filesystem.a; sourceTree = "<group>"; };
@@ -1141,6 +1149,10 @@
 				76E67B021B15D5F900E7504C /* DarkIllusion.h */,
 				76E67B051B15D76300E7504C /* DreadLord.cpp */,
 				76E67B061B15D76300E7504C /* DreadLord.h */,
+				76E50B401B180D6F00DA0996 /* SnowStorm.cpp */,
+				76E50B411B180D6F00DA0996 /* SnowStorm.h */,
+				76E50B441B180FD800DA0996 /* IceDebris.cpp */,
+				76E50B451B180FD800DA0996 /* IceDebris.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -1989,6 +2001,7 @@
 				988B52E71AA4461700FB7B21 /* UIControlLayer.cpp in Sources */,
 				98E3B67C1A73A77A00B5BEBB /* stringprintf.cc in Sources */,
 				76ED99D81AD4DB8F0047D5A9 /* DeathSlice.cpp in Sources */,
+				76E50B431B180D6F00DA0996 /* SnowStorm.cpp in Sources */,
 				E874130B1A0B5629003EBD0B /* TmxTileset.cpp in Sources */,
 				9871DBEF1ABADCEF009B8EC9 /* SkillNode.cpp in Sources */,
 				E87413001A0B5629003EBD0B /* TmxEllipse.cpp in Sources */,
@@ -2073,6 +2086,7 @@
 				986A553F1AA559F70051B0B9 /* TargetNode.cpp in Sources */,
 				E87413151A0B5647003EBD0B /* deflate.c in Sources */,
 				76DEA31D1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */,
+				76E50B471B180FD800DA0996 /* IceDebris.cpp in Sources */,
 				98E3B64E1A73A77A00B5BEBB /* descriptor_database.cc in Sources */,
 				986A555B1AA561730051B0B9 /* UILevelChooseLayer.cpp in Sources */,
 				9859D1CC1A7B4B8700FF6D82 /* TcpClient.cpp in Sources */,
@@ -2247,12 +2261,14 @@
 				E84197CE1A09226300F5DF36 /* TmxPropertySet.cpp in Sources */,
 				E8EC9E071A00EF1000365A55 /* ArmatureManager.cpp in Sources */,
 				98E3B66D1A73A77A00B5BEBB /* reflection_ops.cc in Sources */,
+				76E50B461B180FD800DA0996 /* IceDebris.cpp in Sources */,
 				E84197C31A09226300F5DF36 /* tinyxmlerror.cpp in Sources */,
 				E84197E91A09228000F5DF36 /* Terrain.cpp in Sources */,
 				98733C4A1AFE38A3006B7C37 /* UIHeroManageLayer.cpp in Sources */,
 				E84197CA1A09226300F5DF36 /* TmxObject.cpp in Sources */,
 				98E3B65B1A73A77A00B5BEBB /* gzip_stream.cc in Sources */,
 				98E3B6631A73A77A00B5BEBB /* zero_copy_stream.cc in Sources */,
+				76E50B421B180D6F00DA0996 /* SnowStorm.cpp in Sources */,
 				E829419E1A5D68C00076E856 /* EditorVisionNode.cpp in Sources */,
 				9868BBA51AB2DE57002ED7A1 /* BulletNode.cpp in Sources */,
 				985F4D281AAD72B9008D2EF8 /* Buff.cpp in Sources */,

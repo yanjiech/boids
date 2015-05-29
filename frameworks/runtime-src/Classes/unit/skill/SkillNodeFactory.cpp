@@ -84,6 +84,12 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_DREAD_LORD ) {
         ret = DreadLord::create( owner, data, params );
     }
+    else if( name == SKILL_NAME_SNOW_STORM ) {
+        ret = SnowStorm::create( owner, data, params );
+    }
+    else if( name == SKILL_NAME_ICE_DEBRIS ) {
+        ret = IceDebris::create( owner, data, params );
+    }
     
     return ret;
 }

@@ -239,6 +239,33 @@
                 "accessory" : "4"
             }
         },
+        "9" :
+        {
+            "name" : "ice_witch",
+            "level" : 1,
+            "owned" : true,
+            "locked" : false,
+            "skills" :
+            [
+                {
+                    "name" : "SnowStorm",
+                    "level" : 1
+                },
+                {
+                    "name" : "IceDebris",
+                    "level" : 1
+                }
+
+            ],
+            "equips" :
+            {
+                "weapon" : "0",
+                "armor" : "0",
+                "boot" : "0",
+                "accessory" : "0"
+            }
+        },
+
         "10" :
         {
             "name" : "gandalf",

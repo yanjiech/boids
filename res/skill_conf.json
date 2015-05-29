@@ -21,7 +21,9 @@
         "angle" : 30.0,
         "bullet_length" : 90.0,
         "count_per_wave" : 5,
-        "waves" : 5
+        "waves" : 5,
+        "name" : "狂暴",
+        "desc" : "连环发出一系列射击，对地方造成大量伤害"
     },
     "BatSwarm":
     {
@@ -32,7 +34,10 @@
         "damage" : [ 50.0, 100.0, 200.0 ],
         "range" : 200.0,
         "radius" : 70.0,
-        "cd" : 6.0
+        "cd" : 6.0,
+        "name" : "蝙蝠风暴",
+        "desc" : "范围伤害，以自身为中心召唤蝙蝠群，对周围一定范围内的敌人造成dd点伤害。",
+        "op_hint" : "无"
     },
     "BonesRain" :
     {
@@ -65,7 +70,9 @@
         "damage" : [ 35.0, 40.0, 50.0 ],
         "interval" : 0.1,
         "range" : 400.0,
-        "cd" : 5.0
+        "cd" : 5.0,
+        "name" : "极速射击",
+        "desc" : "跃至空中连续对最多5名敌人造成dd点伤害"
     },
     "CrazyScratch" :
     {
@@ -76,7 +83,10 @@
         "interval" : 0.5,
         "duration" : 3.0,
         "range" : 100.0,
-        "cd" : 5.0
+        "cd" : 5.0,
+        "name" : "疯狂撕咬",
+        "desc" : "在2秒内压制敌人，并对敌人造成每秒dd点伤害，并有机会造成额外伤害。",
+        "op_hint" : ""
     },
     "DarkIllusion":
     {
@@ -87,7 +97,10 @@
         "range" : 300.0,
         "duration" : 0.5,
         "stun_duration" : 2.0,
-        "radius" : 80.0
+        "radius" : 80.0,
+        "name" : "幻雾魔影",
+        "desc" : "黑暗骑士向前冲锋，撞飞敌人并使敌人眩晕2秒，同时造成dd点伤害。",
+        "op_hint" : "无"
     },
     "DarkPierce" :
     {
@@ -97,7 +110,10 @@
         "cd" : 5.0,
         "range" : 300.0,
         "stun" : 2.0,
-        "count" : 5
+        "count" : 5,
+        "name" : "血腥穿刺",
+        "desc" : "以自身为中心，从地下召唤尖刺刺向敌人，使敌人眩晕2秒，并造成dd点伤害。",
+        "op_hint" : "无"
     },
     "DeathSlice" :
     {
@@ -140,9 +156,11 @@
         "hint" : "none",
         "cd" : 5.0,
         "duration" : 5.0,
-        "extra_atk" : [ 50.0, 100.0, 200.0 ],
-        "extra_dod" : [ 30.0, 40.0, 50.0 ],
-        "scale" : 1.2
+        "atk" : [ 50.0, 100.0, 200.0 ],
+        "dod" : [ 30.0, 40.0, 50.0 ],
+        "scale" : 1.2,
+        "name" : "恐惧魔王",
+        "desc" : "黑暗骑士在黑雾中变身，在短时间内提升aa点攻击力，gg点闪避。"
     },
     "EvilInvoke" :
     {
@@ -162,6 +180,16 @@
         "range" : 800.0,
         "interval" : [ 3.0, 3.0 ],
         "damage" : [ 50.0, 100.0, 200.0]
+    },
+    "FireWhirl" :
+    {
+        "multi_action" : false,
+        "hint" : "circle",
+        "damage" : [ 50.0, 100.0, 150.0 ],
+        "cd" : 6.0,
+        "range" : 150.0,
+        "duration" : 5.0,
+        "interval" : 1.0
     },
     "GasBomb" :
     {
@@ -187,7 +215,10 @@
         "range" : 150.0,
         "min_range" : 150.0,
         "max_range" : 300.0,
-        "stun" : 2.0
+        "stun" : 2.0,
+        "name" : "胜利之剑",
+        "desc" : "召唤胜利之剑，对范围内敌人造成dd点伤害，并使敌人眩晕2秒",
+        "op_hint" : "无"
     },
     "HuntingIntuition" :
     {
@@ -195,8 +226,26 @@
         "hint" : "none",
         "cd" : 6.0,
         "buff_duration" : 5.0,
-        "cri_up" : 0.05,
-        "hit_up" : 0.05
+        "cri" : [ 0.05, 0.10, 0.15 ],
+        "hit" : [ 0.05, 0.10, 0.15 ],
+        "name" : "狩猎直觉",
+        "desc" : "在短时间内提升亚马逊女战士cc%暴击值，hh%命中值"
+    },
+    "IceDebris" :
+    {
+        "multi_action" : false,
+        "hint" : "dyn_circle",
+        "damage" : [ 50.0, 100.0, 200.0 ],
+        "cd" : 5.0,
+        "radius" : 150.0,
+        "range" : 150.0,
+        "min_range" : 150.0,
+        "max_range" : 300.0,
+        "slow" : 2.0,
+        "buff_duration" : 2.0,
+        "slow" : 0.5,
+        "name" : "寒冰碎片",
+        "desc" : "对范围内敌人造成dd点伤害，并且减速50%，持续2秒。"
     },
     "Impetus" :
     {
@@ -208,7 +257,9 @@
         "buff_damage" : [ 5.0, 10.0, 20.0 ],
         "range" : 500.0,
         "charging_effect" : "effects/enchantress_skill_2/charge",
-        "charging_effect_pos" : "EmitPoint"
+        "charging_effect_pos" : "EmitPoint",
+        "name" : "绿毒之击",
+        "desc" : "向敌人投掷带有剧毒的茅，造成dd点伤害，并使敌人中毒。"
     },
     "LightningChain" :
     {
@@ -220,15 +271,19 @@
         "length" : 265.0,
         "range" : 400.0,
         "count" : 5,
-        "interval" : 0.1
+        "interval" : 0.1,
+        "name" : "闪电链",
+        "desc" : "召唤闪电，对最多5名敌人分别造成dd点伤害"
     },
     "LightShield" :
     {
         "multi_action" : false,
         "hint" : "none",
         "cd" : 8.0,
-        "hp" : [ 100.0, 200.0, 300.0 ],
-        "duration" : 6.0
+        "damage" : [ 100.0, 200.0, 300.0 ],
+        "duration" : 6.0,
+        "name" : "王霸之色",
+        "desc" : "释放防护罩，吸收dd点伤害"
     },
     "MagicPulse" :
     {
@@ -256,14 +311,17 @@
     {
         "multi_action" : false,
         "hint" : "circle",
-        "heal" : [ 20.0, 40.0, 60.0 ],
+        "hp" : [ 20.0, 40.0, 60.0 ],
         "cd" : 5.0,
         "count" : [ 4, 6, 8, 10 ],
         "range" : 500.0,
         "interval" : 1.0,
         "init_speed" : 300.0,
         "accel" : 600.0,
-        "duration" : 10.0
+        "duration" : 10.0,
+        "name" : "自然之助",
+        "desc" : "召唤小精灵，为范围内我方角色美妙回复pp点生命",
+        "op_hint" : "无"
     },
     "NinthLife" :
     {
@@ -297,17 +355,27 @@
         "bullet_name" : "penetrate_spear",
         "charging_effect" : "effects/hippolyta_skill_1/charge",
         "touch_down_cast" : true,
-        "radius" : 80.0
+        "radius" : 80.0,
+        "name" : "穿刺投掷",
+        "desc" : "投掷长矛，对路径上敌人造成dd点伤害，且蓄力时间越长，投掷的距离越长。",
+        "op_hint" : "无"
     },
-    "FireWhirl" :
+    "SnowStorm" :
     {
-        "multi_action" : false,
-        "hint" : "circle",
-        "damage" : [ 50.0, 100.0, 150.0 ],
-        "cd" : 6.0,
+        "multi_action" : true,
+        "hint" : "dyn_circle",
+        "damage" : [ 50.0, 100.0, 200.0 ],
+        "cd" : 5.0,
+        "radius" : 150.0,
         "range" : 150.0,
+        "min_range" : 150.0,
+        "max_range" : 300.0,
         "duration" : 5.0,
-        "interval" : 1.0
+        "buff_duration" : 2.0,
+        "slow" : 0.5,
+        "name" : "暴风雪",
+        "desc" : "持续对范围内的敌人造成dd点伤害，并且减速50%，持续2秒。",
+        "op_hint" : "无"
     },
     "WrathOfThunder" :
     {
@@ -316,6 +384,9 @@
         "count" : 5,
         "cd" : 6.0,
         "damage" : [ 50.0, 100.0, 200.0 ],
-        "range" : 500.0
+        "range" : 500.0,
+        "name" : "雷神之怒", 
+        "desc" : "召唤落雷，对范围内最多5个敌人分别造成dd点伤害。",
+        "op_hint" : "无"
     }
 }

@@ -38,8 +38,8 @@ bool DreadLord::init( UnitNode* owner, const cocos2d::ValueMap& data, const coco
     }
     
     int level = data.at( "level" ).asInt();
-    _extra_atk = data.at( "extra_atk" ).asValueVector().at( level - 1 ).asFloat();
-    _extra_dod = data.at( "extra_atk" ).asValueVector().at( level - 1 ).asFloat();
+    _extra_atk = data.at( "atk" ).asValueVector().at( level - 1 ).asFloat();
+    _extra_dod = data.at( "dod" ).asValueVector().at( level - 1 ).asFloat();
     _duration = data.at( "duration" ).asFloat();
     _elapse = 0;
     

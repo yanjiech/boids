@@ -633,7 +633,7 @@
         "atk": 28.0, 
         "atkgr": 13.0, 
         "attackspeed": 2.0, 
-        "bullet_name": "blue_ball", 
+        "bullet_name": "pink_ball", 
         "collide": 40.0, 
         "cri": 3.0, 
         "crigr": 3.8, 
@@ -951,7 +951,7 @@
         "atk": 32.0, 
         "atkgr": 14.0, 
         "attackspeed": 2.0, 
-        "bullet_name": "enchantress_javelin", 
+        "bullet_name": "pink_ball",
         "collide": 40.0, 
         "cri": 2.0, 
         "crigr": 4.1, 
@@ -961,7 +961,7 @@
         "dodge": 5.0, 
         "dodgegr": 2.4, 
         "double_face": false, 
-        "faceleft": 1, 
+        "faceleft": 3, 
         "guard_radius": 340.0, 
         "hit": 23.0, 
         "hitgr": 3.0, 
@@ -981,8 +981,8 @@
         "recgr": 0.2, 
         "scale": 1.0, 
         "skills": [
-            "NaturesAttendants", 
-            "Impetus"
+            "SnowStorm", 
+            "IceDebris"
         ], 
         "star": 1, 
         "ten": 3.0, 

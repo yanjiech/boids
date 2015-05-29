@@ -63,7 +63,14 @@ public:
     
     void loadAllData();
     
+    void loadUIResource();
+    void unloadUIResource();
+    
+    void loadBattleResource();
+    void unloadBattleResource();
+    
     void loadDefaultData();
+    void unloadDefaultData();
     
     void loadUnitData();
     void loadTalentData();

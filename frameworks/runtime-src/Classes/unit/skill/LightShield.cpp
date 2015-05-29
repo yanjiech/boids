@@ -37,7 +37,7 @@ bool LightShield::init( UnitNode* owner, const cocos2d::ValueMap& data, const co
     }
     
     int level = data.at( "level" ).asInt();
-    _absorb = data.at( "hp" ).asValueVector().at( level - 1 ).asFloat();
+    _absorb = data.at( "damage" ).asValueVector().at( level - 1 ).asFloat();
     _duration = data.at( "duration" ).asFloat();
     return true;
 }

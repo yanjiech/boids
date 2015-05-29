@@ -83,15 +83,18 @@ void TransitionLayer::setSceneConfig( SceneConfig* new_config ) {
 }
 
 void TransitionLayer::transitUpdate( float delta ) {
+    ResourceManager::getInstance()->unloadDefaultData();
     Terrain::getInstance()->release();
     ArmatureManager::getInstance()->clearArmatureData();
     SceneBase* next_scene = SceneBase::create();
     cocos2d::Layer* layer = nullptr;
     if( _next_scene_name == eSceneName::SceneLevelChoose ) {
+        ResourceManager::getInstance()->loadUIResource();
         layer = UILevelChooseLayer::create();
         next_scene->addChild( layer, 10000 );
     }
     else if( _next_scene_name == eSceneName::SceneBattle ) {
+        ResourceManager::getInstance()->loadBattleResource();
         bool is_pvp = _next_scene_config->value_params["is_pvp"].asBool();
         MapData* map_data = dynamic_cast<MapData*>( _next_scene_config->ref_params.at( 0 ) );
         layer = BattleLayer::create( map_data, is_pvp );
