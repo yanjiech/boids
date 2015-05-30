@@ -18,6 +18,11 @@ private:
     cocos2d::Point _target_pos;
     float _duration;
     float _elapse;
+    float _interval;
+    float _damage_interval;
+    
+    class DamageCalculate* _calculator;
+    cocos2d::ValueMap _buff_data;
     
 public:
     SnowStorm();
@@ -30,6 +35,9 @@ public:
     
     virtual void begin();
     virtual void end();
+
+    class DamageCalculate* getDamageCaculator();
+    void setDamageCalculator( class DamageCalculate* calculator );
 };
 
 #endif /* defined(__Boids__SnowStorm__) */

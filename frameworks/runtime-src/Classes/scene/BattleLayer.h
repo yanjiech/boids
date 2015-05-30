@@ -200,7 +200,7 @@ public:
     
     TargetNode* getAliveTargetByDeployId( int deploy_id );
     
-    bool addBullet( int key, BulletNode* bullet );
+    bool addBullet( int key, BulletNode* bullet, eBattleSubLayer layer = eBattleSubLayer::EffectLayer );
     void removeBullet( int key );
     
     void onUnitAppear( UnitNode* unit );

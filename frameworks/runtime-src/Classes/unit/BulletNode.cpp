@@ -575,7 +575,7 @@ bool FixedPosBulletNode::init( class TargetNode* unit_node, const cocos2d::Value
     return true;
 }
 
-void FixedPosBulletNode::shootAtPosition( const cocos2d::Point& pos ) {
+void FixedPosBulletNode::shootAtPosition( const cocos2d::Point& pos, int layer ) {
     std::string resource = Utils::stringFormat( "effects/bullets/%s_body", _bullet_data.at( "name" ).asString().c_str() );
     spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
     skeleton->setEventListener( CC_CALLBACK_2( FixedPosBulletNode::onSkeletonAnimationEvent, this ) );
@@ -587,50 +587,16 @@ void FixedPosBulletNode::shootAtPosition( const cocos2d::Point& pos ) {
     }
     this->addChild( skeleton );
     this->setPosition( pos );
-    _battle_layer->addBullet( BulletNode::getNextBulletId(), this );
+    _battle_layer->addBullet( BulletNode::getNextBulletId(), this, (eBattleSubLayer)layer );
 }
 
 void FixedPosBulletNode::updateFrame( float delta ) {
 }
 
 void FixedPosBulletNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
-    bool show_hit_effect = false;
-    std::string hit_type = "";
-    std::string hit_name = "";
-    
-    auto itr = _bullet_data.find( "hit_type" );
-    if( itr != _bullet_data.end() ) {
-        hit_type = itr->second.asString();
-        hit_name = _bullet_data.at( "hit_name" ).asString();
-    }
-    
-    float hit_effect_scale = 1.0f;
-    itr = _bullet_data.find( "hit_scale" );
-    if( itr != _bullet_data.end() ) {
-        hit_effect_scale = itr->second.asFloat();
-    }
-    
-    if( hit_type != "" ) {
-        show_hit_effect = true;
-    }
-    
     Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), this->getPosition(), _damage_radius );
     for( auto u : candidates ) {
-        ValueMap result = _damage_calculator->calculateDamageWithoutMiss( _source_unit->getTargetData(), u->getTargetData() );
-        u->takeDamage( result, _source_unit );
-        
-        //hit effect
-        if( show_hit_effect ) {
-            std::string hit_resource = Utils::stringFormat( "effects/bullets/%s_hit", hit_name.c_str() );
-            spine::SkeletonAnimation* hit_effect = ArmatureManager::getInstance()->createArmature( hit_resource );
-            if( hit_effect_scale != 1.0f ) {
-                hit_effect->setScale( hit_effect_scale );
-            }
-            UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( hit_effect, Utils::stringFormat( "bullet_%d_hit", _bullet_id ), true );
-            component->setPosition( u->getLocalHitPos() );
-            u->addUnitComponent( component, component->getName(), eComponentLayer::OverObject );
-            component->setAnimation( 0, "animation", false );
-        }
+        this->hitTarget( u, true );
     }
 }
 

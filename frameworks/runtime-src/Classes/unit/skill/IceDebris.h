@@ -12,6 +12,11 @@
 #include "SkillNode.h"
 
 class IceDebris : public SkillNode {
+private:
+    cocos2d::Point _target_pos;
+    
+    class DamageCalculate* _calculator;
+    cocos2d::ValueMap _buff_data;
 public:
     IceDebris();
     virtual ~IceDebris();
@@ -23,6 +28,9 @@ public:
     
     virtual void begin();
     virtual void end();
+    
+    class DamageCalculate* getDamageCaculator();
+    void setDamageCalculator( class DamageCalculate* calculator );
 };
 
 #endif /* defined(__Boids__IceDebris__) */

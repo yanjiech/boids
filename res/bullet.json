@@ -88,6 +88,17 @@
         "hit_type": "spine",
         "hit_name": "default"
     },
+    "ice" :
+    {
+        "name" : "ice",
+        "move_type" : "fixed",
+        "body_type" : "spine",
+        "hit_type" : "spine",
+        "hit_name" : "default",
+        "hit_scale" : 1.0,
+        "scale" : 1.0,
+        "damage_radius" : 150.0
+    },
     "pink_ball": {
         "streak_width": 32.0,
         "move_type": "straight",
@@ -154,6 +165,17 @@
         "hit_name" : "default",
         "need_rotate": true,
         "track_target" : true
+    },
+    "storm_bullet" :
+    {
+        "name" : "storm_bullet",
+        "move_type" : "fixed",
+        "body_type" : "spine",
+        "hit_type" : "spine",
+        "hit_name" : "default",
+        "damage_radius" : 60.0,
+        "hit_scale" : 1.0,
+        "scale" : 1.0
     },
     "penetrate_spear" :
     {

@@ -620,12 +620,12 @@ BlockNode* BattleLayer::getBlockNode( const std::string& name ) {
     return nullptr;
 }
 
-bool BattleLayer::addBullet( int key, BulletNode* bullet ) {
+bool BattleLayer::addBullet( int key, BulletNode* bullet, eBattleSubLayer layer ) {
     std::string k = Utils::stringFormat( "%d", key );
     auto itr = _bullets.find( k );
     if( itr == _bullets.end() ) {
         _bullets.insert( k, bullet );
-        this->addToEffectLayer( bullet, bullet->getPosition(), 0 );
+        this->addToLayer( bullet, layer, bullet->getPosition(), 0 );
         return true;
     }
     return false;

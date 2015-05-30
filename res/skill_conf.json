@@ -368,6 +368,7 @@
         "cd" : 5.0,
         "radius" : 150.0,
         "range" : 150.0,
+        "interval" : 0.3,
         "min_range" : 150.0,
         "max_range" : 300.0,
         "duration" : 5.0,
