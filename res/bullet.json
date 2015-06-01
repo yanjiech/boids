@@ -215,7 +215,7 @@
         "streak_color" : { "r" : 140, "g" : 180, "b" : 250 },
         "body_type": "spine",
         "name": "snow_ball",
-        "need_rotate": false,
+        "need_rotate": true,
         "track_target" : true,
         "hit_type": "spine",
         "hit_name": "default",
