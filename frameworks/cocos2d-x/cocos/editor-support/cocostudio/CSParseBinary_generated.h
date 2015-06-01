@@ -1000,86 +1000,208 @@ inline flatbuffers::Offset<TextBMFontOptions> CreateTextBMFontOptions(flatbuffer
 }
 
 struct TextOptions : private flatbuffers::Table {
-  const WidgetOptions *widgetOptions() const { return GetPointer<const WidgetOptions *>(4); }
-  const ResourceData *fontResource() const { return GetPointer<const ResourceData *>(6); }
-  const flatbuffers::String *fontName() const { return GetPointer<const flatbuffers::String *>(8); }
-  int32_t fontSize() const { return GetField<int32_t>(10, 0); }
-  const flatbuffers::String *text() const { return GetPointer<const flatbuffers::String *>(12); }
-  int32_t areaWidth() const { return GetField<int32_t>(14, 0); }
-  int32_t areaHeight() const { return GetField<int32_t>(16, 0); }
-  int32_t hAlignment() const { return GetField<int32_t>(18, 0); }
-  int32_t vAlignment() const { return GetField<int32_t>(20, 0); }
-  uint8_t touchScaleEnable() const { return GetField<uint8_t>(22, 0); }
-  uint8_t isCustomSize() const { return GetField<uint8_t>(24, 0); }
-  bool Verify(flatbuffers::Verifier &verifier) const {
-    return VerifyTableStart(verifier) &&
-           VerifyField<flatbuffers::uoffset_t>(verifier, 4 /* widgetOptions */) &&
-           verifier.VerifyTable(widgetOptions()) &&
-           VerifyField<flatbuffers::uoffset_t>(verifier, 6 /* fontResource */) &&
-           verifier.VerifyTable(fontResource()) &&
-           VerifyField<flatbuffers::uoffset_t>(verifier, 8 /* fontName */) &&
-           verifier.Verify(fontName()) &&
-           VerifyField<int32_t>(verifier, 10 /* fontSize */) &&
-           VerifyField<flatbuffers::uoffset_t>(verifier, 12 /* text */) &&
-           verifier.Verify(text()) &&
-           VerifyField<int32_t>(verifier, 14 /* areaWidth */) &&
-           VerifyField<int32_t>(verifier, 16 /* areaHeight */) &&
-           VerifyField<int32_t>(verifier, 18 /* hAlignment */) &&
-           VerifyField<int32_t>(verifier, 20 /* vAlignment */) &&
-           VerifyField<uint8_t>(verifier, 22 /* touchScaleEnable */) &&
-           VerifyField<uint8_t>(verifier, 24 /* isCustomSize */) &&
-           verifier.EndTable();
-  }
+    const WidgetOptions *widgetOptions() const { return GetPointer<const WidgetOptions *>(4); }
+    const ResourceData *fontResource() const { return GetPointer<const ResourceData *>(6); }
+    const flatbuffers::String *fontName() const { return GetPointer<const flatbuffers::String *>(8); }
+    int32_t fontSize() const { return GetField<int32_t>(10, 0); }
+    const flatbuffers::String *text() const { return GetPointer<const flatbuffers::String *>(12); }
+    int32_t areaWidth() const { return GetField<int32_t>(14, 0); }
+    int32_t areaHeight() const { return GetField<int32_t>(16, 0); }
+    int32_t hAlignment() const { return GetField<int32_t>(18, 0); }
+    int32_t vAlignment() const { return GetField<int32_t>(20, 0); }
+    uint8_t touchScaleEnable() const { return GetField<uint8_t>(22, 0); }
+    uint8_t isCustomSize() const { return GetField<uint8_t>(24, 0); }
+    uint8_t outlineEnabled() const { return GetField<uint8_t>(26, 0); }
+    const Color *outlineColor() const { return GetStruct<const Color *>(28); }
+    int32_t outlineSize() const { return GetField<int32_t>(30, 1); }
+    uint8_t shadowEnabled() const { return GetField<uint8_t>(32, 0); }
+    const Color *shadowColor() const { return GetStruct<const Color *>(34); }
+    float shadowOffsetX() const { return GetField<float>(36, 2); }
+    float shadowOffsetY() const { return GetField<float>(38, -2); }
+    int32_t shadowBlurRadius() const { return GetField<int32_t>(40, 0); }
+    bool Verify(flatbuffers::Verifier &verifier) const {
+        return VerifyTableStart(verifier) &&
+        VerifyField<flatbuffers::uoffset_t>(verifier, 4 /* widgetOptions */) &&
+        verifier.VerifyTable(widgetOptions()) &&
+        VerifyField<flatbuffers::uoffset_t>(verifier, 6 /* fontResource */) &&
+        verifier.VerifyTable(fontResource()) &&
+        VerifyField<flatbuffers::uoffset_t>(verifier, 8 /* fontName */) &&
+        verifier.Verify(fontName()) &&
+        VerifyField<int32_t>(verifier, 10 /* fontSize */) &&
+        VerifyField<flatbuffers::uoffset_t>(verifier, 12 /* text */) &&
+        verifier.Verify(text()) &&
+        VerifyField<int32_t>(verifier, 14 /* areaWidth */) &&
+        VerifyField<int32_t>(verifier, 16 /* areaHeight */) &&
+        VerifyField<int32_t>(verifier, 18 /* hAlignment */) &&
+        VerifyField<int32_t>(verifier, 20 /* vAlignment */) &&
+        VerifyField<uint8_t>(verifier, 22 /* touchScaleEnable */) &&
+        VerifyField<uint8_t>(verifier, 24 /* isCustomSize */) &&
+        VerifyField<uint8_t>(verifier, 26 /* outlineEnabled */) &&
+        VerifyField<Color>(verifier, 28 /* outlineColor */) &&
+        VerifyField<int32_t>(verifier, 30 /* outlineSize */) &&
+        VerifyField<uint8_t>(verifier, 32 /* shadowEnabled */) &&
+        VerifyField<Color>(verifier, 34 /* shadowColor */) &&
+        VerifyField<float>(verifier, 36 /* shadowOffsetX */) &&
+        VerifyField<float>(verifier, 38 /* shadowOffsetY */) &&
+        VerifyField<int32_t>(verifier, 40 /* shadowBlurRadius */) &&
+        verifier.EndTable();
+    }
 };
 
 struct TextOptionsBuilder {
-  flatbuffers::FlatBufferBuilder &fbb_;
-  flatbuffers::uoffset_t start_;
-  void add_widgetOptions(flatbuffers::Offset<WidgetOptions> widgetOptions) { fbb_.AddOffset(4, widgetOptions); }
-  void add_fontResource(flatbuffers::Offset<ResourceData> fontResource) { fbb_.AddOffset(6, fontResource); }
-  void add_fontName(flatbuffers::Offset<flatbuffers::String> fontName) { fbb_.AddOffset(8, fontName); }
-  void add_fontSize(int32_t fontSize) { fbb_.AddElement<int32_t>(10, fontSize, 0); }
-  void add_text(flatbuffers::Offset<flatbuffers::String> text) { fbb_.AddOffset(12, text); }
-  void add_areaWidth(int32_t areaWidth) { fbb_.AddElement<int32_t>(14, areaWidth, 0); }
-  void add_areaHeight(int32_t areaHeight) { fbb_.AddElement<int32_t>(16, areaHeight, 0); }
-  void add_hAlignment(int32_t hAlignment) { fbb_.AddElement<int32_t>(18, hAlignment, 0); }
-  void add_vAlignment(int32_t vAlignment) { fbb_.AddElement<int32_t>(20, vAlignment, 0); }
-  void add_touchScaleEnable(uint8_t touchScaleEnable) { fbb_.AddElement<uint8_t>(22, touchScaleEnable, 0); }
-  void add_isCustomSize(uint8_t isCustomSize) { fbb_.AddElement<uint8_t>(24, isCustomSize, 0); }
-  TextOptionsBuilder(flatbuffers::FlatBufferBuilder &_fbb) : fbb_(_fbb) { start_ = fbb_.StartTable(); }
-  TextOptionsBuilder &operator=(const TextOptionsBuilder &);
-  flatbuffers::Offset<TextOptions> Finish() {
-    auto o = flatbuffers::Offset<TextOptions>(fbb_.EndTable(start_, 11));
-    return o;
-  }
+    flatbuffers::FlatBufferBuilder &fbb_;
+    flatbuffers::uoffset_t start_;
+    void add_widgetOptions(flatbuffers::Offset<WidgetOptions> widgetOptions) { fbb_.AddOffset(4, widgetOptions); }
+    void add_fontResource(flatbuffers::Offset<ResourceData> fontResource) { fbb_.AddOffset(6, fontResource); }
+    void add_fontName(flatbuffers::Offset<flatbuffers::String> fontName) { fbb_.AddOffset(8, fontName); }
+    void add_fontSize(int32_t fontSize) { fbb_.AddElement<int32_t>(10, fontSize, 0); }
+    void add_text(flatbuffers::Offset<flatbuffers::String> text) { fbb_.AddOffset(12, text); }
+    void add_areaWidth(int32_t areaWidth) { fbb_.AddElement<int32_t>(14, areaWidth, 0); }
+    void add_areaHeight(int32_t areaHeight) { fbb_.AddElement<int32_t>(16, areaHeight, 0); }
+    void add_hAlignment(int32_t hAlignment) { fbb_.AddElement<int32_t>(18, hAlignment, 0); }
+    void add_vAlignment(int32_t vAlignment) { fbb_.AddElement<int32_t>(20, vAlignment, 0); }
+    void add_touchScaleEnable(uint8_t touchScaleEnable) { fbb_.AddElement<uint8_t>(22, touchScaleEnable, 0); }
+    void add_isCustomSize(uint8_t isCustomSize) { fbb_.AddElement<uint8_t>(24, isCustomSize, 0); }
+    void add_outlineEnabled(uint8_t outlineEnabled) { fbb_.AddElement<uint8_t>(26, outlineEnabled, 0); }
+    void add_outlineColor(const Color *outlineColor) { fbb_.AddStruct(28, outlineColor); }
+    void add_outlineSize(int32_t outlineSize) { fbb_.AddElement<int32_t>(30, outlineSize, 1); }
+    void add_shadowEnabled(uint8_t shadowEnabled) { fbb_.AddElement<uint8_t>(32, shadowEnabled, 0); }
+    void add_shadowColor(const Color *shadowColor) { fbb_.AddStruct(34, shadowColor); }
+    void add_shadowOffsetX(float shadowOffsetX) { fbb_.AddElement<float>(36, shadowOffsetX, 2); }
+    void add_shadowOffsetY(float shadowOffsetY) { fbb_.AddElement<float>(38, shadowOffsetY, -2); }
+    void add_shadowBlurRadius(int32_t shadowBlurRadius) { fbb_.AddElement<int32_t>(40, shadowBlurRadius, 0); }
+    TextOptionsBuilder(flatbuffers::FlatBufferBuilder &_fbb) : fbb_(_fbb) { start_ = fbb_.StartTable(); }
+    TextOptionsBuilder &operator=(const TextOptionsBuilder &);
+    flatbuffers::Offset<TextOptions> Finish() {
+        auto o = flatbuffers::Offset<TextOptions>(fbb_.EndTable(start_, 19));
+        return o;
+    }
 };
 
 inline flatbuffers::Offset<TextOptions> CreateTextOptions(flatbuffers::FlatBufferBuilder &_fbb,
-   flatbuffers::Offset<WidgetOptions> widgetOptions = 0,
-   flatbuffers::Offset<ResourceData> fontResource = 0,
-   flatbuffers::Offset<flatbuffers::String> fontName = 0,
-   int32_t fontSize = 0,
-   flatbuffers::Offset<flatbuffers::String> text = 0,
-   int32_t areaWidth = 0,
-   int32_t areaHeight = 0,
-   int32_t hAlignment = 0,
-   int32_t vAlignment = 0,
-   uint8_t touchScaleEnable = 0,
-   uint8_t isCustomSize = 0) {
-  TextOptionsBuilder builder_(_fbb);
-  builder_.add_vAlignment(vAlignment);
-  builder_.add_hAlignment(hAlignment);
-  builder_.add_areaHeight(areaHeight);
-  builder_.add_areaWidth(areaWidth);
-  builder_.add_text(text);
-  builder_.add_fontSize(fontSize);
-  builder_.add_fontName(fontName);
-  builder_.add_fontResource(fontResource);
-  builder_.add_widgetOptions(widgetOptions);
-  builder_.add_isCustomSize(isCustomSize);
-  builder_.add_touchScaleEnable(touchScaleEnable);
-  return builder_.Finish();
+                                                          flatbuffers::Offset<WidgetOptions> widgetOptions = 0,
+                                                          flatbuffers::Offset<ResourceData> fontResource = 0,
+                                                          flatbuffers::Offset<flatbuffers::String> fontName = 0,
+                                                          int32_t fontSize = 0,
+                                                          flatbuffers::Offset<flatbuffers::String> text = 0,
+                                                          int32_t areaWidth = 0,
+                                                          int32_t areaHeight = 0,
+                                                          int32_t hAlignment = 0,
+                                                          int32_t vAlignment = 0,
+                                                          uint8_t touchScaleEnable = 0,
+                                                          uint8_t isCustomSize = 0,
+                                                          uint8_t outlineEnabled = 0,
+                                                          const Color *outlineColor = 0,
+                                                          int32_t outlineSize = 1,
+                                                          uint8_t shadowEnabled = 0,
+                                                          const Color *shadowColor = 0,
+                                                          float shadowOffsetX = 2,
+                                                          float shadowOffsetY = -2,
+                                                          int32_t shadowBlurRadius = 0) {
+    TextOptionsBuilder builder_(_fbb);
+    builder_.add_shadowBlurRadius(shadowBlurRadius);
+    builder_.add_shadowOffsetY(shadowOffsetY);
+    builder_.add_shadowOffsetX(shadowOffsetX);
+    builder_.add_shadowColor(shadowColor);
+    builder_.add_outlineSize(outlineSize);
+    builder_.add_outlineColor(outlineColor);
+    builder_.add_vAlignment(vAlignment);
+    builder_.add_hAlignment(hAlignment);
+    builder_.add_areaHeight(areaHeight);
+    builder_.add_areaWidth(areaWidth);
+    builder_.add_text(text);
+    builder_.add_fontSize(fontSize);
+    builder_.add_fontName(fontName);
+    builder_.add_fontResource(fontResource);
+    builder_.add_widgetOptions(widgetOptions);
+    builder_.add_shadowEnabled(shadowEnabled);
+    builder_.add_outlineEnabled(outlineEnabled);
+    builder_.add_isCustomSize(isCustomSize);
+    builder_.add_touchScaleEnable(touchScaleEnable);
+    return builder_.Finish();
 }
+
+//struct TextOptions : private flatbuffers::Table {
+//  const WidgetOptions *widgetOptions() const { return GetPointer<const WidgetOptions *>(4); }
+//  const ResourceData *fontResource() const { return GetPointer<const ResourceData *>(6); }
+//  const flatbuffers::String *fontName() const { return GetPointer<const flatbuffers::String *>(8); }
+//  int32_t fontSize() const { return GetField<int32_t>(10, 0); }
+//  const flatbuffers::String *text() const { return GetPointer<const flatbuffers::String *>(12); }
+//  int32_t areaWidth() const { return GetField<int32_t>(14, 0); }
+//  int32_t areaHeight() const { return GetField<int32_t>(16, 0); }
+//  int32_t hAlignment() const { return GetField<int32_t>(18, 0); }
+//  int32_t vAlignment() const { return GetField<int32_t>(20, 0); }
+//  uint8_t touchScaleEnable() const { return GetField<uint8_t>(22, 0); }
+//  uint8_t isCustomSize() const { return GetField<uint8_t>(24, 0); }
+//  bool Verify(flatbuffers::Verifier &verifier) const {
+//    return VerifyTableStart(verifier) &&
+//           VerifyField<flatbuffers::uoffset_t>(verifier, 4 /* widgetOptions */) &&
+//           verifier.VerifyTable(widgetOptions()) &&
+//           VerifyField<flatbuffers::uoffset_t>(verifier, 6 /* fontResource */) &&
+//           verifier.VerifyTable(fontResource()) &&
+//           VerifyField<flatbuffers::uoffset_t>(verifier, 8 /* fontName */) &&
+//           verifier.Verify(fontName()) &&
+//           VerifyField<int32_t>(verifier, 10 /* fontSize */) &&
+//           VerifyField<flatbuffers::uoffset_t>(verifier, 12 /* text */) &&
+//           verifier.Verify(text()) &&
+//           VerifyField<int32_t>(verifier, 14 /* areaWidth */) &&
+//           VerifyField<int32_t>(verifier, 16 /* areaHeight */) &&
+//           VerifyField<int32_t>(verifier, 18 /* hAlignment */) &&
+//           VerifyField<int32_t>(verifier, 20 /* vAlignment */) &&
+//           VerifyField<uint8_t>(verifier, 22 /* touchScaleEnable */) &&
+//           VerifyField<uint8_t>(verifier, 24 /* isCustomSize */) &&
+//           verifier.EndTable();
+//  }
+//};
+//
+//struct TextOptionsBuilder {
+//  flatbuffers::FlatBufferBuilder &fbb_;
+//  flatbuffers::uoffset_t start_;
+//  void add_widgetOptions(flatbuffers::Offset<WidgetOptions> widgetOptions) { fbb_.AddOffset(4, widgetOptions); }
+//  void add_fontResource(flatbuffers::Offset<ResourceData> fontResource) { fbb_.AddOffset(6, fontResource); }
+//  void add_fontName(flatbuffers::Offset<flatbuffers::String> fontName) { fbb_.AddOffset(8, fontName); }
+//  void add_fontSize(int32_t fontSize) { fbb_.AddElement<int32_t>(10, fontSize, 0); }
+//  void add_text(flatbuffers::Offset<flatbuffers::String> text) { fbb_.AddOffset(12, text); }
+//  void add_areaWidth(int32_t areaWidth) { fbb_.AddElement<int32_t>(14, areaWidth, 0); }
+//  void add_areaHeight(int32_t areaHeight) { fbb_.AddElement<int32_t>(16, areaHeight, 0); }
+//  void add_hAlignment(int32_t hAlignment) { fbb_.AddElement<int32_t>(18, hAlignment, 0); }
+//  void add_vAlignment(int32_t vAlignment) { fbb_.AddElement<int32_t>(20, vAlignment, 0); }
+//  void add_touchScaleEnable(uint8_t touchScaleEnable) { fbb_.AddElement<uint8_t>(22, touchScaleEnable, 0); }
+//  void add_isCustomSize(uint8_t isCustomSize) { fbb_.AddElement<uint8_t>(24, isCustomSize, 0); }
+//  TextOptionsBuilder(flatbuffers::FlatBufferBuilder &_fbb) : fbb_(_fbb) { start_ = fbb_.StartTable(); }
+//  TextOptionsBuilder &operator=(const TextOptionsBuilder &);
+//  flatbuffers::Offset<TextOptions> Finish() {
+//    auto o = flatbuffers::Offset<TextOptions>(fbb_.EndTable(start_, 11));
+//    return o;
+//  }
+//};
+//
+//inline flatbuffers::Offset<TextOptions> CreateTextOptions(flatbuffers::FlatBufferBuilder &_fbb,
+//   flatbuffers::Offset<WidgetOptions> widgetOptions = 0,
+//   flatbuffers::Offset<ResourceData> fontResource = 0,
+//   flatbuffers::Offset<flatbuffers::String> fontName = 0,
+//   int32_t fontSize = 0,
+//   flatbuffers::Offset<flatbuffers::String> text = 0,
+//   int32_t areaWidth = 0,
+//   int32_t areaHeight = 0,
+//   int32_t hAlignment = 0,
+//   int32_t vAlignment = 0,
+//   uint8_t touchScaleEnable = 0,
+//   uint8_t isCustomSize = 0) {
+//  TextOptionsBuilder builder_(_fbb);
+//  builder_.add_vAlignment(vAlignment);
+//  builder_.add_hAlignment(hAlignment);
+//  builder_.add_areaHeight(areaHeight);
+//  builder_.add_areaWidth(areaWidth);
+//  builder_.add_text(text);
+//  builder_.add_fontSize(fontSize);
+//  builder_.add_fontName(fontName);
+//  builder_.add_fontResource(fontResource);
+//  builder_.add_widgetOptions(widgetOptions);
+//  builder_.add_isCustomSize(isCustomSize);
+//  builder_.add_touchScaleEnable(touchScaleEnable);
+//  return builder_.Finish();
+//}
 
 struct TextFieldOptions : private flatbuffers::Table {
   const WidgetOptions *widgetOptions() const { return GetPointer<const WidgetOptions *>(4); }
