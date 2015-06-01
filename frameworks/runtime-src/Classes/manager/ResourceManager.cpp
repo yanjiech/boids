@@ -22,6 +22,7 @@
 #define LEVEL_CONFIG_FILE "level"
 #define PLAYER_INFO_CONFIG_FILE "player_info"
 #define SKILL_CONFIG_FILE "skill_conf"
+#define SKILL_UPGRADE_COST_CONFIG_FILE "skill_upgrade_cost"
 #define TEAM_LEVEL_EXP_CONFIG_FILE "team_level_exp"
 #define TEAM_SKILL_EXP_CONFIG_FILE "team_skill_exp_conf"
 #define TOWER_CONFIG_FILE "tower"
@@ -87,6 +88,7 @@ void ResourceManager::loadAllData() {
     this->loadBattleUIData();
     this->loadLevelData();
     this->loadSkillData();
+    this->loadSkillUpgradeCostData();
     this->loadTeamLevelExpData();
 }
 
@@ -310,6 +312,21 @@ void ResourceManager::loadSkillData() {
     }
 }
 
+void ResourceManager::loadSkillUpgradeCostData() {
+    FileUtils* file_util = FileUtils::getInstance();
+    std::string plist_file = FileUtils::getInstance()->getWritablePath() + SKILL_UPGRADE_COST_CONFIG_FILE + ".plist";
+    if( !file_util->isFileExist( plist_file ) ) {
+        std::string data_string = FileUtils::getInstance()->getStringFromFile( "skill_upgrade_cost.json" );
+        rapidjson::Document config_json;
+        config_json.Parse<0>( data_string.c_str() );
+        _skill_upgrade_cost_config = CocosUtils::jsonObjectToValueMap( config_json );
+        file_util->writeToFile( _skill_upgrade_cost_config, plist_file );
+    }
+    else {
+        _skill_upgrade_cost_config = file_util->getValueMapFromFile( plist_file );
+    }
+}
+
 void ResourceManager::loadTeamLevelExpData() {
     FileUtils* file_util = FileUtils::getInstance();
     std::string plist_file = FileUtils::getInstance()->getWritablePath() + TEAM_LEVEL_EXP_CONFIG_FILE + ".plist";
@@ -395,6 +412,17 @@ const cocos2d::ValueMap& ResourceManager::getBulletData( const std::string& name
 
 const ValueMap& ResourceManager::getSkillData( const std::string& name ) {
     return _skill_config.at( name ).asValueMap();
+}
+
+int ResourceManager::getSkillUpgradeCost( const std::string& name, int level ) {
+    auto itr = _skill_upgrade_cost_config.find( name );
+    if( itr != _skill_upgrade_cost_config.end() ) {
+        const ValueVector& costs = itr->second.asValueVector();
+        if( level <= costs.size() ) {
+            return costs.at( level - 1 ).asInt();
+        }
+    }
+    return -1;
 }
 
 void ResourceManager::loadUnitArmatures( const cocos2d::ValueVector& armature_names ) {

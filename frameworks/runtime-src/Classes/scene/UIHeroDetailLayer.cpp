@@ -33,9 +33,9 @@ UIEquipmentCell::~UIEquipmentCell() {
     
 }
 
-UIEquipmentCell* UIEquipmentCell::create( EquipmentData* equip_data ) {
+UIEquipmentCell* UIEquipmentCell::create( EquipmentData* equip_data, const std::string& bg_sprite_name ) {
     UIEquipmentCell* ret = new UIEquipmentCell();
-    if( ret && ret->init( equip_data ) ) {
+    if( ret && ret->init( equip_data, bg_sprite_name ) ) {
         ret->autorelease();
         return ret;
     }
@@ -45,7 +45,7 @@ UIEquipmentCell* UIEquipmentCell::create( EquipmentData* equip_data ) {
     }
 }
 
-bool UIEquipmentCell::init( EquipmentData* equip_data ) {
+bool UIEquipmentCell::init( EquipmentData* equip_data, const std::string& bg_sprite_name ) {
     if( !Node::init() ) {
         return false;
     }
@@ -59,14 +59,20 @@ bool UIEquipmentCell::init( EquipmentData* equip_data ) {
     _selected_sprite->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
     this->addChild( _selected_sprite, 3 );
     
+    if( bg_sprite_name != "" ) {
+        Sprite* bg_sprite = Sprite::createWithSpriteFrameName( bg_sprite_name );
+        bg_sprite->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
+        this->addChild( bg_sprite, 0 );
+    }
+    
     this->setSelected( false );
     
     return true;
 }
 
-UIEquipmentCell* UIEquipmentCell::create( const cocos2d::ValueMap& data ) {
+UIEquipmentCell* UIEquipmentCell::create( const cocos2d::ValueMap& data, const std::string& bg_sprite_name ) {
     UIEquipmentCell* ret = new UIEquipmentCell();
-    if( ret && ret->init( data ) ) {
+    if( ret && ret->init( data, bg_sprite_name ) ) {
         ret->autorelease();
         return ret;
     }
@@ -76,7 +82,7 @@ UIEquipmentCell* UIEquipmentCell::create( const cocos2d::ValueMap& data ) {
     }
 }
 
-bool UIEquipmentCell::init( const cocos2d::ValueMap& data ) {
+bool UIEquipmentCell::init( const cocos2d::ValueMap& data, const std::string& bg_sprite_name ) {
     if( !Node::init() ) {
         return false;
     }
@@ -90,6 +96,12 @@ bool UIEquipmentCell::init( const cocos2d::ValueMap& data ) {
     _selected_sprite = Sprite::createWithSpriteFrameName( "ui_hero_selected.png" );
     _selected_sprite->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
     this->addChild( _selected_sprite, 3 );
+    
+    if( bg_sprite_name != "" ) {
+        Sprite* bg_sprite = Sprite::createWithSpriteFrameName( bg_sprite_name );
+        bg_sprite->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
+        this->addChild( bg_sprite, 0 );
+    }
     
     this->setSelected( false );
     
@@ -122,7 +134,7 @@ void UIEquipmentCell::setEquipSprite( cocos2d::Sprite* icon ) {
         if( icon ) {
             _equip_sprite = Sprite::createWithSpriteFrame( icon->getSpriteFrame() );
             _equip_sprite->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
-            this->addChild( _equip_sprite );
+            this->addChild( _equip_sprite, 1 );
         }
     }
     else {
@@ -194,6 +206,7 @@ bool UIHeroDetailLayer::init( UIHeroManageHeroSlot* hero ) {
     Node* avatar_container = status_panel->getChildByName( "nd_hero_avatar" );
     std::string avatar_resource = "ui_hero_p_" + hero->getUnitData()->name + ".png";
     Sprite* hero_avatar = Sprite::createWithSpriteFrameName( avatar_resource );
+    hero_avatar->setScale( 1.5f );
     avatar_container->addChild( hero_avatar );
     
     _lb_hero_name = dynamic_cast<ui::Text*>( status_panel->getChildByName( "heroNameText" ) );
@@ -453,9 +466,31 @@ bool UIHeroDetailLayer::loadRepoEquips( eEquipType type, int page_index ) {
             
             int i = 0;
             for( auto itr = data.begin(); itr != data.end(); ++itr ) {
-                UIEquipmentCell* cell = UIEquipmentCell::create( itr->asValueMap() );
-                int col = i % 3;
-                cell->setPosition( Point( ( col + 0.5f ) * EQUIP_CELL_WIDTH + ( col + 1 ) * 30.0f, ( 1.5f - i / 3 ) * EQUIP_CELL_HEIGHT ) );
+                UIEquipmentCell* cell = UIEquipmentCell::create( itr->asValueMap(), "ui_detail_icon03.png" );
+                Point cell_pos = Point::ZERO;
+                switch( i ) {
+                    case 0:
+                        cell_pos = Point( 120, 250 );
+                        break;
+                    case 1:
+                        cell_pos = Point( 315, 250 );
+                        break;
+                    case 2:
+                        cell_pos = Point( 510, 250 );
+                        break;
+                    case 3:
+                        cell_pos = Point( 120, 90 );
+                        break;
+                    case 4:
+                        cell_pos = Point( 315, 90 );
+                        break;
+                    case 5:
+                        cell_pos = Point( 510, 90 );
+                        break;
+                    default:
+                        break;
+                }
+                cell->setPosition( cell_pos );
                 page->addChild( cell );
                 ++i;
             }

@@ -30,6 +30,15 @@ private:
     
     cocos2d::ui::Layout* _pn_hint;
     
+    cocos2d::Sprite* _sp_skill_icon_1;
+    cocos2d::Sprite* _sp_skill_icon_2;
+    
+    cocos2d::ui::Text* _lb_skill_name_1;
+    cocos2d::ui::Text* _lb_skill_name_2;
+    
+    std::string replaceDynamicValuesInSkillDesc( const std::string& origin_string, const cocos2d::ValueMap& skill_conf, int level );
+    int getSkillValueOfKey( const std::string& key, const cocos2d::ValueMap& skill_conf, int level );
+    
 public:
     UIHeroSkillLayer();
     virtual ~UIHeroSkillLayer();
@@ -43,7 +52,8 @@ public:
     
     void onHintTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     
-    void loadSkillData();
+    void upgradeSkill( int i );
+    void loadSkillData( int i );
 };
 
 #endif /* defined(__Boids__UIHeroSkillLayer__) */

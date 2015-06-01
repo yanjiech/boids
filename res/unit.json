@@ -346,7 +346,7 @@
         "range": 80.0, 
         "rec": 0.5, 
         "recgr": 0.3, 
-        "scale": 0.7, 
+        "scale": 0.5, 
         "skills": [
             "DarkIllusion", 
             "DreadLord"
@@ -951,7 +951,7 @@
         "atk": 32.0, 
         "atkgr": 14.0, 
         "attackspeed": 2.0, 
-        "bullet_name": "pink_ball",
+        "bullet_name": "snow_ball",
         "collide": 40.0, 
         "cri": 2.0, 
         "crigr": 4.1, 

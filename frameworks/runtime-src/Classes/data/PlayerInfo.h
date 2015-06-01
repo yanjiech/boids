@@ -53,6 +53,8 @@ public:
     
     cocos2d::ValueMap upgradeHero( const std::string& hero_id, int level );
     
+    cocos2d::ValueMap upgradeSkill( const std::string& hero_id, const std::string& skill_name, int level );
+    
     const cocos2d::ValueMap& getAllEquipsInfo();
     
     void gainGold( int gain );

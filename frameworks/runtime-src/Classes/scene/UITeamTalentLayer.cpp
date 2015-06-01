@@ -46,6 +46,7 @@ bool UITeamTalentLayer::init() {
     this->addChild( _root_node );
     
     ui::Button* btn_back = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_back" ) );
+    btn_back->setVisible( false );
     btn_back->addTouchEventListener( CC_CALLBACK_2( UITeamTalentLayer::onBackTouched, this ) );
     
     ui::Button* btn_confirm = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_confirm" ) );
@@ -110,6 +111,10 @@ void UITeamTalentLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
         this->recordTalentPoints();
         this->reloadTabContent( _selected_tab );
         this->updateDisplayedContent();
+        
+        TouchableLayer* parent = dynamic_cast<TouchableLayer*>( this->getParent() );
+        parent->becomeTopLayer();
+        parent->removeChild( this );
     }
 }
 

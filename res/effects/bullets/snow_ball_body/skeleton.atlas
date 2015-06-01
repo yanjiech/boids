@@ -1,0 +1,62 @@
+
+skeleton.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FQ-gdf01
+  rotate: false
+  xy: 2, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+FQ-gdf02
+  rotate: false
+  xy: 2, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+FQ-gdf03
+  rotate: false
+  xy: 84, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+FQ-gdf04
+  rotate: false
+  xy: 2, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+Silver_s
+  rotate: true
+  xy: 166, 92
+  size: 65, 21
+  orig: 65, 21
+  offset: 0, 0
+  index: -1
+ball
+  rotate: false
+  xy: 84, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+xuehua01
+  rotate: false
+  xy: 166, 159
+  size: 64, 87
+  orig: 64, 87
+  offset: 0, 0
+  index: -1
+xuehua02
+  rotate: false
+  xy: 84, 5
+  size: 66, 77
+  orig: 66, 77
+  offset: 0, 0
+  index: -1

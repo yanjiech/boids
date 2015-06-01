@@ -123,7 +123,7 @@ void UIHeroManageHeroSlot::loadHeroInfo( const cocos2d::ValueMap& data ) {
         }
         
         spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( ResourceManager::getInstance()->getPathForResource( hero_name, eResourceType::Character_Front ) );
-        skeleton->setScale( 1.8f * unit_data->scale );
+        skeleton->setScale( 2.0f * unit_data->scale );
         this->setHeroSkeleton( skeleton );
     }
 }
@@ -206,9 +206,9 @@ spine::SkeletonAnimation* UIHeroManageHeroSlot::getHeroSkeleton() {
 }
 
 void UIHeroManageHeroSlot::setHeroSkeleton( spine::SkeletonAnimation* skeleton ) {
+    CC_SAFE_RETAIN( skeleton );
     CC_SAFE_RELEASE( _hero_skeleton );
     _hero_skeleton = skeleton;
-    CC_SAFE_RETAIN( _hero_skeleton );
 }
 
 UnitData* UIHeroManageHeroSlot::getUnitData() {
@@ -428,19 +428,53 @@ bool UIHeroManageLayer::init() {
     
     //all units
     std::vector<std::string> sorted_keys;
-    for( auto pair : all_units_info ) {
-        sorted_keys.push_back( pair.first );
-    }
-    std::sort( sorted_keys.begin(), sorted_keys.end(), [&]( const std::string& a, const std::string& b )->bool{ return Utils::toInt( a ) < Utils::toInt( b ); } );
     
-    int count = _pv_hero_list->getContentSize().width / HERO_LIST_CELL_WIDTH;
+    std::vector<std::string> owned_keys;
+    std::vector<std::string> unlocked_keys;
+    std::vector<std::string> locked_keys;
+    
+    for( auto pair : all_units_info ) {
+        const ValueMap& info = pair.second.asValueMap();
+        bool is_owned = info.at( "owned" ).asBool();
+        bool is_locked = info.at( "locked" ).asBool();
+        
+        if( is_owned ) {
+            owned_keys.push_back( pair.first );
+        }
+        else {
+            if( !is_locked ) {
+                unlocked_keys.push_back( pair.first );
+            }
+            else {
+                locked_keys.push_back( pair.first );
+            }
+        }
+    }
+    std::sort( owned_keys.begin(), owned_keys.end(), [&]( const std::string& a, const std::string& b )->bool{ return Utils::toInt( a ) < Utils::toInt( b ); } );
+    std::sort( unlocked_keys.begin(), unlocked_keys.end(), [&]( const std::string& a, const std::string& b )->bool{ return Utils::toInt( a ) < Utils::toInt( b ); } );
+    std::sort( locked_keys.begin(), locked_keys.end(), [&]( const std::string& a, const std::string& b )->bool{ return Utils::toInt( a ) < Utils::toInt( b ); } );
+    
+    for( auto str : owned_keys ) {
+        sorted_keys.push_back( str );
+    }
+    for( auto str : unlocked_keys ) {
+        sorted_keys.push_back( str );
+    }
+    for( auto str : locked_keys ) {
+        sorted_keys.push_back( str );
+    }
+    
+//    int count = _pv_hero_list->getContentSize().width / HERO_LIST_CELL_WIDTH;
     int i = 0;
+    int count = 6;
     ui::Layout* page = ui::Layout::create();
+    page->setContentSize( _pv_hero_list->getContentSize() );
     _pv_hero_list->addPage( page );
     for( auto key : sorted_keys ) {
         if( ++i > count ) {
-            i = 0;
+            i = 1;
             page = ui::Layout::create();
+            page->setContentSize( _pv_hero_list->getContentSize() );
             _pv_hero_list->addPage( page );
         }
         const ValueMap& data = all_units_info.at( key ).asValueMap();
@@ -715,10 +749,9 @@ bool UIHeroManageLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* eve
         _target_deploy_slot = nullptr;
         _touch_down_pos = this->convertTouchToNodeSpace( touch );
         UIHeroManageHeroSlot* hero = this->heroSlotForTouch( touch );
-        this->setSelectedHero( hero );
-        
-        if( _selected_hero != nullptr ) {
+        if( hero != nullptr ) {
             _is_touch_down = true;
+            this->setSelectedHero( hero );
             this->setSelectedDeploySlot( nullptr );
         }
         else {
@@ -740,7 +773,7 @@ bool UIHeroManageLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* eve
             }
         }
     }
-    return _is_touch_down;
+    return true;
 }
 
 void UIHeroManageLayer::onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event ) {
@@ -839,8 +872,9 @@ void UIHeroManageLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* eve
 }
 
 UIHeroManageHeroSlot* UIHeroManageLayer::heroSlotForTouch( cocos2d::Touch* touch ) {
-    for( auto pair : _hero_slots ) {
-        auto slot = pair.second;
+    ui::Layout* page = _pv_hero_list->getPages().at( _pv_hero_list->getCurPageIndex() );
+    for( auto node : page->getChildren() ) {
+        auto slot = dynamic_cast<UIHeroManageHeroSlot*>( node );
         if( !slot->isLocked() ) {
             Point pos = slot->convertTouchToNodeSpace( touch );
             Rect rect = Rect( 0, 0, slot->getContentSize().width, slot->getContentSize().height );

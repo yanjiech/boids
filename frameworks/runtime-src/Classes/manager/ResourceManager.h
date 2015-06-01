@@ -31,6 +31,7 @@ private:
     cocos2d::ValueMap _battle_ui_config;
     cocos2d::ValueMap _level_config;
     cocos2d::ValueMap _skill_config;
+    cocos2d::ValueMap _skill_upgrade_cost_config;
     cocos2d::ValueMap _team_level_exp_config;
     cocos2d::ValueMap _team_skill_exp_config;
     
@@ -55,6 +56,7 @@ public:
     const cocos2d::ValueMap& getBattleUIConfig() { return _battle_ui_config; }
     const cocos2d::ValueMap& getLevelConfig() { return _level_config; }
     const cocos2d::ValueMap& getSkillConfig() { return _skill_config; }
+    const cocos2d::ValueMap& getSkillUpgradeCostConfig() { return _skill_upgrade_cost_config; }
     const cocos2d::ValueMap& getTeamLevelExpConfig() { return _team_level_exp_config; }
     const cocos2d::ValueMap& getTeamSkillExpConfig() { return _team_skill_exp_config; }
     
@@ -84,6 +86,7 @@ public:
     void loadUnitEffects();
     void loadLevelData();
     void loadSkillData();
+    void loadSkillUpgradeCostData();
     void loadTeamLevelExpData();
     void loadTeamSkillExpData();
     
@@ -95,6 +98,8 @@ public:
     const cocos2d::ValueMap& getTowerData( const std::string& name );
     const cocos2d::ValueMap& getBulletData( const std::string& name );
     const cocos2d::ValueMap& getSkillData( const std::string& name );
+    
+    int getSkillUpgradeCost( const std::string& name, int level );
     
     void loadUnitArmatures( const cocos2d::ValueVector& armature_names );
     void purgeUnitArmatures( const cocos2d::ValueVector& armature_names );

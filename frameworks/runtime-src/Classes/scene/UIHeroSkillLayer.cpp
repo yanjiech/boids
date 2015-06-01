@@ -8,6 +8,8 @@
 
 #include "UIHeroSkillLayer.h"
 #include "../manager/resourceManager.h"
+#include "../Utils.h"
+#include "../data/PlayerInfo.h"
 
 #define HERO_SKILL_FILE "ui/page/ui_hero_skill.csb"
 
@@ -53,7 +55,6 @@ bool UIHeroSkillLayer::init( UIHeroManageHeroSlot* hero ) {
     _lb_upgrade_cost_1 = dynamic_cast<ui::Text*>( _root_node->getChildByName( "lb_upgrade_cost_1" ) );
     _lb_upgrade_cost_2 = dynamic_cast<ui::Text*>( _root_node->getChildByName( "lb_upgrade_cost_2" ) );
     
-    
     _btn_upgrade_1 = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_upgrade_skill_1" ) );
     _btn_upgrade_1->setTag( 1 );
     _btn_upgrade_1->addTouchEventListener( CC_CALLBACK_2( UIHeroSkillLayer::onUpgradeTouched, this ) );
@@ -75,14 +76,17 @@ bool UIHeroSkillLayer::init( UIHeroManageHeroSlot* hero ) {
     btn_hint->addTouchEventListener( CC_CALLBACK_2( UIHeroSkillLayer::onHintTouched, this ) );
     
     //skill_icon
-    Sprite* pn_skill_icon_1 = dynamic_cast<Sprite*>( _root_node->getChildByName( "pn_skill_icon_1" ) );
-    Sprite* sp_skill_icon_1 = dynamic_cast<Sprite*>( pn_skill_icon_1->getChildByName( "skill_icon" ) );
+    Node* pn_skill_icon_1 = _root_node->getChildByName( "pn_skill_icon_1" );
+    _sp_skill_icon_1 = dynamic_cast<Sprite*>( pn_skill_icon_1->getChildByName( "skill_icon" ) );
     
+    Node* pn_skill_icon_2 = _root_node->getChildByName( "pn_skill_icon_2" );
+    _sp_skill_icon_2 = dynamic_cast<Sprite*>( pn_skill_icon_2->getChildByName( "skill_icon" ) );
     
-    Sprite* pn_skill_icon_2 = dynamic_cast<Sprite*>( _root_node->getChildByName( "pn_skill_icon_2" ) );
-    Sprite* sp_skill_icon_2 = dynamic_cast<Sprite*>( pn_skill_icon_2->getChildByName( "skill_icon" ) );
+    _lb_skill_name_1 = dynamic_cast<ui::Text*>( _root_node->getChildByName( "lb_skill_name_1" ) );
+    _lb_skill_name_2 = dynamic_cast<ui::Text*>( _root_node->getChildByName( "lb_skill_name_2" ) );
     
-    this->loadSkillData();
+    this->loadSkillData( 1 );
+    this->loadSkillData( 2 );
     
     return true;
 }
@@ -96,13 +100,151 @@ void UIHeroSkillLayer::onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget:
 }
 
 void UIHeroSkillLayer::onUpgradeTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
-    
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        Node* node = dynamic_cast<Node*>( sender );
+        int tag = node->getTag();
+        this->upgradeSkill( tag );
+    }
 }
 
 void UIHeroSkillLayer::onHintTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
-    
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        _pn_hint->setVisible( !_pn_hint->isVisible() );
+    }
 }
 
-void UIHeroSkillLayer::loadSkillData() {
+void UIHeroSkillLayer::loadSkillData( int i ) {
+    UnitData* unit_data = _hero->getUnitData();
+    ResourceManager* resource_manager = ResourceManager::getInstance();
+ 
+    const ValueMap& skill_data = unit_data->skills.at( i - 1 ).asValueMap();
+    std::string skill_name = skill_data.at( "name" ).asString();
+    int skill_level = skill_data.at( "level" ).asInt();
     
+    const ValueMap& skill_config = resource_manager->getSkillData( skill_name );
+    
+    std::string icon = skill_config.at( "icon" ).asString();
+    std::string display_name = skill_config.at( "name" ).asString();
+    std::string desc = skill_config.at( "desc" ).asString();
+    
+    desc = this->replaceDynamicValuesInSkillDesc( desc, skill_config, skill_level );
+    
+    int upgrade_cost = resource_manager->getSkillUpgradeCost( skill_name, skill_level + 1 );
+    
+    if( i == 1 ) {
+        _sp_skill_icon_1->setSpriteFrame( icon );
+        _lb_skill_desc_1->setString( desc );
+        _lb_level_1->setString( Utils::toStr( skill_level ) );
+        _lb_skill_name_1->setString( display_name );
+        
+        std::string op_hint = skill_config.at( "op_hint" ).asString();
+        ui::Text* lb_hint = dynamic_cast<ui::Text*>( _pn_hint->getChildByName( "lb_skill_hint_1" ) );
+        lb_hint->setString( op_hint );
+        
+        if( upgrade_cost < 0 ) {
+            _lb_upgrade_cost_1->setString( "满级" );
+        }
+        else {
+            _lb_upgrade_cost_1->setString( Utils::toStr( upgrade_cost ) );
+        }
+    }
+    else if( i == 2 ) {
+        _sp_skill_icon_2->setSpriteFrame( icon );
+        _lb_skill_desc_2->setString( desc );
+        _lb_level_2->setString( Utils::toStr( skill_level ) );
+        _lb_skill_name_2->setString( display_name );
+        if( upgrade_cost < 0 ) {
+            _lb_upgrade_cost_2->setString( "满级" );
+        }
+        else {
+            _lb_upgrade_cost_2->setString( Utils::toStr( upgrade_cost ) );
+        }
+    }
+}
+
+void UIHeroSkillLayer::upgradeSkill( int i ) {
+    UnitData* unit_data = _hero->getUnitData();
+    ResourceManager* resource_manager = ResourceManager::getInstance();
+    
+    const ValueMap& skill_data = unit_data->skills.at( i - 1 ).asValueMap();
+    std::string skill_name = skill_data.at( "name" ).asString();
+    int skill_level = skill_data.at( "level" ).asInt();
+
+    int upgrade_cost = resource_manager->getSkillUpgradeCost( skill_name, skill_level + 1 );
+    if( upgrade_cost > 0 ) {
+        ValueMap result = PlayerInfo::getInstance()->upgradeSkill( _hero->getHeroId(), skill_name, 1 );
+        _hero->loadHeroInfo( result );
+        this->loadSkillData( i );
+    }
+}
+
+//private methods
+
+/*
+ dd damage
+ aa atk
+ gg dod
+ cc cri
+ hh hit
+ pp hp
+ tt duration
+ */
+std::string UIHeroSkillLayer::replaceDynamicValuesInSkillDesc( const std::string& origin_string, const cocos2d::ValueMap& skill_conf, int level ) {
+    std::string ret = origin_string;
+    int i = ret.find( "dd" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "damage", skill_conf, level );
+        ret.replace( i, 2, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "aa" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "atk", skill_conf, level );
+        ret.replace( i, 2, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "gg" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "dod", skill_conf, level );
+        ret.replace( i, 2, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "cc" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "cri", skill_conf, level );
+        ret.replace( i, 2, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "hh" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "hit", skill_conf, level );
+        ret.replace( i, 2, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "pp" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "hp", skill_conf, level );
+        ret.replace( i, 2, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "tt" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "duration", skill_conf, level );
+        ret.replace( i, 2, Utils::toStr( value ) );
+    }
+    
+    return ret;
+}
+
+int UIHeroSkillLayer::getSkillValueOfKey( const std::string& key, const cocos2d::ValueMap& skill_conf, int level ) {
+    auto itr = skill_conf.find( key );
+    if( itr != skill_conf.end() ) {
+        if( itr->second.getType() == Value::Type::VECTOR ) {
+            return itr->second.asValueVector().at( level - 1 ).asInt();
+        }
+        else {
+            return itr->second.asInt();
+        }
+    }
+    return 0;
 }

@@ -224,6 +224,25 @@ cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level
     return ValueMap();
 }
 
+cocos2d::ValueMap PlayerInfo::upgradeSkill( const std::string& hero_id, const std::string& skill_name, int level ) {
+    ValueMap& all_units = _player_info.at( "units" ).asValueMap();
+    auto itr = all_units.find( hero_id );
+    if( itr != all_units.end() ) {
+        ValueMap& unit_data = all_units.at( hero_id ).asValueMap();
+        ValueVector& skill_data_vector = unit_data.at( "skills" ).asValueVector();
+        for( int i = 0; i < skill_data_vector.size(); i++ ) {
+            ValueMap& skill_data = skill_data_vector.at( i ).asValueMap();
+            if( skill_data.at( "name" ).asString() == skill_name ) {
+                int old_level = skill_data.at( "level" ).asInt();
+                skill_data["level"] = Value( old_level + level );
+                this->recordPlayerInfo();
+                return unit_data;
+            }
+        }
+    }
+    return ValueMap();
+}
+
 const cocos2d::ValueMap& PlayerInfo::getAllEquipsInfo() {
     return _player_info["equips"].asValueMap();
 }

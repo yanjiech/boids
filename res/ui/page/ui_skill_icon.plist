@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>frames</key>
-        <dict>
-            <key>ui_skill_icon_ice_debris.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{187,174}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{187,174}}</string>
-                <key>sourceSize</key>
-                <string>{187,174}</string>
-            </dict>
-        </dict>
-        <key>metadata</key>
-        <dict>
-            <key>format</key>
-            <integer>2</integer>
-            <key>realTextureFileName</key>
-            <string>ui_skill_icon.png</string>
-            <key>size</key>
-            <string>{256,256}</string>
-            <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f2cd81025a75f5c6e62c9740120ca074:1/1$</string>
-            <key>textureFileName</key>
-            <string>ui_skill_icon.png</string>
-        </dict>
-    </dict>
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>ui_skill_icon_ice_debris.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{2,2},{187,174}}</string>
+			<key>offset</key>
+			<string>{0,0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0,0},{187,174}}</string>
+			<key>sourceSize</key>
+			<string>{187,174}</string>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>2</integer>
+		<key>realTextureFileName</key>
+		<string>ui_skill_icon.png</string>
+		<key>size</key>
+		<string>{256,256}</string>
+		<key>smartupdate</key>
+		<string>$TexturePacker:SmartUpdate:f2cd81025a75f5c6e62c9740120ca074:1/1$</string>
+		<key>textureFileName</key>
+		<string>ui_skill_icon.png</string>
+	</dict>
+</dict>
 </plist>

@@ -24,11 +24,11 @@ public:
     UIEquipmentCell();
     virtual ~UIEquipmentCell();
     
-    static UIEquipmentCell* create( EquipmentData* equip_data );
-    virtual bool init( EquipmentData* equip_data );
+    static UIEquipmentCell* create( EquipmentData* equip_data, const std::string& bg_sprite_name = "" );
+    virtual bool init( EquipmentData* equip_data, const std::string& bg_sprite_name = "" );
     
-    static UIEquipmentCell* create( const cocos2d::ValueMap& data );
-    virtual bool init( const cocos2d::ValueMap& data );
+    static UIEquipmentCell* create( const cocos2d::ValueMap& data, const std::string& bg_sprite_name = "" );
+    virtual bool init( const cocos2d::ValueMap& data, const std::string& bg_sprite_name = "" );
     
     EquipmentData* getEquipData();
     void setEquipData( EquipmentData* data );

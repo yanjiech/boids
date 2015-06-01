@@ -106,6 +106,15 @@
 #define SKILL_NAME_BAT_SWARM "BatSwarm"
 #define SKILL_NAME_NATURESATTENDANTS "NaturesAttendants"
 #define SKILL_NAME_IMPETUS "Impetus"
+#define SKILL_NAME_PENETRATE_SPEAR "PenetrateSpear"
+#define SKILL_NAME_HUNTING_INTUITION "HuntingIntuition"
+#define SKILL_NAME_CRAZY_SCRATCH "CrazyScratch"
+#define SKILL_NAME_NINTH_LIFE "NinthLife"
+#define SKILL_NAME_DARK_ILLUSION "DarkIllusion"
+#define SKILL_NAME_DREAD_LORD "DreadLord"
+#define SKILL_NAME_SNOW_STORM "SnowStorm"
+#define SKILL_NAME_ICE_DEBRIS "IceDebris"
+
 #define SKILL_NAME_BONESRAIN "BonesRain"
 #define SKILL_NAME_MAGIC_PULSE "MagicPulse"
 #define SKILL_NAME_MISSILE_SHOWERS "MissileShowers"
@@ -113,15 +122,8 @@
 #define SKILL_NAME_FATAL_THROW "FatalThrow"
 #define SKILL_NAME_FIRE_WHIRL "FireWhirl"
 #define SKILL_NAME_DEATH_SLICE "DeathSlice"
-#define SKILL_NAME_PENETRATE_SPEAR "PenetrateSpear"
-#define SKILL_NAME_HUNTING_INTUITION "HuntingIntuition"
-#define SKILL_NAME_CRAZY_SCRATCH "CrazyScratch"
-#define SKILL_NAME_NINTH_LIFE "NinthLife"
 #define SKILL_NAME_GAS_BOMB "GasBomb"
-#define SKILL_NAME_DARK_ILLUSION "DarkIllusion"
-#define SKILL_NAME_DREAD_LORD "DreadLord"
-#define SKILL_NAME_SNOW_STORM "SnowStorm"
-#define SKILL_NAME_ICE_DEBRIS "IceDebris"
+
 
 #define BULLET_NAME_GAS "gas"
 

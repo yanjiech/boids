@@ -36,7 +36,7 @@ bool NinthLife::init( UnitNode* owner, const cocos2d::ValueMap& data, const coco
     }
     
     int level = data.at( "level" ).asInt();
-    _buff_duration = data.at( "buff_duration" ).asValueVector().at( level - 1 ).asFloat();
+    _buff_duration = data.at( "duration" ).asValueVector().at( level - 1 ).asFloat();
     
     return true;
 }

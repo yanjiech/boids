@@ -209,6 +209,18 @@
         "hit_scale" : 1.0,
         "scale" : 1.0
     },
+    "snow_ball": {
+        "streak_width": 32.0,
+        "move_type": "straight",
+        "streak_color" : { "r" : 140, "g" : 180, "b" : 250 },
+        "body_type": "spine",
+        "name": "snow_ball",
+        "need_rotate": false,
+        "track_target" : true,
+        "hit_type": "spine",
+        "hit_name": "default",
+        "scale" : 0.5
+    },
     "thunderbolt": {
         "name": "thunderbolt",
         "move_type": "straight",
