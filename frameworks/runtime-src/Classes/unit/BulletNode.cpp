@@ -702,3 +702,78 @@ void BombBulletNode::updateFrame( float delta ) {
         }
     }
 }
+
+//circle bullet ndoe
+CircleBulletNode::CircleBulletNode() {
+    
+}
+
+CircleBulletNode::~CircleBulletNode() {
+    
+}
+
+CircleBulletNode* CircleBulletNode::create( class TargetNode* shooter, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+    CircleBulletNode* ret = new CircleBulletNode();
+    if( ret && ret->init( shooter, bullet_data, damage_calculator, buff_data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool CircleBulletNode::init( class TargetNode* shooter, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data ) {
+    if( !BulletNode::init( shooter, bullet_data, damage_calculator, buff_data ) ) {
+        return false;
+    }
+    
+    _elapse = 0;
+    
+    return true;
+}
+
+void CircleBulletNode::updateFrame( float delta ) {
+    if( !_should_recycle ) {
+        _elapse += delta;
+        _angle += _speed * delta;
+        if( _elapse > _duration ) {
+            this->setShouldRecycle( true );
+        }
+        else {
+            Point center = _source_unit->getHitPos() + _center_bias;
+            Point new_pos = center + Point( _radius * cosf( _angle ), _radius * sinf( _angle ) );
+            this->setPosition( new_pos );
+            Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRoundRange( _source_unit->getTargetCamp(), this->getPosition(), this->getPosition(), _radius );
+            for( auto unit : candidates ) {
+                int unit_id = unit->getDeployId();
+                auto itr = _excluded_targets.find( unit_id );
+                if( itr == _excluded_targets.end() ) {
+                    _excluded_targets.insert( std::make_pair( unit_id, Value( unit_id ) ) );
+                    this->hitTarget( unit );
+                }
+            }
+        }
+    }
+}
+
+void CircleBulletNode::shootToward( const cocos2d::Point& dir, float radius ) {
+    _radius = radius;
+    Point center_dir = Geometry::clockwiseRotate45( dir );
+    center_dir.normalize();
+    _center_bias = center_dir * radius;
+    center_dir = -center_dir;
+    _angle = center_dir.getAngle();
+    
+    std::string resource = Utils::stringFormat( "effects/bullets/%s_body", _bullet_data.at( "name" ).asString().c_str() );
+    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+    skeleton->setAnimation( 0, "animation", true );
+    auto itr = _bullet_data.find( "scale" );
+    if( itr != _bullet_data.end() ) {
+        skeleton->setScale( itr->second.asFloat() );
+    }
+    this->addChild( skeleton );
+    this->setPosition( _source_unit->getHitPos() );
+    _battle_layer->addBullet( BulletNode::getNextBulletId(), this );
+}

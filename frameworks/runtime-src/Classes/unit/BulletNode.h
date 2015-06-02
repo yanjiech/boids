@@ -172,4 +172,24 @@ public:
     virtual void updateFrame( float delta );
 };
 
+class CircleBulletNode : public BulletNode {
+private:
+    float _elapse;
+    float _angle;
+    float _radius;
+    cocos2d::Point _center_bias;
+    cocos2d::ValueMapIntKey _excluded_targets;
+    
+public:
+    CircleBulletNode();
+    virtual ~CircleBulletNode();
+    
+    static CircleBulletNode* create( class TargetNode* shooter, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
+    virtual bool init( class TargetNode* shooter, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
+    
+    virtual void updateFrame( float delta );
+    
+    void shootToward( const cocos2d::Point& dir, float radius );
+};
+
 #endif /* defined(__Boids__BulletNode__) */

@@ -9,6 +9,16 @@
         "hit_type": "spine",
         "hit_name": "default"
     },
+    "bat" : {
+        "name" : "bat",
+        "move_type" : "custom",
+        "need_rotate" : true,
+        "damage_radius" : 50.0,
+        "speed" : 500.0,
+        "body_type" : "spine",
+        "hit_type" : "spine",
+        "hit_name" : "default"
+    },
     "blue_ball": {
         "streak_width": 32.0,
         "move_type": "straight",

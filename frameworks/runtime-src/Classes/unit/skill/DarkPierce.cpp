@@ -64,7 +64,7 @@ void DarkPierce::begin() {
         target_unit->addBuff( buff->getBuffId(), buff );
         buff->begin();
         
-        DamageCalculate* calculator = DamageCalculate::create( "DarkPirce", _damage );
+        DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_DARK_PIERCE, _damage );
         ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getUnitData(), target_unit->getUnitData() );
         target_unit->takeDamage( result, _owner );
         candidates.erase( rand );

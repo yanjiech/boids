@@ -12,6 +12,12 @@
 #include "SkillNode.h"
 
 class BatSwarm : public SkillNode {
+private:
+    float _damage;
+    float _duration;
+    float _range;
+    float _radius;
+    
 public:
     BatSwarm();
     virtual ~BatSwarm();

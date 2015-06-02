@@ -38,5 +38,4 @@ private:
 };
 
 
-
 #endif /* defined(__Boids__ArmatureManager__) */
