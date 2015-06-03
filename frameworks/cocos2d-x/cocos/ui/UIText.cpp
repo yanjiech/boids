@@ -358,6 +358,11 @@ void Text::disableEffect()
     _labelRenderer->disableEffect();
 }
 
+    
+    void Text::setAdditionalKerning( float kern ) {
+        _labelRenderer->setAdditionalKerning( kern );
+    }
+    
 Widget* Text::createCloneInstance()
 {
     return Text::create();

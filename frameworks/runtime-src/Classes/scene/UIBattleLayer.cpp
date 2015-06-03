@@ -9,7 +9,10 @@
 #include "UIBattleLayer.h"
 #include "BattleLayer.h"
 
+#define BATTLE_PANEL_FILE "ui/page/ui_battle.csb"
+
 using namespace cocos2d;
+using namespace cocostudio::timeline;
 
 #define DEFAULT_HINT_LENGTH 360.0f
 
@@ -45,23 +48,36 @@ bool UISkillNode::init( BattleLayer* battle_layer, UnitNode* unit_node ) {
     _unit_node = unit_node;
     _hint_effect = nullptr;
     
-//    std::string resource = _unit_node->getUnitData()->name + "_avatar.png";)
+//    std::string resource = _unit_node->getUnitData()->name + "_avatar.png";
     std::string resource = "saber_avatar.png";
     Sprite* sp = Sprite::createWithSpriteFrameName( resource );
-    this->addChild( sp );
+    this->addChild( sp, 4 );
     
-    Sprite* mask = Sprite::createWithSpriteFrameName( "skill_mask.png" );
-    _avatar = ProgressTimer::create( mask );
-    _avatar->setType( ProgressTimer::Type::RADIAL );
-    _avatar->setReverseDirection( true );
-    this->addChild( _avatar );
+    _sp_ready = Sprite::createWithSpriteFrameName( "ui_battle_diban01.png" );
+    _sp_ready->setVisible( false );
+    this->addChild( _sp_ready, 1 );
     
-    Point center_pos = Point( _avatar->getContentSize().width / 2, _avatar->getContentSize().height / 2 );
+    Sprite* diban = Sprite::createWithSpriteFrameName( "ui_battle_mp.png" );
+    _pb_mp = ProgressTimer::create( diban );
+    _pb_mp->setType( ProgressTimer::Type::RADIAL );
+    _pb_mp->setReverseDirection( true );
+    _pb_mp->setPercentage( 100.0f );
+    this->addChild( _pb_mp, 2 );
+    
+    Sprite* mask = Sprite::createWithSpriteFrameName( "ui_battle_icon04.png" );
+    _pb_loading = ProgressTimer::create( mask );
+    _pb_loading->setType( ProgressTimer::Type::RADIAL );
+    _pb_loading->setReverseDirection( true );
+    this->addChild( _pb_loading, 5 );
+    
+    Point center_pos = Point( _pb_loading->getContentSize().width / 2, _pb_loading->getContentSize().height / 2 );
     sp->setPosition( center_pos );
-    _avatar->setPosition( center_pos );
+    _pb_loading->setPosition( center_pos );
+    _pb_mp->setPosition( center_pos );
+    _sp_ready->setPosition( center_pos );
     
     this->ignoreAnchorPointForPosition( false );
-    this->setContentSize( _avatar->getContentSize() );
+    this->setContentSize( _pb_loading->getContentSize() );
     this->setAnchorPoint( Point( 0.5f, 0.5f ) );
     
     _hint_type = _unit_node->getSkillHintTypeById( 0 );
@@ -94,6 +110,8 @@ bool UISkillNode::init( BattleLayer* battle_layer, UnitNode* unit_node ) {
     if( _hint_type == "dyn_circle" ) {
         _radius = unit_node->getSkillRadiusById( 0 );
     }
+    
+    _is_skill_ready = false;
     
     return true;
 }
@@ -151,14 +169,27 @@ void UISkillNode::hideHint() {
 }
 
 void UISkillNode::updateFrame( float delta ) {
-    float p = _unit_node->getSkillCDById( 0 );
-    _avatar->setPercentage( ( 1.0f - p ) * 100.0f );
-    if( _hint_effect ) {
-        if( _hint_type == "dyn_circle" ) {
-            _hint_effect->setPosition( _unit_node->getPosition() + _hint_d_pos );
+    bool is_ready = _unit_node->isSkillReadyById( 0 );
+    if( is_ready != _is_skill_ready ) {
+        _is_skill_ready = is_ready;
+        if( is_ready ) {
+            _pb_loading->setPercentage( 0 );
+            _sp_ready->setVisible( true );
         }
         else {
-            _hint_effect->setPosition( _unit_node->getPosition() );
+            _sp_ready->setVisible( false );
+        }
+    }
+    if( !_is_skill_ready ) {
+        float p = _unit_node->getSkillCDById( 0 );
+        _pb_loading->setPercentage( ( 1.0f - p ) * 100.0f );
+        if( _hint_effect ) {
+            if( _hint_type == "dyn_circle" ) {
+                _hint_effect->setPosition( _unit_node->getPosition() + _hint_d_pos );
+            }
+            else {
+                _hint_effect->setPosition( _unit_node->getPosition() );
+            }
         }
     }
 }
@@ -195,7 +226,7 @@ UIBattleLayer::UIBattleLayer() {
 }
 
 UIBattleLayer::~UIBattleLayer() {
-    
+    ActionTimelineCache::getInstance()->removeAction( BATTLE_PANEL_FILE );
 }
 
 UIBattleLayer* UIBattleLayer::create( BattleLayer* battle_layer ) {
@@ -225,6 +256,39 @@ bool UIBattleLayer::init( BattleLayer* battle_layer ) {
     touch_listener->onTouchCancelled = CC_CALLBACK_2( UIBattleLayer::onTouchCancelled, this );
     touch_listener->onTouchEnded = CC_CALLBACK_2( UIBattleLayer::onTouchEnded, this );
     _eventDispatcher->addEventListenerWithSceneGraphPriority( touch_listener, this );
+    
+    std::string battle_panel_file = FileUtils::getInstance()->fullPathForFilename( BATTLE_PANEL_FILE );
+    _root_node = cocos2d::CSLoader::getInstance()->createNode( battle_panel_file );
+    this->addChild( _root_node );
+    
+    _battle_panel_action = ActionTimelineCache::getInstance()->loadAnimationActionWithFlatBuffersFile( battle_panel_file );
+    
+    Node* pn_time = _root_node->getChildByName( "time_panel" );
+    _lb_time = dynamic_cast<ui::Text*>( pn_time->getChildByName( "lb_time" ) );
+    
+    Node* pn_killed = _root_node->getChildByName( "number_panel" );
+    _lb_killed = dynamic_cast<ui::Text*>( pn_killed->getChildByName( "lb_killed" ) );
+    _pb_killed = dynamic_cast<ui::LoadingBar*>( pn_killed->getChildByName( "pn_killed" ) );
+    
+    _pn_boss_and_wave = dynamic_cast<ui::Layout*>( _root_node->getChildByName( "boss_panel" ) );
+    
+    _pn_boss = dynamic_cast<ui::Layout*>( _pn_boss_and_wave->getChildByName( "boss_hp_panel" ) );
+    _nd_boss_avatar = _pn_boss->getChildByName( "nd_boss_avatar" );
+    _lb_boss_name = dynamic_cast<ui::Text*>( _pn_boss->getChildByName( "lb_boss_name" ) );
+    _lb_boss_name->setAdditionalKerning( -5.0f );
+    _pb_boss_hp = dynamic_cast<ui::LoadingBar*>( _pn_boss->getChildByName( "pb_boss_hp" ) );
+    
+    _pn_wave = dynamic_cast<ui::Layout*>( _pn_boss_and_wave->getChildByName( "wave_bar_panel" ) );
+    _nd_monster_avatar = _pn_wave->getChildByName( "nd_monster_avatar" );
+    _sp_flag = dynamic_cast<Sprite*>( _pn_wave->getChildByName( "sp_flag" ) );
+    _pb_wave = dynamic_cast<ui::LoadingBar*>( _pn_wave->getChildByName( "pb_wave" ) );
+    
+    _need_kill = 0;
+    _already_killed = 0;
+    
+    this->hideBossPanel();
+    this->hideWavePanel();
+    this->setKilled( 0 );
     
     return true;
 }
@@ -329,6 +393,13 @@ void UIBattleLayer::updateFrame( float delta ) {
         _touch_down_duration += delta;
         _selected_skill->setChargeTime( _touch_down_duration );
     }
+    
+    //update time
+    int game_time = (int)_battle_layer->getGameTime();
+    int minutes = game_time / 60;
+    int seconds = game_time % 60;
+    
+    _lb_time->setString( Utils::stringFormat( "%02d:%02d", minutes, seconds ) );
 }
 
 void UIBattleLayer::reset() {
@@ -399,5 +470,53 @@ void UIBattleLayer::alignSkillNodesWithPadding( float padding ) {
             skill_icon->setPosition( Point( x, skill_icon_size.height ) );
             x += padding + skill_icon_size.width;
         }
+    }
+}
+
+void UIBattleLayer::showBossPanel() {
+    _pn_boss->setVisible( true );
+}
+
+void UIBattleLayer::hideBossPanel() {
+    _pn_boss->setVisible( false );
+}
+
+void UIBattleLayer::showWavePanel() {
+    _pn_wave->setVisible( true );
+}
+
+void UIBattleLayer::hideWavePanel() {
+    _pn_wave->setVisible( false );
+}
+
+void UIBattleLayer::setBossHpPercent( float percent ) {
+    _pb_boss_hp->setPercent( percent );
+}
+
+void UIBattleLayer::setBossInfo( class UnitData* unit_data ) {
+    _lb_boss_name->setString( unit_data->display_name );
+}
+
+void UIBattleLayer::setWavePercent( float percent ) {
+    _pb_wave->setPercent( percent );
+}
+
+void UIBattleLayer::setNeedKill( int count ) {
+    _need_kill = count;
+    this->updateKillUI();
+}
+
+void UIBattleLayer::setKilled( int count ) {
+    _already_killed = count;
+    this->updateKillUI();
+}
+
+void UIBattleLayer::updateKillUI() {
+    if( _need_kill != 0 ) {
+        _lb_killed->setString( Utils::stringFormat( "%d/%d", _already_killed, _need_kill ) );
+        _pb_killed->setPercent( (float)_already_killed / (float)_need_kill );
+    }
+    else {
+        _lb_killed->setString( Utils::stringFormat( "%d", _already_killed ) );
     }
 }

@@ -1,0 +1,153 @@
+
+skeleton.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+DG-l0001
+  rotate: true
+  xy: 2, 94
+  size: 160, 70
+  orig: 160, 70
+  offset: 0, 0
+  index: -1
+DG-l0002
+  rotate: true
+  xy: 74, 94
+  size: 160, 70
+  orig: 160, 70
+  offset: 0, 0
+  index: -1
+DG-l0003
+  rotate: false
+  xy: 99, 22
+  size: 160, 70
+  orig: 160, 70
+  offset: 0, 0
+  index: -1
+DG-l0004
+  rotate: true
+  xy: 146, 94
+  size: 160, 70
+  orig: 160, 70
+  offset: 0, 0
+  index: -1
+DG-r0001
+  rotate: false
+  xy: 274, 12
+  size: 110, 114
+  orig: 110, 114
+  offset: 0, 0
+  index: -1
+DG-r0002
+  rotate: true
+  xy: 386, 144
+  size: 110, 114
+  orig: 110, 114
+  offset: 0, 0
+  index: -1
+DG-r0003
+  rotate: true
+  xy: 386, 32
+  size: 110, 114
+  orig: 110, 114
+  offset: 0, 0
+  index: -1
+dao-l
+  rotate: true
+  xy: 386, 3
+  size: 27, 30
+  orig: 27, 30
+  offset: 0, 0
+  index: -1
+dao-r
+  rotate: true
+  xy: 331, 179
+  size: 21, 34
+  orig: 21, 34
+  offset: 0, 0
+  index: -1
+jian-l
+  rotate: true
+  xy: 467, 4
+  size: 26, 19
+  orig: 26, 19
+  offset: 0, 0
+  index: -1
+jian-r
+  rotate: true
+  xy: 99, 2
+  size: 18, 19
+  orig: 18, 19
+  offset: 0, 0
+  index: -1
+liuhai-l
+  rotate: true
+  xy: 331, 226
+  size: 28, 48
+  orig: 28, 48
+  offset: 0, 0
+  index: -1
+liuhai-r
+  rotate: false
+  xy: 418, 3
+  size: 24, 27
+  orig: 24, 27
+  offset: 0, 0
+  index: -1
+shen
+  rotate: false
+  xy: 239, 95
+  size: 33, 31
+  orig: 33, 31
+  offset: 0, 0
+  index: -1
+shou-l
+  rotate: true
+  xy: 331, 202
+  size: 22, 36
+  orig: 22, 36
+  offset: 0, 0
+  index: -1
+shou-r
+  rotate: false
+  xy: 218, 94
+  size: 19, 32
+  orig: 19, 32
+  offset: 0, 0
+  index: -1
+tou
+  rotate: false
+  xy: 2, 8
+  size: 95, 84
+  orig: 95, 84
+  offset: 0, 0
+  index: -1
+tui-l
+  rotate: true
+  xy: 143, 9
+  size: 11, 20
+  orig: 11, 20
+  offset: 0, 0
+  index: -1
+tui-r
+  rotate: true
+  xy: 120, 9
+  size: 11, 21
+  orig: 11, 21
+  offset: 0, 0
+  index: -1
+yao
+  rotate: true
+  xy: 444, 4
+  size: 26, 21
+  orig: 26, 21
+  offset: 0, 0
+  index: -1
+ying
+  rotate: true
+  xy: 218, 128
+  size: 126, 111
+  orig: 126, 111
+  offset: 0, 0
+  index: -1

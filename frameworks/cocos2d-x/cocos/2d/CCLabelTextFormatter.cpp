@@ -435,4 +435,85 @@ bool LabelTextFormatter::createStringSprites(Label *theLabel)
     return true;
 }
 
+bool LabelTextFormatter::alignTextWithOffset( Label * theLabel, const cocos2d::Vec2& offset ) {
+    int i = 0;
+    
+    int lineNumber = 0;
+    int strLen = theLabel->_limitShowCount;
+    std::vector<char16_t> lastLine;
+    auto strWhole = theLabel->_currentUTF16String;
+    
+    if (theLabel->_labelWidth > theLabel->_contentSize.width)
+    {
+        theLabel->setContentSize(Size(theLabel->_labelWidth,theLabel->_contentSize.height));
+    }
+    
+    for (int ctr = 0; ctr <= strLen; ++ctr)
+    {
+        char16_t currentChar = strWhole[ctr];
+        
+        if (currentChar == '\n' || currentChar == 0)
+        {
+            auto lineLength = lastLine.size();
+            
+            // if last line is empty we must just increase lineNumber and work with next line
+            if (lineLength == 0)
+            {
+                lineNumber++;
+                continue;
+            }
+            int index = static_cast<int>(i + lineLength - 1 + lineNumber);
+            if (index < 0) continue;
+            
+            auto info = & theLabel->_lettersInfo.at( index );
+            if(info->def.validDefinition == false)
+                continue;
+            
+            float shift = 0;
+            switch (theLabel->_hAlignment)
+            {
+                case TextHAlignment::CENTER:
+                {
+                    float lineWidth = info->position.x + info->contentSize.width;
+                    shift = theLabel->_contentSize.width/2.0f - lineWidth/2.0f;
+                    break;
+                }
+                case TextHAlignment::RIGHT:
+                {
+                    float lineWidth = info->position.x + info->contentSize.width;
+                    shift = theLabel->_contentSize.width - lineWidth;
+                    break;
+                }
+                default:
+                    break;
+            }
+            
+            if (shift != 0)
+            {
+                for (unsigned j = 0; j < lineLength; ++j)
+                {
+                    index = i + j + lineNumber;
+                    if (index < 0) continue;
+                    
+                    info = & theLabel->_lettersInfo.at( index );
+                    if(info)
+                    {
+                        info->position.x += shift;
+                    }
+                }
+            }
+            
+            i += lineLength;
+            ++lineNumber;
+            
+            lastLine.clear();
+            continue;
+        }
+        
+        lastLine.push_back(currentChar);
+    }
+    
+    return true;
+}
+
 NS_CC_END

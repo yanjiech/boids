@@ -690,6 +690,10 @@ void BattleLayer::onUnitAppear( UnitNode* unit ) {
     
     _map_logic->onTargetNodeAppear( unit );
     unit->appear();
+    if( unit->hasUnitTag( "boss" ) ) {
+        _skill_ui_layer->showBossPanel();
+        _skill_ui_layer->setBossInfo( unit->getUnitData() );
+    }
 }
 
 void BattleLayer::onUnitDying( UnitNode* unit ) {
@@ -724,6 +728,8 @@ void BattleLayer::onUnitDisappear( UnitNode* unit ) {
     std::string key = Utils::stringFormat( "%d", unit->getDeployId() );
     _dead_units.erase( key );
     _map_logic->onTargetNodeDisappear( unit );
+    int count = _map_logic->getUnitDisappearCountByCamp( (int)eTargetCamp::Enemy );
+    _skill_ui_layer->setKilled( count );
     unit->removeFromParent();
 }
 
@@ -854,7 +860,7 @@ cocos2d::Point BattleLayer::getAvailablePosition( float radius, const cocos2d::R
     cocos2d::Rect temp_region = region;
     
 #define RETRY_TIMES_BEFORE_ENLARGE (10)
-#define MAX_ENLARGE_TIMES (50) //扩展30次还没位置的话，九成是地图有问题啊。。
+#define MAX_ENLARGE_TIMES (50)
     int enlarge_time = 0;
     
     while( true ) {

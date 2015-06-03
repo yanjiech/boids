@@ -334,6 +334,8 @@ void Label::reset()
     _shadowEnabled = false;
     _clipEnabled = false;
     _blendFuncDirty = false;
+    
+    _offset = Point::ZERO;
 }
 
 void Label::updateShaderProgram()

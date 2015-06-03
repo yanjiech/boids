@@ -18,6 +18,7 @@
 #define LEVEL_CSB_FILE "level_choose/level/level.csb"
 
 using namespace cocos2d;
+using namespace cocostudio::timeline;
 
 UILevelChooseLayer::UILevelChooseLayer() :
 _map_data( nullptr ) {
@@ -26,6 +27,7 @@ _map_data( nullptr ) {
 
 UILevelChooseLayer::~UILevelChooseLayer() {
     CC_SAFE_RELEASE( _map_data );
+    ActionTimelineCache::getInstance()->removeAction( MAIN_CSB_FILE );
 }
 
 UILevelChooseLayer* UILevelChooseLayer::create() {
@@ -45,10 +47,19 @@ bool UILevelChooseLayer::init() {
     _main_node = cocos2d::CSLoader::getInstance()->createNode( main_csb_file );
     this->addChild( _main_node );
     
+    _panel_action = ActionTimelineCache::getInstance()->loadAnimationActionWithFlatBuffersFile( main_csb_file );
+    
     std::string level_csb_file = FileUtils::getInstance()->fullPathForFilename( LEVEL_CSB_FILE );
-    _level_node = cocos2d::CSLoader::getInstance()->createNode( level_csb_file.c_str() );
+    _level_node = cocos2d::CSLoader::getInstance()->createNode( level_csb_file );
     this->addChild( _level_node );
+    
     _level_node->setVisible( false );
+    
+    _lb_player_name = dynamic_cast<ui::Text*>( _main_node->getChildByName( "lb_player_name" ) );
+    _lb_player_name->setAdditionalKerning( -5.0f );
+    
+    ui::Layout* pn_wheel = dynamic_cast<ui::Layout*>( _main_node->getChildByName( "pn_wheel" ) );
+    pn_wheel->addTouchEventListener( CC_CALLBACK_2( UILevelChooseLayer::onDifficultyTouched, this ) );
     
     _scrollview = dynamic_cast<ui::ScrollView*>( _main_node->getChildByName( "mapScrollView" ) );
     _background_node = dynamic_cast<Sprite*>( _level_node->getChildByName( "background" ) );
@@ -87,6 +98,8 @@ bool UILevelChooseLayer::init() {
     }
     
     this->loadDeployedHeros();
+    
+    _difficulty = eLevelDifficulty::LevelDiffEasy;
     
     return true;
 }
@@ -170,10 +183,42 @@ void UILevelChooseLayer::onTeamSkillTouched( cocos2d::Ref* sender, cocos2d::ui::
     }
 }
 
+eLevelDifficulty UILevelChooseLayer::getDifficulty() {
+    return _difficulty;
+}
+
+void UILevelChooseLayer::setDifficulty( eLevelDifficulty diff ) {
+    if( _difficulty != diff ) {
+        _difficulty = diff;
+        this->stopAction( _panel_action );
+        this->runAction( _panel_action );
+        switch( _difficulty ) {
+            case eLevelDifficulty::LevelDiffEasy:
+                _panel_action->play( "to_easy", false );
+                break;
+            case eLevelDifficulty::LevelDiffMedium:
+                _panel_action->play( "to_medium", false );
+                break;
+            case eLevelDifficulty::LevelDiffHard:
+                _panel_action->play( "to_hard", false );
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+void UILevelChooseLayer::onDifficultyTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        int old_diff = (int)_difficulty;
+        this->setDifficulty( (eLevelDifficulty)( old_diff % 3 + 1 ) );
+    }
+}
+
 void UILevelChooseLayer::setMapData( MapData* map_data ) {
+    CC_SAFE_RETAIN( map_data );
     CC_SAFE_RELEASE( _map_data );
     _map_data = map_data;
-    CC_SAFE_RETAIN( _map_data );
 }
 
 void UILevelChooseLayer::loadDeployedHeros() {
@@ -193,7 +238,7 @@ void UILevelChooseLayer::loadDeployedHeros() {
                 shadow->addChild( skeleton );
                 
                 const ValueMap& unit_config = ResourceManager::getInstance()->getUnitData( name );
-                skeleton->setScale( unit_config.at( "scale" ).asFloat() );
+                skeleton->setScale( unit_config.at( "scale" ).asFloat() * 1.2f );
             }
             else {
                 shadow->setVisible( false );

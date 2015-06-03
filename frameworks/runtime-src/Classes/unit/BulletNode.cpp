@@ -283,7 +283,7 @@ void BulletNode::hitTarget( class TargetNode *target_unit, bool with_buff ) {
     else {
         result = _damage_calculator->calculateDamageWithoutMiss( _source_unit->getTargetData(), target_unit->getTargetData() );
     }
-    target_unit->takeDamage( result.at( "damage" ).asFloat(), result.at( "miss" ).asBool(), result.at( "cri" ).asBool(), _source_unit );
+    target_unit->takeDamage( result, _source_unit );
     
     UnitNode* unit = dynamic_cast<UnitNode*>( target_unit );
     if( unit && with_buff && !_buff_data.empty() ) {
@@ -307,15 +307,15 @@ void BulletNode::hitTarget( class TargetNode *target_unit, bool with_buff ) {
 }
 
 void BulletNode::setSourceUnit( class TargetNode* source_unit ) {
+    CC_SAFE_RETAIN( source_unit );
     CC_SAFE_RELEASE( _source_unit );
     _source_unit = source_unit;
-    CC_SAFE_RETAIN( _source_unit );
 }
 
 void BulletNode::setDamageCalculator( DamageCalculate* calculator ) {
+    CC_SAFE_RETAIN( calculator );
     CC_SAFE_RELEASE( _damage_calculator );
     _damage_calculator = calculator;
-    CC_SAFE_RETAIN( _damage_calculator );
 }
 
 void BulletNode::setShouldRecycle( bool b ) {

@@ -15,6 +15,12 @@
 #include "MapData.h"
 #include "TouchableLayer.h"
 
+typedef enum {
+    LevelDiffEasy = 1,
+    LevelDiffMedium = 2,
+    LevelDiffHard = 3
+}eLevelDifficulty;
+
 class UILevelChooseLayer : public TouchableLayer {
 private:
     cocos2d::Node* _main_node;
@@ -31,6 +37,12 @@ private:
     bool _is_pvp;
     rapidjson::Document _level_logic;
     
+    eLevelDifficulty _difficulty;
+    
+    cocostudio::timeline::ActionTimeline* _panel_action;
+    
+    cocos2d::ui::Text* _lb_player_name;
+    
 public:
     UILevelChooseLayer();
     ~UILevelChooseLayer();
@@ -46,6 +58,10 @@ public:
     void onStoreTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     void onHeroTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     void onTeamSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    
+    eLevelDifficulty getDifficulty();
+    void setDifficulty( eLevelDifficulty diff );
+    void onDifficultyTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     
     void setMapData( MapData* map_data );
     

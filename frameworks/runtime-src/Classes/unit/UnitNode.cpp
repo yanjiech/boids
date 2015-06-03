@@ -98,6 +98,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     if( !TargetNode::init( battle_layer ) ) {
         return false;
     }
+    
     ResourceManager* res_manager = ResourceManager::getInstance();
     
     UnitData* target_data = UnitData::create( unit_data );
@@ -114,11 +115,6 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     auto itr = unit_data.find( "unit_camp" );
     if( itr != unit_data.end() ) {
         this->setTargetCamp( UnitNode::getCampByString( itr->second.asString() ) );
-    }
-    
-    itr = unit_data.find( "is_boss" );
-    if( itr != unit_data.end() ) {
-        this->setBoss( itr->second.asBool() );
     }
     
     itr = unit_data.find( "tag_string" );
@@ -194,6 +190,12 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     this->setWanderRadius( DEFAULT_WANDER_RADIUS );
     _relax_frames = 0;
     
+    //skill
+    for( auto v : target_data->skills ) {
+        Skill* skill = Skill::create( this, v.asValueMap() );
+        _skills.pushBack( skill );
+    }
+    
     Rect bounding_box = _current_skeleton->getBoundingBox();
     
     float hpbar_width = DEFAULT_HP_BAR_WIDTH;
@@ -203,20 +205,22 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     _hp_bar->setPosition( Point( 0, bounding_box.size.height * ( 1.0f - _current_skeleton->getAnchorPoint().y ) + 10.0f ) );
     this->addChild( _hp_bar, eComponentLayer::OverObject );
     
-    itr = unit_data.find( "show_hp" );
+    itr = unit_data.find( "is_boss" );
     if( itr != unit_data.end() ) {
-        if( itr->second.asBool() ) {
-            this->showHP();
-        }
-        else {
-            this->hideHP();
-        }
+        this->setBoss( itr->second.asBool() );
+        this->hideHP();
     }
-    
-    //skill
-    for( auto v : target_data->skills ) {
-        Skill* skill = Skill::create( this, v.asValueMap() );
-        _skills.pushBack( skill );
+    else {
+        this->setBoss( false );
+        itr = unit_data.find( "show_hp" );
+        if( itr != unit_data.end() ) {
+            if( itr->second.asBool() ) {
+                this->showHP();
+            }
+            else {
+                this->hideHP();
+            }
+        }
     }
     
     return true;
@@ -322,9 +326,10 @@ TargetNode* UnitNode::getChasingTarget() {
 }
 
 void UnitNode::setChasingTarget( TargetNode* target ) {
+    CC_SAFE_RETAIN( target );
     CC_SAFE_RELEASE( _chasing_target );
     _chasing_target = target;
-    CC_SAFE_RETAIN( _chasing_target );
+    
 }
 
 void UnitNode::changeUnitState( eUnitState new_state, bool force ) {
@@ -563,7 +568,13 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* 
         this->jumpNumber( damage, "damage", is_cri, jump_text_name );
         
         //update blood bar
-        _hp_bar->setPercentage( _target_data->current_hp / _target_data->hp * 100.0f );
+        if( this->isBoss() ) {
+            float percent = 100.0f * _target_data->current_hp / _target_data->hp;
+            _battle_layer->getUIBattleLayer()->setBossHpPercent( percent );
+        }
+        else if( this->getTargetCamp() == eTargetCamp::Player ) {
+            _hp_bar->setPercentage( _target_data->current_hp / _target_data->hp * 100.0f );
+        }
         
         //dying
         if( unit_data->current_hp == 0 ) {
@@ -1116,7 +1127,8 @@ void UnitNode::makeSpeech( const std::string& content, float duration ) {
     Rect inset_rect = Rect( 100.0f, 40.0f, 60.0f, 60.0f );
     ui::Scale9Sprite* window = ui::Scale9Sprite::createWithSpriteFrameName( "chat_popup.png", inset_rect );
     window->setAnchorPoint( Point( 0.3f, 0 ) );
-    Label* content_label = Label::createWithSystemFont( content, "Helvetica", 40.0f );
+    Label* content_label = Label::createWithTTF( content, "simhei.ttf", 36.0 );
+//    Label* content_label = Label::createWithSystemFont( content, "Helvetica", 40.0f );
     content_label->setTextColor( Color4B::BLACK );
     content_label->setLineBreakWithoutSpace( true );
     content_label->setDimensions( 300, 0 );

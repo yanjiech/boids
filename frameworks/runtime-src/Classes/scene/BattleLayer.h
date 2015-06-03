@@ -245,6 +245,8 @@ public:
     
     bool shouldShowFog() { return _should_show_fog; }
     void setShouldShowFog( bool b ) { _should_show_fog = b; }
+    
+    UIBattleLayer* getUIBattleLayer() { return _skill_ui_layer; }
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

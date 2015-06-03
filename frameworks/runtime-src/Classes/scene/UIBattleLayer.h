@@ -11,6 +11,9 @@
 
 #include "cocos2d.h"
 #include <list>
+#include "cocostudio/CocoStudio.h"
+#include "ui/CocosGUI.h"
+
 
 class UnitNode;
 class BattleLayer;
@@ -19,8 +22,10 @@ class UISkillNode : public cocos2d::Node {
 private:
     BattleLayer* _battle_layer;
     UnitNode* _unit_node;
-    
-    cocos2d::ProgressTimer* _avatar;
+
+    cocos2d::Sprite* _sp_ready;
+    cocos2d::ProgressTimer* _pb_loading;
+    cocos2d::ProgressTimer* _pb_mp;
     std::string _hint_type;
     float _range;
     float _radius;
@@ -30,6 +35,8 @@ private:
     cocos2d::Point _hint_d_pos;
     
     cocos2d::Node* _hint_effect;
+    
+    bool _is_skill_ready;
     
 public:
     UISkillNode();
@@ -71,6 +78,30 @@ private:
     
     float _touch_down_duration;
     
+    cocos2d::Node* _root_node;
+    cocostudio::timeline::ActionTimeline* _battle_panel_action;
+    
+    //statistics panel
+    cocos2d::ui::Text* _lb_time;
+    cocos2d::ui::Text* _lb_killed;
+    cocos2d::ui::LoadingBar* _pb_killed;
+    
+    cocos2d::ui::Layout* _pn_boss_and_wave;
+    //boss panel
+    cocos2d::ui::Layout* _pn_boss;
+    cocos2d::Node* _nd_boss_avatar;
+    cocos2d::ui::Text* _lb_boss_name;
+    cocos2d::ui::LoadingBar* _pb_boss_hp;
+    
+    //wave panel
+    cocos2d::ui::Layout* _pn_wave;
+    cocos2d::Node* _nd_monster_avatar;
+    cocos2d::Sprite* _sp_flag;
+    cocos2d::ui::LoadingBar* _pb_wave;
+    
+    int _need_kill;
+    int _already_killed;
+    
 public:
     UIBattleLayer();
     virtual ~UIBattleLayer();
@@ -91,6 +122,20 @@ public:
     void removeSkillNode( UnitNode* unit );
     
     void removeAllSkillNodes();
+    
+    void showBossPanel();
+    void hideBossPanel();
+    void showWavePanel();
+    void hideWavePanel();
+    
+    void setBossInfo( class UnitData* unit_data );
+    void setBossHpPercent( float percent );
+    void setWavePercent( float percent );
+    
+    void setNeedKill( int count );
+    void setKilled( int count );
+    
+    void updateKillUI();
     
 private:
     UISkillNode* skillNodeForTouch( cocos2d::Touch* touch );

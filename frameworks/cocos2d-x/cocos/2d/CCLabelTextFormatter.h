@@ -31,6 +31,7 @@
 NS_CC_BEGIN
 
 class Label;
+class Vec2;
 
 class CC_DLL LabelTextFormatter
 {
@@ -40,6 +41,7 @@ public:
     static bool alignText(Label *theLabel);
     static bool createStringSprites(Label *theLabel);
 
+    static bool alignTextWithOffset( Label * theLabel, const cocos2d::Vec2& offset );
 };
 
 NS_CC_END
