@@ -33,13 +33,18 @@ public:
     void loadPlayerInfo();
     void recordPlayerInfo();
     
-    const cocos2d::ValueMap& getAllUnitsInfo();
+    const cocos2d::ValueMap& getOwnedUnitsInfo();
     
     const cocos2d::ValueMap& getPlayerDeployedUnitsSlotIds();
     
     cocos2d::ValueVector getPlayerDeployedUnitsInfo();
     
     cocos2d::ValueVector getPlayerDeployedUnitNames();
+    
+    bool isUnitOwned( const std::string& name );
+    bool isUnitLocked( const std::string& name );
+    
+    bool isLevelCompleted( int level_id );
     
     void setDeployUnit( const std::string& slot_id, const std::string& hero_id );
     void setDeployUnits( const cocos2d::ValueMap& data );

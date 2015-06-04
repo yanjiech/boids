@@ -177,9 +177,13 @@ void ElementData::add( ElementData* other ) {
 void ElementData::sub( ElementData* other ) {
     this->level -= other->level;
     this->hp -= other->hp;
-    this->current_hp -= other->current_hp;
+    if( this->current_hp > this->hp ) {
+        this->current_hp = this->hp;
+    }
     this->mp -= other->mp;
-    this->current_mp -= other->current_mp;
+    if( this->current_mp > this->mp ) {
+        this->current_mp = this->mp;
+    }
     this->atk -= other->atk;
     this->def -= other->def;
     this->move_speed -= other->move_speed;
@@ -195,7 +199,9 @@ void ElementData::sub( ElementData* other ) {
 
 void ElementData::add( class EquipmentData* data ) {
     this->hp += data->hp;
+    this->current_hp = this->hp;
     this->mp += data->mp;
+    this->current_mp = this->mp;
     this->atk += data->atk;
     this->def += data->def;
     this->hit += data->hit;

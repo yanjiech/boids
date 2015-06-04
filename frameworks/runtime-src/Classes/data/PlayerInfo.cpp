@@ -53,7 +53,7 @@ void PlayerInfo::recordPlayerInfo() {
     file_util->writeToFile( _player_info, plist_file );
 }
 
-const cocos2d::ValueMap& PlayerInfo::getAllUnitsInfo() {
+const cocos2d::ValueMap& PlayerInfo::getOwnedUnitsInfo() {
     return _player_info.at( "units" ).asValueMap();
 }
 
@@ -82,6 +82,48 @@ cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitsInfo() {
         }
     }
     return ret;
+}
+
+bool PlayerInfo::isUnitOwned( const std::string& name ) {
+    const ValueMap& owned_units = this->getOwnedUnitsInfo();
+    for( auto pair : owned_units ) {
+        const ValueMap& info = pair.second.asValueMap();
+        if( info.at( "name" ).asString() == name ) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+bool PlayerInfo::isUnitLocked( const std::string& name ) {
+    const ValueMap& upgrade_config = ResourceManager::getInstance()->getUnitLevelupCostConfig();
+    const ValueMap& config = upgrade_config.at( name ).asValueMap();
+    int cond_type = config.at( "cond_type" ).asInt();
+    int cond_param = config.at( "cond_param" ).asInt();
+    switch( cond_type ) {
+        case 0:
+            return false;
+        case 1:
+        {
+            return !this->isLevelCompleted( cond_param );
+        }
+        case 2:
+        {
+            int team_level = this->getTeamLevel();
+            return ( cond_param > team_level );
+        }
+            
+        default:
+            break;
+    }
+    return true;
+}
+
+bool PlayerInfo::isLevelCompleted( int level_id ) {
+    const ValueMap& mission_record = _player_info.at( "mission_record" ).asValueMap();
+    auto itr = mission_record.find( Utils::toStr( level_id ) );
+    return itr != mission_record.end();
 }
 
 cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitNames() {

@@ -90,6 +90,8 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_ICE_DEBRIS ) {
         ret = IceDebris::create( owner, data, params );
     }
-    
+    else if( name == SKILL_NAME_SACRIFICE_BOMB ) {
+        ret = SacrificeBomb::create( owner, data, params );
+    }
     return ret;
 }

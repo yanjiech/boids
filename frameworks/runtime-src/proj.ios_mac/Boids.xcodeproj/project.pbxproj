@@ -124,6 +124,8 @@
 		76EFF5BE1AD37E5800690CFE /* AtomFart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */; };
 		76EFF5C11AD396C300690CFE /* FatalThrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */; };
 		76EFF5C21AD396C300690CFE /* FatalThrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */; };
+		76F74B431B20006900A4C950 /* SacrificeBomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76F74B411B20006900A4C950 /* SacrificeBomb.cpp */; };
+		76F74B441B20006900A4C950 /* SacrificeBomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76F74B411B20006900A4C950 /* SacrificeBomb.cpp */; };
 		76FF5A9E1AE8CD80008B721E /* GasBomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76FF5A9C1AE8CD80008B721E /* GasBomb.cpp */; };
 		76FF5A9F1AE8CD80008B721E /* GasBomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76FF5A9C1AE8CD80008B721E /* GasBomb.cpp */; };
 		9859D1CB1A7B4B6000FF6D82 /* TcpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9859D1C81A7B4B6000FF6D82 /* TcpClient.cpp */; };
@@ -604,6 +606,8 @@
 		76EFF5BC1AD37E5800690CFE /* AtomFart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomFart.h; sourceTree = "<group>"; };
 		76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FatalThrow.cpp; sourceTree = "<group>"; };
 		76EFF5C01AD396C300690CFE /* FatalThrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatalThrow.h; sourceTree = "<group>"; };
+		76F74B411B20006900A4C950 /* SacrificeBomb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SacrificeBomb.cpp; sourceTree = "<group>"; };
+		76F74B421B20006900A4C950 /* SacrificeBomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SacrificeBomb.h; sourceTree = "<group>"; };
 		76FF5A9C1AE8CD80008B721E /* GasBomb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GasBomb.cpp; sourceTree = "<group>"; };
 		76FF5A9D1AE8CD80008B721E /* GasBomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GasBomb.h; sourceTree = "<group>"; };
 		98598B141A10BF7F0075D0EC /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
@@ -1153,6 +1157,8 @@
 				76E50B411B180D6F00DA0996 /* SnowStorm.h */,
 				76E50B441B180FD800DA0996 /* IceDebris.cpp */,
 				76E50B451B180FD800DA0996 /* IceDebris.h */,
+				76F74B411B20006900A4C950 /* SacrificeBomb.cpp */,
+				76F74B421B20006900A4C950 /* SacrificeBomb.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -2024,6 +2030,7 @@
 				E807DF601A4D642B004F76DA /* CycledList.cpp in Sources */,
 				988B52E31AA445EF00FB7B21 /* UIBattleLayer.cpp in Sources */,
 				76021A9C1ADCBDE100B639BA /* ElementData.cpp in Sources */,
+				76F74B441B20006900A4C950 /* SacrificeBomb.cpp in Sources */,
 				E8676E411A7B734000F927E5 /* Profile.cpp in Sources */,
 				986A55761AA565A60051B0B9 /* PlayerInfo.cpp in Sources */,
 				E87413081A0B5629003EBD0B /* TmxPolyline.cpp in Sources */,
@@ -2275,6 +2282,7 @@
 				98E3B6511A73A77A00B5BEBB /* extension_set.cc in Sources */,
 				76E533C01ACE41430020B825 /* BlockNode.cpp in Sources */,
 				E84197D61A09226300F5DF36 /* gzclose.c in Sources */,
+				76F74B431B20006900A4C950 /* SacrificeBomb.cpp in Sources */,
 				98EBBF041AAC865C00ADB84A /* EventAction.cpp in Sources */,
 				9871DBEE1ABADCEF009B8EC9 /* SkillNode.cpp in Sources */,
 				98EBBF081AAC866A00ADB84A /* EventTrigger.cpp in Sources */,
@@ -2475,7 +2483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2497,7 +2505,7 @@
 					/Users/chenyanjie/Documents/lib/lib,
 					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
-				PROVISIONING_PROFILE = "fa1ae143-78e4-4095-9d01-19b8cce7dd41";
+				PROVISIONING_PROFILE = "d953645f-b7be-499c-ba62-1a4ace3cc99c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";
@@ -2509,7 +2517,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2530,7 +2538,7 @@
 					/Users/chenyanjie/Documents/lib/lib,
 					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
-				PROVISIONING_PROFILE = "fa1ae143-78e4-4095-9d01-19b8cce7dd41";
+				PROVISIONING_PROFILE = "d953645f-b7be-499c-ba62-1a4ace3cc99c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";

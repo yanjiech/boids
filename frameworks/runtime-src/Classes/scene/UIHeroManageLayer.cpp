@@ -22,6 +22,7 @@
 #define HERO_DEPLOY_CELL_HEIGHT 138
 
 using namespace cocos2d;
+using namespace cocostudio::timeline;
 
 //hero slot
 UIHeroManageHeroSlot::UIHeroManageHeroSlot() :
@@ -77,9 +78,7 @@ bool UIHeroManageHeroSlot::init( const cocos2d::ValueMap& data, const std::strin
     _lock_sprite->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
     this->addChild( _lock_sprite, 4 );
 
-    if( _deployed_sprite ) {
-        this->addChild( _deployed_sprite, 5 );
-    }
+    this->addChild( _deployed_sprite, 5 );
     
     this->setDeployed( false );
     this->setSelected( false );
@@ -341,7 +340,7 @@ _selected_deploy_slot( nullptr )
 }
 
 UIHeroManageLayer::~UIHeroManageLayer() {
-    
+    ActionTimelineCache::getInstance()->removeAction( HERO_MANAGE_FILE );
 }
 
 UIHeroManageLayer* UIHeroManageLayer::create() {
@@ -365,19 +364,46 @@ bool UIHeroManageLayer::init() {
     _root_node = cocos2d::CSLoader::getInstance()->createNode( root_csb_file );
     this->addChild( _root_node );
     
+    _panel_action = ActionTimelineCache::getInstance()->loadAnimationActionWithFlatBuffersFile( root_csb_file );
+    
     ui::Button* btn_confirm = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_finish" ) );
     btn_confirm->addTouchEventListener( CC_CALLBACK_2( UIHeroManageLayer::onConfirmTouched, this ) );
     
-    ui::Button* btn_detail = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_equip" ) );
+    Node* pn_skill_equip = _root_node->getChildByName( "skill_equip_panel" );
+    
+    ui::Button* btn_detail = dynamic_cast<ui::Button*>( pn_skill_equip->getChildByName( "btn_equip" ) );
     btn_detail->addTouchEventListener( CC_CALLBACK_2( UIHeroManageLayer::onDetailTouched, this ) );
     
-    ui::Button* btn_skill = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_skill") );
+    ui::Button* btn_skill = dynamic_cast<ui::Button*>( pn_skill_equip->getChildByName( "btn_skill") );
     btn_skill->addTouchEventListener( CC_CALLBACK_2( UIHeroManageLayer::onSkillTouched, this ) );
     
-    _pv_hero_list = dynamic_cast<ui::PageView*>( _root_node->getChildByName( "pv_hero_list" ) );
+    Node* pn_buy = _root_node->getChildByName( "panel_buy" );
+    ui::Button* btn_purchase = dynamic_cast<ui::Button*>( pn_buy->getChildByName( "btn_buy" ) );
+    btn_purchase->addTouchEventListener( CC_CALLBACK_2( UIHeroManageLayer::onPurchaseTouched, this ) );
+    _lb_price = dynamic_cast<ui::Text*>( pn_buy->getChildByName( "lb_price" ) );
     
-    _lb_diamond = dynamic_cast<ui::Text*>( _root_node->getChildByName( "lb_diamond" ) );
-    _lb_gold = dynamic_cast<ui::Text*>( _root_node->getChildByName( "lb_gold" ) );
+    _lb_upgrade_cost = dynamic_cast<ui::Text*>( _root_node->getChildByName( "lb_upgrade_cost" ) );
+    
+    Node* pn_skill_info = _root_node->getChildByName( "skill_info_panel" );
+    _btn_skill_1 = dynamic_cast<ui::Button*>( pn_skill_info->getChildByName( "btn_skill1" ) );
+    _btn_skill_1->switchSpriteFrames();
+    _btn_skill_1->setPosition( _btn_skill_1->getPosition() + Point( 20.0, 0 ) );
+    _btn_skill_1->addTouchEventListener( CC_CALLBACK_2( UIHeroManageLayer::onSkillTabTouched, this ) );
+    _selected_skill_tab = _btn_skill_1;
+    
+    ui::Text* lb_title_1 = dynamic_cast<ui::Text*>( _btn_skill_1->getChildByName( "lb_title" ) );
+    Label* label_1 = lb_title_1->getLabelRenderer();
+    label_1->setLineHeight( label_1->getLineHeight() - 6.0f );
+    
+    _btn_skill_2 = dynamic_cast<ui::Button*>( pn_skill_info->getChildByName( "btn_skill2" ) );
+    _btn_skill_2->addTouchEventListener( CC_CALLBACK_2( UIHeroManageLayer::onSkillTabTouched, this ) );
+    
+    ui::Text* lb_title_2 = dynamic_cast<ui::Text*>( _btn_skill_2->getChildByName( "lb_title" ) );
+    lb_title_2->setAdditionalKerning( -5.0f );
+    Label* label_2 = lb_title_2->getLabelRenderer();
+    label_2->setLineHeight( label_2->getLineHeight() - 6.0f );
+    
+    _pv_hero_list = dynamic_cast<ui::PageView*>( _root_node->getChildByName( "pv_hero_list" ) );
     
     _star_1 = dynamic_cast<Sprite*>( _root_node->getChildByName( "star_1" ) );
     _star_2 = dynamic_cast<Sprite*>( _root_node->getChildByName( "star_2" ) );
@@ -413,84 +439,51 @@ bool UIHeroManageLayer::init() {
     _selected_hero = nullptr;
     
     PlayerInfo* player_info = PlayerInfo::getInstance();
-    _lb_diamond->setString( Utils::toStr( player_info->getDiamond() ) );
-    _lb_gold->setString( Utils::toStr( player_info->getGold() ) );
+    const ValueMap& all_units_info = player_info->getOwnedUnitsInfo();
     
-    _deploy_slot_1 = _root_node->getChildByName( "hero_1" );
-    _deploy_slot_2 = _root_node->getChildByName( "hero_2" );
-    _deploy_slot_3 = _root_node->getChildByName( "hero_3" );
-    _deploy_slot_4 = _root_node->getChildByName( "hero_4" );
-    _deploy_slot_5 = _root_node->getChildByName( "hero_5" );
+    Node* pn_deployed = _root_node->getChildByName( "choose_panel" )->getChildByName( "choose_panel" );
     
-    const ValueMap& all_units_info = player_info->getAllUnitsInfo();
+    _deploy_slot_1 = pn_deployed->getChildByName( "hero_1" );
+    _deploy_slot_2 = pn_deployed->getChildByName( "hero_2" );
+    _deploy_slot_3 = pn_deployed->getChildByName( "hero_3" );
+    _deploy_slot_4 = pn_deployed->getChildByName( "hero_4" );
+    _deploy_slot_5 = pn_deployed->getChildByName( "hero_5" );
     
-    const ValueMap& deployed_unit_slot_ids = player_info->getPlayerDeployedUnitsSlotIds();
-    
-    //all units
-    std::vector<std::string> sorted_keys;
-    
-    std::vector<std::string> owned_keys;
-    std::vector<std::string> unlocked_keys;
-    std::vector<std::string> locked_keys;
-    
-    for( auto pair : all_units_info ) {
-        const ValueMap& info = pair.second.asValueMap();
-        bool is_owned = info.at( "owned" ).asBool();
-        bool is_locked = info.at( "locked" ).asBool();
-        
+    const ValueMap& upgrade_cost_config = ResourceManager::getInstance()->getUnitLevelupCostConfig();
+    for( auto pair : upgrade_cost_config ) {
+        const ValueMap& config = pair.second.asValueMap();
+        std::string hero_name = config.at( "name" ).asString();
+        std::string hero_id = config.at( "hero_id" ).asString();
+        UIHeroManageHeroSlot* slot = nullptr;
+        bool is_owned = player_info->isUnitOwned( hero_name );
+        bool is_locked = player_info->isUnitLocked( hero_name );
         if( is_owned ) {
-            owned_keys.push_back( pair.first );
+            const ValueMap& hero_data = all_units_info.at( hero_id ).asValueMap();
+            slot = UIHeroManageHeroSlot::create( hero_data, hero_id, 0 );
         }
         else {
-            if( !is_locked ) {
-                unlocked_keys.push_back( pair.first );
+            ValueMap hero_data;
+            ValueVector skills;
+            for( int i = 0; i < 2; i++ ) {
+                ValueMap skill;
+                skill["skill_id"] = Value( i );
+                skill["level"] = Value( 1 );
+                skills.push_back( Value( skill ) );
             }
-            else {
-                locked_keys.push_back( pair.first );
-            }
+            hero_data["skills"] = Value( skills );
+            hero_data["name"] = Value( hero_name );
+            hero_data["level"] = Value( 1 );
+            slot = UIHeroManageHeroSlot::create( hero_data, hero_id, 0 );
         }
-    }
-    std::sort( owned_keys.begin(), owned_keys.end(), [&]( const std::string& a, const std::string& b )->bool{ return Utils::toInt( a ) < Utils::toInt( b ); } );
-    std::sort( unlocked_keys.begin(), unlocked_keys.end(), [&]( const std::string& a, const std::string& b )->bool{ return Utils::toInt( a ) < Utils::toInt( b ); } );
-    std::sort( locked_keys.begin(), locked_keys.end(), [&]( const std::string& a, const std::string& b )->bool{ return Utils::toInt( a ) < Utils::toInt( b ); } );
-    
-    for( auto str : owned_keys ) {
-        sorted_keys.push_back( str );
-    }
-    for( auto str : unlocked_keys ) {
-        sorted_keys.push_back( str );
-    }
-    for( auto str : locked_keys ) {
-        sorted_keys.push_back( str );
+        slot->setOwned( is_owned );
+        slot->setLocked( is_locked );
+        _hero_slots.insert( hero_id, slot );
     }
     
-//    int count = _pv_hero_list->getContentSize().width / HERO_LIST_CELL_WIDTH;
-    int i = 0;
-    int count = 6;
-    ui::Layout* page = ui::Layout::create();
-    page->setContentSize( _pv_hero_list->getContentSize() );
-    _pv_hero_list->addPage( page );
-    for( auto key : sorted_keys ) {
-        if( ++i > count ) {
-            i = 1;
-            page = ui::Layout::create();
-            page->setContentSize( _pv_hero_list->getContentSize() );
-            _pv_hero_list->addPage( page );
-        }
-        const ValueMap& data = all_units_info.at( key ).asValueMap();
-        UIHeroManageHeroSlot* slot = UIHeroManageHeroSlot::create( data, key, 0 );
-        for( auto pair : deployed_unit_slot_ids ) {
-            if( pair.second.asString() == key ) {
-                slot->setDeployed( true );
-                break;
-            }
-        }
-        slot->setPosition( Point( ( i - 0.5 ) * HERO_LIST_CELL_WIDTH, HERO_LIST_CELL_HEIGHT / 2.0f ) );
-        page->addChild( slot );
-        _hero_slots.insert( key, slot );
-    }
+    this->alignHeroSlots();
 
     //deployed units
+    const ValueMap& deployed_unit_slot_ids = player_info->getPlayerDeployedUnitsSlotIds();
     int i_slot_id = 1;
     int total_slot_count = deployed_unit_slot_ids.size();
     for( int i = 1; i <= total_slot_count; i++ ) {
@@ -558,7 +551,7 @@ void UIHeroManageLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
 
 void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        if( _selected_hero != nullptr ) {
+        if( _selected_hero != nullptr && _selected_hero->isOwned() ) {
             _root_node->setVisible( false );
             UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create( _selected_hero );
             this->addChild( hero_detail, 2 );
@@ -568,7 +561,7 @@ void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widg
 
 void UIHeroManageLayer::onSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        if( _selected_hero != nullptr ) {
+        if( _selected_hero != nullptr && _selected_hero->isOwned() ) {
             _root_node->setVisible( false );
             UIHeroSkillLayer* hero_skill = UIHeroSkillLayer::create( _selected_hero );
             this->addChild( hero_skill, 2 );
@@ -616,13 +609,33 @@ void UIHeroManageLayer::onUpgradeTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
     }
 }
 
+void UIHeroManageLayer::onSkillTabTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        if( sender != _selected_skill_tab ) {
+            ui::Button* btn = dynamic_cast<ui::Button*>( sender );
+            _selected_skill_tab->switchSpriteFrames();
+            _selected_skill_tab->setPosition( _selected_skill_tab->getPosition() - Point( 20.0, 0 ) );
+            _selected_skill_tab = btn;
+            _selected_skill_tab->switchSpriteFrames();
+            _selected_skill_tab->setPosition( _selected_skill_tab->getPosition() + Point( 20.0, 0 ) );
+        }
+    }
+}
+
+void UIHeroManageLayer::onPurchaseTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+    }
+}
+
 void UIHeroManageLayer::becomeTopLayer() {
     _root_node->setVisible( true );
 }
 
 void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero ) {
+    bool is_owned = true;
     if( _selected_hero != nullptr ) {
         _selected_hero->setSelected( false );
+        is_owned = _selected_hero->isOwned();
     }
     _selected_hero = hero;
     //update panel info
@@ -630,6 +643,33 @@ void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero ) {
     _hero_node->removeAllChildren();
     
     if( _selected_hero && _selected_hero->getHeroSkeleton() != nullptr ) {
+        bool new_owned = _selected_hero->isOwned();
+        if( new_owned != is_owned ) {
+            this->stopAllActions();
+            this->runAction( _panel_action );
+            if( new_owned ) {
+                _panel_action->play( "lock", false );
+            }
+            else {
+                _panel_action->play( "unlock", false );
+            }
+        }
+        
+        const ValueMap& all_upgrade_config = ResourceManager::getInstance()->getUnitLevelupCostConfig();
+        const ValueMap& config = all_upgrade_config.at( _selected_hero->getUnitData()->name ).asValueMap();
+        
+        if( new_owned ) {
+            //show upgrade cost
+        }
+        else {
+            //show hero skill
+            
+            //show hero price
+            
+            _lb_price->setString( config.at( "price" ).asString() );
+            _lb_upgrade_cost->setString( "0" );
+        }
+        
         _selected_hero->setSelected( true );
         _hero_node->addChild( _selected_hero->getHeroSkeleton() );
         _selected_hero->getHeroSkeleton()->setAnimation( 0, "Idle", true );
@@ -730,8 +770,65 @@ void UIHeroManageLayer::turnToPage( int index ) {
 
 void UIHeroManageLayer::updatePlayerInfo() {
     PlayerInfo* player_info = PlayerInfo::getInstance();
-    _lb_diamond->setString( Utils::toStr( player_info->getDiamond() ) );
-    _lb_gold->setString( Utils::toStr( player_info->getGold() ) );
+}
+
+void UIHeroManageLayer::alignHeroSlots() {
+    _pv_hero_list->removeAllPages();
+    
+    std::vector<std::string> all_keys;
+    std::vector<std::string> owned_keys;
+    std::vector<std::string> unlocked_keys;
+    std::vector<std::string> locked_keys;
+    
+    for( auto pair : _hero_slots ) {
+        UIHeroManageHeroSlot* slot = pair.second;
+        if( slot->isOwned() ) {
+            owned_keys.push_back( pair.first );
+        }
+        else if( slot->isLocked() ) {
+            locked_keys.push_back( pair.first );
+        }
+        else {
+            unlocked_keys.push_back( pair.first );
+        }
+    }
+    
+    for( auto str : owned_keys ) {
+        all_keys.push_back( str );
+    }
+    
+    for( auto str : unlocked_keys ) {
+        all_keys.push_back( str );
+    }
+    
+    for( auto str : locked_keys ) {
+        all_keys.push_back( str );
+    }
+  
+    ui::Layout* page = nullptr;
+    
+    int i = 0;
+    int count = 6;
+    
+    const ValueMap& deployed_unit_slot_ids = PlayerInfo::getInstance()->getPlayerDeployedUnitsSlotIds();
+    
+    for( auto key : all_keys ) {
+        if( i == 0 || ++i > count ) {
+            i = 1;
+            page = ui::Layout::create();
+            page->setContentSize( _pv_hero_list->getContentSize() );
+            _pv_hero_list->addPage( page );
+        }
+        UIHeroManageHeroSlot* slot = _hero_slots.at( key );
+        for( auto pair : deployed_unit_slot_ids ) {
+            if( pair.second.asString() == key ) {
+                slot->setDeployed( true );
+                break;
+            }
+        }
+        slot->setPosition( Point( ( i - 0.5 ) * HERO_LIST_CELL_WIDTH, HERO_LIST_CELL_HEIGHT / 2.0f ) );
+        page->addChild( slot );
+    }
 }
 
 void UIHeroManageLayer::recordDeployedUnits() {

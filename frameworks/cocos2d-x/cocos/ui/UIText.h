@@ -195,6 +195,8 @@ public:
     
     void setAdditionalKerning( float kern );
     
+    Label* getLabelRenderer() { return _labelRenderer; }
+    
 CC_CONSTRUCTOR_ACCESS:
     virtual bool init() override;
     virtual bool init(const std::string& textContent,

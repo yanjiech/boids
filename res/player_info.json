@@ -27,6 +27,10 @@
             "5"
         ]
     },
+    "mission_record" :
+    {
+          
+    },
     "deploy_units" :
     {
         "1" : "1",
@@ -41,8 +45,6 @@
         {
             "name" : "dracula",
             "level" : 1,
-            "owned" : true,
-            "locked" : false,
             "skills" :
             [
                 {
@@ -56,18 +58,16 @@
             ],
             "equips" :
             {
-                "weapon" : "3",
-                "armor" : "1",
-                "boot" : "2",
-                "accessory" : "4"
+                "weapon" : "0",
+                "armor" : "0",
+                "boot" : "0",
+                "accessory" : "0"
             }
         }, 
         "2" :
         {
             "name" : "kyle",
             "level" : 1,
-            "owned" : true,
-            "locked" : false,
             "skills" :
             [
                 {
@@ -81,18 +81,16 @@
             ],
             "equips" :
             {
-                "weapon" : "1",
-                "armor" : "2",
-                "boot" : "none",
-                "accessory" : "none"
+                "weapon" : "0",
+                "armor" : "0",
+                "boot" : "0",
+                "accessory" : "0"
             }
         }, 
         "3" :
         {
             "name" : "enchantress",
             "level" : 1,
-            "owned" : true,
-            "locked" : false,
             "skills" :
             [
                 {
@@ -106,189 +104,10 @@
             ],
             "equips" :
             {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-        },
-        "4" :
-        {
-            "name" : "saber",
-            "level" : 1,
-            "owned" : false,
-            "locked" : false,
-            "skills" :
-            [
-                {
-                    "name" : "GiantSword",
-                    "level" : 1
-                },
-                {
-                    "name" : "LightShield",
-                    "level" : 1
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-        }, 
-        "5" :
-        {
-            "name" : "vanhelsing",
-            "level" : 1,
-            "owned" : true,
-            "locked" : false,
-            "skills" :
-            [
-                {
-                    "name" : "BarrageOfArrow",
-                    "level" : 1
-                },
-                {
-                    "name" : "CrazyShoot",
-                    "level" : 1
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "1",
-                "armor" : "2",
-                "boot" : "3",
-                "accessory" : "4"
-            }
-        },
-        "6" :
-        {
-            "name" : "hippolyta",
-            "level" : 1,
-            "owned" : false,
-            "locked" : true,
-            "skills" :
-            [
-                {
-                    "name" : "PenetrateSpear",
-                    "level" : 3
-                },
-                {
-                    "name" : "HuntingIntuition",
-                    "level" : 3
-                }
-
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
-            }
-        }, 
-        "7" :
-        {
-            "name" : "zeus",
-            "level" : 1,
-            "owned" : false,
-            "locked" : true,
-            "skills" :
-            [
-                {
-                    "name" : "WrathOfThunder",
-                    "level" : 1
-                },
-                {
-                    "name" : "LightningChain",
-                    "level" : 1
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "1",
-                "armor" : "2",
-                "boot" : "3",
-                "accessory" : "4"
-            }
-        },
-        "8" :
-        {
-            "name" : "durarara",
-            "level" : 1,
-            "owned" : true,
-            "locked" : false,
-            "skills" :
-            [
-                {
-                    "name" : "DarkIllusion",
-                    "level" : 1
-                },
-                {
-                    "name" : "DreadLord",
-                    "level" : 1
-                }
-
-            ],
-            "equips" :
-            {
-                "weapon" : "1",
-                "armor" : "2",
-                "boot" : "3",
-                "accessory" : "4"
-            }
-        },
-        "9" :
-        {
-            "name" : "ice_witch",
-            "level" : 1,
-            "owned" : true,
-            "locked" : false,
-            "skills" :
-            [
-                {
-                    "name" : "SnowStorm",
-                    "level" : 1
-                },
-                {
-                    "name" : "IceDebris",
-                    "level" : 1
-                }
-
-            ],
-            "equips" :
-            {
                 "weapon" : "0",
                 "armor" : "0",
                 "boot" : "0",
                 "accessory" : "0"
-            }
-        },
-
-        "10" :
-        {
-            "name" : "gandalf",
-            "level" : 1,
-            "owned" : false,
-            "locked" : true,
-            "skills" :
-            [
-                {
-                    "name" : "DarkIllusion",
-                    "level" : 1
-                },
-                {
-                    "name" : "DreadLord",
-                    "level" : 1
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "none",
-                "armor" : "none",
-                "boot" : "none",
-                "accessory" : "none"
             }
         }
     },
@@ -408,6 +227,5 @@
             "id" : "33020001",
             "in_use" : false
         }
-
     }
 }

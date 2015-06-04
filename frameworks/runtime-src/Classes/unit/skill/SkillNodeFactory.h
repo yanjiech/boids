@@ -35,6 +35,7 @@
 #include "DreadLord.h"
 #include "SnowStorm.h"
 #include "IceDebris.h"
+#include "SacrificeBomb.h"
 
 class SkillNodeFactory {
 public:

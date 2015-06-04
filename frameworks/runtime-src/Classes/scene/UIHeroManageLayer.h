@@ -124,11 +124,16 @@ public:
 class UIHeroManageLayer : public TouchableLayer {
 private:
     cocos2d::Node* _root_node;
+    cocostudio::timeline::ActionTimeline* _panel_action;
     
     cocos2d::ui::PageView* _pv_hero_list;
     
-    cocos2d::ui::Text* _lb_diamond;
-    cocos2d::ui::Text* _lb_gold;
+    cocos2d::ui::Text* _lb_price;
+    cocos2d::ui::Text* _lb_upgrade_cost;
+    
+    cocos2d::ui::Button* _btn_skill_1;
+    cocos2d::ui::Button* _btn_skill_2;
+    cocos2d::ui::Button* _selected_skill_tab;
     
     cocos2d::Sprite* _star_1;
     cocos2d::Sprite* _star_2;
@@ -200,6 +205,10 @@ public:
     
     void onUpgradeTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     
+    void onSkillTabTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    
+    void onPurchaseTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    
     virtual void becomeTopLayer();
     
     void setSelectedHero( UIHeroManageHeroSlot* hero );
@@ -209,6 +218,8 @@ public:
     void turnToPage( int index );
     
     void updatePlayerInfo();
+    
+    void alignHeroSlots();
     
     void recordDeployedUnits();
     

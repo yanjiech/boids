@@ -123,6 +123,7 @@
 #define SKILL_NAME_FIRE_WHIRL "FireWhirl"
 #define SKILL_NAME_DEATH_SLICE "DeathSlice"
 #define SKILL_NAME_GAS_BOMB "GasBomb"
+#define SKILL_NAME_SACRIFICE_BOMB "SacrificeBomb"
 
 
 #define BULLET_NAME_GAS "gas"

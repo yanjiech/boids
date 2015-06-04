@@ -413,6 +413,8 @@ void UnitNode::applyUnitState() {
             case eUnitState::UnderControl:
                 _current_skeleton->setAnimation( 0, "Stun", true );
                 break;
+            case eUnitState::Dead:
+                break;
             default:
                 break;
         }
@@ -534,7 +536,7 @@ void UnitNode::disappear() {
 }
 
 void UnitNode::onDisappearEnd() {
-    this->changeUnitState( eUnitState::Dead );
+    this->changeUnitState( eUnitState::Dead, true );
 }
 
 void UnitNode::onDying() {
@@ -967,6 +969,10 @@ bool UnitNode::isHarmless() {
 }
 
 bool UnitNode::canAttack( TargetNode* target_node ) {
+    if( this->getUnitData()->atk_range <= 0 ) {
+        return false;
+    }
+    
     if( this->getPosition().distance( target_node->getPosition() ) > _target_data->atk_range + target_node->getTargetData()->collide ) {
         return false;
     }

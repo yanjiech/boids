@@ -19,6 +19,7 @@
 //#include "AI.h"
 #include "MapDebugger.h"
 #include "../constant/DebugMacros.h"
+#include "../manager/ResourceManager.h"
 
 using namespace cocos2d;
 using namespace cocostudio;
@@ -52,6 +53,7 @@ void EditMode::backMain() {
 
 void EditMode::enterEdit(const std::string& mapFolder) {
     loadUnits();
+    ResourceManager::getInstance()->loadBattleResource();
     _mapData = std::shared_ptr<MapData>(new MapData());
     _mapData->init( mapFolder );
 //    _mapData->loadImagesToCache();
