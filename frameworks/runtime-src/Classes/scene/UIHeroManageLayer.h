@@ -166,6 +166,7 @@ private:
     cocos2d::ui::Text* _lb_hero_name;
     
     UIHeroManageHeroSlot* _selected_hero;
+    bool _is_selected_hero_owned;
     UIHeroDeploySlot* _selected_deploy_slot;
     
     UIHeroDeploySlot* _target_deploy_slot;

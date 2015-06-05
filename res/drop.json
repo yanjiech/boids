@@ -1,0 +1,31 @@
+{
+    "1002": {
+        "drop_gold": 100, 
+        "exp": 20, 
+        "gold": 200, 
+        "items": [
+            {
+                "item_id": 11005001, 
+                "rate_boss": 0.5, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.1
+            }, 
+            {
+                "item_id": 21005001, 
+                "rate_boss": 0.5, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.1
+            }, 
+            {
+                "item_id": 31005001, 
+                "rate_boss": 0.5, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.1
+            }
+        ], 
+        "level_id": 1002, 
+        "rate_boss": 0.5, 
+        "rate_master": 0.2, 
+        "rate_normal": 0.1
+    }
+}

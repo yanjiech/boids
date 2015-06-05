@@ -23,6 +23,7 @@
 #include "../MapData.h"
 #include "../logic/MapLogic.h"
 #include "../Utils.h"
+#include "../unit/Item.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,
@@ -61,6 +62,7 @@ typedef cocos2d::Map<std::string, BulletNode*> BulletMap;
 typedef cocos2d::Map<int, TowerNode*> TowerMap;
 typedef cocos2d::Map<int, BlockNode*> BlockMap;
 typedef cocos2d::Map<int, BuildingNode*> BuildingMap;
+typedef cocos2d::Vector<DropItem*> ItemVector;
 
 class BattleLayer : public cocos2d::Layer {
 private:
@@ -96,6 +98,8 @@ private:
     TowerMap _towers;
     BuildingMap _buildings;
     BlockMap _block_nodes;
+    
+    ItemVector _drop_items;
     
     int _next_deploy_id;
     
@@ -247,6 +251,8 @@ public:
     void setShouldShowFog( bool b ) { _should_show_fog = b; }
     
     UIBattleLayer* getUIBattleLayer() { return _skill_ui_layer; }
+    
+    void dropItem( DropItem* item, const cocos2d::Point& pos, eBattleSubLayer layer );
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

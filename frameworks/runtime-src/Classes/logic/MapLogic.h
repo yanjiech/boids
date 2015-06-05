@@ -23,6 +23,8 @@ class BattleLayer;
 
 class MapLogic : public cocos2d::Ref {
 private:
+    std::string _level_id;
+    
     BattleLayer* _battle_layer;
     
     cocos2d::Vector<EventTrigger*> _triggers;
@@ -39,6 +41,8 @@ private:
     
     cocos2d::ValueMap _unit_appear_count_by_name;
     cocos2d::ValueMap _unit_disappear_count_by_name;
+    
+    cocos2d::ValueMap _obtained_items;
     
 private:
     void updateEventTriggers( float delta );
@@ -61,6 +65,8 @@ public:
     void deployPlayerUnits();
     
     void onMapInit();
+    
+    const cocos2d::ValueMap& getDropedItems() { return _obtained_items; }
     
     void onEventChanged( const std::string& event_name, const std::string& event_state );
     void onTaskStateChanged( const std::string& task_name, const std::string& task_state, float progress );
@@ -99,6 +105,9 @@ public:
     
     int getUnitDisappearCountByName( const std::string& name );
     void increaseUnitDisappearCountByName( int count, const std::string& name );
+    
+    void obtainItem( const std::string& item_id, int count );
+    void dropItem( UnitNode* unit );
 };
 
 #endif /* defined(__Boids__MapLogic__) */

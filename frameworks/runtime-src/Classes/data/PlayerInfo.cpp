@@ -126,6 +126,43 @@ bool PlayerInfo::isLevelCompleted( int level_id ) {
     return itr != mission_record.end();
 }
 
+ValueMap PlayerInfo::purchaseHero( const std::string& hero_id, const std::string& hero_name ) {
+    int price = ResourceManager::getInstance()->getUnitPrice( hero_name );
+    int diamond = this->getDiamond();
+    if( price <= diamond ) {
+        ValueMap& units = _player_info.at( "units" ).asValueMap();
+        const ValueMap& hero_config = ResourceManager::getInstance()->getUnitData( hero_name );
+        ValueMap hero_data;
+        hero_data["name"] = Value( hero_name );
+        hero_data["level"] = Value( 1 );
+        
+        ValueMap equips;
+        equips["weapon"] = Value( "0" );
+        equips["armor"] = Value( "0" );
+        equips["boot"] = Value( "0" );
+        equips["accessory"] = Value( "0" );
+        hero_data["equips"] = Value( equips );
+        
+        ValueVector skills;
+        const ValueVector& skill_names = hero_config.at( "skills" ).asValueVector();
+        for( auto str : skill_names ) {
+            ValueMap skill;
+            skill["name"] = Value( str );
+            skill["level"] = Value( 1 );
+            skills.push_back( Value( skill ) );
+        }
+        hero_data["skills"] = Value( skills );
+        
+        units[hero_id] = Value( hero_data );
+        this->recordPlayerInfo();
+        
+        this->gainDiamond( -price );
+        return hero_data;
+    }
+    
+    return ValueMap();
+}
+
 cocos2d::ValueVector PlayerInfo::getPlayerDeployedUnitNames() {
     ValueVector ret;
     const ValueMap& player_units = _player_info.at( "units" ).asValueMap();
@@ -170,6 +207,7 @@ void PlayerInfo::setDeployUnits( const cocos2d::ValueMap& data ) {
 }
 
 cocos2d::ValueMap PlayerInfo::updateUnitEquip( const std::string& hero_id, const std::string& type, const std::string& obj_id ) {
+    ValueMap ret;
     ValueMap& all_heros = _player_info.at( "units" ).asValueMap();
     auto itr = all_heros.find( hero_id );
     if( itr != all_heros.end() ) {
@@ -179,10 +217,12 @@ cocos2d::ValueMap PlayerInfo::updateUnitEquip( const std::string& hero_id, const
         if( itr != equip_data.end() ) {
             equip_data.at( type ) = Value( obj_id );
             this->recordPlayerInfo();
-            return hero_data;
+            ret = hero_data;
         }
     }
-    return ValueMap();
+    ret["owned"] = Value( true );
+    ret["locked"] = Value( false );
+    return ret;
 }
 
 void PlayerInfo::updateEquip( const std::string& obj_id, bool in_use ) {
@@ -244,7 +284,7 @@ cocos2d::ValueVector PlayerInfo::getEquipsByRange( int type, int from, int size,
     int cur_id = from;
     int total_count = all_data.size();
     if( from < total_count ) {
-        while( cur_id < total_count && cur_id <= from + size ) {
+        while( cur_id < total_count && cur_id < from + size ) {
             ret.push_back( all_data.at( cur_id ) );
             ++cur_id;
         }
@@ -254,6 +294,7 @@ cocos2d::ValueVector PlayerInfo::getEquipsByRange( int type, int from, int size,
 }
 
 cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level ) {
+    ValueMap ret;
     ValueMap& all_units = _player_info.at( "units" ).asValueMap();
     auto itr = all_units.find( hero_id );
     if( itr != all_units.end() ) {
@@ -261,12 +302,15 @@ cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level
         int old_level = unit_data["level"].asInt();
         unit_data["level"] = Value( old_level + level );
         this->recordPlayerInfo();
-        return unit_data;
+        ret = unit_data;
     }
-    return ValueMap();
+    ret["owned"] = Value( true );
+    ret["locked"] = Value( false );
+    return ret;
 }
 
 cocos2d::ValueMap PlayerInfo::upgradeSkill( const std::string& hero_id, const std::string& skill_name, int level ) {
+    ValueMap ret;
     ValueMap& all_units = _player_info.at( "units" ).asValueMap();
     auto itr = all_units.find( hero_id );
     if( itr != all_units.end() ) {
@@ -278,15 +322,39 @@ cocos2d::ValueMap PlayerInfo::upgradeSkill( const std::string& hero_id, const st
                 int old_level = skill_data.at( "level" ).asInt();
                 skill_data["level"] = Value( old_level + level );
                 this->recordPlayerInfo();
-                return unit_data;
+                ret = unit_data;
+                break;
             }
         }
     }
-    return ValueMap();
+    
+    ret["owned"] = Value( true );
+    ret["locked"] = Value( false );
+    return ret;
 }
 
 const cocos2d::ValueMap& PlayerInfo::getAllEquipsInfo() {
     return _player_info["equips"].asValueMap();
+}
+
+int PlayerInfo::getMaxEquipObjId() {
+    const ValueMap& equips = _player_info.at( "equips" ).asValueMap();
+    int max_obj_id = 0;
+    for( auto pair : equips ) {
+        int obj_id = Utils::toInt( pair.first );
+        if( obj_id > max_obj_id ) {
+            max_obj_id = obj_id;
+        }
+    }
+    return max_obj_id;
+}
+
+void PlayerInfo::gainEquip( const std::string& item_id, int count ) {
+    int max_item_obj_id = this->getMaxEquipObjId();
+    for( int i = 0; i < count; i++ ) {
+        max_item_obj_id++;
+        this->addEquip( Utils::toStr( max_item_obj_id ), item_id );
+    }
 }
 
 void PlayerInfo::gainGold( int gain ) {

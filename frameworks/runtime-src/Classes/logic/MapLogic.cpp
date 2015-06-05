@@ -11,6 +11,7 @@
 #include "../data/PlayerInfo.h"
 #include "../util/CocosUtils.h"
 #include "../constant/BoidsConstant.h"
+#include "../manager/ResourceManager.h"
 
 using namespace cocos2d;
 
@@ -56,6 +57,14 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
             EventTrigger* trigger = EventTrigger::create( this, itr->asValueMap() );
             _triggers.pushBack( trigger );
         }
+    }
+    
+    sitr = meta_json.find( "base_info" );
+    if( sitr != meta_json.end() ) {
+        _level_id = sitr->second.asValueMap().at( "level_id" ).asString();
+    }
+    else {
+        _level_id = "1002";
     }
     
     return true;
@@ -264,6 +273,12 @@ void MapLogic::onTargetNodeDead( class TargetNode* target_node ) {
     do {
         UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );
         if( unit_node ) {
+            //drop items
+            if( unit_node->getTargetCamp() == eTargetCamp::Enemy ) {
+                this->dropItem( unit_node );
+            }
+            
+            //update trigger
             for( auto trigger : _triggers ) {
                 if( trigger->isEnabled() ) {
                     trigger->activateTriggerByUnit( unit_node, UNIT_STATE_DEAD, ValueMap() );
@@ -452,6 +467,70 @@ void MapLogic::updateEventActions( float delta ) {
         else {
             itr->second->updateFrame( delta );
             ++itr;
+        }
+    }
+}
+
+void MapLogic::obtainItem( const std::string& item_id, int count ) {
+    auto itr = _obtained_items.find( item_id );
+    if( itr != _obtained_items.end() ) {
+        int old_count = itr->second.asInt();
+        _obtained_items[item_id] = Value( count + old_count );
+    }
+    else {
+        _obtained_items.insert( std::make_pair( item_id, Value( count ) ) );
+    }
+}
+
+void MapLogic::dropItem( UnitNode* unit ) {
+    const ValueMap& drop_config = ResourceManager::getInstance()->getDropConfig().at( _level_id ).asValueMap();
+    Point pos = unit->getHitPos();
+    
+    float rand;
+    float rate;
+    int count;
+    if( unit->isBoss() ) {
+        rate = drop_config.at( "rate_boss" ).asFloat();
+        count = drop_config.at( "drop_gold" ).asInt() * 2;
+    }
+    else {
+        rate = drop_config.at( "rate_normal" ).asFloat();
+        count = drop_config.at( "drop_gold" ).asInt();
+    }
+    
+    rand = Utils::randomFloat();
+    if( rand < rate ) {
+        count = Utils::randomNumber( count );
+        ValueMap item_data;
+        item_data["item_id"] = Value( "gold" );
+        item_data["count"] = Value( count );
+        DropItem* item = DropItem::create( item_data );
+        _battle_layer->dropItem( item, pos, eBattleSubLayer::BelowObjectLayer );
+        
+        Point drop_pos = Utils::randomPositionInRange( pos, 200.0f );
+        item->dropTo( drop_pos );
+    }
+    
+    const ValueVector& items = drop_config.at( "items" ).asValueVector();
+    for( auto v : items ) {
+        const ValueMap& config = v.asValueMap();
+        if( unit->isBoss() ) {
+            rate = config.at( "rate_boss" ).asFloat();
+        }
+        else {
+            rate = config.at( "rate_normal" ).asFloat();
+        }
+        
+        rand = Utils::randomFloat();
+        if( rand < rate ) {
+            ValueMap item_data;
+            item_data["item_id"] = config.at( "item_id" );
+            item_data["count"] = Value( 1 );
+            DropItem* item = DropItem::create( item_data );
+            _battle_layer->dropItem( item, pos, eBattleSubLayer::OnGroundLayer );
+            
+            Point drop_pos = Utils::randomPositionInRange( pos, 400.0f );
+            item->dropTo( drop_pos );
         }
     }
 }

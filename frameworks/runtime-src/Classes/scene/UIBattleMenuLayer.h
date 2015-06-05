@@ -30,6 +30,9 @@ private:
     cocostudio::timeline::ActionTimeline* _win_panel_action;
     spine::SkeletonAnimation* _win_effect;
     
+    cocos2d::Vector<cocos2d::Sprite*> _drop_items;
+    cocos2d::Vector<cocos2d::ui::Text*> _drop_items_count;
+    
     //lose panel
     cocos2d::Node* _lose_panel;
     
@@ -50,7 +53,7 @@ public:
     
     void onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     
-    void showResultPanel( bool win );
+    void showResultPanel( bool win, const cocos2d::ValueMap& result );
     void showPausePanel();
     
     void hideMenu();

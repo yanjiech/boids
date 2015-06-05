@@ -287,6 +287,28 @@ void BattleLayer::updateFrame( float delta ) {
         this->reorderObjectLayer();
         this->adjustCamera();
         
+        //check drop items
+        for( auto pair : _player_units ) {
+            UnitNode* unit = pair.second;
+            Point world_pos = unit->getParent()->convertToWorldSpace( unit->getPosition() );
+            
+            auto itr = _drop_items.begin();
+            while( itr != _drop_items.end() ) {
+                DropItem* item = *itr;
+                Point local_pos = item->convertToNodeSpace( world_pos );
+                Rect rect = Rect( 0, 0, item->getContentSize().width, item->getContentSize().height );
+                if( rect.containsPoint( local_pos ) ) {
+                    _map_logic->obtainItem( item->getItemId(), item->getCount() );
+                    itr = _drop_items.erase( itr );
+                    item->removeFromParentAndCleanup( true );
+                }
+                else {
+                    ++itr;
+                }
+            }
+        }
+        
+        
         if( _should_show_fog ) {
             this->updateFogSprite();
         }
@@ -358,11 +380,11 @@ void BattleLayer::changeState( eBattleState new_state ) {
 
 bool BattleLayer::checkState() {
     if( _state == eBattleState::BattleWin ) {
-        _battle_menu_layer->showResultPanel( true );
+        _battle_menu_layer->showResultPanel( true, _map_logic->getDropedItems() );
         return false;
     }
     else if( _state == eBattleState::BattleLose ) {
-        _battle_menu_layer->showResultPanel( false );
+        _battle_menu_layer->showResultPanel( false, _map_logic->getDropedItems() );
         return false;
     }
     return true;
@@ -932,6 +954,12 @@ void BattleLayer::endStory( UIStoryLayer* story ) {
     _story_layer->setVisible( false );
     _map_logic->onStoryChange( story->getStoryName(), STORY_STATE_END );
     _state = eBattleState::BattleRunning;
+}
+
+void BattleLayer::dropItem( DropItem* item, const cocos2d::Point& pos, eBattleSubLayer layer ) {
+    item->setPosition( pos );
+    _drop_items.pushBack( item );
+    this->addToLayer( item, layer, pos, 0 );
 }
 
 //private methods

@@ -535,6 +535,7 @@ bool UIHeroManageLayer::init() {
     _is_touch_down = false;
     _drag_avatar = nullptr;
     
+    _is_selected_hero_owned = true;
     return true;
 }
 
@@ -585,7 +586,7 @@ void UIHeroManageLayer::onUpgradeTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         if( _selected_hero && _selected_hero->isOwned() ) {
             PlayerInfo* player_info = PlayerInfo::getInstance();
-            const ValueVector& upgrade_data = ResourceManager::getInstance()->getUnitLevelupCostConfig().at( _selected_hero->getUnitData()->name ).asValueVector();
+            const ValueVector& upgrade_data = ResourceManager::getInstance()->getUnitLevelupCostConfig().at( _selected_hero->getUnitData()->name ).asValueMap().at( "costs" ).asValueVector();
             int total_gold = player_info->getGold();
             int current_level = _selected_hero->getUnitData()->level;
             int team_level = player_info->getTeamLevel();
@@ -624,6 +625,16 @@ void UIHeroManageLayer::onSkillTabTouched( cocos2d::Ref* sender, cocos2d::ui::Wi
 
 void UIHeroManageLayer::onPurchaseTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        if( _selected_hero != nullptr && !_selected_hero->isOwned() && !_selected_hero->isLocked() ) {
+            ValueMap hero_data = PlayerInfo::getInstance()->purchaseHero( _selected_hero->getHeroId(), _selected_hero->getUnitData()->name );
+            if( !hero_data.empty() ) {
+                hero_data["owned"] = Value( true );
+                hero_data["locked"] = Value( false );
+                _selected_hero->loadHeroInfo( hero_data );
+                this->setSelectedHero( _selected_hero );
+                this->alignHeroSlots();
+            }
+        }
     }
 }
 
@@ -632,10 +643,8 @@ void UIHeroManageLayer::becomeTopLayer() {
 }
 
 void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero ) {
-    bool is_owned = true;
     if( _selected_hero != nullptr ) {
         _selected_hero->setSelected( false );
-        is_owned = _selected_hero->isOwned();
     }
     _selected_hero = hero;
     //update panel info
@@ -644,7 +653,8 @@ void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero ) {
     
     if( _selected_hero && _selected_hero->getHeroSkeleton() != nullptr ) {
         bool new_owned = _selected_hero->isOwned();
-        if( new_owned != is_owned ) {
+        if( new_owned != _is_selected_hero_owned ) {
+            _is_selected_hero_owned = new_owned;
             this->stopAllActions();
             this->runAction( _panel_action );
             if( new_owned ) {
@@ -655,18 +665,22 @@ void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero ) {
             }
         }
         
-        const ValueMap& all_upgrade_config = ResourceManager::getInstance()->getUnitLevelupCostConfig();
-        const ValueMap& config = all_upgrade_config.at( _selected_hero->getUnitData()->name ).asValueMap();
-        
-        if( new_owned ) {
+        if( _is_selected_hero_owned ) {
             //show upgrade cost
+            int cost = ResourceManager::getInstance()->getUnitUpgradeCost( _selected_hero->getUnitData()->name, _selected_hero->getUnitData()->level + 1 );
+            if( cost == -1 ) {
+                _lb_upgrade_cost->setString( "max" );
+            }
+            else {
+                _lb_upgrade_cost->setString( Utils::toStr( cost ) );
+            }
         }
         else {
             //show hero skill
             
             //show hero price
-            
-            _lb_price->setString( config.at( "price" ).asString() );
+            int price = ResourceManager::getInstance()->getUnitPrice( _selected_hero->getUnitData()->name );
+            _lb_price->setString( Utils::toStr( price ) );
             _lb_upgrade_cost->setString( "0" );
         }
         

@@ -10,6 +10,8 @@
 #include "BattleLayer.h"
 #include "../manager/SceneManager.h"
 #include "../AI/Terrain.h"
+#include "../manager/ResourceManager.h"
+#include "../data/PlayerInfo.h"
 
 using namespace cocos2d;
 using namespace cocostudio::timeline;
@@ -67,6 +69,14 @@ bool UIBattleMenuLayer::init( BattleLayer* battle_layer ) {
     win_effect_node->addChild( _win_effect );
     
     _win_panel_action = ActionTimelineCache::getInstance()->loadAnimationActionWithFlatBuffersFile( win_panel_file );
+    
+    for( int i = 1; i <= 5; i++ ) {
+        Sprite* icon_frame = dynamic_cast<Sprite*>( _win_panel->getChildByName( Utils::stringFormat( "sp_item_frame_%d", i ) ) );
+        _drop_items.pushBack( icon_frame );
+        
+        ui::Text* lb_count = dynamic_cast<ui::Text*>( _win_panel->getChildByName( Utils::stringFormat( "lb_item_count_%d", i ) ) );
+        _drop_items_count.pushBack( lb_count );
+    }
     
     //lose panel
     std::string lose_panel_file = FileUtils::getInstance()->fullPathForFilename( LOSE_PANEL_FILE );
@@ -143,7 +153,7 @@ void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
     }
 }
 
-void UIBattleMenuLayer::showResultPanel( bool win ) {
+void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& result ) {
     _btn_pause->setVisible( false );
     _pause_panel->setVisible( false );
     if( win ) {
@@ -153,6 +163,33 @@ void UIBattleMenuLayer::showResultPanel( bool win ) {
         _win_panel->runAction( _win_panel_action );
         _win_panel_action->play( "appear", false );
         
+        //drop items
+        int i = 0;
+        for( auto pair : result ) {
+            std::string key = pair.first;
+            int count = pair.second.asInt();
+            std::string resource;
+            if( key == "gold" ) {
+                resource = "ui_winpage_gold.png";
+                PlayerInfo::getInstance()->gainGold( count );
+            }
+            else {
+                const ValueMap& equip_config = ResourceManager::getInstance()->getEquipData( key );
+                resource = equip_config.at( "name" ).asString() + ".png";
+                PlayerInfo::getInstance()->gainEquip( key, count );
+            }
+            Sprite* icon = Sprite::createWithSpriteFrameName( resource );
+            Sprite* frame = _drop_items.at( i );
+            icon->setPosition( Point( frame->getContentSize().width / 2, frame->getContentSize().height / 2 ) );
+            frame->addChild( icon );
+            
+            _drop_items_count.at( i )->setVisible( true );
+            _drop_items_count.at( i )->setString( Utils::stringFormat( "x%d", count ) );
+            i++;
+        }
+        for( int j = i; j < 5; j++ ) {
+            _drop_items_count.at( j )->setVisible( false );
+        }
     }
     else {
         _win_panel->setVisible( false );

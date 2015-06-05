@@ -46,6 +46,8 @@ public:
     
     bool isLevelCompleted( int level_id );
     
+    cocos2d::ValueMap purchaseHero( const std::string& hero_id, const std::string& hero_name );
+    
     void setDeployUnit( const std::string& slot_id, const std::string& hero_id );
     void setDeployUnits( const cocos2d::ValueMap& data );
     
@@ -61,6 +63,9 @@ public:
     cocos2d::ValueMap upgradeSkill( const std::string& hero_id, const std::string& skill_name, int level );
     
     const cocos2d::ValueMap& getAllEquipsInfo();
+    
+    int getMaxEquipObjId();
+    void gainEquip( const std::string& item_id, int count );
     
     void gainGold( int gain );
     int getGold();

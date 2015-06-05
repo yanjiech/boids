@@ -28,6 +28,7 @@
 #define TOWER_CONFIG_FILE "tower"
 #define UNIT_CONFIG_FILE "unit"
 #define UPGRADE_COST_CONFIG_FILE "upgrade_cost"
+#define DROP_CONFIG_FILE "drop"
 
 using namespace cocos2d;
 
@@ -90,6 +91,7 @@ void ResourceManager::loadAllData() {
     this->loadSkillData();
     this->loadSkillUpgradeCostData();
     this->loadTeamLevelExpData();
+    this->loadDropData();
 }
 
 void ResourceManager::loadDefaultData() {
@@ -112,7 +114,6 @@ void ResourceManager::loadUIResource() {
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_p.plist", "ui/ui_hero_p.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_f.plist", "ui/ui_hero_f.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_drop.plist", "ui/ui_equip_drop.png" );
 }
 
 void ResourceManager::unloadUIResource() {
@@ -127,11 +128,12 @@ void ResourceManager::unloadUIResource() {
     frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_p.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_f.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_icon.plist" );
-    frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_drop.plist" );
 }
 
 void ResourceManager::loadBattleResource() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_drop.plist", "ui/ui_equip_drop.png" );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_common.plist", "ui/page/ui_common.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_pause.plist", "ui/page/ui_pause.png" );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_battle.plist", "ui/page/ui_battle.png"  );
@@ -157,6 +159,8 @@ void ResourceManager::loadBattleResource() {
 
 void ResourceManager::unloadBattleResource() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_drop.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_icon.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_common.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_pause.plist" );
     frame_cache->removeSpriteFramesFromFile( "maps/map_images/base_terrain.plist" );
@@ -357,7 +361,21 @@ void ResourceManager::loadTeamSkillExpData() {
     else {
         _team_skill_exp_config = file_util->getValueMapFromFile( plist_file );
     }
-    
+}
+
+void ResourceManager::loadDropData() {
+    FileUtils* file_util = FileUtils::getInstance();
+    std::string plist_file = FileUtils::getInstance()->getWritablePath() + DROP_CONFIG_FILE + ".plist";
+    if( !file_util->isFileExist( plist_file ) ) {
+        std::string data_string = FileUtils::getInstance()->getStringFromFile( std::string( DROP_CONFIG_FILE ) + ".json" );
+        rapidjson::Document config_json;
+        config_json.Parse<0>( data_string.c_str() );
+        _drop_config = CocosUtils::jsonObjectToValueMap( config_json );
+        file_util->writeToFile( _drop_config, plist_file );
+    }
+    else {
+        _drop_config = file_util->getValueMapFromFile( plist_file );
+    }
 }
 
 void ResourceManager::loadUnitEffects() {
@@ -415,10 +433,29 @@ const ValueMap& ResourceManager::getSkillData( const std::string& name ) {
     return _skill_config.at( name ).asValueMap();
 }
 
+int ResourceManager::getUnitPrice( const std::string& name ) {
+    auto itr = _unit_levelup_cost_config.find( name );
+    if( itr != _unit_levelup_cost_config.end() ) {
+        return itr->second.asValueMap().at( "price" ).asInt();
+    }
+    return -1;
+}
+
 int ResourceManager::getSkillUpgradeCost( const std::string& name, int level ) {
     auto itr = _skill_upgrade_cost_config.find( name );
     if( itr != _skill_upgrade_cost_config.end() ) {
         const ValueVector& costs = itr->second.asValueVector();
+        if( level <= costs.size() ) {
+            return costs.at( level - 1 ).asInt();
+        }
+    }
+    return -1;
+}
+
+int ResourceManager::getUnitUpgradeCost( const std::string& name, int level ) {
+    auto itr = _unit_levelup_cost_config.find( name );
+    if( itr != _unit_levelup_cost_config.end() ) {
+        const ValueVector& costs = itr->second.asValueMap().at( "costs" ).asValueVector();
         if( level <= costs.size() ) {
             return costs.at( level - 1 ).asInt();
         }

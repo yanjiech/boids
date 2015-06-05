@@ -35,6 +35,8 @@ private:
     cocos2d::ValueMap _team_level_exp_config;
     cocos2d::ValueMap _team_skill_exp_config;
     
+    cocos2d::ValueMap _drop_config;
+    
 private:
     ResourceManager();
     static ResourceManager* _instance;
@@ -59,6 +61,8 @@ public:
     const cocos2d::ValueMap& getSkillUpgradeCostConfig() { return _skill_upgrade_cost_config; }
     const cocos2d::ValueMap& getTeamLevelExpConfig() { return _team_level_exp_config; }
     const cocos2d::ValueMap& getTeamSkillExpConfig() { return _team_skill_exp_config; }
+    
+    const cocos2d::ValueMap& getDropConfig() { return _drop_config; }
     
     void loadMap( MapData* map_data );
     void purgeMap( MapData* map_data );
@@ -90,6 +94,8 @@ public:
     void loadTeamLevelExpData();
     void loadTeamSkillExpData();
     
+    void loadDropData();
+    
     void loadBulletArmature( const std::string& name, const std::string& type );
     void purgeBulletArmature( const std::string& name, const std::string& type );
     
@@ -99,6 +105,8 @@ public:
     const cocos2d::ValueMap& getBulletData( const std::string& name );
     const cocos2d::ValueMap& getSkillData( const std::string& name );
     
+    int getUnitPrice( const std::string& name );
+    int getUnitUpgradeCost( const std::string& name, int level );
     int getSkillUpgradeCost( const std::string& name, int level );
     
     void loadUnitArmatures( const cocos2d::ValueVector& armature_names );
