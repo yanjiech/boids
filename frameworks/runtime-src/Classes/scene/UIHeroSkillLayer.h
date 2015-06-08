@@ -36,8 +36,7 @@ private:
     cocos2d::ui::Text* _lb_skill_name_1;
     cocos2d::ui::Text* _lb_skill_name_2;
     
-    std::string replaceDynamicValuesInSkillDesc( const std::string& origin_string, const cocos2d::ValueMap& skill_conf, int level );
-    int getSkillValueOfKey( const std::string& key, const cocos2d::ValueMap& skill_conf, int level );
+    
     
 public:
     UIHeroSkillLayer();

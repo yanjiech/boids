@@ -1,31 +1,1143 @@
 {
+    "1001": {
+        "drop_gold": 15, 
+        "exp": 90, 
+        "gold": 150, 
+        "items": [], 
+        "level_id": 1001, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
     "1002": {
-        "drop_gold": 100, 
-        "exp": 20, 
-        "gold": 200, 
+        "drop_gold": 18, 
+        "exp": 108, 
+        "gold": 180, 
         "items": [
             {
                 "item_id": 11005001, 
-                "rate_boss": 0.5, 
-                "rate_master": 0.2, 
-                "rate_normal": 0.1
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
             }, 
             {
                 "item_id": 21005001, 
-                "rate_boss": 0.5, 
-                "rate_master": 0.2, 
-                "rate_normal": 0.1
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
             }, 
             {
                 "item_id": 31005001, 
-                "rate_boss": 0.5, 
-                "rate_master": 0.2, 
-                "rate_normal": 0.1
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
             }
         ], 
         "level_id": 1002, 
-        "rate_boss": 0.5, 
-        "rate_master": 0.2, 
-        "rate_normal": 0.1
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1003": {
+        "drop_gold": 21, 
+        "exp": 129, 
+        "gold": 216, 
+        "items": [
+            {
+                "item_id": 11005001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 21005001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 31005001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 1003, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1004": {
+        "drop_gold": 25, 
+        "exp": 155, 
+        "gold": 259, 
+        "items": [
+            {
+                "item_id": 11010001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 21010001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 31010001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 1004, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1005": {
+        "drop_gold": 31, 
+        "exp": 186, 
+        "gold": 311, 
+        "items": [
+            {
+                "item_id": 11010001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 21010001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 31010001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 1005, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1006": {
+        "drop_gold": 37, 
+        "exp": 223, 
+        "gold": 373, 
+        "items": [
+            {
+                "item_id": 11020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 21020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 31020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 1006, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1007": {
+        "drop_gold": 44, 
+        "exp": 268, 
+        "gold": 447, 
+        "items": [
+            {
+                "item_id": 11020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 21020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 31020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 1007, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1008": {
+        "drop_gold": 53, 
+        "exp": 322, 
+        "gold": 537, 
+        "items": [
+            {
+                "item_id": 11020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 21020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 31020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 1008, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1009": {
+        "drop_gold": 64, 
+        "exp": 386, 
+        "gold": 644, 
+        "items": [
+            {
+                "item_id": 11020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 21020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 31020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 1009, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1010": {
+        "drop_gold": 77, 
+        "exp": 464, 
+        "gold": 773, 
+        "items": [
+            {
+                "item_id": 13020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 23020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 33020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }
+        ], 
+        "level_id": 1010, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1011": {
+        "drop_gold": 92, 
+        "exp": 557, 
+        "gold": 928, 
+        "items": [
+            {
+                "item_id": 13020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 23020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 33020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }
+        ], 
+        "level_id": 1011, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1012": {
+        "drop_gold": 111, 
+        "exp": 668, 
+        "gold": 1114, 
+        "items": [
+            {
+                "item_id": 13020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 23020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 33020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }
+        ], 
+        "level_id": 1012, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1013": {
+        "drop_gold": 133, 
+        "exp": 802, 
+        "gold": 1337, 
+        "items": [
+            {
+                "item_id": 13020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 23020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 33020001, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }
+        ], 
+        "level_id": 1013, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1014": {
+        "drop_gold": 160, 
+        "exp": 962, 
+        "gold": 1604, 
+        "items": [
+            {
+                "item_id": 12030001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 22030001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 32030001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 1014, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1015": {
+        "drop_gold": 192, 
+        "exp": 1155, 
+        "gold": 1925, 
+        "items": [
+            {
+                "item_id": 12030001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 22030001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 32030001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 1015, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1016": {
+        "drop_gold": 231, 
+        "exp": 1386, 
+        "gold": 2311, 
+        "items": [
+            {
+                "item_id": 12030001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 22030001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 32030001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 1016, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1017": {
+        "drop_gold": 277, 
+        "exp": 1663, 
+        "gold": 2773, 
+        "items": [
+            {
+                "item_id": 13030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 23030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 33030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }
+        ], 
+        "level_id": 1017, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1018": {
+        "drop_gold": 332, 
+        "exp": 1996, 
+        "gold": 3327, 
+        "items": [
+            {
+                "item_id": 13030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 23030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 33030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }
+        ], 
+        "level_id": 1018, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1019": {
+        "drop_gold": 399, 
+        "exp": 2396, 
+        "gold": 3993, 
+        "items": [
+            {
+                "item_id": 13030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 23030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 33030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }
+        ], 
+        "level_id": 1019, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "1020": {
+        "drop_gold": 479, 
+        "exp": 2875, 
+        "gold": 4792, 
+        "items": [
+            {
+                "item_id": 13030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 23030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }, 
+            {
+                "item_id": 33030002, 
+                "rate_boss": 0.1, 
+                "rate_master": 0.08, 
+                "rate_normal": 0.02
+            }
+        ], 
+        "level_id": 1020, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2001": {
+        "drop_gold": 22, 
+        "exp": 135, 
+        "gold": 225, 
+        "items": [
+            {
+                "item_id": 11005001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 21005001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 31005001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }
+        ], 
+        "level_id": 2001, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2002": {
+        "drop_gold": 27, 
+        "exp": 162, 
+        "gold": 270, 
+        "items": [
+            {
+                "item_id": 11005001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 21005001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 31005001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }
+        ], 
+        "level_id": 2002, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2003": {
+        "drop_gold": 32, 
+        "exp": 194, 
+        "gold": 324, 
+        "items": [
+            {
+                "item_id": 11005001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 21005001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 31005001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }
+        ], 
+        "level_id": 2003, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2004": {
+        "drop_gold": 38, 
+        "exp": 233, 
+        "gold": 388, 
+        "items": [
+            {
+                "item_id": 11010001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 21010001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 31010001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }
+        ], 
+        "level_id": 2004, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2005": {
+        "drop_gold": 46, 
+        "exp": 279, 
+        "gold": 466, 
+        "items": [
+            {
+                "item_id": 11010001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 21010001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }, 
+            {
+                "item_id": 31010001, 
+                "rate_boss": 0.25, 
+                "rate_master": 0.2, 
+                "rate_normal": 0.05
+            }
+        ], 
+        "level_id": 2005, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2006": {
+        "drop_gold": 55, 
+        "exp": 335, 
+        "gold": 559, 
+        "items": [
+            {
+                "item_id": 11020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 21020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 31020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 2006, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2007": {
+        "drop_gold": 67, 
+        "exp": 403, 
+        "gold": 671, 
+        "items": [
+            {
+                "item_id": 11020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 21020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 31020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 2007, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2008": {
+        "drop_gold": 80, 
+        "exp": 483, 
+        "gold": 806, 
+        "items": [
+            {
+                "item_id": 11020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 21020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 31020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 2008, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2009": {
+        "drop_gold": 96, 
+        "exp": 580, 
+        "gold": 967, 
+        "items": [
+            {
+                "item_id": 11020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 21020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 31020001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 2009, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2010": {
+        "drop_gold": 116, 
+        "exp": 696, 
+        "gold": 1160, 
+        "items": [
+            {
+                "item_id": 13020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 23020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 33020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 2010, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2011": {
+        "drop_gold": 139, 
+        "exp": 835, 
+        "gold": 1393, 
+        "items": [
+            {
+                "item_id": 13020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 23020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 33020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 2011, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2012": {
+        "drop_gold": 167, 
+        "exp": 1003, 
+        "gold": 1671, 
+        "items": [
+            {
+                "item_id": 13020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 23020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 33020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 2012, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2013": {
+        "drop_gold": 200, 
+        "exp": 1203, 
+        "gold": 2006, 
+        "items": [
+            {
+                "item_id": 13020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 23020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 33020001, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 2013, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2014": {
+        "drop_gold": 240, 
+        "exp": 1444, 
+        "gold": 2407, 
+        "items": [
+            {
+                "item_id": 12030001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 22030001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 32030001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 2014, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2015": {
+        "drop_gold": 288, 
+        "exp": 1733, 
+        "gold": 2888, 
+        "items": [
+            {
+                "item_id": 12030001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 22030001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 32030001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 2015, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2016": {
+        "drop_gold": 346, 
+        "exp": 2079, 
+        "gold": 3466, 
+        "items": [
+            {
+                "item_id": 12030001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 22030001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }, 
+            {
+                "item_id": 32030001, 
+                "rate_boss": 0.20000000000000004, 
+                "rate_master": 0.16000000000000003, 
+                "rate_normal": 0.04000000000000001
+            }
+        ], 
+        "level_id": 2016, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2017": {
+        "drop_gold": 415, 
+        "exp": 2495, 
+        "gold": 4159, 
+        "items": [
+            {
+                "item_id": 13030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 23030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 33030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 2017, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2018": {
+        "drop_gold": 499, 
+        "exp": 2995, 
+        "gold": 4991, 
+        "items": [
+            {
+                "item_id": 13030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 23030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 33030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 2018, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2019": {
+        "drop_gold": 599, 
+        "exp": 3594, 
+        "gold": 5990, 
+        "items": [
+            {
+                "item_id": 13030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 23030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 33030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 2019, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
+    }, 
+    "2020": {
+        "drop_gold": 718, 
+        "exp": 4312, 
+        "gold": 7188, 
+        "items": [
+            {
+                "item_id": 13030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 23030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }, 
+            {
+                "item_id": 33030002, 
+                "rate_boss": 0.15, 
+                "rate_master": 0.12, 
+                "rate_normal": 0.03
+            }
+        ], 
+        "level_id": 2020, 
+        "rate_boss": 1.0, 
+        "rate_master": 1.0, 
+        "rate_normal": 0.01
     }
 }

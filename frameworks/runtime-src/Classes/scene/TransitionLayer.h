@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "SceneBase.h"
-#include "UILevelChooseLayer.h"
+#include "UIHomeLayer.h"
 #include "BattleLayer.h"
 
 enum eSceneName {

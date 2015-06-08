@@ -127,7 +127,7 @@ void UIHeroSkillLayer::loadSkillData( int i ) {
     std::string display_name = skill_config.at( "name" ).asString();
     std::string desc = skill_config.at( "desc" ).asString();
     
-    desc = this->replaceDynamicValuesInSkillDesc( desc, skill_config, skill_level );
+    desc = resource_manager->getSkillDesc( skill_name, skill_level );
     
     int upgrade_cost = resource_manager->getSkillUpgradeCost( skill_name, skill_level + 1 );
     
@@ -179,72 +179,3 @@ void UIHeroSkillLayer::upgradeSkill( int i ) {
 }
 
 //private methods
-
-/*
- dd damage
- aa atk
- gg dod
- cc cri
- hh hit
- pp hp
- tt duration
- */
-std::string UIHeroSkillLayer::replaceDynamicValuesInSkillDesc( const std::string& origin_string, const cocos2d::ValueMap& skill_conf, int level ) {
-    std::string ret = origin_string;
-    int i = ret.find( "dd" );
-    if( i != std::string::npos ) {
-        int value = this->getSkillValueOfKey( "damage", skill_conf, level );
-        ret.replace( i, 2, Utils::toStr( value ) );
-    }
-    
-    i = ret.find( "aa" );
-    if( i != std::string::npos ) {
-        int value = this->getSkillValueOfKey( "atk", skill_conf, level );
-        ret.replace( i, 2, Utils::toStr( value ) );
-    }
-    
-    i = ret.find( "gg" );
-    if( i != std::string::npos ) {
-        int value = this->getSkillValueOfKey( "dod", skill_conf, level );
-        ret.replace( i, 2, Utils::toStr( value ) );
-    }
-    
-    i = ret.find( "cc" );
-    if( i != std::string::npos ) {
-        int value = this->getSkillValueOfKey( "cri", skill_conf, level );
-        ret.replace( i, 2, Utils::toStr( value ) );
-    }
-    
-    i = ret.find( "hh" );
-    if( i != std::string::npos ) {
-        int value = this->getSkillValueOfKey( "hit", skill_conf, level );
-        ret.replace( i, 2, Utils::toStr( value ) );
-    }
-    
-    i = ret.find( "pp" );
-    if( i != std::string::npos ) {
-        int value = this->getSkillValueOfKey( "hp", skill_conf, level );
-        ret.replace( i, 2, Utils::toStr( value ) );
-    }
-    
-    i = ret.find( "tt" );
-    if( i != std::string::npos ) {
-        int value = this->getSkillValueOfKey( "duration", skill_conf, level );
-        ret.replace( i, 2, Utils::toStr( value ) );
-    }
-    
-    return ret;
-}
-
-int UIHeroSkillLayer::getSkillValueOfKey( const std::string& key, const cocos2d::ValueMap& skill_conf, int level ) {
-    auto itr = skill_conf.find( key );
-    if( itr != skill_conf.end() ) {
-        if( itr->second.getType() == Value::Type::VECTOR ) {
-            return itr->second.asValueVector().at( level - 1 ).asInt();
-        }
-        else {
-            return itr->second.asInt();
-        }
-    }
-    return 0;
-}

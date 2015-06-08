@@ -334,7 +334,8 @@ void UIHeroDeploySlot::setAvatar( cocos2d::Sprite* avatar ) {
 //manage layer
 UIHeroManageLayer::UIHeroManageLayer():
 _selected_hero( nullptr ),
-_selected_deploy_slot( nullptr )
+_selected_deploy_slot( nullptr ),
+_selected_skill_tab( nullptr )
 {
     
 }
@@ -389,7 +390,9 @@ bool UIHeroManageLayer::init() {
     _btn_skill_1->switchSpriteFrames();
     _btn_skill_1->setPosition( _btn_skill_1->getPosition() + Point( 20.0, 0 ) );
     _btn_skill_1->addTouchEventListener( CC_CALLBACK_2( UIHeroManageLayer::onSkillTabTouched, this ) );
-    _selected_skill_tab = _btn_skill_1;
+    this->setSkillTab( _btn_skill_1 );
+    
+    _lb_skill_desc = dynamic_cast<ui::Text*>( pn_skill_info->getChildByName( "lb_skill_desc" ) );
     
     ui::Text* lb_title_1 = dynamic_cast<ui::Text*>( _btn_skill_1->getChildByName( "lb_title" ) );
     Label* label_1 = lb_title_1->getLabelRenderer();
@@ -485,7 +488,7 @@ bool UIHeroManageLayer::init() {
     //deployed units
     const ValueMap& deployed_unit_slot_ids = player_info->getPlayerDeployedUnitsSlotIds();
     int i_slot_id = 1;
-    int total_slot_count = deployed_unit_slot_ids.size();
+    int total_slot_count = (int)deployed_unit_slot_ids.size();
     for( int i = 1; i <= total_slot_count; i++ ) {
         std::string slot_id = Utils::toStr( i );
         std::string hero_id = deployed_unit_slot_ids.at( slot_id ).asString();
@@ -614,11 +617,7 @@ void UIHeroManageLayer::onSkillTabTouched( cocos2d::Ref* sender, cocos2d::ui::Wi
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         if( sender != _selected_skill_tab ) {
             ui::Button* btn = dynamic_cast<ui::Button*>( sender );
-            _selected_skill_tab->switchSpriteFrames();
-            _selected_skill_tab->setPosition( _selected_skill_tab->getPosition() - Point( 20.0, 0 ) );
-            _selected_skill_tab = btn;
-            _selected_skill_tab->switchSpriteFrames();
-            _selected_skill_tab->setPosition( _selected_skill_tab->getPosition() + Point( 20.0, 0 ) );
+            this->setSkillTab( btn );
         }
     }
 }
@@ -677,6 +676,7 @@ void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero ) {
         }
         else {
             //show hero skill
+            this->setSkillTab( _btn_skill_1 );
             
             //show hero price
             int price = ResourceManager::getInstance()->getUnitPrice( _selected_hero->getUnitData()->name );
@@ -769,6 +769,33 @@ void UIHeroManageLayer::setTargetDeploySlot( UIHeroDeploySlot* slot ) {
     _target_deploy_slot = slot;
     if( _target_deploy_slot != nullptr && _target_deploy_slot != _selected_deploy_slot ) {
         _target_deploy_slot->setSelected( true );
+    }
+}
+
+void UIHeroManageLayer::setSkillTab( cocos2d::ui::Button* tab ) {
+    if( _selected_skill_tab != nullptr ) {
+        _selected_skill_tab->switchSpriteFrames();
+        _selected_skill_tab->setPosition( _selected_skill_tab->getPosition() - Point( 20.0, 0 ) );
+    }
+    _selected_skill_tab = tab;
+    _selected_skill_tab->switchSpriteFrames();
+    _selected_skill_tab->setPosition( _selected_skill_tab->getPosition() + Point( 20.0, 0 ) );
+    
+    if( _selected_hero != nullptr ) {
+        int skill_id = 1;
+        UnitData* unit_data = _selected_hero->getUnitData();
+        if( tab == _btn_skill_1 ) {
+            skill_id = 1;
+        }
+        else {
+            skill_id = 2;
+        }
+        
+        const ValueMap& skill_conf = unit_data->skills.at( skill_id - 1 ).asValueMap();
+        std::string skill_name = skill_conf.at( "name" ).asString();
+        int skill_level = skill_conf.at( "level" ).asInt();
+        std::string desc = ResourceManager::getInstance()->getSkillDesc( skill_name, skill_level );
+        _lb_skill_desc->setString( desc );
     }
 }
 

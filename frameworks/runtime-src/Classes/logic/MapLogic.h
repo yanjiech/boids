@@ -23,8 +23,6 @@ class BattleLayer;
 
 class MapLogic : public cocos2d::Ref {
 private:
-    std::string _level_id;
-    
     BattleLayer* _battle_layer;
     
     cocos2d::Vector<EventTrigger*> _triggers;

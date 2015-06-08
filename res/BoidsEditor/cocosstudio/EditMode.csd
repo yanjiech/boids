@@ -1,5 +1,5 @@
 <GameProjectFile>
-  <PropertyGroup Type="Scene" Name="EditMode" ID="8cdd7607-0d99-49b6-8a59-ef59c068649e" Version="2.2.5.0" />
+  <PropertyGroup Type="Scene" Name="EditMode" ID="8cdd7607-0d99-49b6-8a59-ef59c068649e" Version="2.2.9.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />

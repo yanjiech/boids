@@ -69,6 +69,8 @@ private:
     MapData* _map_data;
     MapLogic* _map_logic;
     
+    std::string _level_id;
+    
     cocos2d::Point _max_map_position;
     cocos2d::Point _min_map_position;
     
@@ -141,9 +143,12 @@ public:
     BattleLayer();
     virtual ~BattleLayer();
     
-    static BattleLayer* create( MapData* map_data, bool is_pvp );
+    static BattleLayer* create( MapData* map_data, const std::string& level_id, bool is_pvp );
     
-    virtual bool init( MapData* map_data, bool is_pvp );
+    virtual bool init( MapData* map_data, const std::string& level_id, bool is_pvp );
+    
+    const std::string& getLevelId() { return _level_id; }
+    void setLevelId( const std::string& level_id ) { _level_id = level_id; }
     
     void setup();
     void reset();

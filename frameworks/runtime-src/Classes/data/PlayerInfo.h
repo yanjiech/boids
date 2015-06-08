@@ -45,6 +45,9 @@ public:
     bool isUnitLocked( const std::string& name );
     
     bool isLevelCompleted( int level_id );
+    int getLevelStar( int level_id );
+    
+    void updateMissionRecord( int level_id, int star );
     
     cocos2d::ValueMap purchaseHero( const std::string& hero_id, const std::string& hero_name );
     

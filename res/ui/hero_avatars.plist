@@ -7,6 +7,19 @@
             <key>dracula_avatar.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{174,690},{170,170}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{170,170}}</string>
+                <key>sourceSize</key>
+                <string>{170,170}</string>
+            </dict>
+            <key>durarara_avatar.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{174,518},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
@@ -131,7 +144,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ceecc05f04cd462eb98d4e93b98525d6:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:4e9d1c5dde7cd3182ec2820db99c6004:1/1$</string>
             <key>textureFileName</key>
             <string>hero_avatars.png</string>
         </dict>

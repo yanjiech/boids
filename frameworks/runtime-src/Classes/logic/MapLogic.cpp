@@ -59,14 +59,6 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
         }
     }
     
-    sitr = meta_json.find( "base_info" );
-    if( sitr != meta_json.end() ) {
-        _level_id = sitr->second.asValueMap().at( "level_id" ).asString();
-    }
-    else {
-        _level_id = "1002";
-    }
-    
     return true;
 }
 
@@ -483,7 +475,7 @@ void MapLogic::obtainItem( const std::string& item_id, int count ) {
 }
 
 void MapLogic::dropItem( UnitNode* unit ) {
-    const ValueMap& drop_config = ResourceManager::getInstance()->getDropConfig().at( _level_id ).asValueMap();
+    const ValueMap& drop_config = ResourceManager::getInstance()->getDropConfig().at( _battle_layer->getLevelId() ).asValueMap();
     Point pos = unit->getHitPos();
     
     float rand;

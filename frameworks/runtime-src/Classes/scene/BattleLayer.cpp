@@ -54,9 +54,9 @@ BattleLayer::~BattleLayer() {
     CC_SAFE_DELETE_ARRAY( _fog_tile_visible_array );
 }
 
-BattleLayer* BattleLayer::create( MapData* map_data, bool is_pvp ) {
+BattleLayer* BattleLayer::create( MapData* map_data, const std::string& level_id, bool is_pvp ) {
     BattleLayer* ret = new BattleLayer();
-    if( ret && ret->init( map_data, is_pvp ) ) {
+    if( ret && ret->init( map_data, level_id, is_pvp ) ) {
         ret->autorelease();
         return ret;
     }
@@ -66,11 +66,12 @@ BattleLayer* BattleLayer::create( MapData* map_data, bool is_pvp ) {
     }
 }
 
-bool BattleLayer::init( MapData* map_data, bool is_pvp ) {
+bool BattleLayer::init( MapData* map_data, const std::string& level_id, bool is_pvp ) {
     if( !Layer::init() ) {
         return false;
     }
     do {
+        this->setLevelId( level_id );
         this->setMapData( map_data );
         
         std::set<float> all_collide_radius;

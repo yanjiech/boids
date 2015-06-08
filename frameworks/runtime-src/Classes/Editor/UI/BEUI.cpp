@@ -1646,6 +1646,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     storyActionUI = new BEUIStoryAction( _storyActionPanel, handler );
     storyChangeTriggerUI = new BEUIStoryChangeTrigger( _storyChangePanel, handler );
 //    conversationChangeUI = new BEUIConversationTrigger(_conversationChangePanel, handler);
+    
     hideAllPopups();
 }
 
@@ -1706,6 +1707,9 @@ BEMainUI::BEMainUI(Node *root, const BEMainCommandHandler& handler): BEUIBase(ro
     _playButton = getButtonFrom("button_play", _panel);
     _exitButton = getButtonFrom("button_exit", _panel);
     _mapPathTextField = getTextFieldFrom("input_mapPath", _panel);
+    _cb_easy = getCheckBoxFrom( "cb_easy", _panel );
+    _cb_medium = getCheckBoxFrom( "cb_medium", _panel );
+    _cb_hard = getCheckBoxFrom( "cb_hard", _panel );
 #ifdef SUPPORT_EXTERNAL_MAP
 	CSimpleIniA ini;
 	if (ini.LoadFile(EDITOR_SETTING_PATH) == SI_OK)
@@ -1761,21 +1765,32 @@ void BEMainUI::onLoadButtonClicked(Ref *sender) {
 }
 
 void BEMainUI::onExitButtonClicked(Ref *sender) {
-    _handler(MainCommandType::Exit, "", sender);
+    _handler(MainCommandType::Exit, "", "", sender);
 }
 
 void BEMainUI::onEditButtonClicked(Ref *sender) {
     int index = _mapListView->getCurrentIndex();
     if (index >= 0 ) {
         std::string path = _mapFolders[index].first;
-        _handler(MainCommandType::EditMap, path, sender);
+        std::string map_path = path + "/map.tmx";
+        std::string meta_path;
+        if( _cb_easy->isSelected() ) {
+            meta_path = path + "/easy/meta.json";
+        }
+        else if( _cb_medium->isSelected() ) {
+            meta_path = path + "/medium/meta.json";
+        }
+        else if( _cb_hard->isSelected() ) {
+            meta_path = path + "/hard/meta.json";
+        }
+        _handler(MainCommandType::EditMap, map_path, meta_path, sender);
     }
 }
 
 void BEMainUI::onPlayButtonClicked(Ref *sender) {
     int index = _mapListView->getCurrentIndex();
     if (index >= 0 ) {
-        std::string path = _mapFolders[index].first;
-        _handler(MainCommandType::PlayMap, path, sender);
+//        std::string path = _mapFolders[index].first;
+//        _handler(MainCommandType::PlayMap, path, sender);
     }
 }

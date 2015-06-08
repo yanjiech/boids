@@ -135,6 +135,8 @@ private:
     cocos2d::ui::Button* _btn_skill_2;
     cocos2d::ui::Button* _selected_skill_tab;
     
+    cocos2d::ui::Text* _lb_skill_desc;
+    
     cocos2d::Sprite* _star_1;
     cocos2d::Sprite* _star_2;
     cocos2d::Sprite* _star_3;
@@ -215,6 +217,8 @@ public:
     void setSelectedHero( UIHeroManageHeroSlot* hero );
     void setSelectedDeploySlot( UIHeroDeploySlot* slot );
     void setTargetDeploySlot( UIHeroDeploySlot* slot );
+    
+    void setSkillTab( cocos2d::ui::Button* tab );
     
     void turnToPage( int index );
     

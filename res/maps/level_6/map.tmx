@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="55" height="31" tilewidth="128" tileheight="128" nextobjectid="807">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="220" height="124" tilewidth="32" tileheight="32" nextobjectid="835">
  <tileset firstgid="1" name="vision" tilewidth="877" tileheight="541">
   <tile id="0">
    <image width="151" height="127" source="caocong_01.png"/>
@@ -131,221 +131,227 @@
    <image width="118" height="146" source="shikuai_black04.png"/>
   </tile>
   <tile id="43">
-   <image width="90" height="81" source="baoxiang_01.png"/>
-  </tile>
-  <tile id="44">
    <image width="290" height="166" source="dici00.png"/>
   </tile>
-  <tile id="45">
+  <tile id="44">
    <image width="70" height="239" source="blue_door.png"/>
   </tile>
-  <tile id="46">
+  <tile id="45">
    <image width="70" height="239" source="red_door.png"/>
   </tile>
-  <tile id="47">
+  <tile id="46">
    <image width="70" height="240" source="yellow_door.png"/>
   </tile>
+  <tile id="47">
+   <image width="190" height="194" source="shirenhua_01.png"/>
+  </tile>
+  <tile id="48">
+   <image width="190" height="194" source="shirenhua_03.png"/>
+  </tile>
+  <tile id="49">
+   <image width="200" height="135" source="baoxiang_02.png"/>
+  </tile>
  </tileset>
- <tileset firstgid="49" name="terrain" tilewidth="128" tileheight="128">
+ <tileset firstgid="51" name="terrain" tilewidth="32" tileheight="32">
   <image source="base_terrain.png" width="2048" height="2048"/>
  </tileset>
- <layer name="terrain" width="55" height="31">
+ <layer name="terrain" width="220" height="124">
   <data encoding="base64" compression="zlib">
-   eJztw0ENAAAMA6FzVf/O5mIvSFg1VVVVVVVVfXxtrW5f
+   eJzt1jd1RVEAxMDn2oGYAzEHYg6YfEn8s4WmUDEM9Hxd18vp9fR2embmm/n99HH6PH0x8039ffo5/Z7+mPmmvr+7rofT4+npjplv6fXPMpe8/lnmktc/y1zy+meZS17/LHPJ659lLnn9s8wlr3+WueT1zzKXvP5Z5pLXP8tc8vpnmUte/yxzyeufZS55/bPMJa9/lrnk9c8yl7z+WeaS1z/LXPL6Z5lLXv8sc8nrn2Uuef2zzCWvf5a55PXPMpe8/lnmktc/y1zy+meZS17/LHPJ659lLnn9s8wlr3+WueT1zzKXvP5Z5pLXP8tc8vpnmUte/yxzyeufZS55/bPMJa9/lrnk9c8yl7z+WeaS1z/LXPL6Z5lLXv8sc8nrn2Uuef2zzCWvf5a55PXPMpe8/lnmktc/y1zy+meZS17/LHPJ659lLnn9s8wlr3+WueT1zzKXvP5Z5pLXP8tc8vpnmUte/yxzyeufZS55/bPMJa9/lrnk9c8yl7z+WeaS1z/LXPL6Z5lLXv8sc8nrn2Uuef2zzCWvf5a55PXPMpe8/lnmktc/y1zy+meZS17/LHPJ659lLnn9s8wlr3+WueT1zzKXvP5Z5pLXP8tc8vpnmUte/yxzyeufZS55/bPMJa9/lrnk9c8yl7z+WeaS1z/LXPL6Z5lLXv8sc8nrn2Uuef2zzCWvf5a55PXPMpe8/lnmktc/y1zy+meZS17/LHPJ659lLnn9s8wlr3+WueT1zzKXvP5Z5pLXP8tc8vpnmUte/yxzyeufZS55/bPMJa9/lrnk9c8yl7z+WeaS1z/LXPL6Z5lLXv8sc8nrn2Uuef2zzCWvf5a55H8KzEdQ
   </data>
  </layer>
  <objectgroup name="onground">
-  <object id="655" name="b1" type="steal_thorn" gid="45" x="1434.15" y="666.394">
+  <object id="655" name="b1" type="steal_thorn" gid="44" x="1434.15" y="666.394">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="656" name="b2" type="steal_thorn" gid="45" x="1753.33" y="837.455">
+  <object id="656" name="b2" type="steal_thorn" gid="44" x="1753.33" y="837.455">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="658" name="b3" type="steal_thorn" gid="45" x="1749.94" y="547.303">
+  <object id="658" name="b3" type="steal_thorn" gid="44" x="1749.94" y="547.303">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="659" name="b4" type="steal_thorn" gid="45" x="1913.09" y="630.212">
+  <object id="659" name="b4" type="steal_thorn" gid="44" x="1913.09" y="630.212">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="660" name="b5" type="steal_thorn" gid="45" x="2077.33" y="547.636">
+  <object id="660" name="b5" type="steal_thorn" gid="44" x="2077.33" y="547.636">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="661" name="b6" type="steal_thorn" gid="45" x="2400.43" y="888.783" rotation="-0.321914">
+  <object id="661" name="b6" type="steal_thorn" gid="44" x="2400.43" y="888.783" rotation="-0.321914">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="662" name="b7" type="steal_thorn" gid="45" x="2721.2" y="1060.61">
+  <object id="662" name="b7" type="steal_thorn" gid="44" x="2721.2" y="1060.61">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="664" name="b8" type="steal_thorn" gid="45" x="2437.67" y="1213.48">
+  <object id="664" name="b8" type="steal_thorn" gid="44" x="2437.67" y="1213.48">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="665" name="b9" type="steal_thorn" gid="45" x="2278.48" y="1127.76">
+  <object id="665" name="b9" type="steal_thorn" gid="44" x="2278.48" y="1127.76">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="669" name="b10" type="steal_thorn" gid="45" x="1690.05" y="1353.33">
+  <object id="669" name="b10" type="steal_thorn" gid="44" x="1690.05" y="1353.33">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="670" name="b11" type="steal_thorn" gid="45" x="1525.33" y="1266.42">
+  <object id="670" name="b11" type="steal_thorn" gid="44" x="1525.33" y="1266.42">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="671" name="b12" type="steal_thorn" gid="2147483693" x="1092.72" y="2319.52">
+  <object id="671" name="b12" type="steal_thorn" gid="2147483692" x="1092.72" y="2319.52">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="672" name="b13" type="steal_thorn" gid="2147483693" x="931.879" y="2410.79">
+  <object id="672" name="b13" type="steal_thorn" gid="2147483692" x="931.879" y="2410.79">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="678" name="b14" type="steal_thorn" gid="2147483693" x="1488.85" y="2307.39">
+  <object id="678" name="b14" type="steal_thorn" gid="2147483692" x="1488.85" y="2307.39">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="679" name="b15" type="steal_thorn" gid="2147483693" x="1421.93" y="2145.57">
+  <object id="679" name="b15" type="steal_thorn" gid="2147483692" x="1421.93" y="2145.57">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="680" name="b16" type="steal_thorn" gid="2147483693" x="1251.75" y="2227.51">
+  <object id="680" name="b16" type="steal_thorn" gid="2147483692" x="1251.75" y="2227.51">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="681" name="b17" type="steal_thorn" gid="2147483693" x="1158.9" y="2481.21">
+  <object id="681" name="b17" type="steal_thorn" gid="2147483692" x="1158.9" y="2481.21">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="682" name="b18" type="steal_thorn" gid="2147483693" x="1321.33" y="2394.67">
+  <object id="682" name="b18" type="steal_thorn" gid="2147483692" x="1321.33" y="2394.67">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="683" name="b19" type="steal_thorn" gid="45" x="4773.82" y="3153.21">
+  <object id="683" name="b19" type="steal_thorn" gid="44" x="4773.82" y="3153.21">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="684" name="b20" type="steal_thorn" gid="45" x="4938.67" y="3236.6">
+  <object id="684" name="b20" type="steal_thorn" gid="44" x="4938.67" y="3236.6">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="685" name="b21" type="steal_thorn" gid="45" x="4606.06" y="3066.67">
+  <object id="685" name="b21" type="steal_thorn" gid="44" x="4606.06" y="3066.67">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="703" name="b22" type="steal_thorn" gid="45" x="5561.82" y="2988.61">
+  <object id="703" name="b22" type="steal_thorn" gid="44" x="5561.82" y="2988.61">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="704" name="b23" type="steal_thorn" gid="45" x="5585.82" y="3428.61">
+  <object id="704" name="b23" type="steal_thorn" gid="44" x="5585.82" y="3428.61">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="705" name="b24" type="steal_thorn" gid="45" x="5380.67" y="3754">
+  <object id="705" name="b24" type="steal_thorn" gid="44" x="5380.67" y="3754">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="706" name="b25" type="steal_thorn" gid="45" x="5215.82" y="3670.61">
+  <object id="706" name="b25" type="steal_thorn" gid="44" x="5215.82" y="3670.61">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="707" name="b26" type="steal_thorn" gid="45" x="4937.33" y="3066.67">
+  <object id="707" name="b26" type="steal_thorn" gid="44" x="4937.33" y="3066.67">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="708" name="b27" type="steal_thorn" gid="45" x="5721.82" y="2898.61">
+  <object id="708" name="b27" type="steal_thorn" gid="44" x="5721.82" y="2898.61">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="709" name="b28" type="steal_thorn" gid="45" x="5102.18" y="3150.06">
+  <object id="709" name="b28" type="steal_thorn" gid="44" x="5102.18" y="3150.06">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="710" name="b29" type="steal_thorn" gid="45" x="5886.67" y="2982">
+  <object id="710" name="b29" type="steal_thorn" gid="44" x="5886.67" y="2982">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="711" name="b30" type="steal_thorn" gid="45" x="4769.57" y="2980.13">
+  <object id="711" name="b30" type="steal_thorn" gid="44" x="4769.57" y="2980.13">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="712" name="b31" type="steal_thorn" gid="45" x="5726.67" y="3072">
+  <object id="712" name="b31" type="steal_thorn" gid="44" x="5726.67" y="3072">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="713" name="b32" type="steal_thorn" gid="45" x="5750.67" y="3512">
+  <object id="713" name="b32" type="steal_thorn" gid="44" x="5750.67" y="3512">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="716" name="b33" type="steal_thorn" gid="45" x="6566.67" y="1190">
+  <object id="716" name="b33" type="steal_thorn" gid="44" x="6566.67" y="1190">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="717" name="b34" type="steal_thorn" gid="45" x="6660.61" y="1076">
+  <object id="717" name="b34" type="steal_thorn" gid="44" x="6660.61" y="1076">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="718" name="b35" type="steal_thorn" gid="2147483693" x="6341.33" y="676.667">
+  <object id="718" name="b35" type="steal_thorn" gid="2147483692" x="6341.33" y="676.667">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="719" name="b36" type="steal_thorn" gid="2147483693" x="6500.33" y="591.667">
+  <object id="719" name="b36" type="steal_thorn" gid="2147483692" x="6500.33" y="591.667">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="720" name="b37" type="steal_thorn" gid="2147483693" x="6656.33" y="504.667">
+  <object id="720" name="b37" type="steal_thorn" gid="2147483692" x="6656.33" y="504.667">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="721" name="b38" type="steal_thorn" gid="45" x="2564.33" y="975.333" rotation="-0.321914">
+  <object id="721" name="b38" type="steal_thorn" gid="44" x="2564.33" y="975.333" rotation="-0.321914">
    <properties>
     <property name="level" value="6"/>
    </properties>
   </object>
-  <object id="722" name="b39" type="steal_thorn" gid="45" x="1595" y="752">
+  <object id="722" name="b39" type="steal_thorn" gid="44" x="1595" y="752">
    <properties>
     <property name="level" value="6"/>
    </properties>
@@ -674,7 +680,7 @@
   <object id="376" gid="11" x="647.755" y="2771.03"/>
   <object id="377" gid="2147483676" x="2090.3" y="2465.51"/>
   <object id="378" gid="2147483654" x="6613.39" y="1685.88"/>
-  <object id="379" gid="2147483676" x="6354.3" y="123.515"/>
+  <object id="379" gid="2147483676" x="6312.3" y="97.515"/>
   <object id="380" gid="26" x="6975.03" y="713.454"/>
   <object id="381" gid="2147483676" x="6754.3" y="2579.51"/>
   <object id="382" gid="2147483678" x="4142.3" y="2219.51"/>
@@ -720,16 +726,14 @@
   <object id="422" gid="11" x="3352.97" y="2294.18"/>
   <object id="423" gid="6" x="5347.75" y="289.212"/>
   <object id="424" gid="26" x="3472" y="168"/>
-  <object id="502" gid="2147483692" x="6270.15" y="155.152"/>
   <object id="532" gid="2147483691" x="6961.33" y="562.667"/>
-  <object id="540" gid="43" x="1155.73" y="905.301"/>
   <object id="600" gid="2147483691" x="3048" y="2520"/>
   <object id="601" gid="2147483691" x="3348" y="3328"/>
   <object id="630" gid="2147483676" x="6230.3" y="3051.51"/>
-  <object id="782" name="yellow_door" type="GroupSpineBlockNode" gid="48" x="3003" y="1260"/>
-  <object id="783" name="yellow_door" type="GroupSpineBlockNode" gid="48" x="3011" y="1566"/>
-  <object id="784" name="yellow_door" type="GroupSpineBlockNode" gid="48" x="3005" y="1386"/>
-  <object id="785" name="yellow_door" type="GroupSpineBlockNode" gid="48" x="3009" y="1504">
+  <object id="782" name="yellow_door" type="GroupSpineBlockNode" gid="47" x="3003" y="1260"/>
+  <object id="783" name="yellow_door" type="GroupSpineBlockNode" gid="47" x="3011" y="1566"/>
+  <object id="784" name="yellow_door" type="GroupSpineBlockNode" gid="47" x="3005" y="1386"/>
+  <object id="785" name="yellow_door" type="GroupSpineBlockNode" gid="47" x="3009" y="1504">
    <properties>
     <property name="color_green" value="255"/>
     <property name="color_red" value="255"/>
@@ -739,11 +743,11 @@
     <property name="range" value="300"/>
    </properties>
   </object>
-  <object id="786" name="yellow_door" type="GroupSpineBlockNode" gid="48" x="3013" y="1632"/>
-  <object id="787" name="yellow_door" type="GroupSpineBlockNode" gid="48" x="3005" y="1322"/>
-  <object id="788" name="yellow_door" type="GroupSpineBlockNode" gid="48" x="3007" y="1442"/>
-  <object id="789" name="red_door" type="GroupSpineBlockNode" gid="47" x="5393" y="1461"/>
-  <object id="790" name="red_door" type="GroupSpineBlockNode" gid="47" x="5445" y="1437">
+  <object id="786" name="yellow_door" type="GroupSpineBlockNode" gid="47" x="3013" y="1632"/>
+  <object id="787" name="yellow_door" type="GroupSpineBlockNode" gid="47" x="3005" y="1322"/>
+  <object id="788" name="yellow_door" type="GroupSpineBlockNode" gid="47" x="3007" y="1442"/>
+  <object id="789" name="red_door" type="GroupSpineBlockNode" gid="46" x="5393" y="1461"/>
+  <object id="790" name="red_door" type="GroupSpineBlockNode" gid="46" x="5445" y="1437">
    <properties>
     <property name="color_red" value="255"/>
     <property name="need_repair" value="true"/>
@@ -752,12 +756,12 @@
     <property name="range" value="200"/>
    </properties>
   </object>
-  <object id="791" name="red_door" type="GroupSpineBlockNode" gid="47" x="5541" y="1395"/>
-  <object id="792" name="red_door" type="GroupSpineBlockNode" gid="47" x="5493" y="1417"/>
-  <object id="793" name="blue_door" type="GroupSpineBlockNode" gid="46" x="5803" y="1385"/>
-  <object id="794" name="blue_door" type="GroupSpineBlockNode" gid="46" x="5861" y="1411"/>
-  <object id="795" name="blue_door" type="GroupSpineBlockNode" gid="46" x="5925" y="1441"/>
-  <object id="796" name="blue_door" type="GroupSpineBlockNode" gid="46" x="5989" y="1475">
+  <object id="791" name="red_door" type="GroupSpineBlockNode" gid="46" x="5541" y="1395"/>
+  <object id="792" name="red_door" type="GroupSpineBlockNode" gid="46" x="5493" y="1417"/>
+  <object id="793" name="blue_door" type="GroupSpineBlockNode" gid="45" x="5803" y="1385"/>
+  <object id="794" name="blue_door" type="GroupSpineBlockNode" gid="45" x="5861" y="1411"/>
+  <object id="795" name="blue_door" type="GroupSpineBlockNode" gid="45" x="5925" y="1441"/>
+  <object id="796" name="blue_door" type="GroupSpineBlockNode" gid="45" x="5989" y="1475">
    <properties>
     <property name="color_blue" value="255"/>
     <property name="color_green" value="255"/>
@@ -767,17 +771,17 @@
     <property name="range" value="300"/>
    </properties>
   </object>
-  <object id="797" name="blue_door" type="GroupSpineBlockNode" gid="46" x="6057" y="1505"/>
-  <object id="798" name="blue_door" type="GroupSpineBlockNode" gid="46" x="6119" y="1533"/>
-  <object id="799" name="blue_door" type="GroupSpineBlockNode" gid="46" x="6175" y="1559"/>
-  <object id="800" name="blue_door" type="GroupSpineBlockNode" gid="46" x="6229" y="1593"/>
+  <object id="797" name="blue_door" type="GroupSpineBlockNode" gid="45" x="6057" y="1505"/>
+  <object id="798" name="blue_door" type="GroupSpineBlockNode" gid="45" x="6119" y="1533"/>
+  <object id="799" name="blue_door" type="GroupSpineBlockNode" gid="45" x="6175" y="1559"/>
+  <object id="800" name="blue_door" type="GroupSpineBlockNode" gid="45" x="6229" y="1593"/>
   <object id="801" name="red_door_collide" type="collide" x="5374" y="1420">
    <polygon points="-6,-10 46,56 254,-36 208,-106"/>
   </object>
   <object id="802" name="blue_door_collide" type="collide" x="5776" y="1362">
    <polygon points="-2,2 82,-78 562,182 496,256"/>
   </object>
-  <object id="804" name="yellow_door" type="GroupSpineBlockNode" gid="48" x="3015" y="1696">
+  <object id="804" name="yellow_door" type="GroupSpineBlockNode" gid="47" x="3015" y="1696">
    <properties>
     <property name="level" value="6"/>
    </properties>
@@ -788,8 +792,20 @@
    </properties>
    <polygon points="0,0 18,516 106,516 94,2"/>
   </object>
+  <object id="816" gid="48" x="1730.09" y="2519.55"/>
+  <object id="817" gid="49" x="3577.48" y="1243.67"/>
+  <object id="818" gid="2147483696" x="960.606" y="1327.27"/>
+  <object id="821" gid="2147483697" x="1832.3" y="3184"/>
+  <object id="822" gid="49" x="6561.64" y="268.788"/>
+  <object id="824" gid="50" x="6154" y="257"/>
+  <object id="825" gid="50" x="436.364" y="454.545"/>
+  <object id="826" gid="48" x="2132" y="1180"/>
+  <object id="827" gid="48" x="6057.58" y="3232.58"/>
+  <object id="828" gid="48" x="5360" y="2992"/>
+  <object id="830" gid="48" x="5368" y="536"/>
+  <object id="831" gid="49" x="4980" y="1228"/>
  </objectgroup>
- <objectgroup name="physics">
+ <objectgroup name="physics" visible="0">
   <object id="426" name="c1" type="collide" x="3.0303" y="6.06061">
    <polygon points="-9.09091,1236.36 -3.0303,2375.76 24.2424,2384.85 133.333,2363.64 160.606,2375.76 275.758,2321.21 303.03,2360.61 345.455,2381.82 354.545,2442.42 421.212,2484.85 418.182,2536.36 569.697,2609.09 633.333,2566.67 763.636,2596.97 845.455,2672.73 818.182,2848.48 836.364,2887.88 1000,2972.73 996.97,3133.33 1154.55,3221.21 1148.48,3260.61 1251.52,3306.06 1300,3284.85 1418.18,3348.48 1490.91,3303.03 1493.91,3215.24 1585.97,3204.12 1690,3167.73 1754.67,3098.97 1728.45,2987.15 1537.06,2911.27 1533.97,2664.42 1412.12,2630.3 1342.3,2649.91 1271.76,2576.48 1257.58,2503.88 1212.82,2470.67 1141.55,2424.15 994.606,2375 842.424,2297.12 698.818,2305.21 648.061,2321.64 656.091,2236.64 700,2221.21 754.545,2187.88 731.303,2096.09 646.091,2044.58 711.818,2000.39 711.909,1798.03 793.939,1784.85 900,1730.3 912.121,1675.76 875.758,1560.61 808,1510.3 701.879,1495.15 574.697,1489.94 535.394,1470.76 493.939,1445.45 512.121,1387.88 468.758,1272.21 352.394,1227"/>
   </object>

@@ -54,7 +54,7 @@ private:
     std::vector<std::string> _conversations;
     std::vector<std::string> _stories;
     
-    void enterEdit(const std::string& mapFolder);
+    void enterEdit(const std::string& map_data, const std::string& meta_data);
     void leaveEdit();
     
     EditorContext* currentContext() { return _inSubContext ? &_subContext : &_context; }
@@ -79,7 +79,7 @@ private:
     
     void onMenuCommand(EditorCommandType ct, cocos2d::Ref *sender);
     void onPopupEvent(EditorPopupEventType et, BEUIBase *popup, cocos2d::Ref *sender);
-    void onMainCommand(MainCommandType ct, const std::string& mapFolder, cocos2d::Ref *sender);
+    void onMainCommand(MainCommandType ct, const std::string& map_path, const std::string& meta_path, cocos2d::Ref *sender);
     
     void onStep(int step);
     void moveOn();

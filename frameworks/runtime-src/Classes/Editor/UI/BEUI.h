@@ -616,6 +616,11 @@ private:
     cocos2d::ui::Button *_playButton;
     cocos2d::ui::Button *_exitButton;
     cocos2d::ui::TextField *_mapPathTextField;
+    
+    cocos2d::ui::CheckBox* _cb_easy;
+    cocos2d::ui::CheckBox* _cb_medium;
+    cocos2d::ui::CheckBox* _cb_hard;
+    
     BEListView *_mapListView;
     BEMainCommandHandler _handler;
     std::vector<std::pair<std::string, std::string>> _mapFolders;

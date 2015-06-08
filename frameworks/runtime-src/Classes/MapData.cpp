@@ -28,9 +28,9 @@ MapData::~MapData() {
     
 }
 
-MapData* MapData::create( const std::string& path ) {
+MapData* MapData::create( const std::string& map_path, const std::string& meta_path) {
     MapData* ret = new MapData();
-    if( ret && ret->init( path ) ) {
+    if( ret && ret->init( map_path, meta_path ) ) {
         ret->autorelease();
         return ret;
     }
@@ -40,18 +40,18 @@ MapData* MapData::create( const std::string& path ) {
     }
 }
 
-bool MapData::init( const std::string& path ) {
-    _path = path;
-    auto json = Utils::stringFormat("%s/meta.json", path.c_str());
-    _metaData = FileUtils::getInstance()->getStringFromFile(json);
+bool MapData::init( const std::string& map_path, const std::string& meta_path ) {
+    _map_path = map_path;
+    _meta_path = meta_path;
+    
+    _metaData = FileUtils::getInstance()->getStringFromFile( meta_path );
     if (_metaData.length() == 0) {
         _metaData = "{}";
     }
-    auto mapfile = Utils::stringFormat("%s/map.tmx", path.c_str());
-    _mapData = FileUtils::getInstance()->getStringFromFile(mapfile);
+    _mapData = FileUtils::getInstance()->getStringFromFile(map_path);
     if (_mapData.empty())
     {
-        cocos2d::log("[FATAL] map file(%s) not found or read failed !!", mapfile.c_str());
+        cocos2d::log("[FATAL] map file(%s) not found or read failed !!", map_path.c_str());
         return false;
     }
     preprocessMapData();
@@ -64,8 +64,7 @@ const std::string& MapData::getMetaData() {
 
 void MapData::dumpMetaData(const std::string& content) {
     std::ofstream file;
-    auto json = Utils::stringFormat("%s/meta.json", _path.c_str());
-    file.open(json);
+    file.open(_meta_path);
     file << content;
     file.close();
 }
@@ -101,8 +100,8 @@ cocos2d::Sprite* MapData::spriteFromObject( TMXTiledMap* map, const cocos2d::Val
             if (createFromCache) {
                 sprite = Sprite::createWithSpriteFrameName(source);
             } else {
-                auto spritePath = Utils::stringFormat("%s/%s", this->_path.c_str(), source.c_str());
-                sprite = Sprite::create(spritePath);
+//                auto spritePath = Utils::stringFormat("%s/%s", this->_path.c_str(), source.c_str());
+//                sprite = Sprite::create(spritePath);
             }
             sprite->setAnchorPoint(Vec2::ZERO);
             sprite->setPosition( Point( x, y ) );
@@ -120,7 +119,7 @@ cocos2d::Sprite* MapData::spriteFromObject( TMXTiledMap* map, const cocos2d::Val
 
 TMXTiledMap* MapData::generateTiledMapWithFlags(int flags) {
 	assert(_mapData.size() && "_mapData empty");
-    auto map = TMXTiledMap::createWithXML(_mapData, _path);
+    auto map = TMXTiledMap::createWithXML(_mapData, _map_path);
     float map_width = map->getMapSize().width * map->getTileSize().width;
     float map_height = map->getTileSize().height * map->getMapSize().height;
     map->setContentSize( Size( map_width, map_height ) );

@@ -383,7 +383,6 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
         if( sitr != vm.end() ) {
             int skill_id = sitr->second.asInt();
             std::string skill_name = skill_config.at( skill_id ).asString();
-            vm.erase( "skill_id" );
             vm["name"] = Value( skill_name );
         }
         skills.push_back( Value( vm ) );

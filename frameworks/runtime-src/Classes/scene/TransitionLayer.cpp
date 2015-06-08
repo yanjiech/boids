@@ -90,14 +90,15 @@ void TransitionLayer::transitUpdate( float delta ) {
     cocos2d::Layer* layer = nullptr;
     if( _next_scene_name == eSceneName::SceneLevelChoose ) {
         ResourceManager::getInstance()->loadUIResource();
-        layer = UILevelChooseLayer::create();
+        layer = UIHomeLayer::create();
         next_scene->addChild( layer, 10000 );
     }
     else if( _next_scene_name == eSceneName::SceneBattle ) {
         ResourceManager::getInstance()->loadBattleResource();
         bool is_pvp = _next_scene_config->value_params["is_pvp"].asBool();
+        std::string level_id = _next_scene_config->value_params["level_id"].asString();
         MapData* map_data = dynamic_cast<MapData*>( _next_scene_config->ref_params.at( 0 ) );
-        layer = BattleLayer::create( map_data, is_pvp );
+        layer = BattleLayer::create( map_data, level_id, is_pvp );
         next_scene->addChild( layer, 10001 );
     }
     cocos2d::Director::getInstance()->replaceScene( next_scene );

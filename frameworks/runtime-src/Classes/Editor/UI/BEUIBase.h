@@ -63,7 +63,7 @@ enum class MainCommandType {
 typedef std::function<void(cocos2d::Ref *)> BEClickHandler;
 typedef std::function<void(EditorPopupEventType, class BEUIBase *, cocos2d::Ref *)> BEPopupEventHandler;
 typedef std::function<void(EditorCommandType, cocos2d::Ref *)> BEEditorCommandHandler;
-typedef std::function<void(MainCommandType, const std::string&, cocos2d::Ref *)> BEMainCommandHandler;
+typedef std::function<void(MainCommandType, const std::string&, const std::string&, cocos2d::Ref *)> BEMainCommandHandler;
 
 class BEListButton : public cocos2d::ui::Button {
 public:

@@ -126,6 +126,37 @@ bool PlayerInfo::isLevelCompleted( int level_id ) {
     return itr != mission_record.end();
 }
 
+int PlayerInfo::getLevelStar( int level_id ) {
+    int ret = 0;
+    const ValueMap& mission_record = _player_info.at( "mission_record" ).asValueMap();
+    auto itr = mission_record.find( Utils::toStr( level_id ) );
+    if( itr != mission_record.end() ) {
+        ret = itr->second.asValueMap().at( "star" ).asInt();
+    }
+    return ret;
+}
+
+void PlayerInfo::updateMissionRecord( int level_id, int star ) {
+    ValueMap& mission_record = _player_info.at( "mission_record" ).asValueMap();
+    std::string str_level_id = Utils::toStr( level_id );
+    bool should_update = false;
+    auto itr = mission_record.find( str_level_id );
+    if( itr != mission_record.end() ) {
+        int old_star = itr->second.asValueMap().at( "star" ).asInt();
+        if( old_star < star ) {
+            should_update = true;
+        }
+    }
+    else {
+        should_update = true;
+    }
+    ValueMap data;
+    data["star"] = Value( star );
+    data["level_id"] = Value( level_id );
+    mission_record[str_level_id] = Value( data );
+    this->recordPlayerInfo();
+}
+
 ValueMap PlayerInfo::purchaseHero( const std::string& hero_id, const std::string& hero_name ) {
     int price = ResourceManager::getInstance()->getUnitPrice( hero_name );
     int diamond = this->getDiamond();

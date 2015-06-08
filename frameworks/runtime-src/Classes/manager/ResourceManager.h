@@ -119,6 +119,9 @@ public:
     static cocos2d::Sprite* getAnimationSprite( const std::string& name );
     
     std::string getPathForResource( const std::string& name, eResourceType type );
+    
+    std::string getSkillDesc( const std::string& skill_name, int level );
+    int getSkillValueOfKey( const std::string& key, const cocos2d::ValueMap& skill_conf, int level );
 };
 
 #endif /* defined(__Boids__ResourceManager__) */

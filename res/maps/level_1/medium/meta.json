@@ -1,0 +1,738 @@
+{
+    "positions": [
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 105.801,
+                "y": 433.38,
+                "width": 192.883,
+                "height": 134.179
+            }
+        },
+        {
+            "name": "orange_03",
+            "rect": {
+                "x": 1299.03,
+                "y": 657.411,
+                "width": 70.6838,
+                "height": 68.2878
+            }
+        },
+        {
+            "name": "red_01",
+            "rect": {
+                "x": 1461.97,
+                "y": 344.725,
+                "width": 158.14,
+                "height": 106.625
+            }
+        },
+        {
+            "name": "red_02",
+            "rect": {
+                "x": 1908.83,
+                "y": 791.591,
+                "width": 141.367,
+                "height": 92.2484
+            }
+        },
+        {
+            "name": "red_03",
+            "rect": {
+                "x": 2419.19,
+                "y": 1094.69,
+                "width": 99.4365,
+                "height": 94.6444
+            }
+        },
+        {
+            "name": "red_04",
+            "rect": {
+                "x": 2183.18,
+                "y": 863.473,
+                "width": 91.0505,
+                "height": 87.4563
+            }
+        },
+        {
+            "name": "trigger_1",
+            "rect": {
+                "x": 1633.89,
+                "y": -60.0104,
+                "width": 141.767,
+                "height": 1157.09
+            }
+        },
+        {
+            "name": "trigger_2",
+            "rect": {
+                "x": 2530.41,
+                "y": 732.687,
+                "width": 184.696,
+                "height": 157.741
+            }
+        },
+        {
+            "name": "boss",
+            "rect": {
+                "x": 3553.73,
+                "y": 581.935,
+                "width": 183.698,
+                "height": 171.718
+            }
+        },
+        {
+            "name": "trigger_boss",
+            "rect": {
+                "x": 2927.76,
+                "y": 78.7613,
+                "width": 127.79,
+                "height": 705.84
+            }
+        },
+        {
+            "name": "orange_01",
+            "rect": {
+                "x": 814.252,
+                "y": 761.639,
+                "width": 66.89,
+                "height": 59.9016
+            }
+        },
+        {
+            "name": "orange_02",
+            "rect": {
+                "x": 876.15,
+                "y": 360.299,
+                "width": 62.8967,
+                "height": 58.9032
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "story_01",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：过了前面的河，我们就安全了！",
+                            "speaker": "enchantress"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：哦呵呵，当心咯，别被地精抓走了！",
+                            "speaker": "kyle"
+                        }
+                    ],
+                    "name": "story_01"
+                }
+            ]
+        },
+        {
+            "name": "start_monster",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_01",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal",
+                    "skill_1_level": 2
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bear",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_02",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "reach_trigger_1",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "trigger_1",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "red_02",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "tag_name": "goblin_talker_01",
+                    "position_name": "red_02",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "red_02",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "red_01",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "red_01",
+                    "unit_count": 1,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "talker_01_talk",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "goblin_talker_01",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "妖怪！把王子交出来！",
+                            "duration": 4,
+                            "interval": 0
+                        }
+                    ],
+                    "name": "talk_01",
+                    "source_type": "tag_source",
+                    "source_value": "goblin_talker_01",
+                    "is_random_order": false,
+                    "repeat_times": 1
+                }
+            ]
+        },
+        {
+            "name": "reach_trigger_2",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "trigger_2",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": false,
+                            "line": "地精：妖怪！哪里逃！",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：逃？我们可是正大光明地走过去的哟！",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：...",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "地精：小的们，给我上！",
+                            "speaker": "goblin_auntie"
+                        }
+                    ],
+                    "name": "story_02"
+                }
+            ]
+        },
+        {
+            "name": "wave_3",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "wave_2",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "story_03",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "tag_name": "spanner",
+                    "position_name": "red_04",
+                    "unit_count": 1,
+                    "unit_level": 2,
+                    "popup_type": "normal",
+                    "item_get_or_lose": true,
+                    "item_name": "road_repair",
+                    "item_resource": "spanner.png"
+                }
+            ]
+        },
+        {
+            "name": "wave_2",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "wave_1",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_3",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "tag_name": "wave_2",
+                    "position_name": "red_04",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "tag_name": "wave_2",
+                    "position_name": "red_03",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "wave_1",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_02",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_2",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "tag_name": "wave_1",
+                    "position_name": "red_04",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "tag_name": "wave_1",
+                    "position_name": "red_03",
+                    "unit_count": 2,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "story_03",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "spanner",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "leader",
+                    "show_hp": false,
+                    "unit_level": 1,
+                    "popup_type": "normal",
+                    "item_get_or_lose": true,
+                    "item_name": "bridge_repair",
+                    "item_resource": "spanner.png"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：这是修桥的工具？去桥那边试试吧！",
+                            "speaker": "enchantress"
+                        }
+                    ],
+                    "name": "story_03"
+                }
+            ]
+        },
+        {
+            "name": "story_04",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "trigger_boss",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "win_trigger",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin_shredder",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": true,
+                    "tag_name": "boss",
+                    "position_name": "boss",
+                    "unit_count": 1,
+                    "is_boss": true,
+                    "custom_change": "hp:2000",
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": false,
+                            "line": "地精撕裂者：大胆妖怪!快把王子的下落说出来！",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：王子...就是我们抓的，你来打我们呀！",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：......",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "地精撕裂者：不知死活的家伙！!",
+                            "speaker": "goblin_auntie"
+                        }
+                    ],
+                    "name": "story_04"
+                }
+            ]
+        },
+        {
+            "name": "boss_guard",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_04",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": false,
+                    "position_name": "boss",
+                    "unit_count": 3,
+                    "unit_level": 1,
+                    "popup_type": "normal"
+                }
+            ]
+        },
+        {
+            "name": "lose_trigger",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "main_win",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "win_trigger",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "main_win",
+                    "task_state": "task_finished"
+                }
+            ]
+        }
+    ],
+    "units": [
+        "bear",
+        "bee",
+        "bomb_goblin",
+        "bomb_robot",
+        "goblin",
+        "goblin_shredder"
+    ],
+    "tasks": [
+        {
+            "type": "primary_win",
+            "name": "main_win",
+            "desc": "shasi boss",
+            "title": "killboss"
+        }
+    ]
+}

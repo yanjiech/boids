@@ -22,8 +22,8 @@ public:
     MapData();
     virtual ~MapData();
     
-    static MapData* create( const std::string& path );
-    virtual bool init( const std::string& path );
+    static MapData* create( const std::string& map_path, const std::string& meta_path );
+    virtual bool init( const std::string& map_path, const std::string& meta_path );
     
     const std::string& getMetaData();
     void dumpMetaData(const std::string& content);
@@ -45,7 +45,9 @@ private:
     
     std::string _mapData;
     std::string _metaData;
-    std::string _path;
+    
+    std::string _map_path;
+    std::string _meta_path;
     
     void preprocessMapData();
 };

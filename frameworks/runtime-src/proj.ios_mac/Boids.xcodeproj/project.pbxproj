@@ -151,8 +151,8 @@
 		986A553F1AA559F70051B0B9 /* TargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A553C1AA559F70051B0B9 /* TargetNode.cpp */; };
 		986A55421AA55A390051B0B9 /* BuildingNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55401AA55A390051B0B9 /* BuildingNode.cpp */; };
 		986A55431AA55A390051B0B9 /* BuildingNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55401AA55A390051B0B9 /* BuildingNode.cpp */; };
-		986A555A1AA561730051B0B9 /* UILevelChooseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55581AA561730051B0B9 /* UILevelChooseLayer.cpp */; };
-		986A555B1AA561730051B0B9 /* UILevelChooseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55581AA561730051B0B9 /* UILevelChooseLayer.cpp */; };
+		986A555A1AA561730051B0B9 /* UIHomeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55581AA561730051B0B9 /* UIHomeLayer.cpp */; };
+		986A555B1AA561730051B0B9 /* UIHomeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55581AA561730051B0B9 /* UIHomeLayer.cpp */; };
 		986A555E1AA561E30051B0B9 /* SceneBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A555C1AA561E30051B0B9 /* SceneBase.cpp */; };
 		986A555F1AA561E30051B0B9 /* SceneBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A555C1AA561E30051B0B9 /* SceneBase.cpp */; };
 		986A55621AA562C30051B0B9 /* SceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 986A55601AA562C30051B0B9 /* SceneManager.cpp */; };
@@ -639,8 +639,8 @@
 		986A553D1AA559F70051B0B9 /* TargetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetNode.h; sourceTree = "<group>"; };
 		986A55401AA55A390051B0B9 /* BuildingNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BuildingNode.cpp; sourceTree = "<group>"; };
 		986A55411AA55A390051B0B9 /* BuildingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingNode.h; sourceTree = "<group>"; };
-		986A55581AA561730051B0B9 /* UILevelChooseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UILevelChooseLayer.cpp; sourceTree = "<group>"; };
-		986A55591AA561730051B0B9 /* UILevelChooseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILevelChooseLayer.h; sourceTree = "<group>"; };
+		986A55581AA561730051B0B9 /* UIHomeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIHomeLayer.cpp; sourceTree = "<group>"; };
+		986A55591AA561730051B0B9 /* UIHomeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHomeLayer.h; sourceTree = "<group>"; };
 		986A555C1AA561E30051B0B9 /* SceneBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneBase.cpp; sourceTree = "<group>"; };
 		986A555D1AA561E30051B0B9 /* SceneBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneBase.h; sourceTree = "<group>"; };
 		986A55601AA562C30051B0B9 /* SceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneManager.cpp; sourceTree = "<group>"; };
@@ -1211,8 +1211,8 @@
 				98A366CA1AA84E8400393B8E /* UIBattleMenuLayer.h */,
 				988B52E41AA4461700FB7B21 /* UIControlLayer.cpp */,
 				988B52E51AA4461700FB7B21 /* UIControlLayer.h */,
-				986A55581AA561730051B0B9 /* UILevelChooseLayer.cpp */,
-				986A55591AA561730051B0B9 /* UILevelChooseLayer.h */,
+				986A55581AA561730051B0B9 /* UIHomeLayer.cpp */,
+				986A55591AA561730051B0B9 /* UIHomeLayer.h */,
 				986A555C1AA561E30051B0B9 /* SceneBase.cpp */,
 				986A555D1AA561E30051B0B9 /* SceneBase.h */,
 				98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */,
@@ -2095,7 +2095,7 @@
 				76DEA31D1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */,
 				76E50B471B180FD800DA0996 /* IceDebris.cpp in Sources */,
 				98E3B64E1A73A77A00B5BEBB /* descriptor_database.cc in Sources */,
-				986A555B1AA561730051B0B9 /* UILevelChooseLayer.cpp in Sources */,
+				986A555B1AA561730051B0B9 /* UIHomeLayer.cpp in Sources */,
 				9859D1CC1A7B4B8700FF6D82 /* TcpClient.cpp in Sources */,
 				E867B1B71A36EDAC00EF8088 /* CmdLineDebuggerLua.cpp in Sources */,
 				985F4D291AAD72B9008D2EF8 /* Buff.cpp in Sources */,
@@ -2175,7 +2175,7 @@
 				E87413421A0BBB02003EBD0B /* EditMode.cpp in Sources */,
 				F293BB9C15EB831F00256477 /* AppDelegate.cpp in Sources */,
 				987185961AAFF1BC00533C3E /* PlayerSkillBehavior.cpp in Sources */,
-				986A555A1AA561730051B0B9 /* UILevelChooseLayer.cpp in Sources */,
+				986A555A1AA561730051B0B9 /* UIHomeLayer.cpp in Sources */,
 				9871DBF21ABADF68009B8EC9 /* WrathOfThunder.cpp in Sources */,
 				98A366CB1AA84E8400393B8E /* UIBattleMenuLayer.cpp in Sources */,
 				986A553E1AA559F70051B0B9 /* TargetNode.cpp in Sources */,
@@ -2483,7 +2483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2505,7 +2505,7 @@
 					/Users/chenyanjie/Documents/lib/lib,
 					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
-				PROVISIONING_PROFILE = "d953645f-b7be-499c-ba62-1a4ace3cc99c";
+				PROVISIONING_PROFILE = "fa1ae143-78e4-4095-9d01-19b8cce7dd41";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";
@@ -2517,7 +2517,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2538,7 +2538,7 @@
 					/Users/chenyanjie/Documents/lib/lib,
 					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
-				PROVISIONING_PROFILE = "d953645f-b7be-499c-ba62-1a4ace3cc99c";
+				PROVISIONING_PROFILE = "fa1ae143-78e4-4095-9d01-19b8cce7dd41";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";

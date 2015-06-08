@@ -41,21 +41,22 @@ EditMode::EditMode(): _drawNode(nullptr), _map(nullptr), _touchListener(nullptr)
 void EditMode::enterMain(std::function<void()> onExit) {
     _onExit = onExit;
     _mainRootNode = CSLoader::createNode("Main.csb");
-    _mainUI = std::shared_ptr<BEMainUI>(new BEMainUI(_mainRootNode, CC_CALLBACK_3(EditMode::onMainCommand, this)));
+    _mainUI = std::shared_ptr<BEMainUI>(new BEMainUI(_mainRootNode, CC_CALLBACK_4(EditMode::onMainCommand, this)));
     runSceneWithNode(_mainRootNode);
 }
 
 void EditMode::backMain() {
     _mainRootNode = CSLoader::createNode("Main.csb");
-    _mainUI = std::shared_ptr<BEMainUI>(new BEMainUI(_mainRootNode, CC_CALLBACK_3(EditMode::onMainCommand, this)));
+    _mainUI = std::shared_ptr<BEMainUI>(new BEMainUI(_mainRootNode, CC_CALLBACK_4(EditMode::onMainCommand, this)));
     runSceneWithNode(_mainRootNode);
 }
 
-void EditMode::enterEdit(const std::string& mapFolder) {
+void EditMode::enterEdit(const std::string& map_data, const std::string& meta_data) {
     loadUnits();
     ResourceManager::getInstance()->loadBattleResource();
     _mapData = std::shared_ptr<MapData>(new MapData());
-    _mapData->init( mapFolder );
+    
+    _mapData->init( map_data, meta_data );
 //    _mapData->loadImagesToCache();
     _map = _mapData->generateTiledMapWithFlags(7);
     loadVisionObjects();
@@ -624,12 +625,12 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
     }
 }
 
-void EditMode::onMainCommand(MainCommandType ct, const std::string& mapFolder, Ref *sender) {
+void EditMode::onMainCommand(MainCommandType ct, const std::string& map_path, const std::string& meta_path, Ref *sender) {
     _mainUI->setVisible(false);
     if (ct == MainCommandType::PlayMap) {
 //        LuaFunc::runBattleSceneWithMapPath(mapFolder);
     } else if (ct == MainCommandType::EditMap) {
-        enterEdit(mapFolder);
+        enterEdit( map_path, meta_path);
     } else if (ct == MainCommandType::Exit) {
         _onExit();
     }

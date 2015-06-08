@@ -149,6 +149,8 @@ void UIBattleMenuLayer::onContinueTouched( cocos2d::Ref* sender, cocos2d::ui::Wi
 
 void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == ui::Widget::TouchEventType::ENDED ) {
+        int level_id = Utils::toInt( _battle_layer->getLevelId() );
+        PlayerInfo::getInstance()->updateMissionRecord( level_id, 3 );
         SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
     }
 }

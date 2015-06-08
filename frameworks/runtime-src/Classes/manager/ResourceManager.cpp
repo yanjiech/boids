@@ -109,8 +109,7 @@ void ResourceManager::loadUIResource() {
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_manage.plist", "ui/page/ui_hero_manage.png" );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_home.plist", "ui/page/ui_home.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_talent.plist", "ui/page/ui_talent.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_hero_skills.plist", "ui/ui_hero_skills.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_skill_icon.plist", "ui/ui_skill_icon.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_skill_icon.plist", "ui/page/ui_skill_icon.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_p.plist", "ui/ui_hero_p.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_f.plist", "ui/ui_hero_f.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
@@ -123,8 +122,7 @@ void ResourceManager::unloadUIResource() {
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_hero_manage.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_home.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_talent.plist" );
-    frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_skills.plist" );
-    frame_cache->removeSpriteFramesFromFile( "ui/ui_skill_icon.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_skill_icon.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_p.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_f.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_icon.plist" );
@@ -378,17 +376,25 @@ void ResourceManager::loadDropData() {
     }
 }
 
+void ResourceManager::loadLevelData() {
+    FileUtils* file_util = FileUtils::getInstance();
+    std::string plist_file = FileUtils::getInstance()->getWritablePath() + LEVEL_CONFIG_FILE + ".plist";
+    if( !file_util->isFileExist( plist_file ) ) {
+        std::string data_string = FileUtils::getInstance()->getStringFromFile( std::string( LEVEL_CONFIG_FILE ) + ".json" );
+        rapidjson::Document config_json;
+        config_json.Parse<0>( data_string.c_str() );
+        _level_config = CocosUtils::jsonObjectToValueMap( config_json );
+        file_util->writeToFile( _level_config, plist_file );
+    }
+    else {
+        _level_config = file_util->getValueMapFromFile( plist_file );
+    }
+}
+
 void ResourceManager::loadUnitEffects() {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile( "effects/fx_unit_common.plist", "effects/fx_unit_common.png" );
     Animation* animation = this->createAnimation( UNIT_BLEED, 5, 0.04, 1 );
     AnimationCache::getInstance()->addAnimation( animation, UNIT_BLEED );
-}
-
-void ResourceManager::loadLevelData() {
-    std::string data_string = FileUtils::getInstance()->getStringFromFile( "level.json" );
-    rapidjson::Document level_config_json;
-    level_config_json.Parse<0>( data_string.c_str() );
-    _level_config = CocosUtils::jsonObjectToValueMap( level_config_json );
 }
 
 void ResourceManager::loadBulletArmature( const std::string& name, const std::string& type ) {
@@ -593,4 +599,103 @@ std::string ResourceManager::getPathForResource( const std::string& name, eResou
     else {
         return std::string( "" );
     }
+}
+
+
+/*
+ dmg damage
+ atk atk
+ def def
+ dod dod
+ cri cri
+ hit hit
+ hp hp
+ mp mp
+ dur duration
+ mov move
+ */
+std::string ResourceManager::getSkillDesc( const std::string& skill_name, int level ) {
+    const ValueMap& skill_conf = this->getSkillConfig().at( skill_name ).asValueMap();
+    
+    std::string ret = skill_conf.at( "desc" ).asString();
+    
+    size_t i = ret.find( "dmg" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "damage", skill_conf, level );
+        ret.replace( i, 3, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "atk" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "atk", skill_conf, level );
+        ret.replace( i, 3, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "def" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "def", skill_conf, level );
+        ret.replace( i, 3, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "dod" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "dod", skill_conf, level );
+        ret.replace( i, 3, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "cri" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "cri", skill_conf, level );
+        ret.replace( i, 3, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "hit" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "hit", skill_conf, level );
+        ret.replace( i, 3, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "hp" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "hp", skill_conf, level );
+        ret.replace( i, 2, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "mp" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "mp", skill_conf, level );
+        ret.replace( i, 2, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "dur" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "duration", skill_conf, level );
+        ret.replace( i, 3, Utils::toStr( value ) );
+    }
+    
+    i = ret.find( "mov" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "mov", skill_conf, level );
+        ret.replace( i, 3, Utils::toStr( value ) );
+    }
+    
+    return ret;
+}
+
+int ResourceManager::getSkillValueOfKey( const std::string& key, const cocos2d::ValueMap& skill_conf, int level ) {
+    auto itr = skill_conf.find( key );
+    if( itr != skill_conf.end() ) {
+        float v;
+        if( itr->second.getType() == Value::Type::VECTOR ) {
+            v = itr->second.asValueVector().at( level - 1 ).asFloat();
+        }
+        else {
+            v = itr->second.asFloat();
+        }
+        if( v < 1.0f ) {
+            v *= 100;
+        }
+        return (int)v;
+    }
+    return 0;
 }
