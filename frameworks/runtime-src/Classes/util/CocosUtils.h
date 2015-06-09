@@ -25,6 +25,8 @@ public:
     static cocos2d::ValueMap jsonObjectToValueMap( const rapidjson::Value& value );
     static cocos2d::ValueVector jsonArrayToValueVector( const rapidjson::Value& value );
     static cocos2d::Value jsonValueToValue( const rapidjson::Value& value );
+    
+    static bool playTouchEffect();
 };
 
 #endif /* defined(__Boids__CocosUtils__) */

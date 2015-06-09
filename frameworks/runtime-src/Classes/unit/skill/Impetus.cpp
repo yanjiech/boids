@@ -50,7 +50,7 @@ bool Impetus::init( UnitNode* owner, const cocos2d::ValueMap& data, const cocos2
 void Impetus::updateFrame( float delta ) {
 }
 
-void Impetus::begin() {    
+void Impetus::begin() {
     Point init_pos = _owner->getPosition();
     
     UnitNode* target_unit = dynamic_cast<UnitNode*>( _owner->getChasingTarget() );

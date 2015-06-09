@@ -21,6 +21,7 @@
 #include "ui/CocosGUI.h"
 #include "../BoidsMath.h"
 #include "../data/PlayerInfo.h"
+#include "../manager/AudioManager.h"
 
 #define DEFAULT_SHADOW_RADIUS 30.0
 #define DEFAULT_HESITATE_FRAMES 5
@@ -256,7 +257,8 @@ void UnitNode::onSkeletonAnimationStart( int track_index ) {
         
     }
     else if( animation_name == "Die" ) {
-        
+        std::string audio_res = this->getUnitData()->name + "/die.wav";
+        AudioManager::getInstance()->playEffect( audio_res );
     }
 }
 
@@ -303,8 +305,13 @@ void UnitNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
     std::string event_name = std::string( event->data->name );
     if( ( animation_name == "Cast" || animation_name == "Cast2" ) && event_name == "OnCasting" ) {
         this->onCasting();
+        int sk_id = _using_skill_params["skill_id"].asInt();
+        std::string audio_res = this->getUnitData()->name + Utils::stringFormat( "/cast%d.wav", sk_id + 1 );
+        AudioManager::getInstance()->playEffect( audio_res );
     }
     else if( animation_name == "Attack" && event_name == "OnAttacking" ) {
+        std::string audio_res = this->getUnitData()->name + "/attack.wav";
+        AudioManager::getInstance()->playEffect( audio_res );
         this->onAttacking();
     }
     else if( animation_name == "Attack" && event_name == "OnAttackBegan" ) {

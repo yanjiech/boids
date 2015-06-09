@@ -32,6 +32,43 @@ PlayerInfo* PlayerInfo::getInstance() {
     return _instance;
 }
 
+void PlayerInfo::registerListener( const std::string& key, PlayerInfoDelegate* delegate ) {
+    auto itr = _player_info_listeners.find( key );
+    if( itr != _player_info_listeners.end() ) {
+        std::vector<PlayerInfoDelegate*>& vec = _player_info_listeners.at( key );
+        vec.push_back( delegate );
+    }
+    else {
+        std::vector<PlayerInfoDelegate*> vec;
+        vec.push_back( delegate );
+        _player_info_listeners[key] = vec;
+    }
+}
+
+void PlayerInfo::unregisterListener( const std::string& key, PlayerInfoDelegate* delegate ) {
+    auto itr = _player_info_listeners.find( key );
+    if( itr != _player_info_listeners.end() ) {
+        std::vector<PlayerInfoDelegate*>& vec = _player_info_listeners.at( key );
+        for( auto sitr = vec.begin(); sitr != vec.end(); ++sitr ) {
+            if( *sitr == delegate ) {
+                vec.erase( sitr );
+                break;
+            }
+        }
+    }
+}
+
+void PlayerInfo::dispatchInfo( const std::string& key ) {
+    auto itr = _player_info_listeners.find( key );
+    if( itr != _player_info_listeners.end() ) {
+        std::vector<PlayerInfoDelegate*>& vec = _player_info_listeners.at( key );
+        for( auto sitr = vec.begin(); sitr != vec.end(); ++sitr ) {
+            PlayerInfoDelegate* delegate = *sitr;
+            delegate->updatePlayerInfo( this );
+        }
+    }
+}
+
 void PlayerInfo::loadPlayerInfo() {
     FileUtils* file_util = FileUtils::getInstance();
     std::string plist_file = FileUtils::getInstance()->getWritablePath() + PLAYER_INFO_DATA_FILE + ".plist";
@@ -388,24 +425,43 @@ void PlayerInfo::gainEquip( const std::string& item_id, int count ) {
     }
 }
 
-void PlayerInfo::gainGold( int gain ) {
+void PlayerInfo::gainGold( int gain, bool record ) {
     int gold = this->getGold();
     _player_info["gold"] = Value( gold + gain );
-    this->recordPlayerInfo();
+    if( record ) {
+        this->recordPlayerInfo();
+    }
+    this->dispatchInfo( PLAYER_INFO_CURRENCY );
 }
 
 int PlayerInfo::getGold() {
     return _player_info.at( "gold" ).asInt();
 }
 
-void PlayerInfo::gainDiamond( int gain ) {
+void PlayerInfo::gainDiamond( int gain, bool record ) {
     int diamond = this->getDiamond();
     _player_info["diamond"] = Value( diamond + gain );
-    this->recordPlayerInfo();
+    if( record ) {
+        this->recordPlayerInfo();
+    }
+    this->dispatchInfo( PLAYER_INFO_CURRENCY );
 }
 
 int PlayerInfo::getDiamond() {
     return _player_info.at( "diamond" ).asInt();
+}
+
+void PlayerInfo::gainStone( int gain, bool record ) {
+    int stone = this->getStone();
+    _player_info["stone"] = Value( stone + gain );
+    if( record ) {
+        this->recordPlayerInfo();
+    }
+    this->dispatchInfo( PLAYER_INFO_CURRENCY );
+}
+
+int PlayerInfo::getStone() {
+    return _player_info.at( "stone" ).asInt();
 }
 
 void PlayerInfo::gainTeamExp( int exp ) {
@@ -502,4 +558,22 @@ void PlayerInfo::resetTeamTalent( const std::string& type ) {
     ValueVector& talent = _player_info.at( "team_talent" ).asValueMap().at( type ).asValueVector();
     talent.clear();
     this->recordPlayerInfo();
+}
+
+//user operation
+bool PlayerInfo::sellEquip( const std::string& obj_id ) {
+    ValueMap& all_equip_conf = _player_info.at( "equips" ).asValueMap();
+    auto itr = all_equip_conf.find( obj_id );
+    if( itr != all_equip_conf.end() ) {
+        ValueMap& equip_conf = itr->second.asValueMap();
+        std::string equip_id = equip_conf.at( "id" ).asString();
+        const ValueMap& equip_res = ResourceManager::getInstance()->getEquipData( equip_id );
+        int price = equip_res.at( "price" ).asInt();
+        this->gainGold( price, false );
+        all_equip_conf.erase( itr );
+        this->recordPlayerInfo();
+        return true;
+    }
+    
+    return false;
 }

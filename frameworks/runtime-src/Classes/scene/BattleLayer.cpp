@@ -187,6 +187,7 @@ void BattleLayer::setup() {
     this->setMapLogic( new_map_logic );
     _map_logic->onMapInit();
     _game_time = 0;
+    _battle_menu_layer->loadTasks();
 }
 
 void BattleLayer::reset() {
@@ -354,15 +355,15 @@ void BattleLayer::quitBattle() {
 }
 
 void BattleLayer::setMapLogic( MapLogic* map_logic ) {
+    CC_SAFE_RETAIN( map_logic );
     CC_SAFE_RELEASE( _map_logic );
     _map_logic = map_logic;
-    CC_SAFE_RETAIN( _map_logic );
 }
 
 void BattleLayer::setMapData( MapData* map_data ) {
+    CC_SAFE_RETAIN( map_data );
     CC_SAFE_RELEASE( _map_data );
     _map_data = map_data;
-    CC_SAFE_RETAIN( _map_data );
 }
 
 UnitNode* BattleLayer::getLeaderUnit() {

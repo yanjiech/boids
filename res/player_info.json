@@ -1,6 +1,7 @@
 {
     "gold" : 50000,
     "diamond" : 1000,
+    "stone" : 1000,
     "team_level" : 20,
     "team_exp" : 0,
     "team_talent" :

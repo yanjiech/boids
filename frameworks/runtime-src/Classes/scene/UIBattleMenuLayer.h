@@ -21,6 +21,11 @@ private:
     BattleLayer* _battle_layer;
     
     cocos2d::Node* _pause_panel;
+    
+    cocos2d::Vector<cocos2d::ui::Text*> _lb_mission_vec;
+    
+    cocos2d::Vector<cocos2d::Sprite*> _sp_mission_vec;
+    
     cocostudio::timeline::ActionTimeline* _pause_panel_action;
     
     cocos2d::ui::Button* _btn_pause;
@@ -35,6 +40,14 @@ private:
     
     //lose panel
     cocos2d::Node* _lose_panel;
+    cocostudio::timeline::ActionTimeline* _lose_panel_action;
+    
+    int _completed_mission;
+    bool _did_win;
+    
+    cocos2d::Sprite* _sp_star_1;
+    cocos2d::Sprite* _sp_star_2;
+    cocos2d::Sprite* _sp_star_3;
     
 public:
     UIBattleMenuLayer();
@@ -42,6 +55,8 @@ public:
     
     static UIBattleMenuLayer* create( BattleLayer* battle_layer );
     virtual bool init( BattleLayer* battle_layer );
+    
+    void loadTasks();
     
     void onPauseTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     

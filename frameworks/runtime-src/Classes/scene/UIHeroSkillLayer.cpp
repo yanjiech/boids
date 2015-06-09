@@ -10,6 +10,7 @@
 #include "../manager/resourceManager.h"
 #include "../Utils.h"
 #include "../data/PlayerInfo.h"
+#include "../util/CocosUtils.h"
 
 #define HERO_SKILL_FILE "ui/page/ui_hero_skill.csb"
 
@@ -93,6 +94,7 @@ bool UIHeroSkillLayer::init( UIHeroManageHeroSlot* hero ) {
 
 void UIHeroSkillLayer::onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         TouchableLayer* parent = dynamic_cast<TouchableLayer*>( this->getParent() );
         parent->becomeTopLayer();
         parent->removeChild( this );
@@ -101,6 +103,7 @@ void UIHeroSkillLayer::onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget:
 
 void UIHeroSkillLayer::onUpgradeTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         Node* node = dynamic_cast<Node*>( sender );
         int tag = node->getTag();
         this->upgradeSkill( tag );

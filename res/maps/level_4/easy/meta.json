@@ -844,8 +844,20 @@
         {
             "type": "primary_win",
             "name": "main_win",
-            "desc": "kill_boss",
-            "title": "kill boss"
+            "desc": "消灭骷髅王",
+            "title": "消灭骷髅王"
+        },
+        {
+            "type": "additional_win",
+            "name": "add_task_1",
+            "desc": "全员生存",
+            "title": "全员生存"
+        },
+        {
+            "type": "additional_win",
+            "name": "add_task_2",
+            "desc": "3分钟内完成任务",
+            "title": "3分钟内完成任务"
         }
     ]
 }

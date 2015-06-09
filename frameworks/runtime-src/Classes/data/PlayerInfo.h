@@ -16,6 +16,15 @@
 #define LEVEL_UP_ERROR_NOT_ENOUGH_GOLD 2
 #define LEVEL_UP_ERROR_REACH_LEVEL_LIMIT 3
 
+#define PLAYER_INFO_CURRENCY "currency"
+
+class PlayerInfo;
+
+class PlayerInfoDelegate {
+public:
+    virtual void updatePlayerInfo( PlayerInfo* player_info ) = 0;
+};
+
 class PlayerInfo {
 private:
     cocos2d::ValueMap _player_info;
@@ -25,10 +34,17 @@ private:
     
     PlayerInfo();
     
+    std::map<std::string, std::vector<PlayerInfoDelegate*>> _player_info_listeners;
+    
 public:
     virtual ~PlayerInfo();
     
     static PlayerInfo* getInstance();
+    
+    void registerListener( const std::string& key, PlayerInfoDelegate* delegate );
+    void unregisterListener( const std::string& key, PlayerInfoDelegate* delegate );
+    
+    void dispatchInfo( const std::string& key );
     
     void loadPlayerInfo();
     void recordPlayerInfo();
@@ -70,11 +86,14 @@ public:
     int getMaxEquipObjId();
     void gainEquip( const std::string& item_id, int count );
     
-    void gainGold( int gain );
+    void gainGold( int gain, bool record = true );
     int getGold();
     
-    void gainDiamond( int gain );
+    void gainDiamond( int gain, bool record = true );
     int getDiamond();
+    
+    void gainStone( int gain, bool record = true );
+    int getStone();
     
     void gainTeamExp( int exp );
     void setTeamLevel( int level );
@@ -92,6 +111,9 @@ public:
     void setTeamTalent( const std::string& type, const cocos2d::ValueVector& talent_vector );
     
     void resetTeamTalent( const std::string& type );
+    
+    //user operation
+    bool sellEquip( const std::string& obj_id );
 };
 
 #endif /* defined(__Boids__PlayerInfo__) */

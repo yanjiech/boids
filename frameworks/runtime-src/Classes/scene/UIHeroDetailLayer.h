@@ -120,6 +120,12 @@ private:
     
     void checkTargetCell();
     
+    //sell panel
+    cocos2d::Node* _pn_sell;
+    cocos2d::ui::Text* _lb_gold;
+    cocos2d::Sprite* _sp_icon_frame;
+    
+    
 public:
     UIHeroDetailLayer();
     virtual ~UIHeroDetailLayer();
@@ -128,12 +134,11 @@ public:
     virtual bool init( UIHeroManageHeroSlot* hero );
     
     void onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
-    
     void onSellTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
-    
+    void onSellConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
+    void onSellCancelTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     void onPrevTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     void onNextTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
-    
     void onTabTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     
     void switchToTab( int i );

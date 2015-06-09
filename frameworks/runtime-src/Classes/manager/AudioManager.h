@@ -17,11 +17,16 @@ private:
     
     AudioManager();
     
+    cocos2d::ValueMap _audio_ids;
+    
 public:
     ~AudioManager();
     
     static AudioManager* getInstance();
     static void destroy();
+    
+    bool playMusic( const std::string& resource, bool loop = false );
+    bool playEffect( const std::string& resource, bool loop = false );
 };
 
 #endif /* defined(__Boids__AudioManager__) */

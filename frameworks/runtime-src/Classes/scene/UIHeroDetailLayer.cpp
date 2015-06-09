@@ -10,10 +10,13 @@
 #include "../Utils.h"
 #include "../data/PlayerInfo.h"
 #include "../manager/ResourceManager.h"
+#include "../manager/AudioManager.h"
+#include "../util/CocosUtils.h"
 
 using namespace cocos2d;
 
 #define HERO_DETAIL_FILE "ui/page/ui_hero_detail.csb"
+#define SELL_PANEL_FILE "ui/page/ui_sell.csb"
 
 #define REPO_CELL_WIDTH 
 #define REPO_CELL_HEIGHT
@@ -309,16 +312,34 @@ bool UIHeroDetailLayer::init( UIHeroManageHeroSlot* hero ) {
     
     _pn_equip_area = dynamic_cast<ui::Layout*>( _root_node->getChildByName( "pn_equip_area" ) );
     
+    ui::Button* btn_sell = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_sell" ) );
+    btn_sell->addTouchEventListener( CC_CALLBACK_2( UIHeroDetailLayer::onSellTouched, this ) );
+    
     this->reloadHeroData();
     
     _current_tab = 0;
     this->switchToTab( 3 );
+    
+    std::string sell_csb_file = FileUtils::getInstance()->fullPathForFilename( SELL_PANEL_FILE );
+    _pn_sell = cocos2d::CSLoader::getInstance()->createNode( sell_csb_file );
+    this->addChild( _pn_sell, 2 );
+    _pn_sell->setVisible( false );
+    
+    _lb_gold = dynamic_cast<ui::Text*>( _pn_sell->getChildByName( "lb_gold" ) );
+    _sp_icon_frame = dynamic_cast<Sprite*>( _pn_sell->getChildByName( "sp_icon_frame" ) );
+    
+    ui::Button* btn_sell_cancel = dynamic_cast<ui::Button*>( _pn_sell->getChildByName( "btn_cancel" ) );
+    btn_sell_cancel->addTouchEventListener( CC_CALLBACK_2( UIHeroDetailLayer::onSellCancelTouched, this ) );
+    
+    ui::Button* btn_sell_confirm = dynamic_cast<ui::Button*>( _pn_sell->getChildByName( "btn_sell" ) );
+    btn_sell_confirm->addTouchEventListener( CC_CALLBACK_2( UIHeroDetailLayer::onSellConfirmTouched, this ) );
     
     return true;
 }
 
 void UIHeroDetailLayer::onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         TouchableLayer* parent = dynamic_cast<TouchableLayer*>( this->getParent() );
         parent->becomeTopLayer();
         parent->removeChild( this );
@@ -327,11 +348,43 @@ void UIHeroDetailLayer::onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget
 
 void UIHeroDetailLayer::onSellTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        if( _selected_repo_cell ) {
+            CocosUtils::playTouchEffect();
+            _pn_sell->setVisible( true );
+            
+            std::string price = Utils::toStr( _selected_repo_cell->getEquipData()->price );
+            _lb_gold->setString( price );
+            
+            Sprite* icon = Sprite::createWithSpriteFrame( _selected_repo_cell->getEquipSprite()->getSpriteFrame() );
+            _sp_icon_frame->removeAllChildren();
+            icon->setPosition( _sp_icon_frame->getContentSize().width / 2, _sp_icon_frame->getContentSize().height / 2 );
+            _sp_icon_frame->addChild( icon );
+        }
+    }
+}
+
+void UIHeroDetailLayer::onSellConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        PlayerInfo* player_info = PlayerInfo::getInstance();
+        if( player_info->sellEquip( _selected_repo_cell->getEquipData()->obj_id ) ) {
+            this->loadRepoEquips( (eEquipType)_current_tab, _current_equip_list->getCurPageIndex() );
+            std::string audio_res = "common/sell.wav";
+            AudioManager::getInstance()->playEffect( audio_res );
+        }
+        _pn_sell->setVisible( false );
+    }
+}
+
+void UIHeroDetailLayer::onSellCancelTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
+    if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
+        _pn_sell->setVisible( false );
     }
 }
 
 void UIHeroDetailLayer::onPrevTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         int cur_page = _current_equip_list->getCurPageIndex();
         if( this->loadRepoEquips( (eEquipType)_current_tab, cur_page - 1 ) ) {
             _current_equip_list->scrollToPage( cur_page - 1 );
@@ -341,6 +394,7 @@ void UIHeroDetailLayer::onPrevTouched( cocos2d::Ref* sender, cocos2d::ui::Widget
 
 void UIHeroDetailLayer::onNextTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         int cur_page = _current_equip_list->getCurPageIndex();
         if( this->loadRepoEquips( (eEquipType)_current_tab, cur_page + 1 ) ) {
             _current_equip_list->scrollToPage( cur_page + 1 );
@@ -350,6 +404,7 @@ void UIHeroDetailLayer::onNextTouched( cocos2d::Ref* sender, cocos2d::ui::Widget
 
 void UIHeroDetailLayer::onTabTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         ui::Button* tab = dynamic_cast<ui::Button*>( sender );
         if( tab ) {
             this->switchToTab( tab->getTag() );

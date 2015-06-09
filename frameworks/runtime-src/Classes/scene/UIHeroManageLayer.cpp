@@ -13,6 +13,7 @@
 #include "../Utils.h"
 #include "../ArmatureManager.h"
 #include "../manager/ResourceManager.h"
+#include "../util/CocosUtils.h"
 
 #define HERO_MANAGE_FILE "ui/page/ui_hero_manage.csb"
 
@@ -387,8 +388,6 @@ bool UIHeroManageLayer::init() {
     
     Node* pn_skill_info = _root_node->getChildByName( "skill_info_panel" );
     _btn_skill_1 = dynamic_cast<ui::Button*>( pn_skill_info->getChildByName( "btn_skill1" ) );
-    _btn_skill_1->switchSpriteFrames();
-    _btn_skill_1->setPosition( _btn_skill_1->getPosition() + Point( 20.0, 0 ) );
     _btn_skill_1->addTouchEventListener( CC_CALLBACK_2( UIHeroManageLayer::onSkillTabTouched, this ) );
     this->setSkillTab( _btn_skill_1 );
     
@@ -544,6 +543,7 @@ bool UIHeroManageLayer::init() {
 
 void UIHeroManageLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         this->recordDeployedUnits();
         TouchableLayer* parent = dynamic_cast<TouchableLayer*>( this->getParent() );
         if( parent ) {
@@ -555,6 +555,7 @@ void UIHeroManageLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
 
 void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         if( _selected_hero != nullptr && _selected_hero->isOwned() ) {
             _root_node->setVisible( false );
             UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create( _selected_hero );
@@ -565,6 +566,7 @@ void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widg
 
 void UIHeroManageLayer::onSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         if( _selected_hero != nullptr && _selected_hero->isOwned() ) {
             _root_node->setVisible( false );
             UIHeroSkillLayer* hero_skill = UIHeroSkillLayer::create( _selected_hero );
@@ -575,18 +577,21 @@ void UIHeroManageLayer::onSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widge
 
 void UIHeroManageLayer::onPrevTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         this->turnToPage( _current_page - 1 );
     }
 }
 
 void UIHeroManageLayer::onNextTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         this->turnToPage( _current_page + 1 );
     }
 }
 
 void UIHeroManageLayer::onUpgradeTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         if( _selected_hero && _selected_hero->isOwned() ) {
             PlayerInfo* player_info = PlayerInfo::getInstance();
             const ValueVector& upgrade_data = ResourceManager::getInstance()->getUnitLevelupCostConfig().at( _selected_hero->getUnitData()->name ).asValueMap().at( "costs" ).asValueVector();
@@ -615,6 +620,7 @@ void UIHeroManageLayer::onUpgradeTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
 
 void UIHeroManageLayer::onSkillTabTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         if( sender != _selected_skill_tab ) {
             ui::Button* btn = dynamic_cast<ui::Button*>( sender );
             this->setSkillTab( btn );
@@ -624,6 +630,7 @@ void UIHeroManageLayer::onSkillTabTouched( cocos2d::Ref* sender, cocos2d::ui::Wi
 
 void UIHeroManageLayer::onPurchaseTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         if( _selected_hero != nullptr && !_selected_hero->isOwned() && !_selected_hero->isLocked() ) {
             ValueMap hero_data = PlayerInfo::getInstance()->purchaseHero( _selected_hero->getHeroId(), _selected_hero->getUnitData()->name );
             if( !hero_data.empty() ) {

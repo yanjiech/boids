@@ -17,27 +17,14 @@
                 <key>sourceSize</key>
                 <string>{609,239}</string>
             </dict>
-            <key>ui_battle_boss_icon.png</key>
+            <key>ui_battle_circularframe_small.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{847,336},{126,146}}</string>
+                <string>{{468,243},{70,69}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{126,146}}</string>
-                <key>sourceSize</key>
-                <string>{126,146}</string>
-            </dict>
-            <key>ui_battle_circularframe_small.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{74,243},{70,69}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{70,69}}</string>
                 <key>sourceSize</key>
@@ -46,7 +33,7 @@
             <key>ui_battle_clock.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,243},{70,70}}</string>
+                <string>{{179,243},{70,70}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -107,6 +94,71 @@
                 <string>{{0,0},{326,146}}</string>
                 <key>sourceSize</key>
                 <string>{326,146}</string>
+            </dict>
+            <key>ui_battle_float_boss.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,243},{88,88}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{88,88}}</string>
+                <key>sourceSize</key>
+                <string>{88,88}</string>
+            </dict>
+            <key>ui_battle_float_boss_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{847,336},{126,146}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{126,146}}</string>
+                <key>sourceSize</key>
+                <string>{126,146}</string>
+            </dict>
+            <key>ui_battle_float_escort.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{847,218},{88,85}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{88,85}}</string>
+                <key>sourceSize</key>
+                <string>{88,85}</string>
+            </dict>
+            <key>ui_battle_float_guard.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{92,243},{88,85}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{88,85}}</string>
+                <key>sourceSize</key>
+                <string>{88,85}</string>
+            </dict>
+            <key>ui_battle_float_sos.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{162,333},{111,125}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{111,125}}</string>
+                <key>sourceSize</key>
+                <string>{111,125}</string>
             </dict>
             <key>ui_battle_icon04.png</key>
             <dict>
@@ -238,19 +290,6 @@
                 <key>sourceSize</key>
                 <string>{56,54}</string>
             </dict>
-            <key>ui_battle_sos_icon.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{162,243},{111,125}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{111,125}}</string>
-                <key>sourceSize</key>
-                <string>{111,125}</string>
-            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -261,7 +300,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8b94cc47cca9c8bbcd9786ba917f76cb:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:d6772665be9924cc72507d03484ff5a1:1/1$</string>
             <key>textureFileName</key>
             <string>ui_battle.png</string>
         </dict>

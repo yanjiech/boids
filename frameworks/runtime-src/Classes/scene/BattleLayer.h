@@ -162,16 +162,16 @@ public:
     void quitBattle();
     
     void setMapData( MapData* map_data );
+    MapData* getMapData() { return _map_data; }
+    
     void setMapLogic( MapLogic* map_logic );
+    MapLogic* getMapLogic() { return _map_logic; }
     
     eBattleState getState() { return _state; }
     void setState( eBattleState new_state ) { _state = new_state; }
     
     void changeState( eBattleState new_state );
     bool checkState();
-    
-    MapData* getMapData() { return _map_data; }
-    MapLogic* getMapLogic() { return _map_logic; }
     
     UIControlLayer* getControlLayer() { return _control_layer; }
     

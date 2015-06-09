@@ -7,7 +7,7 @@
             <key>ui_general_mask.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{233,884},{64,64}}</string>
+                <string>{{358,884},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -16,6 +16,19 @@
                 <string>{{0,0},{64,64}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
+            </dict>
+            <key>ui_losepage_light.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{358,950},{60,529}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{60,529}}</string>
+                <key>sourceSize</key>
+                <string>{60,529}</string>
             </dict>
             <key>ui_losepage_zi.png</key>
             <dict>
@@ -46,7 +59,7 @@
             <key>ui_winpage_gold.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{128,884},{118,103}}</string>
+                <string>{{253,884},{118,103}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -108,6 +121,19 @@
                 <key>sourceSize</key>
                 <string>{124,125}</string>
             </dict>
+            <key>ui_winpage_star_huise.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{128,884},{124,123}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,1},{124,123}}</string>
+                <key>sourceSize</key>
+                <string>{124,125}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -118,7 +144,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7a25614724dd557e45bb3ec6b9aba065:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:00b752a02d5d3937aa396e1fdfe29ee7:1/1$</string>
             <key>textureFileName</key>
             <string>ui_win_lose_page.png</string>
         </dict>

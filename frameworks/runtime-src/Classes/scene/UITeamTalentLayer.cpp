@@ -10,6 +10,7 @@
 #include "../Utils.h"
 #include "../data/PlayerInfo.h"
 #include "../manager/ResourceManager.h"
+#include "../util/CocosUtils.h"
 
 using namespace cocos2d;
 
@@ -100,6 +101,7 @@ bool UITeamTalentLayer::init() {
 
 void UITeamTalentLayer::onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         TouchableLayer* parent = dynamic_cast<TouchableLayer*>( this->getParent() );
         parent->becomeTopLayer();
         parent->removeChild( this );
@@ -108,6 +110,7 @@ void UITeamTalentLayer::onBackTouched( cocos2d::Ref* sender, cocos2d::ui::Widget
 
 void UITeamTalentLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         this->recordTalentPoints();
         this->reloadTabContent( _selected_tab );
         this->updateDisplayedContent();
@@ -120,6 +123,7 @@ void UITeamTalentLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
 
 void UITeamTalentLayer::onResetTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         this->resetAllInvest();
         this->updateDisplayedContent();
     }
@@ -128,6 +132,7 @@ void UITeamTalentLayer::onResetTouched( cocos2d::Ref* sender, cocos2d::ui::Widge
 void UITeamTalentLayer::onTalentNodeTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     ui::Layout* talent = dynamic_cast<ui::Layout*>( sender );
     if( type == cocos2d::ui::Widget::TouchEventType::BEGAN ) {
+        CocosUtils::playTouchEffect();
         this->showHint( talent->getTag() );
     }
     else if( type == cocos2d::ui::Widget::TouchEventType::CANCELED ) {
@@ -141,6 +146,7 @@ void UITeamTalentLayer::onTalentNodeTouched( cocos2d::Ref* sender, cocos2d::ui::
 
 void UITeamTalentLayer::onTabTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         ui::Button* tab = dynamic_cast<ui::Button*>( sender );
         this->switchToTab( tab->getTag() % 10 );
     }

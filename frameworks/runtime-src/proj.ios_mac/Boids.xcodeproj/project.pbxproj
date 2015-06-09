@@ -68,6 +68,8 @@
 		7631FA3B1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */; };
 		7694AB7C1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */; };
 		7694AB7D1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */; };
+		769C66E01B26BD2A00FA50F9 /* UICurrencyLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */; };
+		769C66E11B26BD2A00FA50F9 /* UICurrencyLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */; };
 		76B578F51AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76B578F61AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76DEA31C1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */; };
@@ -553,6 +555,8 @@
 		7631FA391AC2A94000CAB9C8 /* GiantSword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiantSword.h; sourceTree = "<group>"; };
 		7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TowerAttackBehavior.cpp; sourceTree = "<group>"; };
 		7694AB7B1ADD1C11006CA4A9 /* TowerAttackBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerAttackBehavior.h; sourceTree = "<group>"; };
+		769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UICurrencyLayer.cpp; sourceTree = "<group>"; };
+		769C66DF1B26BD2A00FA50F9 /* UICurrencyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICurrencyLayer.h; sourceTree = "<group>"; };
 		76B578F31AF7743600D7E783 /* TransitionLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionLayer.cpp; sourceTree = "<group>"; };
 		76B578F41AF7743600D7E783 /* TransitionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionLayer.h; sourceTree = "<group>"; };
 		76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITeamTalentLayer.cpp; sourceTree = "<group>"; };
@@ -1099,66 +1103,66 @@
 		9871DBEB1ABADCD6009B8EC9 /* skill */ = {
 			isa = PBXGroup;
 			children = (
-				9871DBEC1ABADCEF009B8EC9 /* SkillNode.cpp */,
-				9871DBED1ABADCEF009B8EC9 /* SkillNode.h */,
-				9871DBF01ABADF68009B8EC9 /* WrathOfThunder.cpp */,
-				9871DBF11ABADF68009B8EC9 /* WrathOfThunder.h */,
-				9871DBF41ABADF7F009B8EC9 /* LightningChain.cpp */,
-				9871DBF51ABADF7F009B8EC9 /* LightningChain.h */,
-				9871DBF81ABAE1F5009B8EC9 /* SkillNodeFactory.cpp */,
-				9871DBF91ABAE1F5009B8EC9 /* SkillNodeFactory.h */,
-				98742E641ABBD31B0087D13D /* BarrageOfArrow.cpp */,
-				98742E651ABBD31B0087D13D /* BarrageOfArrow.h */,
-				987A83701ABBE1540093940D /* CrazyShoot.cpp */,
-				987A83711ABBE1540093940D /* CrazyShoot.h */,
-				7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */,
-				7631FA351AC2A92B00CAB9C8 /* LightShield.h */,
-				7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */,
-				7631FA391AC2A94000CAB9C8 /* GiantSword.h */,
-				76E21D8F1AC52924006714AD /* DarkPierce.cpp */,
-				76E21D901AC52924006714AD /* DarkPierce.h */,
-				76E21D931AC5373A006714AD /* BatSwarm.cpp */,
-				76E21D941AC5373A006714AD /* BatSwarm.h */,
-				76E414611ACA7E47003DB126 /* Impetus.cpp */,
-				76E414621ACA7E47003DB126 /* Impetus.h */,
-				76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */,
-				76E414661ACA80F5003DB126 /* NaturesAttendants.h */,
-				76E414691ACA9E6A003DB126 /* BonesRain.cpp */,
-				76E4146A1ACA9E6A003DB126 /* BonesRain.h */,
-				76E414751ACAB0B4003DB126 /* MagicPulse.cpp */,
-				76E414761ACAB0B4003DB126 /* MagicPulse.h */,
-				76E414711ACAA14F003DB126 /* SkillCache.cpp */,
-				76E414721ACAA14F003DB126 /* SkillCache.h */,
-				76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */,
-				76EA0D2D1ACBCAEA00EDD10D /* MissileShowers.h */,
 				76EFF5BB1AD37E5800690CFE /* AtomFart.cpp */,
 				76EFF5BC1AD37E5800690CFE /* AtomFart.h */,
+				98742E641ABBD31B0087D13D /* BarrageOfArrow.cpp */,
+				98742E651ABBD31B0087D13D /* BarrageOfArrow.h */,
+				76E21D931AC5373A006714AD /* BatSwarm.cpp */,
+				76E21D941AC5373A006714AD /* BatSwarm.h */,
+				76E414691ACA9E6A003DB126 /* BonesRain.cpp */,
+				76E4146A1ACA9E6A003DB126 /* BonesRain.h */,
+				76009E7F1AF86414007DF026 /* CrazyScratch.cpp */,
+				76009E801AF86414007DF026 /* CrazyScratch.h */,
+				987A83701ABBE1540093940D /* CrazyShoot.cpp */,
+				987A83711ABBE1540093940D /* CrazyShoot.h */,
+				76E67B011B15D5F900E7504C /* DarkIllusion.cpp */,
+				76E67B021B15D5F900E7504C /* DarkIllusion.h */,
+				76E21D8F1AC52924006714AD /* DarkPierce.cpp */,
+				76E21D901AC52924006714AD /* DarkPierce.h */,
+				76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */,
+				76ED99D61AD4DB8F0047D5A9 /* DeathSlice.h */,
+				76E67B051B15D76300E7504C /* DreadLord.cpp */,
+				76E67B061B15D76300E7504C /* DreadLord.h */,
 				76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */,
 				76EFF5C01AD396C300690CFE /* FatalThrow.h */,
 				76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */,
 				76ED99D21AD4D0B60047D5A9 /* FireWhirl.h */,
-				76ED99D51AD4DB8F0047D5A9 /* DeathSlice.cpp */,
-				76ED99D61AD4DB8F0047D5A9 /* DeathSlice.h */,
-				76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */,
-				76EF6B2F1ADE4CDF003E84EF /* PenetrateSpear.h */,
-				76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */,
-				76EF6B331ADE4EC8003E84EF /* HuntingIntuition.h */,
 				76FF5A9C1AE8CD80008B721E /* GasBomb.cpp */,
 				76FF5A9D1AE8CD80008B721E /* GasBomb.h */,
-				76009E7B1AF863C8007DF026 /* NinthLife.cpp */,
-				76009E7C1AF863C8007DF026 /* NinthLife.h */,
-				76009E7F1AF86414007DF026 /* CrazyScratch.cpp */,
-				76009E801AF86414007DF026 /* CrazyScratch.h */,
-				76E67B011B15D5F900E7504C /* DarkIllusion.cpp */,
-				76E67B021B15D5F900E7504C /* DarkIllusion.h */,
-				76E67B051B15D76300E7504C /* DreadLord.cpp */,
-				76E67B061B15D76300E7504C /* DreadLord.h */,
-				76E50B401B180D6F00DA0996 /* SnowStorm.cpp */,
-				76E50B411B180D6F00DA0996 /* SnowStorm.h */,
+				7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */,
+				7631FA391AC2A94000CAB9C8 /* GiantSword.h */,
+				76EF6B321ADE4EC8003E84EF /* HuntingIntuition.cpp */,
+				76EF6B331ADE4EC8003E84EF /* HuntingIntuition.h */,
 				76E50B441B180FD800DA0996 /* IceDebris.cpp */,
 				76E50B451B180FD800DA0996 /* IceDebris.h */,
+				76E414611ACA7E47003DB126 /* Impetus.cpp */,
+				76E414621ACA7E47003DB126 /* Impetus.h */,
+				9871DBF41ABADF7F009B8EC9 /* LightningChain.cpp */,
+				9871DBF51ABADF7F009B8EC9 /* LightningChain.h */,
+				7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */,
+				7631FA351AC2A92B00CAB9C8 /* LightShield.h */,
+				76E414751ACAB0B4003DB126 /* MagicPulse.cpp */,
+				76E414761ACAB0B4003DB126 /* MagicPulse.h */,
+				76EA0D2C1ACBCAEA00EDD10D /* MissileShowers.cpp */,
+				76EA0D2D1ACBCAEA00EDD10D /* MissileShowers.h */,
+				76E414651ACA80F5003DB126 /* NaturesAttendants.cpp */,
+				76E414661ACA80F5003DB126 /* NaturesAttendants.h */,
+				76009E7B1AF863C8007DF026 /* NinthLife.cpp */,
+				76009E7C1AF863C8007DF026 /* NinthLife.h */,
+				76EF6B2E1ADE4CDF003E84EF /* PenetrateSpear.cpp */,
+				76EF6B2F1ADE4CDF003E84EF /* PenetrateSpear.h */,
 				76F74B411B20006900A4C950 /* SacrificeBomb.cpp */,
 				76F74B421B20006900A4C950 /* SacrificeBomb.h */,
+				76E414711ACAA14F003DB126 /* SkillCache.cpp */,
+				76E414721ACAA14F003DB126 /* SkillCache.h */,
+				9871DBEC1ABADCEF009B8EC9 /* SkillNode.cpp */,
+				9871DBED1ABADCEF009B8EC9 /* SkillNode.h */,
+				9871DBF81ABAE1F5009B8EC9 /* SkillNodeFactory.cpp */,
+				9871DBF91ABAE1F5009B8EC9 /* SkillNodeFactory.h */,
+				76E50B401B180D6F00DA0996 /* SnowStorm.cpp */,
+				76E50B411B180D6F00DA0996 /* SnowStorm.h */,
+				9871DBF01ABADF68009B8EC9 /* WrathOfThunder.cpp */,
+				9871DBF11ABADF68009B8EC9 /* WrathOfThunder.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -1231,6 +1235,8 @@
 				98733C4D1AFE3B4B006B7C37 /* TouchableLayer.h */,
 				76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */,
 				76DEA31B1B14180E0020FC7D /* UITeamTalentLayer.h */,
+				769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */,
+				769C66DF1B26BD2A00FA50F9 /* UICurrencyLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;
@@ -2026,6 +2032,7 @@
 				76E67B041B15D5F900E7504C /* DarkIllusion.cpp in Sources */,
 				76EFF5BE1AD37E5800690CFE /* AtomFart.cpp in Sources */,
 				986A55631AA562C30051B0B9 /* SceneManager.cpp in Sources */,
+				769C66E11B26BD2A00FA50F9 /* UICurrencyLayer.cpp in Sources */,
 				E87412F61A0B55DB003EBD0B /* NavMesh.cpp in Sources */,
 				E807DF601A4D642B004F76DA /* CycledList.cpp in Sources */,
 				988B52E31AA445EF00FB7B21 /* UIBattleLayer.cpp in Sources */,
@@ -2230,6 +2237,7 @@
 				989143711A81D15E007A5D45 /* ReplayComparer.cpp in Sources */,
 				9871DBF61ABADF7F009B8EC9 /* LightningChain.cpp in Sources */,
 				76EFF5C11AD396C300690CFE /* FatalThrow.cpp in Sources */,
+				769C66E01B26BD2A00FA50F9 /* UICurrencyLayer.cpp in Sources */,
 				E84197D21A09226300F5DF36 /* adler32.c in Sources */,
 				E84197CB1A09226300F5DF36 /* TmxObjectGroup.cpp in Sources */,
 				98EBBEFB1AAC3CF400ADB84A /* UnitNodeComponent.cpp in Sources */,

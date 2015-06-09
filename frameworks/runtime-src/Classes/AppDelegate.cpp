@@ -64,6 +64,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     director->setAnimationInterval(1.0 / 60);
     
     FileUtils* file_utils = FileUtils::getInstance();
+    file_utils->addSearchPath( "res/audio" );
     file_utils->addSearchPath( "res" );
     file_utils->addSearchPath( "res/ui" );
     file_utils->addSearchPath( "res/ui/page" );

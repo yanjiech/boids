@@ -865,8 +865,20 @@
         {
             "type": "primary_win",
             "name": "main_win",
-            "desc": "repair three rails",
-            "title": "repair_rails"
+            "desc": "修复3个轨道",
+            "title": "修复3个轨道"
+        },
+        {
+            "type": "additional_win",
+            "name": "add_task_1",
+            "desc": "全员生存",
+            "title": "全员生存"
+        },
+        {
+            "type": "additional_win",
+            "name": "add_task_2",
+            "desc": "消灭所有敌人",
+            "title": "消灭所有敌人"
         }
     ]
 }

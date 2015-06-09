@@ -7,6 +7,7 @@
 //
 
 #include "CocosUtils.h"
+#include "../manager/AudioManager.h"
 
 #define MAX_BOIDS_EVENT_ACTION_ID 0x7fffffff
 
@@ -87,4 +88,9 @@ cocos2d::Value CocosUtils::jsonValueToValue( const rapidjson::Value& value ) {
         log( "unknown json value type detected!" );
         return Value();
     }
+}
+
+bool CocosUtils::playTouchEffect() {
+    std::string audio_res = "common/touch_down.wav";
+    return AudioManager::getInstance()->playEffect( audio_res );
 }

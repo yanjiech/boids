@@ -13,6 +13,7 @@
 #include "../data/PlayerInfo.h"
 #include "UIHeroManageLayer.h"
 #include "UITeamTalentLayer.h"
+#include "../util/CocosUtils.h"
 
 #define MAIN_CSB_FILE "ui/page/ui_home_page.csb"
 #define LEVEL_CSB_FILE "ui/page/ui_home_detail.csb"
@@ -101,6 +102,9 @@ bool UIHomeLayer::init() {
         }
     }
     
+    _currency_layer = UICurrencyLayer::create();
+    this->addChild( _currency_layer, 1000 );
+    
     _difficulty = eLevelDifficulty::LevelDiffEasy;
     
     return true;
@@ -108,6 +112,7 @@ bool UIHomeLayer::init() {
 
 void UIHomeLayer::onStartButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         cocos2d::Vector<cocos2d::Ref*> a_ref_params;
         a_ref_params.pushBack( _map_data );
         
@@ -122,6 +127,7 @@ void UIHomeLayer::onStartButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widge
 
 void UIHomeLayer::onBackButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         _level_node->setVisible( false );
         _main_node->setVisible( true );
     }
@@ -129,6 +135,7 @@ void UIHomeLayer::onBackButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget
 
 void UIHomeLayer::onLevelTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         _main_node->setVisible( false );
         _level_node->setVisible( true );
         auto node = dynamic_cast<Node*>( sender );
@@ -170,11 +177,13 @@ void UIHomeLayer::onLevelTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::Tou
 
 void UIHomeLayer::onStoreTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
     }
 }
 
 void UIHomeLayer::onHeroTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         UIHeroManageLayer* hero_layer = UIHeroManageLayer::create();
         this->addChild( hero_layer, 2 );
     }
@@ -182,6 +191,7 @@ void UIHomeLayer::onHeroTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::Touc
 
 void UIHomeLayer::onTeamSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ){
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         UITeamTalentLayer* talent_layer = UITeamTalentLayer::create();
         this->addChild( talent_layer, 2 );
     }
@@ -214,6 +224,7 @@ void UIHomeLayer::setDifficulty( eLevelDifficulty diff ) {
 
 void UIHomeLayer::onDifficultyTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
+        CocosUtils::playTouchEffect();
         int old_diff = (int)_difficulty;
         int new_diff = old_diff % 2 + 1;
         this->setDifficulty( (eLevelDifficulty)( new_diff ) );

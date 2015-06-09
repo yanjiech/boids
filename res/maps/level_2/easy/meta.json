@@ -731,8 +731,20 @@
         {
             "type": "primary_win",
             "name": "main_win",
-            "desc": "shasi boss",
-            "title": "killboss"
+            "desc": "击败地精修理工",
+            "title": "击败地精修理工"
+        },
+        {
+            "type": "additional_win",
+            "name": "add_task_1",
+            "desc": "全员生存",
+            "title": "全员生存"
+        },
+        {
+            "type": "additional_win",
+            "name": "add_task_2",
+            "desc": "消灭所有敌人",
+            "title": "消灭所有敌人"
         }
     ]
 }

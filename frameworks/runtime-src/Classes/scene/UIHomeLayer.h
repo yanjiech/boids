@@ -13,6 +13,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "MapData.h"
+#include "UICurrencyLayer.h"
 #include "TouchableLayer.h"
 
 typedef enum {
@@ -33,6 +34,8 @@ private:
     std::vector<cocos2d::ui::Text*> _mission_labels;
     cocos2d::ui::Text* _level_info_label;
     
+    UICurrencyLayer* _currency_layer;
+    
     MapData* _map_data;
     bool _is_pvp;
     rapidjson::Document _level_logic;
@@ -47,11 +50,13 @@ private:
     
 public:
     UIHomeLayer();
-    ~UIHomeLayer();
+    virtual ~UIHomeLayer();
     
     static UIHomeLayer* create();
     
     virtual bool init();
+    
+    UICurrencyLayer* getCurrencyLayer() { return _currency_layer; }
     
     void onStartButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     void onBackButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );

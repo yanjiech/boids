@@ -64,6 +64,7 @@ public:
     
     void onMapInit();
     
+    const cocos2d::Vector<GameTask*> getGameTasks() { return _game_tasks; }
     const cocos2d::ValueMap& getDropedItems() { return _obtained_items; }
     
     void onEventChanged( const std::string& event_name, const std::string& event_state );
