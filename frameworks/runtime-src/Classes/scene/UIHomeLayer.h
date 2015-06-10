@@ -24,21 +24,13 @@ typedef enum {
 
 class UIHomeLayer : public TouchableLayer {
 private:
+    //home panel
     cocos2d::Node* _main_node;
-    cocos2d::Node* _level_node;
-    
     cocos2d::ui::ScrollView* _scrollview;
     cocos2d::Sprite* _background_node;
-    cocos2d::ui::Button* _back_button;
-    cocos2d::ui::Button* _start_button;
-    std::vector<cocos2d::ui::Text*> _mission_labels;
-    cocos2d::ui::Text* _level_info_label;
-    
-    UICurrencyLayer* _currency_layer;
     
     MapData* _map_data;
     bool _is_pvp;
-    rapidjson::Document _level_logic;
     
     eLevelDifficulty _difficulty;
     
@@ -47,6 +39,18 @@ private:
     cocos2d::ui::Text* _lb_player_name;
     
     std::string _level_id;
+    
+    UICurrencyLayer* _currency_layer;
+    
+    //level detail
+    cocos2d::Node* _level_node;
+    
+    cocos2d::Vector<cocos2d::ui::Text*> _mission_labels;
+    cocos2d::ui::Text* _lb_title;
+    cocos2d::ui::Text* _lb_level_desc;
+    cocos2d::Node* _nd_diff;
+    cocos2d::Sprite* _sp_boss_frame;
+    cocos2d::Vector<cocos2d::Sprite*> _stars;
     
 public:
     UIHomeLayer();

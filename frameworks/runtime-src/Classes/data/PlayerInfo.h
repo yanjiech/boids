@@ -96,6 +96,9 @@ public:
     int getStone();
     
     void gainTeamExp( int exp );
+    int getTeamExp();
+    int getExpForTeamLevel( int level );
+    
     void setTeamLevel( int level );
     int getTeamLevel();
     
@@ -111,6 +114,9 @@ public:
     void setTeamTalent( const std::string& type, const cocos2d::ValueVector& talent_vector );
     
     void resetTeamTalent( const std::string& type );
+    
+    bool isNewUser();
+    void setNewUser( bool b );
     
     //user operation
     bool sellEquip( const std::string& obj_id );

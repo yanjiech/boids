@@ -69,6 +69,9 @@ public:
     
     void loadAllData();
     
+    void loadOpenningResource();
+    void unloadOpenningResource();
+    
     void loadUIResource();
     void unloadUIResource();
     

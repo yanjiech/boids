@@ -500,4 +500,12 @@ void AudioEngineImpl::uncacheAll()
     _audioCaches.clear();
 }
 
+void AudioEngineImpl::vibrate() {
+#if TARGET_OS_IPHONE
+    AudioServicesPlaySystemSound( kSystemSoundID_Vibrate );
+#else
+    AudioServicesPlaySystemSound( kSystemSoundID_FlashScreen );
+#endif
+}
+
 #endif

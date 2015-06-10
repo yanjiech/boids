@@ -50,22 +50,34 @@ bool UIHomeLayer::init() {
     this->addChild( _level_node );
     
     _background_node = dynamic_cast<Sprite*>( _level_node->getChildByName( "background" ) );
-    _back_button = dynamic_cast<ui::Button*>( _level_node->getChildByName( "backButton" ) );
-    _back_button->addTouchEventListener( CC_CALLBACK_2( UIHomeLayer::onBackButtonTouched, this ) );
+    ui::Button* btn_back = dynamic_cast<ui::Button*>( _level_node->getChildByName( "backButton" ) );
+    btn_back->addTouchEventListener( CC_CALLBACK_2( UIHomeLayer::onBackButtonTouched, this ) );
     
-    _start_button = dynamic_cast<ui::Button*>( _level_node->getChildByName( "battleButton" ) );
-    _start_button->addTouchEventListener( CC_CALLBACK_2( UIHomeLayer::onStartButtonTouched, this ) );
+    ui::Button* btn_start = dynamic_cast<ui::Button*>( _level_node->getChildByName( "battleButton" ) );
+    btn_start->addTouchEventListener( CC_CALLBACK_2( UIHomeLayer::onStartButtonTouched, this ) );
     
-    ui::Text* mission_label_1 = dynamic_cast<ui::Text*>( _level_node->getChildByName( "mission1" ) );
-    ui::Text* mission_label_2 = dynamic_cast<ui::Text*>( _level_node->getChildByName( "mission2" ) );
-    ui::Text* mission_label_3 = dynamic_cast<ui::Text*>( _level_node->getChildByName( "mission3" ) );
-    _mission_labels.push_back( mission_label_1 );
-    _mission_labels.push_back( mission_label_2 );
-    _mission_labels.push_back( mission_label_3 );
+    ui::Text* mission_label_1 = dynamic_cast<ui::Text*>( _level_node->getChildByName( "lb_mission_1" ) );
+    ui::Text* mission_label_2 = dynamic_cast<ui::Text*>( _level_node->getChildByName( "lb_mission_2" ) );
+    ui::Text* mission_label_3 = dynamic_cast<ui::Text*>( _level_node->getChildByName( "lb_mission_3" ) );
+    _mission_labels.pushBack( mission_label_1 );
+    _mission_labels.pushBack( mission_label_2 );
+    _mission_labels.pushBack( mission_label_3 );
+    
+    Sprite* sp_star_1 = dynamic_cast<Sprite*>( _level_node->getChildByName( "sp_star_1" ) );
+    Sprite* sp_star_2 = dynamic_cast<Sprite*>( _level_node->getChildByName( "sp_star_2" ) );
+    Sprite* sp_star_3 = dynamic_cast<Sprite*>( _level_node->getChildByName( "sp_star_3" ) );
+    _stars.pushBack( sp_star_1 );
+    _stars.pushBack( sp_star_2 );
+    _stars.pushBack( sp_star_3 );
     
     _level_node->setVisible( false );
     
-     _level_info_label = dynamic_cast<ui::Text*>( _level_node->getChildByName( "missionText" ) );
+    _lb_title = dynamic_cast<ui::Text*>( _level_node->getChildByName( "lb_title" ) );
+    _lb_title->setAdditionalKerning( -4.0f );
+    _lb_level_desc = dynamic_cast<ui::Text*>( _level_node->getChildByName( "lb_level_desc" ) );
+    _sp_boss_frame = dynamic_cast<Sprite*>( _level_node->getChildByName( "sp_boss_frame" ) );
+    
+    _nd_diff = _level_node->getChildByName( "nd_diff" );
     
     //main
     std::string main_csb_file = FileUtils::getInstance()->fullPathForFilename( MAIN_CSB_FILE );
@@ -158,19 +170,36 @@ void UIHomeLayer::onLevelTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::Tou
             int task_count = (int)task_array.size();
             for( int i = 0; i < _mission_labels.size(); i++ ) {
                 if( i < task_count ) {
-                    _mission_labels[i]->setString( task_array.at( i ).asValueMap().at( "desc" ).asString() );
+                    _mission_labels.at( i )->setString( task_array.at( i ).asValueMap().at( "desc" ).asString() );
                 }
                 else {
-                    _mission_labels[i]->setString( "" );
+                    _mission_labels.at( i )->setString( "" );
                 }
             }
         }
-        itr = meta_json.find( "desc" );
-        if( itr != meta_json.end() ) {
-            _level_info_label->setString( itr->second.asString() );
+        
+        int star = PlayerInfo::getInstance()->getLevelStar( Utils::toInt( _level_id ) );
+        for( int i = 0; i < star; i++ ) {
+            _stars.at( i )->setVisible( true );
         }
-        else {
-            _level_info_label->setString( "" );
+        if( star < 3 ) {
+            for( int i = star; i < 3; i++ ) {
+                _stars.at( i )->setVisible( false );
+            }
+        }
+        
+        const ValueMap& level_conf = ResourceManager::getInstance()->getLevelConfig().at( _level_id ).asValueMap();
+        _lb_title->setString( level_conf.at( "name" ).asString() );
+        _lb_level_desc->setString( level_conf.at( "desc" ).asString() );
+        
+        _nd_diff->removeAllChildren();
+        if( _difficulty == eLevelDifficulty::LevelDiffEasy ) {
+            Sprite* sp_diff = Sprite::createWithSpriteFrameName( "ui_home_detail_putong.png" );
+            _nd_diff->addChild( sp_diff );
+        }
+        else if( _difficulty == eLevelDifficulty::LevelDiffMedium ) {
+            Sprite* sp_diff = Sprite::createWithSpriteFrameName( "ui_home_detail_jingying.png" );
+            _nd_diff->addChild( sp_diff );
         }
     }
 }

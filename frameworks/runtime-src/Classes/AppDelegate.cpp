@@ -84,8 +84,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 #if ( CC_TARGET_PLATFORM == CC_PLATFORM_MAC ) || ( CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 )
     EditMode::getInstance()->enterMain( CC_CALLBACK_0( AppDelegate::onEditModeExit, this ) );
 #else
-    PlayerInfo::getInstance()->loadPlayerInfo();
-    SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
+    this->onEditModeExit();
 #endif
     
     return true;
@@ -93,7 +92,12 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 void AppDelegate::onEditModeExit() {
     PlayerInfo::getInstance()->loadPlayerInfo();
-    SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
+    if( PlayerInfo::getInstance()->isNewUser() ) {
+        SceneManager::getInstance()->transitToScene( eSceneName::SceneOpenning );
+    }
+    else {
+        SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
+    }
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too

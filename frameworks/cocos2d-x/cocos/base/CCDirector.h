@@ -398,6 +398,9 @@ public:
     void multiplyMatrix(MATRIX_STACK_TYPE type, const Mat4& mat);
     const Mat4& getMatrix(MATRIX_STACK_TYPE type);
     void resetMatrixStack();
+    
+    double getTimeScale() { return _time_scale; }
+    void setTimeScale( double scale ) { _time_scale = scale; }
 
 protected:
     void reset();
@@ -417,6 +420,8 @@ protected:
     
     /** calculates delta time since last time it was called */    
     void calculateDeltaTime();
+    
+    double _time_scale;
 
     //textureCache creation or release
     void initTextureCache();

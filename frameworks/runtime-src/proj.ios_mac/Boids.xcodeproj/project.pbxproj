@@ -70,6 +70,8 @@
 		7694AB7D1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7694AB7A1ADD1C11006CA4A9 /* TowerAttackBehavior.cpp */; };
 		769C66E01B26BD2A00FA50F9 /* UICurrencyLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */; };
 		769C66E11B26BD2A00FA50F9 /* UICurrencyLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */; };
+		769C66E61B27EEF400FA50F9 /* OpenningAnimationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */; };
+		769C66E71B27EEF400FA50F9 /* OpenningAnimationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */; };
 		76B578F51AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76B578F61AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76DEA31C1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */; };
@@ -557,6 +559,8 @@
 		7694AB7B1ADD1C11006CA4A9 /* TowerAttackBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerAttackBehavior.h; sourceTree = "<group>"; };
 		769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UICurrencyLayer.cpp; sourceTree = "<group>"; };
 		769C66DF1B26BD2A00FA50F9 /* UICurrencyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICurrencyLayer.h; sourceTree = "<group>"; };
+		769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenningAnimationLayer.cpp; sourceTree = "<group>"; };
+		769C66E51B27EEF400FA50F9 /* OpenningAnimationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenningAnimationLayer.h; sourceTree = "<group>"; };
 		76B578F31AF7743600D7E783 /* TransitionLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionLayer.cpp; sourceTree = "<group>"; };
 		76B578F41AF7743600D7E783 /* TransitionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionLayer.h; sourceTree = "<group>"; };
 		76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITeamTalentLayer.cpp; sourceTree = "<group>"; };
@@ -1237,6 +1241,8 @@
 				76DEA31B1B14180E0020FC7D /* UITeamTalentLayer.h */,
 				769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */,
 				769C66DF1B26BD2A00FA50F9 /* UICurrencyLayer.h */,
+				769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */,
+				769C66E51B27EEF400FA50F9 /* OpenningAnimationLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;
@@ -1974,6 +1980,7 @@
 				E898E7531A529393001189FF /* MapDebugger.cpp in Sources */,
 				98E3B6621A73A77A00B5BEBB /* tokenizer.cc in Sources */,
 				E87413061A0B5629003EBD0B /* TmxObjectGroup.cpp in Sources */,
+				769C66E71B27EEF400FA50F9 /* OpenningAnimationLayer.cpp in Sources */,
 				E874130D1A0B5630003EBD0B /* tinystr.cpp in Sources */,
 				E87413051A0B5629003EBD0B /* TmxObject.cpp in Sources */,
 				988B52A91AA42C7A00FB7B21 /* UnitNode.cpp in Sources */,
@@ -2305,6 +2312,7 @@
 				E87413711A0DFA3C003EBD0B /* BEUIBase.cpp in Sources */,
 				986A556B1AA5641C0051B0B9 /* CocosUtils.cpp in Sources */,
 				E84FA27E1A28A079008A3891 /* GrassMonitor.cpp in Sources */,
+				769C66E61B27EEF400FA50F9 /* OpenningAnimationLayer.cpp in Sources */,
 				E84197DE1A09226300F5DF36 /* trees.c in Sources */,
 				E84197DA1A09226300F5DF36 /* infback.c in Sources */,
 				E84197EC1A09E73200F5DF36 /* BoidsMath.cpp in Sources */,

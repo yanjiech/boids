@@ -59,6 +59,13 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
         }
     }
     
+    const ValueMap& drop_config = ResourceManager::getInstance()->getDropConfig().at( _battle_layer->getLevelId() ).asValueMap();
+    int exp = drop_config.at( "exp" ).asInt();
+    _obtained_items["exp"] = Value( exp );
+    
+    int gold = drop_config.at( "gold" ).asInt();
+    _obtained_items["gold"] = Value( gold );
+    
     return true;
 }
 

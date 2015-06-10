@@ -413,4 +413,8 @@ AudioProfile* AudioEngine::getProfile(const std::string &name)
     }
 }
 
+void AudioEngine::vibrate() {
+    _audioEngineImpl->vibrate();
+}
+
 #endif

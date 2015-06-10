@@ -212,6 +212,8 @@ public:
      * @return the audio profile
      */
     static AudioProfile* getProfile(const std::string &name);
+    
+    static void vibrate();
 
 protected:
     

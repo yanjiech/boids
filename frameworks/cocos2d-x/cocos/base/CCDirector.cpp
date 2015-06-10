@@ -240,6 +240,8 @@ void Director::setDefaultValues(void)
     // PVR v2 has alpha premultiplied ?
     bool pvr_alpha_premultipled = conf->getValue("cocos2d.x.texture.pvrv2_has_alpha_premultiplied", Value(false)).asBool();
     Image::setPVRImagesHavePremultipliedAlpha(pvr_alpha_premultipled);
+    
+    _time_scale = 1.0;
 }
 
 void Director::setGLDefaultValues()
@@ -359,6 +361,7 @@ void Director::calculateDeltaTime()
     {
         _deltaTime = (now.tv_sec - _lastUpdate->tv_sec) + (now.tv_usec - _lastUpdate->tv_usec) / 1000000.0f;
         _deltaTime = MAX(0, _deltaTime);
+        _deltaTime *= _time_scale;
     }
 
 #if COCOS2D_DEBUG

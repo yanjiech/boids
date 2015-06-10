@@ -27,6 +27,8 @@ public:
     
     bool playMusic( const std::string& resource, bool loop = false );
     bool playEffect( const std::string& resource, bool loop = false );
+    
+    bool vibrate();
 };
 
 #endif /* defined(__Boids__AudioManager__) */

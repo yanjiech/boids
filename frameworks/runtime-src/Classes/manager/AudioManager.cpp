@@ -52,3 +52,8 @@ bool AudioManager::playEffect( const std::string& resource, bool loop ) {
     }
     return false;
 }
+
+bool AudioManager::vibrate() {
+    AudioEngine::vibrate();
+    return true;
+}

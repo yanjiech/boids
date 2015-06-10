@@ -64,6 +64,8 @@ public:
     
     void update(float dt);
     
+    void vibrate();
+    
 private:
     void _play2d(AudioCache *cache, int audioID);
     

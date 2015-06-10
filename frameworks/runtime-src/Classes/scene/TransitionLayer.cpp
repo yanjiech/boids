@@ -88,7 +88,12 @@ void TransitionLayer::transitUpdate( float delta ) {
     ArmatureManager::getInstance()->clearArmatureData();
     SceneBase* next_scene = SceneBase::create();
     cocos2d::Layer* layer = nullptr;
-    if( _next_scene_name == eSceneName::SceneLevelChoose ) {
+    if( _next_scene_name == eSceneName::SceneOpenning ) {
+        ResourceManager::getInstance()->loadUIResource();
+        layer = OpenningAnimationLayer::create();
+        next_scene->addChild( layer, 10000 );
+    }
+    else if( _next_scene_name == eSceneName::SceneLevelChoose ) {
         ResourceManager::getInstance()->loadUIResource();
         layer = UIHomeLayer::create();
         next_scene->addChild( layer, 10000 );

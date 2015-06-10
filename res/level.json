@@ -1,143 +1,167 @@
 {
     "1001": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1001, 
         "map_meta": "maps/level_1/easy/meta.json", 
         "map_res": "maps/level_1/map.tmx", 
         "name": "简单第一关"
     }, 
     "1002": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1002, 
         "map_meta": "maps/level_2/easy/meta.json", 
         "map_res": "maps/level_2/map.tmx", 
         "name": "简单第二关"
     }, 
     "1003": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1003, 
         "map_meta": "maps/level_3/easy/meta.json", 
         "map_res": "maps/level_3/map.tmx", 
         "name": "简单第三关"
     }, 
     "1004": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1004, 
         "map_meta": "maps/level_4/easy/meta.json", 
         "map_res": "maps/level_4/map.tmx", 
         "name": "简单第四关"
     }, 
     "1005": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1005, 
         "map_meta": "maps/level_5/easy/meta.json", 
         "map_res": "maps/level_5/map.tmx", 
         "name": "简单第五关"
     }, 
     "1006": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1006, 
         "map_meta": "maps/level_6/easy/meta.json", 
         "map_res": "maps/level_6/map.tmx", 
         "name": "简单第六关"
     }, 
     "1007": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1007, 
         "map_meta": "maps/level_7/easy/meta.json", 
         "map_res": "maps/level_7/map.tmx", 
         "name": "简单第七关"
     }, 
     "1008": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1008, 
         "map_meta": "maps/level_8/easy/meta.json", 
         "map_res": "maps/level_8/map.tmx", 
         "name": "简单第八关"
     }, 
     "1009": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1009, 
         "map_meta": "maps/level_9/easy/meta.json", 
         "map_res": "maps/level_9/map.tmx", 
         "name": "简单第九关"
     }, 
     "1010": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1010, 
         "map_meta": "maps/level_10/easy/meta.json", 
         "map_res": "maps/level_10/map.tmx", 
         "name": "简单第十关"
     }, 
     "1011": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1011, 
         "map_meta": "maps/level_11/easy/meta.json", 
         "map_res": "maps/level_11/map.tmx", 
         "name": "简单第十一关"
     }, 
     "1012": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 1012, 
         "map_meta": "maps/level_12/easy/meta.json", 
         "map_res": "maps/level_12/map.tmx", 
         "name": "简单第十二关"
     }, 
     "2001": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2001, 
         "map_meta": "maps/level_1/medium/meta.json", 
         "map_res": "maps/level_1/map.tmx", 
         "name": "专家第一关"
     }, 
     "2002": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2002, 
         "map_meta": "maps/level_2/medium/meta.json", 
         "map_res": "maps/level_2/map.tmx", 
         "name": "专家第二关"
     }, 
     "2003": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2003, 
         "map_meta": "maps/level_3/medium/meta.json", 
         "map_res": "maps/level_3/map.tmx", 
         "name": "专家第三关"
     }, 
     "2004": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2004, 
         "map_meta": "maps/level_4/medium/meta.json", 
         "map_res": "maps/level_4/map.tmx", 
         "name": "专家第四关"
     }, 
     "2005": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2005, 
         "map_meta": "maps/level_5/medium/meta.json", 
         "map_res": "maps/level_5/map.tmx", 
         "name": "专家第五关"
     }, 
     "2006": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2006, 
         "map_meta": "maps/level_6/medium/meta.json", 
         "map_res": "maps/level_6/map.tmx", 
         "name": "专家第六关"
     }, 
     "2007": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2007, 
         "map_meta": "maps/level_7/medium/meta.json", 
         "map_res": "maps/level_7/map.tmx", 
         "name": "专家第七关"
     }, 
     "2008": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2008, 
         "map_meta": "maps/level_8/medium/meta.json", 
         "map_res": "maps/level_8/map.tmx", 
         "name": "专家第八关"
     }, 
     "2009": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2009, 
         "map_meta": "maps/level_9/medium/meta.json", 
         "map_res": "maps/level_9/map.tmx", 
         "name": "专家第九关"
     }, 
     "2010": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2010, 
         "map_meta": "maps/level_10/medium/meta.json", 
         "map_res": "maps/level_10/map.tmx", 
         "name": "专家第十关"
     }, 
     "2011": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2011, 
         "map_meta": "maps/level_11/medium/meta.json", 
         "map_res": "maps/level_11/map.tmx", 
         "name": "专家第十一关"
     }, 
     "2012": {
+        "desc": "关卡描述，省略若干字…", 
         "level_id": 2012, 
         "map_meta": "maps/level_12/medium/meta.json", 
         "map_res": "maps/level_12/map.tmx", 

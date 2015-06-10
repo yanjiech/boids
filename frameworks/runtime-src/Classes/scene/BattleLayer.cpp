@@ -13,6 +13,8 @@
 #include "../BoidsMath.h"
 #include "../constant/BoidsConstant.h"
 #include "../unit/skill/SkillCache.h"
+#include "../manager/AudioManager.h"
+#include "../unit/skill/SkillCache.h"
 
 #define FOG_TILE_SIZE 32
 #define FOG_TILE_SIZE_WIDTH 110
@@ -216,7 +218,7 @@ void BattleLayer::reset() {
 }
 
 void BattleLayer::updateFrame( float delta ) {
-    if( _state == eBattleState::BattleRunning ) {
+    if( _state == eBattleState::BattleRunning || _state == eBattleState::BattleWin || _state == eBattleState::BattleLose ) {
         //update skill
         SkillCache::getInstance()->updateFrame( delta );
         _skill_ui_layer->updateFrame( delta );
@@ -241,6 +243,9 @@ void BattleLayer::updateFrame( float delta ) {
             UnitNode* unit = pair.second;
             
             if( unit->getUnitState() == eUnitState::Dying ) {
+                if( unit->hasUnitTag( "boss" ) ) {
+                    Director::getInstance()->setTimeScale( 0.2 );
+                }
                 this->onUnitDying( unit );
             }
         }
@@ -324,6 +329,21 @@ void BattleLayer::updateFrame( float delta ) {
         _map_logic->updateFrame( delta );
         this->checkState();
     }
+    else if( _state == BattleWin || _state == BattleLose ) {
+        _result_elapse += delta;
+        if( _result_elapse > 0.5f ) {
+            Director::getInstance()->setTimeScale( 1.0 );
+        }
+        if( _result_elapse > 5.0f ) {
+            if( _state == BattleWin ) {
+                _battle_menu_layer->showResultPanel( true, _map_logic->getDropedItems() );
+            }
+            else {
+                _battle_menu_layer->showResultPanel( false, ValueMap() );
+            }
+            this->changeState( eBattleState::BattleResult );
+        }
+    }
 }
 
 void BattleLayer::startBattle() {
@@ -377,16 +397,17 @@ UnitNode* BattleLayer::getLeaderUnit() {
 }
 
 void BattleLayer::changeState( eBattleState new_state ) {
+    if( new_state == eBattleState::BattleLose || new_state == eBattleState::BattleWin ) {
+        if( _state != eBattleState::BattleRunning ) {
+            return;
+        }
+    }
     this->setState( new_state );
 }
 
 bool BattleLayer::checkState() {
-    if( _state == eBattleState::BattleWin ) {
-        _battle_menu_layer->showResultPanel( true, _map_logic->getDropedItems() );
-        return false;
-    }
-    else if( _state == eBattleState::BattleLose ) {
-        _battle_menu_layer->showResultPanel( false, _map_logic->getDropedItems() );
+    if( _state == eBattleState::BattleWin || _state == eBattleState::BattleLose ) {
+        _result_elapse = 0;
         return false;
     }
     return true;
@@ -705,6 +726,11 @@ void BattleLayer::updateBuildings( float delta ) {
 }
 
 void BattleLayer::onUnitAppear( UnitNode* unit ) {
+    if( unit->hasUnitTag( "boss" ) ) {
+        //vibrate
+        this->vibrate();
+    }
+    
     eTargetCamp camp = unit->getTargetCamp();
     if( camp == eTargetCamp::Player ) {
         _player_units.insert( Utils::stringFormat( "%d", unit->getDeployId() ), unit );
@@ -721,6 +747,7 @@ void BattleLayer::onUnitAppear( UnitNode* unit ) {
 }
 
 void BattleLayer::onUnitDying( UnitNode* unit ) {
+    SkillCache::getInstance()->removeSkillOfOwner( unit );
     for( auto pair : _alive_units ) {
         if( pair.second->getChasingTarget() == unit ) {
             pair.second->setChasingTarget( nullptr );
@@ -962,6 +989,20 @@ void BattleLayer::dropItem( DropItem* item, const cocos2d::Point& pos, eBattleSu
     item->setPosition( pos );
     _drop_items.pushBack( item );
     this->addToLayer( item, layer, pos, 0 );
+}
+
+void BattleLayer::vibrate() {
+    AudioManager::getInstance()->vibrate();
+    Point old_pos = _tmx_map->getPosition();
+    MoveBy* move_1 = MoveBy::create( 0.1f, Point( -25.0f, 25.0f ) );
+    MoveBy* move_2 = MoveBy::create( 0.1f, Point( 50.0f, -50.0f ) );
+    MoveBy* move_3 = MoveBy::create( 0.1f, Point( -50.0f, 50.0f ) );
+    MoveBy* move_4 = MoveBy::create( 0.1f, Point( 50.0f, -50.0f ) );
+    MoveBy* move_5 = MoveBy::create( 0.1f, Point( -50.0f, 50.0f ) );
+    MoveBy* move_6 = MoveBy::create( 0.1f, Point( 25.0f, -25.0f ) );
+    MoveTo* move_back = MoveTo::create( 0.1f, old_pos );
+    Sequence* seq = Sequence::create( move_1, move_2, move_3, move_4, move_5, move_6, move_back, nullptr );
+    _tmx_map->runAction( seq );
 }
 
 //private methods

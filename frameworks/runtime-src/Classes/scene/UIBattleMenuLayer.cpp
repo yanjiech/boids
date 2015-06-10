@@ -84,6 +84,13 @@ bool UIBattleMenuLayer::init( BattleLayer* battle_layer ) {
     _sp_star_2 = dynamic_cast<Sprite*>( _win_panel->getChildByName( "star_2" ) );
     _sp_star_3 = dynamic_cast<Sprite*>( _win_panel->getChildByName( "star_3" ) );
     
+    _lb_team_level = dynamic_cast<ui::Text*>( _win_panel->getChildByName( "lb_team_level" ) );
+    _pb_team_exp = dynamic_cast<ui::LoadingBar*>( _win_panel->getChildByName( "exp_bar" ) );
+    
+    _level_up_effect = ArmatureManager::getInstance()->createArmature( "ui/effect_lvlup" );
+    _level_up_effect->setPosition( _lb_team_level->getPosition() );
+    _win_panel->addChild( _level_up_effect, 1000 );
+    
     //lose panel
     std::string lose_panel_file = FileUtils::getInstance()->fullPathForFilename( LOSE_PANEL_FILE );
     _lose_panel = cocos2d::CSLoader::getInstance()->createNode( lose_panel_file );
@@ -174,6 +181,7 @@ void UIBattleMenuLayer::loadTasks() {
                 else {
                     sp_mission->setVisible( false );
                 }
+                lb_mission->setString( task->getTaskDesc() );
             }
             else {
                 lb_mission->setVisible( false );
@@ -216,11 +224,7 @@ void UIBattleMenuLayer::onContinueTouched( cocos2d::Ref* sender, cocos2d::ui::Wi
 void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == ui::Widget::TouchEventType::ENDED ) {
         CocosUtils::playTouchEffect();
-        if( _did_win ) {
-            int level_id = Utils::toInt( _battle_layer->getLevelId() );
-            PlayerInfo::getInstance()->updateMissionRecord( level_id, _completed_mission );
-            SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
-        }
+        SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
     }
 }
 
@@ -251,17 +255,34 @@ void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& resu
             _sp_star_1->setSpriteFrame( "ui_winpage_star_huise.png" );
         }
         if( _completed_mission >= 2 ) {
-            _sp_star_1->setSpriteFrame( "ui_winpage_star.png" );
+            _sp_star_2->setSpriteFrame( "ui_winpage_star.png" );
         }
         else {
-            _sp_star_1->setSpriteFrame( "ui_winpage_star_huise.png" );
+            _sp_star_2->setSpriteFrame( "ui_winpage_star_huise.png" );
         }
-        if( _completed_mission>= 3 ) {
-            _sp_star_1->setSpriteFrame( "ui_winpage_star.png" );
+        if( _completed_mission >= 3 ) {
+            _sp_star_3->setSpriteFrame( "ui_winpage_star.png" );
         }
         else {
-            _sp_star_1->setSpriteFrame( "ui_winpage_star_huise.png" );
+            _sp_star_3->setSpriteFrame( "ui_winpage_star_huise.png" );
         }
+        
+        PlayerInfo* player_info = PlayerInfo::getInstance();
+        
+        _current_level = player_info->getTeamLevel();
+        _target_level = _current_level;
+        _lb_team_level->setString( Utils::toStr( _current_level ) );
+        
+        int team_exp = player_info->getTeamExp();
+        int need_exp = player_info->getExpForTeamLevel( _current_level + 1 );
+        if( need_exp == -1 ) {
+            _pb_team_exp->setPercent( 100.0f );
+        }
+        else {
+            _pb_team_exp->setPercent( (float)team_exp / (float)need_exp * 100.0f );
+        }
+        
+        _target_percent = _pb_team_exp->getPercent();
         
         //drop items
         int i = 0;
@@ -269,33 +290,79 @@ void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& resu
             std::string key = pair.first;
             int count = pair.second.asInt();
             std::string resource;
-            if( key == "gold" ) {
-                resource = "ui_winpage_gold.png";
-                PlayerInfo::getInstance()->gainGold( count );
+            if( key == "exp" ) {
+                int exp = result.at( "exp" ).asInt();
+                player_info->gainTeamExp( exp );
+                
+                _target_level = player_info->getTeamLevel();
+                team_exp = player_info->getTeamExp();
+                need_exp = player_info->getExpForTeamLevel( _current_level + 1 );
+                if( need_exp == -1 ) {
+                    _target_percent = 100.0f;
+                }
+                else {
+                    _target_percent = (float)team_exp / (float)need_exp * 100.0f;
+                }
+                
+                this->schedule( CC_CALLBACK_1( UIBattleMenuLayer::updateExpBar,this ), "update_exp_bar" );
             }
             else {
-                const ValueMap& equip_config = ResourceManager::getInstance()->getEquipData( key );
-                resource = equip_config.at( "name" ).asString() + ".png";
-                PlayerInfo::getInstance()->gainEquip( key, count );
+                if( key == "gold" ) {
+                    resource = "ui_winpage_gold.png";
+                    PlayerInfo::getInstance()->gainGold( count );
+                }
+                else {
+                    const ValueMap& equip_config = ResourceManager::getInstance()->getEquipData( key );
+                    resource = equip_config.at( "name" ).asString() + ".png";
+                    player_info->gainEquip( key, count );
+                }
+                Sprite* icon = Sprite::createWithSpriteFrameName( resource );
+                Sprite* frame = _drop_items.at( i );
+                icon->setPosition( Point( frame->getContentSize().width / 2, frame->getContentSize().height / 2 ) );
+                frame->addChild( icon );
+
+                _drop_items_count.at( i )->setVisible( true );
+                _drop_items_count.at( i )->setString( Utils::stringFormat( "x%d", count ) );
+                i++;
             }
-            Sprite* icon = Sprite::createWithSpriteFrameName( resource );
-            Sprite* frame = _drop_items.at( i );
-            icon->setPosition( Point( frame->getContentSize().width / 2, frame->getContentSize().height / 2 ) );
-            frame->addChild( icon );
-            
-            _drop_items_count.at( i )->setVisible( true );
-            _drop_items_count.at( i )->setString( Utils::stringFormat( "x%d", count ) );
-            i++;
         }
         for( int j = i; j < 5; j++ ) {
             _drop_items_count.at( j )->setVisible( false );
         }
+        
+        int level_id = Utils::toInt( _battle_layer->getLevelId() );
+        player_info->updateMissionRecord( level_id, _completed_mission );
     }
     else {
         _win_panel->setVisible( false );
         _lose_panel->setVisible( true );
         _lose_panel->runAction( _lose_panel_action );
         _lose_panel_action->play( "appear", false );
+    }
+}
+
+void UIBattleMenuLayer::updateExpBar( float delta ) {
+    float old_percent = _pb_team_exp->getPercent();
+    if( _current_level >= _target_level ) {
+        float new_percent = old_percent + 5.0f;
+        if( new_percent >= _target_percent ) {
+            new_percent = _target_percent;
+            this->unschedule( "update_exp_bar" );
+        }
+        _pb_team_exp->setPercent( new_percent );
+    }
+    else {
+        float new_percent;
+        if( old_percent >= 100.0 ) {
+            _current_level++;
+            _level_up_effect->setAnimation( 0, "Idle", false );
+            _lb_team_level->setString( Utils::toStr( _current_level ) );
+            new_percent = 5.0f;
+        }
+        else {
+            new_percent = MIN( 100.0f, old_percent + 5.0f );
+        }
+        _pb_team_exp->setPercent( new_percent );
     }
 }
 

@@ -35,8 +35,17 @@ private:
     cocostudio::timeline::ActionTimeline* _win_panel_action;
     spine::SkeletonAnimation* _win_effect;
     
+    cocos2d::ui::Text* _lb_team_level;
+    cocos2d::ui::LoadingBar* _pb_team_exp;
+    
     cocos2d::Vector<cocos2d::Sprite*> _drop_items;
     cocos2d::Vector<cocos2d::ui::Text*> _drop_items_count;
+    
+    spine::SkeletonAnimation* _level_up_effect;
+    
+    int _current_level;
+    int _target_level;
+    float _target_percent;
     
     //lose panel
     cocos2d::Node* _lose_panel;
@@ -70,6 +79,8 @@ public:
     
     void showResultPanel( bool win, const cocos2d::ValueMap& result );
     void showPausePanel();
+    
+    void updateExpBar( float delta );
     
     void hideMenu();
     

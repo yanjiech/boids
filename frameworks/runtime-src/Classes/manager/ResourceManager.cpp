@@ -102,9 +102,32 @@ void ResourceManager::unloadDefaultData() {
     frame_cache->removeUnusedSpriteFrames();
 }
 
+void ResourceManager::loadOpenningResource() {
+    SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_movie1.plist", "ui/page/ui_movie1.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_movie2.plist", "ui/page/ui_movie2.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_movie3.plist", "ui/page/ui_movie3.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_movie4.plist", "ui/page/ui_movie4.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_movie5.plist", "ui/page/ui_movie5.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_movie67.plist", "ui/page/ui_movie67.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_movie8.plist", "ui/page/ui_movie8.png"  );
+}
+
+void ResourceManager::unloadOpenningResource() {
+    SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_movie1.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_movie2.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_movie3.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_movie4.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_movie5.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_movie6.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_movie7.plist" );
+}
+
 void ResourceManager::loadUIResource() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_common.plist", "ui/page/ui_common.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_win_lose_page.plist", "ui/page/ui_win_lose_page.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_battle.plist", "ui/page/ui_battle.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_popup.plist", "ui/page/ui_popup.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_detail.plist", "ui/page/ui_hero_detail.png"  );
@@ -115,11 +138,13 @@ void ResourceManager::loadUIResource() {
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_p.plist", "ui/ui_hero_p.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_f.plist", "ui/ui_hero_f.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/map_common.plist", "ui/map_common.png" );
 }
 
 void ResourceManager::unloadUIResource() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_common.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_win_lose_page.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_battle.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_hero_detail.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_hero_manage.plist" );
@@ -129,10 +154,12 @@ void ResourceManager::unloadUIResource() {
     frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_p.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_f.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_icon.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/map_common.plist" );
 }
 
 void ResourceManager::loadBattleResource() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->addSpriteFramesWithFile( "ui/page/ui_win_lose_page.plist", "ui/page/ui_win_lose_page.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_equip_drop.plist", "ui/ui_equip_drop.png" );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_common.plist", "ui/page/ui_common.png"  );
@@ -160,6 +187,7 @@ void ResourceManager::loadBattleResource() {
 
 void ResourceManager::unloadBattleResource() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->removeSpriteFramesFromFile( "ui/page/ui_win_lose_page.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_drop.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_icon.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_common.plist" );

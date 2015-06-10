@@ -468,12 +468,36 @@ void PlayerInfo::gainTeamExp( int exp ) {
     int team_exp = _player_info.at( "team_exp" ).asInt();
     team_exp += exp;
     _player_info["team_exp"] = Value( team_exp );
+    
     int team_level = this->getTeamLevel();
-    int next_team_level = team_level + 1;
-    const ValueMap& team_level_exp_conf = ResourceManager::getInstance()->getTeamLevelExpConfig();
-    if( team_level_exp_conf.size() > next_team_level ) {
-        
+    const ValueVector& team_level_exp_conf = ResourceManager::getInstance()->getTeamLevelExpConfig().at( "team_level_exp" ).asValueVector();
+    int max_level = team_level_exp_conf.size();
+    
+    while( team_level < max_level ) {
+        int need_exp = team_level_exp_conf.at( team_level ).asInt();
+        if( team_exp >= need_exp ) {
+            team_level++;
+        }
+        else {
+            break;
+        }
     }
+    
+    _player_info["team_level"] = Value( team_level );
+    
+    this->recordPlayerInfo();
+}
+
+int PlayerInfo::getTeamExp() {
+    return _player_info.at( "team_exp" ).asInt();
+}
+
+int PlayerInfo::getExpForTeamLevel( int level ) {
+    const ValueVector& team_level_exp_conf = ResourceManager::getInstance()->getTeamLevelExpConfig().at( "team_level_exp" ).asValueVector();
+    if( level < team_level_exp_conf.size() ) {
+        return team_level_exp_conf.at( level ).asInt();
+    }
+    return -1;
 }
 
 void PlayerInfo::setTeamLevel( int level ) {
@@ -557,6 +581,21 @@ void PlayerInfo::setTeamTalent( const std::string& type, const cocos2d::ValueVec
 void PlayerInfo::resetTeamTalent( const std::string& type ) {
     ValueVector& talent = _player_info.at( "team_talent" ).asValueMap().at( type ).asValueVector();
     talent.clear();
+    this->recordPlayerInfo();
+}
+
+bool PlayerInfo::isNewUser() {
+    auto itr = _player_info.find( "is_new_user" );
+    if( itr == _player_info.end() ) {
+        return true;
+    }
+    else {
+        return itr->second.asBool();
+    }
+}
+
+void PlayerInfo::setNewUser( bool b ) {
+    _player_info["is_new_user"] = Value( b );
     this->recordPlayerInfo();
 }
 

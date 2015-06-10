@@ -48,7 +48,8 @@ enum eBattleState {
     BattlePrepare = 4,
     BattlePaused = 5,
     BattleRunning = 6,
-    BattleStory = 7
+    BattleStory = 7,
+    BattleResult = 8
 };
 
 enum eCameraMode {
@@ -116,6 +117,8 @@ private:
     cocos2d::Texture2D* _fog_texture;
     
     unsigned char *_fog_tile_visible_array;
+    
+    float _result_elapse;
     
     //debug
     cocos2d::DrawNode* _draw_node;
@@ -258,6 +261,8 @@ public:
     UIBattleLayer* getUIBattleLayer() { return _skill_ui_layer; }
     
     void dropItem( DropItem* item, const cocos2d::Point& pos, eBattleSubLayer layer );
+    
+    void vibrate();
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

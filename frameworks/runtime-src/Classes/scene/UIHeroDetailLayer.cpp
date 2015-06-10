@@ -58,9 +58,9 @@ bool UIEquipmentCell::init( EquipmentData* equip_data, const std::string& bg_spr
     
     this->setEquipData( equip_data );
     
-    _selected_sprite = Sprite::createWithSpriteFrameName( "ui_hero_selected.png" );
+    _selected_sprite = Sprite::createWithSpriteFrameName( "ui_detail_icon02.png" );
     _selected_sprite->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
-    this->addChild( _selected_sprite, 3 );
+    this->addChild( _selected_sprite, 1 );
     
     if( bg_sprite_name != "" ) {
         Sprite* bg_sprite = Sprite::createWithSpriteFrameName( bg_sprite_name );
@@ -96,9 +96,9 @@ bool UIEquipmentCell::init( const cocos2d::ValueMap& data, const std::string& bg
     EquipmentData* eq_data = EquipmentData::create( data );
     this->setEquipData( eq_data );
     
-    _selected_sprite = Sprite::createWithSpriteFrameName( "ui_hero_selected.png" );
+    _selected_sprite = Sprite::createWithSpriteFrameName( "ui_detail_icon02.png" );
     _selected_sprite->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
-    this->addChild( _selected_sprite, 3 );
+    this->addChild( _selected_sprite, 1 );
     
     if( bg_sprite_name != "" ) {
         Sprite* bg_sprite = Sprite::createWithSpriteFrameName( bg_sprite_name );
@@ -137,7 +137,7 @@ void UIEquipmentCell::setEquipSprite( cocos2d::Sprite* icon ) {
         if( icon ) {
             _equip_sprite = Sprite::createWithSpriteFrame( icon->getSpriteFrame() );
             _equip_sprite->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
-            this->addChild( _equip_sprite, 1 );
+            this->addChild( _equip_sprite, 2 );
         }
     }
     else {
@@ -169,6 +169,7 @@ UIHeroDetailLayer::UIHeroDetailLayer()
 }
 
 UIHeroDetailLayer::~UIHeroDetailLayer() {
+    
 }
 
 UIHeroDetailLayer* UIHeroDetailLayer::create( UIHeroManageHeroSlot* hero ) {
@@ -511,17 +512,18 @@ bool UIHeroDetailLayer::loadRepoEquips( eEquipType type, int page_index ) {
     if( page_index >= 0 ) {
         int start_index = 6 * page_index;
         ValueVector data = PlayerInfo::getInstance()->getEquipsByRange( (int)type, start_index, 6, 2 );
+        
+        if( _current_equip_list->getPages().size() <= page_index ) {
+            ui::Layout* new_page = ui::Layout::create();
+            _current_equip_list->addPage( new_page );
+        }
+        ui::Layout* page = _current_equip_list->getPages().at( page_index );
+        page->removeAllChildren();
+        
         if( data.size() > 0 ) {
-            if( _current_equip_list->getPages().size() <= page_index ) {
-                ui::Layout* new_page = ui::Layout::create();
-                _current_equip_list->addPage( new_page );
-            }
-            ui::Layout* page = _current_equip_list->getPages().at( page_index );
-            page->removeAllChildren();
-            
             int i = 0;
             for( auto itr = data.begin(); itr != data.end(); ++itr ) {
-                UIEquipmentCell* cell = UIEquipmentCell::create( itr->asValueMap(), "ui_detail_icon03.png" );
+                UIEquipmentCell* cell = UIEquipmentCell::create( itr->asValueMap(), "ui_detail_icon01.png" );
                 Point cell_pos = Point::ZERO;
                 switch( i ) {
                     case 0:
@@ -549,8 +551,8 @@ bool UIHeroDetailLayer::loadRepoEquips( eEquipType type, int page_index ) {
                 page->addChild( cell );
                 ++i;
             }
-            return true;
         }
+        return true;
     }
 
     return false;

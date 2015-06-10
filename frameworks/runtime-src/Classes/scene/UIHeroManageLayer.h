@@ -41,6 +41,10 @@ private:
     EquipmentData* _accessory_data;
     std::string _hero_id;
     
+    cocos2d::ui::Scale9Sprite* _sp_hint_bg;
+    
+    cocos2d::Node* _root;
+    
 public:
     enum eHeroSlotType {
         HeroSlotTypeList = 0,
@@ -50,8 +54,8 @@ public:
     UIHeroManageHeroSlot();
     virtual ~UIHeroManageHeroSlot();
     
-    static UIHeroManageHeroSlot* create( const cocos2d::ValueMap& data, const std::string& hero_id, int flag );
-    virtual bool init( const cocos2d::ValueMap& data, const std::string& hero_id, int flag );
+    static UIHeroManageHeroSlot* create( const cocos2d::ValueMap& data, const std::string& hero_id, int flag, cocos2d::Node* root );
+    virtual bool init( const cocos2d::ValueMap& data, const std::string& hero_id, int flag, cocos2d::Node* root );
     
     void loadHeroInfo( const cocos2d::ValueMap& data );
     
@@ -84,6 +88,12 @@ public:
     
     const std::string& getHeroId() { return _hero_id; }
     void setHeroId( const std::string& hero_id ) { _hero_id = hero_id; }
+    
+    void showHint();
+    void hideHint();
+    
+    void updateFrame( float delta );
+    void adjustHintPos();
 };
 
 class UIHeroDeploySlot : public cocos2d::Node {
@@ -214,7 +224,7 @@ public:
     
     virtual void becomeTopLayer();
     
-    void setSelectedHero( UIHeroManageHeroSlot* hero );
+    void setSelectedHero( UIHeroManageHeroSlot* hero, bool anim = true );
     void setSelectedDeploySlot( UIHeroDeploySlot* slot );
     void setTargetDeploySlot( UIHeroDeploySlot* slot );
     

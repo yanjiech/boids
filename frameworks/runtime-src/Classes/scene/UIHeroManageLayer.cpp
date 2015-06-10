@@ -35,7 +35,8 @@ _boot_data( nullptr ),
 _accessory_data( nullptr ),
 _hero_skeleton( nullptr ),
 _selected_sprite( nullptr ),
-_hero_rect_avatar( nullptr )
+_hero_rect_avatar( nullptr ),
+_sp_hint_bg( nullptr )
 {
     
 }
@@ -48,11 +49,14 @@ UIHeroManageHeroSlot::~UIHeroManageHeroSlot() {
     CC_SAFE_RELEASE( _armor_data );
     CC_SAFE_RELEASE( _boot_data );
     CC_SAFE_RELEASE( _accessory_data );
+    if( _sp_hint_bg ) {
+        _sp_hint_bg->removeFromParent();
+    }
 }
 
-UIHeroManageHeroSlot* UIHeroManageHeroSlot::create( const cocos2d::ValueMap& data, const std::string& hero_id, int flag ) {
+UIHeroManageHeroSlot* UIHeroManageHeroSlot::create( const cocos2d::ValueMap& data, const std::string& hero_id, int flag, cocos2d::Node* root ) {
     UIHeroManageHeroSlot* ret = new UIHeroManageHeroSlot();
-    if( ret && ret->init( data, hero_id, flag ) ) {
+    if( ret && ret->init( data, hero_id, flag, root ) ) {
         ret->autorelease();
         return ret;
     }
@@ -62,10 +66,12 @@ UIHeroManageHeroSlot* UIHeroManageHeroSlot::create( const cocos2d::ValueMap& dat
     }
 }
 
-bool UIHeroManageHeroSlot::init( const cocos2d::ValueMap& data, const std::string& hero_id, int flag ) {
+bool UIHeroManageHeroSlot::init( const cocos2d::ValueMap& data, const std::string& hero_id, int flag, cocos2d::Node* root ) {
     if( !Node::init() ) {
         return false;
     }
+    
+    _root = root;
     
     this->setAnchorPoint( Point( 0.5f, 0.5f ) );
     _hero_id = hero_id;
@@ -85,6 +91,49 @@ bool UIHeroManageHeroSlot::init( const cocos2d::ValueMap& data, const std::strin
     this->setSelected( false );
     
     this->loadHeroInfo( data );
+    
+    const ValueMap& upgrade_conf = ResourceManager::getInstance()->getUnitLevelupCostConfig().at( this->getUnitData()->name ).asValueMap();
+    int cond_type = upgrade_conf.at( "cond_type" ).asInt();
+    int cond_param = upgrade_conf.at( "cond_param" ).asInt();
+    
+    std::string content;
+    if( cond_type == 1 ) {
+        int diff = cond_param / 1000;
+        int lvl = cond_param % 1000;
+        std::string str_diff;
+        if( diff == 1 ) {
+            str_diff = "普通";
+        }
+        else if( diff == 2 ) {
+            str_diff = "精英";
+        }
+        else {
+            str_diff = "炼狱";
+        }
+        content = "通过" + str_diff + "第" + Utils::toStr( lvl ) + "关解锁";
+    }
+    else {
+        content = "团队等级满" + Utils::toStr( cond_param ) + "级解锁";
+    }
+    
+    Label* content_label = Label::createWithTTF( content, "simhei.ttf", 32.0 );
+    content_label->setTextColor( Color4B::BLACK );
+    content_label->setLineBreakWithoutSpace( true );
+    content_label->setDimensions( 300, 0 );
+    content_label->setHorizontalAlignment( TextHAlignment::LEFT );
+    content_label->setVerticalAlignment( TextVAlignment::CENTER );
+    Size content_size = content_label->getContentSize();
+    Size real_content_size = Size( content_size.width + 60.0f, content_size.height + 70.0f );
+    
+    Rect inset_rect = Rect( 100.0f, 40.0f, 60.0f, 60.0f );
+    _sp_hint_bg = ui::Scale9Sprite::createWithSpriteFrameName( "chat_popup.png", inset_rect );
+    _sp_hint_bg->setPreferredSize( real_content_size );
+    content_label->setAnchorPoint( Point( 0.5f, 1.0f ) );
+    content_label->setPosition( Point( real_content_size.width / 2, real_content_size.height - 20.0f ) );
+    _sp_hint_bg->addChild( content_label );
+    
+    root->addChild( _sp_hint_bg, 100 );
+    _sp_hint_bg->setVisible( false );
     
     return true;
 }
@@ -244,6 +293,33 @@ void UIHeroManageHeroSlot::setHeroRectAvatar( cocos2d::Sprite* avatar ) {
     CC_SAFE_RETAIN( avatar );
     CC_SAFE_RELEASE( _hero_rect_avatar );
     _hero_rect_avatar = avatar;
+}
+
+void UIHeroManageHeroSlot::showHint() {
+    this->stopAllActions();
+    this->unschedule( "hint_follow_avatar" );
+    _sp_hint_bg->setVisible( true );
+    this->adjustHintPos();
+    DelayTime* delay = DelayTime::create( 1.0f );
+    CallFunc* callback = CallFunc::create( CC_CALLBACK_0( UIHeroManageHeroSlot::hideHint, this ) );
+    Sequence* seq = Sequence::create( delay, callback, nullptr );
+    this->runAction( seq );
+    this->schedule( CC_CALLBACK_1( UIHeroManageHeroSlot::updateFrame, this ), "hint_follow_avatar" );
+}
+
+void UIHeroManageHeroSlot::hideHint() {
+    _sp_hint_bg->setVisible( false );
+    this->unschedule( "hint_follow_avatar" );
+}
+
+void UIHeroManageHeroSlot::updateFrame( float delta ) {
+    this->adjustHintPos();
+}
+
+void UIHeroManageHeroSlot::adjustHintPos() {
+    Point world_pos = this->getParent()->convertToWorldSpace( this->getPosition() );
+    Point root_pos = _root->convertToNodeSpace( world_pos );
+    _sp_hint_bg->setPosition( world_pos + Point( 100.0f, this->getContentSize().height - 50.0f ) );
 }
 
 //hero deploy slot
@@ -461,7 +537,7 @@ bool UIHeroManageLayer::init() {
         bool is_locked = player_info->isUnitLocked( hero_name );
         if( is_owned ) {
             const ValueMap& hero_data = all_units_info.at( hero_id ).asValueMap();
-            slot = UIHeroManageHeroSlot::create( hero_data, hero_id, 0 );
+            slot = UIHeroManageHeroSlot::create( hero_data, hero_id, 0, this );
         }
         else {
             ValueMap hero_data;
@@ -475,7 +551,7 @@ bool UIHeroManageLayer::init() {
             hero_data["skills"] = Value( skills );
             hero_data["name"] = Value( hero_name );
             hero_data["level"] = Value( 1 );
-            slot = UIHeroManageHeroSlot::create( hero_data, hero_id, 0 );
+            slot = UIHeroManageHeroSlot::create( hero_data, hero_id, 0, this );
         }
         slot->setOwned( is_owned );
         slot->setLocked( is_locked );
@@ -484,6 +560,8 @@ bool UIHeroManageLayer::init() {
     
     this->alignHeroSlots();
 
+    _is_selected_hero_owned = false;
+    
     //deployed units
     const ValueMap& deployed_unit_slot_ids = player_info->getPlayerDeployedUnitsSlotIds();
     int i_slot_id = 1;
@@ -531,13 +609,12 @@ bool UIHeroManageLayer::init() {
     _current_page = 0;
     this->turnToPage( _current_page );
     
-    this->setSelectedHero( _hero_slots.at( "1" ) );
+    this->setSelectedHero( _hero_slots.at( "1" ), false );
     
     _is_dragging = false;
     _is_touch_down = false;
     _drag_avatar = nullptr;
     
-    _is_selected_hero_owned = true;
     return true;
 }
 
@@ -648,7 +725,7 @@ void UIHeroManageLayer::becomeTopLayer() {
     _root_node->setVisible( true );
 }
 
-void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero ) {
+void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero, bool anim ) {
     if( _selected_hero != nullptr ) {
         _selected_hero->setSelected( false );
     }
@@ -665,9 +742,15 @@ void UIHeroManageLayer::setSelectedHero( UIHeroManageHeroSlot* hero ) {
             this->runAction( _panel_action );
             if( new_owned ) {
                 _panel_action->play( "lock", false );
+                if( !anim ) {
+                    _panel_action->gotoFrameAndPause( _panel_action->getEndFrame() );
+                }
             }
             else {
                 _panel_action->play( "unlock", false );
+                if( !anim ) {
+                    _panel_action->gotoFrameAndPause( _panel_action->getEndFrame() );
+                }
             }
         }
         
@@ -895,9 +978,14 @@ bool UIHeroManageLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* eve
         _touch_down_pos = this->convertTouchToNodeSpace( touch );
         UIHeroManageHeroSlot* hero = this->heroSlotForTouch( touch );
         if( hero != nullptr ) {
-            _is_touch_down = true;
-            this->setSelectedHero( hero );
-            this->setSelectedDeploySlot( nullptr );
+            if( hero->isLocked() ) {
+                hero->showHint();
+            }
+            else {
+                _is_touch_down = true;
+                this->setSelectedHero( hero );
+                this->setSelectedDeploySlot( nullptr );
+            }
         }
         else {
             UIHeroDeploySlot* deploy_slot = this->deploySlotForTouch( touch );
@@ -1020,12 +1108,10 @@ UIHeroManageHeroSlot* UIHeroManageLayer::heroSlotForTouch( cocos2d::Touch* touch
     ui::Layout* page = _pv_hero_list->getPages().at( _pv_hero_list->getCurPageIndex() );
     for( auto node : page->getChildren() ) {
         auto slot = dynamic_cast<UIHeroManageHeroSlot*>( node );
-        if( !slot->isLocked() ) {
-            Point pos = slot->convertTouchToNodeSpace( touch );
-            Rect rect = Rect( 0, 0, slot->getContentSize().width, slot->getContentSize().height );
-            if( rect.containsPoint( pos ) ) {
-                return slot;
-            }
+        Point pos = slot->convertTouchToNodeSpace( touch );
+        Rect rect = Rect( 0, 0, slot->getContentSize().width, slot->getContentSize().height );
+        if( rect.containsPoint( pos ) ) {
+            return slot;
         }
     }
     return nullptr;

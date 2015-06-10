@@ -13,11 +13,13 @@
 #include "SceneBase.h"
 #include "UIHomeLayer.h"
 #include "BattleLayer.h"
+#include "OpenningAnimationLayer.h"
 
 enum eSceneName {
     SceneUnknown = 0,
-    SceneLevelChoose = 1,
-    SceneBattle
+    SceneOpenning = 1,
+    SceneLevelChoose = 2,
+    SceneBattle = 3
 };
 
 class SceneConfig : public cocos2d::Ref {
