@@ -386,6 +386,9 @@ void UIHeroDeploySlot::setSelected( bool b ) {
 }
 
 cocos2d::Sprite* UIHeroDeploySlot::getAvatar() {
+    if( !_avatar_sprite->isVisible() ) {
+        return nullptr;
+    }
     return _avatar_sprite;
 }
 
@@ -675,7 +678,7 @@ void UIHeroManageLayer::onUpgradeTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
             int total_gold = player_info->getGold();
             int current_level = _selected_hero->getUnitData()->level;
             int team_level = player_info->getTeamLevel();
-            int max_level = upgrade_data.size() + 1;
+            int max_level = (int)upgrade_data.size() + 1;
             if( current_level < team_level && current_level < max_level ) {
                 int cost = upgrade_data.at( current_level - 1 ).asInt();
                 if( cost <= total_gold ) {
@@ -890,7 +893,7 @@ void UIHeroManageLayer::setSkillTab( cocos2d::ui::Button* tab ) {
 }
 
 void UIHeroManageLayer::turnToPage( int index ) {
-    int total_pages = _pv_hero_list->getPages().size();
+    int total_pages = (int)_pv_hero_list->getPages().size();
     if( index >= 0 && index < total_pages ) {
         _current_page = index;
         _pv_hero_list->scrollToPage( _current_page );

@@ -38,7 +38,7 @@ public:
     void onNextTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     void onEnterTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type );
     
-    void start();
+    void start( float delta );
     void end();
     
     virtual void onEnterTransitionDidFinish();

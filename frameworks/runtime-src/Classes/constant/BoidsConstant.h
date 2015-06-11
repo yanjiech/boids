@@ -124,6 +124,7 @@
 #define SKILL_NAME_DEATH_SLICE "DeathSlice"
 #define SKILL_NAME_GAS_BOMB "GasBomb"
 #define SKILL_NAME_SACRIFICE_BOMB "SacrificeBomb"
+#define SKILL_NAME_EVIL_INVOKE "EvilInvoke"
 
 
 #define BULLET_NAME_GAS "gas"

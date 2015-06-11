@@ -4,6 +4,19 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>anquandiyi.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1446},{345,479}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{345,479}}</string>
+                <key>sourceSize</key>
+                <string>{345,479}</string>
+            </dict>
             <key>baisezhangpeng_01.png</key>
             <dict>
                 <key>frame</key>
@@ -16,6 +29,32 @@
                 <string>{{0,0},{323,226}}</string>
                 <key>sourceSize</key>
                 <string>{323,226}</string>
+            </dict>
+            <key>baolei_01.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1793},{169,385}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{169,385}}</string>
+                <key>sourceSize</key>
+                <string>{169,385}</string>
+            </dict>
+            <key>baolei_02.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{524,1027},{188,453}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{188,453}}</string>
+                <key>sourceSize</key>
+                <string>{188,453}</string>
             </dict>
             <key>binansuo1_normal.png</key>
             <dict>
@@ -72,11 +111,11 @@
             <key>binansuo3_normal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{318,1446},{354,336}}</string>
+                <string>{{799,1186},{354,336}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{23,0},{354,336}}</string>
                 <key>sourceSize</key>
@@ -85,7 +124,7 @@
             <key>binansuo3_unnormal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1446},{398,314}}</string>
+                <string>{{483,1482},{398,314}}</string>
                 <key>offset</key>
                 <string>{1,-11}</string>
                 <key>rotated</key>
@@ -124,11 +163,11 @@
             <key>caowu_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{656,1186},{314,338}}</string>
+                <string>{{799,1524},{314,338}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{314,338}}</string>
                 <key>sourceSize</key>
@@ -170,7 +209,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6eb460bc1552ab878213516e7a669829:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:1cf10b121323ef0c4c1832c371d9db60:1/1$</string>
             <key>textureFileName</key>
             <string>building_1.png</string>
         </dict>

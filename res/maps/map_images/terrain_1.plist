@@ -20,7 +20,7 @@
             <key>caocong_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{307,1439},{151,127}}</string>
+                <string>{{307,1601},{151,127}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,10 +69,23 @@
                 <key>sourceSize</key>
                 <string>{116,87}</string>
             </dict>
+            <key>dacao.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{307,1439},{160,137}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{160,137}}</string>
+                <key>sourceSize</key>
+                <string>{160,137}</string>
+            </dict>
             <key>daocaodui_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{446,1575},{114,129}}</string>
+                <string>{{570,1393},{114,129}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +124,7 @@
             <key>diaoxiang_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{307,1592},{137,145}}</string>
+                <string>{{436,1601},{137,145}}</string>
                 <key>offset</key>
                 <string>{3,-2}</string>
                 <key>rotated</key>
@@ -137,7 +150,7 @@
             <key>dongxuezhiwu_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{436,1439},{134,122}}</string>
+                <string>{{446,1439},{134,122}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -306,7 +319,7 @@
             <key>guanmu_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{560,1393},{125,122}}</string>
+                <string>{{595,1260},{125,122}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -339,7 +352,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:aa9f9fed8ed5c2cf112100d2165609e7:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:1a5506bccbce73bacb42b1c2608b1485:1/1$</string>
             <key>textureFileName</key>
             <string>terrain_1.png</string>
         </dict>

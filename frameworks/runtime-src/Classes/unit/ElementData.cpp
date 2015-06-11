@@ -408,6 +408,9 @@ void UnitData::setAttribute( const std::string& key, const std::string& value ) 
     else if( key == "place" ) {
         this->place = Utils::toInt( value );
     }
+    else if( key == "scale" ) {
+        this->scale = (float)Utils::toDouble( value );
+    }
 }
 
 //equipment data

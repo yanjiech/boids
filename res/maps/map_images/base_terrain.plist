@@ -95,6 +95,58 @@
                 <key>sourceSize</key>
                 <string>{128,128}</string>
             </dict>
+            <key>dikuai008.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{896,0},{128,128}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{128,128}}</string>
+                <key>sourceSize</key>
+                <string>{128,128}</string>
+            </dict>
+            <key>dikuai009.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1024,0},{128,128}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{128,128}}</string>
+                <key>sourceSize</key>
+                <string>{128,128}</string>
+            </dict>
+            <key>dikuai010.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1152,0},{128,128}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{128,128}}</string>
+                <key>sourceSize</key>
+                <string>{128,128}</string>
+            </dict>
+            <key>dikuai011.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1280,0},{128,128}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{128,128}}</string>
+                <key>sourceSize</key>
+                <string>{128,128}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -105,7 +157,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1da6998684f8012ce4914e6213dafa85:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:41b66cbdc232ce62d038cfefe05332d0:1/1$</string>
             <key>textureFileName</key>
             <string>base_terrain.png</string>
         </dict>

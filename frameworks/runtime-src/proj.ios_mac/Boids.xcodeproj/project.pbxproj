@@ -74,6 +74,8 @@
 		769C66E71B27EEF400FA50F9 /* OpenningAnimationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */; };
 		76B578F51AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76B578F61AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
+		76DBFF271B29AA8600A454D5 /* EvilInvoke.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DBFF251B29AA8600A454D5 /* EvilInvoke.cpp */; };
+		76DBFF281B29AA8600A454D5 /* EvilInvoke.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DBFF251B29AA8600A454D5 /* EvilInvoke.cpp */; };
 		76DEA31C1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */; };
 		76DEA31D1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */; };
 		76E21D8D1AC5137B006714AD /* Equipment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76E21D8B1AC5137B006714AD /* Equipment.cpp */; };
@@ -563,6 +565,8 @@
 		769C66E51B27EEF400FA50F9 /* OpenningAnimationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenningAnimationLayer.h; sourceTree = "<group>"; };
 		76B578F31AF7743600D7E783 /* TransitionLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionLayer.cpp; sourceTree = "<group>"; };
 		76B578F41AF7743600D7E783 /* TransitionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionLayer.h; sourceTree = "<group>"; };
+		76DBFF251B29AA8600A454D5 /* EvilInvoke.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EvilInvoke.cpp; sourceTree = "<group>"; };
+		76DBFF261B29AA8600A454D5 /* EvilInvoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvilInvoke.h; sourceTree = "<group>"; };
 		76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITeamTalentLayer.cpp; sourceTree = "<group>"; };
 		76DEA31B1B14180E0020FC7D /* UITeamTalentLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITeamTalentLayer.h; sourceTree = "<group>"; };
 		76E21D8B1AC5137B006714AD /* Equipment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Equipment.cpp; sourceTree = "<group>"; };
@@ -1167,6 +1171,8 @@
 				76E50B411B180D6F00DA0996 /* SnowStorm.h */,
 				9871DBF01ABADF68009B8EC9 /* WrathOfThunder.cpp */,
 				9871DBF11ABADF68009B8EC9 /* WrathOfThunder.h */,
+				76DBFF251B29AA8600A454D5 /* EvilInvoke.cpp */,
+				76DBFF261B29AA8600A454D5 /* EvilInvoke.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -2083,6 +2089,7 @@
 				98B4024D1AAEB9B900F4FE09 /* BattleLayer.cpp in Sources */,
 				E87413191A0B5647003EBD0B /* gzwrite.c in Sources */,
 				76B578F61AF7743600D7E783 /* TransitionLayer.cpp in Sources */,
+				76DBFF281B29AA8600A454D5 /* EvilInvoke.cpp in Sources */,
 				E848F2421A246C2D00DAECF0 /* Trace.cpp in Sources */,
 				98E3B65C1A73A77A00B5BEBB /* gzip_stream.cc in Sources */,
 				E87412FD1A0B55FB003EBD0B /* ArmatureManager.cpp in Sources */,
@@ -2229,6 +2236,7 @@
 				E84197D51A09226300F5DF36 /* deflate.c in Sources */,
 				76E67B071B15D76300E7504C /* DreadLord.cpp in Sources */,
 				E84197DC1A09226300F5DF36 /* inflate.c in Sources */,
+				76DBFF271B29AA8600A454D5 /* EvilInvoke.cpp in Sources */,
 				9859D1DB1A7B4E8400FF6D82 /* Counter.cpp in Sources */,
 				E88DE6BB1A0103FC005E1ABA /* Utils.cpp in Sources */,
 				98E3B6611A73A77A00B5BEBB /* tokenizer.cc in Sources */,

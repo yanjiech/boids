@@ -4,63 +4,63 @@
         "level_id": 1001, 
         "map_meta": "maps/level_1/easy/meta.json", 
         "map_res": "maps/level_1/map.tmx", 
-        "name": "简单第一关"
+        "name": "教学关"
     }, 
     "1002": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "被地精们误认为盗走王子的英雄，要逃出敌人的包围圈。\n“不如杀光吧”\\(^o^)/\n", 
         "level_id": 1002, 
         "map_meta": "maps/level_2/easy/meta.json", 
         "map_res": "maps/level_2/map.tmx", 
-        "name": "简单第二关"
+        "name": "逃出包围圈"
     }, 
     "1003": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "经过地精大妈的指点，英雄们接近藏满宝藏的矿坑。不过，要先修矿轨才能乘车进去。“喂，还真麻烦呀”╮(╯_╰)╭", 
         "level_id": 1003, 
         "map_meta": "maps/level_3/easy/meta.json", 
         "map_res": "maps/level_3/map.tmx", 
-        "name": "简单第三关"
+        "name": "探秘矿坑"
     }, 
     "1004": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "在迷彩的矿坑里，到处是无法通行的魔法之门。只有获得了相同颜色的buff，才能通过。“喵！通过了就有红烧肉吃吗？”o>___<o", 
         "level_id": 1004, 
         "map_meta": "maps/level_4/easy/meta.json", 
         "map_res": "maps/level_4/map.tmx", 
-        "name": "简单第四关"
+        "name": "魔法的迷彩"
     }, 
     "1005": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "被困在矿坑里的英雄，必须关闭三个封印才能顺利离开。“但，召唤出了什么鬼啊！( ⊙ 0 ⊙ )”", 
         "level_id": 1005, 
         "map_meta": "maps/level_5/easy/meta.json", 
         "map_res": "maps/level_5/map.tmx", 
-        "name": "简单第五关"
+        "name": "黑暗来袭"
     }, 
     "1006": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "小心杀人不眨眼的罗杰，小心黑夜的鬼怪，小心地上的地刺，小心魔法的门禁！小心——“还有什么要小心的，就不能一次说完嘛~摔！”╭(╯^╰)╮", 
         "level_id": 1006, 
         "map_meta": "maps/level_6/easy/meta.json", 
         "map_res": "maps/level_6/map.tmx", 
-        "name": "简单第六关"
+        "name": "黑夜降临"
     }, 
     "1007": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "明明是要找强盗罗杰的山寨，英雄又被迷宫和试炼卡住了。“但是为什么，最后又碰到了绿脸怪...”= - =|||", 
         "level_id": 1007, 
         "map_meta": "maps/level_7/easy/meta.json", 
         "map_res": "maps/level_7/map.tmx", 
-        "name": "简单第七关"
+        "name": "无尽的试炼"
     }, 
     "1008": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "罗杰的山寨就在前方，穿过..这条迷宫。“一路上那么多宝箱，我怎么舍得走..”T------T", 
         "level_id": 1008, 
         "map_meta": "maps/level_8/easy/meta.json", 
         "map_res": "maps/level_8/map.tmx", 
-        "name": "简单第八关"
+        "name": "迷宫走廊"
     }, 
     "1009": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "需要关闭开关，相应的电塔才会失效。否则就无法完美地完成护送任务。“要那么完美干嘛，杀过去不就得了！”(ノ｀Д)ノ", 
         "level_id": 1009, 
         "map_meta": "maps/level_9/easy/meta.json", 
         "map_res": "maps/level_9/map.tmx", 
-        "name": "简单第九关"
+        "name": "营救绿脸怪"
     }, 
     "1010": {
         "desc": "关卡描述，省略若干字…", 
@@ -70,14 +70,14 @@
         "name": "简单第十关"
     }, 
     "1011": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "在城外遇到了地精攻打人类城堡，英雄需要协助卫兵击退地精，并营救被地精劫持的人质。", 
         "level_id": 1011, 
         "map_meta": "maps/level_11/easy/meta.json", 
         "map_res": "maps/level_11/map.tmx", 
         "name": "简单第十一关"
     }, 
     "1012": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "终于发现了主人的踪迹!加油追赶吧，英雄！", 
         "level_id": 1012, 
         "map_meta": "maps/level_12/easy/meta.json", 
         "map_res": "maps/level_12/map.tmx", 
@@ -88,63 +88,63 @@
         "level_id": 2001, 
         "map_meta": "maps/level_1/medium/meta.json", 
         "map_res": "maps/level_1/map.tmx", 
-        "name": "专家第一关"
+        "name": "教学关困难"
     }, 
     "2002": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "被地精们误认为盗走王子的英雄，要逃出敌人的包围圈。\n“不如杀光吧”\\(^o^)/\n", 
         "level_id": 2002, 
         "map_meta": "maps/level_2/medium/meta.json", 
         "map_res": "maps/level_2/map.tmx", 
-        "name": "专家第二关"
+        "name": "逃出包围圈"
     }, 
     "2003": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "经过地精大妈的指点，英雄们接近藏满宝藏的矿坑。不过，要先修矿轨才能乘车进去。“喂，还真麻烦呀”╮(╯_╰)╭", 
         "level_id": 2003, 
         "map_meta": "maps/level_3/medium/meta.json", 
         "map_res": "maps/level_3/map.tmx", 
-        "name": "专家第三关"
+        "name": "探秘矿坑"
     }, 
     "2004": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "在迷彩的矿坑里，到处是无法通行的魔法之门。只有获得了相同颜色的buff，才能通过。“喵！通过了就有红烧肉吃吗？”o>___<o", 
         "level_id": 2004, 
         "map_meta": "maps/level_4/medium/meta.json", 
         "map_res": "maps/level_4/map.tmx", 
-        "name": "专家第四关"
+        "name": "魔法的迷彩"
     }, 
     "2005": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "被困在矿坑里的英雄，必须关闭三个封印才能顺利离开。“但，召唤出了什么鬼啊！( ⊙ 0 ⊙ )”", 
         "level_id": 2005, 
         "map_meta": "maps/level_5/medium/meta.json", 
         "map_res": "maps/level_5/map.tmx", 
-        "name": "专家第五关"
+        "name": "黑暗来袭"
     }, 
     "2006": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "小心杀人不眨眼的罗杰，小心黑夜的鬼怪，小心地上的地刺，小心魔法的门禁！小心——“还有什么要小心的，就不能一次说完嘛~摔！”╭(╯^╰)╮", 
         "level_id": 2006, 
         "map_meta": "maps/level_6/medium/meta.json", 
         "map_res": "maps/level_6/map.tmx", 
-        "name": "专家第六关"
+        "name": "黑夜降临"
     }, 
     "2007": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "明明是要找强盗罗杰的山寨，英雄又被迷宫和试炼卡住了。“但是为什么，最后又碰到了绿脸怪...”= - =|||", 
         "level_id": 2007, 
         "map_meta": "maps/level_7/medium/meta.json", 
         "map_res": "maps/level_7/map.tmx", 
-        "name": "专家第七关"
+        "name": "无尽的试炼"
     }, 
     "2008": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "罗杰的山寨就在前方，穿过..这条迷宫。“一路上那么多宝箱，我怎么舍得走..”T------T", 
         "level_id": 2008, 
         "map_meta": "maps/level_8/medium/meta.json", 
         "map_res": "maps/level_8/map.tmx", 
-        "name": "专家第八关"
+        "name": "迷宫走廊"
     }, 
     "2009": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "需要关闭开关，相应的电塔才会失效。否则就无法完美地完成护送任务。“要那么完美干嘛，杀过去不就得了！”(ノ｀Д)ノ", 
         "level_id": 2009, 
         "map_meta": "maps/level_9/medium/meta.json", 
         "map_res": "maps/level_9/map.tmx", 
-        "name": "专家第九关"
+        "name": "营救绿脸怪"
     }, 
     "2010": {
         "desc": "关卡描述，省略若干字…", 
@@ -154,17 +154,17 @@
         "name": "专家第十关"
     }, 
     "2011": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "在城外遇到了地精攻打人类城堡，英雄需要协助卫兵击退地精，并营救被地精劫持的人质。", 
         "level_id": 2011, 
         "map_meta": "maps/level_11/medium/meta.json", 
         "map_res": "maps/level_11/map.tmx", 
-        "name": "专家第十一关"
+        "name": "简单第十一关"
     }, 
     "2012": {
-        "desc": "关卡描述，省略若干字…", 
+        "desc": "终于发现了主人的踪迹!加油追赶吧，英雄！", 
         "level_id": 2012, 
         "map_meta": "maps/level_12/medium/meta.json", 
         "map_res": "maps/level_12/map.tmx", 
-        "name": "专家第十二关"
+        "name": "简单第十二关"
     }
 }

@@ -243,9 +243,6 @@ void BattleLayer::updateFrame( float delta ) {
             UnitNode* unit = pair.second;
             
             if( unit->getUnitState() == eUnitState::Dying ) {
-                if( unit->hasUnitTag( "boss" ) ) {
-                    Director::getInstance()->setTimeScale( 0.2 );
-                }
                 this->onUnitDying( unit );
             }
         }
@@ -331,9 +328,6 @@ void BattleLayer::updateFrame( float delta ) {
     }
     else if( _state == BattleWin || _state == BattleLose ) {
         _result_elapse += delta;
-        if( _result_elapse > 0.5f ) {
-            Director::getInstance()->setTimeScale( 1.0 );
-        }
         if( _result_elapse > 5.0f ) {
             if( _state == BattleWin ) {
                 _battle_menu_layer->showResultPanel( true, _map_logic->getDropedItems() );
@@ -726,11 +720,6 @@ void BattleLayer::updateBuildings( float delta ) {
 }
 
 void BattleLayer::onUnitAppear( UnitNode* unit ) {
-    if( unit->hasUnitTag( "boss" ) ) {
-        //vibrate
-        this->vibrate();
-    }
-    
     eTargetCamp camp = unit->getTargetCamp();
     if( camp == eTargetCamp::Player ) {
         _player_units.insert( Utils::stringFormat( "%d", unit->getDeployId() ), unit );
@@ -741,6 +730,9 @@ void BattleLayer::onUnitAppear( UnitNode* unit ) {
     _map_logic->onTargetNodeAppear( unit );
     unit->appear();
     if( unit->hasUnitTag( "boss" ) ) {
+        //vibrate
+        this->vibrate();
+        
         _skill_ui_layer->showBossPanel();
         _skill_ui_layer->setBossInfo( unit->getUnitData() );
     }
@@ -772,6 +764,12 @@ void BattleLayer::onUnitDying( UnitNode* unit ) {
                 leader->addItem( pair.second );
             }
         }
+    }
+    if( unit->hasUnitTag( "boss" ) ) {
+        _skill_ui_layer->hideBossPanel();
+        Director::getInstance()->setTimeScale( 0.2 );
+        _slow_elapse = 0;
+        this->schedule( CC_CALLBACK_1( BattleLayer::slowTimeUpdate, this ), "slow_time_update" );
     }
 }
 
@@ -1003,6 +1001,14 @@ void BattleLayer::vibrate() {
     MoveTo* move_back = MoveTo::create( 0.1f, old_pos );
     Sequence* seq = Sequence::create( move_1, move_2, move_3, move_4, move_5, move_6, move_back, nullptr );
     _tmx_map->runAction( seq );
+}
+
+void BattleLayer::slowTimeUpdate( float delta ) {
+    _slow_elapse += delta;
+    if( _slow_elapse > 0.2f ) {
+        Director::getInstance()->setTimeScale( 1.0 );
+        this->unschedule( "slow_time_update" );
+    }
 }
 
 //private methods

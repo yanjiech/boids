@@ -127,6 +127,14 @@ void BlockNode::updateFrame( float delta ) {
             
             _elapse += delta;
             if( _elapse >= _need_time ) {
+                //add repair effect
+                std::string resource = "buildings/building_repaired";
+                std::string name = Utils::stringFormat( "building_repaired_%d", _deploy_id );
+                spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+                UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( skeleton, name, true );
+                _battle_layer->addToEffectLayer( component, this->getPosition() + Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ), 0 );
+                component->setAnimation( 0, "animation", false );
+                
                 _need_repair = false;
                 this->setEnabled( true );
                 this->updateEnabled();

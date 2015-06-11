@@ -23447,11 +23447,6 @@
   <object id="711" gid="12" x="76.0606" y="1535.09"/>
   <object id="713" gid="2147483670" x="253.03" y="2590.67"/>
   <object id="715" gid="2147483673" x="751.03" y="2541.67"/>
-  <object id="735" gid="36" x="3062.7" y="534.818"/>
-  <object id="737" gid="2147483684" x="924.242" y="1430.3"/>
-  <object id="738" gid="36" x="4227.27" y="1912.12"/>
-  <object id="739" gid="2147483684" x="2205.91" y="781.727"/>
-  <object id="740" gid="36" x="2356.88" y="1568.88"/>
  </objectgroup>
  <objectgroup name="physics" visible="0">
   <object id="716" name="c1" type="collide" x="4603.03" y="296.667">

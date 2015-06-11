@@ -119,6 +119,7 @@ private:
     unsigned char *_fog_tile_visible_array;
     
     float _result_elapse;
+    float _slow_elapse;
     
     //debug
     cocos2d::DrawNode* _draw_node;
@@ -263,6 +264,8 @@ public:
     void dropItem( DropItem* item, const cocos2d::Point& pos, eBattleSubLayer layer );
     
     void vibrate();
+    
+    void slowTimeUpdate( float delta );
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

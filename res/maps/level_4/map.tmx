@@ -619,7 +619,7 @@
   <object id="592" name="blue_door_2" type="GroupSpineBlockNode" gid="39" x="2761" y="2021"/>
   <object id="590" name="blue_door_2" type="GroupSpineBlockNode" gid="39" x="2613" y="2255"/>
   <object id="591" name="blue_door_2" type="GroupSpineBlockNode" gid="39" x="2725" y="2081"/>
-  <object id="593" name="yellow_door_2_collide" type="collide" x="441.212" y="1048.61">
+  <object id="593" name="yellow_door_collide" type="collide" x="441.212" y="1048.61">
    <polygon points="-8,16 566.667,298 609.333,235.333 -4,-70"/>
   </object>
   <object id="594" name="blue_door_2_collide" type="collide" x="2808" y="1908">

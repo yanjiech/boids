@@ -316,6 +316,10 @@ void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& resu
                     resource = equip_config.at( "name" ).asString() + ".png";
                     player_info->gainEquip( key, count );
                 }
+
+                if( SpriteFrameCache::getInstance()->getSpriteFrameByName(resource) == nullptr ) {
+                    resource = "ui_winpage_gold.png";
+                }
                 Sprite* icon = Sprite::createWithSpriteFrameName( resource );
                 Sprite* frame = _drop_items.at( i );
                 icon->setPosition( Point( frame->getContentSize().width / 2, frame->getContentSize().height / 2 ) );

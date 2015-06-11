@@ -656,6 +656,10 @@ void UnitNode::applyCustomChange( const std::string& content_string ) {
         std::vector<std::string> pair;
         Utils::split( str, pair, ':' );
         _target_data->setAttribute( pair.at( 0 ), pair.at( 1 ) );
+        _front->setScale( _target_data->scale );
+        if( _back ) {
+            _back->setScale( _target_data->scale );
+        }
     }
 }
 

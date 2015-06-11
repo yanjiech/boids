@@ -61,8 +61,6 @@ bool OpenningAnimationLayer::init() {
     
     _current_shot = 1;
     _total_shot = 8;
-
-    _panel_action->setLastFrameCallFunc( CC_CALLBACK_0( OpenningAnimationLayer::onAnimationComplete, this ) );
     
     return true;
 }
@@ -105,9 +103,10 @@ void OpenningAnimationLayer::onEnterTouched( cocos2d::Ref* sender, cocos2d::ui::
     }
 }
 
-void OpenningAnimationLayer::start() {
+void OpenningAnimationLayer::start( float delta ) {
     this->runAction( _panel_action );
-    _panel_action->play( Utils::stringFormat( "page%d", _current_shot ), false );
+    _panel_action->play( "page1", false );
+    _panel_action->setLastFrameCallFunc( CC_CALLBACK_0( OpenningAnimationLayer::onAnimationComplete, this ) );
 }
 
 void OpenningAnimationLayer::end() {
@@ -117,7 +116,7 @@ void OpenningAnimationLayer::end() {
 }
 
 void OpenningAnimationLayer::onEnterTransitionDidFinish() {
-    this->start();
+    this->scheduleOnce( CC_CALLBACK_1( OpenningAnimationLayer::start, this ), 0, "openning_start" );
 }
 
 void OpenningAnimationLayer::onAnimationComplete() {

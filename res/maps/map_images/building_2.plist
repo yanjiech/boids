@@ -7,7 +7,7 @@
             <key>dijingminju_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,934},{339,339}}</string>
+                <string>{{401,1178},{339,339}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -16,6 +16,19 @@
                 <string>{{0,0},{339,339}}</string>
                 <key>sourceSize</key>
                 <string>{339,339}</string>
+            </dict>
+            <key>dijingtianxianta.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{516,674},{246,344}}</string>
+                <key>offset</key>
+                <string>{-3,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{246,344}}</string>
+                <key>sourceSize</key>
+                <string>{252,344}</string>
             </dict>
             <key>dijingyanjiusuo_02.png</key>
             <dict>
@@ -46,7 +59,7 @@
             <key>fashiyanjiusuo (1).png</key>
             <dict>
                 <key>frame</key>
-                <string>{{782,430},{502,512}}</string>
+                <string>{{2,674},{502,512}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -55,6 +68,19 @@
                 <string>{{0,0},{502,512}}</string>
                 <key>sourceSize</key>
                 <string>{502,512}</string>
+            </dict>
+            <key>fengchao.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1266,818},{171,176}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{171,176}}</string>
+                <key>sourceSize</key>
+                <string>{171,176}</string>
             </dict>
             <key>fengche.png</key>
             <dict>
@@ -72,20 +98,46 @@
             <key>goutourenmuwu_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1285},{423,485}}</string>
+                <string>{{1444,847},{423,485}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{423,485}}</string>
                 <key>sourceSize</key>
                 <string>{423,485}</string>
             </dict>
+            <key>jinglingbingying.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{834,1297},{368,435}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{368,435}}</string>
+                <key>sourceSize</key>
+                <string>{368,435}</string>
+            </dict>
+            <key>jinglingdiaoxiang.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{401,1519},{452,431}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{452,431}}</string>
+                <key>sourceSize</key>
+                <string>{452,431}</string>
+            </dict>
             <key>jinglingxiaowu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1468,418},{515,386}}</string>
+                <string>{{782,430},{515,386}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +150,7 @@
             <key>jiuguan.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1296,806},{477,500}}</string>
+                <string>{{764,818},{477,500}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +163,7 @@
             <key>kuangche_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1296,430},{129,122}}</string>
+                <string>{{1299,430},{129,122}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +176,7 @@
             <key>kuangdong_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{343,674},{480,397}}</string>
+                <string>{{2,1297},{480,397}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -133,6 +185,19 @@
                 <string>{{0,0},{480,397}}</string>
                 <key>sourceSize</key>
                 <string>{480,397}</string>
+            </dict>
+            <key>kuangdong_02.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1468,418},{562,427}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{562,427}}</string>
+                <key>sourceSize</key>
+                <string>{562,427}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -144,7 +209,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:84662d51513540b3caf7eee72a8e451b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:b01f316a1a56604be3876b8dc21167c4:1/1$</string>
             <key>textureFileName</key>
             <string>building_2.png</string>
         </dict>

@@ -12,217 +12,172 @@
         {
             "name": "orange_01",
             "rect": {
-                "x": 4998.36,
-                "y": 3042.89,
-                "width": 81.8657,
-                "height": 73.8787
+                "x": 5300.86,
+                "y": 2864.18,
+                "width": 111.816,
+                "height": 65.8916
             }
         },
         {
             "name": "orange_02",
             "rect": {
-                "x": 4576.06,
-                "y": 2346.04,
-                "width": 105.826,
-                "height": 103.829
-            }
-        },
-        {
-            "name": "red_01",
-            "rect": {
-                "x": 3922.13,
-                "y": 2511.76,
-                "width": 73.8784,
-                "height": 75.8755
-            }
-        },
-        {
-            "name": "red_02",
-            "rect": {
-                "x": 2622.27,
-                "y": 2436.89,
-                "width": 85.8589,
-                "height": 91.8489
-            }
-        },
-        {
-            "name": "red_03",
-            "rect": {
-                "x": 1983.32,
-                "y": 2126.4,
-                "width": 99.8359,
-                "height": 95.8425
-            }
-        },
-        {
-            "name": "yellow_01",
-            "rect": {
-                "x": 1195.61,
-                "y": 2581.65,
-                "width": 90.8508,
-                "height": 87.8555
-            }
-        },
-        {
-            "name": "blue_01",
-            "rect": {
-                "x": 1920.42,
-                "y": 1134.03,
-                "width": 108.821,
-                "height": 115.81
-            }
-        },
-        {
-            "name": "yellow_03",
-            "rect": {
-                "x": 731.374,
-                "y": 1196.92,
-                "width": 80.8672,
-                "height": 89.8524
-            }
-        },
-        {
-            "name": "blue_02",
-            "rect": {
-                "x": 526.71,
-                "y": 1771.98,
-                "width": 92.8473,
-                "height": 99.8358
-            }
-        },
-        {
-            "name": "blue_03",
-            "rect": {
-                "x": 2666.19,
-                "y": 1251.83,
-                "width": 76.8738,
-                "height": 80.8671
-            }
-        },
-        {
-            "name": "boss",
-            "rect": {
-                "x": 4428.3,
-                "y": 1081.11,
-                "width": 107.823,
-                "height": 109.82
-            }
-        },
-        {
-            "name": "boss_guard_01",
-            "rect": {
-                "x": 4185.7,
-                "y": 1323.71,
-                "width": 92.8472,
-                "height": 85.859
-            }
-        },
-        {
-            "name": "boss_guard_02",
-            "rect": {
-                "x": 4833.63,
-                "y": 1115.06,
-                "width": 93.8457,
-                "height": 84.8606
-            }
-        },
-        {
-            "name": "boss_guard_03",
-            "rect": {
-                "x": 4794.7,
-                "y": 745.665,
-                "width": 96.8408,
-                "height": 89.8523
-            }
-        },
-        {
-            "name": "boss_guard_04",
-            "rect": {
-                "x": 4090.85,
-                "y": 862.473,
-                "width": 97.8394,
-                "height": 91.849
-            }
-        },
-        {
-            "name": "trigger_boss",
-            "rect": {
-                "x": 3433.93,
-                "y": 926.368,
-                "width": 213.649,
-                "height": 785.709
+                "x": 4541.11,
+                "y": 2200.27,
+                "width": 427.298,
+                "height": 183.698
             }
         },
         {
             "name": "orange_03",
             "rect": {
-                "x": 2421.6,
-                "y": 2145.37,
-                "width": 71.8818,
-                "height": 72.8801
+                "x": 3979.04,
+                "y": 2445.87,
+                "width": 171.718,
+                "height": 447.265
             }
         },
         {
             "name": "orange_04",
             "rect": {
-                "x": 765.319,
-                "y": 2496.79,
-                "width": 77.872,
-                "height": 77.8721
+                "x": 3173.36,
+                "y": 2434.89,
+                "width": 132.782,
+                "height": 122.798
             }
         },
         {
             "name": "orange_05",
             "rect": {
-                "x": 284.109,
-                "y": 1456.5,
-                "width": 77.872,
-                "height": 77.8721
+                "x": 2614.28,
+                "y": 2296.12,
+                "width": 95.8425,
+                "height": 92.8474
             }
         },
         {
             "name": "orange_06",
             "rect": {
-                "x": 1241.54,
-                "y": 933.357,
-                "width": 84.8606,
-                "height": 88.854
+                "x": 1861.52,
+                "y": 2334.05,
+                "width": 174.713,
+                "height": 123.797
             }
         },
         {
             "name": "orange_07",
             "rect": {
-                "x": 3030.6,
-                "y": 164.62,
-                "width": 101.833,
-                "height": 93.8458
+                "x": 1814.59,
+                "y": 2029.55,
+                "width": 121.8,
+                "height": 98.8376
             }
         },
         {
             "name": "orange_08",
             "rect": {
-                "x": 2924.77,
-                "y": 1365.65,
-                "width": 77.8721,
-                "height": 76.8735
+                "x": 1564.01,
+                "y": 1237.85,
+                "width": 97.8394,
+                "height": 99.8359
             }
         },
         {
             "name": "orange_09",
             "rect": {
-                "x": 5352.78,
-                "y": 706.729,
-                "width": 83.8623,
-                "height": 89.8524
+                "x": 2046.21,
+                "y": 1051.16,
+                "width": 103.829,
+                "height": 88.8539
             }
         },
         {
-            "name": "yellow_02",
+            "name": "orange_10",
             "rect": {
-                "x": 1560.25,
-                "y": 1336.3,
-                "width": 95.8425,
-                "height": 100.834
+                "x": 1295.45,
+                "y": 726.695,
+                "width": 87.8557,
+                "height": 79.8687
+            }
+        },
+        {
+            "name": "orange_11",
+            "rect": {
+                "x": 326.04,
+                "y": 1455.5,
+                "width": 179.705,
+                "height": 98.8376
+            }
+        },
+        {
+            "name": "orange_12",
+            "rect": {
+                "x": 625.548,
+                "y": 1949.68,
+                "width": 71.8818,
+                "height": 69.8851
+            }
+        },
+        {
+            "name": "orange_13",
+            "rect": {
+                "x": 870.145,
+                "y": 2519.75,
+                "width": 238.608,
+                "height": 142.765
+            }
+        },
+        {
+            "name": "orange_14",
+            "rect": {
+                "x": 3081.51,
+                "y": 1279.79,
+                "width": 68.887,
+                "height": 74.877
+            }
+        },
+        {
+            "name": "trigger_boss",
+            "rect": {
+                "x": 3744.42,
+                "y": 866.464,
+                "width": 172.716,
+                "height": 893.532
+            }
+        },
+        {
+            "name": "boss",
+            "rect": {
+                "x": 4266.56,
+                "y": 1098.08,
+                "width": 100.834,
+                "height": 85.859
+            }
+        },
+        {
+            "name": "orange_15",
+            "rect": {
+                "x": 4472.23,
+                "y": 961.309,
+                "width": 155.744,
+                "height": 293.518
+            }
+        },
+        {
+            "name": "orange_16",
+            "rect": {
+                "x": 3815.31,
+                "y": 363.292,
+                "width": 154.746,
+                "height": 96.8409
+            }
+        },
+        {
+            "name": "orange_17",
+            "rect": {
+                "x": 2879.84,
+                "y": 213.538,
+                "width": 114.811,
+                "height": 88.8539
             }
         }
     ],
@@ -315,274 +270,6 @@
             ]
         },
         {
-            "name": "orange_monster",
-            "enabled": true,
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "story_change",
-                    "story_name": "story_01",
-                    "story_state": "story_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "white_ghost",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "orange_01",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "white_ghost",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "orange_02",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "white_ghost",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "orange_03",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "white_ghost",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "orange_04",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "white_ghost",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "orange_05",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "white_ghost",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "orange_06",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "white_ghost",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "orange_08",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "white_ghost",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "orange_09",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "white_ghost",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "orange_07",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "buff_monster",
-            "enabled": true,
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "story_change",
-                    "story_name": "story_01",
-                    "story_state": "story_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "red_01",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "red_02",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "dead_archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "red_03",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "dead_archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "yellow_01",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "yellow_01",
-                    "unit_count": 1,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "yellow_02",
-                    "unit_count": 3,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "dead_archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "yellow_03",
-                    "unit_count": 3,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "dead_archer",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "blue_01",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "blue_02",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
             "name": "story_02",
             "enabled": true,
             "trigger_meta": {
@@ -666,58 +353,6 @@
                     "unit_level": 5,
                     "popup_type": "normal",
                     "skill_1_level": 2
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "boss_guard_03",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "boss_guard_02",
-                    "unit_count": 1,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "boss_guard_01",
-                    "unit_count": 2,
-                    "unit_level": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": false,
-                    "position_name": "boss_guard_04",
-                    "unit_count": 1,
-                    "unit_level": 4,
-                    "popup_type": "normal"
                 }
             ]
         },
@@ -746,6 +381,7 @@
                     "buff_name": "damage_off",
                     "buff_type": "buff_tag_protect",
                     "buff_params": "duration:-1,buff_param:red,effect_resource:buff_ball,color_red:255",
+                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -775,6 +411,7 @@
                     "buff_name": "damage_off",
                     "buff_type": "buff_tag_protect",
                     "buff_params": "duration:-1,buff_param:yellow,effect_resource:buff_ball,color_green:255,color_red:255",
+                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -804,6 +441,7 @@
                     "buff_name": "damage_off",
                     "buff_type": "buff_tag_protect",
                     "buff_params": "duration:-1,buff_param:blue,effect_resource:buff_ball,color_green:255,color_blue:255",
+                    "unit_level": 1,
                     "popup_type": "normal"
                 }
             ]
@@ -832,13 +470,295 @@
                     "task_state": "task_finished"
                 }
             ]
+        },
+        {
+            "name": "default_monster",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_01",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_02",
+                    "unit_count": 2,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_05",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_06",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_08",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_09",
+                    "unit_count": 2,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "white_ghost",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_17",
+                    "unit_count": 2,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_01",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_04",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_07",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_10",
+                    "unit_count": 2,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "skeleton_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_15",
+                    "unit_count": 3,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_02",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_06",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_12",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_11",
+                    "unit_count": 2,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "dead_archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_16",
+                    "unit_count": 2,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "mummy",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_04",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "mummy",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_07",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "mummy",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 3,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "mummy",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_14",
+                    "unit_count": 1,
+                    "unit_level": 4
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "mummy",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_17",
+                    "unit_count": 1,
+                    "unit_level": 4
+                }
+            ]
         }
     ],
     "units": [
         "dead_archer",
         "skeleton_king",
         "skeleton_warrior",
-        "white_ghost"
+        "white_ghost",
+        "mummy"
     ],
     "tasks": [
         {

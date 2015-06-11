@@ -62,7 +62,7 @@ bool UISkillNode::init( BattleLayer* battle_layer, UnitNode* unit_node ) {
     _pb_mp->setType( ProgressTimer::Type::RADIAL );
     _pb_mp->setReverseDirection( true );
     _pb_mp->setPercentage( 100.0f );
-    this->addChild( _pb_mp, 2 );
+    this->addChild( _pb_mp, 10 );
     
     Sprite* mask = Sprite::createWithSpriteFrameName( "ui_battle_icon04.png" );
     _pb_loading = ProgressTimer::create( mask );
@@ -183,13 +183,13 @@ void UISkillNode::updateFrame( float delta ) {
     if( !_is_skill_ready ) {
         float p = _unit_node->getSkillCDById( 0 );
         _pb_loading->setPercentage( ( 1.0f - p ) * 100.0f );
-        if( _hint_effect ) {
-            if( _hint_type == "dyn_circle" ) {
-                _hint_effect->setPosition( _unit_node->getPosition() + _hint_d_pos );
-            }
-            else {
-                _hint_effect->setPosition( _unit_node->getPosition() );
-            }
+    }
+    if( _hint_effect && _hint_effect->isVisible() ) {
+        if( _hint_type == "dyn_circle" ) {
+            _hint_effect->setPosition( _unit_node->getPosition() + _hint_d_pos );
+        }
+        else {
+            _hint_effect->setPosition( _unit_node->getPosition() );
         }
     }
 }
@@ -495,6 +495,7 @@ void UIBattleLayer::setBossHpPercent( float percent ) {
 
 void UIBattleLayer::setBossInfo( class UnitData* unit_data ) {
     _lb_boss_name->setString( unit_data->display_name );
+    this->setBossHpPercent( 100 );
 }
 
 void UIBattleLayer::setWavePercent( float percent ) {

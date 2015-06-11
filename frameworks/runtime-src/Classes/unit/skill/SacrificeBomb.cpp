@@ -60,8 +60,8 @@ void SacrificeBomb::updateFrame( float delta ) {
             std::string name = Utils::stringFormat( "%s_effect", SKILL_NAME_SACRIFICE_BOMB );
             spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
             UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( skeleton, name, true );
-            battle_layer->addToEffectLayer( component, _owner->getPosition(), 0 );
             component->setAnimation( 0, "animation", false );
+            battle_layer->addToEffectLayer( component, _owner->getPosition(), 0 );
             //calculate damage
             
             Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _owner->getPosition(), _range );
