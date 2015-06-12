@@ -53,6 +53,9 @@ EventAction* EventAction::create( const cocos2d::ValueMap& action_data, class Ma
     else if( action_type == ACTION_TYPE_CUSTOM ) {
         ret = CustomAction::create( action_data, map_logic, trigger );
     }
+    else if( action_type == ACTION_TYPE_HINT_CHANGE ) {
+        ret = HintChangeAction::create( action_data, map_logic, trigger );
+    }
     return ret;
 }
 
@@ -414,6 +417,9 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
             else if( unit_state == UNIT_STATE_DIE ) {
                 
             }
+            else if( unit_state == UNIT_STATE_DISAPPEAR ) {
+                u->changeUnitState( eUnitState::Disappear, true );
+            }
             if( change_show_hp ) {
                 if( show_hp ) {
                     u->showHP();
@@ -574,6 +580,44 @@ void EventChangeAction::onActionTriggered( bool finish ) {
     }
     _map_logic->setActionStateByName( event_name, event_state );
     _map_logic->setTriggerStateByName( event_name, event_state );
+}
+
+HintChangeAction::HintChangeAction() {
+    
+}
+
+HintChangeAction::~HintChangeAction() {
+    
+}
+    
+HintChangeAction* HintChangeAction::create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger ) {
+    HintChangeAction* ret = new HintChangeAction();
+    if( ret && ret->init( action_data, map_logic, trigger ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool HintChangeAction::init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger ) {
+    if( !EventAction::init( action_data, map_logic, trigger ) ) {
+        return false;
+    }
+    
+    _callback = CC_CALLBACK_1( HintChangeAction::onActionTriggered, this );
+    return true;
+}
+    
+void HintChangeAction::onActionTriggered( bool finish ) {
+    EventAction::onActionTriggered( finish );
+    
+    const std::string& hint_name = _action_data.at( "hint_name" ).asString();
+    bool visible = _action_data.at( "hint_visible" ).asBool();
+    
+    _map_logic->setHintVisibleByName( hint_name, visible );
 }
 
 //vision change action

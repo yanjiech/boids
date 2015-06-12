@@ -13,132 +13,6 @@
             }
         },
         {
-            "name": "boss_yellow",
-            "rect": {
-                "x": 3107.46,
-                "y": 3440.23,
-                "width": 94.8442,
-                "height": 88.854
-            }
-        },
-        {
-            "name": "boss_red",
-            "rect": {
-                "x": 6334.16,
-                "y": 3710.79,
-                "width": 86.8574,
-                "height": 71.8818
-            }
-        },
-        {
-            "name": "blue_boss",
-            "rect": {
-                "x": 4573.05,
-                "y": 391.243,
-                "width": 99.8359,
-                "height": 91.849
-            }
-        },
-        {
-            "name": "orange_01",
-            "rect": {
-                "x": 940.03,
-                "y": 455.138,
-                "width": 91.849,
-                "height": 72.8802
-            }
-        },
-        {
-            "name": "orange_02",
-            "rect": {
-                "x": 1968.34,
-                "y": 427.184,
-                "width": 68.8868,
-                "height": 66.8901
-            }
-        },
-        {
-            "name": "orange_03",
-            "rect": {
-                "x": 3154.39,
-                "y": 578.935,
-                "width": 67.8884,
-                "height": 73.8786
-            }
-        },
-        {
-            "name": "orange_04",
-            "rect": {
-                "x": 2794.98,
-                "y": 1529.37,
-                "width": 53.9114,
-                "height": 61.8982
-            }
-        },
-        {
-            "name": "orange_05",
-            "rect": {
-                "x": 1240.53,
-                "y": 2262.17,
-                "width": 91.8491,
-                "height": 77.8721
-            }
-        },
-        {
-            "name": "orange_06",
-            "rect": {
-                "x": 622.549,
-                "y": 3455.21,
-                "width": 83.8622,
-                "height": 76.8735
-            }
-        },
-        {
-            "name": "orange_07",
-            "rect": {
-                "x": 1894.46,
-                "y": 2946.04,
-                "width": 83.8622,
-                "height": 81.8657
-            }
-        },
-        {
-            "name": "orange_08",
-            "rect": {
-                "x": 3821.29,
-                "y": 2527.73,
-                "width": 76.8735,
-                "height": 81.8655
-            }
-        },
-        {
-            "name": "orange_09",
-            "rect": {
-                "x": 4799.69,
-                "y": 1691.11,
-                "width": 74.877,
-                "height": 78.8704
-            }
-        },
-        {
-            "name": "orange_10",
-            "rect": {
-                "x": 6540.82,
-                "y": 684.761,
-                "width": 85.8589,
-                "height": 76.8737
-            }
-        },
-        {
-            "name": "orange_11",
-            "rect": {
-                "x": 5200.02,
-                "y": 3133.73,
-                "width": 92.8477,
-                "height": 84.8606
-            }
-        },
-        {
             "name": "boss_final",
             "rect": {
                 "x": 4455.25,
@@ -157,30 +31,192 @@
             }
         },
         {
-            "name": "trigger_red_boss",
+            "name": "trigger_area_3",
             "rect": {
-                "x": 6621.69,
-                "y": 3060.85,
-                "width": 464.237,
+                "x": 3335.09,
+                "y": 2229.23,
+                "width": 118.805,
+                "height": 776.723
+            }
+        },
+        {
+            "name": "trigger_area_2",
+            "rect": {
+                "x": 655.493,
+                "y": 2089.46,
+                "width": 1136.13,
+                "height": 100.834
+            }
+        },
+        {
+            "name": "boss_yellow",
+            "rect": {
+                "x": 3171.36,
+                "y": 3420.27,
+                "width": 79.8687,
+                "height": 70.8835
+            }
+        },
+        {
+            "name": "boss_blue",
+            "rect": {
+                "x": 4528.13,
+                "y": 460.133,
+                "width": 93.8457,
+                "height": 89.8523
+            }
+        },
+        {
+            "name": "orange_01",
+            "rect": {
+                "x": 1084.79,
+                "y": 309.381,
+                "width": 177.708,
+                "height": 184.696
+            }
+        },
+        {
+            "name": "orange_02",
+            "rect": {
+                "x": 2074.16,
+                "y": 900.41,
+                "width": 157.741,
                 "height": 144.762
             }
         },
         {
-            "name": "trigger_blue_boss",
+            "name": "orange_03",
             "rect": {
-                "x": 3324.11,
-                "y": 2220.23,
-                "width": 132.782,
-                "height": 772.73
+                "x": 2943.73,
+                "y": 468.12,
+                "width": 168.723,
+                "height": 154.746
             }
         },
         {
-            "name": "trigger_yellow_boss",
+            "name": "orange_04",
             "rect": {
-                "x": 802.25,
-                "y": 2061.5,
-                "width": 996.362,
-                "height": 218.641
+                "x": 3491.83,
+                "y": 1262.81,
+                "width": 131.783,
+                "height": 131.783
+            }
+        },
+        {
+            "name": "orange_05",
+            "rect": {
+                "x": 1043.86,
+                "y": 2468.83,
+                "width": 121.8,
+                "height": 108.821
+            }
+        },
+        {
+            "name": "orange_06",
+            "rect": {
+                "x": 807.244,
+                "y": 3306.46,
+                "width": 154.746,
+                "height": 137.774
+            }
+        },
+        {
+            "name": "orange_07",
+            "rect": {
+                "x": 2499.46,
+                "y": 3420.27,
+                "width": 112.814,
+                "height": 99.8359
+            }
+        },
+        {
+            "name": "orange_08",
+            "rect": {
+                "x": 2597.3,
+                "y": 2486.8,
+                "width": 113.813,
+                "height": 114.811
+            }
+        },
+        {
+            "name": "orange_09",
+            "rect": {
+                "x": 3914.14,
+                "y": 2527.74,
+                "width": 117.806,
+                "height": 116.808
+            }
+        },
+        {
+            "name": "orange_10",
+            "rect": {
+                "x": 4691.86,
+                "y": 1851.85,
+                "width": 122.798,
+                "height": 109.82
+            }
+        },
+        {
+            "name": "orange_11",
+            "rect": {
+                "x": 4763.74,
+                "y": 443.161,
+                "width": 131.784,
+                "height": 145.76
+            }
+        },
+        {
+            "name": "orange_12",
+            "rect": {
+                "x": 6615.7,
+                "y": 976.285,
+                "width": 110.818,
+                "height": 92.8475
+            }
+        },
+        {
+            "name": "orange_13",
+            "rect": {
+                "x": 6005.7,
+                "y": 1949.68,
+                "width": 140.769,
+                "height": 124.795
+            }
+        },
+        {
+            "name": "orange_14",
+            "rect": {
+                "x": 6289.23,
+                "y": 2689.47,
+                "width": 124.795,
+                "height": 96.8408
+            }
+        },
+        {
+            "name": "orange_15",
+            "rect": {
+                "x": 6779.43,
+                "y": 3248.55,
+                "width": 65.8916,
+                "height": 78.8704
+            }
+        },
+        {
+            "name": "orange_17",
+            "rect": {
+                "x": 5179.06,
+                "y": 3149.71,
+                "width": 204.664,
+                "height": 172.716
+            }
+        },
+        {
+            "name": "boss_red",
+            "rect": {
+                "x": 6517.84,
+                "y": 3580,
+                "width": 90.8506,
+                "height": 73.8787
             }
         }
     ],
@@ -282,89 +318,6 @@
             ]
         },
         {
-            "name": "area_01_monster",
-            "enabled": true,
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "story_change",
-                    "story_name": "story_01",
-                    "story_state": "story_end"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_01",
-                    "unit_count": 2,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_02",
-                    "unit_count": 2,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "werewolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_02",
-                    "unit_count": 1,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "werewolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_03",
-                    "unit_count": 1,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_03",
-                    "unit_count": 2,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_04",
-                    "unit_count": 3,
-                    "unit_level": 6
-                }
-            ]
-        },
-        {
             "name": "area_02_monster",
             "enabled": true,
             "trigger_meta": {
@@ -376,7 +329,7 @@
                     "trigger_type": "unit_stay",
                     "source_type": "tag_source",
                     "source_value": "player",
-                    "position_name": "trigger_yellow_boss",
+                    "position_name": "trigger_area_2",
                     "trigger_count": 1,
                     "duration": 0
                 }
@@ -387,61 +340,6 @@
                     "action_type": "event_change",
                     "event_name": "yellow_boss_dead",
                     "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "desert_thief",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_05",
-                    "unit_count": 2,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "desert_thief",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_07",
-                    "unit_count": 2,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "desert_thief_leader",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_07",
-                    "unit_count": 1,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "desert_thief_leader",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_06",
-                    "unit_count": 1,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "desert_thief",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_06",
-                    "unit_count": 2,
-                    "unit_level": 6
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -458,7 +356,7 @@
                     "position_name": "boss_yellow",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:2000",
+                    "custom_change": "hp:3000",
                     "unit_level": 6
                 }
             ]
@@ -504,7 +402,7 @@
                     "trigger_type": "unit_stay",
                     "source_type": "tag_source",
                     "source_value": "player",
-                    "position_name": "trigger_blue_boss",
+                    "position_name": "trigger_area_3",
                     "trigger_count": 1,
                     "duration": 0
                 }
@@ -520,34 +418,25 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
-                    "source_value": "human_assassin",
+                    "source_value": "hammer_warrior",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
-                    "position_name": "orange_08",
-                    "unit_count": 2,
+                    "show_hp": true,
+                    "tag_name": "blue_boss",
+                    "buff_name": "blue_buff",
+                    "buff_type": "buff_tag",
+                    "buff_params": "duration:-1,buff_param:blue,color_blue:255,color_green:255,effect_resoure:buff_ball",
+                    "position_name": "boss_blue",
+                    "unit_count": 1,
+                    "is_boss": true,
+                    "custom_change": "hp:3000",
                     "unit_level": 6
                 },
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "women_fire_wizard",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_09",
-                    "unit_count": 2,
-                    "unit_level": 6
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "women_wizard",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_10",
-                    "unit_count": 2,
-                    "unit_level": 6
+                    "action_type": "event_change",
+                    "event_name": "red_boss_dead",
+                    "event_state": "event_enable"
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -557,14 +446,14 @@
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "show_hp": true,
-                    "tag_name": "blue_boss",
-                    "buff_name": "blue_buff",
+                    "tag_name": "red_boss",
+                    "buff_name": "red_buff",
                     "buff_type": "buff_tag",
-                    "buff_params": "duration:-1,buff_param:blue,color_blue:255,color_green:255,effect_resoure:buff_ball",
-                    "position_name": "blue_boss",
+                    "buff_params": "duration:-1,buff_param:red,color_red:255,effect_resource:buff_ball",
+                    "position_name": "boss_red",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:2000",
+                    "custom_change": "hp:3000",
                     "unit_level": 6
                 }
             ]
@@ -595,50 +484,6 @@
                     "buff_type": "buff_tag",
                     "buff_params": "duration:-1,buff_param:blue,color_green:255,color_blue:255,effect_resource:buff_ball",
                     "unit_level": 1
-                }
-            ]
-        },
-        {
-            "name": "red_boss",
-            "enabled": true,
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_stay",
-                    "source_type": "tag_source",
-                    "source_value": "player",
-                    "position_name": "trigger_red_boss",
-                    "trigger_count": 1,
-                    "duration": 0
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "red_boss_dead",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "hammer_warrior",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "show_hp": true,
-                    "tag_name": "red_boss",
-                    "buff_name": "red_tag",
-                    "buff_type": "buff_tag",
-                    "buff_params": "duration:-1,buff_param:red,color_red:255,effect_resource:buff_ball",
-                    "position_name": "boss_red",
-                    "unit_count": 1,
-                    "is_boss": true,
-                    "custom_change": "hp:2000",
-                    "unit_level": 6
                 }
             ]
         },
@@ -705,19 +550,6 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
-                    "source_value": "women_fire_wizard",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "orange_11",
-                    "unit_count": 1,
-                    "custom_change": "hp:1000",
-                    "unit_level": 7,
-                    "skill_1_level": 1
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
                     "source_value": "anubies",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
@@ -726,7 +558,7 @@
                     "position_name": "boss_final",
                     "unit_count": 1,
                     "is_boss": true,
-                    "custom_change": "hp:3000",
+                    "custom_change": "hp:5000",
                     "unit_level": 7
                 },
                 {
@@ -734,6 +566,287 @@
                     "action_type": "event_change",
                     "event_name": "main_win",
                     "event_state": "event_enable"
+                }
+            ]
+        },
+        {
+            "name": "default_monster",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_01",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_05",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_06",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_07",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_11",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_12",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_15",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_10",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_17",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_01",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_05",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_06",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_14",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "werewolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "werewolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_04",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "werewolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_08",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "werewolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_17",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_02",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_09",
+                    "unit_count": 2,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_master_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_09",
+                    "unit_count": 1,
+                    "unit_level": 6
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_master_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_02",
+                    "unit_count": 1,
+                    "unit_level": 6
                 }
             ]
         }
@@ -744,17 +857,28 @@
         "desert_thief_leader",
         "hammer_warrior",
         "human_assassin",
+        "human_master_assassin",
         "werewolf",
-        "wild_wolf",
-        "women_fire_wizard",
-        "women_wizard"
+        "wild_wolf"
     ],
     "tasks": [
         {
             "type": "primary_win",
             "name": "main_task",
-            "desc": "kill boss",
-            "title": "kill_boss"
+            "desc": "击败阿努比斯",
+            "title": "击败阿努比斯"
+        },
+        {
+            "type": "additional_win",
+            "name": "additional_task_1",
+            "desc": "全员存活",
+            "title": "全员存活"
+        },
+        {
+            "type": "additional_win",
+            "name": "additional_task_2",
+            "desc": "在5分钟内完成任务",
+            "title": "在5分钟内完成任务"
         }
     ]
 }

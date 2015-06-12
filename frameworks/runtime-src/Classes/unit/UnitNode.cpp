@@ -257,7 +257,7 @@ void UnitNode::onSkeletonAnimationStart( int track_index ) {
         
     }
     else if( animation_name == "Die" ) {
-        std::string audio_res = this->getUnitData()->name + "/die.wav";
+        std::string audio_res = this->getUnitData()->name + "/die.mp3";
         AudioManager::getInstance()->playEffect( audio_res );
     }
 }
@@ -306,11 +306,11 @@ void UnitNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
     if( ( animation_name == "Cast" || animation_name == "Cast2" ) && event_name == "OnCasting" ) {
         this->onCasting();
         int sk_id = _using_skill_params["skill_id"].asInt();
-        std::string audio_res = this->getUnitData()->name + Utils::stringFormat( "/cast%d.wav", sk_id + 1 );
+        std::string audio_res = this->getUnitData()->name + Utils::stringFormat( "/cast%d.mp3", sk_id + 1 );
         AudioManager::getInstance()->playEffect( audio_res );
     }
     else if( animation_name == "Attack" && event_name == "OnAttacking" ) {
-        std::string audio_res = this->getUnitData()->name + "/attack.wav";
+        std::string audio_res = this->getUnitData()->name + "/attack.mp3";
         AudioManager::getInstance()->playEffect( audio_res );
         this->onAttacking();
     }
@@ -536,6 +536,8 @@ void UnitNode::appear() {
 }
 
 void UnitNode::disappear() {
+    this->removeAllBuffs();
+    this->removeAllUnitComponents();
     FadeTo* fadeout = FadeTo::create( 1.2f, 0 );
     CallFunc* callback = CallFunc::create( CC_CALLBACK_0( UnitNode::onDisappearEnd, this ) );
     Sequence* seq = Sequence::create( fadeout, callback, nullptr );
@@ -548,7 +550,7 @@ void UnitNode::onDisappearEnd() {
 
 void UnitNode::onDying() {
     this->removeAllBuffs();
-    this->removeAllComponents();
+    this->removeAllUnitComponents();
     Sprite* blood = Sprite::createWithSpriteFrameName( "unit_deadblood.png" );
     UnitNodeFadeoutComponent* component = UnitNodeFadeoutComponent::create( blood, "dead_blood", 3.0f, 0, true );
     component->setPosition( Point::ZERO );
@@ -655,7 +657,14 @@ void UnitNode::applyCustomChange( const std::string& content_string ) {
     for( auto str : change_pairs ) {
         std::vector<std::string> pair;
         Utils::split( str, pair, ':' );
-        _target_data->setAttribute( pair.at( 0 ), pair.at( 1 ) );
+        std::string key = pair.at( 0 );
+        std::string value = pair.at( 1 );
+        if( key == "attackable" ) {
+            this->setAttackable( value == "true" );
+        }
+        else {
+            _target_data->setAttribute( pair.at( 0 ), pair.at( 1 ) );
+        }
         _front->setScale( _target_data->scale );
         if( _back ) {
             _back->setScale( _target_data->scale );

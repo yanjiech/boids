@@ -100,6 +100,9 @@ bool UIBattleMenuLayer::init( BattleLayer* battle_layer ) {
     ui::Button* btn_lose_confirm = dynamic_cast<ui::Button*>( _lose_panel->getChildByName( "btn_ok" ) );
     btn_lose_confirm->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onConfirmTouched, this ) );
     
+    ui::Button* btn_lose_restart = dynamic_cast<ui::Button*>( _lose_panel->getChildByName( "btn_restart" ) );
+    btn_lose_restart->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onRestartTouched, this ) );
+    
     _lose_panel_action = ActionTimelineCache::getInstance()->loadAnimationActionWithFlatBuffersFile( lose_panel_file );
     
     //pause panel

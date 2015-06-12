@@ -1,0 +1,1123 @@
+{
+    "positions": [
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 1776.65,
+                "y": 117.696,
+                "width": 243.6,
+                "height": 163.731
+            }
+        },
+        {
+            "name": "exit",
+            "rect": {
+                "x": 4544.11,
+                "y": -0.110039,
+                "width": 580.047,
+                "height": 181.701
+            }
+        },
+        {
+            "name": "mission_2",
+            "rect": {
+                "x": 203.241,
+                "y": 3773.88,
+                "width": 238.608,
+                "height": 213.649
+            }
+        },
+        {
+            "name": "mission_3",
+            "rect": {
+                "x": 4947.44,
+                "y": 3436.43,
+                "width": 214.647,
+                "height": 214.647
+            }
+        },
+        {
+            "name": "mission_5",
+            "rect": {
+                "x": 4293.52,
+                "y": 984.461,
+                "width": 248.592,
+                "height": 278.542
+            }
+        },
+        {
+            "name": "mission_1",
+            "rect": {
+                "x": 1415.25,
+                "y": 666.791,
+                "width": 182.7,
+                "height": 161.734
+            }
+        },
+        {
+            "name": "mission_4",
+            "rect": {
+                "x": 2187.98,
+                "y": 2221.24,
+                "width": 254.582,
+                "height": 207.659
+            }
+        },
+        {
+            "name": "orange_01",
+            "rect": {
+                "x": 1549.03,
+                "y": 308.384,
+                "width": 61.8982,
+                "height": 57.9049
+            }
+        },
+        {
+            "name": "orange_02",
+            "rect": {
+                "x": 2807.96,
+                "y": 252.476,
+                "width": 185.695,
+                "height": 165.728
+            }
+        },
+        {
+            "name": "orange_03",
+            "rect": {
+                "x": 1452.19,
+                "y": 641.836,
+                "width": 284.532,
+                "height": 308.493
+            }
+        },
+        {
+            "name": "orange_04",
+            "rect": {
+                "x": 662.485,
+                "y": 1498.43,
+                "width": 326.464,
+                "height": 290.522
+            }
+        },
+        {
+            "name": "orange_05",
+            "rect": {
+                "x": 2672.18,
+                "y": 1454.5,
+                "width": 151.75,
+                "height": 136.775
+            }
+        },
+        {
+            "name": "orange_06",
+            "rect": {
+                "x": 3816.3,
+                "y": 1264.81,
+                "width": 148.756,
+                "height": 147.757
+            }
+        },
+        {
+            "name": "orange_07",
+            "rect": {
+                "x": 3332.1,
+                "y": 1975.64,
+                "width": 252.585,
+                "height": 194.68
+            }
+        },
+        {
+            "name": "orange_08",
+            "rect": {
+                "x": 2320.76,
+                "y": 1972.65,
+                "width": 293.518,
+                "height": 207.659
+            }
+        },
+        {
+            "name": "orange_09",
+            "rect": {
+                "x": 2988.66,
+                "y": 2356.02,
+                "width": 193.682,
+                "height": 146.759
+            }
+        },
+        {
+            "name": "orange_10",
+            "rect": {
+                "x": 1394.28,
+                "y": 2539.72,
+                "width": 229.623,
+                "height": 187.692
+            }
+        },
+        {
+            "name": "orange_11",
+            "rect": {
+                "x": 382.945,
+                "y": 2563.68,
+                "width": 124.795,
+                "height": 94.8442
+            }
+        },
+        {
+            "name": "orange_12",
+            "rect": {
+                "x": 489.769,
+                "y": 3577.01,
+                "width": 404.335,
+                "height": 287.528
+            }
+        },
+        {
+            "name": "orange_13",
+            "rect": {
+                "x": 2137.06,
+                "y": 3879.52,
+                "width": 350.424,
+                "height": 228.625
+            }
+        },
+        {
+            "name": "orange_14",
+            "rect": {
+                "x": 2517.44,
+                "y": 2855.2,
+                "width": 351.422,
+                "height": 259.573
+            }
+        },
+        {
+            "name": "orange_15",
+            "rect": {
+                "x": 3284.18,
+                "y": 3452.22,
+                "width": 130.785,
+                "height": 92.8474
+            }
+        },
+        {
+            "name": "orange_16",
+            "rect": {
+                "x": 3671.54,
+                "y": 3932.43,
+                "width": 174.713,
+                "height": 133.78
+            }
+        },
+        {
+            "name": "orange_17",
+            "rect": {
+                "x": 4233.62,
+                "y": 3167.68,
+                "width": 177.708,
+                "height": 173.714
+            }
+        },
+        {
+            "name": "orange_18",
+            "rect": {
+                "x": 4705.84,
+                "y": 3337.41,
+                "width": 176.709,
+                "height": 157.741
+            }
+        },
+        {
+            "name": "orange_19",
+            "rect": {
+                "x": 5264.92,
+                "y": 3631.92,
+                "width": 64.8936,
+                "height": 60.9001
+            }
+        },
+        {
+            "name": "orange_20",
+            "rect": {
+                "x": 5295.87,
+                "y": 2754.36,
+                "width": 115.81,
+                "height": 92.8474
+            }
+        },
+        {
+            "name": "orange_21",
+            "rect": {
+                "x": 5542.46,
+                "y": 2237.21,
+                "width": 66.8896,
+                "height": 75.8752
+            }
+        },
+        {
+            "name": "orange_22",
+            "rect": {
+                "x": 4738.79,
+                "y": 2223.24,
+                "width": 143.764,
+                "height": 100.834
+            }
+        },
+        {
+            "name": "orange_23",
+            "rect": {
+                "x": 5434.64,
+                "y": 1707.08,
+                "width": 69.8853,
+                "height": 59.9015
+            }
+        },
+        {
+            "name": "orange_24",
+            "rect": {
+                "x": 5086.21,
+                "y": 639.839,
+                "width": 331.456,
+                "height": 182.7
+            }
+        },
+        {
+            "name": "orange_25",
+            "rect": {
+                "x": 4264.56,
+                "y": 926.368,
+                "width": 323.468,
+                "height": 374.385
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "story_01",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_1",
+                    "hint_visible": true
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：主人！～",
+                            "speaker": "enchantress"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "宅男：！！",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：喂！宅男！快跟我们回家！",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "宅男：（我要见公主...见公主）你们认错人了！",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：在这个次元见到我们竟然一点都不惊讶，不愧是宅男的思维。",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：他竟然跑了！快追上去！",
+                            "speaker": "kyle"
+                        }
+                    ],
+                    "name": "story_01"
+                }
+            ]
+        },
+        {
+            "name": "story_02",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "mission_5",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "win_cond",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：再跑就别怪我下狠手！",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：T--T 主人！",
+                            "speaker": "enchantress"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：跑进森林了！追吧！",
+                            "speaker": "dracula"
+                        }
+                    ],
+                    "name": "story_02"
+                }
+            ]
+        },
+        {
+            "name": "win_cond",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "exit",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_1",
+                    "task_state": "task_finished"
+                }
+            ]
+        },
+        {
+            "name": "arrive_1",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "mission_1",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "arrive_2",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_1",
+                    "hint_visible": false
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_2",
+                    "hint_visible": true
+                }
+            ]
+        },
+        {
+            "name": "arrive_2",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "mission_2",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_3",
+                    "hint_visible": true
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_2",
+                    "hint_visible": false
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "arrive_3",
+                    "event_state": "event_enable"
+                }
+            ]
+        },
+        {
+            "name": "arrive_3",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "mission_3",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_4",
+                    "hint_visible": true
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_3",
+                    "hint_visible": false
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "arrive_4",
+                    "event_state": "event_enable"
+                }
+            ]
+        },
+        {
+            "name": "arrive_4",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "mission_4",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_5",
+                    "hint_visible": true
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_4",
+                    "hint_visible": false
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "arrive_5",
+                    "event_state": "event_enable"
+                }
+            ]
+        },
+        {
+            "name": "arrive_5",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "mission_5",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_5",
+                    "hint_visible": false
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "story_02",
+                    "event_state": "event_enable"
+                }
+            ]
+        },
+        {
+            "name": "lose_cond",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_1",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "default_monster",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "poodle",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_01",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "poodle",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_02",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "poodle",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_05",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "poodle",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_06",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "poodle",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_04",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "poodle",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_22",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "poodle",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_20",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "poodle",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_15",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "hammer_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_02",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "hammer_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_04",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "hammer_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_12",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "hammer_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_14",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "hammer_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_17",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "hammer_warrior",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_24",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "footman",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_24",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "footman",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_17",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "footman",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_16",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "footman",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_10",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "footman",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_05",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "footman",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_10",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_16",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "archer",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_22",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_25",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_08",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_14",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_master_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_14",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_master_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_08",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_master_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_25",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "women_wizard",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "women_wizard",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_07",
+                    "unit_count": 2,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "women_fire_wizard",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_07",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "women_fire_wizard",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "scarecrow",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_11",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "scarecrow",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_12",
+                    "unit_count": 3,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "scarecrow",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_18",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "scarecrow",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_19",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "scarecrow",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_20",
+                    "unit_count": 1,
+                    "unit_level": 12
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "scarecrow",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_21",
+                    "unit_count": 1,
+                    "unit_level": 12
+                }
+            ]
+        }
+    ],
+    "units": [
+        "human_master_assassin",
+        "archer",
+        "footman",
+        "hammer_warrior",
+        "human_assassin",
+        "poodle",
+        "scarecrow",
+        "women_fire_wizard",
+        "women_wizard"
+    ],
+    "tasks": [
+        {
+            "type": "primary_win",
+            "name": "task_1",
+            "desc": "依此找到5个主人线索，并到达出口",
+            "title": "依此找到5个主人线索，并到达出口"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_2",
+            "desc": "全员不死",
+            "title": "全员不死"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_3",
+            "desc": "在6分钟内完成任务",
+            "title": "在6分钟内完成任务"
+        }
+    ]
+}

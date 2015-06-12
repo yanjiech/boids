@@ -333,6 +333,16 @@ public:
     virtual void loadJson(const rapidjson::Value& value);
 };
 
+class EditorHintChangeAction : public EditorActionBase {
+public:
+    std::string HintName;
+    bool HintVisible;
+    
+    EditorHintChangeAction() : EditorActionBase( "hint_change_action" ) {}
+    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
+    virtual void loadJson(const rapidjson::Value& value);
+};
+
 class EditorEvent : public EditorBase {
 public:
     EditorEvent();

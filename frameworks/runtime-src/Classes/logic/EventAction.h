@@ -108,6 +108,17 @@ public:
     virtual void onActionTriggered( bool finish );
 };
 
+class HintChangeAction : public EventAction {
+public:
+    HintChangeAction();
+    virtual ~HintChangeAction();
+    
+    static HintChangeAction* create( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    virtual bool init( const cocos2d::ValueMap& action_data, class MapLogic* map_logic, class EventTrigger* trigger );
+    
+    virtual void onActionTriggered( bool finish );
+};
+
 class VisionChangeAction : public EventAction {
 public:
     VisionChangeAction();

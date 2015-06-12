@@ -1,5 +1,5 @@
 {
-    "gold" : 50000,
+    "gold" : 500000,
     "diamond" : 1000,
     "stone" : 1000,
     "team_level" : 20,
@@ -30,7 +30,67 @@
     },
     "mission_record" :
     {
-          
+        "1001" :
+        {
+            "level_id" : 1001,
+            "star" : 2
+        },
+        "1002" :
+        {
+            "level_id" : 1002,
+            "star" : 2
+        },
+        "1003" :
+        {
+            "level_id" : 1003,
+            "star" : 2
+
+        },
+        "1004" :
+        {
+            "level_id" : 1004,
+            "star" : 2
+        },
+        "1005" :
+        {
+            "level_id" : 1005,
+            "star" : 2
+        },
+        "1006" :
+        {
+            "level_id" : 1006,
+            "star" : 2
+        },
+        "1007" :
+        {
+            "level_id" : 1007,
+            "star" : 2
+        },
+        "1008" :
+        {
+            "level_id" : 1008,
+            "star" : 2
+        },
+        "1009" :
+        {
+            "level_id" : 1009,
+            "star" : 2
+        },
+        "1010" :
+        {
+            "level_id" : 1010,
+            "star" : 2
+        },
+        "1011" :
+        {
+            "level_id" : 1011,
+            "star" : 2
+        },
+        "1012" :
+        {
+            "level_id" : 1012,
+            "star" : 2
+        }
     },
     "deploy_units" :
     {

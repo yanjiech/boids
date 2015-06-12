@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="210" height="180" tilewidth="32" tileheight="32" nextobjectid="1453">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="210" height="180" tilewidth="32" tileheight="32" nextobjectid="1466">
  <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32">
   <image source="base_terrain.png" width="2048" height="2048"/>
  </tileset>
@@ -116,19 +116,19 @@
    <image width="400" height="400" source="muzhuang_02.png"/>
   </tile>
   <tile id="37">
-   <image width="135" height="83" source="huodui.png"/>
+   <image width="155" height="90" source="huodui.png"/>
   </tile>
   <tile id="38">
-   <image width="390" height="361" source="shanzeibingying_01.png"/>
+   <image width="455" height="390" source="shanzeibingying.png"/>
   </tile>
   <tile id="39">
-   <image width="410" height="300" source="shanzeibingying_02.png"/>
+   <image width="455" height="390" source="shanzeibingying.png"/>
   </tile>
   <tile id="40">
    <image width="158" height="156" source="shanzeiguo.png"/>
   </tile>
   <tile id="41">
-   <image width="133" height="203" source="wuqijia.png"/>
+   <image width="133" height="172" source="wuqijia.png"/>
   </tile>
   <tile id="42">
    <image width="440" height="433" source="langtuteng_01.png"/>
@@ -38565,17 +38565,61 @@
   <object id="948" gid="2147487746" x="6220" y="4230"/>
   <object id="949" gid="4099" x="6473.94" y="5424.24"/>
   <object id="950" gid="2147487746" x="6552" y="5132"/>
-  <object id="1015" gid="2147487757" x="6262.27" y="2316.33"/>
-  <object id="1016" gid="2147487757" x="6125.45" y="1227.27"/>
-  <object id="1017" gid="2147487757" x="6276.97" y="1145.45"/>
-  <object id="1018" gid="2147487757" x="6428.48" y="1066.67"/>
-  <object id="1019" gid="4109" x="5252.73" y="1345.45"/>
-  <object id="1020" gid="4109" x="5410.3" y="1430.3"/>
-  <object id="1029" gid="2147487757" x="5218.67" y="3634"/>
-  <object id="1030" gid="2147487757" x="5385.33" y="3551.33"/>
-  <object id="1031" gid="2147487757" x="5548" y="3466"/>
-  <object id="1032" gid="2147487757" x="5442.67" y="3684.67"/>
-  <object id="1033" gid="2147487757" x="5613.33" y="3602.67"/>
+  <object id="1015" name="b6" type="steal_thorn" gid="2147487757" x="6262.27" y="2316.33">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1016" name="b3" type="steal_thorn" gid="2147487757" x="6125.45" y="1227.27">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1017" name="b4" type="steal_thorn" gid="2147487757" x="6276.97" y="1145.45">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1018" name="b5" type="steal_thorn" gid="2147487757" x="6428.48" y="1066.67">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1019" name="b1" type="steal_thorn" gid="4109" x="5252.73" y="1345.45">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1020" name="b2" type="steal_thorn" gid="4109" x="5410.3" y="1430.3">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1029" name="b7" type="steal_thorn" gid="2147487757" x="5218.67" y="3634">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1030" name="b8" type="steal_thorn" gid="2147487757" x="5385.33" y="3551.33">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1031" name="b9" type="steal_thorn" gid="2147487757" x="5548" y="3466">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1032" name="b10" type="steal_thorn" gid="2147487757" x="5442.67" y="3684.67">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
+  <object id="1033" name="b11" type="steal_thorn" gid="2147487757" x="5613.33" y="3602.67">
+   <properties>
+    <property name="level" value="8"/>
+   </properties>
+  </object>
   <object id="1142" gid="4121" x="3562" y="294"/>
   <object id="1143" gid="4122" x="3753" y="219"/>
   <object id="1141" gid="4120" x="4215" y="1050"/>
@@ -38643,6 +38687,39 @@
   <object id="1320" gid="3221229592" x="5444" y="134"/>
   <object id="1363" gid="2147487773" x="5993.94" y="209.091"/>
   <object id="1405" gid="4098" x="4836.36" y="4469.7"/>
+  <object id="1453" name="b1_collide" type="collide" x="5252" y="1272">
+   <polygon points="0,0 142.667,74.6667 292,-1.33333 145.333,-82.6667"/>
+  </object>
+  <object id="1455" name="b2_collide" type="collide" x="5410.67" y="1354.67">
+   <polygon points="0,0 146.667,77.3333 288,-4 148,-81.3333"/>
+  </object>
+  <object id="1456" name="b3_collide" type="collide" x="6270.67" y="1228">
+   <polygon points="0,0 144,-77.3333 0,-157.333 -132,-84"/>
+  </object>
+  <object id="1457" name="b4_collide" type="collide" x="6277.33" y="1064">
+   <polygon points="0,0 145.333,81.3333 290.667,4 142.667,-77.3333"/>
+  </object>
+  <object id="1458" name="b5_collide" type="collide" x="6430.67" y="985.333">
+   <polygon points="0,0 145.333,78.6667 269.333,5.33333 138.667,-78.6667"/>
+  </object>
+  <object id="1459" name="b6_collide" type="collide" x="6409.33" y="2317.33">
+   <polygon points="0,0 144,-80 -8,-164 -156,-84"/>
+  </object>
+  <object id="1461" name="b9_collide" type="collide" x="5364" y="3637.33">
+   <polygon points="0,0 146.667,-80 -1.33333,-162.667 -146.667,-84"/>
+  </object>
+  <object id="1462" name="b10_collide" type="collide" x="5385.33" y="3469.33">
+   <polygon points="0,0 146.667,82.6667 293.333,2.66667 149.333,-76"/>
+  </object>
+  <object id="1463" name="b11_collide" type="collide" x="5548" y="3386.67">
+   <polygon points="0,0 145.333,78.6667 293.333,1.33333 146.667,-80"/>
+  </object>
+  <object id="1464" name="b12_collide" type="collide" x="5442.67" y="3608">
+   <polygon points="0,0 148,78.6667 293.333,0 148,-80"/>
+  </object>
+  <object id="1465" name="b13_collide" type="collide" x="5613.33" y="3524">
+   <polygon points="0,0 144,81.3333 294.667,1.33333 148,-82.6667"/>
+  </object>
  </objectgroup>
  <layer name="grass" width="210" height="180">
   <data>

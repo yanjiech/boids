@@ -78,7 +78,7 @@ bool BattleLayer::init( MapData* map_data, const std::string& level_id, bool is_
         
         std::set<float> all_collide_radius;
         all_collide_radius.insert( 30.0f );
-        all_collide_radius.insert( 40.0f );
+//        all_collide_radius.insert( 40.0f );
         all_collide_radius.insert( 50.0f );
         Terrain::getInstance()->parseMap( _map_data->getMapData(), all_collide_radius );
         
@@ -224,6 +224,16 @@ void BattleLayer::updateFrame( float delta ) {
         _skill_ui_layer->updateFrame( delta );
         
         //handle dead units which need to be removed from battle
+        //handle directly disappear units
+        UnitMap alive_units = this->getAliveUnits();
+        for( auto pair : alive_units ) {
+            UnitNode* unit = pair.second;
+            
+            if( unit->getUnitState() == eUnitState::Dead ) {
+                this->onUnitDying( unit );
+            }
+        }
+        
         UnitMap dead_unit_map = this->getDeadUnits();
         for( auto pair : dead_unit_map ) {
             UnitNode* unit = pair.second;
@@ -328,7 +338,8 @@ void BattleLayer::updateFrame( float delta ) {
     }
     else if( _state == BattleWin || _state == BattleLose ) {
         _result_elapse += delta;
-        if( _result_elapse > 5.0f ) {
+
+        if( _state == BattleLose || _result_elapse > 5.0f ) {
             if( _state == BattleWin ) {
                 _battle_menu_layer->showResultPanel( true, _map_logic->getDropedItems() );
             }
@@ -1011,6 +1022,20 @@ void BattleLayer::slowTimeUpdate( float delta ) {
     }
 }
 
+void BattleLayer::addHint( HintNode* hint_node, eBattleSubLayer layer ) {
+    this->addToLayer( hint_node, layer, hint_node->getPosition(), this->zorderForPositionOnObjectLayer( hint_node->getPosition() ) );
+    _hint_node_vec.pushBack( hint_node );
+}
+
+void BattleLayer::setHintVisibleByName( const std::string& name, bool visible ) {
+    for( auto hint : _hint_node_vec ) {
+        std::string hint_name = hint->getHintName();
+        if( hint_name == name ) {
+            hint->setVisible( visible );
+        }
+    }
+}
+
 //private methods
 
 void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Value& data, eBattleSubLayer layer ) {
@@ -1063,6 +1088,14 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
             BlockNode* block_node = BlockNode::create( this, grid_properties, obj_properties );
             this->addBlockNode( block_node, layer );
         }
+    }
+    else if( type == "HintNode" ) {
+        std::string name = obj_properties.at( "name" ).asString();
+        Sprite* sp = _map_data->spriteFromObject( _tmx_map, data, true );
+        
+        HintNode* hint_node = HintNode::create( name, sp );
+        hint_node->setVisible( false );
+        this->addHint( hint_node, layer );
     }
     else if( type == "GroupSpineBlockNode" ) {
         std::string name = obj_properties.at( "name" ).asString();

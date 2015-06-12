@@ -369,7 +369,7 @@ void UIHeroDetailLayer::onSellConfirmTouched( cocos2d::Ref* sender, cocos2d::ui:
         PlayerInfo* player_info = PlayerInfo::getInstance();
         if( player_info->sellEquip( _selected_repo_cell->getEquipData()->obj_id ) ) {
             this->loadRepoEquips( (eEquipType)_current_tab, _current_equip_list->getCurPageIndex() );
-            std::string audio_res = "common/sell.wav";
+            std::string audio_res = "common/sell.mp3";
             AudioManager::getInstance()->playEffect( audio_res );
         }
         _pn_sell->setVisible( false );

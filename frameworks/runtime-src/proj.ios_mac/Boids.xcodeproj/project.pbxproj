@@ -74,6 +74,8 @@
 		769C66E71B27EEF400FA50F9 /* OpenningAnimationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */; };
 		76B578F51AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76B578F61AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
+		76C6A43B1B2AE12D006C93C0 /* HintNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76C6A4391B2AE12D006C93C0 /* HintNode.cpp */; };
+		76C6A43C1B2AE12D006C93C0 /* HintNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76C6A4391B2AE12D006C93C0 /* HintNode.cpp */; };
 		76DBFF271B29AA8600A454D5 /* EvilInvoke.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DBFF251B29AA8600A454D5 /* EvilInvoke.cpp */; };
 		76DBFF281B29AA8600A454D5 /* EvilInvoke.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DBFF251B29AA8600A454D5 /* EvilInvoke.cpp */; };
 		76DEA31C1B14180E0020FC7D /* UITeamTalentLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */; };
@@ -565,6 +567,8 @@
 		769C66E51B27EEF400FA50F9 /* OpenningAnimationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenningAnimationLayer.h; sourceTree = "<group>"; };
 		76B578F31AF7743600D7E783 /* TransitionLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionLayer.cpp; sourceTree = "<group>"; };
 		76B578F41AF7743600D7E783 /* TransitionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionLayer.h; sourceTree = "<group>"; };
+		76C6A4391B2AE12D006C93C0 /* HintNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HintNode.cpp; sourceTree = "<group>"; };
+		76C6A43A1B2AE12D006C93C0 /* HintNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HintNode.h; sourceTree = "<group>"; };
 		76DBFF251B29AA8600A454D5 /* EvilInvoke.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EvilInvoke.cpp; sourceTree = "<group>"; };
 		76DBFF261B29AA8600A454D5 /* EvilInvoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvilInvoke.h; sourceTree = "<group>"; };
 		76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITeamTalentLayer.cpp; sourceTree = "<group>"; };
@@ -1209,6 +1213,8 @@
 				76E21D8C1AC5137B006714AD /* Equipment.h */,
 				76E533BE1ACE41430020B825 /* BlockNode.cpp */,
 				76E533BF1ACE41430020B825 /* BlockNode.h */,
+				76C6A4391B2AE12D006C93C0 /* HintNode.cpp */,
+				76C6A43A1B2AE12D006C93C0 /* HintNode.h */,
 			);
 			name = unit;
 			path = ../Classes/unit;
@@ -2106,6 +2112,7 @@
 				E867B1BA1A36EDCD00EF8088 /* Border.cpp in Sources */,
 				E874130E1A0B5630003EBD0B /* tinyxml.cpp in Sources */,
 				98742E671ABBD31B0087D13D /* BarrageOfArrow.cpp in Sources */,
+				76C6A43C1B2AE12D006C93C0 /* HintNode.cpp in Sources */,
 				76021A981ADCBC7A00B639BA /* TowerNode.cpp in Sources */,
 				98E3B6721A73A77A00B5BEBB /* service.cc in Sources */,
 				E87413431A0BBB02003EBD0B /* EditMode.cpp in Sources */,
@@ -2326,6 +2333,7 @@
 				E84197EC1A09E73200F5DF36 /* BoidsMath.cpp in Sources */,
 				E84197D91A09226300F5DF36 /* gzwrite.c in Sources */,
 				E84197D01A09226300F5DF36 /* TmxTileset.cpp in Sources */,
+				76C6A43B1B2AE12D006C93C0 /* HintNode.cpp in Sources */,
 				76009E7D1AF863C8007DF026 /* NinthLife.cpp in Sources */,
 				E84197DD1A09226300F5DF36 /* inftrees.c in Sources */,
 				E84197D71A09226300F5DF36 /* gzlib.c in Sources */,

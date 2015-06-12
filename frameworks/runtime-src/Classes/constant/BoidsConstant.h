@@ -85,6 +85,7 @@
 #define ACTION_TYPE_TASK_CHANGE "task_change"
 #define ACTION_TYPE_GAME_CHANGE "game_change"
 #define ACTION_TYPE_EVENT_CHANGE "event_change"
+#define ACTION_TYPE_HINT_CHANGE "hint_change_action"
 #define ACTION_TYPE_VISION_CHANGE "vision_change"
 #define ACTION_TYPE_WAVE_ACTION "wave_action"
 #define ACTION_TYPE_CONVERSATION_ACTION "conversation_action"

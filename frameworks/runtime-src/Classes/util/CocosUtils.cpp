@@ -91,6 +91,6 @@ cocos2d::Value CocosUtils::jsonValueToValue( const rapidjson::Value& value ) {
 }
 
 bool CocosUtils::playTouchEffect() {
-    std::string audio_res = "common/touch_down.wav";
+    std::string audio_res = "common/touch_down.mp3";
     return AudioManager::getInstance()->playEffect( audio_res );
 }

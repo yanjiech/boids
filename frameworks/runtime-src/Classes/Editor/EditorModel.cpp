@@ -719,6 +719,20 @@ void EditorStoryAction::loadJson( const rapidjson::Value& value ) {
     }
 }
 
+//hint change action
+rapidjson::Value& EditorHintChangeAction::toJson(rapidjson::Document::AllocatorType& allocator) {
+    EditorActionBase::toJson( allocator );
+    _json.AddMember( "hint_name", HintName.c_str(), allocator );
+    _json.AddMember( "hint_visible", HintVisible, allocator );
+    return _json;
+}
+
+void EditorHintChangeAction::loadJson(const rapidjson::Value& value) {
+    EditorActionBase::loadJson( value );
+    HintName = value["hint_name"].GetString();
+    HintVisible = value["hint_visible"].GetBool();
+}
+
 EditorEvent::EditorEvent() {
     TriggerMeta = std::shared_ptr<EditorTriggerMeta>(new EditorTriggerMeta());
     this->Enabled = true;
@@ -809,6 +823,9 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
                 action = std::shared_ptr<EditorConversationAction>(new EditorConversationAction());
             } else if( actionType == "story_action" ) {
                 action = std::shared_ptr<EditorStoryAction>( new EditorStoryAction() );
+            }
+            else if( actionType == "hint_change_action" ) {
+                action = std::shared_ptr<EditorHintChangeAction>( new EditorHintChangeAction() );
             }
             action->loadJson(actions[i]);
             Actions.push_back(action);

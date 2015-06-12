@@ -243,6 +243,10 @@ void MapLogic::setActionStateByName( const std::string& name, int state ) {
     }
 }
 
+void MapLogic::setHintVisibleByName( const std::string& name, bool visible ) {
+    _battle_layer->setHintVisibleByName( name, visible );
+}
+
 void MapLogic::onTargetNodeAppear( TargetNode* target_node ) {
     do {
         UnitNode* unit_node = dynamic_cast<UnitNode*>( target_node );

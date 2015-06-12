@@ -24,6 +24,7 @@
 #include "../logic/MapLogic.h"
 #include "../Utils.h"
 #include "../unit/Item.h"
+#include "../unit/HintNode.h"
 
 enum eBattleSubLayer {
     MapLayer = 1,
@@ -120,6 +121,8 @@ private:
     
     float _result_elapse;
     float _slow_elapse;
+    
+    cocos2d::Vector<HintNode*> _hint_node_vec;
     
     //debug
     cocos2d::DrawNode* _draw_node;
@@ -266,6 +269,9 @@ public:
     void vibrate();
     
     void slowTimeUpdate( float delta );
+    
+    void addHint( HintNode* hint_node, eBattleSubLayer layer );
+    void setHintVisibleByName( const std::string& name, bool visible );
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

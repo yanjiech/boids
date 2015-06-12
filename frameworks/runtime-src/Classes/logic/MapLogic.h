@@ -80,6 +80,8 @@ public:
     void setTriggerStateByName( const std::string& name, int state ); //0 enable, 1 disable, 2 recycle
     void setActionStateByName( const std::string& name, int state ); //0 enable, 1 disable, 2 recycle
     
+    void setHintVisibleByName( const std::string& name, bool visible );
+    
     void onTargetNodeAppear( class TargetNode* target_node );
     void onTargetNodeDead( class TargetNode* target_node );
     void onTargetNodeDisappear( class TargetNode* target_node );

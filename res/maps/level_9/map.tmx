@@ -47,7 +47,7 @@
    <image width="185" height="224" source="xiangshu_02.png"/>
   </tile>
   <tile id="14">
-   <image width="278" height="383" source="songshu_03.png"/>
+   <image width="283" height="406" source="songshu_03.png"/>
   </tile>
   <tile id="15">
    <image width="118" height="146" source="shikuai_black04.png"/>

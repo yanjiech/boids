@@ -1,0 +1,1381 @@
+{
+    "positions": [
+        {
+            "name": "orange_02",
+            "rect": {
+                "x": 1360.33,
+                "y": 1991.61,
+                "width": 243.6,
+                "height": 165.728
+            }
+        },
+        {
+            "name": "orange_03",
+            "rect": {
+                "x": 1032.87,
+                "y": 2149.35,
+                "width": 224.631,
+                "height": 162.733
+            }
+        },
+        {
+            "name": "orange_04",
+            "rect": {
+                "x": 1766.67,
+                "y": 2229.22,
+                "width": 89.8525,
+                "height": 71.8821
+            }
+        },
+        {
+            "name": "orange_05",
+            "rect": {
+                "x": 257.148,
+                "y": 2266.16,
+                "width": 158.739,
+                "height": 89.8523
+            }
+        },
+        {
+            "name": "orange_06",
+            "rect": {
+                "x": 118.376,
+                "y": 1825.89,
+                "width": 175.711,
+                "height": 163.731
+            }
+        },
+        {
+            "name": "orange_07",
+            "rect": {
+                "x": 591.599,
+                "y": 1642.19,
+                "width": 124.795,
+                "height": 128.788
+            }
+        },
+        {
+            "name": "orange_08",
+            "rect": {
+                "x": 1406.26,
+                "y": 1569.31,
+                "width": 147.757,
+                "height": 94.8441
+            }
+        },
+        {
+            "name": "orange_09",
+            "rect": {
+                "x": 1080.79,
+                "y": 980.275,
+                "width": 151.751,
+                "height": 93.8458
+            }
+        },
+        {
+            "name": "orange_10",
+            "rect": {
+                "x": 697.425,
+                "y": 678.771,
+                "width": 130.785,
+                "height": 94.8441
+            }
+        },
+        {
+            "name": "orange_11",
+            "rect": {
+                "x": 184.268,
+                "y": 638.836,
+                "width": 173.715,
+                "height": 111.816
+            }
+        },
+        {
+            "name": "orange_12",
+            "rect": {
+                "x": 251.158,
+                "y": 236.497,
+                "width": 183.698,
+                "height": 116.808
+            }
+        },
+        {
+            "name": "orange_13",
+            "rect": {
+                "x": 1717.75,
+                "y": 639.834,
+                "width": 144.762,
+                "height": 100.834
+            }
+        },
+        {
+            "name": "orange_14",
+            "rect": {
+                "x": 2410.61,
+                "y": 116.694,
+                "width": 106.824,
+                "height": 106.824
+            }
+        },
+        {
+            "name": "orange_15",
+            "rect": {
+                "x": 2530.41,
+                "y": 399.23,
+                "width": 133.78,
+                "height": 100.834
+            }
+        },
+        {
+            "name": "orange_16",
+            "rect": {
+                "x": 2736.07,
+                "y": 682.764,
+                "width": 128.789,
+                "height": 110.818
+            }
+        },
+        {
+            "name": "orange_17",
+            "rect": {
+                "x": 2848.89,
+                "y": 1127.03,
+                "width": 86.8572,
+                "height": 94.844
+            }
+        },
+        {
+            "name": "orange_18",
+            "rect": {
+                "x": 1806.6,
+                "y": 1095.09,
+                "width": 178.706,
+                "height": 192.683
+            }
+        },
+        {
+            "name": "orange_01",
+            "rect": {
+                "x": 1806.6,
+                "y": 1750.01,
+                "width": 248.592,
+                "height": 144.762
+            }
+        },
+        {
+            "name": "hostage_03",
+            "rect": {
+                "x": 415.887,
+                "y": 473.109,
+                "width": 270.555,
+                "height": 206.66
+            }
+        },
+        {
+            "name": "hostage_02",
+            "rect": {
+                "x": 312.058,
+                "y": 1653.17,
+                "width": 239.606,
+                "height": 217.642
+            }
+        },
+        {
+            "name": "hostage_01",
+            "rect": {
+                "x": 1102.76,
+                "y": 2032.55,
+                "width": 245.596,
+                "height": 187.692
+            }
+        },
+        {
+            "name": "hostage_04",
+            "rect": {
+                "x": 2485.49,
+                "y": 213.535,
+                "width": 259.573,
+                "height": 168.723
+            }
+        },
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 1832.56,
+                "y": 2041.53,
+                "width": 129.787,
+                "height": 96.8408
+            }
+        },
+        {
+            "name": "ally",
+            "rect": {
+                "x": 2059.19,
+                "y": 1822.89,
+                "width": 361.406,
+                "height": 195.678
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "lose_cond",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_1",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "story_01",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "士兵：快守不住了！谁来帮帮我们？！",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "哥布林：交出王子！否则就杀光你们！",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：主人也许就在城内，我们就帮帮他们吧。",
+                            "speaker": "enchantress"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "士兵：还有4个平民被劫走了，请去帮帮他们！",
+                            "speaker": "goblin_auntie"
+                        }
+                    ],
+                    "name": "story_01"
+                }
+            ]
+        },
+        {
+            "name": "story_02",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "士兵：谢谢英雄！",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：总算结束了，出发去找死宅男吧！",
+                            "speaker": "kyle"
+                        }
+                    ],
+                    "name": "story_02"
+                }
+            ]
+        },
+        {
+            "name": "win_cond",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_02",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_1",
+                    "task_state": "task_finished"
+                }
+            ]
+        },
+        {
+            "name": "default_monster",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_02",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_07",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_08",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_18",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_09",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_10",
+                    "unit_count": 2,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_12",
+                    "unit_count": 2,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_14",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_15",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_02",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_07",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_11",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_18",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_15",
+                    "unit_count": 1,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_04",
+                    "unit_count": 1,
+                    "unit_level": 11,
+                    "skill_1_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 2,
+                    "unit_level": 11,
+                    "skill_1_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_05",
+                    "unit_count": 1,
+                    "unit_level": 11,
+                    "skill_1_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_06",
+                    "unit_count": 1,
+                    "unit_level": 11,
+                    "skill_1_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_09",
+                    "unit_count": 1,
+                    "unit_level": 11,
+                    "skill_1_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_11",
+                    "unit_count": 1,
+                    "unit_level": 11,
+                    "skill_1_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_16",
+                    "unit_count": 1,
+                    "unit_level": 11,
+                    "skill_1_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_17",
+                    "unit_count": 1,
+                    "unit_level": 11,
+                    "skill_1_level": 11
+                }
+            ]
+        },
+        {
+            "name": "ally",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "lose_cond_2",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "footman",
+                    "unit_type": "ally",
+                    "unit_state": "unit_appear",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "knight",
+                    "unit_type": "ally",
+                    "unit_state": "unit_appear",
+                    "tag_name": "lord",
+                    "position_name": "ally",
+                    "unit_count": 1,
+                    "custom_change": "hp:5000",
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_01",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_02",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_02",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_03",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_03",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_04",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_04",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_05",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_05",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_06",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_06",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_07",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_07",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_08",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_08",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_09",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_09",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_10",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "wave_10",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "attacker",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "story_02",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "tag_name": "attacker",
+                    "position_name": "ally",
+                    "unit_count": 3,
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "hostage",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "ally",
+                    "unit_state": "unit_hold_appear",
+                    "tag_name": "hostage,hostage_01",
+                    "position_name": "hostage_01",
+                    "custom_change": "attackable:false",
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "ally",
+                    "unit_state": "unit_hold_appear",
+                    "tag_name": "hostage,hostage_02",
+                    "position_name": "hostage_02",
+                    "custom_change": "attackable:false",
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "ally",
+                    "unit_state": "unit_hold_appear",
+                    "tag_name": "hostage,hostage_03",
+                    "position_name": "hostage_03",
+                    "custom_change": "attackable:false",
+                    "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "villager",
+                    "unit_type": "ally",
+                    "unit_state": "unit_hold_appear",
+                    "tag_name": "hostage,hostage_04",
+                    "position_name": "hostage_04",
+                    "custom_change": "attackable:false",
+                    "unit_level": 11
+                }
+            ]
+        },
+        {
+            "name": "hostage_speak",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 4
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "谁来救救我！",
+                            "duration": 3600,
+                            "interval": 0
+                        },
+                        {
+                            "content": "妈妈你在哪儿！",
+                            "duration": 3600,
+                            "interval": 0
+                        },
+                        {
+                            "content": "我好害怕呀！",
+                            "duration": 3600,
+                            "interval": 0
+                        },
+                        {
+                            "content": "求求你们不要杀我！",
+                            "duration": 3600,
+                            "interval": 0
+                        }
+                    ],
+                    "name": "help",
+                    "source_type": "tag_source",
+                    "source_value": "hostage",
+                    "is_random_order": true,
+                    "repeat_times": 1
+                }
+            ]
+        },
+        {
+            "name": "save_hostage",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "hostage_01",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_01",
+                    "unit_state": "unit_disappear",
+                    "unit_level": 1
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_progress",
+                    "progress": 25
+                }
+            ]
+        },
+        {
+            "name": "save_hostage_02",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "hostage_02",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_02",
+                    "unit_state": "unit_disappear",
+                    "unit_level": 1
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_progress",
+                    "progress": 25
+                }
+            ]
+        },
+        {
+            "name": "save_hostage_03",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "hostage_03",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_03",
+                    "unit_state": "unit_disappear",
+                    "unit_level": 1
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_progress",
+                    "progress": 25
+                }
+            ]
+        },
+        {
+            "name": "save_hostage_04",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "hostage_04",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_disappear",
+                    "unit_level": 1
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_progress",
+                    "progress": 25
+                }
+            ]
+        },
+        {
+            "name": "lose_cond_2",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "lord",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_1",
+                    "task_state": "task_failed"
+                }
+            ]
+        }
+    ],
+    "units": [
+        "bomb_goblin",
+        "bomb_robot",
+        "footman",
+        "goblin",
+        "knight"
+    ],
+    "tasks": [
+        {
+            "type": "primary_win",
+            "name": "task_1",
+            "desc": "hold住10波怪",
+            "title": "hold住10波怪"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_2",
+            "desc": "至少存活1名士兵",
+            "title": "至少存活1名士兵"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_3",
+            "desc": "找到所有4个平民",
+            "title": "找到所有4个平民"
+        }
+    ]
+}
