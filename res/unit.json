@@ -343,7 +343,7 @@
         "range": 80.0, 
         "rec": 0.5, 
         "recgr": 0.2, 
-        "scale": 1.0, 
+        "scale": 1.5, 
         "skills": [], 
         "star": 1, 
         "ten": 5.0, 
@@ -381,7 +381,7 @@
         "range": 80.0, 
         "rec": 0.5, 
         "recgr": 0.2, 
-        "scale": 1.0, 
+        "scale": 1.5, 
         "skills": [
             "Boomerang"
         ], 
@@ -440,7 +440,7 @@
         "crigr": 2.2, 
         "def": 26.0, 
         "defgr": 8.5, 
-        "displayname": "无头骑士", 
+        "displayname": "黑暗骑士", 
         "dodge": 14.0, 
         "dodgegr": 5.0, 
         "double_face": false, 
@@ -755,7 +755,7 @@
         "crigr": 6.0, 
         "def": 12.0, 
         "defgr": 2.3, 
-        "displayname": "甘道夫", 
+        "displayname": "haiyo suo", 
         "dodge": 3.0, 
         "dodgegr": 2.0, 
         "double_face": false, 
@@ -896,7 +896,7 @@
         "range": 80.0, 
         "rec": 0.5, 
         "recgr": 0.2, 
-        "scale": 1.0, 
+        "scale": 0.9, 
         "skills": [
             "DeathSlice"
         ], 
@@ -1134,7 +1134,7 @@
         "range": 340.0, 
         "rec": 0.5, 
         "recgr": 0.2, 
-        "scale": 1.0, 
+        "scale": 1.2, 
         "skills": [
             "SnowStorm", 
             "IceDebris"
@@ -1444,7 +1444,7 @@
         "range": 80.0, 
         "rec": 0.5, 
         "recgr": 0.23, 
-        "scale": 1.0, 
+        "scale": 1.2, 
         "skills": [
             "GiantSword", 
             "LightShield"

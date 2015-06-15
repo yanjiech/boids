@@ -1,7 +1,8 @@
 {
+    "player_name" : "善良天真的玩家",
     "gold" : 500000,
-    "diamond" : 1000,
-    "stone" : 1000,
+    "diamond" : 1000000,
+    "stone" : 1000000,
     "team_level" : 20,
     "team_exp" : 0,
     "team_talent" :

@@ -13,6 +13,7 @@
 #include "../scene/BattleLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "../manager/ResourceManager.h"
+#include "../manager/AudioManager.h"
 #include "../BoidsMath.h"
 #include "../AI/Terrain.h"
 
@@ -229,6 +230,8 @@ void BulletNode::updateFrame( float delta ) {
             UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( bomb_effect, Utils::stringFormat( "bullet_%d_hit", _bullet_id ), true );
             _battle_layer->addToEffectLayer( component, _target_pos, 0 );
             component->setAnimation( 0, "animation", false );
+            
+            AudioManager::getInstance()->playEffect( "common/explode.mp3" );
         }
         
         for( TargetNode* u : hit_targets ) {

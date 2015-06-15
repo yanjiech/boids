@@ -130,8 +130,6 @@ private:
     void parseMapObjects();
     void parseMapElementWithData( const cocos2d::TMXObjectGroup* group, const cocos2d::Value& data, eBattleSubLayer layer );
     
-    int zorderForPositionOnObjectLayer( const cocos2d::Point& pos );
-    
     void reorderObjectLayer();
     
     void updateTowers( float delta );
@@ -190,19 +188,18 @@ public:
     
     cocos2d::Vector<UnitNode*> getAliveUnitsByCondition( eTargetCamp camp, const std::vector<std::string>& tags, const cocos2d::Point& center, float range );
     
-    cocos2d::Vector<UnitNode*> getAliveOpponents( eTargetCamp camp );
-    cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eTargetCamp camp );
+    cocos2d::Vector<UnitNode*> getAliveOpponents( eTargetCamp camp, bool attackable = true );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& center, float radius, bool attackable = true );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius, bool attackable = true );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInRoundRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius, bool attackable = true );
+    cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eTargetCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle, bool attackable = true );
     
+    cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eTargetCamp camp );
     cocos2d::Vector<UnitNode*> getAliveUnitsInRange( const cocos2d::Point& center, float range );
     cocos2d::Vector<UnitNode*> getAliveUnitsInRoundRange( const cocos2d::Point& center, float radius );
-    
     cocos2d::Vector<UnitNode*> getAliveAllyInRange( eTargetCamp camp, const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveUnitsByTag( const std::string& tag );
     cocos2d::Vector<UnitNode*> getAliveUnitsByName( const std::string& name );
-    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& center, float radius );
-    cocos2d::Vector<UnitNode*> getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius );
-    cocos2d::Vector<UnitNode*> getAliveOpponentsInRoundRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius );
-    cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eTargetCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle );
     cocos2d::Vector<UnitNode*> getAliveUnitsByCampAndSightGroup( eTargetCamp camp, const std::string& sight_group );
     
     const TowerMap& getAllTowers() { return _towers; }
@@ -272,6 +269,8 @@ public:
     
     void addHint( HintNode* hint_node, eBattleSubLayer layer );
     void setHintVisibleByName( const std::string& name, bool visible );
+    
+    int zorderForPositionOnObjectLayer( const cocos2d::Point& pos );
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

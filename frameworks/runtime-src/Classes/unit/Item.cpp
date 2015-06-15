@@ -110,7 +110,13 @@ bool DropItem::init( const cocos2d::ValueMap& item_data ) {
     this->setContentSize( icon->getContentSize() );
     this->setAnchorPoint( Point( 0.5f, 0.5f ) );
     icon->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
-    this->addChild( icon );
+    this->addChild( icon, 2 );
+    
+    std::string effect_resource = "effects/common/drop_item";
+    _effect = ArmatureManager::getInstance()->createArmature( effect_resource );
+    _effect->setPosition( Point( this->getContentSize().width / 2, 0 ) );
+    this->addChild( _effect, 1 );
+    _effect->setAnimation( 0, "animation", true );
     
     _should_recycle = false;
     

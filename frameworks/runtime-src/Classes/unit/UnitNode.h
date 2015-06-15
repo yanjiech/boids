@@ -17,6 +17,7 @@
 #include "./skill/SkillNode.h"
 #include "../AI/Path.h"
 #include "Equipment.h"
+#include "HintNode.h"
 
 #define DEFAULT_RELAX_FRAMES 45
 
@@ -101,6 +102,9 @@ private:
     Equipment* _armor;
     Equipment* _boot;
     Equipment* _accessory;
+    
+    BattleHintNode* _hint_node;
+    bool _has_hint_node;
     
 private:
     void updateBuffs( float delta );
@@ -299,6 +303,10 @@ public:
     
     void setUnitScale( float scale );
     float getUnitScale();
+    
+    virtual void setAttackable( bool b );
+    
+    void updateHintNode( float delta );
     
     //debug
     cocos2d::DrawNode* _custom_draw;

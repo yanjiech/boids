@@ -25,8 +25,14 @@ public:
     static AudioManager* getInstance();
     static void destroy();
     
+    void reset();
+    
     bool playMusic( const std::string& resource, bool loop = false );
     bool playEffect( const std::string& resource, bool loop = false );
+    
+    void pauseMusic( const std::string& resource );
+    void resumeMusic( const std::string& resource );
+    void stopMusic( const std::string& resource );
     
     bool vibrate();
 };

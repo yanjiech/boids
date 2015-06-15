@@ -54,13 +54,13 @@ bool UICurrencyLayer::init() {
 }
 
 void UICurrencyLayer::onEnterTransitionDidFinish() {
-    Layer::onEnter();
+    Layer::onEnterTransitionDidFinish();
     PlayerInfo::getInstance()->registerListener( PLAYER_INFO_CURRENCY, this );
     this->updatePlayerInfo( PlayerInfo::getInstance() );
 }
 
 void UICurrencyLayer::onExitTransitionDidStart() {
-    Layer::onExit();
+    Layer::onExitTransitionDidStart();
     PlayerInfo::getInstance()->unregisterListener( PLAYER_INFO_CURRENCY, this );
 }
 

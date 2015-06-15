@@ -510,8 +510,13 @@ void MapLogic::dropItem( UnitNode* unit ) {
         DropItem* item = DropItem::create( item_data );
         _battle_layer->dropItem( item, pos, eBattleSubLayer::BelowObjectLayer );
         
-        Point drop_pos = Utils::randomPositionInRange( pos, 200.0f );
-        item->dropTo( drop_pos );
+        Point drop_pos = Utils::randomPositionInRange( pos, 100.0f );
+        Rect region = Rect( drop_pos.x - 50.0f, drop_pos.y - 50.0f, 100.0f, 100.0f );
+        Point desired_pos = _battle_layer->getAvailablePosition( 30.0f, region );
+        if( desired_pos.equals( Point::ZERO ) ) {
+            desired_pos = drop_pos;
+        }
+        item->dropTo( desired_pos );
     }
     
     const ValueVector& items = drop_config.at( "items" ).asValueVector();

@@ -159,12 +159,13 @@ void ResourceManager::unloadUIResource() {
 
 void ResourceManager::loadBattleResource() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->addSpriteFramesWithFile( "ui/ui_battle_hint.plist", "ui/ui_battle_hint.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_win_lose_page.plist", "ui/page/ui_win_lose_page.png"  );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
-    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_drop.plist", "ui/ui_equip_drop.png" );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_common.plist", "ui/page/ui_common.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_pause.plist", "ui/page/ui_pause.png" );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_battle.plist", "ui/page/ui_battle.png"  );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_equip_drop.plist", "ui/ui_equip_drop.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/base_terrain.plist", "maps/map_images/base_terrain.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/building_1.plist", "maps/map_images/building_1.png" );
     frame_cache->addSpriteFramesWithFile( "maps/map_images/building_2.plist", "maps/map_images/building_2.png" );
@@ -187,11 +188,12 @@ void ResourceManager::loadBattleResource() {
 
 void ResourceManager::unloadBattleResource() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_battle_hint.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_win_lose_page.plist" );
-    frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_drop.plist" );
-    frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_icon.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_common.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/page/ui_pause.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_drop.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_icon.plist" );
     frame_cache->removeSpriteFramesFromFile( "maps/map_images/base_terrain.plist" );
     frame_cache->removeSpriteFramesFromFile( "maps/map_images/building_1.plist" );
     frame_cache->removeSpriteFramesFromFile( "maps/map_images/building_2.plist" );

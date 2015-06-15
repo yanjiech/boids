@@ -89,6 +89,8 @@ bool UIHomeLayer::init() {
     _lb_player_name = dynamic_cast<ui::Text*>( _main_node->getChildByName( "lb_player_name" ) );
     _lb_player_name->setAdditionalKerning( -5.0f );
     
+    _lb_team_level = dynamic_cast<ui::Text*>( _main_node->getChildByName( "lb_team_lv" ) );
+    
     ui::Layout* pn_wheel = dynamic_cast<ui::Layout*>( _main_node->getChildByName( "pn_wheel" ) );
     pn_wheel->addTouchEventListener( CC_CALLBACK_2( UIHomeLayer::onDifficultyTouched, this ) );
     
@@ -119,7 +121,25 @@ bool UIHomeLayer::init() {
     
     _difficulty = eLevelDifficulty::LevelDiffEasy;
     
+    this->updatePlayerInfo( PlayerInfo::getInstance() );
+    
     return true;
+}
+
+void UIHomeLayer::onEnterTransitionDidFinish() {
+    Layer::onEnterTransitionDidFinish();
+    PlayerInfo::getInstance()->registerListener( PLAYER_INFO_BASE_INFO, this );
+    this->updatePlayerInfo( PlayerInfo::getInstance() );
+}
+
+void UIHomeLayer::onExitTransitionDidStart() {
+    Layer::onExitTransitionDidStart();
+    PlayerInfo::getInstance()->unregisterListener( PLAYER_INFO_BASE_INFO, this );
+}
+
+void UIHomeLayer::updatePlayerInfo( PlayerInfo* player_info ) {
+    _lb_player_name->setString( player_info->getPlayerName() );
+    _lb_team_level->setString( Utils::toStr( player_info->getTeamLevel() ) );
 }
 
 void UIHomeLayer::onStartButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
@@ -142,6 +162,7 @@ void UIHomeLayer::onBackButtonTouched( cocos2d::Ref* sender, cocos2d::ui::Widget
         CocosUtils::playTouchEffect();
         _level_node->setVisible( false );
         _main_node->setVisible( true );
+        _currency_layer->setVisible( true );
     }
 }
 
@@ -150,6 +171,7 @@ void UIHomeLayer::onLevelTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::Tou
         CocosUtils::playTouchEffect();
         _main_node->setVisible( false );
         _level_node->setVisible( true );
+        _currency_layer->setVisible( false );
         auto node = dynamic_cast<Node*>( sender );
         int tag = node->getTag();
         _level_id = Utils::stringFormat( "%d%03d", (int)_difficulty, tag );

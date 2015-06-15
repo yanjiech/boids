@@ -755,10 +755,10 @@
     ],
     "units": [
         "dead_archer",
+        "mummy",
         "skeleton_king",
         "skeleton_warrior",
-        "white_ghost",
-        "mummy"
+        "white_ghost"
     ],
     "tasks": [
         {

@@ -54,7 +54,7 @@ public:
     
     virtual void updateFrame( float delta );
     
-    void setAttackable( bool b ) { _is_attackable = b; }
+    virtual void setAttackable( bool b ) { _is_attackable = b; }
     bool isAttackable() { return _is_attackable; }
     
     BattleLayer* getBattleLayer() { return _battle_layer; }

@@ -11,6 +11,15 @@
 
 #define UNIT_BLEED "unit_bleed"
 
+#define BATTLE_HINT_BOSS "boss"
+#define BATTLE_HINT_HOSTAGE "hostage"
+#define BATTLE_HINT_VILLIGER "villiger"
+#define BATTLE_HINT_MASTER "master"
+#define BATTLE_HINT_VICE_BOSS "vice_boss"
+#define BATTLE_HINT_DESTINATION "destination"
+#define BATTLE_HINT_ITEM "item"
+#define BATTLE_HINT_GUARD "guard"
+
 #define UNIT_SOURCE_NAME "name_source"
 #define UNIT_SOURCE_TAG "tag_source"
 #define UNIT_SOURCE_TYPE "type_source"
@@ -126,7 +135,6 @@
 #define SKILL_NAME_GAS_BOMB "GasBomb"
 #define SKILL_NAME_SACRIFICE_BOMB "SacrificeBomb"
 #define SKILL_NAME_EVIL_INVOKE "EvilInvoke"
-
 
 #define BULLET_NAME_GAS "gas"
 

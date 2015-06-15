@@ -22,6 +22,7 @@
 #include "../BoidsMath.h"
 #include "../data/PlayerInfo.h"
 #include "../manager/AudioManager.h"
+#include "../unit/skill/SkillCache.h"
 
 #define DEFAULT_SHADOW_RADIUS 30.0
 #define DEFAULT_HESITATE_FRAMES 5
@@ -46,7 +47,8 @@ _chasing_target( nullptr ),
 _weapon( nullptr ),
 _armor( nullptr ),
 _boot( nullptr ),
-_accessory( nullptr )
+_accessory( nullptr ),
+_hint_node( nullptr )
 {
 }
 
@@ -224,6 +226,8 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
         }
     }
     
+    _has_hint_node = true;
+    
     return true;
 }
 
@@ -236,8 +240,9 @@ void UnitNode::updateFrame( float delta ) {
     this->updateBuffs( delta );
     TargetNode::updateFrame( delta );
     
-    this->applyUnitState();
+    this->updateHintNode( delta );
     
+    this->applyUnitState();
     
     this->updateSkills( delta );
     this->evaluateCatchUp();
@@ -352,6 +357,9 @@ void UnitNode::changeUnitState( eUnitState new_state, bool force ) {
 void UnitNode::applyUnitState() {
     if( _unit_state_changed ) {
         _unit_state_changed = false;
+        if( _state == Casting && _next_state != Casting ) {
+            SkillCache::getInstance()->removeSkillOfOwner( this );
+        }
         _state = _next_state;
         _next_state = eUnitState::Unknown_Unit_State;
         switch( _state ) {
@@ -545,12 +553,16 @@ void UnitNode::disappear() {
 }
 
 void UnitNode::onDisappearEnd() {
+    this->removeAllUnitComponents();
+    if( _hint_node ) {
+        _hint_node->removeFromParent();
+        _hint_node = nullptr;
+    }
     this->changeUnitState( eUnitState::Dead, true );
 }
 
 void UnitNode::onDying() {
     this->removeAllBuffs();
-    this->removeAllUnitComponents();
     Sprite* blood = Sprite::createWithSpriteFrameName( "unit_deadblood.png" );
     UnitNodeFadeoutComponent* component = UnitNodeFadeoutComponent::create( blood, "dead_blood", 3.0f, 0, true );
     component->setPosition( Point::ZERO );
@@ -723,7 +735,8 @@ void UnitNode::addItem( Item* item ) {
     Sprite* item_sprite = Sprite::createWithSpriteFrameName( item->getResource() );
     UnitNodeComponent* component = UnitNodeComponent::create( item_sprite, item->getName(), true );
     this->addUnitComponent( component, item->getName(), eComponentLayer::OverObject );
-    component->setPosition( Point( 0, this->getBoundingBox().size.height + item_sprite->getContentSize().height ) );
+    Point icon_pos = Point( 0, this->getLocalHeadPos().y + item_sprite->getContentSize().height );
+    component->setPosition( icon_pos );
     this->addUnitTag( item->getName() );
 }
 
@@ -1275,6 +1288,45 @@ void UnitNode::setUnitScale( float scale ) {
 
 float UnitNode::getUnitScale() {
     return _front->getScale();
+}
+
+void UnitNode::setAttackable( bool b ) {
+    TargetNode::setAttackable( b );
+    if( !b ) {
+        _battle_layer->clearChasingTarget( this );
+    }
+}
+
+void UnitNode::updateHintNode( float delta ) {
+    if( _has_hint_node ) {
+        if( _hint_node ) {
+            //update hint node pos and rotation
+            _hint_node->updateHintPos( _battle_layer, this->getPosition() );
+        }
+        else {
+            if( this->hasUnitTag( BATTLE_HINT_BOSS ) ) {
+                _hint_node = BattleHintNode::create( BATTLE_HINT_BOSS );
+            }
+            else if( this->hasUnitTag( BATTLE_HINT_HOSTAGE ) ) {
+                _hint_node = BattleHintNode::create( BATTLE_HINT_HOSTAGE );
+            }
+            else if( this->hasUnitTag( BATTLE_HINT_VILLIGER ) ) {
+                _hint_node = BattleHintNode::create( BATTLE_HINT_VILLIGER );
+            }
+            else if( this->hasUnitTag( BATTLE_HINT_VICE_BOSS ) ) {
+                _hint_node = BattleHintNode::create( BATTLE_HINT_VICE_BOSS );
+            }
+            else if( this->hasUnitTag( BATTLE_HINT_MASTER ) ) {
+                _hint_node = BattleHintNode::create( BATTLE_HINT_MASTER );
+            }
+            else {
+                _has_hint_node = false;
+            }
+            if( _hint_node ) {
+                _battle_layer->addToLayer( _hint_node, eBattleSubLayer::FloatLayer, Point::ZERO, 0 );
+            }
+        }
+    }
 }
 
 //private methods

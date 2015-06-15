@@ -8,6 +8,7 @@
 
 #include "SacrificeBomb.h"
 #include "../../scene/BattleLayer.h"
+#include "../../manager/AudioManager.h"
 
 using namespace cocos2d;
 
@@ -54,6 +55,8 @@ void SacrificeBomb::updateFrame( float delta ) {
         _elapse += delta;
         if( _elapse > _duration ) {
             //add bomb effect
+            AudioManager::getInstance()->playEffect( "common/explode.mp3" );
+            
             BattleLayer* battle_layer = _owner->getBattleLayer();
             
             std::string resource = "effects/bomb_robot_skill_1";
@@ -61,7 +64,7 @@ void SacrificeBomb::updateFrame( float delta ) {
             spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
             UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( skeleton, name, true );
             component->setAnimation( 0, "animation", false );
-            battle_layer->addToEffectLayer( component, _owner->getPosition(), 0 );
+            battle_layer->addToOnGroundLayer( component, _owner->getPosition(), battle_layer->zorderForPositionOnObjectLayer( _owner->getPosition() ) );
             //calculate damage
             
             Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _owner->getPosition(), _range );

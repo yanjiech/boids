@@ -9,7 +9,7 @@
 #ifndef __Boids__Item__
 #define __Boids__Item__
 
-#include "cocos2d.h"
+#include "spine/spine-cocos2dx.h"
 
 typedef enum {
     ItemStateFly = 1,
@@ -44,6 +44,7 @@ private:
     int _count;
     eItemState _state;
     bool _should_recycle;
+    spine::SkeletonAnimation* _effect;
     
 public:
     DropItem();
