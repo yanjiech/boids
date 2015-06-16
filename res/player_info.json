@@ -2,11 +2,7 @@
     "player_name" : "善良天真的玩家",
     "gold" : 500000,
     "diamond" : 1000000,
-<<<<<<< HEAD
-    "stone" : 100000,
-=======
     "stone" : 1000000,
->>>>>>> 45c44fb47c1494533257a85d99428746be9a8010
     "team_level" : 20,
     "team_exp" : 0,
     "team_talent" :

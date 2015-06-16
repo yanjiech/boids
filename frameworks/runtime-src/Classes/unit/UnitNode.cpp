@@ -551,24 +551,16 @@ void UnitNode::disappear() {
 }
 
 void UnitNode::onDisappearEnd() {
-<<<<<<< HEAD
-    this->removeAllBuffs();
-    this->removeAllUnitComponents();
-=======
     this->removeAllUnitComponents();
     if( _hint_node ) {
         _hint_node->removeFromParent();
         _hint_node = nullptr;
     }
->>>>>>> 45c44fb47c1494533257a85d99428746be9a8010
     this->changeUnitState( eUnitState::Dead, true );
 }
 
 void UnitNode::onDying() {
-<<<<<<< HEAD
-=======
     this->removeAllBuffs();
->>>>>>> 45c44fb47c1494533257a85d99428746be9a8010
     Sprite* blood = Sprite::createWithSpriteFrameName( "unit_deadblood.png" );
     UnitNodeFadeoutComponent* component = UnitNodeFadeoutComponent::create( blood, "dead_blood", 3.0f, 0, true );
     component->setPosition( Point::ZERO );

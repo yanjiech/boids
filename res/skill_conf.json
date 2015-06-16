@@ -23,15 +23,9 @@
         "count_per_wave" : 5,
         "waves" : 5,
         "name" : "狂暴",
-<<<<<<< HEAD
-        "icon" : "ui_skill_icon_ice_debris.png",
-        "desc" : "连环发出一系列射击，对地方造成dmg点伤害",
-        "op_hint" : "无"
-=======
         "icon" : "ui_skill_icon_barrage_of_arrow.png",
         "op_hint" : "无",
         "desc" : "连环发出一系列射击，对地方造成dmg点伤害"
->>>>>>> 45c44fb47c1494533257a85d99428746be9a8010
     },
     "BatSwarm":
     {
