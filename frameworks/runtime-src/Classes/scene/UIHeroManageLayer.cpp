@@ -386,7 +386,7 @@ void UIHeroDeploySlot::setSelected( bool b ) {
 }
 
 cocos2d::Sprite* UIHeroDeploySlot::getAvatar() {
-    if( !_avatar_sprite->isVisible() ) {
+    if( !_avatar_sprite || !_avatar_sprite->isVisible() ) {
         return nullptr;
     }
     return _avatar_sprite;
@@ -1051,7 +1051,7 @@ void UIHeroManageLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* eve
                 //exchange hero
                 else if( slot != _selected_deploy_slot ) {
                     std::string hero_id = slot->getHeroId();
-                    Sprite* avatar = Sprite::createWithSpriteFrame( slot->getAvatar()->getSpriteFrame() );
+                    Sprite* avatar = slot->getAvatar() == nullptr ? nullptr : Sprite::createWithSpriteFrame( slot->getAvatar()->getSpriteFrame() );
                     slot->setAvatar( _selected_deploy_slot->getAvatar() );
                     slot->setHeroId( _selected_deploy_slot->getHeroId() );
                     _selected_deploy_slot->setHeroId( hero_id );

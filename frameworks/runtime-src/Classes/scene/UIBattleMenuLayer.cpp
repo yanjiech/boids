@@ -392,6 +392,17 @@ void UIBattleMenuLayer::hideMenu() {
     _pause_panel->setVisible( false );
 }
 
+void UIBattleMenuLayer::onTaskChanged( int i, bool succ ) {
+    Sprite* icon = _sp_mission_vec.at( i );
+    icon->setVisible( true );
+    if( succ ) {
+        icon->setSpriteFrame( "ui_pause_finish.png" );
+    }
+    else {
+        icon->setSpriteFrame( "ui_pause_failed.png" );
+    }
+}
+
 bool UIBattleMenuLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event ) {
     if( _btn_pause->isVisible() ) {
         return false;

@@ -118,7 +118,7 @@ bool BattleLayer::init( MapData* map_data, const std::string& level_id, bool is_
         _tmx_map->addChild( _effect_layer, eBattleSubLayer::EffectLayer, eBattleSubLayer::EffectLayer );
         
         _float_layer = UIBattleFloatLayer::create( this );
-        this->addChild( _float_layer, eBattleSubLayer::FloatLayer, eBattleSubLayer::FloatLayer );
+        _tmx_map->addChild( _float_layer, eBattleSubLayer::FloatLayer, eBattleSubLayer::FloatLayer );
         
         _toast_layer = Layer::create();
         this->addChild( _toast_layer, eBattleSubLayer::ToastLayer, eBattleSubLayer::ToastLayer );
@@ -845,6 +845,9 @@ void BattleLayer::addToLayer( cocos2d::Node* node, eBattleSubLayer layer, const 
         case eBattleSubLayer::EffectLayer:
             this->addToEffectLayer( node, pos, local_zorder );
             break;
+        case eBattleSubLayer::FloatLayer:
+            this->addToFloatLayer( node, pos, local_zorder );
+            break;
         default:
             break;
     }
@@ -910,6 +913,14 @@ void BattleLayer::centerCameraToPosition( const cocos2d::Point& pos ) {
     }
     
     _tmx_map->setPosition( new_pos_x, new_pos_y );
+}
+
+cocos2d::Rect BattleLayer::getScreenRect() {
+    Point map_pos = _tmx_map->getPosition();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+    Size size = Director::getInstance()->getVisibleSize();
+    
+    return Rect( origin.x - map_pos.x, origin.y - map_pos.y, size.width, size.height );
 }
 
 int BattleLayer::getNextDeployId() {

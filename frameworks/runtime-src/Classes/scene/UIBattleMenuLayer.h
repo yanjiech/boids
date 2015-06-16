@@ -84,6 +84,8 @@ public:
     
     void hideMenu();
     
+    void onTaskChanged( int i, bool succ );
+    
     virtual bool onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event );
     virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );
     virtual void onTouchCancelled( cocos2d::Touch* touch, cocos2d::Event* event );

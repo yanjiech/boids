@@ -88,6 +88,17 @@ bool BlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_p
         sprite->setColor( color );
         
         sprite->setScale( _range / 200.0f );
+        
+        std::string resource = "buildings/building_repairing";
+        _repairing_component = ArmatureManager::getInstance()->createArmature( resource );
+        this->addChild( _repairing_component, 9 );
+        _repairing_component->setAnimation( 0, "animation", true );
+        _repairing_component->setVisible( false );
+        
+        resource = "buildings/building_need_repair";
+        _need_repair_component = ArmatureManager::getInstance()->createArmature( resource );
+        this->addChild( _need_repair_component, 10 );
+        _need_repair_component->setAnimation( 0, "animation", true );
     }
     else {
         itr = obj_properties.find( "enabled" );
@@ -121,10 +132,16 @@ void BlockNode::updateFrame( float delta ) {
             if( _repairing_component ) {
                 _repairing_component->setVisible( false );
             }
+            if( _need_repair_component ) {
+                _need_repair_component->setVisible( true );
+            }
         }
         else {
             if( _repairing_component ) {
                 _repairing_component->setVisible( true );
+            }
+            if( _need_repair_component ) {
+                _need_repair_component->setVisible( false );
             }
             _progress_bar->setVisible( true );
             if( _range_sprite ) {
@@ -135,7 +152,12 @@ void BlockNode::updateFrame( float delta ) {
             if( _elapse >= _need_time ) {
                 //remove repairing effect
                 if( _repairing_component ) {
-                    _repairing_component->setDuration( 0 );
+                    _repairing_component->clearTrack();
+                    _repairing_component->setVisible( false );
+                }
+                if( _need_repair_component ) {
+                    _need_repair_component->clearTrack();
+                    _need_repair_component->setVisible( false );
                 }
                 
                 //add repair effect
@@ -259,14 +281,12 @@ bool SpriteBlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& 
     _progress_bar->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height + 50.0f ) );
     _progress_bar->setVisible( false );
     
-    std::string resource = "buildings/building_repairing";
-    std::string name = Utils::stringFormat( "building_repairing_%d", _deploy_id );
-    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
-    _repairing_component = TimeLimitSpineComponent::create( -1, skeleton, name, true );
-    Point repairing_pos = this->getPosition() + Point( this->getContentSize().width / 2, this->getContentSize().height / 2 );
-    _battle_layer->addToEffectLayer( _repairing_component, repairing_pos, _battle_layer->zorderForPositionOnObjectLayer( repairing_pos ) );
-    _repairing_component->setAnimation( 0, "animation", true );
-    _repairing_component->setVisible( false );
+    if( _repairing_component ) {
+        _repairing_component->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
+    }
+    if( _need_repair_component ) {
+        _need_repair_component->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height ) );
+    }
 
     return true;
 }

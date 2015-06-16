@@ -33,7 +33,8 @@ protected:
     
     cocos2d::Sprite* _range_sprite;
     
-    TimeLimitSpineComponent* _repairing_component;
+    spine::SkeletonAnimation* _repairing_component;
+    spine::SkeletonAnimation* _need_repair_component;
     
 public:
     BlockNode();

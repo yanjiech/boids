@@ -84,6 +84,14 @@
 #define GAME_TASK_STATE_FAILED "task_failed"
 #define GAME_TASK_STATE_FINISHED "task_finished"
 
+#define GAME_TASK_TYPE_ALL_ALIVE "all_alive"
+#define GAME_TASK_TYPE_ALL_CHEST "all_chest"
+#define GAME_TASK_TYPE_ALL_KILL "all_kill"
+#define GAME_TASK_TYPE_WITHIN_TIME "within_time"
+#define GAME_TASK_TYPE_KILL_BOSS "kill_boss"
+#define GAME_TASK_TYPE_HOLD_WAVES "hold_waves"
+#define GAME_TASK_TYPE_SAVE_VILLIGER "save_villiger"
+
 #define GAME_STATE_PREPARE "game_prepare"
 #define GAME_STATE_RUNNING "game_running"
 #define GAME_STATE_PAUSED "game_paused"

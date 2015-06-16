@@ -22,8 +22,6 @@ public:
     static BattleHintNode* create( const std::string& hint_name );
     virtual bool init( const std::string& hint_name );
     
-    void setHintRotation( float angle );
-    
     void updateHintPos( class BattleLayer* battle_layer, const cocos2d::Point& pos );
 };
 

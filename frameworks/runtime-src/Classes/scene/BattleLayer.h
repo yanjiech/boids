@@ -160,6 +160,8 @@ public:
     
     virtual void updateFrame( float delta );
     
+    UIBattleMenuLayer* getBattleMenuLayer() { return _battle_menu_layer; }
+    
     void startBattle();
     void pauseBattle();
     void resumeBattle();
@@ -242,6 +244,8 @@ public:
     
     void adjustCamera();
     void centerCameraToPosition( const cocos2d::Point& pos );
+    
+    cocos2d::Rect getScreenRect();
     
     int getNextDeployId();
     

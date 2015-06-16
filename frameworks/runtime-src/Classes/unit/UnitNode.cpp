@@ -247,7 +247,7 @@ void UnitNode::updateFrame( float delta ) {
     this->updateSkills( delta );
     this->evaluateCatchUp();
     
-    if( _is_charging && _charging_effect != nullptr ) {
+    if( this->isAlive() && _is_charging && _charging_effect != nullptr ) {
         _charging_effect->setPosition( this->getLocalBonePos( "ChargingPoint" ) );
     }
 }
@@ -601,7 +601,7 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* 
         
         //dying
         if( unit_data->current_hp == 0 ) {
-            this->changeUnitState( eUnitState::Dying );
+            this->changeUnitState( eUnitState::Dying, true );
             _battle_layer->clearChasingTarget( this );
         }
         else if( _chasing_target == nullptr ) {
@@ -1299,7 +1299,7 @@ void UnitNode::setAttackable( bool b ) {
 
 void UnitNode::updateHintNode( float delta ) {
     if( _has_hint_node ) {
-        if( _hint_node ) {
+        if( _hint_node != nullptr ) {
             //update hint node pos and rotation
             _hint_node->updateHintPos( _battle_layer, this->getPosition() );
         }
@@ -1322,7 +1322,7 @@ void UnitNode::updateHintNode( float delta ) {
             else {
                 _has_hint_node = false;
             }
-            if( _hint_node ) {
+            if( _hint_node != nullptr ) {
                 _battle_layer->addToLayer( _hint_node, eBattleSubLayer::FloatLayer, Point::ZERO, 0 );
             }
         }
