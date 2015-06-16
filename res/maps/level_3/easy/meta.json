@@ -897,7 +897,19 @@
                     "action_type": "task_change",
                     "task_name": "main_win",
                     "task_state": "task_progress",
-                    "progress": 34
+                    "progress": 33
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉:铁轨都修完了，快乘矿车进洞吧。",
+                            "speaker": "dracula"
+                        }
+                    ],
+                    "name": "story_04"
                 }
             ]
         },
@@ -965,12 +977,12 @@
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "orange_10",
                     "unit_count": 2,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -988,12 +1000,12 @@
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "orange_11",
                     "unit_count": 3,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -1022,12 +1034,12 @@
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "trigger_boss_1",
                     "unit_count": 1,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -1067,12 +1079,12 @@
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "orange_14",
                     "unit_count": 2,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -1101,12 +1113,12 @@
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "orange_15",
                     "unit_count": 4,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -1135,24 +1147,24 @@
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "orange_17",
                     "unit_count": 2,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
                 },
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "orange_18",
                     "unit_count": 1,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -1247,36 +1259,59 @@
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "orange_08",
                     "unit_count": 2,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
                 },
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "orange_07",
                     "unit_count": 1,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
                 },
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "bomb_robot",
-                    "skill_1_level": 3,
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "position_name": "orange_18",
                     "unit_count": 1,
-                    "unit_level": 3
+                    "unit_level": 3,
+                    "skill_1_level": 3
+                }
+            ]
+        },
+        {
+            "name": "win_cond",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_04",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "main_win",
+                    "task_state": "task_finished"
                 }
             ]
         }

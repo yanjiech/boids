@@ -361,46 +361,6 @@ cocos2d::ValueVector PlayerInfo::getEquipsByRange( int type, int from, int size,
     return ret;
 }
 
-cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level ) {
-    ValueMap ret;
-    ValueMap& all_units = _player_info.at( "units" ).asValueMap();
-    auto itr = all_units.find( hero_id );
-    if( itr != all_units.end() ) {
-        ValueMap& unit_data = all_units.at( hero_id ).asValueMap();
-        int old_level = unit_data["level"].asInt();
-        unit_data["level"] = Value( old_level + level );
-        this->recordPlayerInfo();
-        ret = unit_data;
-    }
-    ret["owned"] = Value( true );
-    ret["locked"] = Value( false );
-    return ret;
-}
-
-cocos2d::ValueMap PlayerInfo::upgradeSkill( const std::string& hero_id, const std::string& skill_name, int level ) {
-    ValueMap ret;
-    ValueMap& all_units = _player_info.at( "units" ).asValueMap();
-    auto itr = all_units.find( hero_id );
-    if( itr != all_units.end() ) {
-        ValueMap& unit_data = all_units.at( hero_id ).asValueMap();
-        ValueVector& skill_data_vector = unit_data.at( "skills" ).asValueVector();
-        for( int i = 0; i < skill_data_vector.size(); i++ ) {
-            ValueMap& skill_data = skill_data_vector.at( i ).asValueMap();
-            if( skill_data.at( "name" ).asString() == skill_name ) {
-                int old_level = skill_data.at( "level" ).asInt();
-                skill_data["level"] = Value( old_level + level );
-                this->recordPlayerInfo();
-                ret = unit_data;
-                break;
-            }
-        }
-    }
-    
-    ret["owned"] = Value( true );
-    ret["locked"] = Value( false );
-    return ret;
-}
-
 const cocos2d::ValueMap& PlayerInfo::getAllEquipsInfo() {
     return _player_info["equips"].asValueMap();
 }
@@ -484,6 +444,7 @@ void PlayerInfo::gainTeamExp( int exp ) {
     }
     
     _player_info["team_level"] = Value( team_level );
+    this->dispatchInfo( PLAYER_INFO_BASE_INFO );
     
     this->recordPlayerInfo();
 }
@@ -500,45 +461,28 @@ int PlayerInfo::getExpForTeamLevel( int level ) {
     return -1;
 }
 
+std::string PlayerInfo::getPlayerName() {
+    auto itr = _player_info.find( "player_name" );
+    if( itr == _player_info.end() ) {
+        _player_info["player_name"] = Value( "还没有名字哟" );
+    }
+    return _player_info.at( "player_name" ).asString();
+}
+
+void PlayerInfo::setPlayerName( const std::string& new_name, bool record ) {
+    _player_info["player_name"] = Value( new_name );
+    if( record ) {
+        this->recordPlayerInfo();
+    }
+    this->dispatchInfo( PLAYER_INFO_BASE_INFO );
+}
+
 void PlayerInfo::setTeamLevel( int level ) {
     _player_info["team_level"] = Value( level );
 }
 
 int PlayerInfo::getTeamLevel() {
     return _player_info.at( "team_level" ).asInt();
-}
-
-int PlayerInfo::getLevelUpCost( const std::string& slot ) {
-    //todo
-    return INT_MAX;
-}
-
-int PlayerInfo::unitLevelUpByOne( const std::string& slot ) {
-    int team_level = _player_info.at( "team_level" ).asInt();
-    int gold = _player_info.at( "gold" ).asInt();
-    ValueMap& player_units = _player_info.at( "units" ).asValueMap();
-    auto itr = player_units.find( slot );
-    if( itr != player_units.end() ) {
-        ValueMap& unit_data = itr->second.asValueMap();
-        int unit_level = unit_data.at( "level" ).asInt();
-        if( unit_level >= team_level ) {
-            return LEVEL_UP_ERROR_REACH_LEVEL_LIMIT;
-        }
-        const ValueVector& levelup_cost = ResourceManager::getInstance()->getUnitLevelupCostConfig().at( unit_data.at( "name" ).asString() ).asValueVector();
-        if( levelup_cost.size()  <= unit_level ) {
-            return LEVEL_UP_ERROR_REACH_LEVEL_LIMIT;
-        }
-        int cost = levelup_cost.at( unit_level ).asInt();
-        if( gold < cost ) {
-            return LEVEL_UP_ERROR_NOT_ENOUGH_GOLD;
-        }
-        gold -= cost;
-        ++unit_level;
-        unit_data["level"] = Value( unit_level );
-        _player_info["gold"] = Value( "gold" );
-        return LEVEL_UP_SUCCESS;
-    }
-    return LEVEL_UP_ERROR_NOT_FOUND;
 }
 
 int PlayerInfo::getTotalTalentPoints() {
@@ -615,4 +559,63 @@ bool PlayerInfo::sellEquip( const std::string& obj_id ) {
     }
     
     return false;
+}
+
+cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level ) {
+    ValueMap ret;
+    ValueMap& all_units = _player_info.at( "units" ).asValueMap();
+    auto itr = all_units.find( hero_id );
+    if( itr != all_units.end() ) {
+        ValueMap& unit_data = all_units.at( hero_id ).asValueMap();
+        std::string hero_name = unit_data.at( "name" ).asString();
+        int old_level = unit_data["level"].asInt();
+        int new_level = old_level + level;
+        int cost = ResourceManager::getInstance()->getUnitUpgradeCost( hero_name, new_level );
+        if( cost > 0 ) {
+            int gold = this->getGold();
+            if( cost <= gold ) {
+                this->gainGold( -cost, false );
+                unit_data["level"] = Value( old_level + level );
+                
+                ret = unit_data;
+                ret["owned"] = Value( true );
+                ret["locked"] = Value( false );
+                
+                this->recordPlayerInfo();
+            }
+        }
+    }
+    return ret;
+}
+
+cocos2d::ValueMap PlayerInfo::upgradeSkill( const std::string& hero_id, const std::string& skill_name, int level ) {
+    ValueMap ret;
+    ValueMap& all_units = _player_info.at( "units" ).asValueMap();
+    auto itr = all_units.find( hero_id );
+    if( itr != all_units.end() ) {
+        ValueMap& unit_data = all_units.at( hero_id ).asValueMap();
+        ValueVector& skill_data_vector = unit_data.at( "skills" ).asValueVector();
+        for( int i = 0; i < skill_data_vector.size(); i++ ) {
+            ValueMap& skill_data = skill_data_vector.at( i ).asValueMap();
+            if( skill_data.at( "name" ).asString() == skill_name ) {
+                int old_level = skill_data.at( "level" ).asInt();
+                int new_level = old_level + level;
+                int cost = ResourceManager::getInstance()->getSkillUpgradeCost( skill_name, new_level );
+                if( cost > 0 ) {
+                    int stone = this->getStone();
+                    if( cost <= stone ) {
+                        this->gainStone( -cost, false );
+                        skill_data["level"] = Value( old_level + level );
+                        
+                        ret = unit_data;
+                        ret["owned"] = Value( true );
+                        ret["locked"] = Value( false );
+                        this->recordPlayerInfo();
+                    }
+                }
+                break;
+            }
+        }
+    }
+    return ret;
 }

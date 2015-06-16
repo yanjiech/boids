@@ -65,8 +65,6 @@ void PenetrateSpear::updateFrame( float delta ) {
 }
 
 void PenetrateSpear::begin() {
-    SkillNode::begin();
-    
     ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( _bullet_name );
     bullet_data["speed"] = Value( _speed );
     bullet_data["damage_radius"] = Value( _damage_radius );
@@ -83,6 +81,5 @@ void PenetrateSpear::begin() {
 }
 
 void PenetrateSpear::end() {
-    _owner->endCast();
     SkillNode::end();
 }

@@ -386,7 +386,7 @@ void UIHeroDeploySlot::setSelected( bool b ) {
 }
 
 cocos2d::Sprite* UIHeroDeploySlot::getAvatar() {
-    if( !_avatar_sprite->isVisible() ) {
+    if( !_avatar_sprite || !_avatar_sprite->isVisible() ) {
         return nullptr;
     }
     return _avatar_sprite;
@@ -674,25 +674,11 @@ void UIHeroManageLayer::onUpgradeTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
         CocosUtils::playTouchEffect();
         if( _selected_hero && _selected_hero->isOwned() ) {
             PlayerInfo* player_info = PlayerInfo::getInstance();
-            const ValueVector& upgrade_data = ResourceManager::getInstance()->getUnitLevelupCostConfig().at( _selected_hero->getUnitData()->name ).asValueMap().at( "costs" ).asValueVector();
-            int total_gold = player_info->getGold();
-            int current_level = _selected_hero->getUnitData()->level;
-            int team_level = player_info->getTeamLevel();
-            int max_level = (int)upgrade_data.size() + 1;
-            if( current_level < team_level && current_level < max_level ) {
-                int cost = upgrade_data.at( current_level - 1 ).asInt();
-                if( cost <= total_gold ) {
-                    //cost gold
-                    player_info->gainGold( -cost );
-                    this->updatePlayerInfo();
-                    
-                    //update hero info
-                    ValueMap new_data = player_info->upgradeHero( _selected_hero->getHeroId(), 1 );
-                    _selected_hero->loadHeroInfo( new_data );
-                    this->setSelectedHero( _selected_hero );
-                    
-                    _upgrade_effect->setAnimation( 0, "Idle", false );
-                }
+            ValueMap new_data = player_info->upgradeHero( _selected_hero->getHeroId(), 1 );
+            if( !new_data.empty() ) {
+                _selected_hero->loadHeroInfo( new_data );
+                this->setSelectedHero( _selected_hero );
+                _upgrade_effect->setAnimation( 0, "Idle", false );
             }
         }
     }
@@ -1065,7 +1051,7 @@ void UIHeroManageLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* eve
                 //exchange hero
                 else if( slot != _selected_deploy_slot ) {
                     std::string hero_id = slot->getHeroId();
-                    Sprite* avatar = Sprite::createWithSpriteFrame( slot->getAvatar()->getSpriteFrame() );
+                    Sprite* avatar = slot->getAvatar() == nullptr ? nullptr : Sprite::createWithSpriteFrame( slot->getAvatar()->getSpriteFrame() );
                     slot->setAvatar( _selected_deploy_slot->getAvatar() );
                     slot->setHeroId( _selected_deploy_slot->getHeroId() );
                     _selected_deploy_slot->setHeroId( hero_id );

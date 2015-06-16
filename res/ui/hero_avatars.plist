@@ -7,7 +7,7 @@
             <key>dracula_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{174,690},{170,170}}</string>
+                <string>{{346,690},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>durarara_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{174,518},{170,170}}</string>
+                <string>{{346,518},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,20 +33,46 @@
             <key>enchantress_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{188,2},{180,170}}</string>
+                <string>{{2,406},{200,200}}</string>
                 <key>offset</key>
-                <string>{3,0}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{13,15},{180,170}}</string>
+                <string>{{0,0},{200,200}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
             <key>gandalf_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,690},{170,170}}</string>
+                <string>{{204,346},{170,170}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{170,170}}</string>
+                <key>sourceSize</key>
+                <string>{170,170}</string>
+            </dict>
+            <key>hippolyta_avatar.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{204,174},{170,170}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{170,170}}</string>
+                <key>sourceSize</key>
+                <string>{170,170}</string>
+            </dict>
+            <key>ice_witch_avatar.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{204,2},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,20 +85,20 @@
             <key>kyle_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,518},{170,170}}</string>
+                <string>{{2,204},{200,200}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{15,15},{170,170}}</string>
+                <string>{{0,0},{200,200}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
             <key>panda_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{174,346},{170,170}}</string>
+                <string>{{174,780},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +111,7 @@
             <key>saber_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,346},{170,170}}</string>
+                <string>{{174,608},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +124,7 @@
             <key>skill_mask.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{174,174},{170,170}}</string>
+                <string>{{2,780},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +137,7 @@
             <key>vanhelsing_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,174},{170,170}}</string>
+                <string>{{2,608},{170,170}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,13 +150,13 @@
             <key>zeus_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{170,184}}</string>
+                <string>{{2,2},{200,200}}</string>
                 <key>offset</key>
-                <string>{0,7}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{15,1},{170,184}}</string>
+                <string>{{0,0},{200,200}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
@@ -142,9 +168,9 @@
             <key>realTextureFileName</key>
             <string>hero_avatars.png</string>
             <key>size</key>
-            <string>{512,1024}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:4e9d1c5dde7cd3182ec2820db99c6004:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:86d43e5bd89691c993fb1e6f832ec56f:1/1$</string>
             <key>textureFileName</key>
             <string>hero_avatars.png</string>
         </dict>

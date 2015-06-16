@@ -15,6 +15,7 @@ class MapLogic;
 
 class GameTask : public cocos2d::Ref {
 protected:
+    int _task_id;
     MapLogic* _map_logic;
     bool _is_primary;
     
@@ -24,6 +25,8 @@ protected:
     
     std::string _state;
     
+    cocos2d::ValueMap _task_data;
+    
     bool _is_active;
     
     float _progress;
@@ -32,9 +35,11 @@ public:
     GameTask();
     virtual ~GameTask();
     
-    //factory method
     static GameTask* create( const cocos2d::ValueMap& data, MapLogic* map_logic );
     virtual bool init( const cocos2d::ValueMap& data, MapLogic* map_logic );
+    
+    int getTaskId() { return _task_id; }
+    void setTaskId( int i ) { _task_id = i; }
     
     bool isPrimary() { return _is_primary; }
     void setPrimary( bool b ) { _is_primary = b; }

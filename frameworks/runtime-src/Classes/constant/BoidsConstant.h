@@ -11,6 +11,15 @@
 
 #define UNIT_BLEED "unit_bleed"
 
+#define BATTLE_HINT_BOSS "boss"
+#define BATTLE_HINT_HOSTAGE "hostage"
+#define BATTLE_HINT_VILLIGER "villiger"
+#define BATTLE_HINT_MASTER "master"
+#define BATTLE_HINT_VICE_BOSS "vice_boss"
+#define BATTLE_HINT_DESTINATION "destination"
+#define BATTLE_HINT_ITEM "item"
+#define BATTLE_HINT_GUARD "guard"
+
 #define UNIT_SOURCE_NAME "name_source"
 #define UNIT_SOURCE_TAG "tag_source"
 #define UNIT_SOURCE_TYPE "type_source"
@@ -76,6 +85,14 @@
 #define GAME_TASK_STATE_FAILED "task_failed"
 #define GAME_TASK_STATE_FINISHED "task_finished"
 
+#define GAME_TASK_TYPE_ALL_ALIVE "all_alive"
+#define GAME_TASK_TYPE_ALL_CHEST "all_chest"
+#define GAME_TASK_TYPE_ALL_KILL "all_kill"
+#define GAME_TASK_TYPE_WITHIN_TIME "within_time"
+#define GAME_TASK_TYPE_KILL_BOSS "kill_boss"
+#define GAME_TASK_TYPE_HOLD_WAVES "hold_waves"
+#define GAME_TASK_TYPE_SAVE_VILLIGER "save_villiger"
+
 #define GAME_STATE_PREPARE "game_prepare"
 #define GAME_STATE_RUNNING "game_running"
 #define GAME_STATE_PAUSED "game_paused"
@@ -127,7 +144,6 @@
 #define SKILL_NAME_GAS_BOMB "GasBomb"
 #define SKILL_NAME_SACRIFICE_BOMB "SacrificeBomb"
 #define SKILL_NAME_EVIL_INVOKE "EvilInvoke"
-
 
 #define BULLET_NAME_GAS "gas"
 

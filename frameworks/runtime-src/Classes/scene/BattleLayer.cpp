@@ -12,9 +12,9 @@
 #include "../AI/Terrain.h"
 #include "../BoidsMath.h"
 #include "../constant/BoidsConstant.h"
-#include "../unit/skill/SkillCache.h"
 #include "../manager/AudioManager.h"
 #include "../unit/skill/SkillCache.h"
+#include "../manager/AudioManager.h"
 
 #define FOG_TILE_SIZE 32
 #define FOG_TILE_SIZE_WIDTH 110
@@ -123,7 +123,7 @@ bool BattleLayer::init( MapData* map_data, const std::string& level_id, bool is_
         _tmx_map->addChild( _effect_layer, eBattleSubLayer::EffectLayer, eBattleSubLayer::EffectLayer );
         
         _float_layer = UIBattleFloatLayer::create( this );
-        this->addChild( _float_layer, eBattleSubLayer::FloatLayer, eBattleSubLayer::FloatLayer );
+        _tmx_map->addChild( _float_layer, eBattleSubLayer::FloatLayer, eBattleSubLayer::FloatLayer );
         
         _toast_layer = Layer::create();
         this->addChild( _toast_layer, eBattleSubLayer::ToastLayer, eBattleSubLayer::ToastLayer );
@@ -360,6 +360,7 @@ void BattleLayer::updateFrame( float delta ) {
 void BattleLayer::startBattle() {
     if( _state != eBattleState::BattleRunning ) {
         _state = eBattleState::BattleRunning;
+        AudioManager::getInstance()->playMusic( "audio/common/bg_music_1.mp3" );
     }
 }
 
@@ -367,6 +368,7 @@ void BattleLayer::pauseBattle() {
     if( _state == eBattleState::BattleRunning ) {
         _state = eBattleState::BattlePaused;
         this->pause();
+        AudioManager::getInstance()->pauseMusic( "audio/common/bg_music_1.mp3" );
     }
 }
 
@@ -374,6 +376,7 @@ void BattleLayer::resumeBattle() {
     if( _state == eBattleState::BattlePaused ) {
         _state = eBattleState::BattleRunning;
         this->resume();
+        AudioManager::getInstance()->resumeMusic( "audio/common/bg_music_1.mp3" );
     }
 }
 
@@ -383,6 +386,7 @@ void BattleLayer::restartBattle() {
 }
 
 void BattleLayer::quitBattle() {
+    AudioManager::getInstance()->stopMusic( "audio/common/bg_music_1.mp3" );
 }
 
 void BattleLayer::setMapLogic( MapLogic* map_logic ) {
@@ -447,12 +451,12 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByCondition( eTargetCamp ca
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eTargetCamp camp ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponents( eTargetCamp camp, bool attackable ) {
     cocos2d::Vector<UnitNode*> ret;
     
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
-        if( unit->isFoeOfCamp( camp ) ) {
+        if( unit->isFoeOfCamp( camp ) && ( unit->isAttackable() == attackable ) ) {
             ret.pushBack( unit );
         }
     }
@@ -542,11 +546,11 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsByName( const std::string& 
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& center, float radius ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& center, float radius, bool attackable ) {
     cocos2d::Vector<UnitNode*> ret;
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
-        if( unit->isFoeOfCamp( camp ) ) {
+        if( unit->isFoeOfCamp( camp ) && ( unit->isAttackable() == attackable ) ) {
             Point unit_pos = unit->getPosition();
             if( Math::isPositionInRange( unit->getPosition(), center, radius + unit->getUnitData()->collide ) ) {
                 ret.pushBack( unit ); 
@@ -556,11 +560,11 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp ca
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius, bool attackable ) {
     cocos2d::Vector<UnitNode*> ret;
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
-        if( unit->isFoeOfCamp( camp ) ) {
+        if( unit->isFoeOfCamp( camp ) && ( unit->isAttackable() == attackable ) ) {
             Point unit_pos = unit->getPosition();
             if( Math::isPositionInRange( unit_pos, center, radius + unit->getUnitData()->collide ) && !Terrain::getInstance()->isBlocked( init_pos, unit_pos ) ) {
                 ret.pushBack( unit );
@@ -570,11 +574,11 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRange( eTargetCamp ca
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRoundRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRoundRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius, bool attackable ) {
     cocos2d::Vector<UnitNode*> ret;
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
-        if( unit->isFoeOfCamp( camp ) ) {
+        if( unit->isFoeOfCamp( camp ) && ( unit->isAttackable() == attackable ) ) {
             Point unit_pos = unit->getPosition();
             if( Math::isPositionInRoundRange( unit_pos, center, radius + unit->getUnitData()->collide ) && !Terrain::getInstance()->isBlocked( init_pos, unit_pos ) ) {
                 ret.pushBack( unit );
@@ -584,11 +588,11 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInRoundRange( eTargetCa
     return ret;
 }
 
-cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInSector( eTargetCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle ) {
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInSector( eTargetCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle, bool attackable ) {
     cocos2d::Vector<UnitNode*> ret;
     for( auto pair : _alive_units ) {
         UnitNode* unit = pair.second;
-        if( unit->isFoeOfCamp( camp ) ) {
+        if( unit->isFoeOfCamp( camp ) && ( unit->isAttackable() == attackable ) ) {
             Point unit_pos = unit->getPosition();
             if( Math::isPointInSector( unit_pos, center, dir, radius + unit->getUnitData()->collide, angle ) ) {
                 ret.pushBack( unit );
@@ -756,7 +760,6 @@ void BattleLayer::onUnitAppear( UnitNode* unit ) {
 }
 
 void BattleLayer::onUnitDying( UnitNode* unit ) {
-    SkillCache::getInstance()->removeSkillOfOwner( unit );
     for( auto pair : _alive_units ) {
         if( pair.second->getChasingTarget() == unit ) {
             pair.second->setChasingTarget( nullptr );
@@ -848,6 +851,9 @@ void BattleLayer::addToLayer( cocos2d::Node* node, eBattleSubLayer layer, const 
         case eBattleSubLayer::EffectLayer:
             this->addToEffectLayer( node, pos, local_zorder );
             break;
+        case eBattleSubLayer::FloatLayer:
+            this->addToFloatLayer( node, pos, local_zorder );
+            break;
         default:
             break;
     }
@@ -913,6 +919,14 @@ void BattleLayer::centerCameraToPosition( const cocos2d::Point& pos ) {
     }
     
     _tmx_map->setPosition( new_pos_x, new_pos_y );
+}
+
+cocos2d::Rect BattleLayer::getScreenRect() {
+    Point map_pos = _tmx_map->getPosition();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+    Size size = Director::getInstance()->getVisibleSize();
+    
+    return Rect( origin.x - map_pos.x, origin.y - map_pos.y, size.width, size.height );
 }
 
 int BattleLayer::getNextDeployId() {
@@ -1001,7 +1015,6 @@ void BattleLayer::endStory( UIStoryLayer* story ) {
 }
 
 void BattleLayer::dropItem( DropItem* item, const cocos2d::Point& pos, eBattleSubLayer layer ) {
-    item->setPosition( pos );
     _drop_items.pushBack( item );
     this->addToLayer( item, layer, pos, 0 );
 }

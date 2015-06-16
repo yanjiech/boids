@@ -9,6 +9,7 @@
 #include "GameTask.h"
 #include "../constant/BoidsConstant.h"
 #include "MapLogic.h"
+#include "../scene/BattleLayer.h"
 
 using namespace cocos2d;
 
@@ -35,6 +36,7 @@ GameTask* GameTask::create( const cocos2d::ValueMap& data, MapLogic* map_logic )
 }
 
 bool GameTask::init( const cocos2d::ValueMap& data, MapLogic* map_logic ) {
+    _task_data = data;
     _map_logic = map_logic;
     _state = GAME_TASK_STATE_STARTED;
     _is_active = true;
@@ -49,12 +51,21 @@ bool GameTask::init( const cocos2d::ValueMap& data, MapLogic* map_logic ) {
 }
 
 void GameTask::setTaskState( const std::string& new_state ) {
+    if( _state == GAME_TASK_STATE_FAILED || _state == GAME_TASK_STATE_FINISHED ) {
+        return;
+    }
     _state = new_state;
     if( _state == GAME_TASK_STATE_STARTED ) {
         this->setActive( true );
     }
     else {
         this->setActive( false );
+        if( _state == GAME_TASK_STATE_FINISHED ) {
+            _map_logic->getBattleLayer()->getBattleMenuLayer()->onTaskChanged( _task_id, true );
+        }
+        else if( _state == GAME_TASK_STATE_FAILED ) {
+            _map_logic->getBattleLayer()->getBattleMenuLayer()->onTaskChanged( _task_id, false );
+        }
     }
 }
 

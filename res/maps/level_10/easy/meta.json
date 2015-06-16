@@ -1362,8 +1362,8 @@
         {
             "type": "primary_win",
             "name": "task_1",
-            "desc": "hold住10波怪",
-            "title": "hold住10波怪"
+            "desc": "保证士兵队长不死",
+            "title": "保证士兵队长不死"
         },
         {
             "type": "additional_win",

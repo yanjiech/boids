@@ -37,9 +37,10 @@ bool HuntingIntuition::init( UnitNode* owner, const cocos2d::ValueMap& data, con
         return false;
     }
     
+    int level = data.at( "level" ).asInt();
     _buff_duration = data.at( "buff_duration" ).asFloat();
-    _cri_up = data.at( "cri" ).asFloat();
-    _hit_up = data.at( "hit" ).asFloat();
+    _cri_up = data.at( "cri" ).asValueVector().at( level - 1 ).asFloat();
+    _hit_up = data.at( "hit" ).asValueVector().at( level - 1 ).asFloat();
     
     return true;
 }

@@ -11,12 +11,8 @@
 
 #include "cocos2d.h"
 
-#define LEVEL_UP_SUCCESS 0
-#define LEVEL_UP_ERROR_NOT_FOUND 1
-#define LEVEL_UP_ERROR_NOT_ENOUGH_GOLD 2
-#define LEVEL_UP_ERROR_REACH_LEVEL_LIMIT 3
-
 #define PLAYER_INFO_CURRENCY "currency"
+#define PLAYER_INFO_BASE_INFO "base_info"
 
 class PlayerInfo;
 
@@ -77,10 +73,6 @@ public:
     
     cocos2d::ValueVector getEquipsByRange( int type, int from, int size, int order );
     
-    cocos2d::ValueMap upgradeHero( const std::string& hero_id, int level );
-    
-    cocos2d::ValueMap upgradeSkill( const std::string& hero_id, const std::string& skill_name, int level );
-    
     const cocos2d::ValueMap& getAllEquipsInfo();
     
     int getMaxEquipObjId();
@@ -99,11 +91,11 @@ public:
     int getTeamExp();
     int getExpForTeamLevel( int level );
     
+    std::string getPlayerName();
+    void setPlayerName( const std::string& new_name, bool record );
+    
     void setTeamLevel( int level );
     int getTeamLevel();
-    
-    int getLevelUpCost( const std::string& slot );
-    int unitLevelUpByOne( const std::string& slot );
     
     int getTotalTalentPoints();
     void setTotalTalentPoints( int points );
@@ -120,6 +112,10 @@ public:
     
     //user operation
     bool sellEquip( const std::string& obj_id );
+    
+    cocos2d::ValueMap upgradeHero( const std::string& hero_id, int level );
+    
+    cocos2d::ValueMap upgradeSkill( const std::string& hero_id, const std::string& skill_name, int level );
 };
 
 #endif /* defined(__Boids__PlayerInfo__) */

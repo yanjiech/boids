@@ -467,7 +467,7 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "task_change",
                     "task_name": "prim_win",
-                    "task_state": "task_finished"
+                    "task_state": "task_failed"
                 }
             ]
         },

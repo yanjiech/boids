@@ -167,15 +167,11 @@ void UIHeroSkillLayer::loadSkillData( int i ) {
 
 void UIHeroSkillLayer::upgradeSkill( int i ) {
     UnitData* unit_data = _hero->getUnitData();
-    ResourceManager* resource_manager = ResourceManager::getInstance();
-    
     const ValueMap& skill_data = unit_data->skills.at( i - 1 ).asValueMap();
     std::string skill_name = skill_data.at( "name" ).asString();
-    int skill_level = skill_data.at( "level" ).asInt();
 
-    int upgrade_cost = resource_manager->getSkillUpgradeCost( skill_name, skill_level + 1 );
-    if( upgrade_cost > 0 ) {
-        ValueMap result = PlayerInfo::getInstance()->upgradeSkill( _hero->getHeroId(), skill_name, 1 );
+    ValueMap result = PlayerInfo::getInstance()->upgradeSkill( _hero->getHeroId(), skill_name, 1 );
+    if( !result.empty() ) {
         _hero->loadHeroInfo( result );
         this->loadSkillData( i );
     }

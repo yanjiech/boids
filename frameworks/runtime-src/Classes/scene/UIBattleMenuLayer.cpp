@@ -13,6 +13,7 @@
 #include "../manager/ResourceManager.h"
 #include "../data/PlayerInfo.h"
 #include "../util/CocosUtils.h"
+#include "../manager/AudioManager.h"
 
 using namespace cocos2d;
 using namespace cocostudio::timeline;
@@ -196,27 +197,26 @@ void UIBattleMenuLayer::loadTasks() {
 
 void UIBattleMenuLayer::onPauseTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == ui::Widget::TouchEventType::ENDED ) {
-        CocosUtils::playTouchEffect();
+        _battle_layer->pauseBattle();
         this->showPausePanel();
     }
 }
 
 void UIBattleMenuLayer::onHomeTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == ui::Widget::TouchEventType::ENDED ) {
-        CocosUtils::playTouchEffect();
+        _battle_layer->quitBattle();
         SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
     }
 }
 
 void UIBattleMenuLayer::onRestartTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == ui::Widget::TouchEventType::ENDED ) {
-        CocosUtils::playTouchEffect();
     }
 }
 
 void UIBattleMenuLayer::onContinueTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == ui::Widget::TouchEventType::ENDED ) {
-        CocosUtils::playTouchEffect();
+        _battle_layer->resumeBattle();
         _pause_panel->stopAction( _pause_panel_action );
         _pause_panel->runAction( _pause_panel_action );
         _pause_panel_action->play( "disappear", false );
@@ -226,7 +226,7 @@ void UIBattleMenuLayer::onContinueTouched( cocos2d::Ref* sender, cocos2d::ui::Wi
 
 void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == ui::Widget::TouchEventType::ENDED ) {
-        CocosUtils::playTouchEffect();
+        _battle_layer->quitBattle();
         SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
     }
 }
@@ -235,7 +235,9 @@ void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& resu
     _btn_pause->setVisible( false );
     _pause_panel->setVisible( false );
     _did_win = win;
+    _battle_layer->quitBattle();
     if( win ) {
+        AudioManager::getInstance()->playMusic( "audio/common/win.mp3", false );
         _win_panel->setVisible( true );
         _lose_panel->setVisible( false );
         _win_effect->setAnimation( 0, "Idle", true );
@@ -341,6 +343,7 @@ void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& resu
         player_info->updateMissionRecord( level_id, _completed_mission );
     }
     else {
+        AudioManager::getInstance()->playMusic( "audio/common/lose.mp3", false );
         _win_panel->setVisible( false );
         _lose_panel->setVisible( true );
         _lose_panel->runAction( _lose_panel_action );
@@ -387,6 +390,17 @@ void UIBattleMenuLayer::hideMenu() {
     _btn_pause->setVisible( true );
     _win_panel->setVisible( false );
     _pause_panel->setVisible( false );
+}
+
+void UIBattleMenuLayer::onTaskChanged( int i, bool succ ) {
+    Sprite* icon = _sp_mission_vec.at( i );
+    icon->setVisible( true );
+    if( succ ) {
+        icon->setSpriteFrame( "ui_pause_finish.png" );
+    }
+    else {
+        icon->setSpriteFrame( "ui_pause_failed.png" );
+    }
 }
 
 bool UIBattleMenuLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event ) {
