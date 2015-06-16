@@ -272,6 +272,19 @@ void EditorGameTrigger::loadJson(const rapidjson::Value& value) {
     this->GameState = value["game_state"].GetString();
 }
 
+rapidjson::Value& EditorGameTimeTrigger::toJson(rapidjson::Document::AllocatorType& allocator) {
+    EditorTriggerBase::toJson(allocator);
+    _json.AddMember( "timeout", Timeout, allocator );
+    _json.AddMember( "relation", Relation, allocator );
+    return _json;
+}
+
+void EditorGameTimeTrigger::loadJson(const rapidjson::Value& value ) {
+    EditorTriggerBase::loadJson(value);
+    Timeout = (float)value["timeout"].GetDouble();
+    Relation = value["relation"].GetInt();
+}
+
 rapidjson::Value& EditorCustomTrigger::toJson(rapidjson::Document::AllocatorType& allocator) {
     EditorTriggerBase::toJson(allocator);
     _json.AddMember("trigger_name", TriggerName.c_str(), allocator);
@@ -788,6 +801,9 @@ void EditorEvent::loadJson(const rapidjson::Value& value) {
                 trigger = std::shared_ptr<EditorGameTrigger>(new EditorGameTrigger());
             } else if (triggerType == "vision_change") {
                 trigger = std::shared_ptr<EditorVisionTrigger>(new EditorVisionTrigger());
+            }
+            else if( triggerType == "game_time" ) {
+                trigger = std::shared_ptr<EditorGameTimeTrigger>( new EditorGameTimeTrigger() );
             }
 //            else if (triggerType == "conversation_change") {
 //                trigger = std::shared_ptr<EditorConversationChangeTrigger>(new EditorConversationChangeTrigger());

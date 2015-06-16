@@ -40,6 +40,8 @@ typedef std::shared_ptr<EditorStoryChangeTrigger> EditorStoryChangeTriggerPtr;
 typedef std::shared_ptr<EditorStory> EditorStoryPtr;
 typedef std::shared_ptr<EditorStoryAction> EditorStoryActionPtr;
 
+typedef std::shared_ptr<EditorGameTimeTrigger> EditorGameTimeTriggerPtr;
+
 //typedef std::shared_ptr<EditorConversationChangeTrigger> EditorConversationChangeTriggerPtr;
 
 #endif

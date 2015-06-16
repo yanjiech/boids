@@ -1369,7 +1369,9 @@
         "rec": 0.5, 
         "recgr": 0.2, 
         "scale": 0.7, 
-        "skills": [], 
+        "skills": [
+            "MissileShowers"
+        ], 
         "star": 1, 
         "ten": 5.0, 
         "tengr": 2.0, 

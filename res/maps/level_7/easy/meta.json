@@ -1,171 +1,292 @@
-{	
-	"desc": "击败骷髅王！",
-    "tasks": [
-        {
-            "name": "1",
-            "desc": "击败骷髅王"
-        },
-        {
-            "name": "2",
-            "desc": "杀死所有敌人"
-        },
-        {
-            "name": "3",
-            "desc": "全员不死"
-        }
-    ],
-    "plist": [],
+{
     "positions": [
         {
             "name": "player_start",
             "rect": {
-                "x": 1263.9,
-                "y": 13.8115,
-                "width": 275.823,
-                "height": 131.329
+                "x": 2005.79,
+                "y": 118.358,
+                "width": 164.009,
+                "height": 139.388
             }
         },
         {
-            "name": "yellow1",
+            "name": "villiger_start",
             "rect": {
-                "x": 588.203,
-                "y": 916.98,
-                "width": 209.989,
-                "height": 101.153
+                "x": 2384.36,
+                "y": 1095.21,
+                "width": 143.506,
+                "height": 118.881
             }
         },
         {
-            "name": "yellow2",
+            "name": "route_1",
             "rect": {
-                "x": 1096.09,
-                "y": 3063.37,
-                "width": 231.087,
-                "height": 143.094
-            }
-        },
-        {
-            "name": "yellow3",
-            "rect": {
-                "x": 2597.45,
-                "y": 1442.43,
-                "width": 274.137,
-                "height": 177.347
-            }
-        },
-        {
-            "name": "yellow4",
-            "rect": {
-                "x": 4261.47,
-                "y": 848.641,
-                "width": 296.054,
-                "height": 164.478
-            }
-        },
-        {
-            "name": "yellow5",
-            "rect": {
-                "x": 4484.7,
-                "y": 2485.7,
-                "width": 423.271,
-                "height": 219.609
-            }
-        },
-        {
-            "name": "yellow6",
-            "rect": {
-                "x": 2934.79,
-                "y": 3319.33,
-                "width": 522.24,
-                "height": 291.652
-            }
-        },
-        {
-            "name": "hp1",
-            "rect": {
-                "x": 4316.02,
-                "y": 2788.09,
-                "width": 140.914,
-                "height": 69.1182
+                "x": 1777.5,
+                "y": 907.599,
+                "width": 118.156,
+                "height": 87.1661
             },
-            "tag": "hp"
+            "prev_pos": "villiger_start"
         },
         {
-            "name": "hp2",
+            "name": "route_2",
             "rect": {
-                "x": 3668.56,
-                "y": 3367.78,
-                "width": 83.3484,
-                "height": 37.0486
+                "x": 1362.26,
+                "y": 345.259,
+                "width": 120.5,
+                "height": 92.1735
             },
-            "tag": "hp"
+            "prev_pos": "route_1"
         },
         {
-            "name": "monster1",
+            "name": "route_3",
             "rect": {
-                "x": 798.023,
-                "y": 2044.2,
-                "width": 196.344,
-                "height": 102.055
+                "x": 727.565,
+                "y": 158.132,
+                "width": 87.9476,
+                "height": 83.2492
+            },
+            "prev_pos": "route_2"
+        },
+        {
+            "name": "route_4",
+            "rect": {
+                "x": 363.387,
+                "y": 832.329,
+                "width": 119.663,
+                "height": 87.1661
+            },
+            "prev_pos": "route_3"
+        },
+        {
+            "name": "route_5",
+            "rect": {
+                "x": 929.953,
+                "y": 1268.97,
+                "width": 123.893,
+                "height": 102.974
+            },
+            "prev_pos": "route_4"
+        },
+        {
+            "name": "route_6",
+            "rect": {
+                "x": 1314.55,
+                "y": 1835.17,
+                "width": 121.39,
+                "height": 109.288
+            },
+            "prev_pos": "route_5"
+        },
+        {
+            "name": "route_final",
+            "rect": {
+                "x": 261.9,
+                "y": 2239.96,
+                "width": 167.289,
+                "height": 177.257
+            },
+            "prev_pos": "route_6"
+        },
+        {
+            "name": "orange_1",
+            "rect": {
+                "x": 1641.11,
+                "y": 826.896,
+                "width": 362.128,
+                "height": 274.653
             }
         },
         {
-            "name": "monster2",
+            "name": "orange_02",
             "rect": {
-                "x": 2321.07,
-                "y": 2741.95,
-                "width": 237.39,
-                "height": 140.88
+                "x": 1994.87,
+                "y": 529.073,
+                "width": 95.094,
+                "height": 103.078
             }
         },
         {
-            "name": "monster5",
+            "name": "orange_03",
             "rect": {
-                "x": 3373.82,
-                "y": 1923.28,
-                "width": 220.748,
-                "height": 160.847
+                "x": 1099.59,
+                "y": 129.328,
+                "width": 189.411,
+                "height": 171.936
             }
         },
         {
-            "name": "monster3",
+            "name": "orange_04",
             "rect": {
-                "x": 2968.93,
-                "y": 321.467,
-                "width": 273.994,
-                "height": 205.219
+                "x": 1630,
+                "y": 87.7949,
+                "width": 75.0081,
+                "height": 62.1806
             }
         },
         {
-            "name": "monster6",
+            "name": "orange_05",
             "rect": {
-                "x": 4325.59,
-                "y": 1884.45,
-                "width": 138.661,
-                "height": 98.7261
+                "x": 576.462,
+                "y": 264.271,
+                "width": 88.8929,
+                "height": 91.7571
             }
         },
         {
-            "name": "monster4",
+            "name": "orange_06",
             "rect": {
-                "x": 1214.03,
-                "y": 1445.18,
-                "width": 195.233,
-                "height": 116.476
+                "x": 333.407,
+                "y": 625.29,
+                "width": 135.574,
+                "height": 94.3169
+            }
+        },
+        {
+            "name": "orange_07",
+            "rect": {
+                "x": 628.969,
+                "y": 1067.71,
+                "width": 111.319,
+                "height": 87.5826
+            }
+        },
+        {
+            "name": "orange_08",
+            "rect": {
+                "x": 496.783,
+                "y": 1308.3,
+                "width": 96.348,
+                "height": 82.1587
+            }
+        },
+        {
+            "name": "orange_09",
+            "rect": {
+                "x": 1238.21,
+                "y": 1983.33,
+                "width": 145.902,
+                "height": 98.7441
+            }
+        },
+        {
+            "name": "orange_10",
+            "rect": {
+                "x": 1597.04,
+                "y": 1631.23,
+                "width": 108.562,
+                "height": 91.6493
+            }
+        },
+        {
+            "name": "orange_11",
+            "rect": {
+                "x": 702.424,
+                "y": 2101.21,
+                "width": 73.3934,
+                "height": 79.1309
+            }
+        },
+        {
+            "name": "orange_12",
+            "rect": {
+                "x": 1128.87,
+                "y": 2506.53,
+                "width": 163.391,
+                "height": 172.353
+            }
+        },
+        {
+            "name": "orange_13",
+            "rect": {
+                "x": 1860.02,
+                "y": 2329.62,
+                "width": 252.321,
+                "height": 344.036
+            }
+        },
+        {
+            "name": "orange_14",
+            "rect": {
+                "x": 291.99,
+                "y": 3076.27,
+                "width": 274.967,
+                "height": 187.941
             }
         },
         {
             "name": "boss",
             "rect": {
-                "x": 3208.53,
-                "y": 3575.01,
-                "width": 132.006,
-                "height": 73.2129
+                "x": 1302.82,
+                "y": 3196.1,
+                "width": 293.326,
+                "height": 228.113
+            }
+        },
+        {
+            "name": "trigger_villiger_start",
+            "rect": {
+                "x": 2255.67,
+                "y": 967.72,
+                "width": 175.17,
+                "height": 348.412
             }
         }
     ],
     "events": [
         {
-            "name": "yellow_init",
+            "name": "lose_cond_1",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "lose_cond_2",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "villiger",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "story_01",
+            "enabled": true,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -178,213 +299,474 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "？？？：救命，救命啊！",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": false,
+                            "line": "？？？：喊破喉咙也不会有人来救你们的，哦呵呵呵呵～",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：叫声在左上方，我们去那儿看看吧！",
+                            "speaker": "enchantress"
+                        }
+                    ],
+                    "name": "story_01"
+                }
+            ]
+        },
+        {
+            "name": "route_monster_01",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_1",
+                    "unit_count": 4,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_1",
+                    "unit_count": 1,
+                    "unit_level": 7
+                }
+            ]
+        },
+        {
+            "name": "villiger",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "yellow1",
-                    "unit_count": 5,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "kobold",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "yellow2",
-                    "unit_count": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "yellow3",
-                    "unit_count": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "red_axe_orc",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "yellow5",
-                    "unit_count": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "yellow5",
-                    "unit_count": 3,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "evil_wizard",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "yellow6",
-                    "unit_count": 2,
-                    "class_name": "evil_wizard",
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "skeleton_king",
-                    "unit_type": "enemy",
+                    "unit_type": "ally",
                     "unit_state": "unit_hold_appear",
+                    "show_hp": true,
+                    "tag_name": "villiger",
+                    "position_name": "villiger_start",
+                    "unit_count": 3,
+                    "custom_change": "hp:2000,attackable:false,movespeed:0",
+                    "unit_level": 12
+                }
+            ]
+        },
+        {
+            "name": "villiger_start",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "trigger_villiger_start",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "villiger",
+                    "unit_state": "unit_move",
+                    "position_name": "route_final",
+                    "custom_change": "attackable:true,movespeed:60",
+                    "unit_level": 1
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "lose_cond_2",
+                    "event_state": "event_enable"
+                }
+            ]
+        },
+        {
+            "name": "route_monster_2",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "villiger",
+                    "position_name": "route_1",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_02",
+                    "unit_count": 2,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_04",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "route_3",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_03",
+                    "unit_count": 1,
+                    "unit_level": 7
+                }
+            ]
+        },
+        {
+            "name": "route_monster_3",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "",
+                    "position_name": "route_2",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_06",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_08",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_07",
+                    "unit_count": 1,
+                    "unit_level": 7
+                }
+            ]
+        },
+        {
+            "name": "route_monster_4",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "villiger",
+                    "position_name": "route_6",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_10",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_09",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_11",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "route_final",
+                    "unit_count": 2,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_09",
+                    "unit_count": 1,
+                    "unit_level": 7
+                }
+            ]
+        },
+        {
+            "name": "default_monster",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 3,
+                    "unit_level": 7,
+                    "skill_1_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_12",
+                    "unit_count": 2,
+                    "unit_level": 7,
+                    "skill_1_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bomb_robot",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_14",
+                    "unit_count": 3,
+                    "unit_level": 7,
+                    "skill_1_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_14",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_12",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 1,
+                    "unit_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "rattletrap",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_13",
+                    "unit_count": 1,
+                    "is_boss": true,
+                    "unit_level": 7,
+                    "skill_1_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "rattletrap",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "orange_14",
+                    "unit_count": 1,
+                    "is_boss": true,
+                    "unit_level": 7,
+                    "skill_1_level": 7
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin_helicopter",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": true,
                     "tag_name": "boss",
                     "position_name": "boss",
                     "unit_count": 1,
                     "is_boss": true,
-                    "class_name": "skeleton_king",
-                    "popup_type": "normal"
+                    "custom_change": "hp:4000",
+                    "unit_level": 7,
+                    "skill_1_level": 7
                 },
                 {
                     "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "axe_orc",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "yellow4",
-                    "unit_count": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "axe_orc",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "monster1",
-                    "unit_count": 4,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "axe_orc",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "monster2",
-                    "unit_count": 5,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "goblin",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "monster3",
-                    "unit_count": 3,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "bomb_goblin",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "monster3",
-                    "unit_count": 3,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "axe_orc",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "monster4",
-                    "unit_count": 3,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "axe_orc",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "monster5",
-                    "unit_count": 3,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "wild_wolf",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "monster5",
-                    "unit_count": 3,
-                    "popup_type": "normal"
-                },
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "axe_orc",
-                    "unit_type": "enemy",
-                    "unit_state": "unit_appear",
-                    "position_name": "monster6",
-                    "unit_count": 5,
-                    "popup_type": "normal"
+                    "action_type": "event_change",
+                    "event_name": "win_cond",
+                    "event_state": "event_enable"
                 }
             ]
         },
         {
-            "name": "hp_appear",
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "map_init"
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "unit_change",
-                    "source_type": "name_source",
-                    "source_value": "healthpack",
-                    "unit_type": "item",
-                    "unit_state": "unit_appear",
-                    "position_tag": "hp",
-                    "unit_count": 1,
-                    "popup_type": "normal"
-                }
-            ]
-        },
-        {
-            "name": "gamewin",
+            "name": "win_cond",
+            "enabled": false,
             "trigger_meta": {
                 "is_repeated": false,
                 "trigger_relation": "then"
@@ -394,26 +776,79 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "boss",
-                    "unit_state": "unit_disappear",
+                    "unit_state": "unit_dead",
                     "trigger_count": 1
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,1.00,0.00",
-                    "action_type": "game_change",
-                    "game_state": "game_win"
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_finished"
+                }
+            ]
+        },
+        {
+            "name": "reach_route_final",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "villiger",
+                    "position_name": "route_final",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_finished"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "villiger",
+                    "unit_state": "unit_disappear",
+                    "unit_level": 1
                 }
             ]
         }
     ],
     "units": [
-        "axe_orc",
-        "bomb_goblin",
-        "evil_wizard",
-        "goblin",
-        "kobold",
-        "red_axe_orc",
-        "wild_wolf"
+        "bee",
+        "bomb_robot",
+        "desert_thief",
+        "desert_thief_leader",
+        "goblin_helicopter"
+    ],
+    "tasks": [
+        {
+            "type": "primary_win",
+            "name": "task_main",
+            "desc": "消灭地精直升机",
+            "title": "消灭地精直升机"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_2",
+            "desc": "至少一名地精到达目的地",
+            "title": "至少一名地精到达目的地"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_3",
+            "desc": "在5分钟内完成游戏",
+            "title": "在5分钟内完成游戏"
+        }
     ]
 }

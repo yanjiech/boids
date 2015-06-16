@@ -452,6 +452,15 @@ void UnitChangeAction::onActionTriggered( bool finish ) {
                 u->addBuff( buff->getBuffId(), buff, true );
                 buff->begin();
             }
+            
+            std::string custom_change = "";
+            itr = _action_data.find( "custom_change" );
+            if( itr != _action_data.end() ) {
+                custom_change = itr->second.asString();
+            }
+            if( !custom_change.empty() ) {
+                u->applyCustomChange( custom_change );
+            }
         }
     }
 }
@@ -801,7 +810,7 @@ void ConversationAction::onActionTriggered( bool finish ) {
 void ConversationAction::updateFrame( float delta ) {
     if( !_should_recycle && _is_running ) {
         _accumulator += delta;
-        if( ( _current_round == 0 && _accumulator > _delay ) || ( _current_round > 0 && _accumulator > _interval ) ) {
+        if( ( _current_times == 0 && _accumulator > _delay ) || ( _current_round > 0 && _accumulator > _interval ) ) {
             _accumulator = 0;
             if( _callback ) {
                 _callback( false );

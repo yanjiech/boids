@@ -29,17 +29,18 @@
 enum eBattleSubLayer {
     MapLayer = 1,
     OnGroundLayer = 2,
-    BelowObjectLayer = 3,
-    ObjectLayer = 4,
-    OverObjectLayer = 5,
-    EffectLayer = 6,
-    FogLayer = 7,
-    FloatLayer = 8,
-    ToastLayer = 9,
-    ControlLayer = 10,
-    BattleUILayer = 11,
-    BattleStoryLayer = 12,
-    BattleMenuLayer = 13
+    GrassLayer = 3,
+    BelowObjectLayer = 4,
+    ObjectLayer = 5,
+    OverObjectLayer = 6,
+    EffectLayer = 7,
+    FogLayer = 8,
+    FloatLayer = 9,
+    ToastLayer = 10,
+    ControlLayer = 11,
+    BattleUILayer = 12,
+    BattleStoryLayer = 13,
+    BattleMenuLayer = 14
 };
 
 enum eBattleState {

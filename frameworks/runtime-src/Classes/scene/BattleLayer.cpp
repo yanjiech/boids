@@ -98,6 +98,11 @@ bool BattleLayer::init( MapData* map_data, const std::string& level_id, bool is_
         _tmx_map = map_data->generateTiledMapWithFlags( 1 );
         _tmx_map->setPosition( origin );
         this->addChild( _tmx_map, 0, eBattleSubLayer::MapLayer );
+    
+        auto grass_layer = _tmx_map->getLayer( "grass" );
+        if( grass_layer ) {
+            grass_layer->setLocalZOrder( eBattleSubLayer::GrassLayer );
+        }
         
         _max_map_position = origin;
         _min_map_position = Point( origin.x + size.width - _tmx_map->getContentSize().width, origin.y + size.height - _tmx_map->getContentSize().height );
@@ -334,6 +339,7 @@ void BattleLayer::updateFrame( float delta ) {
     if( _state == BattleRunning ) {
         _game_time += delta;
         _map_logic->updateFrame( delta );
+        _map_logic->updateGameTime( _game_time );
         this->checkState();
     }
     else if( _state == BattleWin || _state == BattleLose ) {

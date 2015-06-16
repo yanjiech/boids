@@ -536,8 +536,6 @@ void UnitNode::appear() {
 }
 
 void UnitNode::disappear() {
-    this->removeAllBuffs();
-    this->removeAllUnitComponents();
     FadeTo* fadeout = FadeTo::create( 1.2f, 0 );
     CallFunc* callback = CallFunc::create( CC_CALLBACK_0( UnitNode::onDisappearEnd, this ) );
     Sequence* seq = Sequence::create( fadeout, callback, nullptr );
@@ -545,12 +543,12 @@ void UnitNode::disappear() {
 }
 
 void UnitNode::onDisappearEnd() {
+    this->removeAllBuffs();
+    this->removeAllUnitComponents();
     this->changeUnitState( eUnitState::Dead, true );
 }
 
 void UnitNode::onDying() {
-    this->removeAllBuffs();
-    this->removeAllUnitComponents();
     Sprite* blood = Sprite::createWithSpriteFrameName( "unit_deadblood.png" );
     UnitNodeFadeoutComponent* component = UnitNodeFadeoutComponent::create( blood, "dead_blood", 3.0f, 0, true );
     component->setPosition( Point::ZERO );

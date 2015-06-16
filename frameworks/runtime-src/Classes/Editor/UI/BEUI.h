@@ -228,6 +228,19 @@ private:
     void togglePositionUI(bool visible);
 };
 
+class BEUIGameTimeTrigger : public BEUIBase {
+public:
+    explicit BEUIGameTimeTrigger(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler);
+    virtual void reset();
+    EditorGameTimeTriggerPtr getTrigger();
+private:
+    EditorGameTimeTriggerPtr _trigger;
+    cocos2d::ui::Button *_ok;
+    cocos2d::ui::Button *_cancel;
+    cocos2d::ui::TextField* _tf_timeout;
+    cocos2d::ui::TextField* _tf_relation;
+};
+
 class BEUIUnitStayTrigger : public BEUIBase, public BEFilterListViewDelegate {
 public:
     explicit BEUIUnitStayTrigger(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler);
@@ -572,6 +585,7 @@ public:
     BEUIStoryAction* storyActionUI;
 //    BEUIConversationTrigger *conversationChangeUI;
     BEUIStoryChangeTrigger* storyChangeTriggerUI;
+    BEUIGameTimeTrigger* gametimeTriggerUI;
     virtual void reset();
     void hideAllPopups();
     
@@ -602,6 +616,7 @@ private:
     cocos2d::ui::Layout *_conversationActionPanel;
     cocos2d::ui::Layout *_storyActionPanel;
     cocos2d::ui::Layout *_storyChangePanel;
+    cocos2d::ui::Layout* _gametimePanel;
     
     BEEditorCommandHandler _commandHandler;
 };

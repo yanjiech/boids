@@ -1090,11 +1090,11 @@
         }
     ],
     "units": [
-        "human_master_assassin",
         "archer",
         "footman",
         "hammer_warrior",
         "human_assassin",
+        "human_master_assassin",
         "poodle",
         "scarecrow",
         "women_fire_wizard",
