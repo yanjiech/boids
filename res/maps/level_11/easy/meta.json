@@ -341,6 +341,18 @@
                     "action_type": "task_change",
                     "task_name": "task_1",
                     "task_state": "task_finished"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_finished"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_3",
+                    "task_state": "task_failed"
                 }
             ]
         },
@@ -1349,6 +1361,56 @@
                     "task_state": "task_failed"
                 }
             ]
+        },
+        {
+            "name": "trigger_task_2",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "ally",
+                    "unit_state": "unit_dead",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "trigger_task_3",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "1",
+                    "unit_state": "unit_disappear",
+                    "trigger_count": 4
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_3",
+                    "task_state": "task_finished"
+                }
+            ]
         }
     ],
     "units": [
@@ -1362,8 +1424,8 @@
         {
             "type": "primary_win",
             "name": "task_1",
-            "desc": "hold住10波怪",
-            "title": "hold住10波怪"
+            "desc": "士兵队长存活",
+            "title": "士兵队长存活"
         },
         {
             "type": "additional_win",

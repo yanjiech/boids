@@ -7,11 +7,11 @@
             <key>ui_hero_atk_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1239,1988},{25,45}}</string>
+                <string>{{943,1589},{25,45}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{25,45}}</string>
                 <key>sourceSize</key>
@@ -33,7 +33,7 @@
             <key>ui_hero_captain_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1071,1988},{39,48}}</string>
+                <string>{{889,1617},{39,48}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,11 +46,11 @@
             <key>ui_hero_chain.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1875,695},{154,163}}</string>
+                <string>{{840,1717},{154,163}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{154,163}}</string>
                 <key>sourceSize</key>
@@ -59,7 +59,7 @@
             <key>ui_hero_class_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{466,1460},{89,89}}</string>
+                <string>{{1692,76},{89,89}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,10 +69,23 @@
                 <key>sourceSize</key>
                 <string>{89,89}</string>
             </dict>
+            <key>ui_hero_close.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1617,991},{60,60}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{60,60}}</string>
+                <key>sourceSize</key>
+                <string>{60,60}</string>
+            </dict>
             <key>ui_hero_coin.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1151,1988},{39,47}}</string>
+                <string>{{930,1617},{39,47}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +98,7 @@
             <key>ui_hero_coin2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{899,1988},{59,57}}</string>
+                <string>{{789,1962},{59,57}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,11 +111,11 @@
             <key>ui_hero_cost_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1875,851},{159,37}}</string>
+                <string>{{1366,1174},{159,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{159,37}}</string>
                 <key>sourceSize</key>
@@ -111,7 +124,7 @@
             <key>ui_hero_def_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1385,1988},{35,39}}</string>
+                <string>{{1366,1510},{35,39}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +137,7 @@
             <key>ui_hero_deployed.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1112,1988},{48,37}}</string>
+                <string>{{1366,1460},{48,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +150,7 @@
             <key>ui_hero_diban.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1894,76},{150,44}}</string>
+                <string>{{1451,1054},{150,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +163,7 @@
             <key>ui_hero_diban02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{709,991},{380,536}}</string>
+                <string>{{1406,1100},{380,536}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,11 +176,11 @@
             <key>ui_hero_equip_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{557,1460},{79,88}}</string>
+                <string>{{1692,167},{79,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{79,88}}</string>
                 <key>sourceSize</key>
@@ -176,33 +189,33 @@
             <key>ui_hero_equip_btn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1547,1202},{130,131}}</string>
+                <string>{{1632,1780},{140,140}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{130,131}}</string>
+                <string>{{0,0},{140,140}}</string>
                 <key>sourceSize</key>
-                <string>{130,131}</string>
+                <string>{140,140}</string>
             </dict>
             <key>ui_hero_equip_btn2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1547,1070},{130,131}}</string>
+                <string>{{1632,1638},{140,140}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{130,131}}</string>
+                <string>{{0,0},{140,140}}</string>
                 <key>sourceSize</key>
-                <string>{130,131}</string>
+                <string>{140,140}</string>
             </dict>
             <key>ui_hero_equip_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1937,2},{93,72}}</string>
+                <string>{{1692,2},{93,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -212,14 +225,27 @@
                 <key>sourceSize</key>
                 <string>{93,72}</string>
             </dict>
-            <key>ui_hero_hp_icon.png</key>
+            <key>ui_hero_heal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1266,1988},{43,35}}</string>
+                <string>{{1555,991},{60,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{60,60}}</string>
+                <key>sourceSize</key>
+                <string>{60,60}</string>
+            </dict>
+            <key>ui_hero_hp_icon.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1406,1063},{43,35}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{43,35}}</string>
                 <key>sourceSize</key>
@@ -228,11 +254,11 @@
             <key>ui_hero_icon01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1516,991},{156,77}}</string>
+                <string>{{1692,475},{156,77}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{156,77}}</string>
                 <key>sourceSize</key>
@@ -241,11 +267,11 @@
             <key>ui_hero_icon02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1875,1526},{156,77}}</string>
+                <string>{{1692,317},{156,77}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{156,77}}</string>
                 <key>sourceSize</key>
@@ -254,7 +280,7 @@
             <key>ui_hero_info1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{466,1551},{180,31}}</string>
+                <string>{{789,1679},{180,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,11 +293,11 @@
             <key>ui_hero_info2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1875,659},{164,34}}</string>
+                <string>{{1366,1551},{164,34}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{164,34}}</string>
                 <key>sourceSize</key>
@@ -280,11 +306,11 @@
             <key>ui_hero_jewel_bar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1422,1988},{123,37}}</string>
+                <string>{{1366,1335},{123,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{123,37}}</string>
                 <key>sourceSize</key>
@@ -293,11 +319,11 @@
             <key>ui_hero_jewel_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1192,1988},{46,45}}</string>
+                <string>{{1603,1053},{46,45}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{46,45}}</string>
                 <key>sourceSize</key>
@@ -306,7 +332,7 @@
             <key>ui_hero_jinbi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{960,1988},{47,57}}</string>
+                <string>{{840,1617},{47,57}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -319,11 +345,11 @@
             <key>ui_hero_kuang01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,1605},{421,413}}</string>
+                <string>{{943,1174},{421,413}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{421,413}}</string>
                 <key>sourceSize</key>
@@ -332,11 +358,11 @@
             <key>ui_hero_levelup_bar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1692,2},{243,49}}</string>
+                <string>{{789,1717},{243,49}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{243,49}}</string>
                 <key>sourceSize</key>
@@ -345,11 +371,11 @@
             <key>ui_hero_levelup_btn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1692,126},{200,71}}</string>
+                <string>{{1692,898},{200,71}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{200,71}}</string>
                 <key>sourceSize</key>
@@ -358,11 +384,11 @@
             <key>ui_hero_levelup_btn2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1692,53},{200,71}}</string>
+                <string>{{1692,696},{200,71}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{200,71}}</string>
                 <key>sourceSize</key>
@@ -371,11 +397,11 @@
             <key>ui_hero_lingshi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1009,1988},{49,60}}</string>
+                <string>{{789,1617},{49,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{49,60}}</string>
                 <key>sourceSize</key>
@@ -384,7 +410,7 @@
             <key>ui_hero_lock.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1547,1460},{67,78}}</string>
+                <string>{{1692,248},{67,78}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -394,14 +420,27 @@
                 <key>sourceSize</key>
                 <string>{67,78}</string>
             </dict>
-            <key>ui_hero_lv_frame.png</key>
+            <key>ui_hero_long.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1547,1334},{124,125}}</string>
+                <string>{{1493,991},{60,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{60,60}}</string>
+                <key>sourceSize</key>
+                <string>{60,60}</string>
+            </dict>
+            <key>ui_hero_lv_frame.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{990,1589},{124,125}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{124,125}}</string>
                 <key>sourceSize</key>
@@ -410,7 +449,7 @@
             <key>ui_hero_mp_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1303,1988},{39,42}}</string>
+                <string>{{1651,1053},{39,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -423,7 +462,7 @@
             <key>ui_hero_paizi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1875,263},{394,168}}</string>
+                <string>{{619,1617},{394,168}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -436,11 +475,11 @@
             <key>ui_hero_role_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1142},{457,462}}</string>
+                <string>{{2,1174},{457,462}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{457,462}}</string>
                 <key>sourceSize</key>
@@ -449,11 +488,11 @@
             <key>ui_hero_role_bg2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1692,199},{1402,181}}</string>
+                <string>{{2,991},{1402,181}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{1402,181}}</string>
                 <key>sourceSize</key>
@@ -462,7 +501,7 @@
             <key>ui_hero_role_frame.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1603},{480,441}}</string>
+                <string>{{461,1174},{480,441}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -475,7 +514,7 @@
             <key>ui_hero_role_shadow.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1516,1070},{70,23}}</string>
+                <string>{{1406,991},{70,23}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -488,7 +527,7 @@
             <key>ui_hero_role_star.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1344,1988},{42,39}}</string>
+                <string>{{840,1882},{42,39}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -501,7 +540,7 @@
             <key>ui_hero_selected.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1894,122},{139,141}}</string>
+                <string>{{1116,1589},{139,141}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -514,20 +553,20 @@
             <key>ui_hero_skill_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{638,1460},{82,69}}</string>
+                <string>{{1692,633},{73,61}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{82,69}}</string>
+                <string>{{0,0},{73,61}}</string>
                 <key>sourceSize</key>
-                <string>{82,69}</string>
+                <string>{73,61}</string>
             </dict>
             <key>ui_hero_status_frame.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{899,1605},{381,615}}</string>
+                <string>{{2,1638},{381,615}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -537,14 +576,27 @@
                 <key>sourceSize</key>
                 <string>{381,615}</string>
             </dict>
-            <key>ui_hero_title.png</key>
+            <key>ui_hero_tank.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1875,890},{634,158}}</string>
+                <string>{{1431,991},{60,61}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{60,61}}</string>
+                <key>sourceSize</key>
+                <string>{60,61}</string>
+            </dict>
+            <key>ui_hero_title.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{996,1730},{634,158}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{634,158}}</string>
                 <key>sourceSize</key>
@@ -558,9 +610,9 @@
             <key>realTextureFileName</key>
             <string>ui_hero_manage.png</string>
             <key>size</key>
-            <string>{2048,2048}</string>
+            <string>{1788,2022}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:bd38a448f8314c7c9fa59300f3c296eb:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:7470f79939ddbf5e4d222b2c5c59d0f3:1/1$</string>
             <key>textureFileName</key>
             <string>ui_hero_manage.png</string>
         </dict>

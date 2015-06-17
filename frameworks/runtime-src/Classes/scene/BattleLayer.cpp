@@ -327,6 +327,9 @@ void BattleLayer::updateFrame( float delta ) {
             }
         }
         
+        for( auto hint : _hint_node_vec ) {
+            hint->updateFrame( delta );
+        }
         
         if( _should_show_fog ) {
             this->updateFogSprite();
@@ -1110,9 +1113,7 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
     }
     else if( type == "HintNode" ) {
         std::string name = obj_properties.at( "name" ).asString();
-        Sprite* sp = _map_data->spriteFromObject( _tmx_map, data, true );
-        
-        HintNode* hint_node = HintNode::create( name, sp );
+        HintNode* hint_node = HintNode::create( this, obj_properties, grid_properties );
         hint_node->setVisible( false );
         this->addHint( hint_node, layer );
     }

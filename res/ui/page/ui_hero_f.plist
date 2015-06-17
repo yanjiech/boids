@@ -4,148 +4,135 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>ui_common_ban_bg_1.png</key>
+            <key>ui_hero_f_dracula.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{128,128}}</string>
+                <string>{{1121,2},{138,136}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{128,128}}</string>
+                <string>{{0,2},{138,136}}</string>
                 <key>sourceSize</key>
-                <string>{128,128}</string>
+                <string>{138,138}</string>
             </dict>
-            <key>ui_common_green_btn_normal.png</key>
+            <key>ui_hero_f_durarara.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1304,129},{288,125}}</string>
+                <string>{{842,2},{138,138}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{288,125}}</string>
+                <string>{{0,0},{138,138}}</string>
                 <key>sourceSize</key>
-                <string>{288,125}</string>
+                <string>{138,138}</string>
             </dict>
-            <key>ui_common_green_btn_touched.png</key>
+            <key>ui_hero_f_enchantress.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1011,2},{291,126}}</string>
+                <string>{{702,2},{138,138}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{291,126}}</string>
+                <string>{{0,0},{138,138}}</string>
                 <key>sourceSize</key>
-                <string>{291,126}</string>
+                <string>{138,138}</string>
             </dict>
-            <key>ui_common_hint_bg.png</key>
+            <key>ui_hero_f_gandalf.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{276,130},{64,64}}</string>
+                <string>{{562,2},{138,138}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{64,64}}</string>
+                <string>{{0,0},{138,138}}</string>
                 <key>sourceSize</key>
-                <string>{64,64}</string>
+                <string>{138,138}</string>
             </dict>
-            <key>ui_common_hint_bg_2.png</key>
+            <key>ui_hero_f_hippolyta.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{210,130},{64,64}}</string>
+                <string>{{982,2},{137,138}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{64,64}}</string>
+                <string>{{0,0},{137,138}}</string>
                 <key>sourceSize</key>
-                <string>{64,64}</string>
+                <string>{137,138}</string>
             </dict>
-            <key>ui_common_orange_btn_normal.png</key>
+            <key>ui_hero_f_ice_witch.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{718,2},{291,126}}</string>
+                <string>{{422,2},{138,138}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{291,126}}</string>
+                <string>{{0,0},{138,138}}</string>
                 <key>sourceSize</key>
-                <string>{291,126}</string>
+                <string>{138,138}</string>
             </dict>
-            <key>ui_common_orange_btn_touched.png</key>
+            <key>ui_hero_f_kyle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{425,2},{291,126}}</string>
+                <string>{{1259,2},{135,138}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-1,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{291,126}}</string>
+                <string>{{0,0},{135,138}}</string>
                 <key>sourceSize</key>
-                <string>{291,126}</string>
+                <string>{137,138}</string>
             </dict>
-            <key>ui_common_red_btn_normal.png</key>
+            <key>ui_hero_f_saber.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1304,2},{288,125}}</string>
+                <string>{{282,2},{138,138}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{288,125}}</string>
+                <string>{{0,0},{138,138}}</string>
                 <key>sourceSize</key>
-                <string>{288,125}</string>
+                <string>{138,138}</string>
             </dict>
-            <key>ui_common_red_btn_touched.png</key>
+            <key>ui_hero_f_vanhelsing.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{132,2},{291,126}}</string>
+                <string>{{142,2},{138,138}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{291,126}}</string>
+                <string>{{0,0},{138,138}}</string>
                 <key>sourceSize</key>
-                <string>{291,126}</string>
+                <string>{138,138}</string>
             </dict>
-            <key>ui_menu_pause_normal.png</key>
+            <key>ui_hero_f_zeus.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,132},{102,108}}</string>
+                <string>{{2,2},{138,138}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{102,108}}</string>
+                <string>{{0,0},{138,138}}</string>
                 <key>sourceSize</key>
-                <string>{102,108}</string>
-            </dict>
-            <key>ui_menu_pause_touched.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{106,132},{102,107}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{102,107}}</string>
-                <key>sourceSize</key>
-                <string>{102,107}</string>
+                <string>{138,138}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -153,13 +140,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>ui_common.png</string>
+            <string>ui_hero_f.png</string>
             <key>size</key>
-            <string>{1594,256}</string>
+            <string>{1396,142}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e7acaa2e129910748086ff4084e9316b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:0f2ef27d5fe3e79527304aba3ae2272e:1/1$</string>
             <key>textureFileName</key>
-            <string>ui_common.png</string>
+            <string>ui_hero_f.png</string>
         </dict>
     </dict>
 </plist>

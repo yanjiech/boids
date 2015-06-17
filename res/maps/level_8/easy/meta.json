@@ -1,15 +1,6 @@
 {
     "positions": [
         {
-            "name": "player_start",
-            "rect": {
-                "x": 802.53,
-                "y": 185.298,
-                "width": 143.974,
-                "height": 148.93
-            }
-        },
-        {
             "name": "exit",
             "rect": {
                 "x": 5893.92,
@@ -368,6 +359,15 @@
                 "width": 365.054,
                 "height": 2000.85
             }
+        },
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 2410.21,
+                "y": 5542.68,
+                "width": 131.185,
+                "height": 113.247
+            }
         }
     ],
     "events": [
@@ -503,6 +503,12 @@
                 }
             ],
             "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_final",
+                    "hint_visible": true
+                },
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
@@ -896,6 +902,12 @@
             "actions": [
                 {
                     "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "task_3_trigger",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "axe_orc",
@@ -1116,6 +1128,43 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "task_change",
                     "task_name": "task_main",
+                    "task_state": "task_finished"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_failed"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_3",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "trigger_task_3",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "enemy",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_3",
                     "task_state": "task_finished"
                 }
             ]

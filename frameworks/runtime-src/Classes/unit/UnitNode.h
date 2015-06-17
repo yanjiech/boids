@@ -106,6 +106,8 @@ private:
     BattleHintNode* _hint_node;
     bool _has_hint_node;
     
+    float _desired_unit_scale;
+    
 private:
     void updateBuffs( float delta );
     void updateSkills( float delta );

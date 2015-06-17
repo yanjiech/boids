@@ -155,9 +155,9 @@
             <key>realTextureFileName</key>
             <string>base_terrain.png</string>
             <key>size</key>
-            <string>{2048,2048}</string>
+            <string>{2048,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:41b66cbdc232ce62d038cfefe05332d0:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:275046531c9e2060eea0dd2318717173:1/1$</string>
             <key>textureFileName</key>
             <string>base_terrain.png</string>
         </dict>

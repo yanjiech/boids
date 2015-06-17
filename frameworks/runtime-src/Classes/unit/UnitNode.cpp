@@ -146,6 +146,7 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     }
     if( _front ) {
         _front->setScale( target_data->scale );
+        _desired_unit_scale = target_data->scale;
         _front->setStartListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationStart, this ) );
         _front->setCompleteListener( CC_CALLBACK_1( UnitNode::onSkeletonAnimationCompleted, this ) );
         _front->setEventListener( CC_CALLBACK_2( UnitNode::onSkeletonAnimationEvent, this ) );
@@ -357,7 +358,7 @@ void UnitNode::changeUnitState( eUnitState new_state, bool force ) {
 void UnitNode::applyUnitState() {
     if( _unit_state_changed ) {
         _unit_state_changed = false;
-        if( _state == Casting && _next_state != Casting ) {
+        if( _state == Casting && _next_state != Casting && _next_state != Idle ) {
             SkillCache::getInstance()->removeSkillOfOwner( this );
         }
         _state = _next_state;
@@ -676,6 +677,7 @@ void UnitNode::applyCustomChange( const std::string& content_string ) {
             _target_data->setAttribute( pair.at( 0 ), pair.at( 1 ) );
         }
         _front->setScale( _target_data->scale );
+        _desired_unit_scale = _target_data->scale;
         if( _back ) {
             _back->setScale( _target_data->scale );
         }
@@ -1276,6 +1278,7 @@ void UnitNode::setAccessory( Equipment* accessory ) {
 }
 
 void UnitNode::setUnitScale( float scale ) {
+    _desired_unit_scale = scale;
     ScaleTo* scale_to = ScaleTo::create( 0.5f, scale );
     _front->runAction( scale_to );
     if( _back != nullptr ) {
@@ -1285,7 +1288,7 @@ void UnitNode::setUnitScale( float scale ) {
 }
 
 float UnitNode::getUnitScale() {
-    return _front->getScale();
+    return _desired_unit_scale;
 }
 
 void UnitNode::setAttackable( bool b ) {

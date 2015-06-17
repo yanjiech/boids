@@ -402,6 +402,12 @@
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "event_change",
+                    "event_name": "task_3_trigger",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
                     "event_name": "win_cond",
                     "event_state": "event_enable"
                 },
@@ -432,9 +438,9 @@
             },
             "triggers": [
                 {
-                     "trigger_type": "story_change",
-                     "story_name": "story_03",
-                     "story_state": "story_end"
+                    "trigger_type": "story_change",
+                    "story_name": "story_03",
+                    "story_state": "story_end"
                 }
             ],
             "actions": [
@@ -443,6 +449,18 @@
                     "action_type": "task_change",
                     "task_name": "prim_win",
                     "task_state": "task_finished"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "sub_task_1",
+                    "task_state": "task_finished"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "sub_task_2",
+                    "task_state": "task_failed"
                 }
             ]
         },
@@ -605,6 +623,56 @@
                         }
                     ],
                     "name": "story_03"
+                }
+            ]
+        },
+        {
+            "name": "task_2_trigger",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "player",
+                    "unit_state": "unit_dead",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "sub_task_1",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "task_3_trigger",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "enemy",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "sub_task_2",
+                    "task_state": "task_finished"
                 }
             ]
         }
