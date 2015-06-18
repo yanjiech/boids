@@ -1,0 +1,1204 @@
+{
+    "positions": [
+        {
+            "name": "exit",
+            "rect": {
+                "x": 5893.92,
+                "y": 46.7242,
+                "width": 280.751,
+                "height": 147.732
+            }
+        },
+        {
+            "name": "di_01",
+            "rect": {
+                "x": 1902.74,
+                "y": 156.62,
+                "width": 138.859,
+                "height": 144.452
+            }
+        },
+        {
+            "name": "di_02",
+            "rect": {
+                "x": 1102.57,
+                "y": 752.711,
+                "width": 243.247,
+                "height": 173.134
+            }
+        },
+        {
+            "name": "di_03",
+            "rect": {
+                "x": 926.779,
+                "y": 1081.45,
+                "width": 149.403,
+                "height": 104.697
+            }
+        },
+        {
+            "name": "di_04",
+            "rect": {
+                "x": 533.554,
+                "y": 1569.09,
+                "width": 190.609,
+                "height": 149.295
+            }
+        },
+        {
+            "name": "di_05",
+            "rect": {
+                "x": 933.611,
+                "y": 2786.57,
+                "width": 148.041,
+                "height": 142.252
+            }
+        },
+        {
+            "name": "di_06",
+            "rect": {
+                "x": 312.722,
+                "y": 3354.56,
+                "width": 127.23,
+                "height": 141.419
+            }
+        },
+        {
+            "name": "di_07",
+            "rect": {
+                "x": 414.972,
+                "y": 4084.57,
+                "width": 104.168,
+                "height": 93.3716
+            }
+        },
+        {
+            "name": "di_08",
+            "rect": {
+                "x": 433.859,
+                "y": 4843.67,
+                "width": 113.041,
+                "height": 90.5591
+            }
+        },
+        {
+            "name": "di_09",
+            "rect": {
+                "x": 233.493,
+                "y": 5300.74,
+                "width": 93.8956,
+                "height": 87.2222
+            }
+        },
+        {
+            "name": "di_10",
+            "rect": {
+                "x": 994.856,
+                "y": 5196.94,
+                "width": 250.286,
+                "height": 156.914
+            }
+        },
+        {
+            "name": "di11",
+            "rect": {
+                "x": 1839.91,
+                "y": 1496.7,
+                "width": 260.034,
+                "height": 199.631
+            }
+        },
+        {
+            "name": "di12",
+            "rect": {
+                "x": 2714.79,
+                "y": 707.117,
+                "width": 259.996,
+                "height": 213.25
+            }
+        },
+        {
+            "name": "di_13",
+            "rect": {
+                "x": 2731.52,
+                "y": 1890.99,
+                "width": 302.4,
+                "height": 212.983
+            }
+        },
+        {
+            "name": "di_14",
+            "rect": {
+                "x": 2300.69,
+                "y": 2628.68,
+                "width": 131.877,
+                "height": 101.772
+            }
+        },
+        {
+            "name": "di_15",
+            "rect": {
+                "x": 1689.81,
+                "y": 3477.7,
+                "width": 292.441,
+                "height": 214.452
+            }
+        },
+        {
+            "name": "di_16",
+            "rect": {
+                "x": 1394.45,
+                "y": 4491.69,
+                "width": 291.604,
+                "height": 188.994
+            }
+        },
+        {
+            "name": "di_17",
+            "rect": {
+                "x": 2543.69,
+                "y": 3963.11,
+                "width": 219.497,
+                "height": 157.897
+            }
+        },
+        {
+            "name": "di_18",
+            "rect": {
+                "x": 3216.69,
+                "y": 4381.3,
+                "width": 147.517,
+                "height": 143.399
+            }
+        },
+        {
+            "name": "di_19",
+            "rect": {
+                "x": 3246.46,
+                "y": 5052.53,
+                "width": 211.893,
+                "height": 132.603
+            }
+        },
+        {
+            "name": "di_20",
+            "rect": {
+                "x": 2625.64,
+                "y": 5253.79,
+                "width": 209.229,
+                "height": 163.063
+            }
+        },
+        {
+            "name": "di_21",
+            "rect": {
+                "x": 2023.45,
+                "y": 5417.55,
+                "width": 188.578,
+                "height": 153.47
+            }
+        },
+        {
+            "name": "di_22",
+            "rect": {
+                "x": 5178.36,
+                "y": 5380.97,
+                "width": 226.605,
+                "height": 211.583
+            }
+        },
+        {
+            "name": "di_23",
+            "rect": {
+                "x": 6169.68,
+                "y": 5433.86,
+                "width": 183.622,
+                "height": 171.52
+            }
+        },
+        {
+            "name": "di_24",
+            "rect": {
+                "x": 6270.89,
+                "y": 4811.27,
+                "width": 123.729,
+                "height": 107.668
+            }
+        },
+        {
+            "name": "di_25",
+            "rect": {
+                "x": 6427.9,
+                "y": 4398.32,
+                "width": 109.699,
+                "height": 87.6899
+            }
+        },
+        {
+            "name": "di_26",
+            "rect": {
+                "x": 5486.97,
+                "y": 4889.73,
+                "width": 141.475,
+                "height": 96.0391
+            }
+        },
+        {
+            "name": "di_27",
+            "rect": {
+                "x": 5675.06,
+                "y": 3837.34,
+                "width": 126.505,
+                "height": 186.018
+            }
+        },
+        {
+            "name": "di_28",
+            "rect": {
+                "x": 5531.15,
+                "y": 3237.24,
+                "width": 64.9419,
+                "height": 46.6904
+            }
+        },
+        {
+            "name": "di_29",
+            "rect": {
+                "x": 5917.47,
+                "y": 2954.04,
+                "width": 82.9917,
+                "height": 62.9622
+            }
+        },
+        {
+            "name": "di_30",
+            "rect": {
+                "x": 5374.17,
+                "y": 2438.38,
+                "width": 111.426,
+                "height": 78.822
+            }
+        },
+        {
+            "name": "di_31",
+            "rect": {
+                "x": 6501.14,
+                "y": 1898.43,
+                "width": 89.2534,
+                "height": 140.006
+            }
+        },
+        {
+            "name": "di_32",
+            "rect": {
+                "x": 6429.65,
+                "y": 1288.08,
+                "width": 90.8726,
+                "height": 120.084
+            }
+        },
+        {
+            "name": "di_33",
+            "rect": {
+                "x": 5430.77,
+                "y": 1147.49,
+                "width": 106.419,
+                "height": 204.854
+            }
+        },
+        {
+            "name": "di_34",
+            "rect": {
+                "x": 5969.8,
+                "y": 482.801,
+                "width": 170.041,
+                "height": 143.492
+            }
+        },
+        {
+            "name": "di_35",
+            "rect": {
+                "x": 3793.87,
+                "y": 1214.7,
+                "width": 156.549,
+                "height": 151.125
+            }
+        },
+        {
+            "name": "di_36",
+            "rect": {
+                "x": 3486.64,
+                "y": 2341.37,
+                "width": 259.088,
+                "height": 219.549
+            }
+        },
+        {
+            "name": "di_37",
+            "rect": {
+                "x": 3078.63,
+                "y": 3224.59,
+                "width": 170.162,
+                "height": 147.629
+            }
+        },
+        {
+            "name": "di_38",
+            "rect": {
+                "x": 3688.69,
+                "y": 3225.97,
+                "width": 196.023,
+                "height": 159.095
+            }
+        },
+        {
+            "name": "story_02_trigger",
+            "rect": {
+                "x": 4435.36,
+                "y": 3744.46,
+                "width": 365.054,
+                "height": 2000.85
+            }
+        },
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 2410.21,
+                "y": 5542.68,
+                "width": 131.185,
+                "height": 113.247
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "lose_cond",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "story_01",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：累死了！主人到底跑到哪里去了？",
+                            "speaker": "kyle"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：是啊，真让人担心。",
+                            "speaker": "enchantress"
+                        }
+                    ],
+                    "name": "story_01"
+                }
+            ]
+        },
+        {
+            "name": "story_02",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "story_02_trigger",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：迷宫后就是山贼的大本营了！",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：被关的地精也许就在那里！",
+                            "speaker": "enchantress"
+                        }
+                    ],
+                    "name": "story_02"
+                }
+            ]
+        },
+        {
+            "name": "lose_cond",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "game_time",
+                    "timeout": 7000,
+                    "relation": 2
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "trigger_area_1",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "hint_final",
+                    "hint_visible": true
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_02",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di12",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_master_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di12",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_master_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_02",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_01",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_35",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_04",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_05",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_13",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_17",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_14",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_07",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_21",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_20",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_19",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bear",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_19",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bear",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_17",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bear",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_07",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bear",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_04",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di11",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_35",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_15",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_16",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_05",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_37",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_18",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_36",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_15",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_16",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di11",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_08",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_09",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_10",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "red_axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_10",
+                    "unit_count": 1,
+                    "unit_level": 8
+                }
+            ]
+        },
+        {
+            "name": "area_2_monster",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_02",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "task_3_trigger",
+                    "event_state": "event_enable"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_22",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "red_axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_22",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "red_axe_orc",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_24",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "wild_wolf",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_23",
+                    "unit_count": 3,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_26",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_27",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "human_master_assassin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_27",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_28",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_31",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_30",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "bee",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_32",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_28",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_31",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_33",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_34",
+                    "unit_count": 2,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_34",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_33",
+                    "unit_count": 1,
+                    "unit_level": 8
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "desert_thief_leader",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "di_29",
+                    "unit_count": 1,
+                    "unit_level": 8
+                }
+            ]
+        },
+        {
+            "name": "win_cond",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "exit",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_finished"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_failed"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_3",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "trigger_task_3",
+            "enabled": false,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "type_source",
+                    "source_value": "enemy",
+                    "unit_state": "unit_alive",
+                    "trigger_count": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_3",
+                    "task_state": "task_finished"
+                }
+            ]
+        }
+    ],
+    "units": [
+        "axe_orc",
+        "bear",
+        "bee",
+        "desert_thief",
+        "desert_thief_leader",
+        "human_assassin",
+        "human_master_assassin",
+        "red_axe_orc",
+        "wild_wolf"
+    ],
+    "tasks": [
+        {
+            "type": "primary_win",
+            "name": "task_main",
+            "desc": "6分钟内走出迷宫",
+            "title": "6分钟内走出迷宫"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_2",
+            "desc": "拿到所有宝箱",
+            "title": "拿到所有宝箱"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_3",
+            "desc": "消灭所有怪物",
+            "title": "消灭所有怪物"
+        }
+    ]
+}

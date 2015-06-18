@@ -972,13 +972,13 @@
                         <OutlineColor A="255" R="255" G="0" B="0" />
                         <ShadowColor A="255" R="255" G="127" B="80" />
                       </AbstractNodeData>
-                      <AbstractNodeData Name="tf_buff_params" ActionTag="145099598" Tag="255" IconVisible="False" LeftMargin="219.4596" RightMargin="-19.4596" TopMargin="517.6654" BottomMargin="222.3346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
+                      <AbstractNodeData Name="tf_buff_params" ActionTag="145099598" Tag="255" IconVisible="False" LeftMargin="215.4596" RightMargin="-15.4596" TopMargin="514.6654" BottomMargin="225.3346" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="k1:v1,k2:v2" MaxLengthText="10" ctype="TextFieldObjectData">
                         <Size X="500.0000" Y="60.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="469.4596" Y="252.3346" />
+                        <Position X="465.4596" Y="255.3346" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="0" G="0" B="0" />
-                        <PrePosition X="0.6707" Y="0.3154" />
+                        <PrePosition X="0.6649" Y="0.3192" />
                         <PreSize X="0.7143" Y="0.0750" />
                       </AbstractNodeData>
                       <AbstractNodeData Name="Text_23" ActionTag="1171578389" Tag="256" IconVisible="False" LeftMargin="120.4596" RightMargin="518.5404" TopMargin="632.1654" BottomMargin="139.8346" FontSize="24" LabelText="技能1" ctype="TextObjectData">
@@ -3275,6 +3275,91 @@
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="10.0000" Y="-10.0000" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition />
+                <PreSize />
+                <SingleColor A="255" R="255" G="255" B="255" />
+                <FirstColor A="255" R="255" G="255" B="255" />
+                <EndColor A="255" R="255" G="255" B="255" />
+                <ColorVector ScaleY="1.0000" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="popup_gametimechange" ActionTag="1541531527" Tag="277" IconVisible="False" LeftMargin="-191.0000" RightMargin="-209.0000" TopMargin="-191.0000" BottomMargin="-209.0000" TouchEnable="True" ComboBoxIndex="1" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                <Size X="400.0000" Y="400.0000" />
+                <Children>
+                  <AbstractNodeData Name="button_ok" ActionTag="902932340" Tag="278" IconVisible="False" LeftMargin="110.0000" RightMargin="230.0000" TopMargin="300.0000" BottomMargin="60.0000" TouchEnable="True" FontSize="14" ButtonText="确定" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                    <Size X="60.0000" Y="40.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="140.0000" Y="80.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.3500" Y="0.2000" />
+                    <PreSize />
+                    <TextColor A="255" R="0" G="179" B="255" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                    <PressedFileData Type="Default" Path="Default/Button_Press.png" Plist="" />
+                    <NormalFileData Type="Default" Path="Default/Button_Normal.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="255" G="127" B="80" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="button_cancel" ActionTag="8174553" Tag="279" IconVisible="False" LeftMargin="230.0000" RightMargin="110.0000" TopMargin="300.0000" BottomMargin="60.0000" TouchEnable="True" FontSize="14" ButtonText="取消" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+                    <Size X="60.0000" Y="40.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="260.0000" Y="80.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.6500" Y="0.2000" />
+                    <PreSize />
+                    <TextColor A="255" R="51" G="51" B="51" />
+                    <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+                    <PressedFileData Type="Default" Path="Default/Button_Press.png" Plist="" />
+                    <NormalFileData Type="Default" Path="Default/Button_Normal.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="255" G="127" B="80" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="Text_92_30" ActionTag="225963802" Tag="280" IconVisible="False" LeftMargin="72.0000" RightMargin="232.0000" TopMargin="86.0000" BottomMargin="286.0000" FontSize="24" LabelText="时间" ctype="TextObjectData">
+                    <Size X="48.0000" Y="28.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="120.0000" Y="300.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="51" G="102" B="51" />
+                    <PrePosition X="0.3000" Y="0.7500" />
+                    <PreSize />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="255" G="127" B="80" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="tf_timeout" ActionTag="-365964905" Tag="282" IconVisible="False" LeftMargin="170.5000" RightMargin="129.5000" TopMargin="88.5096" BottomMargin="284.4904" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="100" PlaceHolderText="input time" MaxLengthText="10" ctype="TextFieldObjectData">
+                    <Size X="100.0000" Y="27.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="220.5000" Y="297.9904" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="0" G="0" B="0" />
+                    <PrePosition X="0.5512" Y="0.7450" />
+                    <PreSize />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="Text_92_30_0" ActionTag="-5099099" Tag="283" IconVisible="False" LeftMargin="92.0000" RightMargin="260.0000" TopMargin="136.0000" BottomMargin="236.0000" FontSize="24" LabelText="符号" ctype="TextObjectData">
+                    <Size X="48.0000" Y="28.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="116.0000" Y="250.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="51" G="102" B="51" />
+                    <PrePosition X="0.2900" Y="0.6250" />
+                    <PreSize />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="255" G="127" B="80" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="tf_relation" ActionTag="-1525964706" Tag="284" IconVisible="False" LeftMargin="167.5000" RightMargin="132.5000" TopMargin="136.5096" BottomMargin="236.4904" TouchEnable="True" FontSize="20" IsCustomSize="True" LabelText="" PlaceHolderText="1&lt;= 2&gt;=" MaxLengthText="10" ctype="TextFieldObjectData">
+                    <Size X="100.0000" Y="27.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="217.5000" Y="249.9904" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="0" G="0" B="0" />
+                    <PrePosition X="0.5437" Y="0.6250" />
+                    <PreSize />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="9.0000" Y="-9.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition />

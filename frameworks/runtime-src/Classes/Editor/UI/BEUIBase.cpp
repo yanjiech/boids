@@ -31,6 +31,7 @@ const char *kConversationActionPanel = "popup_conversationAction";
 const char* kStoryActionPanel = "popup_storyAction";
 //const char *kConversationChangePanel = "popup_conversationChange";
 const char* kStoryChangePanel = "popup_story_change";
+const char* kGameTimePanel = "popup_gametimechange";
 
 #define LIST_BUTTON_HEIGHT    60
 #define LIST_BUTTON_MARGIN    20

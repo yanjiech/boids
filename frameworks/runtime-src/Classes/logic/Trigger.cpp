@@ -53,6 +53,9 @@ Trigger* Trigger::create( const cocos2d::ValueMap& data ) {
     else if( trigger_type == EVENT_TRIGGER_TYPE_VISION_CHANGE ) {
         ret = VisionChangeTrigger::create( data );
     }
+    else if( trigger_type == EVENT_TRIGGER_TYPE_GAME_TIME ) {
+        ret = GameTimeTrigger::create( data );
+    }
     
     return ret;
 }
@@ -494,6 +497,51 @@ bool VisionChangeTrigger::init( const cocos2d::ValueMap& data ) {
 
 void VisionChangeTrigger::updateTrigger( const cocos2d::ValueMap& update_data ) {
     Trigger::updateTrigger( update_data );
+}
+
+//game time trigger
+GameTimeTrigger::GameTimeTrigger() {
+    
+}
+
+GameTimeTrigger::~GameTimeTrigger() {
+    
+}
+    
+GameTimeTrigger* GameTimeTrigger::create( const cocos2d::ValueMap& data ) {
+    GameTimeTrigger* ret = new GameTimeTrigger();
+    if( ret && ret->init( data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool GameTimeTrigger::init( const cocos2d::ValueMap& data ) {
+    if( !Trigger::init( data ) ) {
+        return false;
+    }
+    
+    _timeout = data.at( "timeout" ).asFloat();
+    _relation = data.at( "relation" ).asInt();
+    return true;
+}
+    
+void GameTimeTrigger::updateTrigger( const cocos2d::ValueMap& update_data ) {
+    auto itr = update_data.find( "trigger_type" );
+    if( itr == update_data.end() || itr->second.asString() != EVENT_TRIGGER_TYPE_GAME_TIME ) {
+        return;
+    }
+    float game_time = update_data.at( "game_time" ).asFloat();
+    if( _relation == 1 && game_time <= _timeout ) {
+        this->setCouldTrigger( true );
+    }
+    else if( _relation == 2 & game_time >= _timeout ) {
+        this->setCouldTrigger( true );
+    }
 }
 
 CustomTrigger::CustomTrigger() {

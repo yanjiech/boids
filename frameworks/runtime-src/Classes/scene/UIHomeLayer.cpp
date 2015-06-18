@@ -327,16 +327,30 @@ void UIHomeLayer::loadMapOfDifficulty( int diff ) {
         int level_id = diff * 1000 + i;
         std::string btn_name = Utils::stringFormat( "btn_level_%d", i );
         ui::Button* btn = dynamic_cast<ui::Button*>( _scrollview->getChildByName( btn_name ) );
+        ui::Layout* pn_star = dynamic_cast<ui::Layout*>( _scrollview->getChildByName( Utils::stringFormat( "pn_level_%d", i ) ) );
         switch( diff ) {
             case 1:
             {
                 //easy difficulty
                 if( player_info->isLevelCompleted( level_id ) ) {
+                    pn_star->setVisible( true );
+                    int level_star = player_info->getLevelStar( level_id );
+                    int j;
+                    for( j = 1; j <= level_star; j++ ) {
+                        Sprite* sp_star = dynamic_cast<Sprite*>( pn_star->getChildByName( Utils::stringFormat( "star_%d", j ) ) );
+                        sp_star->setVisible( true );
+                    }
+                    for( int k = j; k <= 3; k++ ) {
+                        Sprite* sp_star = dynamic_cast<Sprite*>( pn_star->getChildByName( Utils::stringFormat( "star_%d", k ) ) );
+                        sp_star->setVisible( false );
+                    }
+                    
                     btn->setVisible( true );
                     btn->loadTextureNormal( "ui_home_cp_completed.png", ui::Widget::TextureResType::PLIST );
                     btn->loadTexturePressed( "ui_home_cp_completed.png", ui::Widget::TextureResType::PLIST );
                 }
                 else {
+                    pn_star->setVisible( false );
                     if( ( i == 1 ) || player_info->isLevelCompleted( level_id - 1 ) ) {
                         btn->setVisible( true );
                         btn->loadTextureNormal( "ui_home_cp_opened.png", ui::Widget::TextureResType::PLIST );
@@ -352,11 +366,24 @@ void UIHomeLayer::loadMapOfDifficulty( int diff ) {
             {
                 //medium difficulty
                 if( player_info->isLevelCompleted( level_id ) ) {
+                    pn_star->setVisible( true );
+                    int level_star = player_info->getLevelStar( level_id );
+                    int j;
+                    for( j = 1; j <= level_star; j++ ) {
+                        Sprite* sp_star = dynamic_cast<Sprite*>( pn_star->getChildByName( Utils::stringFormat( "star_%d", j ) ) );
+                        sp_star->setVisible( true );
+                    }
+                    for( int k = j; k <= 3; k++ ) {
+                        Sprite* sp_star = dynamic_cast<Sprite*>( pn_star->getChildByName( Utils::stringFormat( "star_%d", k ) ) );
+                        sp_star->setVisible( false );
+                    }
+                    
                     btn->setVisible( true );
                     btn->loadTextureNormal( "ui_home_cp_completed.png", ui::Widget::TextureResType::PLIST );
                     btn->loadTexturePressed( "ui_home_cp_completed.png", ui::Widget::TextureResType::PLIST );
                 }
                 else {
+                    pn_star->setVisible( false );
                     if( player_info->getLevelStar( level_id - 1000 ) == 3 ) {
                         btn->setVisible( true );
                         btn->loadTextureNormal( "ui_home_cp_opened.png", ui::Widget::TextureResType::PLIST );

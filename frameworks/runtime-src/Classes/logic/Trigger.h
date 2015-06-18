@@ -156,6 +156,21 @@ public:
     virtual void updateTrigger( const cocos2d::ValueMap& update_data );
 };
 
+class GameTimeTrigger : public Trigger {
+private:
+    float _timeout;
+    int _relation; //1 <=, 2 >=
+    
+public:
+    GameTimeTrigger();
+    virtual ~GameTimeTrigger();
+    
+    static GameTimeTrigger* create( const cocos2d::ValueMap& data );
+    virtual bool init( const cocos2d::ValueMap& data );
+    
+    virtual void updateTrigger( const cocos2d::ValueMap& update_data );
+};
+
 class CustomTrigger : public Trigger {
 public:
     CustomTrigger();

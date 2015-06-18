@@ -541,22 +541,36 @@
   <object id="1126" gid="2147483701" x="1062" y="1664"/>
   <object id="1127" gid="2147483701" x="166" y="2364"/>
   <object id="1128" gid="2147483701" x="1218" y="1476"/>
-  <object id="1132" name="hint_1" type="HintNode" gid="91" x="1439" y="3599"/>
-  <object id="1135" name="hint_1" type="HintNode" gid="91" x="1391" y="3667"/>
-  <object id="1136" name="hint_1" type="HintNode" gid="91" x="1491" y="3695"/>
-  <object id="1138" name="hint_2" type="HintNode" gid="91" x="283" y="567"/>
-  <object id="1139" name="hint_2" type="HintNode" gid="91" x="225" y="477"/>
-  <object id="1140" name="hint_2" type="HintNode" gid="91" x="330" y="482"/>
-  <object id="1145" name="hint_3" type="HintNode" gid="91" x="4995" y="779"/>
-  <object id="1146" name="hint_3" type="HintNode" gid="91" x="4990" y="888"/>
-  <object id="1147" name="hint_3" type="HintNode" gid="91" x="5078" y="844"/>
-  <object id="1149" name="hint_5" type="HintNode" gid="91" x="4395" y="3207"/>
-  <object id="1150" name="hint_5" type="HintNode" gid="91" x="4459" y="3339"/>
-  <object id="1151" name="hint_5" type="HintNode" gid="91" x="4331" y="3329"/>
-  <object id="1157" name="hint_4" type="HintNode" gid="91" x="2227" y="2051"/>
-  <object id="1159" name="hint_4" type="HintNode" gid="91" x="2292" y="2135"/>
-  <object id="1160" name="hint_4" type="HintNode" gid="91" x="2336" y="2031"/>
-  <object id="1162" gid="92" x="4752" y="4256"/>
+  <object id="1132" name="hint_1" type="HintNode" gid="91" x="1439" y="3656">
+   <properties>
+    <property name="hint_type" value="destination"/>
+   </properties>
+  </object>
+  <object id="1138" name="hint_2" type="HintNode" gid="91" x="283" y="499">
+   <properties>
+    <property name="hint_type" value="destination"/>
+   </properties>
+  </object>
+  <object id="1147" name="hint_3" type="HintNode" gid="91" x="5027" y="828">
+   <properties>
+    <property name="hint_type" value="destination"/>
+   </properties>
+  </object>
+  <object id="1150" name="hint_5" type="HintNode" gid="91" x="4400" y="3292">
+   <properties>
+    <property name="hint_type" value="destination"/>
+   </properties>
+  </object>
+  <object id="1159" name="hint_4" type="HintNode" gid="91" x="2274" y="2096">
+   <properties>
+    <property name="hint_type" value="destination"/>
+   </properties>
+  </object>
+  <object id="1162" name="hint_final" type="HintNode" gid="92" x="4752" y="4256">
+   <properties>
+    <property name="hint_type" value="destination"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="vision">
   <object id="1" gid="10" x="2521.33" y="1000.4"/>

@@ -429,6 +429,7 @@ bool DirectionalBulletNode::init( class TargetNode* unit_node, const cocos2d::Va
 }
 
 void DirectionalBulletNode::shootAlong( const cocos2d::Point& dir, float duration ) {
+    _init_pos = this->getPosition();
     _dir = dir;
     _duration = duration;
     BulletNode::shoot();
@@ -451,7 +452,7 @@ void DirectionalBulletNode::updateFrame( float delta ) {
                 _streak->setPosition( new_pos );
             }
             
-            cocos2d::Vector<UnitNode*> alive_opponents = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), _init_pos, new_pos, _damage_radius );
+            cocos2d::Vector<UnitNode*> alive_opponents = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), new_pos, _damage_radius );
             for( auto itr = alive_opponents.begin(); itr != alive_opponents.end(); ++itr ) {
                 UnitNode* target_unit = *itr;
                 int unit_id = target_unit->getDeployId();

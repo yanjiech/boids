@@ -64,6 +64,8 @@ public:
     
     void onMapInit();
     
+    void updateGameTime( float time );
+    
     const cocos2d::Vector<GameTask*> getGameTasks() { return _game_tasks; }
     const cocos2d::ValueMap& getDropedItems() { return _obtained_items; }
     

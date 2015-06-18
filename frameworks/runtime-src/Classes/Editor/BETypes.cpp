@@ -56,7 +56,7 @@ EditorTypeManager::EditorTypeManager() {
     
     _unitActionSourceType->_typeVector = { "trigger_source", "type_source", "tag_source", "name_source" };
     
-    _triggerType->_typeVector = { "map_init", "unit_change", "unit_stay", "vision_change", "story_change" };
+    _triggerType->_typeVector = { "map_init", "game_time", "unit_change", "unit_stay", "vision_change", "story_change" };
     
     _actionType->_typeVector = { "unit_change", "task_change", "game_change", "conversation_action", "story_action", "event_change", "vision_change", "custom", "wave_action" };
     

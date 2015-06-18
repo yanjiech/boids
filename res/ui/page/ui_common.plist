@@ -7,7 +7,7 @@
             <key>ui_common_ban_bg_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{295,2},{128,128}}</string>
+                <string>{{2,2},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,11 +20,11 @@
             <key>ui_common_green_btn_normal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{292,425},{288,125}}</string>
+                <string>{{1304,129},{288,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{288,125}}</string>
                 <key>sourceSize</key>
@@ -33,7 +33,7 @@
             <key>ui_common_green_btn_touched.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,258},{291,126}}</string>
+                <string>{{1011,2},{291,126}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>ui_common_hint_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{425,68},{64,64}}</string>
+                <string>{{276,130},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>ui_common_hint_bg_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{425,2},{64,64}}</string>
+                <string>{{210,130},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,11 +72,11 @@
             <key>ui_common_orange_btn_normal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{295,132},{291,126}}</string>
+                <string>{{718,2},{291,126}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{291,126}}</string>
                 <key>sourceSize</key>
@@ -85,7 +85,7 @@
             <key>ui_common_orange_btn_touched.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,130},{291,126}}</string>
+                <string>{{425,2},{291,126}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>ui_common_red_btn_normal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,386},{288,125}}</string>
+                <string>{{1304,2},{288,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>ui_common_red_btn_touched.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{291,126}}</string>
+                <string>{{132,2},{291,126}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,11 +124,11 @@
             <key>ui_menu_pause_normal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,513},{102,108}}</string>
+                <string>{{2,132},{102,108}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{102,108}}</string>
                 <key>sourceSize</key>
@@ -137,11 +137,11 @@
             <key>ui_menu_pause_touched.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{112,513},{102,107}}</string>
+                <string>{{106,132},{102,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{102,107}}</string>
                 <key>sourceSize</key>
@@ -155,9 +155,9 @@
             <key>realTextureFileName</key>
             <string>ui_common.png</string>
             <key>size</key>
-            <string>{512,1024}</string>
+            <string>{1594,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2862c31a19720de339eb3905e16b40aa:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:e7acaa2e129910748086ff4084e9316b:1/1$</string>
             <key>textureFileName</key>
             <string>ui_common.png</string>
         </dict>

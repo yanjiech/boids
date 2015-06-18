@@ -4,27 +4,53 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>ui_skill_biaoti.png</key>
+            <key>ui_skill_anniu01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{851,90},{219,85}}</string>
+                <string>{{1427,629},{203,82}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{219,85}}</string>
+                <string>{{0,0},{203,82}}</string>
+                <key>sourceSize</key>
+                <string>{203,82}</string>
+            </dict>
+            <key>ui_skill_anniu02.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1575,424},{203,82}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{203,82}}</string>
+                <key>sourceSize</key>
+                <string>{203,82}</string>
+            </dict>
+            <key>ui_skill_biaoti.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1350,629},{211,75}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{3,5},{211,75}}</string>
                 <key>sourceSize</key>
                 <string>{219,85}</string>
             </dict>
             <key>ui_skill_dajineng.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1350},{229,218}}</string>
+                <string>{{1350,70},{229,218}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{229,218}}</string>
                 <key>sourceSize</key>
@@ -33,15 +59,28 @@
             <key>ui_skill_di.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{939,72},{317,66}}</string>
+                <string>{{1350,2},{317,66}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{317,66}}</string>
+                <key>sourceSize</key>
+                <string>{317,66}</string>
+            </dict>
+            <key>ui_skill_diban4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1581,158},{178,85}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{317,66}}</string>
+                <string>{{0,0},{178,85}}</string>
                 <key>sourceSize</key>
-                <string>{317,66}</string>
+                <string>{178,85}</string>
             </dict>
             <key>ui_skill_dikuang02.png</key>
             <dict>
@@ -50,7 +89,7 @@
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{1346,847}}</string>
                 <key>sourceSize</key>
@@ -59,7 +98,7 @@
             <key>ui_skill_jinengdi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1806},{200,185}}</string>
+                <string>{{1511,629},{200,185}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,11 +111,11 @@
             <key>ui_skill_jinengkuang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1581},{223,209}}</string>
+                <string>{{1350,290},{223,209}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{223,209}}</string>
                 <key>sourceSize</key>
@@ -85,7 +124,7 @@
             <key>ui_skill_kuang01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{851,311},{84,84}}</string>
+                <string>{{1575,338},{84,84}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +137,7 @@
             <key>ui_skill_kuang02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{851,2},{86,86}}</string>
+                <string>{{1581,70},{86,86}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +150,7 @@
             <key>ui_skill_wenhao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{939,2},{68,68}}</string>
+                <string>{{1350,558},{68,68}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,11 +163,11 @@
             <key>ui_skill_yijijuexing.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{937,391},{174,55}}</string>
+                <string>{{1350,501},{174,55}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{174,55}}</string>
                 <key>sourceSize</key>
@@ -142,9 +181,9 @@
             <key>realTextureFileName</key>
             <string>ui_hero_skills.png</string>
             <key>size</key>
-            <string>{1024,2048}</string>
+            <string>{1698,851}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:3f3eec90e18b363c41511f825f6df424:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:5490cd05c2c216971e5723972614f8c8:1/1$</string>
             <key>textureFileName</key>
             <string>ui_hero_skills.png</string>
         </dict>

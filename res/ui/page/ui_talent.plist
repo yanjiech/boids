@@ -7,7 +7,7 @@
             <key>ui_talent_attack.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{770,838},{101,102}}</string>
+                <string>{{2,1497},{101,102}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>ui_talent_balance.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{897,716},{106,106}}</string>
+                <string>{{476,1464},{106,106}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>ui_talent_def.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{897,824},{103,103}}</string>
+                <string>{{584,1450},{103,103}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,11 +59,11 @@
             <key>ui_talent_frame.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{770,542},{185,172}}</string>
+                <string>{{584,1263},{185,172}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{185,172}}</string>
                 <key>sourceSize</key>
@@ -72,11 +72,11 @@
             <key>ui_talent_frame_focus.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{770,354},{199,186}}</string>
+                <string>{{354,1263},{199,186}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{199,186}}</string>
                 <key>sourceSize</key>
@@ -85,11 +85,11 @@
             <key>ui_talent_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{770,716},{120,125}}</string>
+                <string>{{354,1464},{120,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{120,125}}</string>
                 <key>sourceSize</key>
@@ -98,7 +98,7 @@
             <key>ui_talent_small_tab.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{971,354},{83,39}}</string>
+                <string>{{106,1497},{83,39}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,11 +111,11 @@
             <key>ui_talent_star.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{971,478},{23,21}}</string>
+                <string>{{147,1538},{23,21}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{23,21}}</string>
                 <key>sourceSize</key>
@@ -124,11 +124,11 @@
             <key>ui_talent_star2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{971,439},{39,37}}</string>
+                <string>{{147,1497},{39,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{39,37}}</string>
                 <key>sourceSize</key>
@@ -137,11 +137,11 @@
             <key>ui_talent_tab.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{770,178},{232,174}}</string>
+                <string>{{178,1263},{232,174}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{232,174}}</string>
                 <key>sourceSize</key>
@@ -150,11 +150,11 @@
             <key>ui_talent_tab_focus.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{770,2},{232,174}}</string>
+                <string>{{2,1263},{232,174}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{232,174}}</string>
                 <key>sourceSize</key>
@@ -168,9 +168,9 @@
             <key>realTextureFileName</key>
             <string>ui_talent.png</string>
             <key>size</key>
-            <string>{1024,2048}</string>
+            <string>{770,1600}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8b00ec8268ac4cae2ae15021f3f3f8b4:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:ecf43a67ad3e8e2f41148db5c61dd88d:1/1$</string>
             <key>textureFileName</key>
             <string>ui_talent.png</string>
         </dict>

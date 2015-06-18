@@ -743,6 +743,29 @@ void BEUIUnitTrigger::togglePositionUI(bool visible) {
     _selectPositionButton1->setVisible(visible);
 }
 
+//game time trigger
+BEUIGameTimeTrigger::BEUIGameTimeTrigger(cocos2d::ui::Layout *root, const BEPopupEventHandler& handler) : BEUIBase(root, handler) {
+    _tf_timeout = getTextFieldFrom("tf_timeout", _root);
+    _tf_relation = getTextFieldFrom("tf_relation", _root);
+    
+    _ok = getButtonFrom("button_ok", _root);
+    _cancel = getButtonFrom("button_cancel", _root);
+    bindOKHandler(_ok);
+    bindCancelHandler(_cancel);
+    
+    _trigger = EditorGameTimeTriggerPtr(new EditorGameTimeTrigger());
+}
+
+void BEUIGameTimeTrigger::reset() {
+    
+}
+
+EditorGameTimeTriggerPtr BEUIGameTimeTrigger::getTrigger() {
+    _trigger->Timeout = (float)Utils::toDouble( _tf_timeout->getString() );
+    _trigger->Relation = Utils::toInt( _tf_relation->getString() );
+    return _trigger;
+}
+
 //unit stay trigger
 BEUIUnitStayTrigger::BEUIUnitStayTrigger(ui::Layout *root, const BEPopupEventHandler& handler):BEUIBase(root, handler) {
     _infoPanel = getPanelFrom("Panel_info", _root);
@@ -1611,6 +1634,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     _storyActionPanel = getPanelFrom( kStoryActionPanel, _popupContainer );
 //    _conversationChangePanel = getPanelFrom(kConversationChangePanel, _popupContainer);
     _storyChangePanel = getPanelFrom( kStoryChangePanel, _popupContainer );
+    _gametimePanel = getPanelFrom( kGameTimePanel, _popupContainer );
     _commandHandler = commandHandler;
     _newEventButton->addClickEventListener([this](Ref *sender) {
         this->_commandHandler(EditorCommandType::NewEvent, sender);
@@ -1646,6 +1670,7 @@ BEEditorMainUI::BEEditorMainUI(Node *root, const BEPopupEventHandler& handler, c
     storyActionUI = new BEUIStoryAction( _storyActionPanel, handler );
     storyChangeTriggerUI = new BEUIStoryChangeTrigger( _storyChangePanel, handler );
 //    conversationChangeUI = new BEUIConversationTrigger(_conversationChangePanel, handler);
+    gametimeTriggerUI = new BEUIGameTimeTrigger( _gametimePanel, handler );
     
     hideAllPopups();
 }
@@ -1669,6 +1694,7 @@ BEEditorMainUI::~BEEditorMainUI() {
     delete storyActionUI;
     delete storyChangeTriggerUI;
 //    delete conversationChangeUI;
+    delete gametimeTriggerUI;
 }
 
 void BEEditorMainUI::hideAllPopups() {
@@ -1689,6 +1715,7 @@ void BEEditorMainUI::hideAllPopups() {
     conversationActionUI->setVisible(false);
     storyActionUI->setVisible( false );
     storyChangeTriggerUI->setVisible( false );
+    gametimeTriggerUI->setVisible( false );
 //    conversationChangeUI->setVisible(false);
 }
 

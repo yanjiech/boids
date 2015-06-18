@@ -1,0 +1,575 @@
+{
+    "positions": [
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 914.855,
+                "y": 213.494,
+                "width": 146.735,
+                "height": 152.108
+            }
+        },
+        {
+            "name": "hostage_01_start",
+            "rect": {
+                "x": 418.945,
+                "y": 194.321,
+                "width": 131.769,
+                "height": 145.594
+            }
+        },
+        {
+            "name": "route_2",
+            "rect": {
+                "x": 2111.27,
+                "y": 1559.71,
+                "width": 95.4634,
+                "height": 83.7218
+            },
+            "prev_pos": "route_1"
+        },
+        {
+            "name": "hostage_01_end",
+            "rect": {
+                "x": 2286.56,
+                "y": 2462.95,
+                "width": 143.815,
+                "height": 126.655
+            },
+            "prev_pos": "route_2"
+        },
+        {
+            "name": "hostage_02_start",
+            "rect": {
+                "x": 571.507,
+                "y": 1614.09,
+                "width": 131.404,
+                "height": 111.375
+            }
+        },
+        {
+            "name": "route_2_1",
+            "rect": {
+                "x": 917.579,
+                "y": 817.381,
+                "width": 99.1604,
+                "height": 111.314
+            },
+            "prev_pos": "hostage_02_start"
+        },
+        {
+            "name": "hostage_02_end",
+            "rect": {
+                "x": 2279.26,
+                "y": 681.442,
+                "width": 147.573,
+                "height": 127.646
+            },
+            "prev_pos": "route_2_1"
+        },
+        {
+            "name": "hostage_03_start",
+            "rect": {
+                "x": 143.23,
+                "y": 2265.26,
+                "width": 112.259,
+                "height": 91.3921
+            }
+        },
+        {
+            "name": "route_3_1",
+            "rect": {
+                "x": 1765.87,
+                "y": 3018.16,
+                "width": 109.76,
+                "height": 96.2964
+            },
+            "prev_pos": "hostage_03_start"
+        },
+        {
+            "name": "hostage_03_end",
+            "rect": {
+                "x": 1040.05,
+                "y": 3397.66,
+                "width": 108.871,
+                "height": 107.345
+            },
+            "prev_pos": "route_3_1"
+        },
+        {
+            "name": "route_1",
+            "rect": {
+                "x": 1512.97,
+                "y": 639.403,
+                "width": 144.648,
+                "height": 105.006
+            },
+            "prev_pos": "hostage_01_start"
+        }
+    ],
+    "events": [
+        {
+            "name": "story_01",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "哥布林：救命救命！",
+                            "speaker": "goblin_auntie"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "小鹿：可怜的地精，他们被困在这里！",
+                            "speaker": "enchantress"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "猫女：弱爆了，本大爷来救你们了！",
+                            "speaker": "kyle"
+                        }
+                    ],
+                    "name": "story_01"
+                }
+            ]
+        },
+        {
+            "name": "hostarge_appear",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "ally",
+                    "unit_state": "unit_hold_appear",
+                    "show_hp": true,
+                    "tag_name": "hostage_01,hostage",
+                    "position_name": "hostage_01_start",
+                    "custom_change": "movespeed:0,attackable:false",
+                    "unit_level": 9
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "ally",
+                    "unit_state": "unit_hold_appear",
+                    "show_hp": true,
+                    "tag_name": "hostage,hostage_02",
+                    "position_name": "hostage_02_start",
+                    "custom_change": "movespeed:0,attackable:false",
+                    "unit_level": 9
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "ally",
+                    "unit_state": "unit_hold_appear",
+                    "show_hp": true,
+                    "tag_name": "hostage,hostage_03",
+                    "position_name": "hostage_03_start",
+                    "custom_change": "movespeed:0,attackable:false",
+                    "unit_level": 9
+                }
+            ]
+        },
+        {
+            "name": "hostage_speak",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_01",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "我要回家!",
+                            "duration": 30,
+                            "interval": 5
+                        },
+                        {
+                            "content": "谁来救救我！",
+                            "duration": 30,
+                            "interval": 5
+                        }
+                    ],
+                    "name": "speach_01",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_01",
+                    "is_random_order": true,
+                    "repeat_times": 30
+                }
+            ]
+        },
+        {
+            "name": "hostage_02_speak",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_02",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "救命啊！",
+                            "duration": 30,
+                            "interval": 5
+                        },
+                        {
+                            "content": "谁来救我！",
+                            "duration": 30,
+                            "interval": 5
+                        },
+                        {
+                            "content": "我好饿！",
+                            "duration": 30,
+                            "interval": 5
+                        },
+                        {
+                            "content": "妈妈你在哪里！",
+                            "duration": 30,
+                            "interval": 5
+                        }
+                    ],
+                    "name": "speach_02",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_02",
+                    "is_random_order": true,
+                    "repeat_times": 30
+                }
+            ]
+        },
+        {
+            "name": "hostage_03_speach",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_03",
+                    "unit_state": "unit_appear",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "conversation_action",
+                    "speeches": [
+                        {
+                            "content": "这是哪里？",
+                            "duration": 30,
+                            "interval": 5
+                        },
+                        {
+                            "content": "我怎么会在这里？",
+                            "duration": 30,
+                            "interval": 5
+                        },
+                        {
+                            "content": "英雄救我！",
+                            "duration": 30,
+                            "interval": 5
+                        }
+                    ],
+                    "name": "speach_03",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_03",
+                    "is_random_order": true,
+                    "repeat_times": 30
+                }
+            ]
+        },
+        {
+            "name": "trigger_hostage_1",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "hostage_01_start",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_01",
+                    "unit_state": "unit_move",
+                    "position_name": "hostage_01_end",
+                    "custom_change": "attackable:true,movespeed:120"
+                }
+            ]
+        },
+        {
+            "name": "trigger_hostage_2",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "hostage_02_start",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_02",
+                    "unit_state": "unit_move",
+                    "position_name": "hostage_02_end",
+                    "custom_change": "attackable:true,movespeed:120"
+                }
+            ]
+        },
+        {
+            "name": "trigger_hostage_03",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "hostage_03_start",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_03",
+                    "unit_state": "unit_move",
+                    "position_name": "hostage_03_end",
+                    "custom_change": "attackable:true,movespeed:120"
+                }
+            ]
+        },
+        {
+            "name": "lose_cond",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage",
+                    "unit_state": "unit_dead",
+                    "trigger_count": 2
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_failed"
+                }
+            ]
+        },
+        {
+            "name": "arrive_1",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_01",
+                    "position_name": "hostage_01_end",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_progress",
+                    "progress": 50
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_01",
+                    "unit_state": "unit_disappear"
+                }
+            ]
+        },
+        {
+            "name": "arrive_2",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_02",
+                    "position_name": "hostage_02_end",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_progress",
+                    "progress": 50
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_02",
+                    "unit_state": "unit_disappear"
+                }
+            ]
+        },
+        {
+            "name": "arrive_3",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_03",
+                    "position_name": "hostage_03_end",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_progress",
+                    "progress": 50
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "hostage_03",
+                    "unit_state": "unit_disappear"
+                }
+            ]
+        }
+    ],
+    "units": [],
+    "tasks": [
+        {
+            "type": "primary_win",
+            "name": "task_main",
+            "desc": "营救并至少护送2名哥布林到达目的地",
+            "title": "营救并至少护送2名哥布林到达目的地"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_1",
+            "desc": "全员存活",
+            "title": "全员存活"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_2",
+            "desc": "摧毁所有箭塔",
+            "title": "摧毁所有箭塔"
+        }
+    ]
+}

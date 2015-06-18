@@ -99,7 +99,9 @@ void ResourceManager::loadDefaultData() {
 
 void ResourceManager::unloadDefaultData() {
     SpriteFrameCache* frame_cache = SpriteFrameCache::getInstance();
-    frame_cache->removeUnusedSpriteFrames();
+    frame_cache->removeSpriteFrames();
+    Director::getInstance()->getTextureCache()->removeAllTextures();
+//    frame_cache->removeUnusedSpriteFrames();
 }
 
 void ResourceManager::loadOpenningResource() {
@@ -129,7 +131,7 @@ void ResourceManager::loadUIResource() {
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_common.plist", "ui/page/ui_common.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_win_lose_page.plist", "ui/page/ui_win_lose_page.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_battle.plist", "ui/page/ui_battle.png"  );
-    frame_cache->addSpriteFramesWithFile( "ui/page/ui_popup.plist", "ui/page/ui_popup.png"  );
+//    frame_cache->addSpriteFramesWithFile( "ui/page/ui_popup.plist", "ui/page/ui_popup.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_detail.plist", "ui/page/ui_hero_detail.png"  );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_hero_manage.plist", "ui/page/ui_hero_manage.png" );
     frame_cache->addSpriteFramesWithFile( "ui/page/ui_home.plist", "ui/page/ui_home.png"  );

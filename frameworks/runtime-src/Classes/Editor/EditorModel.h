@@ -151,6 +151,15 @@ public:
     virtual void loadJson(const rapidjson::Value& value);
 };
 
+class EditorGameTimeTrigger : public EditorTriggerBase {
+public:
+    EditorGameTimeTrigger(): EditorTriggerBase("game_time") , Timeout( 0 ), Relation( 2 ) {}
+    float Timeout;
+    int Relation;
+    virtual rapidjson::Value& toJson(rapidjson::Document::AllocatorType& allocator);
+    virtual void loadJson(const rapidjson::Value& value);
+};
+
 class EditorCustomTrigger : public EditorTriggerBase {
 public:
     EditorCustomTrigger(): EditorTriggerBase("custom") {}
@@ -381,6 +390,7 @@ enum class EditorOperation {
     SetUnitTrigger,
     SetUnitStayTrigger,
     SetStoryChangeTrigger,
+    SetGameTimeTrigger,
     SetEventTrigger,
     SetUnitAction,
     SetGameAction,

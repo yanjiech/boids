@@ -98,6 +98,11 @@ bool BattleLayer::init( MapData* map_data, const std::string& level_id, bool is_
         _tmx_map = map_data->generateTiledMapWithFlags( 1 );
         _tmx_map->setPosition( origin );
         this->addChild( _tmx_map, 0, eBattleSubLayer::MapLayer );
+    
+        auto grass_layer = _tmx_map->getLayer( "grass" );
+        if( grass_layer ) {
+            grass_layer->setLocalZOrder( eBattleSubLayer::GrassLayer );
+        }
         
         _max_map_position = origin;
         _min_map_position = Point( origin.x + size.width - _tmx_map->getContentSize().width, origin.y + size.height - _tmx_map->getContentSize().height );
@@ -322,6 +327,9 @@ void BattleLayer::updateFrame( float delta ) {
             }
         }
         
+        for( auto hint : _hint_node_vec ) {
+            hint->updateFrame( delta );
+        }
         
         if( _should_show_fog ) {
             this->updateFogSprite();
@@ -334,6 +342,7 @@ void BattleLayer::updateFrame( float delta ) {
     if( _state == BattleRunning ) {
         _game_time += delta;
         _map_logic->updateFrame( delta );
+        _map_logic->updateGameTime( _game_time );
         this->checkState();
     }
     else if( _state == BattleWin || _state == BattleLose ) {
@@ -1104,9 +1113,7 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
     }
     else if( type == "HintNode" ) {
         std::string name = obj_properties.at( "name" ).asString();
-        Sprite* sp = _map_data->spriteFromObject( _tmx_map, data, true );
-        
-        HintNode* hint_node = HintNode::create( name, sp );
+        HintNode* hint_node = HintNode::create( this, obj_properties, grid_properties );
         hint_node->setVisible( false );
         this->addHint( hint_node, layer );
     }

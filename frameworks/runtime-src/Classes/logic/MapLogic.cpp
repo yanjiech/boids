@@ -143,6 +143,17 @@ void MapLogic::onMapInit() {
     }
 }
 
+void MapLogic::updateGameTime( float time ) {
+    ValueMap update_data;
+    update_data["game_time"] = Value( time );
+    update_data["trigger_type"] = Value( EVENT_TRIGGER_TYPE_GAME_TIME );
+    for( auto trigger : _triggers ) {
+        if( trigger->isEnabled() ) {
+            trigger->activateTriggerByConditions( update_data, nullptr );
+        }
+    }
+}
+
 void MapLogic::onTaskStateChanged( const std::string& task_name, const std::string& task_state, float progress ) {
     for( auto task : _game_tasks ) {
         if( task->isActive() && task->getTaskName() == task_name ) {

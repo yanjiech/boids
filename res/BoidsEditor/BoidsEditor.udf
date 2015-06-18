@@ -33,8 +33,9 @@
       <Value ctype="TabsInfo">
         <OpenedDocuments>
           <FilePathData Path="Main.csd" />
+          <FilePathData Path="EditMode.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="Main.csd" />
+        <ActiveDocument Path="EditMode.csd" />
       </Value>
     </Item>
   </Properties>

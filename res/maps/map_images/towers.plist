@@ -7,11 +7,11 @@
             <key>blue_door.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,146},{70,239}}</string>
+                <string>{{74,2},{70,239}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{70,239}}</string>
                 <key>sourceSize</key>
@@ -20,11 +20,11 @@
             <key>dici00.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,218},{290,156}}</string>
+                <string>{{146,2},{290,156}}</string>
                 <key>offset</key>
                 <string>{0,-5}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,10},{290,156}}</string>
                 <key>sourceSize</key>
@@ -33,11 +33,11 @@
             <key>red_door.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,74},{70,239}}</string>
+                <string>{{2,2},{70,239}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{70,239}}</string>
                 <key>sourceSize</key>
@@ -46,7 +46,7 @@
             <key>yellow_door.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{70,240}}</string>
+                <string>{{146,160},{70,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -64,9 +64,9 @@
             <key>realTextureFileName</key>
             <string>towers.png</string>
             <key>size</key>
-            <string>{256,512}</string>
+            <string>{438,243}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:64f709eb7cabb1d47eb4a5481382fc41:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:35ed772dd1aa04de38e491273f957ac2:1/1$</string>
             <key>textureFileName</key>
             <string>towers.png</string>
         </dict>

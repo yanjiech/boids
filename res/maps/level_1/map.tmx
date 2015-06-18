@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="20" tilewidth="64" tileheight="64" nextobjectid="246">
- <tileset firstgid="1" name="vision" tilewidth="500" tileheight="485">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" nextobjectid="76">
+ <tileset firstgid="1" name="vision" tilewidth="283" tileheight="406">
   <tile id="0">
    <image width="67" height="75" source="dijinghuojian_01 (8).png"/>
   </tile>
@@ -8,340 +8,156 @@
    <image width="85" height="54" source="dijinghuojian_01.png"/>
   </tile>
   <tile id="2">
-   <image width="214" height="168" source="dijinghuojiandui_01.png"/>
-  </tile>
-  <tile id="3">
-   <image width="41" height="36" source="dijingzhadan.png"/>
-  </tile>
-  <tile id="4">
    <image width="208" height="113" source="guanmu.png"/>
   </tile>
-  <tile id="5">
+  <tile id="3">
    <image width="57" height="31" source="kulou_01.png"/>
   </tile>
-  <tile id="6">
+  <tile id="4">
    <image width="73" height="49" source="kulou_03.png"/>
   </tile>
+  <tile id="5">
+   <image width="118" height="77" source="shikuai_03.png"/>
+  </tile>
+  <tile id="6">
+   <image width="198" height="140" source="shikuai_04.png"/>
+  </tile>
   <tile id="7">
-   <image width="98" height="105" source="lupai_01 (2).png"/>
+   <image width="83" height="52" source="shikuai_05.png"/>
   </tile>
   <tile id="8">
-   <image width="148" height="103" source="shuzhuang_01.png"/>
+   <image width="67" height="57" source="shikuai_06.png"/>
   </tile>
   <tile id="9">
-   <image width="78" height="61" source="shuzhuang_02.png"/>
+   <image width="36" height="40" source="shikuai_07.png"/>
   </tile>
   <tile id="10">
-   <image width="101" height="126" source="shuzhuang_04.png"/>
+   <image width="42" height="28" source="shitou_01.png"/>
   </tile>
   <tile id="11">
-   <image width="135" height="219" source="songshu_01.png"/>
+   <image width="148" height="103" source="shuzhuang_01.png"/>
   </tile>
   <tile id="12">
-   <image width="135" height="219" source="songshu_02.png"/>
+   <image width="78" height="61" source="shuzhuang_02.png"/>
   </tile>
   <tile id="13">
-   <image width="283" height="406" source="songshu_03.png"/>
+   <image width="101" height="126" source="shuzhuang_04.png"/>
   </tile>
   <tile id="14">
-   <image width="64" height="62" source="xiaocao_01.png"/>
+   <image width="135" height="219" source="songshu_01.png"/>
   </tile>
   <tile id="15">
-   <image width="64" height="71" source="xiaocao_02.png"/>
+   <image width="135" height="219" source="songshu_02.png"/>
   </tile>
   <tile id="16">
-   <image width="35" height="41" source="xiaocao_04.png"/>
+   <image width="283" height="406" source="songshu_03.png"/>
   </tile>
   <tile id="17">
-   <image width="72" height="68" source="cao_01.png"/>
+   <image width="64" height="62" source="xiaocao_01.png"/>
   </tile>
   <tile id="18">
-   <image width="423" height="485" source="goutourenmuwu_01.png"/>
+   <image width="64" height="71" source="xiaocao_02.png"/>
   </tile>
   <tile id="19">
-   <image width="500" height="300" source="muwu_01.png"/>
+   <image width="35" height="41" source="xiaocao_04.png"/>
   </tile>
   <tile id="20">
-   <image width="364" height="214" source="muqiao_01.png"/>
+   <image width="41" height="36" source="dijingzhadan.png"/>
   </tile>
   <tile id="21">
-   <image width="134" height="125" source="caodi_01.png"/>
+   <image width="162" height="210" source="shuijing_01.png"/>
   </tile>
   <tile id="22">
-   <image width="117" height="132" source="caodi_02.png"/>
-  </tile>
-  <tile id="23">
-   <image width="135" height="142" source="caodi_03.png"/>
-  </tile>
-  <tile id="24">
-   <image width="183" height="95" source="caodi_04.png"/>
-  </tile>
-  <tile id="25">
-   <image width="147" height="148" source="caodi_05.png"/>
-  </tile>
-  <tile id="26">
-   <image width="214" height="156" source="caodi_06.png"/>
-  </tile>
-  <tile id="27">
-   <image width="193" height="93" source="tudihe_01.png"/>
-  </tile>
-  <tile id="28">
-   <image width="155" height="130" source="tudihe_02.png"/>
-  </tile>
-  <tile id="29">
-   <image width="119" height="96" source="tudihe_03.png"/>
-  </tile>
-  <tile id="30">
-   <image width="189" height="100" source="tudihe_04.png"/>
-  </tile>
-  <tile id="31">
-   <image width="162" height="74" source="tudihe_05.png"/>
+   <image width="44" height="55" source="guanzi_01.png"/>
   </tile>
  </tileset>
- <tileset firstgid="33" name="terrain" tilewidth="64" tileheight="64">
+ <tileset firstgid="24" name="terrain" tilewidth="128" tileheight="128">
   <image source="base_terrain.png" width="2048" height="2048"/>
  </tileset>
- <layer name="terrain" width="64" height="20">
+ <layer name="terrain" width="16" height="10">
   <data encoding="base64" compression="zlib">
-   eJzNmFEOgyAQRLmK/tWkvQP+1cTe/zjVhE0m0wGxrsrHZqlQcPa56NKFEPrFumQ9eNXuCuO5T9na/1rsedA/yLhfaVEWFxuTtzbeq13jMdxmH4Vu6/8sNh/wq96B9PM41pJjkfNRXOPrJeYx/Oo+g/tjY3wsWI6dxY2fkTHFF3+z/gjeizd6pf/IfHj/uVzoN+KbywcP3uiV9qPzcp6qPDDunhw9uE8O86r8Rd2e/K7M+z38cZ9shbfi/w5+eY/8zVrgrLjjuw5j4DH/3Vxr891i4L3O3XyVV983Xrxb58/az+LeIn/L7yl5a5+57t28Ffch6T6Te2v8jTVqv2Ldu7nPwNxi4Pl+b50/5rw9/1eub9+7M7Rr48e1wj/xx/3O2O+dR53J1P5fffOXzmly9eIYdB1Rw38Iv++9PRz5rCFX06g6r3QWoOKVq3e5XVtHKP579/3ae1HnH18gwSAX
+   eJyTY2BgkCMTy1KojxL9A2U3PcKGVL2yVLKXXm5FxgCGxRKu
   </data>
  </layer>
- <objectgroup name="onground">
-  <object id="1" name="bridge" type="SpriteBlockNode" gid="2147483669" x="2551.33" y="667.606">
-   <properties>
-    <property name="need_repair" value="true"/>
-    <property name="need_tag" value="leader,bridge_repair"/>
-    <property name="need_time" value="3.0"/>
-    <property name="range" value="300"/>
-   </properties>
-  </object>
-  <object id="117" gid="22" x="1682.33" y="208"/>
-  <object id="118" gid="23" x="1804" y="168"/>
-  <object id="119" gid="24" x="1828.33" y="136.333"/>
-  <object id="120" gid="1073741849" x="846" y="346"/>
-  <object id="121" gid="1073741850" x="699.667" y="310"/>
-  <object id="122" gid="1073741851" x="1310.33" y="470.667"/>
-  <object id="127" gid="22" x="1563" y="270"/>
-  <object id="128" gid="23" x="1206" y="434"/>
-  <object id="129" gid="24" x="1427" y="425"/>
-  <object id="130" gid="1073741849" x="945" y="401"/>
-  <object id="131" gid="3221225498" x="533" y="434"/>
-  <object id="132" gid="1073741851" x="-67" y="676"/>
-  <object id="133" gid="22" x="1445" y="326"/>
-  <object id="134" gid="23" x="1100" y="428"/>
-  <object id="135" gid="1073741847" x="1188.36" y="1192.79"/>
-  <object id="136" gid="27" x="1346.03" y="1222.79"/>
-  <object id="137" gid="2147483673" x="3343.73" y="1115.45"/>
-  <object id="138" gid="27" x="3207.06" y="1130.12"/>
-  <object id="139" gid="26" x="3535.06" y="1234.12"/>
-  <object id="140" gid="25" x="737.03" y="1152.79"/>
-  <object id="141" gid="24" x="581" y="387"/>
-  <object id="142" gid="24" x="439" y="539"/>
-  <object id="143" gid="3221225498" x="375" y="577"/>
-  <object id="144" gid="3221225498" x="125" y="654"/>
-  <object id="146" gid="27" x="3712.06" y="1238.12"/>
-  <object id="147" gid="26" x="3407.06" y="1206.12"/>
-  <object id="149" gid="24" x="440.03" y="1285.12"/>
-  <object id="150" gid="23" x="3995.21" y="319.394"/>
-  <object id="151" gid="22" x="3798.15" y="284.121"/>
-  <object id="152" gid="22" x="261" y="598"/>
-  <object id="153" gid="27" x="19.0303" y="1194.79"/>
-  <object id="154" gid="2147483674" x="856.03" y="1171.79"/>
-  <object id="156" gid="1073741846" x="425.03" y="1201.79"/>
-  <object id="157" gid="27" x="227.03" y="1186.79"/>
-  <object id="159" gid="2147483672" x="3065.58" y="1254.91"/>
-  <object id="160" gid="25" x="3077.33" y="1120"/>
-  <object id="161" gid="24" x="1506.12" y="1337.76"/>
-  <object id="162" gid="2147483672" x="729.364" y="1297.12"/>
-  <object id="163" gid="2147483670" x="3455.55" y="217.636"/>
-  <object id="164" gid="2147483673" x="1478.03" y="1213.79"/>
-  <object id="165" gid="2147483670" x="3678.18" y="290.788"/>
-  <object id="166" gid="2147483670" x="3881.06" y="295.121"/>
-  <object id="167" gid="2147483674" x="1007.03" y="1198.79"/>
-  <object id="168" gid="2147483675" x="3910.06" y="1238.12"/>
-  <object id="169" gid="2147483672" x="3415.15" y="148.485"/>
-  <object id="170" gid="23" x="3575.76" y="260.606"/>
-  <object id="175" name="bridge_collide" type="collide" x="2544" y="536">
-   <polygon points="0,0 58.6246,-1.1274 160.09,51.8602 197.294,84.5547 225.479,134.16 365.276,64.2616 312.289,-11.274 218.715,-67.6437 149.944,-85.6821"/>
-  </object>
-  <object id="176" gid="30" x="1982" y="1127"/>
-  <object id="177" gid="30" x="2024" y="1059"/>
-  <object id="180" gid="2147483678" x="2343" y="1213"/>
-  <object id="181" gid="30" x="2068" y="990"/>
-  <object id="183" gid="30" x="2230" y="815"/>
-  <object id="184" gid="30" x="2280" y="748"/>
-  <object id="186" gid="30" x="2326" y="678"/>
-  <object id="190" gid="30" x="2472" y="598"/>
-  <object id="191" gid="30" x="2798" y="148"/>
-  <object id="193" gid="31" x="2903" y="592"/>
-  <object id="194" gid="31" x="2952" y="437"/>
-  <object id="195" gid="31" x="3011" y="295"/>
-  <object id="196" gid="31" x="3089" y="157"/>
-  <object id="197" gid="31" x="2449" y="941"/>
-  <object id="198" gid="31" x="2540" y="857"/>
-  <object id="202" gid="31" x="2298" y="1104"/>
-  <object id="205" gid="29" x="2398" y="641"/>
-  <object id="207" gid="31" x="2987" y="364"/>
-  <object id="208" gid="2147483676" x="2301" y="1165"/>
-  <object id="215" gid="32" x="2404" y="1048"/>
-  <object id="216" gid="30" x="2846" y="74"/>
-  <object id="217" gid="2147483678" x="2377" y="1286"/>
-  <object id="219" gid="31" x="2618" y="772"/>
-  <object id="221" gid="2147483678" x="3081" y="234"/>
-  <object id="222" gid="2147483678" x="3160" y="87"/>
-  <object id="223" gid="30" x="2751" y="219"/>
-  <object id="228" gid="2147483678" x="2966" y="515"/>
-  <object id="229" gid="30" x="2610" y="409"/>
-  <object id="231" gid="29" x="2161" y="876"/>
-  <object id="232" gid="30" x="2077" y="917"/>
-  <object id="233" gid="28" x="1935" y="1199"/>
-  <object id="234" gid="2147483679" x="1945" y="1298"/>
-  <object id="237" gid="30" x="1967" y="1236"/>
-  <object id="239" gid="28" x="2657" y="337"/>
-  <object id="241" gid="2147483679" x="2705" y="294"/>
-  <object id="244" gid="2147483679" x="2598" y="489"/>
-  <object id="245" gid="2147483678" x="2468" y="1020"/>
- </objectgroup>
+ <objectgroup name="onground"/>
  <objectgroup name="vision">
-  <object id="2" gid="14" x="-32.4545" y="386.03"/>
-  <object id="3" gid="14" x="167.909" y="262.515"/>
-  <object id="4" gid="13" x="-3" y="229"/>
-  <object id="5" gid="12" x="-15.6667" y="461"/>
-  <object id="6" gid="15" x="871.152" y="814.515"/>
-  <object id="7" gid="2147483664" x="216.606" y="1145.43"/>
-  <object id="8" gid="17" x="270.03" y="1210.79"/>
-  <object id="9" gid="9" x="65.0303" y="1260.46"/>
-  <object id="10" gid="10" x="180.03" y="1164.79"/>
-  <object id="11" gid="2147483656" x="2091.12" y="305.515"/>
-  <object id="12" gid="5" x="1058.18" y="152.97"/>
-  <object id="13" gid="3" x="3706.94" y="272.242"/>
-  <object id="14" gid="4" x="3679.62" y="303.955"/>
-  <object id="15" gid="2" x="3623.82" y="163.848"/>
-  <object id="16" gid="1" x="3915.58" y="190.712"/>
-  <object id="17" gid="10" x="391.03" y="1226.79"/>
-  <object id="18" gid="17" x="238.909" y="342.545"/>
-  <object id="19" gid="12" x="187.636" y="294.061"/>
-  <object id="20" gid="11" x="290.363" y="1281.79"/>
-  <object id="21" gid="18" x="3931.64" y="962.242"/>
-  <object id="22" gid="12" x="1293.12" y="400.97"/>
-  <object id="23" gid="13" x="1339.91" y="329.364"/>
-  <object id="24" gid="13" x="433.728" y="489.243"/>
-  <object id="25" gid="13" x="56.1518" y="162.576"/>
-  <object id="26" gid="13" x="1950.58" y="184.515"/>
-  <object id="27" gid="13" x="1054.7" y="204.758"/>
-  <object id="28" gid="13" x="1150.18" y="351.849"/>
-  <object id="29" gid="14" x="25.9394" y="620.97"/>
-  <object id="30" gid="15" x="1287.88" y="187.879"/>
-  <object id="31" gid="13" x="54.5455" y="1157.58"/>
-  <object id="32" gid="13" x="745.454" y="1279.03"/>
-  <object id="33" gid="12" x="919.757" y="1317.09"/>
-  <object id="34" gid="13" x="1028.24" y="1268.97"/>
-  <object id="35" gid="12" x="1377.52" y="97.8788"/>
-  <object id="36" gid="19" x="259.727" y="418.97"/>
-  <object id="37" gid="16" x="402.636" y="1256.76"/>
-  <object id="38" gid="10" x="839.394" y="1245.46"/>
-  <object id="39" gid="14" x="596.606" y="220.485"/>
-  <object id="40" gid="2147483662" x="757.576" y="181.818"/>
-  <object id="41" gid="5" x="539.394" y="196.97"/>
-  <object id="42" gid="2147483653" x="1163.94" y="177.606"/>
-  <object id="43" gid="5" x="1175.76" y="87.8788"/>
-  <object id="44" gid="5" x="1617.7" y="150.424"/>
-  <object id="45" gid="5" x="1101.03" y="242.848"/>
-  <object id="46" gid="5" x="793.21" y="239.273"/>
-  <object id="47" gid="5" x="971.3" y="176.212"/>
-  <object id="48" gid="2147483653" x="941" y="255"/>
-  <object id="49" gid="11" x="942.424" y="1154.55"/>
-  <object id="50" gid="14" x="1055.03" y="1358.79"/>
-  <object id="51" gid="12" x="1276" y="1200.85"/>
-  <object id="52" gid="13" x="1427.03" y="1294.79"/>
-  <object id="53" gid="12" x="1750.67" y="120"/>
-  <object id="54" gid="14" x="-148.97" y="1338.79"/>
-  <object id="55" gid="2147483653" x="1632" y="701"/>
-  <object id="56" gid="10" x="1891.7" y="1247.79"/>
-  <object id="57" gid="2147483664" x="1635.03" y="1266.79"/>
-  <object id="58" gid="2147483665" x="2068.33" y="110.667"/>
-  <object id="59" gid="17" x="1951" y="216"/>
-  <object id="60" gid="17" x="827" y="278"/>
-  <object id="61" gid="2147483653" x="3486" y="122"/>
-  <object id="62" gid="2147483653" x="3566" y="98"/>
-  <object id="63" gid="5" x="3944" y="168"/>
-  <object id="64" gid="5" x="3808" y="140"/>
-  <object id="65" gid="2147483653" x="3833.33" y="460"/>
-  <object id="66" gid="2147483653" x="3972" y="104"/>
-  <object id="67" gid="2147483651" x="3857.5" y="322.5"/>
-  <object id="68" gid="1" x="3766.5" y="347.5"/>
-  <object id="69" gid="4" x="4055" y="295"/>
-  <object id="70" gid="2147483650" x="3885.33" y="366.667"/>
-  <object id="71" gid="2" x="3854.67" y="386.667"/>
-  <object id="72" gid="1" x="3459.03" y="1129.79"/>
-  <object id="73" gid="4" x="3408.83" y="1164.9"/>
-  <object id="74" gid="2" x="3208.97" y="1150.67"/>
-  <object id="75" gid="2147483653" x="3453.03" y="1268.79"/>
-  <object id="76" gid="2147483653" x="3555.03" y="1208.79"/>
-  <object id="77" gid="5" x="2565.03" y="1246.79"/>
-  <object id="78" gid="2147483653" x="2617.7" y="1300.12"/>
-  <object id="79" gid="2147483653" x="2477.03" y="1310.79"/>
-  <object id="80" gid="2147483653" x="2755.03" y="1318.79"/>
-  <object id="81" gid="2147483653" x="3076.82" y="1301.7"/>
-  <object id="82" gid="2147483653" x="3204.03" y="1301.79"/>
-  <object id="83" gid="5" x="3633.33" y="1260.61"/>
-  <object id="84" gid="2147483653" x="3963.64" y="1315.15"/>
-  <object id="85" gid="2147483653" x="3778.79" y="1296.97"/>
-  <object id="86" gid="2147483653" x="3554.85" y="1310.09"/>
-  <object id="87" gid="2147483650" x="3505.03" y="1144.79"/>
-  <object id="88" gid="1" x="3329.03" y="1234.79"/>
-  <object id="89" gid="1" x="3393.03" y="1252.79"/>
-  <object id="90" gid="4" x="3230.97" y="1180.67"/>
-  <object id="91" gid="2147483665" x="1164" y="368"/>
-  <object id="92" gid="18" x="2831.03" y="1138.79"/>
-  <object id="93" gid="18" x="3394.06" y="608.121"/>
-  <object id="94" gid="18" x="3104" y="332"/>
-  <object id="95" gid="2147483663" x="1478" y="662"/>
-  <object id="96" gid="15" x="2432" y="226"/>
-  <object id="97" gid="20" x="1260" y="242"/>
+  <object id="2" gid="16" x="213.576" y="978.58"/>
+  <object id="3" gid="13" x="730.485" y="741.788"/>
+  <object id="4" gid="16" x="665.121" y="863.212"/>
+  <object id="5" gid="16" x="199.697" y="231.212"/>
+  <object id="6" gid="16" x="130.909" y="1188.15"/>
+  <object id="7" gid="16" x="1741.58" y="1330.82"/>
+  <object id="8" gid="16" x="47.697" y="167.879"/>
+  <object id="9" gid="3" x="-49.6363" y="72.2121"/>
+  <object id="10" gid="16" x="48.9091" y="1092.15"/>
+  <object id="11" gid="2147483667" x="1043.15" y="645.576"/>
+  <object id="12" gid="2147483666" x="938.18" y="734.848"/>
+  <object id="13" gid="7" x="1552.7" y="162.879"/>
+  <object id="14" gid="16" x="1567.58" y="1346.82"/>
+  <object id="15" gid="8" x="1852.7" y="386.879"/>
+  <object id="16" gid="12" x="148.606" y="966.727"/>
+  <object id="17" gid="16" x="1478.58" y="1319.82"/>
+  <object id="18" gid="17" x="-105.364" y="1232.58"/>
+  <object id="19" gid="6" x="1626.7" y="372.879"/>
+  <object id="20" gid="14" x="403.03" y="1032.42"/>
+  <object id="21" gid="11" x="462.515" y="841.606"/>
+  <object id="22" gid="15" x="461.545" y="825.152"/>
+  <object id="23" gid="19" x="190.03" y="96.2121"/>
+  <object id="24" gid="17" x="1771.7" y="284.879"/>
+  <object id="25" gid="15" x="747.606" y="675.575"/>
+  <object id="26" gid="16" x="824.82" y="595.818"/>
+  <object id="27" gid="17" x="1631.7" y="306.879"/>
+  <object id="28" gid="15" x="542.303" y="1018.64"/>
+  <object id="29" gid="16" x="1776.58" y="1303.82"/>
+  <object id="30" gid="15" x="-33.6363" y="188.879"/>
+  <object id="31" gid="2147483668" x="1031.85" y="691.061"/>
+  <object id="32" gid="8" x="1632.7" y="217.546"/>
+  <object id="33" gid="4" x="618" y="820.182"/>
+  <object id="34" gid="15" x="1876.58" y="1153.82"/>
+  <object id="35" gid="15" x="1657.58" y="1240.82"/>
+  <object id="36" gid="16" x="1902.58" y="1281.82"/>
+  <object id="37" gid="5" x="480.121" y="901.242"/>
+  <object id="38" gid="16" x="1865.7" y="344.879"/>
+  <object id="39" gid="15" x="86.697" y="96.8788"/>
+  <object id="40" gid="2147483657" x="1848.7" y="402.879"/>
+  <object id="41" gid="15" x="299.758" y="1014.7"/>
+  <object id="42" gid="18" x="653.273" y="726.455"/>
+  <object id="43" gid="19" x="1840.73" y="1145.36"/>
+  <object id="44" gid="16" x="317.909" y="1145.15"/>
+  <object id="45" gid="18" x="277.576" y="1175.82"/>
+  <object id="46" gid="16" x="255.697" y="130.212"/>
+  <object id="47" gid="13" x="390.272" y="832.636"/>
+  <object id="48" gid="19" x="257.576" y="1081.82"/>
+  <object id="49" gid="2147483653" x="386.727" y="851.758"/>
+  <object id="50" gid="1" x="1754.88" y="564.273"/>
+  <object id="51" gid="16" x="918.303" y="669.212"/>
+  <object id="52" gid="1" x="1836.7" y="527.909"/>
+  <object id="54" gid="20" x="101.182" y="216.97"/>
+  <object id="55" gid="20" x="597.97" y="780.667"/>
+  <object id="56" gid="20" x="204.212" y="989.697"/>
+  <object id="57" gid="2147483668" x="379.97" y="47.2727"/>
+  <object id="58" gid="2" x="1518" y="419"/>
+  <object id="59" gid="18" x="212.121" y="672.727"/>
+  <object id="60" gid="18" x="647.03" y="894.121"/>
+  <object id="61" gid="18" x="1827.27" y="648.485"/>
+  <object id="62" gid="21" x="1558" y="516"/>
+  <object id="63" gid="2147483670" x="837" y="785"/>
+  <object id="64" gid="23" x="968" y="781"/>
+  <object id="65" gid="23" x="802" y="776"/>
+  <object id="70" gid="16" x="-79" y="1337"/>
  </objectgroup>
  <objectgroup name="physics">
-  <object id="98" name="c1" type="collide" x="0" y="452">
-   <polygon points="0,0 72,16 117.333,144 194.667,172 221.333,154.667 221.333,116 253.333,4 321.333,-20 389.333,-22.6667 461.333,25.3333 504,38.6667 542.667,18.6667 544,4 513.333,-45.3333 686.667,-121.333 668,-145.333 581.333,-198.667 677.333,-252 761.333,-225.333 796,-229.333 873.333,-204 930.667,-213.333 1028,-196 1090.67,-190.667 1133.33,-206.667 1205.33,-197.333 1286.67,-216 1318.67,-234.667 1322.67,-266.667 1472,-212 1546.67,-245.333 1586.67,-238.667 1676,-297.333 1732,-289.333 1837.33,-318.667 1866.67,-360 1846.67,-381.333 1813.33,-452 0,-450.667"/>
+  <object id="66" name="c1" type="collide" x="-6" y="186">
+   <polygon points="0,0 50,8 86,-8 154,-22 210,-14 218,26 234,40 274,48 314,34 322,16 326,-48 364,-70 374,-86 372,-110 346,-190 0,-182"/>
   </object>
-  <object id="99" name="c2" type="collide" x="1174" y="340">
-   <polygon points="0,0 42,16 100,-16 36,-38"/>
+  <object id="68" name="c3" type="collide" x="-20" y="978">
+   <polygon points="0,0 140,-60 212,-86 310,-142 452,-190 544,-294 576,-288 680,-278 808,-330 830,-432 914,-492 1016,-434 1042,-336 1028,-204 848,-188 796,-138 744,-112 654,38 516,34 478,48 426,168 374,154 262,184 208,210 184,192 92,240 52,254 24,320 -10,314"/>
   </object>
-  <object id="100" name="c3" type="collide" x="1318" y="382">
-   <polygon points="0,0 50,20 86,-10 48,-36"/>
+  <object id="69" name="c4" type="collide" x="1476" y="1198">
+   <polygon points="28,86 70,-52 162,-28 242,-116 366,-66 470,-208 572,-152 578,80"/>
   </object>
-  <object id="101" name="c4" type="collide" x="1372" y="314">
-   <polygon points="0,0 54,10 86,-18 36,-40"/>
-  </object>
-  <object id="102" name="c5" type="collide" x="1972" y="168">
-   <polygon points="0,0 58,18 90,-14 40,-44"/>
-  </object>
-  <object id="103" name="c6" type="collide" x="2120" y="298">
-   <polygon points="0,0 32,12 42,-12 16,-18"/>
-  </object>
-  <object id="105" name="c8" type="collide" x="5.0303" y="1098.79">
-   <polygon points="0,0 90,28 118,16 154,20 218,22 254,36 410,88 442,84 466,104 466,114 436,150 376,180 -2,178"/>
-  </object>
-  <object id="106" name="c9" type="collide" x="797.03" y="1272.79">
-   <polygon points="0,0 -24,-16 34,-56 78,-76 104,-78 158,-148 186,-180 224,-176 244,-150 352,-158 396,-192 524,-116 588,-104 530,6"/>
-  </object>
-  <object id="107" name="c10" type="collide" x="1455.03" y="1270.79">
-   <polygon points="0,0 38,-32 88,0"/>
-  </object>
-  <object id="108" name="c11" type="collide" x="1895.03" y="1230.79">
-   <polygon points="0,0 42,20 78,-14 32,-32"/>
-  </object>
-  <object id="111" name="c14" type="collide" x="3233.03" y="1140.79">
-   <polygon points="0,0 -4,-24 250,-68 344,-32 346,4 196,110 124,96 6,50"/>
-  </object>
-  <object id="113" name="c16" type="collide" x="3494" y="104">
-   <polygon points="153,-5 120,36 208,100 260,172 274,234 322,260 404,273 537,255 573,237 604,222 557,84 304,-21"/>
-  </object>
-  <object id="114" name="c17" type="collide" x="2942" y="2">
-   <polygon points="0,0 -38,58 -60,118 -105,163 -109,220 -118,267 -176,302 -233,337 -238,386 -240,414 -236,446 -178,454 -124,480 -82,510 -54,552 -34,578 0,548 36,484 44,426 84,361 113,306 121,251 160,204 155,149 186,112 228,64 248,35 252,-2 190,-6"/>
-  </object>
-  <object id="115" name="c18" type="collide" x="2526" y="562">
-   <polygon points="0,0 29.2727,-32.0606 74,-26 112,-10 146,12 180,32 210,58 220,84 238,110 191,119 156,141 109,177 59,225 7,253 -28,322 -39,387 -97,444 -155,472 -196.091,521.879 -156.152,632.364 -105.03,723.848 -430.939,718.848 -463.03,672.212 -460.121,524.121 -403,426 -364,361 -354,268 -241,259 -173,166 -114,102 -107,57 -59.1515,26.0909 -14.1212,23.1515"/>
+  <object id="72" name="c5" type="collide" x="1708" y="2">
+   <polygon points="0,0 -150,114 -98,152 -66,166 -80,200 -36,210 28,270 -82,316 -80,342 -50,366 6,358 22,364 50,350 138,372 148,390 176,404 220,392 232,380 236,336 262,322 278,184 338,152 338,-4"/>
   </object>
  </objectgroup>
 </map>

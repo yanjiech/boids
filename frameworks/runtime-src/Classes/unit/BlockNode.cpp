@@ -15,7 +15,8 @@ using namespace cocos2d;
 
 BlockNode::BlockNode() :
 _range_sprite( nullptr ),
-_repairing_component( nullptr )
+_repairing_component( nullptr ),
+_need_repair_component( nullptr )
 {
     
 }

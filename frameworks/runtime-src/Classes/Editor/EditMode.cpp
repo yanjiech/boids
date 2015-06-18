@@ -549,6 +549,11 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
             ctx->Event->Triggers.push_back( trigger );
             ctx->addOperation( EditorOperation::SetTrigger );
         }
+        else if( op == EditorOperation::SetGameTimeTrigger ) {
+            auto trigger = _editUI->gametimeTriggerUI->getTrigger();
+            ctx->Event->Triggers.push_back( trigger );
+            ctx->addOperation( EditorOperation::SetTrigger );
+        }
         else if (op == EditorOperation::EditEvent) {
             _editUI->unitActionUI->saveEvent();
         }
@@ -587,6 +592,9 @@ void EditMode::onPopupEvent(EditorPopupEventType et, BEUIBase *popup, Ref *sende
         }
         else if( triggerType == "story_change" ) {
             ctx->addOperation( EditorOperation::SetStoryChangeTrigger );
+        }
+        else if( triggerType == "game_time" ) {
+            ctx->addOperation( EditorOperation::SetGameTimeTrigger );
         }
         else if (triggerType == "event_change") {
             ctx->addOperation(EditorOperation::SetEventTrigger);
@@ -812,6 +820,11 @@ void EditMode::onStep(int step) {
             _editUI->storyChangeTriggerUI->setVisible( true );
             _editUI->storyChangeTriggerUI->reset();
             _editUI->storyChangeTriggerUI->loadStories(_stories);
+            break;
+        }
+        case EditorOperation::SetGameTimeTrigger: {
+            _editUI->gametimeTriggerUI->setVisible( true );
+            _editUI->storyChangeTriggerUI->reset();
             break;
         }
         case EditorOperation::EditEvent: {
