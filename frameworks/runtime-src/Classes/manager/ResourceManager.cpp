@@ -218,92 +218,50 @@ void ResourceManager::unloadBattleResource() {
 
 void ResourceManager::loadUnitData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + UNIT_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = file_util->getStringFromFile( "unit.json" );
-        rapidjson::Document unit_config_json;
-        unit_config_json.Parse<0>( data_string.c_str() );
-        _unit_config = CocosUtils::jsonObjectToValueMap( unit_config_json );
-        file_util->writeToFile( _unit_config, plist_file );
-    }
-    else {
-        _unit_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "unit.json" );
+    rapidjson::Document unit_config_json;
+    unit_config_json.Parse<0>( data_string.c_str() );
+    _unit_config = CocosUtils::jsonObjectToValueMap( unit_config_json );
 }
 
 void ResourceManager::loadTalentData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + TALENT_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = file_util->getStringFromFile( "talent.json" );
-        rapidjson::Document config_json;
-        config_json.Parse<0>( data_string.c_str() );
-        _talent_config = CocosUtils::jsonObjectToValueMap( config_json );
-        file_util->writeToFile( _talent_config, plist_file );
-    }
-    else {
-        _talent_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "talent.json" );
+    rapidjson::Document config_json;
+    config_json.Parse<0>( data_string.c_str() );
+    _talent_config = CocosUtils::jsonObjectToValueMap( config_json );
 }
 
 void ResourceManager::loadEquipData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + EQUIP_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = file_util->getStringFromFile( "equip.json" );
-        rapidjson::Document equip_config_json;
-        equip_config_json.Parse<0>( data_string.c_str() );
-        _equip_config = CocosUtils::jsonObjectToValueMap( equip_config_json );
-        file_util->writeToFile( _equip_config, plist_file );
-    }
-    else {
-        _equip_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "equip.json" );
+    rapidjson::Document equip_config_json;
+    equip_config_json.Parse<0>( data_string.c_str() );
+    _equip_config = CocosUtils::jsonObjectToValueMap( equip_config_json );
 }
 
 void ResourceManager::loadTowerData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + TOWER_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( "tower.json" );
-        rapidjson::Document tower_config_json;
-        tower_config_json.Parse<0>( data_string.c_str() );
-        _tower_config = CocosUtils::jsonObjectToValueMap( tower_config_json );
-        file_util->writeToFile( _tower_config, plist_file );
-    }
-    else {
-        _tower_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "tower.json" );
+    rapidjson::Document tower_config_json;
+    tower_config_json.Parse<0>( data_string.c_str() );
+    _tower_config = CocosUtils::jsonObjectToValueMap( tower_config_json );
 }
 
 void ResourceManager::loadUnitLevelupCostData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + UPGRADE_COST_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( "upgrade_cost.json" );
-        rapidjson::Document unit_levelup_cost_config_json;
-        unit_levelup_cost_config_json.Parse<0>( data_string.c_str() );
-        _unit_levelup_cost_config = CocosUtils::jsonObjectToValueMap( unit_levelup_cost_config_json );
-        file_util->writeToFile( _unit_levelup_cost_config, plist_file );
-    }
-    else {
-        _unit_levelup_cost_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "upgrade_cost.json" );
+    rapidjson::Document unit_levelup_cost_config_json;
+    unit_levelup_cost_config_json.Parse<0>( data_string.c_str() );
+    _unit_levelup_cost_config = CocosUtils::jsonObjectToValueMap( unit_levelup_cost_config_json );
 }
 
 void ResourceManager::loadBulletData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + BULLET_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( "bullet.json" );
-        rapidjson::Document bullet_config_json;
-        bullet_config_json.Parse<0>( data_string.c_str() );
-        _bullet_config = CocosUtils::jsonObjectToValueMap( bullet_config_json );
-        file_util->writeToFile( _bullet_config, plist_file );
-    }
-    else {
-        _bullet_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "bullet.json" );
+    rapidjson::Document bullet_config_json;
+    bullet_config_json.Parse<0>( data_string.c_str() );
+    _bullet_config = CocosUtils::jsonObjectToValueMap( bullet_config_json );
 }
 
 void ResourceManager::loadCenterData() {
@@ -322,108 +280,58 @@ void ResourceManager::loadBuildingData() {
 
 void ResourceManager::loadBattleUIData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + ITEM_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( "item.json" );
-        rapidjson::Document battle_ui_config_json;
-        battle_ui_config_json.Parse<0>( data_string.c_str() );
-        _battle_ui_config = CocosUtils::jsonObjectToValueMap( battle_ui_config_json );
-        file_util->writeToFile( _battle_ui_config, plist_file );
-    }
-    else {
-        _battle_ui_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "item.json" );
+    rapidjson::Document battle_ui_config_json;
+    battle_ui_config_json.Parse<0>( data_string.c_str() );
+    _battle_ui_config = CocosUtils::jsonObjectToValueMap( battle_ui_config_json );
 }
 
 void ResourceManager::loadSkillData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + SKILL_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( "skill_conf.json" );
-        rapidjson::Document skill_config_json;
-        skill_config_json.Parse<0>( data_string.c_str() );
-        _skill_config = CocosUtils::jsonObjectToValueMap( skill_config_json );
-        file_util->writeToFile( _skill_config, plist_file );
-    }
-    else {
-        _skill_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "skill_conf.json" );
+    rapidjson::Document skill_config_json;
+    skill_config_json.Parse<0>( data_string.c_str() );
+    _skill_config = CocosUtils::jsonObjectToValueMap( skill_config_json );
 }
 
 void ResourceManager::loadSkillUpgradeCostData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + SKILL_UPGRADE_COST_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( "skill_upgrade_cost.json" );
-        rapidjson::Document config_json;
-        config_json.Parse<0>( data_string.c_str() );
-        _skill_upgrade_cost_config = CocosUtils::jsonObjectToValueMap( config_json );
-        file_util->writeToFile( _skill_upgrade_cost_config, plist_file );
-    }
-    else {
-        _skill_upgrade_cost_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "skill_upgrade_cost.json" );
+    rapidjson::Document config_json;
+    config_json.Parse<0>( data_string.c_str() );
+    _skill_upgrade_cost_config = CocosUtils::jsonObjectToValueMap( config_json );
 }
 
 void ResourceManager::loadTeamLevelExpData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + TEAM_LEVEL_EXP_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( "team_level_exp.json" );
-        rapidjson::Document level_exp_config_json;
-        level_exp_config_json.Parse<0>( data_string.c_str() );
-        _team_level_exp_config = CocosUtils::jsonObjectToValueMap( level_exp_config_json );
-        file_util->writeToFile( _team_level_exp_config, plist_file );
-    }
-    else {
-        _team_level_exp_config = file_util->getValueMapFromFile( plist_file );
-    }
-    
+    std::string data_string = file_util->getStringFromFile( "team_level_exp.json" );
+    rapidjson::Document level_exp_config_json;
+    level_exp_config_json.Parse<0>( data_string.c_str() );
+    _team_level_exp_config = CocosUtils::jsonObjectToValueMap( level_exp_config_json );
 }
 
 void ResourceManager::loadTeamSkillExpData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + TEAM_LEVEL_EXP_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( "team_skill_exp_conf.json" );
-        rapidjson::Document team_skill_exp_config_json;
-        team_skill_exp_config_json.Parse<0>( data_string.c_str() );
-        _team_skill_exp_config = CocosUtils::jsonObjectToValueMap( team_skill_exp_config_json );
-        file_util->writeToFile( _team_skill_exp_config, plist_file );
-    }
-    else {
-        _team_skill_exp_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( "team_skill_exp_conf.json" );
+    rapidjson::Document team_skill_exp_config_json;
+    team_skill_exp_config_json.Parse<0>( data_string.c_str() );
+    _team_skill_exp_config = CocosUtils::jsonObjectToValueMap( team_skill_exp_config_json );
 }
 
 void ResourceManager::loadDropData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + DROP_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( std::string( DROP_CONFIG_FILE ) + ".json" );
-        rapidjson::Document config_json;
-        config_json.Parse<0>( data_string.c_str() );
-        _drop_config = CocosUtils::jsonObjectToValueMap( config_json );
-        file_util->writeToFile( _drop_config, plist_file );
-    }
-    else {
-        _drop_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( std::string( DROP_CONFIG_FILE ) + ".json" );
+    rapidjson::Document config_json;
+    config_json.Parse<0>( data_string.c_str() );
+    _drop_config = CocosUtils::jsonObjectToValueMap( config_json );
 }
 
 void ResourceManager::loadLevelData() {
     FileUtils* file_util = FileUtils::getInstance();
-    std::string plist_file = FileUtils::getInstance()->getWritablePath() + LEVEL_CONFIG_FILE + ".plist";
-    if( !file_util->isFileExist( plist_file ) ) {
-        std::string data_string = FileUtils::getInstance()->getStringFromFile( std::string( LEVEL_CONFIG_FILE ) + ".json" );
-        rapidjson::Document config_json;
-        config_json.Parse<0>( data_string.c_str() );
-        _level_config = CocosUtils::jsonObjectToValueMap( config_json );
-        file_util->writeToFile( _level_config, plist_file );
-    }
-    else {
-        _level_config = file_util->getValueMapFromFile( plist_file );
-    }
+    std::string data_string = file_util->getStringFromFile( std::string( LEVEL_CONFIG_FILE ) + ".json" );
+    rapidjson::Document config_json;
+    config_json.Parse<0>( data_string.c_str() );
+    _level_config = CocosUtils::jsonObjectToValueMap( config_json );
 }
 
 void ResourceManager::loadUnitEffects() {

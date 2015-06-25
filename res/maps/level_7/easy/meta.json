@@ -723,7 +723,6 @@
                     "unit_state": "unit_appear",
                     "position_name": "orange_13",
                     "unit_count": 1,
-                    "is_boss": true,
                     "unit_level": 7,
                     "skill_1_level": 7
                 },
@@ -736,7 +735,6 @@
                     "unit_state": "unit_appear",
                     "position_name": "orange_14",
                     "unit_count": 1,
-                    "is_boss": true,
                     "unit_level": 7,
                     "skill_1_level": 7
                 },

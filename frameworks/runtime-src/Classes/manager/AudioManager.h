@@ -34,6 +34,8 @@ public:
     void resumeMusic( const std::string& resource );
     void stopMusic( const std::string& resource );
     
+    void stopEffect( const std::string& resource );
+    
     bool vibrate();
 };
 

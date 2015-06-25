@@ -82,6 +82,45 @@
                 <key>sourceSize</key>
                 <string>{253,419}</string>
             </dict>
+            <key>ui_text_arrow.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1985,148},{65,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{65,44}}</string>
+                <key>sourceSize</key>
+                <string>{65,44}</string>
+            </dict>
+            <key>ui_text_next.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1985,2},{144,60}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{144,60}}</string>
+                <key>sourceSize</key>
+                <string>{144,60}</string>
+            </dict>
+            <key>ui_text_skip.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1380,1084},{149,71}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{149,71}}</string>
+                <key>sourceSize</key>
+                <string>{149,71}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -92,7 +131,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a51cc71870f08b93109fe2aa722dec0b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:10471d2160fe3fccd79e4c699e173a1b:1/1$</string>
             <key>textureFileName</key>
             <string>ui_movie2.png</string>
         </dict>

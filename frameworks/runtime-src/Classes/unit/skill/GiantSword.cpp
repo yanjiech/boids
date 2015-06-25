@@ -57,14 +57,19 @@ void GiantSword::begin() {
     std::string resource = "effects/saber_skill_1/down";
     spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
     UnitNodeSpineComponent* bottom_component = UnitNodeSpineComponent::create( skeleton, Utils::stringFormat( "giantsword_%d_bottom", BulletNode::getNextBulletId() ), true );
-    bottom_component->setAnimation( 0, "animation", true );
+    bottom_component->setAnimation( 0, "animation", false );
     Point bottom_pos = _owner->getPosition() + _dir * _range;
     _owner->getBattleLayer()->addToOnGroundLayer( bottom_component, bottom_pos, 0 );
+    
+    ValueMap buff_data;
+    buff_data["buff_type"] = Value( BUFF_TYPE_STUN );
+    buff_data["duration"] = Value( _stun );
+    buff_data["buff_name"] = Value( "GiantSword" );
     
     DamageCalculate* calculator = DamageCalculate::create( "GiantSword", _damage );
     ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( "saber_bullet" );
     bullet_data["will_miss"] = Value( false );
-    FixedPosBulletNode* bullet = FixedPosBulletNode::create( dynamic_cast<TargetNode*>( _owner ), bullet_data, calculator, ValueMap() );
+    FixedPosBulletNode* bullet = FixedPosBulletNode::create( dynamic_cast<TargetNode*>( _owner ), bullet_data, calculator, buff_data );
     bullet->shootAtPosition( _owner->getPosition() + _dir * _range );
 }
 

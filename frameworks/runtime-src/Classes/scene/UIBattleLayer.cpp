@@ -16,7 +16,7 @@ using namespace cocostudio::timeline;
 
 #define DEFAULT_HINT_LENGTH 360.0f
 
-#define MIN_SWIPE_DISTANCE 20.0
+#define MIN_SWIPE_DISTANCE 10.0
 #define MAX_SWIPE_DISTANCE 200.0
 
 #define DEFAULT_SKILL_ICON_PADDING 50.0

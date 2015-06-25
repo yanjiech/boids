@@ -7,11 +7,11 @@
             <key>ui_hero_p_dracula.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{363,346},{101,134}}</string>
+                <string>{{278,140},{101,134}}</string>
                 <key>offset</key>
                 <string>{1,-2}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{43,10},{101,134}}</string>
                 <key>sourceSize</key>
@@ -20,20 +20,20 @@
             <key>ui_hero_p_durarara.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{185,140}}</string>
+                <string>{{2,2},{145,148}}</string>
                 <key>offset</key>
-                <string>{0,2}</string>
+                <string>{-4,-1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,3},{185,140}}</string>
+                <string>{{16,2},{145,148}}</string>
                 <key>sourceSize</key>
                 <string>{185,150}</string>
             </dict>
             <key>ui_hero_p_enchantress.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{232,346},{129,134}}</string>
+                <string>{{381,2},{129,134}}</string>
                 <key>offset</key>
                 <string>{6,2}</string>
                 <key>rotated</key>
@@ -46,11 +46,11 @@
             <key>ui_hero_p_gandalf.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{189,141},{135,138}}</string>
+                <string>{{141,152},{135,138}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{26,6},{135,138}}</string>
                 <key>sourceSize</key>
@@ -59,11 +59,11 @@
             <key>ui_hero_p_hippolyta.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{189,2},{137,146}}</string>
+                <string>{{2,152},{137,146}}</string>
                 <key>offset</key>
                 <string>{1,-2}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{25,4},{137,146}}</string>
                 <key>sourceSize</key>
@@ -72,7 +72,7 @@
             <key>ui_hero_p_ice_witch.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,346},{119,136}}</string>
+                <string>{{260,2},{119,136}}</string>
                 <key>offset</key>
                 <string>{-8,1}</string>
                 <key>rotated</key>
@@ -85,11 +85,11 @@
             <key>ui_hero_p_kyle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{337,2},{91,144}}</string>
+                <string>{{2,300},{91,144}}</string>
                 <key>offset</key>
                 <string>{6,-3}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{53,6},{91,144}}</string>
                 <key>sourceSize</key>
@@ -98,7 +98,7 @@
             <key>ui_hero_p_saber.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{123,346},{107,136}}</string>
+                <string>{{381,138},{107,136}}</string>
                 <key>offset</key>
                 <string>{-5,0}</string>
                 <key>rotated</key>
@@ -111,11 +111,11 @@
             <key>ui_hero_p_vanhelsing.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{329,235},{109,138}}</string>
+                <string>{{149,2},{109,138}}</string>
                 <key>offset</key>
                 <string>{-7,-2}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{31,8},{109,138}}</string>
                 <key>sourceSize</key>
@@ -124,11 +124,11 @@
             <key>ui_hero_p_zeus.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{337,95},{141,138}}</string>
+                <string>{{95,300},{141,138}}</string>
                 <key>offset</key>
                 <string>{-15,2}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{7,4},{141,138}}</string>
                 <key>sourceSize</key>
@@ -144,7 +144,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ea83ea58b48606a521a807fbe3d9bee0:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:a1b7d1857e3fda363fdedeae898a146f:1/1$</string>
             <key>textureFileName</key>
             <string>ui_hero_p.png</string>
         </dict>

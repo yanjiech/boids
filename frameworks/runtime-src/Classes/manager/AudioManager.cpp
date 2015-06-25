@@ -88,6 +88,14 @@ void AudioManager::stopMusic( const std::string& resource ) {
     }
 }
 
+void AudioManager::stopEffect( const std::string& resource ) {
+    auto itr = _audio_ids.find( resource );
+    if( itr != _audio_ids.end() ) {
+        AudioEngine::stop( itr->second.asInt() );
+        _audio_ids.erase( itr );
+    }
+}
+
 bool AudioManager::vibrate() {
     AudioEngine::vibrate();
     return true;

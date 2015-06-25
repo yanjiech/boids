@@ -14,16 +14,21 @@
 #include "HpBar.h"
 
 class BuildingNode : public TargetNode {
-private:
+protected:
     std::string _building_name;
+    
     cocos2d::Point _center;
-    cocos2d::Sprite* _displayed_sprite;
+    
     BoidsPolygon _boundaries;
     
     cocos2d::Sprite* _range_sprite;
     
-protected:
+    ProgressBar* _progress_bar;
+    
     bool _is_enabled;
+    float _range;
+    float _duration;
+    float _elapse;
     
 public:
     BuildingNode();
@@ -53,18 +58,15 @@ public:
     
     cocos2d::Sprite* getRangeSprite() { return _range_sprite; }
     void setRangeSprite( cocos2d::Sprite* sprite );
+    
+    float getRange() { return _range; }
+    void setRange( float range ) { _range = range; }
 };
 
 class BuffBuildingNode : public BuildingNode {
 private:
-    float _range;
-    
-    float _duration;
-    float _elapse;
-    
     cocos2d::ValueMap _buff_data;
-    
-    ProgressBar* _progress_bar;
+    cocos2d::Sprite* _displayed_sprite;
     
 public:
     BuffBuildingNode();
@@ -74,9 +76,27 @@ public:
     virtual bool init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
     
     virtual void updateFrame( float delta );
+};
+
+class ChestNode : public BuildingNode {
+private:
+    cocos2d::ValueMapIntKey _drop_items;
     
-    float getRange() { return _range; }
-    void setRange( float range ) { _range = range; }
+    spine::SkeletonAnimation* _skeleton;
+    spine::SkeletonAnimation* _open_effect;
+    
+public:
+    ChestNode();
+    virtual ~ChestNode();
+    
+    static ChestNode* create( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    virtual bool init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_properties, const cocos2d::ValueMap& obj_properties );
+    
+    virtual void updateFrame( float delta );
+    
+    void openChest();
+    
+    void onOpenEffectAnimationCompleted( int track_index );
 };
 
 #endif /* defined(__Boids__BuildingNode__) */

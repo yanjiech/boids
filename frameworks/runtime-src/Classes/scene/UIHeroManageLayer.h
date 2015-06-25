@@ -236,7 +236,7 @@ public:
     
     void alignHeroSlots();
     
-    void recordDeployedUnits();
+    bool recordDeployedUnits();
     
     virtual bool onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event );
     virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );

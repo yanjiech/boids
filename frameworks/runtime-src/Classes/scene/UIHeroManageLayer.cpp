@@ -624,12 +624,13 @@ bool UIHeroManageLayer::init() {
 void UIHeroManageLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         CocosUtils::playTouchEffect();
-        this->recordDeployedUnits();
-        TouchableLayer* parent = dynamic_cast<TouchableLayer*>( this->getParent() );
-        if( parent ) {
-            parent->becomeTopLayer();
+        if( this->recordDeployedUnits() ) {
+            TouchableLayer* parent = dynamic_cast<TouchableLayer*>( this->getParent() );
+            if( parent ) {
+                parent->becomeTopLayer();
+            }
+            this->removeFromParentAndCleanup( true );
         }
-        this->removeFromParentAndCleanup( true );
     }
 }
 
@@ -637,7 +638,7 @@ void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widg
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         CocosUtils::playTouchEffect();
         if( _selected_hero != nullptr && _selected_hero->isOwned() ) {
-            _root_node->setVisible( false );
+//            _root_node->setVisible( false );
             UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create( _selected_hero );
             this->addChild( hero_detail, 2 );
         }
@@ -648,7 +649,7 @@ void UIHeroManageLayer::onSkillTouched( cocos2d::Ref* sender, cocos2d::ui::Widge
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         CocosUtils::playTouchEffect();
         if( _selected_hero != nullptr && _selected_hero->isOwned() ) {
-            _root_node->setVisible( false );
+//            _root_node->setVisible( false );
             UIHeroSkillLayer* hero_skill = UIHeroSkillLayer::create( _selected_hero );
             this->addChild( hero_skill, 2 );
         }
@@ -951,14 +952,22 @@ void UIHeroManageLayer::alignHeroSlots() {
     }
 }
 
-void UIHeroManageLayer::recordDeployedUnits() {
+bool UIHeroManageLayer::recordDeployedUnits() {
+    int count = 0;
     ValueMap new_info;
     for( auto slot : _deploy_slots ) {
         if( !slot->isLocked() ) {
+            if( slot->getHeroId() != "0" ) {
+                count++;
+            }
             new_info[slot->getSlotId()] = Value( slot->getHeroId() );
         }
     }
-    PlayerInfo::getInstance()->setDeployUnits( new_info );
+    if( count > 0 ) {
+        PlayerInfo::getInstance()->setDeployUnits( new_info );
+        return true;
+    }
+    return false;
 }
 
 bool UIHeroManageLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event ) {

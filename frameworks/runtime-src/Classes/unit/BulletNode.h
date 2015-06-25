@@ -154,7 +154,7 @@ public:
     static FixedPosBulletNode* create( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data);
     virtual bool init( class TargetNode* unit_node, const cocos2d::ValueMap& bullet_data, DamageCalculate* damage_calculator, const cocos2d::ValueMap& buff_data );
     
-    virtual void shootAtPosition( const cocos2d::Point& pos, int layer = 6);
+    virtual void shootAtPosition( const cocos2d::Point& pos, int layer = 7 );
     virtual void updateFrame( float delta );
     
     void onSkeletonAnimationEvent( int track_index, spEvent* event );

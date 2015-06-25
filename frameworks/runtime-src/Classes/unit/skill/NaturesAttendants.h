@@ -23,6 +23,8 @@ private:
     float _init_speed;
     int _count;
     
+    cocos2d::Vector<class TimeLimitWanderSpineComponent*> _effects;
+    
 public:
     NaturesAttendants();
     virtual ~NaturesAttendants();

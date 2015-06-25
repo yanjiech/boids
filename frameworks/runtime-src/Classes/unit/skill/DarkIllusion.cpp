@@ -91,9 +91,9 @@ void DarkIllusion::updateFrame( float delta ) {
             Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _radius );
             if( candidates.size() > 0 ) {
                 ValueMap buff_data;
-                buff_data["duration"] = Value( _duration );
+                buff_data["duration"] = Value( _stun_duration );
                 buff_data["buff_type"] = Value( BUFF_TYPE_STUN );
-                buff_data["buff_name"] = Value( "stunned" );
+                buff_data["buff_name"] = Value( "DarkIllusion" );
                 
                 DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_DARK_ILLUSION, _damage );
                 for( auto unit : candidates ) {

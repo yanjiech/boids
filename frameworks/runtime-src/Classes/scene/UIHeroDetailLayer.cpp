@@ -511,7 +511,7 @@ bool UIHeroDetailLayer::loadRepoEquips( eEquipType type, int page_index ) {
     this->setSelectedRepoCell( nullptr );
     if( page_index >= 0 ) {
         int start_index = 6 * page_index;
-        ValueVector data = PlayerInfo::getInstance()->getEquipsByRange( (int)type, start_index, 6, 2 );
+        ValueVector data = PlayerInfo::getInstance()->getEquipsByRange( (int)type, start_index, 7, 2 );
         
         if( _current_equip_list->getPages().size() <= page_index ) {
             ui::Layout* new_page = ui::Layout::create();
@@ -549,9 +549,15 @@ bool UIHeroDetailLayer::loadRepoEquips( eEquipType type, int page_index ) {
                 }
                 cell->setPosition( cell_pos );
                 page->addChild( cell );
-                ++i;
+                if( ++i >= 6 ) {
+                    break;
+                }
             }
         }
+        
+        _btn_prev->setVisible( start_index > 0 );
+        _btn_next->setVisible( data.size() == 7 );
+        
         return true;
     }
 
@@ -684,7 +690,7 @@ bool UIHeroDetailLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* eve
             _is_touch_down = true;
         }
     }
-    return _is_touch_down;
+    return true;
 }
 
 void UIHeroDetailLayer::onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event ) {

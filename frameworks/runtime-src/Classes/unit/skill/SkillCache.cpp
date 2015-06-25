@@ -49,6 +49,9 @@ void SkillCache::updateFrame( float delta ) {
 }
 
 void SkillCache::reset() {
+    for( auto skill : _skill_cache ) {
+        skill->end();
+    }
     _skill_cache.clear();
 }
 

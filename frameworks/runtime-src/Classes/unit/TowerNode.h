@@ -11,6 +11,8 @@
 
 #include "TargetNode.h"
 #include "../AI/BoidsPolygon.h"
+#include "HpBar.h"
+#include "spine/spine-cocos2dx.h"
 
 enum eTowerState {
     TowerStateUnknown = 0,
@@ -32,6 +34,8 @@ protected:
     BoidsPolygon _boundaries;
     
     bool _is_enabled;
+    
+    HpBar* _hp_bar;
     
 protected:
     void reloadBullet( float delta );
@@ -70,8 +74,8 @@ public:
     
     virtual void setCollidable( bool b );
     
-    bool isEnabled() { return _is_enabled; }
-    void setEnabled( bool b ) { _is_enabled = b; }
+    virtual bool isEnabled() { return _is_enabled; }
+    virtual void setEnabled( bool b ) { _is_enabled = b; }
     
     virtual bool willCollide( cocos2d::Point pos, float radius ) { return false; }
     virtual bool willCollide( TargetNode* unit) { return false; }
@@ -91,6 +95,32 @@ public:
     virtual void onSkeletonAnimationEvent( int track_index, spEvent* event );
     
     void doAttack();
+};
+
+class ElectricAlexandra : public TowerNode {
+private:
+    ElectricAlexandra* _another_part;
+    spine::SkeletonAnimation* _bullet;
+    
+public:
+    ElectricAlexandra();
+    virtual ~ElectricAlexandra();
+    
+    static ElectricAlexandra* create( BattleLayer* battle_layer, const cocos2d::ValueMap& data );
+    virtual bool init( BattleLayer* battle_layer, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void setEnabled( bool b );
+    
+    ElectricAlexandra* getAnotherPart() { return _another_part; }
+    void setAnotherPart( ElectricAlexandra* another );
+    
+    spine::SkeletonAnimation* getBullet() { return _bullet; }
+    void setBullet( spine::SkeletonAnimation* bullet ) { _bullet = bullet; }
+    
+    void loadBullet();
+    void unloadBullet();
 };
 
 #endif /* defined(__Boids__TowerNode__) */

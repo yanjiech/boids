@@ -88,7 +88,7 @@ void GasBomb::updateFrame( float delta ) {
                         //shoot
                         
                         Point to_pos = _shoot_pos;
-                        Point from_pos = Point( _shoot_pos.x, _shoot_pos.y + Director::getInstance()->getVisibleSize().height );
+                        Point from_pos = Point( _shoot_pos.x, _shoot_pos.y + 1080.0f );
                         
                         ValueMap bullet_data = ResourceManager::getInstance()->getBulletData( "gas_bomb" );
                         bullet_data["gas_resource"] = Value( "effects/bullets/gas_body" );

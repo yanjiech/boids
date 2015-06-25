@@ -58,9 +58,9 @@ UnitNode* LightningChain::getTargetNode() {
 }
 
 void LightningChain::setTargetNode( UnitNode* target_node ) {
+    CC_SAFE_RETAIN( target_node );
     CC_SAFE_RELEASE( _target_node );
     _target_node = target_node;
-    CC_SAFE_RETAIN( _target_node );
 }
 
 void LightningChain::updateFrame( float delta ) {

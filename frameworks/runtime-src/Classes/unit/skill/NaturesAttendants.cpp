@@ -97,9 +97,13 @@ void NaturesAttendants::begin() {
         TimeLimitWanderSpineComponent* spirit_component = TimeLimitWanderSpineComponent::create( spirit_data, _owner, skeleton, name, true );
         spirit_component->setAnimation( 0, "animation", true );
         _owner->getBattleLayer()->addToEffectLayer( spirit_component, _owner->getHitPos(), 0 );
+        _effects.pushBack( spirit_component );
     }
 }
 
 void NaturesAttendants::end() {
     SkillNode::end();
+    for( auto effect : _effects ) {
+        effect->setShouldRecycle( true );
+    }
 }

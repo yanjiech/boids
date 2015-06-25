@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+baoxiang_02
+  rotate: false
+  xy: 2, 2
+  size: 132, 109
+  orig: 132, 109
+  offset: 0, 0
+  index: -1
+gai
+  rotate: false
+  xy: 270, 35
+  size: 108, 76
+  orig: 108, 76
+  offset: 0, 0
+  index: -1
+xiang
+  rotate: false
+  xy: 136, 8
+  size: 132, 103
+  orig: 132, 103
+  offset: 0, 0
+  index: -1

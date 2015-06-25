@@ -2384,7 +2384,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2422,7 +2422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 陈 焱杰 (H48VTU2UJ9)";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
@@ -2538,7 +2538,7 @@
 					/Users/chenyanjie/Documents/lib/lib,
 					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
-				PROVISIONING_PROFILE = "3beaa0d7-eaea-4cae-bcda-01fc450cb652";
+				PROVISIONING_PROFILE = "e753c210-47d3-4e45-8a4f-4aec4cadbd99";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";
@@ -2572,7 +2572,7 @@
 					/Users/chenyanjie/Documents/lib/lib,
 					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
-				PROVISIONING_PROFILE = "3beaa0d7-eaea-4cae-bcda-01fc450cb652";
+				PROVISIONING_PROFILE = "e753c210-47d3-4e45-8a4f-4aec4cadbd99";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";

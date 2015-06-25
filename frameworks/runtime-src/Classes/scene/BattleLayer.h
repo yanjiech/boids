@@ -197,8 +197,11 @@ public:
     cocos2d::Vector<UnitNode*> getAliveOpponentsInRoundRange( eTargetCamp camp, const cocos2d::Point& init_pos, const cocos2d::Point& center, float radius, bool attackable = true );
     cocos2d::Vector<UnitNode*> getAliveOpponentsInSector( eTargetCamp camp, const cocos2d::Point& center, const cocos2d::Point& dir, float radius, float angle, bool attackable = true );
     
+    cocos2d::Vector<UnitNode*> getAliveOpponentsIntersectsLine( eTargetCamp camp, const cocos2d::Point& pt1, const cocos2d::Point& pt2, bool attackable = true );
+    
     cocos2d::Vector<UnitNode*> getAliveUnitsByCamp( eTargetCamp camp );
     cocos2d::Vector<UnitNode*> getAliveUnitsInRange( const cocos2d::Point& center, float range );
+    cocos2d::Vector<UnitNode*> getAliveUnitsInRange( eTargetCamp camp, const cocos2d::Point& center, float range );
     cocos2d::Vector<UnitNode*> getAliveUnitsInRoundRange( const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveAllyInRange( eTargetCamp camp, const cocos2d::Point& center, float radius );
     cocos2d::Vector<UnitNode*> getAliveUnitsByTag( const std::string& tag );
@@ -239,6 +242,7 @@ public:
     void deployUnit( UnitNode* unit, const cocos2d::Point& pos, const std::string& sight_group );
     void deployUnits( const cocos2d::Vector<UnitNode*>& units, const cocos2d::Rect& area, const std::string& sight_group );
     
+    TowerNode* getTowerByName( const std::string& name );
     void deployTower( TowerNode* tower, const cocos2d::Point& pos, eBattleSubLayer layer );
     
     void deployBuilding( BuildingNode* building, const cocos2d::Point& pos, eBattleSubLayer layer );

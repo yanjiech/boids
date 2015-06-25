@@ -95,11 +95,6 @@ bool BlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_p
         this->addChild( _repairing_component, 9 );
         _repairing_component->setAnimation( 0, "animation", true );
         _repairing_component->setVisible( false );
-        
-        resource = "buildings/building_need_repair";
-        _need_repair_component = ArmatureManager::getInstance()->createArmature( resource );
-        this->addChild( _need_repair_component, 10 );
-        _need_repair_component->setAnimation( 0, "animation", true );
     }
     else {
         itr = obj_properties.find( "enabled" );
@@ -111,6 +106,16 @@ bool BlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_p
         }
     }
     _elapse = 0;
+    
+    itr = obj_properties.find( "show_icon" );
+    if( itr != obj_properties.end() ) {
+        if( itr->second.asBool() ) {
+            std::string resource = "buildings/building_need_repair";
+            _need_repair_component = ArmatureManager::getInstance()->createArmature( resource );
+            this->addChild( _need_repair_component, 10 );
+            _need_repair_component->setAnimation( 0, "animation", true );
+        }
+    }
     
     _progress_bar = ProgressBar::create( Color4F::WHITE, Color4F::WHITE, Size( 290.0f, 10.0f ) );
     _progress_bar->setBackgroundOpacity( 127 );

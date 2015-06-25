@@ -139,6 +139,7 @@ void UIHeroSkillLayer::loadSkillData( int i ) {
         _lb_skill_desc_1->setString( desc );
         _lb_level_1->setString( Utils::toStr( skill_level ) );
         _lb_skill_name_1->setString( display_name );
+        _lb_skill_name_1->setAdditionalKerning( -4.0f );
         
         std::string op_hint = skill_config.at( "op_hint" ).asString();
         ui::Text* lb_hint = dynamic_cast<ui::Text*>( _pn_hint->getChildByName( "lb_skill_hint_1" ) );
@@ -156,6 +157,7 @@ void UIHeroSkillLayer::loadSkillData( int i ) {
         _lb_skill_desc_2->setString( desc );
         _lb_level_2->setString( Utils::toStr( skill_level ) );
         _lb_skill_name_2->setString( display_name );
+        _lb_skill_name_2->setAdditionalKerning( -4.0f );
         if( upgrade_cost < 0 ) {
             _lb_upgrade_cost_2->setString( "满级" );
         }

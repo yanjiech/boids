@@ -26,12 +26,9 @@
 
 #define DEFAULT_SHADOW_RADIUS 30.0
 #define DEFAULT_HESITATE_FRAMES 5
-#define DEFAULT_CATCH_UP_STOP_DISTANCE 150.0
-#define DEFAULT_CATCH_UP_START_DISTANCE 250.0
+#define DEFAULT_CATCH_UP_STOP_DISTANCE 250.0
+#define DEFAULT_CATCH_UP_START_DISTANCE 700.0
 #define DEFAULT_WANDER_RADIUS 200.0
-
-#define DEFAULT_HP_BAR_WIDTH 100.0
-#define DEFAULT_HP_BAR_HEIGHT 10.0
 
 using namespace cocos2d;
 
@@ -301,7 +298,7 @@ void UnitNode::onSkeletonAnimationCompleted( int track_index ) {
 //        }
 //    }
     else if( animation_name == "Die" ) {
-        this->changeUnitState( eUnitState::Disappear );
+        this->changeUnitState( eUnitState::Disappear, true );
     }
 }
 
@@ -346,7 +343,7 @@ void UnitNode::setChasingTarget( TargetNode* target ) {
 }
 
 void UnitNode::changeUnitState( eUnitState new_state, bool force ) {
-    if( ( _state >= eUnitState::Dying || _next_state >= eUnitState::Dying ) && new_state < _state ) {
+    if( ( _state >= eUnitState::Dying || _next_state >= eUnitState::Dying ) && ( new_state < _state || new_state < _next_state ) ) {
         return;
     }
     if( force || ( ( _next_state == eUnitState::Unknown_Unit_State && new_state != _state ) || new_state >= eUnitState::Dying ) ) {
@@ -417,7 +414,7 @@ void UnitNode::applyUnitState() {
                 break;
             case eUnitState::Dying:
                 if( _current_skeleton->setAnimation( 0, "Die", false ) == nullptr ) {
-                    this->changeUnitState( eUnitState::Disappear );
+                    this->changeUnitState( eUnitState::Disappear, true );
                 }
                 else {
                     this->onDying();
@@ -581,10 +578,6 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* 
         }
         unit_data->current_hp -= damage;
         
-        if( unit_data->current_hp <= 0 ) {
-            unit_data->current_hp = 0;
-        }
-        
         //jump damage number
         std::string jump_text_name = Utils::stringFormat( "damage_number_%d", BulletNode::getNextBulletId() );
         this->jumpNumber( damage, "damage", is_cri, jump_text_name );
@@ -592,14 +585,21 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* 
         //update blood bar
         if( this->isBoss() ) {
             float percent = 100.0f * _target_data->current_hp / _target_data->hp;
+            if( percent < 0 ) {
+                percent = 0;
+            }
             _battle_layer->getUIBattleLayer()->setBossHpPercent( percent );
         }
         else if( this->getTargetCamp() == eTargetCamp::Player ) {
-            _hp_bar->setPercentage( _target_data->current_hp / _target_data->hp * 100.0f );
+            float percent = _target_data->current_hp / _target_data->hp * 100.0f;
+            if( percent < 0 ) {
+                percent = 0;
+            }
+            _hp_bar->setPercentage( percent );
         }
         
         //dying
-        if( unit_data->current_hp == 0 ) {
+        if( unit_data->current_hp <= 0 ) {
             this->changeUnitState( eUnitState::Dying, true );
             _battle_layer->clearChasingTarget( this );
         }

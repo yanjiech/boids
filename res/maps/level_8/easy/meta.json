@@ -352,21 +352,21 @@
             }
         },
         {
-            "name": "story_02_trigger",
-            "rect": {
-                "x": 4435.36,
-                "y": 3744.46,
-                "width": 365.054,
-                "height": 2000.85
-            }
-        },
-        {
             "name": "player_start",
             "rect": {
                 "x": 2410.21,
                 "y": 5542.68,
                 "width": 131.185,
                 "height": 113.247
+            }
+        },
+        {
+            "name": "story_02_trigger",
+            "rect": {
+                "x": 4022.16,
+                "y": 3626.13,
+                "width": 300.706,
+                "height": 293.518
             }
         }
     ],

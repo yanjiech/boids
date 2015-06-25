@@ -132,6 +132,97 @@ public:
         float dy = ( pos.y - center.y );
         return dx * dx + dy * dy <= range * range;
     }
+    
+    static bool doesLineIntersectsCircle( const cocos2d::Point& pt1, const cocos2d::Point& pt2, const cocos2d::Point& center, float radius ) {
+        
+        
+        return false;
+    }
+    
+    static float vectorToVector( const cocos2d::Point& pt1, const cocos2d::Point& pt2, const cocos2d::Point& pt3 ) {
+        cocos2d::Point v1 = pt2 - pt1;
+        cocos2d::Point v2 = pt3 - pt1;
+        return v1.cross( v2 );
+    }
+    
+    static bool isPointOnSegment( const cocos2d::Point& pt, const cocos2d::Point& pt1, const cocos2d::Point& pt2 ) {
+        float d = vectorToVector( pt, pt1, pt2 );
+        if( d == 0 ) {
+            float x_min, x_max, y_min, y_max;
+            if( pt1.x < pt2.x ) {
+                x_min = pt1.x;
+                x_max = pt2.x;
+            }
+            else {
+                x_min = pt2.x;
+                x_max = pt1.x;
+            }
+            
+            if( pt1.y < pt2.y ) {
+                y_min = pt1.y;
+                y_max = pt2.y;
+            }
+            else {
+                y_min = pt2.y;
+                y_max = pt1.y;
+            }
+            
+            return pt.x >= x_min && pt.x <= x_max && pt.y >= y_min && pt.y <= y_max;
+        }
+        
+        return false;
+    }
+    
+    static bool doesSegmentIntersectsSegment( const cocos2d::Point& aa, const cocos2d::Point& bb, const cocos2d::Point& cc, const cocos2d::Point& dd ) {
+        float d1 = vectorToVector( cc, dd, aa );
+        float d2 = vectorToVector( cc, dd, bb );
+        float d3 = vectorToVector( aa, bb, cc );
+        float d4 = vectorToVector( aa, bb, dd );
+        
+        if( d1 * d2 < 0 && d3 * d4 < 0 ) {
+            return true;
+        }
+        else if( isPointOnSegment( cc, aa, bb ) ) {
+            return true;
+        }
+        else if( isPointOnSegment( dd, aa, bb ) ) {
+            return true;
+        }
+        else if( isPointOnSegment( aa, cc, dd ) ) {
+            return true;
+        }
+        else if( isPointOnSegment( bb, cc, dd ) ) {
+            return true;
+        }
+        
+        return false;
+        
+    }
+    
+    static bool doesLineIntersectsRect( const cocos2d::Point& pt1, const cocos2d::Point& pt2, const cocos2d::Rect& rect ) {
+        cocos2d::Point lb = rect.origin;
+        cocos2d::Point lt = cocos2d::Point( rect.origin.x, rect.origin.y + rect.size.height );
+        cocos2d::Point rb = cocos2d::Point( rect.origin.x + rect.size.width, rect.origin.y );
+        cocos2d::Point rt = cocos2d::Point( rect.origin.x + rect.size.width, rect.origin.y + rect.size.height );
+        
+        if( rect.containsPoint( pt1 ) || rect.containsPoint( pt2 ) ) {
+            return true;
+        }
+        if( doesSegmentIntersectsSegment( pt1, pt2, lb, lt ) ) {
+            return true;
+        }
+        if( doesSegmentIntersectsSegment( pt1, pt2, lt, rt ) ) {
+            return true;
+        }
+        if( doesSegmentIntersectsSegment( pt1, pt2, rt, rb ) ) {
+            return true;
+        }
+        if( doesSegmentIntersectsSegment( pt1, pt2, rb, lb ) ) {
+            return true;
+        }
+        
+        return false;
+    }
 };
 
 class Geometry

@@ -73,6 +73,22 @@ bool TowerNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& tower_
     Rect bounding_box = _skeleton->getBoundingBox();
     this->setContentSize( bounding_box.size );
     
+    float hpbar_width = DEFAULT_HP_BAR_WIDTH;
+    float hpbar_height = DEFAULT_HP_BAR_HEIGHT;
+    
+    _hp_bar = HpBar::create( Size( hpbar_width, hpbar_height ) );
+    _hp_bar->setPosition( Point( 0, bounding_box.size.height ) );
+    _hp_bar->setPercentage( 100.0f );
+    this->addChild( _hp_bar, 5 );
+    
+    itr = tower_data.find( "show_hp" );
+    if( itr != tower_data.end() ) {
+        _hp_bar->setVisible( itr->second.asBool() );
+    }
+    else {
+        _hp_bar->setVisible( false );
+    }
+    
     TowerAttackBehavior* attack_behavior = TowerAttackBehavior::create( this );
     this->addBehavior( BEHAVIOR_NAME_ATTACK, attack_behavior );
     
@@ -147,11 +163,20 @@ void TowerNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode*
         std::string jump_text_name = Utils::stringFormat( "damage_number_%d", BulletNode::getNextBulletId() );
         this->jumpNumber( amount, "damage", is_cri, jump_text_name );
         
+        if( _hp_bar ) {
+            _hp_bar->setPercentage( _target_data->current_hp / _target_data->hp * 100.0f );
+        }
+        
         //dying
         if( _target_data->current_hp <= 0 ) {
+            if( _hp_bar ) {
+                _hp_bar->setVisible( false );
+            }
             this->changeTowerState( eTowerState::TowerStateDie );
             _battle_layer->clearChasingTarget( this );
         }
+        
+        
     }
 }
 
@@ -256,7 +281,7 @@ void ThornNode::onSkeletonAnimationEvent( int track_index, spEvent* event ) {
 }
 
 void ThornNode::doAttack() {
-    Vector<UnitNode*> candidates = _battle_layer->getAliveUnitsInRange( this->getPosition(), this->getTargetData()->atk_range );
+    Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsInRange( eTargetCamp::Enemy, this->getPosition(), this->getTargetData()->atk_range );
     DamageCalculate* calculator = DamageCalculate::create( "normal", 0 );
     for( auto unit : candidates ) {
         ValueMap result = calculator->calculateDamage( this->getTargetData(), unit->getTargetData() );
@@ -273,4 +298,114 @@ void ThornNode::doAttack() {
     
     this->setTowerState( eTowerState::TowerStateIdle );
     _is_bullet_loaded = false;
+}
+
+ElectricAlexandra::ElectricAlexandra() :
+_bullet( nullptr ),
+_another_part( nullptr )
+{
+    
+}
+
+ElectricAlexandra::~ElectricAlexandra() {
+    this->unloadBullet();
+}
+
+ElectricAlexandra* ElectricAlexandra::create( BattleLayer* battle_layer, const cocos2d::ValueMap& data ) {
+    ElectricAlexandra* ret = new ElectricAlexandra();
+    if( ret && ret->init( battle_layer, data ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool ElectricAlexandra::init( BattleLayer* battle_layer, const cocos2d::ValueMap& data ) {
+    if( !TowerNode::init( battle_layer, data ) ) {
+        return false;
+    }
+    
+    this->setAttackable( false );
+    
+    return true;
+}
+
+void ElectricAlexandra::updateFrame( float delta ) {
+    if( _is_enabled && _another_part ) {
+        if( !_is_bullet_loaded ) {
+            this->reloadBullet( delta );
+        }
+        if( _is_bullet_loaded ) {
+            _is_bullet_loaded = false;
+            //do attack
+            DamageCalculate* calculator = DamageCalculate::create( "normal", 0 );
+            Vector<UnitNode*> candidates = _battle_layer->getAliveOpponentsIntersectsLine( this->getTargetCamp(), this->getEmitPos(), _another_part->getEmitPos() );
+            for( UnitNode* unit : candidates ) {
+                ValueMap result = calculator->calculateDamage( this->getTargetData(), unit->getTargetData() );
+                unit->takeDamage( result, this );
+                
+                //add effect
+                std::string resource = "effects/zeus_skill_2/hit";
+                std::string name = Utils::stringFormat( "electric_hit_%d", BulletNode::getNextBulletId() );
+                spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
+                UnitNodeSpineComponent* component = UnitNodeSpineComponent::create( skeleton, name, true );
+                unit->addUnitComponent( component, name, eComponentLayer::OverObject );
+                component->setPosition( unit->getLocalHitPos() );
+                component->setAnimation( 0, "animation", false );
+            }
+        }
+    }
+}
+
+void ElectricAlexandra::setEnabled( bool b ) {
+    TowerNode::setEnabled( b );
+    if( _bullet ) {
+        _bullet->setVisible( b );
+    }
+    if( b ) {
+        _skeleton->setAnimation( 0, "Idle", true );
+    }
+    else {
+        _skeleton->setAnimation( 0, "Disappear", false );
+    }
+}
+
+void ElectricAlexandra::setAnotherPart( ElectricAlexandra* another ) {
+    CC_SAFE_RETAIN( another );
+    if( _another_part ) {
+        _another_part->removeFromParent();
+        _another_part->release();
+    }
+    _another_part = another;
+    
+    if( _another_part ) {
+        _battle_layer->addToObjectLayer( _another_part, _another_part->getPosition(), _battle_layer->zorderForPositionOnObjectLayer( _another_part->getPosition() ) );
+        
+        Point emit_pos = this->getEmitPos();
+        Point another_pos = _another_part->getEmitPos();
+        Point dir = another_pos - emit_pos;
+        _another_part->setBullet( this->getBullet() );
+        _bullet->setLocalZOrder( _battle_layer->zorderForPositionOnObjectLayer( ( emit_pos + another_pos ) / 2 ) );
+        _bullet->setScaleX( emit_pos.distance( another_pos ) / 260.0f );
+        _bullet->setRotation( -dir.getAngle() * 180.0f / M_PI );
+    }
+}
+
+void ElectricAlexandra::loadBullet() {
+    if( _bullet == nullptr ) {
+        std::string bullet_resource = "effects/zeus_skill_2/chain";
+        _bullet = ArmatureManager::getInstance()->createArmature( bullet_resource );
+        _battle_layer->addToEffectLayer( _bullet, this->getEmitPos(), 0 );
+        _bullet->setAnimation( 0, "animation", true );
+    }
+}
+
+void ElectricAlexandra::unloadBullet() {
+    if( _bullet ) {
+        _another_part->setBullet( nullptr );
+        _bullet->removeFromParent();
+    }
 }

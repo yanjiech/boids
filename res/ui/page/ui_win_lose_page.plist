@@ -7,7 +7,7 @@
             <key>ui_general_mask.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1682,74},{64,64}}</string>
+                <string>{{358,884},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>ui_losepage_light.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,402},{60,529}}</string>
+                <string>{{358,950},{60,529}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,11 +33,11 @@
             <key>ui_losepage_zi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{762,74},{760,356}}</string>
+                <string>{{2,122},{760,356}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{760,356}}</string>
                 <key>sourceSize</key>
@@ -46,11 +46,11 @@
             <key>ui_winpage_biaotou.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{758,398}}</string>
+                <string>{{360,122},{758,398}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{758,398}}</string>
                 <key>sourceSize</key>
@@ -59,7 +59,7 @@
             <key>ui_winpage_gold.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1650,223},{118,103}}</string>
+                <string>{{253,884},{118,103}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>ui_winpage_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1524,74},{156,147}}</string>
+                <string>{{760,122},{156,147}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>ui_winpage_progress.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{533,432},{995,46}}</string>
+                <string>{{2,74},{995,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>ui_winpage_progress_bg.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{762,2},{1015,70}}</string>
+                <string>{{2,2},{1015,70}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>ui_winpage_star.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1524,223},{124,125}}</string>
+                <string>{{2,884},{124,125}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>ui_winpage_star_huise.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1530,350},{124,123}}</string>
+                <string>{{128,884},{124,123}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -142,9 +142,9 @@
             <key>realTextureFileName</key>
             <string>ui_win_lose_page.png</string>
             <key>size</key>
-            <string>{1779,481}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8f1e5ac24a3e47a5d62d0f0db9cb5c98:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:00b752a02d5d3937aa396e1fdfe29ee7:1/1$</string>
             <key>textureFileName</key>
             <string>ui_win_lose_page.png</string>
         </dict>

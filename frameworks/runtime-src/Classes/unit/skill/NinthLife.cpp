@@ -8,6 +8,7 @@
 
 #include "NinthLife.h"
 #include "../UnitNode.h"
+#include "../../manager/AudioManager.h"
 
 using namespace cocos2d;
 
@@ -37,26 +38,36 @@ bool NinthLife::init( UnitNode* owner, const cocos2d::ValueMap& data, const coco
     
     int level = data.at( "level" ).asInt();
     _buff_duration = data.at( "duration" ).asValueVector().at( level - 1 ).asFloat();
+    _elapse = 0;
     
     return true;
 }
 
 void NinthLife::updateFrame( float delta ) {
-    
+    if( !_should_recycle ) {
+        _elapse += delta;
+        if( _elapse > _buff_duration ) {
+            this->end();
+        }
+    }
 }
 
 void NinthLife::begin() {
+    SkillNode::begin();
     ValueMap buff_data;
     buff_data["duration"] = Value( _buff_duration );
     buff_data["buff_type"] = Value( BUFF_TYPE_UNDEAD );
-    buff_data["buff_name"] = Value( "LightShield" );
+    buff_data["buff_name"] = Value( "NinthLife" );
     buff_data["effect_resource"] = Value( "effects/kyle_skill_2" );
     
     UndeadBuff* buff = UndeadBuff::create( _owner, buff_data );
     _owner->addBuff( buff->getBuffId(), buff );
     buff->begin();
+    
+    AudioManager::getInstance()->playEffect( "kyle/cast2_cont.mp3", true );
 }
 
 void NinthLife::end() {
-    
+    SkillNode::end();
+    AudioManager::getInstance()->stopEffect( "kyle/cast2_cont.mp3" );
 }

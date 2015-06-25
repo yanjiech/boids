@@ -36,8 +36,6 @@ private:
     cocos2d::ui::Text* _lb_skill_name_1;
     cocos2d::ui::Text* _lb_skill_name_2;
     
-    
-    
 public:
     UIHeroSkillLayer();
     virtual ~UIHeroSkillLayer();

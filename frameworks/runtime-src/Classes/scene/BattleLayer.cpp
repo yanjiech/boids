@@ -314,12 +314,17 @@ void BattleLayer::updateFrame( float delta ) {
             auto itr = _drop_items.begin();
             while( itr != _drop_items.end() ) {
                 DropItem* item = *itr;
-                Point local_pos = item->convertToNodeSpace( world_pos );
-                Rect rect = Rect( 0, 0, item->getContentSize().width, item->getContentSize().height );
-                if( rect.containsPoint( local_pos ) ) {
-                    _map_logic->obtainItem( item->getItemId(), item->getCount() );
-                    itr = _drop_items.erase( itr );
-                    item->removeFromParentAndCleanup( true );
+                if( item->getItemState() == eItemState::ItemStateReady ) {
+                    Point local_pos = item->convertToNodeSpace( world_pos );
+                    Rect rect = Rect( 0, 0, item->getContentSize().width, item->getContentSize().height );
+                    if( rect.containsPoint( local_pos ) ) {
+                        _map_logic->obtainItem( item->getItemId(), item->getCount() );
+                        itr = _drop_items.erase( itr );
+                        item->removeFromParentAndCleanup( true );
+                    }
+                    else {
+                        ++itr;
+                    }
                 }
                 else {
                     ++itr;
@@ -390,6 +395,7 @@ void BattleLayer::restartBattle() {
 
 void BattleLayer::quitBattle() {
     AudioManager::getInstance()->stopMusic( "audio/common/bg_music_1.mp3" );
+    SkillCache::getInstance()->reset();
 }
 
 void BattleLayer::setMapLogic( MapLogic* map_logic ) {
@@ -473,6 +479,20 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsInRange( const cocos2d::Poi
         UnitNode* unit = pair.second;
         Point unit_pos = unit->getPosition();
         if( Math::isPositionInRange( unit->getPosition(), center, range + unit->getUnitData()->collide ) ) {
+            ret.pushBack( unit );
+        }
+    }
+    
+    return ret;
+}
+
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveUnitsInRange( eTargetCamp camp, const cocos2d::Point& center, float range ) {
+    cocos2d::Vector<UnitNode*> ret;
+    
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        Point unit_pos = unit->getPosition();
+        if( unit->getTargetCamp() == camp && Math::isPositionInRange( unit->getPosition(), center, range + unit->getUnitData()->collide ) ) {
             ret.pushBack( unit );
         }
     }
@@ -598,6 +618,23 @@ cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsInSector( eTargetCamp c
         if( unit->isFoeOfCamp( camp ) && ( unit->isAttackable() == attackable ) ) {
             Point unit_pos = unit->getPosition();
             if( Math::isPointInSector( unit_pos, center, dir, radius + unit->getUnitData()->collide, angle ) ) {
+                ret.pushBack( unit );
+            }
+        }
+    }
+    return ret;
+}
+
+cocos2d::Vector<UnitNode*> BattleLayer::getAliveOpponentsIntersectsLine( eTargetCamp camp, const cocos2d::Point& pt1, const cocos2d::Point& pt2, bool attackable ) {
+    cocos2d::Vector<UnitNode*> ret;
+    for( auto pair : _alive_units ) {
+        UnitNode* unit = pair.second;
+        if( unit->isFoeOfCamp( camp ) && ( unit->isAttackable() == attackable ) ) {
+            Rect rect = unit->getBoundingBox();
+            if( unit->getTargetCamp() == eTargetCamp::Player ) {
+                log( "unit rect: %f, %f, %f, %f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height );
+            }
+            if( Math::doesLineIntersectsRect( pt1, pt2, rect )  ) {
                 ret.pushBack( unit );
             }
         }
@@ -763,6 +800,7 @@ void BattleLayer::onUnitAppear( UnitNode* unit ) {
 }
 
 void BattleLayer::onUnitDying( UnitNode* unit ) {
+    SkillCache::getInstance()->removeSkillOfOwner( unit );
     for( auto pair : _alive_units ) {
         if( pair.second->getChasingTarget() == unit ) {
             pair.second->setChasingTarget( nullptr );
@@ -877,6 +915,16 @@ void BattleLayer::deployUnits( const cocos2d::Vector<UnitNode*>& units, const co
         Point pos = this->getAvailablePosition( unit->getUnitData()->collide, area );
         this->deployUnit( unit, pos, sight_group );
     }
+}
+
+TowerNode* BattleLayer::getTowerByName( const std::string& name ) {
+    for( auto pair : _towers ) {
+        TowerNode* tower = pair.second;
+        if( tower->getTargetData()->name == name ) {
+            return tower;
+        }
+    }
+    return nullptr;
 }
 
 void BattleLayer::deployTower( TowerNode* tower, const cocos2d::Point& pos, eBattleSubLayer layer ) {
@@ -1176,7 +1224,41 @@ void BattleLayer::parseMapElementWithData( const TMXObjectGroup* group, const Va
         ThornNode* tower = ThornNode::create( this, tower_data );
         this->deployTower( tower, tower->getPosition(), layer );
     }
-    else if( type.find( "BuildingNode" ) != std::string::npos ) {
+    else if( type == "electric_alexandra" ) {
+        ValueMap data = obj_properties;
+        sitr = obj_properties.find( "level" );
+        if( sitr != obj_properties.end() ) {
+            data["level"] = sitr->second;
+        }
+        else {
+            data["level"] = Value( 1 );
+        }
+        std::string name = obj_properties.at( "name" ).asString();
+        std::string collide_name = name + "_collide";
+        ValueMap boundary = group->getObject( collide_name );
+        boundary["map_height"] = Value( _tmx_map->getContentSize().height );
+        if( !boundary.empty() ) {
+            data["boundary"] = Value( boundary );
+        }
+        
+        std::string another_name = "";
+        sitr = obj_properties.find( "another_part" );
+        if( sitr != obj_properties.end() ) {
+            another_name = sitr->second.asString();
+        }
+        ElectricAlexandra* tower = ElectricAlexandra::create( this, data );
+        ElectricAlexandra* another_part = dynamic_cast<ElectricAlexandra*>( this->getTowerByName( another_name ) );
+        if( another_part == nullptr ) {
+            this->deployTower( tower, tower->getPosition(), eBattleSubLayer::ObjectLayer );
+        }
+        else {
+            another_part->loadBullet();
+            another_part->setAnotherPart( tower );
+            another_part->setEnabled( true );
+            tower->setEnabled( true );
+        }
+    }
+    else if( type.find( "BuildingNode" ) != std::string::npos || type == "ChestNode" ) {
         std::string name = obj_properties.at( "name" ).asString() + "_collide";
         ValueMap boundary = group->getObject( name );
         boundary["map_height"] = Value( _tmx_map->getContentSize().height );

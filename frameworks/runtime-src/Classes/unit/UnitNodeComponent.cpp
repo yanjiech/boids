@@ -295,9 +295,10 @@ void TimeLimitWanderSpineComponent::updateFrame( float delta ) {
 }
 
 void TimeLimitWanderSpineComponent::setSourceUnit( UnitNode* source_unit ) {
+    CC_SAFE_RETAIN( source_unit );
     CC_SAFE_RELEASE( _source_unit );
     _source_unit = source_unit;
-    CC_SAFE_RETAIN( source_unit );
+    
 }
 
 UnitNodeSpineDamageComponent::UnitNodeSpineDamageComponent() :
