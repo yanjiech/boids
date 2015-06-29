@@ -1,0 +1,291 @@
+{
+    "positions": [
+        {
+            "name": "arive_area",
+            "rect": {
+                "x": 1280.23,
+                "y": 637.293,
+                "width": 183.809,
+                "height": 153.105
+            }
+        },
+        {
+            "name": "vice_boss",
+            "rect": {
+                "x": 980.23,
+                "y": 1037.293,
+                "width": 183.809,
+                "height": 153.105
+            }
+        },
+        {
+            "name": "player_start",
+            "rect": {
+                "x": 979.999,
+                "y": 173.594,
+                "width": 109.344,
+                "height": 104.032
+            }
+        },
+        {
+            "name": "boss",
+            "rect": {
+                "x": 310.505,
+                "y": 785.493,
+                "width": 99.2447,
+                "height": 90.2922
+            }
+        }
+    ],
+    "events": [
+        {
+            "name": "story_01",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "map_init"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：呃......这是什么地方......",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：真麻烦，又走丢了，得赶紧追上他们！",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "那么现在，点击屏幕任意位置激活摇杆，并走到目标位置。",
+                            "speaker": "aside",
+                            "prompt" : "ui/effect_wheel",
+                            "prompt_pos" : "center"
+                        }
+                    ],
+                    "name": "story_01"
+                }
+            ]
+        },
+        {
+            "name": "show_destination",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "move_to",
+                    "hint_visible": true
+                }
+            ]
+        },
+        {
+            "name": "story_02",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_stay",
+                    "source_type": "tag_source",
+                    "source_value": "player",
+                    "position_name": "arive_area",
+                    "trigger_count": 1,
+                    "duration": 0
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "hint_change_action",
+                    "hint_name": "move_to",
+                    "hint_visible": false
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": true,
+                    "tag_name": "vice_boss",
+                    "position_name": "vice_boss",
+                    "unit_count": 1,
+                    "is_boss": true,
+                    "custom_change": "atk:1",
+                    "unit_level": 1
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "怪物出现了！去消灭它！",
+                            "speaker": "aside"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "只要走到怪物身边，松开遥感，英雄就会自动攻击敌人。",
+                            "speaker": "aside"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "也可以释放英雄技能，来让战斗变得更加容易！",
+                            "speaker": "aside",
+                            "prompt" : "ui/effect_touch_skill",
+                            "prompt_pos" : "skill"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "有些英雄的技能是可以控制方向的哟！",
+                            "speaker": "aside"
+                        }
+                    ],
+                    "name": "story_02"
+                }
+            ]
+        },
+        {
+            "name": "story_03",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "vice_boss",
+                    "unit_state": "unit_dead",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "goblin_shredder",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "show_hp": true,
+                    "tag_name": "boss",
+                    "position_name": "boss",
+                    "unit_count": 1,
+                    "is_boss": true,
+                    "custom_change": "atk:1,hp:250",
+                    "unit_level": 1
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "story_action",
+                    "story_data": [
+                        {
+                            "left_or_right": true,
+                            "line": "地精撕裂者：哦哈哈哈哈哈！！！",
+                            "speaker": "goblin_shredder"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "德古拉：还真是越来越麻烦了啊......",
+                            "speaker": "dracula"
+                        },
+                        {
+                            "left_or_right": true,
+                            "line": "那么最后，去消灭boss，获得战斗胜利吧！",
+                            "speaker": "aside"
+                        }
+                    ],
+                    "name": "story_03"
+                }
+            ]
+        },
+        {
+            "name": "win_cond",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "unit_change",
+                    "source_type": "tag_source",
+                    "source_value": "boss",
+                    "unit_state": "unit_dead",
+                    "trigger_count": 1
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_2",
+                    "task_state": "task_finished"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_3",
+                    "task_state": "task_finished"
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "task_change",
+                    "task_name": "task_main",
+                    "task_state": "task_finished"
+                }
+            ]
+        }
+    ],
+    "units": [
+        "goblin",
+        "goblin_shredder"
+    ],
+    "tasks": [
+        {
+            "type": "primary_win",
+            "name": "task_main",
+            "desc": "消灭地精boss",
+            "title": "消灭地精boss"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_2",
+            "desc": "全员存活",
+            "title": "全员存活"
+        },
+        {
+            "type": "additional_win",
+            "name": "task_3",
+            "desc": "消灭所有敌人",
+            "title": "消灭所有敌人"
+        }
+    ]
+}

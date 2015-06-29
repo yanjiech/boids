@@ -182,6 +182,7 @@ bool HintNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& obj_pro
     if( _type == BATTLE_HINT_DESTINATION ) {
         _hint_icon = BattleHintNode::create( BATTLE_HINT_DESTINATION );
         _battle_layer->addToFloatLayer( _hint_icon, Point::ZERO, 0 );
+        _icon->setVisible( false );
         
         _effect = ArmatureManager::getInstance()->createArmature( "effects/common/final_destination" );
         this->addChild( _effect, 0 );

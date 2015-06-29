@@ -7,6 +7,8 @@
 //
 
 #include "UIStoryLayer.h"
+#include "../ArmatureManager.h"
+#include "BattleLayer.h"
 
 #define DEFAULT_LETTERS_PER_ROW 60
 #define DEFAULT_INTERVAL 0.1f
@@ -20,7 +22,8 @@ _is_enabled( false ),
 _current_line_index( 0 ),
 _current_letter_pos( 0 ),
 _interval( 0 ),
-_callback( nullptr )
+_callback( nullptr ),
+_prompt( nullptr )
 {
     
 }
@@ -197,24 +200,32 @@ void UIStoryLayer::setStoryEndCallback( const StoryEndCallback& callback ) {
 }
 
 void UIStoryLayer::setSpeaker( const std::string& name, bool left_or_right ) {
-    std::string speaker_resource = "ui/dialog/" + name + ".png";
-    if( _sp_speaker ) {
-        _sp_speaker->removeFromParentAndCleanup( true );
-    }
-    _sp_speaker = Sprite::create( speaker_resource );
-    this->addChild( _sp_speaker, 0 );
-    
-    Point origin = Director::getInstance()->getVisibleOrigin();
-    Size size = Director::getInstance()->getVisibleSize();
-    if( left_or_right ) {
-        _sp_speaker->setAnchorPoint( Point( 0, 0 ) );
-        _sp_speaker->setPosition( Point( origin.x + 50.0f, 0 ) );
-        _sp_speaker->setFlippedX( true );
+    if( name == "aside" ) {
+        if( _sp_speaker ) {
+            _sp_speaker->removeFromParent();
+            _sp_speaker = nullptr;
+        }
     }
     else {
-        _sp_speaker->setAnchorPoint( Point( 1.0f, 0 ) );
-        _sp_speaker->setPosition( Point( origin.x + size.width - 50.0f, 0 ) );
-        _sp_speaker->setFlippedX( false );
+        std::string speaker_resource = "ui/dialog/" + name + ".png";
+        if( _sp_speaker ) {
+            _sp_speaker->removeFromParentAndCleanup( true );
+        }
+        _sp_speaker = Sprite::create( speaker_resource );
+        this->addChild( _sp_speaker, 0 );
+        
+        Point origin = Director::getInstance()->getVisibleOrigin();
+        Size size = Director::getInstance()->getVisibleSize();
+        if( left_or_right ) {
+            _sp_speaker->setAnchorPoint( Point( 0, 0 ) );
+            _sp_speaker->setPosition( Point( origin.x + 50.0f, 0 ) );
+            _sp_speaker->setFlippedX( true );
+        }
+        else {
+            _sp_speaker->setAnchorPoint( Point( 1.0f, 0 ) );
+            _sp_speaker->setPosition( Point( origin.x + size.width - 50.0f, 0 ) );
+            _sp_speaker->setFlippedX( false );
+        }
     }
 }
 
@@ -222,6 +233,10 @@ void UIStoryLayer::setSpeaker( const std::string& name, bool left_or_right ) {
 bool UIStoryLayer::gotoNextLine() {
     _lb_line->setString( "" );
     if( _current_line_index >= _story_data.size() ) {
+        if( _prompt ) {
+            _prompt->removeFromParent();
+            _prompt = nullptr;
+        }
         this->setEnabled( false );
         if( _callback ) {
             _callback( this );
@@ -236,6 +251,35 @@ bool UIStoryLayer::gotoNextLine() {
         std::string speaker = data.at( "speaker" ).asString();
         bool left_or_right = data.at( "left_or_right" ).asBool();
         this->setSpeaker( speaker, left_or_right );
+        
+        if( _prompt ) {
+            _prompt->removeFromParent();
+            _prompt = nullptr;
+        }
+        
+        auto itr = data.find( "prompt" );
+        if( itr != data.end() ) {
+            std::string resource = itr->second.asString();
+            std::string pos = data.at( "prompt_pos" ).asString();
+            
+            _prompt = ArmatureManager::getInstance()->createArmature( resource );
+            this->addChild( _prompt, 20 );
+            if( _prompt->setAnimation( 0, "Animation-R", true ) == nullptr ) {
+                _prompt->setAnimation( 0, "animation", true );
+            }
+            else {
+                _prompt->addAnimation( 0, "Animation-U", true );
+                _prompt->setMix( "Animation-R", "Animation-U", 0.5f );
+            }
+            if( pos == "center" ) {
+                _prompt->setPosition( Director::getInstance()->getWinSize().width / 2, Director::getInstance()->getWinSize().height / 2 );
+            }
+            else if( pos == "skill" ) {
+                BattleLayer* battle_layer = dynamic_cast<BattleLayer*>( this->getParent() );
+                Point pos = battle_layer->getUIBattleLayer()->getSkillPos( 0 );
+                _prompt->setPosition( pos );
+            }
+        }
         
         return true;
     }

@@ -10,7 +10,6 @@
 #define __Boids__UIBattleLayer__
 
 #include "cocos2d.h"
-#include <list>
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -71,7 +70,7 @@ private:
     bool _is_touch_began;
     UISkillNode* _selected_skill;
     
-    std::list<UISkillNode*> _skill_nodes;
+    cocos2d::Vector<UISkillNode*> _skill_nodes;
     
     cocos2d::Point _touch_down_pos;
     cocos2d::Touch* _touch;
@@ -117,6 +116,11 @@ public:
     virtual void updateFrame( float delta );
     
     void reset();
+    
+    void showSkillNodes();
+    void hideSkillNodes();
+    
+    cocos2d::Point getSkillPos( int i );
     
     void addSkillNode( UnitNode* unit );
     void removeSkillNode( UnitNode* unit );

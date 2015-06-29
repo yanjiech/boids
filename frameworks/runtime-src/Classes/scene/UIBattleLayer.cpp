@@ -410,7 +410,7 @@ void UIBattleLayer::reset() {
 
 void UIBattleLayer::addSkillNode( UnitNode* unit ) {
     UISkillNode* skill_node = UISkillNode::create( _battle_layer, unit );
-    _skill_nodes.push_back( skill_node );
+    _skill_nodes.pushBack( skill_node );
     this->addChild( skill_node );
     this->alignSkillNodesWithPadding( DEFAULT_SKILL_ICON_PADDING );
 }
@@ -449,11 +449,32 @@ void UIBattleLayer::removeAllSkillNodes() {
     _skill_nodes.clear();
 }
 
+void UIBattleLayer::showSkillNodes() {
+    for( auto skill_node : _skill_nodes ) {
+        skill_node->setVisible( true );
+    }
+}
+
+void UIBattleLayer::hideSkillNodes() {
+    for( auto skill_node : _skill_nodes ) {
+        skill_node->setVisible( false );
+    }
+}
+
+cocos2d::Point UIBattleLayer::getSkillPos( int i ) {
+    if( _skill_nodes.size() > i ) {
+        return _skill_nodes.at( i )->getPosition();
+    }
+    return Point::ZERO;
+}
+
 UISkillNode* UIBattleLayer::skillNodeForTouch( cocos2d::Touch* touch ) {
     for( auto skill_node : _skill_nodes ) {
-        Rect rect = Rect( 0, 0, skill_node->getContentSize().width, skill_node->getContentSize().height );
-        if( rect.containsPoint( skill_node->convertTouchToNodeSpace( touch ) ) ) {
-            return skill_node;
+        if( skill_node->isVisible() ) {
+            Rect rect = Rect( 0, 0, skill_node->getContentSize().width, skill_node->getContentSize().height );
+            if( rect.containsPoint( skill_node->convertTouchToNodeSpace( touch ) ) ) {
+                return skill_node;
+            }
         }
     }
     return nullptr;

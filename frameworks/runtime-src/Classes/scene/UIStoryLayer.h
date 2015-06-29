@@ -10,6 +10,7 @@
 #define __Boids__UIStoryLayer__
 
 #include "cocos2d.h"
+#include "spine/spine-cocos2dx.h"
 
 class UIStoryLayer : public cocos2d::Layer {
 public:
@@ -32,6 +33,8 @@ private:
     
     cocos2d::Sprite* _sp_speaker;
     cocos2d::Label* _lb_line;
+    
+    spine::SkeletonAnimation* _prompt;
 
     StoryEndCallback _callback;
     

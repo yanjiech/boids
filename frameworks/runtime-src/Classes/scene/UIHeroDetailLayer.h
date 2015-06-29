@@ -125,7 +125,6 @@ private:
     cocos2d::ui::Text* _lb_gold;
     cocos2d::Sprite* _sp_icon_frame;
     
-    
 public:
     UIHeroDetailLayer();
     virtual ~UIHeroDetailLayer();

@@ -46,15 +46,6 @@
             }
         },
         {
-            "name": "orange_04",
-            "rect": {
-                "x": 2102.12,
-                "y": 1874.81,
-                "width": 106.824,
-                "height": 105.826
-            }
-        },
-        {
             "name": "orange_05",
             "rect": {
                 "x": 747.347,
@@ -142,6 +133,60 @@
                 "y": 654.815,
                 "width": 93.8459,
                 "height": 89.8523
+            }
+        },
+        {
+            "name": "orange_04",
+            "rect": {
+                "x": 1369.1,
+                "y": 1729.49,
+                "width": 135.204,
+                "height": 100.181
+            }
+        },
+        {
+            "name": "chomper_02",
+            "rect": {
+                "x": 2113.59,
+                "y": 1812.17,
+                "width": 81.5503,
+                "height": 67.3425
+            }
+        },
+        {
+            "name": "chomper_01",
+            "rect": {
+                "x": 3101.69,
+                "y": 1974.12,
+                "width": 81.1294,
+                "height": 80.7688
+            }
+        },
+        {
+            "name": "chomper_03",
+            "rect": {
+                "x": 968.658,
+                "y": 1095.05,
+                "width": 81.1339,
+                "height": 68.2222
+            }
+        },
+        {
+            "name": "chomper_04",
+            "rect": {
+                "x": 2438.17,
+                "y": 1000.54,
+                "width": 73.1221,
+                "height": 65.728
+            }
+        },
+        {
+            "name": "chomper_05",
+            "rect": {
+                "x": 4255.39,
+                "y": 744.653,
+                "width": 58.9141,
+                "height": 60.6317
             }
         }
     ],
@@ -675,9 +720,82 @@
                     "task_state": "task_finished"
                 }
             ]
+        },
+        {
+            "name": "default_chomper",
+            "enabled": true,
+            "trigger_meta": {
+                "is_repeated": false,
+                "trigger_relation": "then"
+            },
+            "triggers": [
+                {
+                    "trigger_type": "story_change",
+                    "story_name": "story_01",
+                    "story_state": "story_end"
+                }
+            ],
+            "actions": [
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "chomper_green",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "chomper_01",
+                    "unit_count": 1,
+                    "unit_level": 5
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "chomper_green",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "chomper_02",
+                    "unit_count": 1,
+                    "unit_level": 5
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "chomper_green",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "chomper_03",
+                    "unit_count": 1,
+                    "unit_level": 5
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "chomper_green",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "chomper_04",
+                    "unit_count": 1,
+                    "unit_level": 5
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "unit_change",
+                    "source_type": "name_source",
+                    "source_value": "chomper_green",
+                    "unit_type": "enemy",
+                    "unit_state": "unit_appear",
+                    "position_name": "chomper_05",
+                    "unit_count": 1,
+                    "unit_level": 5
+                }
+            ]
         }
     ],
     "units": [
+        "chomper_green",
         "dead_archer",
         "durarara",
         "evil_wizard",

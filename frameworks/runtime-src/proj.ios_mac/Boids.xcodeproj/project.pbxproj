@@ -72,6 +72,8 @@
 		769C66E11B26BD2A00FA50F9 /* UICurrencyLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */; };
 		769C66E61B27EEF400FA50F9 /* OpenningAnimationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */; };
 		769C66E71B27EEF400FA50F9 /* OpenningAnimationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */; };
+		76B513451B40E6FD00E2B992 /* TutorialLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B513431B40E6FD00E2B992 /* TutorialLayer.cpp */; };
+		76B513461B40E6FD00E2B992 /* TutorialLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B513431B40E6FD00E2B992 /* TutorialLayer.cpp */; };
 		76B578F51AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76B578F61AF7743600D7E783 /* TransitionLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76B578F31AF7743600D7E783 /* TransitionLayer.cpp */; };
 		76C6A43B1B2AE12D006C93C0 /* HintNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76C6A4391B2AE12D006C93C0 /* HintNode.cpp */; };
@@ -565,6 +567,8 @@
 		769C66DF1B26BD2A00FA50F9 /* UICurrencyLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICurrencyLayer.h; sourceTree = "<group>"; };
 		769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenningAnimationLayer.cpp; sourceTree = "<group>"; };
 		769C66E51B27EEF400FA50F9 /* OpenningAnimationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenningAnimationLayer.h; sourceTree = "<group>"; };
+		76B513431B40E6FD00E2B992 /* TutorialLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TutorialLayer.cpp; sourceTree = "<group>"; };
+		76B513441B40E6FD00E2B992 /* TutorialLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialLayer.h; sourceTree = "<group>"; };
 		76B578F31AF7743600D7E783 /* TransitionLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TransitionLayer.cpp; sourceTree = "<group>"; };
 		76B578F41AF7743600D7E783 /* TransitionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionLayer.h; sourceTree = "<group>"; };
 		76C6A4391B2AE12D006C93C0 /* HintNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HintNode.cpp; sourceTree = "<group>"; };
@@ -1225,36 +1229,38 @@
 			children = (
 				98B4024B1AAEB9B800F4FE09 /* BattleLayer.cpp */,
 				988B52C51AA4328900FB7B21 /* BattleLayer.h */,
+				76B513431B40E6FD00E2B992 /* TutorialLayer.cpp */,
+				76B513441B40E6FD00E2B992 /* TutorialLayer.h */,
+				769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */,
+				769C66E51B27EEF400FA50F9 /* OpenningAnimationLayer.h */,
+				986A555C1AA561E30051B0B9 /* SceneBase.cpp */,
+				986A555D1AA561E30051B0B9 /* SceneBase.h */,
+				98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */,
+				98733C4D1AFE3B4B006B7C37 /* TouchableLayer.h */,
+				76B578F31AF7743600D7E783 /* TransitionLayer.cpp */,
+				76B578F41AF7743600D7E783 /* TransitionLayer.h */,
+				98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */,
+				98EBBEF41AABF73B00ADB84A /* UIBattleFloatLayer.h */,
 				988B52E01AA445EF00FB7B21 /* UIBattleLayer.cpp */,
 				988B52E11AA445EF00FB7B21 /* UIBattleLayer.h */,
 				98A366C91AA84E8400393B8E /* UIBattleMenuLayer.cpp */,
 				98A366CA1AA84E8400393B8E /* UIBattleMenuLayer.h */,
 				988B52E41AA4461700FB7B21 /* UIControlLayer.cpp */,
 				988B52E51AA4461700FB7B21 /* UIControlLayer.h */,
-				986A55581AA561730051B0B9 /* UIHomeLayer.cpp */,
-				986A55591AA561730051B0B9 /* UIHomeLayer.h */,
-				986A555C1AA561E30051B0B9 /* SceneBase.cpp */,
-				986A555D1AA561E30051B0B9 /* SceneBase.h */,
-				98EBBEF31AABF73B00ADB84A /* UIBattleFloatLayer.cpp */,
-				98EBBEF41AABF73B00ADB84A /* UIBattleFloatLayer.h */,
-				76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */,
-				76EC48FD1ADB605F00C9F17B /* UIStoryLayer.h */,
-				76B578F31AF7743600D7E783 /* TransitionLayer.cpp */,
-				76B578F41AF7743600D7E783 /* TransitionLayer.h */,
-				98733C481AFE38A3006B7C37 /* UIHeroManageLayer.cpp */,
-				98733C491AFE38A3006B7C37 /* UIHeroManageLayer.h */,
-				98733C501AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp */,
-				98733C511AFE3CDE006B7C37 /* UIHeroDetailLayer.h */,
-				76E410211B0ADE2800518E86 /* UIHeroSkillLayer.cpp */,
-				76E410221B0ADE2800518E86 /* UIHeroSkillLayer.h */,
-				98733C4C1AFE3B4B006B7C37 /* TouchableLayer.cpp */,
-				98733C4D1AFE3B4B006B7C37 /* TouchableLayer.h */,
-				76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */,
-				76DEA31B1B14180E0020FC7D /* UITeamTalentLayer.h */,
 				769C66DE1B26BD2A00FA50F9 /* UICurrencyLayer.cpp */,
 				769C66DF1B26BD2A00FA50F9 /* UICurrencyLayer.h */,
-				769C66E41B27EEF400FA50F9 /* OpenningAnimationLayer.cpp */,
-				769C66E51B27EEF400FA50F9 /* OpenningAnimationLayer.h */,
+				98733C501AFE3CDE006B7C37 /* UIHeroDetailLayer.cpp */,
+				98733C511AFE3CDE006B7C37 /* UIHeroDetailLayer.h */,
+				98733C481AFE38A3006B7C37 /* UIHeroManageLayer.cpp */,
+				98733C491AFE38A3006B7C37 /* UIHeroManageLayer.h */,
+				76E410211B0ADE2800518E86 /* UIHeroSkillLayer.cpp */,
+				76E410221B0ADE2800518E86 /* UIHeroSkillLayer.h */,
+				986A55581AA561730051B0B9 /* UIHomeLayer.cpp */,
+				986A55591AA561730051B0B9 /* UIHomeLayer.h */,
+				76EC48FC1ADB605F00C9F17B /* UIStoryLayer.cpp */,
+				76EC48FD1ADB605F00C9F17B /* UIStoryLayer.h */,
+				76DEA31A1B14180E0020FC7D /* UITeamTalentLayer.cpp */,
+				76DEA31B1B14180E0020FC7D /* UITeamTalentLayer.h */,
 			);
 			name = scene;
 			path = ../Classes/scene;
@@ -2135,6 +2141,7 @@
 				986A55831AA57D850051B0B9 /* AttackBehavior.cpp in Sources */,
 				986A55871AA57D950051B0B9 /* MoveBehavior.cpp in Sources */,
 				986A558B1AA57DBF0051B0B9 /* IdleBehavior.cpp in Sources */,
+				76B513461B40E6FD00E2B992 /* TutorialLayer.cpp in Sources */,
 				98E3B6601A73A77A00B5BEBB /* strtod.cc in Sources */,
 				986A557F1AA57D730051B0B9 /* SkillBehavior.cpp in Sources */,
 				76FF5A9F1AE8CD80008B721E /* GasBomb.cpp in Sources */,
@@ -2307,6 +2314,7 @@
 				98E3B6631A73A77A00B5BEBB /* zero_copy_stream.cc in Sources */,
 				76E50B421B180D6F00DA0996 /* SnowStorm.cpp in Sources */,
 				E829419E1A5D68C00076E856 /* EditorVisionNode.cpp in Sources */,
+				76B513451B40E6FD00E2B992 /* TutorialLayer.cpp in Sources */,
 				9868BBA51AB2DE57002ED7A1 /* BulletNode.cpp in Sources */,
 				985F4D281AAD72B9008D2EF8 /* Buff.cpp in Sources */,
 				98E3B6511A73A77A00B5BEBB /* extension_set.cc in Sources */,

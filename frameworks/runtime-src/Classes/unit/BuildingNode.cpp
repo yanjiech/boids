@@ -324,7 +324,7 @@ void ChestNode::openChest() {
             item_data["item_id"] = Value( item_id );
             item_data["count"] = Value( 1 );
             DropItem* item = DropItem::create( item_data );
-            _battle_layer->dropItem( item, this->getPosition(), eBattleSubLayer::ObjectLayer );
+            _battle_layer->dropItem( item, this->getPosition(), eBattleSubLayer::BelowObjectLayer );
             
             Point drop_pos = Utils::randomPositionInRange( this->getPosition(), _range, 2 * _range );
             Rect region = Rect( drop_pos.x - 25.0f, drop_pos.y - 25.0f, 50.0f, 50.0 );

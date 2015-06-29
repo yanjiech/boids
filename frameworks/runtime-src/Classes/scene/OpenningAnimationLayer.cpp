@@ -98,8 +98,14 @@ void OpenningAnimationLayer::onNextTouched( cocos2d::Ref* sender, cocos2d::ui::W
 
 void OpenningAnimationLayer::onEnterTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
-        PlayerInfo::getInstance()->setNewUser( false );
-        SceneManager::getInstance()->transitToScene( eSceneName::SceneLevelChoose );
+        MapData* map_data = MapData::create( "maps/tutorial/map.tmx", "maps/tutorial/easy/meta.json" );
+        Vector<cocos2d::Ref*> ref_params;
+        ref_params.pushBack( map_data );
+        ValueMap value_params;
+        value_params["is_pvp"] = Value( false );
+        value_params["level_id"] = Value( "10000" );
+        SceneConfig* config = SceneConfig::create( ref_params, value_params );
+        SceneManager::getInstance()->transitToScene( eSceneName::SceneBattle, config );
     }
 }
 

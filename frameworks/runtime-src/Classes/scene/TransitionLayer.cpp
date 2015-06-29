@@ -96,6 +96,10 @@ void TransitionLayer::transitUpdate( float delta ) {
     else if( _next_scene_name == eSceneName::SceneLevelChoose ) {
         ResourceManager::getInstance()->loadUIResource();
         layer = UIHomeLayer::create();
+        if( PlayerInfo::getInstance()->isNewUser() ) {
+            TutorialLayer* tutorial_layer = TutorialLayer::create( eTutorialType::TutorialPrepare );
+            layer->addChild( tutorial_layer, 999999 );
+        }
         next_scene->addChild( layer, 10000 );
     }
     else if( _next_scene_name == eSceneName::SceneBattle ) {
@@ -104,6 +108,10 @@ void TransitionLayer::transitUpdate( float delta ) {
         std::string level_id = _next_scene_config->value_params["level_id"].asString();
         MapData* map_data = dynamic_cast<MapData*>( _next_scene_config->ref_params.at( 0 ) );
         layer = BattleLayer::create( map_data, level_id, is_pvp );
+//        if( PlayerInfo::getInstance()->isNewUser() ) {
+//            TutorialLayer* tutorial_layer = TutorialLayer::create( eTutorialType::TutorialBattle );
+//            layer->addChild( tutorial_layer, 999999 );
+//        }
         next_scene->addChild( layer, 10001 );
     }
     cocos2d::Director::getInstance()->replaceScene( next_scene );

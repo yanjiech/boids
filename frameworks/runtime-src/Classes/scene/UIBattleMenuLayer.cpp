@@ -22,7 +22,9 @@ using namespace cocostudio::timeline;
 #define LOSE_PANEL_FILE "ui/page/ui_lose_page.csb"
 #define PAUSE_PANEL_FILE "ui/page/ui_pause_page.csb"
 
-UIBattleMenuLayer::UIBattleMenuLayer() {
+UIBattleMenuLayer::UIBattleMenuLayer() :
+_btn_pause( nullptr )
+{
     
 }
 
@@ -140,11 +142,13 @@ bool UIBattleMenuLayer::init( BattleLayer* battle_layer ) {
     ui::Button* btn_continue = dynamic_cast<ui::Button*>( _pause_panel->getChildByName( "btn_continue" ) );
     btn_continue->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onContinueTouched, this ) );
 
-    _btn_pause = ui::Button::create( "ui_menu_pause_normal.png", "ui_menu_pause_touched.png", "ui_menu_pause_touched.png", cocos2d::ui::Widget::TextureResType::PLIST );
-    _btn_pause->setPosition( Point( origin.x + 50.0f, origin.y + size.height - 50.0f ) );
-    _btn_pause->setAnchorPoint( Point( 0, 1.0f ) );
-    _btn_pause->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onPauseTouched, this ) );
-    this->addChild( _btn_pause );
+    if( !PlayerInfo::getInstance()->isNewUser() ) {
+        _btn_pause = ui::Button::create( "ui_menu_pause_normal.png", "ui_menu_pause_touched.png", "ui_menu_pause_touched.png", cocos2d::ui::Widget::TextureResType::PLIST );
+        _btn_pause->setPosition( Point( origin.x + 50.0f, origin.y + size.height - 50.0f ) );
+        _btn_pause->setAnchorPoint( Point( 0, 1.0f ) );
+        _btn_pause->addTouchEventListener( CC_CALLBACK_2( UIBattleMenuLayer::onPauseTouched, this ) );
+        this->addChild( _btn_pause );
+    }
     
     auto touch_listener = EventListenerTouchOneByOne::create();
     touch_listener->setSwallowTouches( true );
@@ -232,7 +236,9 @@ void UIBattleMenuLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
 }
 
 void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& result ) {
-    _btn_pause->setVisible( false );
+    if( _btn_pause ) {
+        _btn_pause->setVisible( false );
+    }
     _pause_panel->setVisible( false );
     _did_win = win;
     _battle_layer->quitBattle();
@@ -404,7 +410,7 @@ void UIBattleMenuLayer::onTaskChanged( int i, bool succ ) {
 }
 
 bool UIBattleMenuLayer::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event ) {
-    if( _btn_pause->isVisible() ) {
+    if( _btn_pause == nullptr || _btn_pause->isVisible() ) {
         return false;
     }
     return true;

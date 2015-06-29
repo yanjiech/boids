@@ -269,6 +269,7 @@ public:
     void setShouldShowFog( bool b ) { _should_show_fog = b; }
     
     UIBattleLayer* getUIBattleLayer() { return _skill_ui_layer; }
+    UIStoryLayer* getStoryLayer() { return _story_layer; }
     
     void dropItem( DropItem* item, const cocos2d::Point& pos, eBattleSubLayer layer );
     

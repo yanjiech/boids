@@ -61,12 +61,17 @@ bool MapLogic::init( BattleLayer* battle_layer ) {
         }
     }
     
-    const ValueMap& drop_config = ResourceManager::getInstance()->getDropConfig().at( _battle_layer->getLevelId() ).asValueMap();
-    int exp = drop_config.at( "exp" ).asInt();
-    _obtained_items["exp"] = Value( exp );
+    const ValueMap& all_drop_config = ResourceManager::getInstance()->getDropConfig();
+    sitr = ResourceManager::getInstance()->getDropConfig().find( _battle_layer->getLevelId() );
+    if( sitr != all_drop_config.end() ) {
+        const ValueMap& drop_config = sitr->second.asValueMap();
+        int exp = drop_config.at( "exp" ).asInt();
+        _obtained_items["exp"] = Value( exp );
+        
+        int gold = drop_config.at( "gold" ).asInt();
+        _obtained_items["gold"] = Value( gold );
+    }
     
-    int gold = drop_config.at( "gold" ).asInt();
-    _obtained_items["gold"] = Value( gold );
     
     return true;
 }
@@ -499,65 +504,69 @@ void MapLogic::obtainItem( const std::string& item_id, int count ) {
 }
 
 void MapLogic::dropItem( UnitNode* unit ) {
-    const ValueMap& drop_config = ResourceManager::getInstance()->getDropConfig().at( _battle_layer->getLevelId() ).asValueMap();
-    Point pos = unit->getHitPos();
-    
-    float rand;
-    float rate;
-    int count;
-    if( unit->isBoss() ) {
-        rate = drop_config.at( "rate_boss" ).asFloat();
-        count = drop_config.at( "drop_gold" ).asInt() * 2;
-    }
-    else {
-        rate = drop_config.at( "rate_normal" ).asFloat();
-        count = drop_config.at( "drop_gold" ).asInt();
-    }
-    
-    rand = Utils::randomFloat();
-    if( rand < rate ) {
-        count = Utils::randomNumber( count );
-        ValueMap item_data;
-        item_data["item_id"] = Value( "gold" );
-        item_data["count"] = Value( count );
-        DropItem* item = DropItem::create( item_data );
-        _battle_layer->dropItem( item, pos, eBattleSubLayer::ObjectLayer );
+    const ValueMap& all_drop_config = ResourceManager::getInstance()->getDropConfig();
+    auto itr = all_drop_config.find( _battle_layer->getLevelId() );
+    if( itr != all_drop_config.end() ) {
+        const ValueMap& drop_config = itr->second.asValueMap();
+        Point pos = unit->getHitPos();
         
-        Point drop_pos = Utils::randomPositionInRange( unit->getPosition(), 50.0f );
-        Rect region = Rect( drop_pos.x - 25.0f, drop_pos.y - 25.0f, 50.0f, 50.0 );
-        Point desired_pos = _battle_layer->getAvailablePosition( 50.0f, region );
-        if( desired_pos.equals( Point::ZERO ) ) {
-            desired_pos = unit->getPosition();
-        }
-        item->dropTo( desired_pos );
-    }
-    
-    const ValueVector& items = drop_config.at( "items" ).asValueVector();
-    for( auto v : items ) {
-        const ValueMap& config = v.asValueMap();
+        float rand;
+        float rate;
+        int count;
         if( unit->isBoss() ) {
-            rate = config.at( "rate_boss" ).asFloat();
+            rate = drop_config.at( "rate_boss" ).asFloat();
+            count = drop_config.at( "drop_gold" ).asInt() * 2;
         }
         else {
-            rate = config.at( "rate_normal" ).asFloat();
+            rate = drop_config.at( "rate_normal" ).asFloat();
+            count = drop_config.at( "drop_gold" ).asInt();
         }
         
         rand = Utils::randomFloat();
         if( rand < rate ) {
+            count = Utils::randomNumber( count );
             ValueMap item_data;
-            item_data["item_id"] = config.at( "item_id" );
-            item_data["count"] = Value( 1 );
+            item_data["item_id"] = Value( "gold" );
+            item_data["count"] = Value( count );
             DropItem* item = DropItem::create( item_data );
-            _battle_layer->dropItem( item, pos, eBattleSubLayer::ObjectLayer );
+            _battle_layer->dropItem( item, pos, eBattleSubLayer::BelowObjectLayer );
             
-            Point drop_pos = Utils::randomPositionInRange( pos, 50.0f );
+            Point drop_pos = Utils::randomPositionInRange( unit->getPosition(), 50.0f );
             Rect region = Rect( drop_pos.x - 25.0f, drop_pos.y - 25.0f, 50.0f, 50.0 );
             Point desired_pos = _battle_layer->getAvailablePosition( 50.0f, region );
             if( desired_pos.equals( Point::ZERO ) ) {
                 desired_pos = unit->getPosition();
             }
-
             item->dropTo( desired_pos );
+        }
+        
+        const ValueVector& items = drop_config.at( "items" ).asValueVector();
+        for( auto v : items ) {
+            const ValueMap& config = v.asValueMap();
+            if( unit->isBoss() ) {
+                rate = config.at( "rate_boss" ).asFloat();
+            }
+            else {
+                rate = config.at( "rate_normal" ).asFloat();
+            }
+            
+            rand = Utils::randomFloat();
+            if( rand < rate ) {
+                ValueMap item_data;
+                item_data["item_id"] = config.at( "item_id" );
+                item_data["count"] = Value( 1 );
+                DropItem* item = DropItem::create( item_data );
+                _battle_layer->dropItem( item, pos, eBattleSubLayer::BelowObjectLayer );
+                
+                Point drop_pos = Utils::randomPositionInRange( pos, 50.0f );
+                Rect region = Rect( drop_pos.x - 25.0f, drop_pos.y - 25.0f, 50.0f, 50.0 );
+                Point desired_pos = _battle_layer->getAvailablePosition( 50.0f, region );
+                if( desired_pos.equals( Point::ZERO ) ) {
+                    desired_pos = unit->getPosition();
+                }
+
+                item->dropTo( desired_pos );
+            }
         }
     }
 }
