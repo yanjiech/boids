@@ -1,0 +1,104 @@
+
+skeleton.png
+size: 2048,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fa-gz
+  rotate: false
+  xy: 829, 86
+  size: 46, 48
+  orig: 46, 48
+  offset: 0, 0
+  index: -1
+js-gz
+  rotate: false
+  xy: 1748, 160
+  size: 136, 66
+  orig: 136, 66
+  offset: 0, 0
+  index: -1
+maan-gz
+  rotate: false
+  xy: 1651, 108
+  size: 95, 118
+  orig: 95, 118
+  offset: 0, 0
+  index: -1
+mabo-gz
+  rotate: true
+  xy: 240, 87
+  size: 139, 210
+  orig: 139, 210
+  offset: 0, 0
+  index: -1
+maht01-gz
+  rotate: true
+  xy: 2, 2
+  size: 95, 227
+  orig: 95, 227
+  offset: 0, 0
+  index: -1
+maht02-gz
+  rotate: true
+  xy: 1219, 150
+  size: 76, 165
+  orig: 76, 165
+  offset: 0, 0
+  index: -1
+maqt01-gz
+  rotate: true
+  xy: 829, 136
+  size: 90, 204
+  orig: 90, 204
+  offset: 0, 0
+  index: -1
+maqt02-gz
+  rotate: true
+  xy: 1035, 135
+  size: 91, 182
+  orig: 91, 182
+  offset: 0, 0
+  index: -1
+mashen-gz
+  rotate: false
+  xy: 2, 99
+  size: 236, 127
+  orig: 236, 127
+  offset: 0, 0
+  index: -1
+matou-gz
+  rotate: false
+  xy: 649, 82
+  size: 178, 144
+  orig: 178, 144
+  offset: 0, 0
+  index: -1
+mawei-gz
+  rotate: true
+  xy: 1386, 82
+  size: 144, 149
+  orig: 144, 149
+  offset: 0, 0
+  index: -1
+shen-gz
+  rotate: false
+  xy: 1537, 90
+  size: 112, 136
+  orig: 112, 136
+  offset: 0, 0
+  index: -1
+shou-gz
+  rotate: false
+  xy: 1886, 167
+  size: 74, 59
+  orig: 74, 59
+  offset: 0, 0
+  index: -1
+tou-gz
+  rotate: true
+  xy: 452, 97
+  size: 129, 195
+  orig: 129, 195
+  offset: 0, 0
+  index: -1

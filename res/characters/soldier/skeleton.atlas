@@ -1,0 +1,83 @@
+
+skeleton.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fa-b
+  rotate: true
+  xy: 194, 18
+  size: 108, 173
+  orig: 108, 173
+  offset: 0, 0
+  index: -1
+jianjia-b
+  rotate: true
+  xy: 721, 11
+  size: 77, 60
+  orig: 77, 60
+  offset: 0, 0
+  index: -1
+jiao-lb
+  rotate: false
+  xy: 783, 36
+  size: 45, 52
+  orig: 45, 52
+  offset: 0, 0
+  index: -1
+jiao-rb
+  rotate: true
+  xy: 830, 49
+  size: 39, 52
+  orig: 39, 52
+  offset: 0, 0
+  index: -1
+qi-b
+  rotate: false
+  xy: 2, 12
+  size: 190, 114
+  orig: 190, 114
+  offset: 0, 0
+  index: -1
+qigan-b
+  rotate: true
+  xy: 507, 90
+  size: 36, 395
+  orig: 36, 395
+  offset: 0, 0
+  index: -1
+shen-b
+  rotate: false
+  xy: 904, 20
+  size: 111, 106
+  orig: 111, 106
+  offset: 0, 0
+  index: -1
+shou-lb
+  rotate: true
+  xy: 662, 3
+  size: 85, 57
+  orig: 85, 57
+  offset: 0, 0
+  index: -1
+shou-rb
+  rotate: false
+  xy: 507, 2
+  size: 57, 86
+  orig: 57, 86
+  offset: 0, 0
+  index: -1
+tou-b
+  rotate: true
+  xy: 369, 7
+  size: 119, 136
+  orig: 119, 136
+  offset: 0, 0
+  index: -1
+yao-b
+  rotate: false
+  xy: 566, 36
+  size: 94, 52
+  orig: 94, 52
+  offset: 0, 0
+  index: -1

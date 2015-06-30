@@ -15,6 +15,7 @@
 
 class OpenningAnimationLayer : public TouchableLayer {
     cocos2d::ui::Button* _btn_next;
+    cocos2d::Sprite* _sp_next;
     cocos2d::ui::Button* _btn_enter;
     cocos2d::Node* _root_node;
     cocostudio::timeline::ActionTimeline* _panel_action;

@@ -10,6 +10,8 @@
 
 using namespace cocos2d;
 
+#define TUTORIAL_FILE "ui/page/ui_tutorial.csb"
+
 TutorialLayer::TutorialLayer() :
 _prompt( nullptr )
 {
@@ -55,6 +57,15 @@ bool TutorialLayer::init( eTutorialType type  ) {
     }
     
     _touchable_rect = Rect::ZERO;
+    
+    std::string root_csb_file = FileUtils::getInstance()->fullPathForFilename( TUTORIAL_FILE );
+    _root_node = cocos2d::CSLoader::getInstance()->createNode( root_csb_file );
+    this->addChild( _root_node );
+    
+    for( auto panel : _root_node->getChildren() ) {
+        panel->setVisible( false );
+    }
+    
     return true;
 }
 
@@ -105,6 +116,19 @@ void TutorialLayer::updateTutorial( float delta ) {
             this->gotoNextStep();
             break;
         case TutorialStateWaiting:
+            if( _step == 5 ) {
+                Node* home_layer = this->getParent();
+                Node* hero_2 = home_layer->getChildByName( "hero_layer" )->getChildByName( "root_node" )->getChildByName( "choose_panel" )->getChildByName( "choose_panel" )->getChildByName( "hero_2" );
+                UIHeroDeploySlot* slot = dynamic_cast<UIHeroDeploySlot*>( hero_2->getChildren().at( 0 ) );
+                if( slot->getHeroId() != "0" ) {
+                    this->gotoNextStep();
+                }
+            }
+            else if( _step == 7 ) {
+                if( PlayerInfo::getInstance()->getOwnedUnitsInfo().at( "3" ).asValueMap().at( "equips" ).asValueMap().at( "weapon" ).asString() != "0" ) {
+                    this->gotoNextStep();
+                }
+            }
             break;
         default:
             break;
@@ -128,57 +152,182 @@ void TutorialLayer::onStoryEnd( UIStoryLayer* story ) {
 }
 
 void TutorialLayer::gotoNextStep() {
-    UIHomeLayer* home_layer = dynamic_cast<UIHomeLayer*>( this->getParent() );
-    if( _prompt ) {
-        _prompt->removeFromParent();
-        _prompt = nullptr;
-    }
     ++_step;
+    
+    Node* current_panel = nullptr;
+    for( auto panel : _root_node->getChildren() ) {
+        if( panel->getName() == Utils::stringFormat( "step_%d", _step ) ) {
+            panel->setVisible( true );
+            current_panel = panel;
+        }
+        else {
+            panel->setVisible( false );
+        }
+    }
+    
+    UIHomeLayer* home_layer = dynamic_cast<UIHomeLayer*>( this->getParent() );
     switch( _step ) {
         case 1:
-            //touch screen to continue
+        case 2:
             _state = TutorialStatePlaying;
             _touchable_rect = Rect::ZERO;
             break;
-        case 2:
+        case 3:
         {
-            //touch hero
-            _state = TutorialStateWaiting;
+            _state = TutorialStatePlaying;
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( "ui/effect_touch_down" );
+            current_panel->addChild( skeleton );
+            skeleton->setAnimation( 0, "animation", true );
+            Node* btn_hero = home_layer->getChildByName( "main_node" )->getChildByName( "btn_hero" );
+            
+            Size size = btn_hero->getContentSize();
+            Point anchor_point = btn_hero->getAnchorPoint();
+            Point local_pos = btn_hero->getPosition();
+            _touchable_rect = Rect( local_pos.x - size.width * anchor_point.x, local_pos.y - size.height * anchor_point.y, size.width, size.height );
+            skeleton->setPosition( Point( _touchable_rect.getMidX(), _touchable_rect.getMidY() ) );
         }
             break;
-        case 3:
-            //deploy hero
-            _state = TutorialStateWaiting;
-            break;
         case 4:
-            //touch equip
-            _state = TutorialStateWaiting;
+            _state = TutorialStatePlaying;
+            _touchable_rect = Rect::ZERO;
             break;
         case 5:
-            //manage equip
+        {
             _state = TutorialStateWaiting;
+            Node* hero_layer = home_layer->getChildByName( "hero_layer" );
+            ui::PageView* page_view = dynamic_cast<ui::PageView*>( hero_layer->getChildByName("root_node" )->getChildByName( "pv_hero_list" ) );
+            Node* hero = page_view->getPage( 0 )->getChildByName( "3" );
+            
+            Point world_pos = hero->getParent()->convertToWorldSpace( hero->getPosition() );
+            Point local_pos = this->convertToNodeSpace( world_pos );
+            Point anchor_point = hero->getAnchorPoint();
+            Size size = hero->getContentSize();
+            _touchable_rect = Rect( local_pos.x - size.width * anchor_point.x, local_pos.y - size.height * anchor_point.y, size.width, size.height );
+            
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( "ui/effect_wheel" );
+            current_panel->addChild( skeleton );
+            skeleton->setAnimation( 0, "Animation-R", true );
+            skeleton->setRotation( 15.0f );
+            skeleton->setPosition( _touchable_rect.getMidX(), _touchable_rect.getMidY() );
+            
+            Node* hero_2 = hero_layer->getChildByName( "root_node" )->getChildByName( "choose_panel" )->getChildByName( "choose_panel" )->getChildByName( "hero_2" );
+            UIHeroDeploySlot* slot = dynamic_cast<UIHeroDeploySlot*>( hero_2->getChildren().at( 0 ) );
+            slot->setSelected( true );
+        }
             break;
         case 6:
-            //touch back
-            _state = TutorialStateWaiting;
+        {
+            _state = TutorialStatePlaying;
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( "ui/effect_touch_down" );
+            current_panel->addChild( skeleton );
+            skeleton->setAnimation( 0, "animation", true );
+            
+            Node* btn_equip = home_layer->getChildByName( "hero_layer" )->getChildByName("root_node")->getChildByName( "skill_equip_panel" )->getChildByName( "btn_equip" );
+            Size size = btn_equip->getContentSize();
+            Point anchor_point = btn_equip->getAnchorPoint();
+            Point world_pos = btn_equip->getParent()->convertToWorldSpace( btn_equip->getPosition() );
+            Point local_pos = this->convertToNodeSpace( world_pos );
+            _touchable_rect = Rect( local_pos.x - size.width * anchor_point.x, local_pos.y - size.height * anchor_point.y, size.width, size.height );
+            skeleton->setPosition( Point( _touchable_rect.getMidX(), _touchable_rect.getMidY() ) );
+        }
             break;
         case 7:
-            //touch skill
+        {
+            _state = TutorialStateWaiting;
+            
+            Node* equip_layer = home_layer->getChildByName( "hero_layer" )->getChildByName( "detail_layer" );
+            ui::PageView* pv_weapon = dynamic_cast<ui::PageView*>( equip_layer->getChildByName( "root_node" )->getChildByName( "equipPanel" )->getChildByName( "pv_weapon_list" ) );
+            
+            Node* weapon = pv_weapon->getPage( 0 )->getChildren().at( 0 );
+            Point world_pos = weapon->getParent()->convertToWorldSpace( weapon->getPosition() );
+            Point local_pos = this->convertToNodeSpace( world_pos );
+            Point anchor_point = weapon->getAnchorPoint();
+            Size size = weapon->getContentSize();
+            _touchable_rect = Rect( local_pos.x - size.width * anchor_point.x, local_pos.y - size.height * anchor_point.y, size.width, size.height );
+            
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( "ui/effect_wheel" );
+            current_panel->addChild( skeleton );
+            skeleton->setAnimation( 0, "Animation-U", true );
+            skeleton->setPosition( _touchable_rect.getMidX(), _touchable_rect.getMidY() );
+        }
             break;
         case 8:
-            //touch back
+        {
+            _state = TutorialStatePlaying;
+            
+            Node* equip_layer = home_layer->getChildByName( "hero_layer" )->getChildByName( "detail_layer" );
+            Node* btn_back = equip_layer->getChildByName( "root_node" )->getChildByName( "btn_back" );
+            Point world_pos = btn_back->getParent()->convertToWorldSpace( btn_back->getPosition() );
+            Point local_pos = this->convertToNodeSpace( world_pos );
+            Point anchor_point = btn_back->getAnchorPoint();
+            Size size = btn_back->getContentSize();
+            _touchable_rect = Rect( local_pos.x - size.width * anchor_point.x, local_pos.y - size.height * anchor_point.y, size.width, size.height );
+            
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( "ui/effect_touch_down" );
+            current_panel->addChild( skeleton );
+            skeleton->setAnimation( 0, "animation", true );
+            skeleton->setPosition( Point( _touchable_rect.getMidX(), _touchable_rect.getMidY() ) );
+        }
             break;
         case 9:
-            //touch confirm
+        {
+            _state = TutorialStatePlaying;
+            
+            Node* hero_layer = home_layer->getChildByName( "hero_layer" );
+            Node* btn_back = hero_layer->getChildByName( "root_node" )->getChildByName( "btn_finish" );
+            Point world_pos = btn_back->getParent()->convertToWorldSpace( btn_back->getPosition() );
+            Point local_pos = this->convertToNodeSpace( world_pos );
+            Point anchor_point = btn_back->getAnchorPoint();
+            Size size = btn_back->getContentSize();
+            _touchable_rect = Rect( local_pos.x - size.width * anchor_point.x, local_pos.y - size.height * anchor_point.y, size.width, size.height );
+            
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( "ui/effect_touch_down" );
+            current_panel->addChild( skeleton );
+            skeleton->setAnimation( 0, "animation", true );
+            skeleton->setPosition( Point( _touchable_rect.getMidX(), _touchable_rect.getMidY() ) );
+        }
             break;
         case 10:
-            //touch level
+        {
+            _state = TutorialStatePlaying;
+            _touchable_rect = Rect::ZERO;
+            
+            Node* nd_level = home_layer->getChildByName( "main_node" )->getChildByName( "mapScrollView" )->getChildByName( "btn_level_1" );
+            
+            Point world_pos = nd_level->getParent()->convertToWorldSpace( nd_level->getPosition() );
+            Point local_pos = this->convertToNodeSpace( world_pos );
+            
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( "ui/effect_touch_down" );
+            current_panel->addChild( skeleton );
+            skeleton->setAnimation( 0, "animation", true );
+            skeleton->setPosition( local_pos );
+        }
             break;
         case 11:
-            //touch start
+        {
+            _state = TutorialStatePlaying;
+            _touchable_rect = Rect::ZERO;
+            
+            Node* nd_diff = home_layer->getChildByName( "main_node" )->getChildByName( "pn_wheel" );
+            
+            Point world_pos = nd_diff->getParent()->convertToWorldSpace( nd_diff->getPosition() );
+            Point local_pos = this->convertToNodeSpace( world_pos );
+            Size size = nd_diff->getContentSize();
+            
+            spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( "ui/effect_touch_down" );
+            current_panel->addChild( skeleton );
+            skeleton->setAnimation( 0, "animation", true );
+            skeleton->setPosition( local_pos + Point( size.width / 2, 0 ) );
+
+        }
+            break;
+        case 12:
+            _state = TutorialStatePlaying;
+            _touchable_rect = Rect::ZERO;
             break;
         default:
             //finished
+            PlayerInfo::getInstance()->setNewUser( false );
             this->removeFromParent();
             break;
     }

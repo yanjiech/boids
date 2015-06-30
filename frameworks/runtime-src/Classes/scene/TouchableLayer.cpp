@@ -46,3 +46,8 @@ void TouchableLayer::onTouchCancelled( cocos2d::Touch* touch, cocos2d::Event* ev
 
 void TouchableLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event ) {
 }
+
+void TouchableLayer::setVisible( bool b ) {
+    Layer::setVisible( b );
+    _touch_listener->setEnabled( b );
+}

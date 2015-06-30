@@ -12,6 +12,8 @@
 #include "cocos2d.h"
 #include "BattleLayer.h"
 #include "UIHomeLayer.h"
+#include "cocostudio/CocoStudio.h"
+#include "ui/CocosGUI.h"
 
 typedef enum {
     TutorialStateUnstarted = 0,
@@ -33,6 +35,8 @@ private:
     spine::SkeletonAnimation* _prompt;
     
     cocos2d::Rect _touchable_rect;
+    
+    cocos2d::Node* _root_node;
     
 public:
     TutorialLayer();

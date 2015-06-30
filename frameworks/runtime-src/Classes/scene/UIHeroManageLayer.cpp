@@ -71,6 +71,7 @@ bool UIHeroManageHeroSlot::init( const cocos2d::ValueMap& data, const std::strin
         return false;
     }
     
+    this->setName( hero_id );
     _root = root;
     
     this->setAnchorPoint( Point( 0.5f, 0.5f ) );
@@ -441,9 +442,11 @@ bool UIHeroManageLayer::init() {
         return false;
     }
     
+    this->setName( "hero_layer" );
     std::string root_csb_file = FileUtils::getInstance()->fullPathForFilename( HERO_MANAGE_FILE );
     _root_node = cocos2d::CSLoader::getInstance()->createNode( root_csb_file );
     this->addChild( _root_node );
+    _root_node->setName( "root_node" );
     
     _panel_action = ActionTimelineCache::getInstance()->loadAnimationActionWithFlatBuffersFile( root_csb_file );
     
@@ -618,6 +621,13 @@ bool UIHeroManageLayer::init() {
     _is_touch_down = false;
     _drag_avatar = nullptr;
     
+    if( PlayerInfo::getInstance()->isNewUser() ) {
+        UIHeroManageHeroSlot* hero = dynamic_cast<UIHeroManageHeroSlot*>( _pv_hero_list->getPage( 0 )->getChildByName( "3" ) );
+        UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create( hero );
+        this->addChild( hero_detail, 2 );
+        hero_detail->setVisible( false );
+    }
+    
     return true;
 }
 
@@ -637,10 +647,17 @@ void UIHeroManageLayer::onConfirmTouched( cocos2d::Ref* sender, cocos2d::ui::Wid
 void UIHeroManageLayer::onDetailTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         CocosUtils::playTouchEffect();
-        if( _selected_hero != nullptr && _selected_hero->isOwned() ) {
-//            _root_node->setVisible( false );
-            UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create( _selected_hero );
-            this->addChild( hero_detail, 2 );
+        UIHeroDetailLayer* detail_layer = dynamic_cast<UIHeroDetailLayer*>( this->getChildByName( "detail_layer" ) );
+        if( detail_layer ) {
+            detail_layer->setVisible( true );
+
+        }
+        else {
+            if( _selected_hero != nullptr && _selected_hero->isOwned() ) {
+    //            _root_node->setVisible( false );
+                UIHeroDetailLayer* hero_detail = UIHeroDetailLayer::create( _selected_hero );
+                this->addChild( hero_detail, 2 );
+            }
         }
     }
 }
@@ -1049,46 +1066,56 @@ void UIHeroManageLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* eve
     if( _is_touch_down ) {
         if( _is_dragging ) {
             UIHeroDeploySlot* slot = this->deploySlotForTouch( touch );
-            if( _selected_deploy_slot != nullptr && _selected_deploy_slot->getHeroId() != "0" ) {
-                //undeploy hero
-                if( slot == nullptr ) {
-                    _selected_deploy_slot->setHeroId( "0" );
-                    _selected_deploy_slot->setAvatar( nullptr );
-                    _selected_hero->setDeployed( false );
-                    this->setSelectedDeploySlot( nullptr );
-                }
-                //exchange hero
-                else if( slot != _selected_deploy_slot ) {
-                    std::string hero_id = slot->getHeroId();
-                    Sprite* avatar = slot->getAvatar() == nullptr ? nullptr : Sprite::createWithSpriteFrame( slot->getAvatar()->getSpriteFrame() );
-                    slot->setAvatar( _selected_deploy_slot->getAvatar() );
-                    slot->setHeroId( _selected_deploy_slot->getHeroId() );
-                    _selected_deploy_slot->setHeroId( hero_id );
-                    _selected_deploy_slot->setAvatar( avatar );
-                    this->setSelectedDeploySlot( slot );
+            if( PlayerInfo::getInstance()->isNewUser() ) {
+                //tutorial must deploy to a new
+                if( slot && slot->getHeroId() == "0" ) {
+                    _selected_hero->setDeployed( true );
+                    slot->setHeroId( _selected_hero->getHeroId() );
+                    slot->setAvatar( _selected_hero->getHeroRectAvatar() );
                 }
             }
             else {
-                //drag from list
-                if( slot != nullptr ) {
-                    //undeploy old hero
-                    auto itr = _hero_slots.find( slot->getHeroId() );
-                    if( itr != _hero_slots.end() ) {
-                        itr->second->setDeployed( false );
+                if( _selected_deploy_slot != nullptr && _selected_deploy_slot->getHeroId() != "0" ) {
+                    //undeploy hero
+                    if( slot == nullptr ) {
+                        _selected_deploy_slot->setHeroId( "0" );
+                        _selected_deploy_slot->setAvatar( nullptr );
+                        _selected_hero->setDeployed( false );
+                        this->setSelectedDeploySlot( nullptr );
                     }
-                    //deploy new hero
-                    _selected_hero->setDeployed( true );
-                    //remove duplicated hero in deploy slots
-                    for( auto ds : _deploy_slots ) {
-                        if( ds != slot && ds->getHeroId() == _selected_hero->getHeroId() ) {
-                            ds->setHeroId( "0" );
-                            ds->setAvatar( nullptr );
-                            break;
+                    //exchange hero
+                    else if( slot != _selected_deploy_slot ) {
+                        std::string hero_id = slot->getHeroId();
+                        Sprite* avatar = slot->getAvatar() == nullptr ? nullptr : Sprite::createWithSpriteFrame( slot->getAvatar()->getSpriteFrame() );
+                        slot->setAvatar( _selected_deploy_slot->getAvatar() );
+                        slot->setHeroId( _selected_deploy_slot->getHeroId() );
+                        _selected_deploy_slot->setHeroId( hero_id );
+                        _selected_deploy_slot->setAvatar( avatar );
+                        this->setSelectedDeploySlot( slot );
+                    }
+                }
+                else {
+                    //drag from list
+                    if( slot != nullptr ) {
+                        //undeploy old hero
+                        auto itr = _hero_slots.find( slot->getHeroId() );
+                        if( itr != _hero_slots.end() ) {
+                            itr->second->setDeployed( false );
                         }
+                        //deploy new hero
+                        _selected_hero->setDeployed( true );
+                        //remove duplicated hero in deploy slots
+                        for( auto ds : _deploy_slots ) {
+                            if( ds != slot && ds->getHeroId() == _selected_hero->getHeroId() ) {
+                                ds->setHeroId( "0" );
+                                ds->setAvatar( nullptr );
+                                break;
+                            }
+                        }
+                        
+                        slot->setHeroId( _selected_hero->getHeroId() );
+                        slot->setAvatar( _selected_hero->getHeroRectAvatar() );
                     }
-                    
-                    slot->setHeroId( _selected_hero->getHeroId() );
-                    slot->setAvatar( _selected_hero->getHeroRectAvatar() );
                 }
             }
             

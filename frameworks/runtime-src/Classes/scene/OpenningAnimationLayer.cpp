@@ -12,6 +12,8 @@
 
 #define OPENNING_PANEL_FILE "ui_begin.csb"
 
+#define TOTAL_SHOT 7
+
 using namespace cocos2d;
 using namespace cocostudio::timeline;
 
@@ -50,6 +52,9 @@ bool OpenningAnimationLayer::init() {
     _btn_next->addTouchEventListener( CC_CALLBACK_2( OpenningAnimationLayer::onNextTouched, this ) );
     _btn_next->setVisible( false );
     
+    _sp_next = dynamic_cast<Sprite*>( _root_node->getChildByName( "sp_next_arrow" ) );
+    _sp_next->setVisible( false );
+    
     ui::Button* btn_skip = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_skip" ) );
     btn_skip->addTouchEventListener( CC_CALLBACK_2( OpenningAnimationLayer::onSkipTouched, this ) );
     
@@ -58,9 +63,34 @@ bool OpenningAnimationLayer::init() {
     _btn_enter = dynamic_cast<ui::Button*>( pn_last->getChildByName( "btn_enter" ) );
     _btn_enter->addTouchEventListener( CC_CALLBACK_2( OpenningAnimationLayer::onEnterTouched, this ) );
     _btn_enter->setEnabled( false );
+
+    ui::Layout* solder_layout = dynamic_cast<ui::Layout*>( _root_node->getChildByName( "movie2_panel" ) );
+    //princess
+    Node* nd_princess = solder_layout->getChildByName( "nd_princess" );
+    spine::SkeletonAnimation* princess_skeleton = ArmatureManager::getInstance()->createArmature( "characters/princess" );
+    nd_princess->addChild( princess_skeleton );
+    princess_skeleton->setAnimation( 0, "animation", true );
+    
+    //soldier
+    for( int i = 1; i <= 3; i++ ) {
+        std::string nd_name = Utils::stringFormat( "nd_soldier_%d", i );
+        Node* nd_soldier = solder_layout->getChildByName( nd_name );
+        spine::SkeletonAnimation* soldier_skeleton = ArmatureManager::getInstance()->createArmature( "characters/soldier" );
+        nd_soldier->addChild( soldier_skeleton );
+        soldier_skeleton->setAnimation( 0, "animation", true );
+    }
+                                                                                                 
+    Node* nd_movie8 = _root_node->getChildByName( "movie8_panel" )->getChildByName( "Panel_1" );
+    for( int i = 1; i <= 3; i++ ) {
+        std::string nd_name = Utils::stringFormat( "nd_soldier_%d", i );
+        Node* nd_soldier = nd_movie8->getChildByName( nd_name );
+        spine::SkeletonAnimation* soldier_skeleton = ArmatureManager::getInstance()->createArmature( "characters/soldier" );
+        nd_soldier->addChild( soldier_skeleton );
+        soldier_skeleton->setAnimation( 0, "animation", true );
+    }
     
     _current_shot = 1;
-    _total_shot = 8;
+    _total_shot = TOTAL_SHOT;
     
     return true;
 }
@@ -92,6 +122,7 @@ void OpenningAnimationLayer::onNextTouched( cocos2d::Ref* sender, cocos2d::ui::W
         if( ++_current_shot <= _total_shot ) {
             _panel_action->play( Utils::stringFormat( "page%d", _current_shot ), false );
             _btn_next->setVisible( false );
+            _sp_next->setVisible( false );
         }
     }
 }
@@ -128,6 +159,7 @@ void OpenningAnimationLayer::onEnterTransitionDidFinish() {
 void OpenningAnimationLayer::onAnimationComplete() {
     if( _current_shot < _total_shot ) {
         _btn_next->setVisible( true );
+        _sp_next->setVisible( true );
     }
     else {
         _btn_enter->setEnabled( true );

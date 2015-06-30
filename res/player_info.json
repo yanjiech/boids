@@ -3,30 +3,19 @@
     "gold" : 500000,
     "diamond" : 1000000,
     "stone" : 1000000,
-    "team_level" : 20,
+    "team_level" : 1,
     "team_exp" : 0,
     "team_talent" :
     {
-        "total_points" : 100,
+        "total_points" : 0,
         "1" :
         [
-            "1",
-            "2",
-            "3",
-            "4",
-            "12"
         ],
         "2" :
         [
-            "1",
-            "2",
-            "12"
         ],
         "3" :
         [
-            "2",
-            "3",
-            "5"
         ]
     },
     "mission_record" :
@@ -36,9 +25,9 @@
     {
         "1" : "1",
         "2" : "0",
-        "3" : "0",
-        "4" : "0",
-        "5" : "0"
+        "3" : "l",
+        "4" : "l",
+        "5" : "l"
     },
     "units" :
     {
@@ -65,29 +54,6 @@
                 "accessory" : "0"
             }
         }, 
-        "2" :
-        {
-            "name" : "kyle",
-            "level" : 1,
-            "skills" :
-            [
-                {
-                    "name" : "CrazyScratch",
-                    "level" : 3
-                },
-                {
-                    "name" : "NinthLife",
-                    "level" : 3
-                }
-            ],
-            "equips" :
-            {
-                "weapon" : "0",
-                "armor" : "0",
-                "boot" : "0",
-                "accessory" : "0"
-            }
-        }, 
         "3" :
         {
             "name" : "enchantress",
@@ -100,7 +66,7 @@
                 },
                 {
                      "name" : "Impetus",
-                     "level" : 2
+                     "level" : 1
                 }
             ],
             "equips" :
@@ -117,115 +83,7 @@
         "1" :
         {
             "obj_id" : "1",
-            "id" : "11005001",
-            "in_use" : true
-        },
-        "2" :
-        {
-            "obj_id" : "2",
-            "id" : "21005001",
-            "in_use" : true
-        },
-        "3" :
-        {
-            "obj_id" : "3",
             "id" : "31005001",
-            "in_use" : true
-        },
-        "4" :
-        {
-            "obj_id" : "4",
-            "id" : "41005001",
-            "in_use" : true
-        },
-        "5" :
-        {
-            "obj_id" : "5",
-            "id" : "13020001",
-            "in_use" : false
-        },
-        "6" :
-        {
-            "obj_id" : "6",
-            "id" : "23020001",
-            "in_use" : false
-        },
-        "7" :
-        {
-            "obj_id" : "7",
-            "id" : "33020001",
-            "in_use" : false
-        },
-        "8" :
-        {
-            "obj_id" : "8",
-            "id" : "43020001",
-            "in_use" : false
-        },
-        "9" :
-        {
-            "obj_id" : "9",
-            "id" : "13020001",
-            "in_use" : false
-        },
-        "10" :
-        {
-            "obj_id" : "10",
-            "id" : "23020001",
-            "in_use" : false
-        },
-        "11" :
-        {
-            "obj_id" : "11",
-            "id" : "33020001",
-            "in_use" : false
-        },
-        "12" :
-        {
-            "obj_id" : "12",
-            "id" : "43020001",
-            "in_use" : false
-        },
-        "13" :
-        {
-            "obj_id" : "13",
-            "id" : "13020001",
-            "in_use" : false
-        },
-        "14" :
-        {
-            "obj_id" : "14",
-            "id" : "23020001",
-            "in_use" : false
-        },
-        "15" :
-        {
-            "obj_id" : "15",
-            "id" : "33020001",
-            "in_use" : false
-        },
-        "16" :
-        {
-            "obj_id" : "16",
-            "id" : "43020001",
-            "in_use" : false
-        },
-        "18" :
-        {
-            "obj_id" : "18",
-            "id" : "33020001",
-            "in_use" : false
-        },
-        "19" :
-        {
-            "obj_id" : "19",
-            "id" : "33020001",
-            "in_use" : false
-        },
-        "20" :
-        {
-            "obj_id" : "20",
-            "id" : "33020001",
             "in_use" : false
         }
     }

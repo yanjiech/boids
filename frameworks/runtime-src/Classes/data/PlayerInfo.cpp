@@ -81,6 +81,13 @@ void PlayerInfo::loadPlayerInfo() {
     }
     else {
         _player_info = file_util->getValueMapFromFile( plist_file );
+        if( this->isNewUser() ) {
+            std::string data_string = FileUtils::getInstance()->getStringFromFile( "player_info.json" );
+            rapidjson::Document player_info_json;
+            player_info_json.Parse<0>( data_string.c_str() );
+            _player_info = CocosUtils::jsonObjectToValueMap( player_info_json );
+            file_util->writeToFile( _player_info, plist_file );
+        }
     }
 }
 
@@ -564,24 +571,27 @@ bool PlayerInfo::sellEquip( const std::string& obj_id ) {
 cocos2d::ValueMap PlayerInfo::upgradeHero( const std::string& hero_id, int level ) {
     ValueMap ret;
     ValueMap& all_units = _player_info.at( "units" ).asValueMap();
+    int team_level = this->getTeamLevel();
     auto itr = all_units.find( hero_id );
     if( itr != all_units.end() ) {
         ValueMap& unit_data = all_units.at( hero_id ).asValueMap();
         std::string hero_name = unit_data.at( "name" ).asString();
         int old_level = unit_data["level"].asInt();
         int new_level = old_level + level;
-        int cost = ResourceManager::getInstance()->getUnitUpgradeCost( hero_name, new_level );
-        if( cost > 0 ) {
-            int gold = this->getGold();
-            if( cost <= gold ) {
-                this->gainGold( -cost, false );
-                unit_data["level"] = Value( old_level + level );
-                
-                ret = unit_data;
-                ret["owned"] = Value( true );
-                ret["locked"] = Value( false );
-                
-                this->recordPlayerInfo();
+            if( new_level <= team_level ) {
+            int cost = ResourceManager::getInstance()->getUnitUpgradeCost( hero_name, new_level );
+            if( cost > 0 ) {
+                int gold = this->getGold();
+                if( cost <= gold ) {
+                    this->gainGold( -cost, false );
+                    unit_data["level"] = Value( old_level + level );
+                    
+                    ret = unit_data;
+                    ret["owned"] = Value( true );
+                    ret["locked"] = Value( false );
+                    
+                    this->recordPlayerInfo();
+                }
             }
         }
     }
@@ -594,23 +604,26 @@ cocos2d::ValueMap PlayerInfo::upgradeSkill( const std::string& hero_id, const st
     auto itr = all_units.find( hero_id );
     if( itr != all_units.end() ) {
         ValueMap& unit_data = all_units.at( hero_id ).asValueMap();
+        int hero_level = unit_data["level"].asInt();
         ValueVector& skill_data_vector = unit_data.at( "skills" ).asValueVector();
         for( int i = 0; i < skill_data_vector.size(); i++ ) {
             ValueMap& skill_data = skill_data_vector.at( i ).asValueMap();
             if( skill_data.at( "name" ).asString() == skill_name ) {
                 int old_level = skill_data.at( "level" ).asInt();
                 int new_level = old_level + level;
-                int cost = ResourceManager::getInstance()->getSkillUpgradeCost( skill_name, new_level );
-                if( cost > 0 ) {
-                    int stone = this->getStone();
-                    if( cost <= stone ) {
-                        this->gainStone( -cost, false );
-                        skill_data["level"] = Value( old_level + level );
-                        
-                        ret = unit_data;
-                        ret["owned"] = Value( true );
-                        ret["locked"] = Value( false );
-                        this->recordPlayerInfo();
+                if( new_level <= hero_level ) {
+                    int cost = ResourceManager::getInstance()->getSkillUpgradeCost( skill_name, new_level );
+                    if( cost > 0 ) {
+                        int stone = this->getStone();
+                        if( cost <= stone ) {
+                            this->gainStone( -cost, false );
+                            skill_data["level"] = Value( old_level + level );
+                            
+                            ret = unit_data;
+                            ret["owned"] = Value( true );
+                            ret["locked"] = Value( false );
+                            this->recordPlayerInfo();
+                        }
                     }
                 }
                 break;

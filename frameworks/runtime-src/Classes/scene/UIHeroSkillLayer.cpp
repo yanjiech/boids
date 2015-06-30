@@ -41,6 +41,7 @@ bool UIHeroSkillLayer::init( UIHeroManageHeroSlot* hero ) {
         return false;
     }
     
+    this->setName( "skill_layer" );
     _hero = hero;
     
     std::string root_csb_file = FileUtils::getInstance()->fullPathForFilename( HERO_SKILL_FILE );

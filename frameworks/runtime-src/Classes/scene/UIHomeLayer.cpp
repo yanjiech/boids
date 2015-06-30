@@ -22,7 +22,9 @@ using namespace cocos2d;
 using namespace cocostudio::timeline;
 
 UIHomeLayer::UIHomeLayer() :
-_map_data( nullptr ) {
+_map_data( nullptr ),
+_hero_layer( nullptr )
+{
     
 }
 
@@ -48,6 +50,7 @@ bool UIHomeLayer::init() {
     std::string level_csb_file = FileUtils::getInstance()->fullPathForFilename( LEVEL_CSB_FILE );
     _level_node = cocos2d::CSLoader::getInstance()->createNode( level_csb_file );
     this->addChild( _level_node );
+    _level_node->setName( "level_node" );
     
     _background_node = dynamic_cast<Sprite*>( _level_node->getChildByName( "background" ) );
     ui::Button* btn_back = dynamic_cast<ui::Button*>( _level_node->getChildByName( "backButton" ) );
@@ -83,6 +86,7 @@ bool UIHomeLayer::init() {
     std::string main_csb_file = FileUtils::getInstance()->fullPathForFilename( MAIN_CSB_FILE );
     _main_node = cocos2d::CSLoader::getInstance()->createNode( main_csb_file );
     this->addChild( _main_node );
+    _main_node->setName( "main_node" );
     
     _panel_action = ActionTimelineCache::getInstance()->loadAnimationActionWithFlatBuffersFile( main_csb_file );
     
@@ -122,6 +126,12 @@ bool UIHomeLayer::init() {
     _difficulty = eLevelDifficulty::LevelDiffEasy;
     
     this->updatePlayerInfo( PlayerInfo::getInstance() );
+    
+    if( PlayerInfo::getInstance()->isNewUser() ) {
+        _hero_layer = UIHeroManageLayer::create();
+        this->addChild( _hero_layer, 2 );
+        _hero_layer->setVisible( false );
+    }
     
     return true;
 }
@@ -235,8 +245,13 @@ void UIHomeLayer::onStoreTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::Tou
 void UIHomeLayer::onHeroTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         CocosUtils::playTouchEffect();
-        UIHeroManageLayer* hero_layer = UIHeroManageLayer::create();
-        this->addChild( hero_layer, 2 );
+        if( _hero_layer ) {
+            _hero_layer->setVisible( true );
+        }
+        else {
+            _hero_layer = UIHeroManageLayer::create();
+            this->addChild( _hero_layer, 2 );
+        }
     }
 }
 

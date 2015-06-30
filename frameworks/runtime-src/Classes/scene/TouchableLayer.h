@@ -27,6 +27,8 @@ public:
     virtual void onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event );
     
     virtual void becomeTopLayer() {}
+    
+    virtual void setVisible( bool b );
 };
 
 #endif /* defined(__Boids__TouchableLayer__) */

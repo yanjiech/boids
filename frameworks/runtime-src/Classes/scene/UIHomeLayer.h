@@ -15,6 +15,7 @@
 #include "MapData.h"
 #include "UICurrencyLayer.h"
 #include "TouchableLayer.h"
+#include "UIHeroManageLayer.h"
 
 typedef enum {
     LevelDiffEasy = 1,
@@ -48,6 +49,9 @@ private:
     cocos2d::Node* _nd_diff;
     cocos2d::Sprite* _sp_boss_frame;
     cocos2d::Vector<cocos2d::Sprite*> _stars;
+    
+    //hero layer
+    UIHeroManageLayer* _hero_layer;
     
     //other
     UICurrencyLayer* _currency_layer;

@@ -188,6 +188,7 @@ bool UIHeroDetailLayer::init( UIHeroManageHeroSlot* hero ) {
     if( !TouchableLayer::init() ) {
         return false;
     }
+    this->setName( "detail_layer" );
     _is_touch_down = false;
     _is_dragging = false;
     _drag_equip = nullptr;
@@ -201,6 +202,7 @@ bool UIHeroDetailLayer::init( UIHeroManageHeroSlot* hero ) {
     std::string root_csb_file = FileUtils::getInstance()->fullPathForFilename( HERO_DETAIL_FILE );
     _root_node = cocos2d::CSLoader::getInstance()->createNode( root_csb_file );
     this->addChild( _root_node );
+    _root_node->setName( "root_node" );
     
     ui::Button* btn_back = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_back" ) );
     btn_back->addTouchEventListener( CC_CALLBACK_2( UIHeroDetailLayer::onBackTouched, this ) );
