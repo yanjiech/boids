@@ -357,6 +357,7 @@ void UnitNode::applyUnitState() {
         _unit_state_changed = false;
         if( _state == Casting && _next_state != Casting && _next_state != Idle ) {
             SkillCache::getInstance()->removeSkillOfOwner( this );
+            this->endSkill();
         }
         _state = _next_state;
         _next_state = eUnitState::Unknown_Unit_State;
@@ -602,6 +603,8 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* 
         if( unit_data->current_hp <= 0 ) {
             this->changeUnitState( eUnitState::Dying, true );
             _battle_layer->clearChasingTarget( this );
+            SkillCache::getInstance()->removeSkillOfOwner( this );
+            this->endSkill();
         }
         else if( _chasing_target == nullptr ) {
             if( atker && atker->isAttackable() && atker->isAlive() ) {
@@ -784,8 +787,11 @@ void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_pe
 
 void UnitNode::endSkill() {
     if( this->isCasting() ) {
-        int sk_id = _using_skill_params.at( "skill_id" ).asInt();
-        _skills.at( sk_id )->reload();
+        auto itr = _using_skill_params.find( "skill_id" );
+        if( itr != _using_skill_params.end() ) {
+            int sk_id = _using_skill_params.at( "skill_id" ).asInt();
+            _skills.at( sk_id )->reload();
+        }
         _using_skill_params.clear();
     }
 }

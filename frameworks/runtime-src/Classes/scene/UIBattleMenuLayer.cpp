@@ -243,7 +243,7 @@ void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& resu
     _did_win = win;
     _battle_layer->quitBattle();
     if( win ) {
-        AudioManager::getInstance()->playMusic( "audio/common/win.mp3", false );
+        AudioManager::getInstance()->playEffect( "audio/common/win.mp3" );
         _win_panel->setVisible( true );
         _lose_panel->setVisible( false );
         _win_effect->setAnimation( 0, "Idle", true );
@@ -349,7 +349,7 @@ void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& resu
         player_info->updateMissionRecord( level_id, _completed_mission );
     }
     else {
-        AudioManager::getInstance()->playMusic( "audio/common/lose.mp3", false );
+        AudioManager::getInstance()->playEffect( "audio/common/lose.mp3" );
         _win_panel->setVisible( false );
         _lose_panel->setVisible( true );
         _lose_panel->runAction( _lose_panel_action );

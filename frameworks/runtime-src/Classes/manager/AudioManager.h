@@ -37,6 +37,8 @@ public:
     void stopEffect( const std::string& resource );
     
     bool vibrate();
+    
+    void stopAll();
 };
 
 #endif /* defined(__Boids__AudioManager__) */

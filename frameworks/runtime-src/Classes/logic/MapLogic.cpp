@@ -529,7 +529,7 @@ void MapLogic::dropItem( UnitNode* unit ) {
             item_data["item_id"] = Value( "gold" );
             item_data["count"] = Value( count );
             DropItem* item = DropItem::create( item_data );
-            _battle_layer->dropItem( item, pos, eBattleSubLayer::BelowObjectLayer );
+            _battle_layer->dropItem( item, pos, eBattleSubLayer::ObjectLayer );
             
             Point drop_pos = Utils::randomPositionInRange( unit->getPosition(), 50.0f );
             Rect region = Rect( drop_pos.x - 25.0f, drop_pos.y - 25.0f, 50.0f, 50.0 );
@@ -556,7 +556,7 @@ void MapLogic::dropItem( UnitNode* unit ) {
                 item_data["item_id"] = config.at( "item_id" );
                 item_data["count"] = Value( 1 );
                 DropItem* item = DropItem::create( item_data );
-                _battle_layer->dropItem( item, pos, eBattleSubLayer::BelowObjectLayer );
+                _battle_layer->dropItem( item, pos, eBattleSubLayer::ObjectLayer );
                 
                 Point drop_pos = Utils::randomPositionInRange( pos, 50.0f );
                 Rect region = Rect( drop_pos.x - 25.0f, drop_pos.y - 25.0f, 50.0f, 50.0 );

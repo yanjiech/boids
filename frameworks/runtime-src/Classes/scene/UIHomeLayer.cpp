@@ -22,8 +22,7 @@ using namespace cocos2d;
 using namespace cocostudio::timeline;
 
 UIHomeLayer::UIHomeLayer() :
-_map_data( nullptr ),
-_hero_layer( nullptr )
+_map_data( nullptr )
 {
     
 }
@@ -128,9 +127,9 @@ bool UIHomeLayer::init() {
     this->updatePlayerInfo( PlayerInfo::getInstance() );
     
     if( PlayerInfo::getInstance()->isNewUser() ) {
-        _hero_layer = UIHeroManageLayer::create();
-        this->addChild( _hero_layer, 2 );
-        _hero_layer->setVisible( false );
+        UIHeroManageLayer* hero_layer = UIHeroManageLayer::create();
+        this->addChild( hero_layer, 2 );
+        hero_layer->setVisible( false );
     }
     
     return true;
@@ -245,12 +244,13 @@ void UIHomeLayer::onStoreTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::Tou
 void UIHomeLayer::onHeroTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         CocosUtils::playTouchEffect();
-        if( _hero_layer ) {
-            _hero_layer->setVisible( true );
+        UIHeroManageLayer* hero_layer = dynamic_cast<UIHeroManageLayer*>( this->getChildByName( "hero_layer" ) );
+        if( hero_layer ) {
+            hero_layer->setVisible( true );
         }
         else {
-            _hero_layer = UIHeroManageLayer::create();
-            this->addChild( _hero_layer, 2 );
+            hero_layer = UIHeroManageLayer::create();
+            this->addChild( hero_layer, 2 );
         }
     }
 }

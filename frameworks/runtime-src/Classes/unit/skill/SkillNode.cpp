@@ -45,9 +45,9 @@ void SkillNode::updateFrame( float delta ) {
 }
 
 void SkillNode::setOwner( UnitNode* owner ) {
+    CC_SAFE_RETAIN( owner );
     CC_SAFE_RELEASE( _owner );
     _owner = owner;
-    CC_SAFE_RETAIN( _owner );
 }
 
 UnitNode* SkillNode::getOwner() {

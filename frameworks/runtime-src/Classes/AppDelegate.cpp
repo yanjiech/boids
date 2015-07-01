@@ -56,7 +56,7 @@ bool AppDelegate::applicationDidFinishLaunching()
         glview = GLViewImpl::createWithRect( "My Game", cocos2d::Rect( 0, 0, 1920, 1080 ) );
         director->setOpenGLView(glview);
     }
-    glview->setDesignResolutionSize( 1920.0f, 1080.0f, ResolutionPolicy::NO_BORDER );
+    glview->setDesignResolutionSize( 1920.0f, 1080.0f, ResolutionPolicy::SHOW_ALL );
     
     // turn on display FPS
     director->setDisplayStats(true);

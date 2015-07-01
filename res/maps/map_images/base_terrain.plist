@@ -134,19 +134,6 @@
                 <key>sourceSize</key>
                 <string>{128,128}</string>
             </dict>
-            <key>dikuai011.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1280,0},{128,128}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{128,128}}</string>
-                <key>sourceSize</key>
-                <string>{128,128}</string>
-            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -157,7 +144,7 @@
             <key>size</key>
             <string>{2048,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:275046531c9e2060eea0dd2318717173:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6656f8a3af1d73458a40ebd94ca9bfc1:1/1$</string>
             <key>textureFileName</key>
             <string>base_terrain.png</string>
         </dict>

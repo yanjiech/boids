@@ -10,6 +10,7 @@
 #include "UnitNode.h"
 #include "BulletNode.h"
 #include "../Utils.h"
+#include "../scene/BattleLayer.h"
 
 using namespace cocos2d;
 
@@ -140,4 +141,6 @@ void DropItem::dropTo( const cocos2d::Point& pos ) {
 
 void DropItem::onDropCompleted() {
     this->setItemState( eItemState::ItemStateReady );
+    BattleLayer* battle_layer = dynamic_cast<BattleLayer*>( this->getParent()->getParent()->getParent() );
+    this->setLocalZOrder( battle_layer->zorderForPositionOnObjectLayer( this->getPosition() ) );
 }

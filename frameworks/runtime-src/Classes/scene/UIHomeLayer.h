@@ -50,9 +50,6 @@ private:
     cocos2d::Sprite* _sp_boss_frame;
     cocos2d::Vector<cocos2d::Sprite*> _stars;
     
-    //hero layer
-    UIHeroManageLayer* _hero_layer;
-    
     //other
     UICurrencyLayer* _currency_layer;
     

@@ -368,7 +368,7 @@ void BattleLayer::updateFrame( float delta ) {
 void BattleLayer::startBattle() {
     if( _state != eBattleState::BattleRunning ) {
         _state = eBattleState::BattleRunning;
-        AudioManager::getInstance()->playMusic( "audio/common/bg_music_1.mp3" );
+        AudioManager::getInstance()->playMusic( "audio/common/bg_music_1.mp3", true );
     }
 }
 
@@ -394,7 +394,7 @@ void BattleLayer::restartBattle() {
 }
 
 void BattleLayer::quitBattle() {
-    AudioManager::getInstance()->stopMusic( "audio/common/bg_music_1.mp3" );
+    AudioManager::getInstance()->stopAll();
     SkillCache::getInstance()->reset();
 }
 
@@ -800,7 +800,6 @@ void BattleLayer::onUnitAppear( UnitNode* unit ) {
 }
 
 void BattleLayer::onUnitDying( UnitNode* unit ) {
-    SkillCache::getInstance()->removeSkillOfOwner( unit );
     for( auto pair : _alive_units ) {
         if( pair.second->getChasingTarget() == unit ) {
             pair.second->setChasingTarget( nullptr );
