@@ -28,6 +28,8 @@ private:
     float _full_cd;
     float _elapse;
     
+    float _mp_cost;
+    
     eSkillState _state;
     
     cocos2d::ValueMap _skill_data;
@@ -58,6 +60,9 @@ public:
     
     float getFullCD() { return _full_cd; }
     void setFullCD( float cd ) { _full_cd = cd; }
+    
+    float getMpCost() { return _mp_cost; }
+    void setMpCost( float cost ) { _mp_cost = cost; }
     
     eSkillState getSkillState() { return _state; }
     void setSkillState( eSkillState new_state ) { _state = new_state; }

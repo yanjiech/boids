@@ -20,6 +20,8 @@ enum eResourceType {
 
 class ResourceManager {
 private:
+    cocos2d::ValueMap _game_config;
+    
     cocos2d::ValueMap _unit_config;
     cocos2d::ValueMap _talent_config;
     cocos2d::ValueMap _equip_config;
@@ -46,6 +48,8 @@ public:
     
     static ResourceManager* getInstance();
     static void destroy();
+    
+    const cocos2d::ValueMap& getGameConfig() { return _game_config; }
     
     const cocos2d::ValueMap& getUnitConfig() { return _unit_config; }
     const cocos2d::ValueMap& getTalentConfig() { return _talent_config; }
@@ -80,6 +84,8 @@ public:
     
     void loadDefaultData();
     void unloadDefaultData();
+    
+    void loadGameConfig();
     
     void loadUnitData();
     void loadTalentData();

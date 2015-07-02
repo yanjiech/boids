@@ -248,6 +248,10 @@ void UnitNode::updateFrame( float delta ) {
     if( this->isAlive() && _is_charging && _charging_effect != nullptr ) {
         _charging_effect->setPosition( this->getLocalBonePos( "ChargingPoint" ) );
     }
+    
+    ElementData* unit_data = this->getTargetData();
+    unit_data->current_hp = clampf( unit_data->current_hp + unit_data->recover * delta, 0, unit_data->hp );
+    unit_data->current_mp = clampf( unit_data->current_mp + unit_data->recover * delta, 0, unit_data->mp );
 }
 
 void UnitNode::onSkeletonAnimationStart( int track_index ) {

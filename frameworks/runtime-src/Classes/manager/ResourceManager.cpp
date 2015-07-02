@@ -216,6 +216,14 @@ void ResourceManager::unloadBattleResource() {
     frame_cache->removeSpriteFramesFromFile( "effects/fx_unit_common.plist" );
 }
 
+void ResourceManager::loadGameConfig() {
+    FileUtils* file_util = FileUtils::getInstance();
+    std::string data_string = file_util->getStringFromFile( "config.json" );
+    rapidjson::Document config_json;
+    config_json.Parse<0>( data_string.c_str() );
+    _game_config = CocosUtils::jsonObjectToValueMap( config_json );
+}
+
 void ResourceManager::loadUnitData() {
     FileUtils* file_util = FileUtils::getInstance();
     std::string data_string = file_util->getStringFromFile( "unit.json" );

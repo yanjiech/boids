@@ -83,6 +83,8 @@ public:
     void updateExpBar( float delta );
     
     void hideMenu();
+    void hidePauseButton();
+    void removePauseButton();
     
     void onTaskChanged( int i, bool succ );
     

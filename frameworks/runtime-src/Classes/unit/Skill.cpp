@@ -54,6 +54,14 @@ bool Skill::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     _skill_data["level"] = Value( _level );
     _full_cd = _skill_data.at( "cd" ).asFloat();
     
+    itr = _skill_data.find( "mp" );
+    if( itr != _skill_data.end() ) {
+        _mp_cost = itr->second.asValueVector().at( _level - 1 ).asFloat();
+    }
+    else {
+        _mp_cost = 0;
+    }
+    
     return true;
 }
 
@@ -62,13 +70,17 @@ void Skill::updateFrame( float delta ) {
         _elapse += delta;
         if( _elapse >= _full_cd ) {
             _elapse = _full_cd;
-            this->setSkillState( eSkillState::SkillStateReady );
+            if( _mp_cost <= _owner->getTargetData()->current_mp ) {
+                this->setSkillState( eSkillState::SkillStateReady );
+            }
         }
     }
 }
 
 void Skill::activate( const cocos2d::ValueMap& params ) {
     this->setSkillState( eSkillState::SkillStateCasting );
+    _owner->getTargetData()->current_mp -= _mp_cost;
+    
     SkillNode* skill_node = SkillNodeFactory::createSkillNode( _skill_name, _owner, _skill_data, params );
     skill_node->begin();
     

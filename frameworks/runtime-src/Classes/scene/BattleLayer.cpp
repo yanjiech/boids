@@ -425,6 +425,7 @@ void BattleLayer::changeState( eBattleState new_state ) {
         if( _state != eBattleState::BattleRunning ) {
             return;
         }
+        _battle_menu_layer->removePauseButton();
     }
     this->setState( new_state );
 }

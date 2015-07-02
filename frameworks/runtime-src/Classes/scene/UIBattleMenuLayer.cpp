@@ -398,6 +398,17 @@ void UIBattleMenuLayer::hideMenu() {
     _pause_panel->setVisible( false );
 }
 
+void UIBattleMenuLayer::hidePauseButton() {
+    _btn_pause->setVisible( false );
+}
+
+void UIBattleMenuLayer::removePauseButton() {
+    if( _btn_pause ) {
+        _btn_pause->removeFromParent();
+        _btn_pause = nullptr;
+    }
+}
+
 void UIBattleMenuLayer::onTaskChanged( int i, bool succ ) {
     Sprite* icon = _sp_mission_vec.at( i );
     icon->setVisible( true );

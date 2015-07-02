@@ -114,7 +114,7 @@ void OpenningAnimationLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event
 void OpenningAnimationLayer::onSkipTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == cocos2d::ui::Widget::TouchEventType::ENDED ) {
         this->end();
-    }
+    } 
 }
 
 void OpenningAnimationLayer::onNextTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {

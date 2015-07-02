@@ -169,6 +169,7 @@ void UISkillNode::hideHint() {
 }
 
 void UISkillNode::updateFrame( float delta ) {
+    _pb_mp->setPercentage( 100.0f * _unit_node->getTargetData()->current_mp / _unit_node->getTargetData()->mp );
     bool is_ready = _unit_node->isSkillReadyById( 0 );
     if( is_ready != _is_skill_ready ) {
         _is_skill_ready = is_ready;
