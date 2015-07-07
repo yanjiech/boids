@@ -52,7 +52,8 @@
         "need_rotate": true,
         "hit_type": "spine",
         "hit_name": "default",
-        "track_target": true
+        "track_target": true,
+        "speed": 1200
     },
     "enchantress_skill_javelin": {
         "name": "enchantress_skill_javelin",
@@ -61,7 +62,8 @@
         "need_rotate": true,
         "track_target": true,
         "hit_type": "spine",
-        "hit_name": "default"
+        "hit_name": "default",
+        "speed": 1400
     },
     "flamingo":
     {
@@ -86,7 +88,7 @@
         "bomb_type": "spine",
         "bomb_name": "gas_bomb",
         "damage_radius": 160.0,
-        "speed": 800.0
+        "speed": 1200.0
     },
     "human_arrow": {
         "name": "human_arrow",

@@ -101,6 +101,18 @@ const cocos2d::ValueMap& PlayerInfo::getOwnedUnitsInfo() {
     return _player_info.at( "units" ).asValueMap();
 }
 
+int PlayerInfo::getDeployedUnitsCount() {
+    const cocos2d::ValueMap& deployed_units = _player_info.at( "deploy_units" ).asValueMap();
+    int count = 0;
+    for( auto pair : deployed_units ) {
+        std::string hero_obj_id = pair.second.asString();
+        if( hero_obj_id != "0" && hero_obj_id != "l" ) {
+            count++;
+        }
+    }
+    return count;
+}
+
 const cocos2d::ValueMap& PlayerInfo::getPlayerDeployedUnitsSlotIds() {
     return _player_info.at( "deploy_units" ).asValueMap();
 }
@@ -463,7 +475,7 @@ int PlayerInfo::getTeamExp() {
 int PlayerInfo::getExpForTeamLevel( int level ) {
     const ValueVector& team_level_exp_conf = ResourceManager::getInstance()->getTeamLevelExpConfig().at( "team_level_exp" ).asValueVector();
     if( level < team_level_exp_conf.size() ) {
-        return team_level_exp_conf.at( level ).asInt();
+        return team_level_exp_conf.at( level - 1 ).asInt();
     }
     return -1;
 }

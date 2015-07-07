@@ -1,3 +1,4 @@
 {
-    "catchup_distance" : 200.0
+    "catchup_start_distance" : 550,
+    "catchup_stop_distance" : 250
 }

@@ -33,22 +33,37 @@ JumpText* JumpText::create( const std::string& text, const std::string& type, bo
 
 bool JumpText::init( const std::string& text, const std::string& type, bool is_critical, int unit_camp, const std::string& name ) {
     cocos2d::Label* text_label = nullptr;
-    if( type == "heal" ) {
-        text_label = Label::createWithCharMap( "ui/number_heal.png", 33, 40, 43 );
+    Node* container = Node::create();
+    if( text == "0" ) {
+        Sprite* sp_miss = Sprite::createWithSpriteFrameName( "ui_battle_miss.png" );
+        container->addChild( sp_miss, 1 );
     }
-    else if( type == "damage" ) {
-        if( unit_camp == eTargetCamp::Player ) {
-            text_label = Label::createWithCharMap( "ui/number_player_damage.png", 33, 40, 43 );
+    else {
+        if( is_critical ) {
+            Sprite* sp_cri = Sprite::createWithSpriteFrameName( "ui_battle_cri.png" );
+            container->addChild( sp_cri, 1 );
         }
-        else {
-            text_label = Label::createWithCharMap( "ui/number_enemy_damage.png", 33, 40, 43 );
+        if( type == "heal" ) {
+            text_label = Label::createWithCharMap( "ui/number_heal.png", 33, 40, 43 );
         }
+        else if( type == "damage" ) {
+            if( is_critical ) {
+                text_label = Label::createWithCharMap( "ui/ui_number_cri.png", 50, 59, 48 );
+            }
+            else if( unit_camp == eTargetCamp::Player ) {
+                text_label = Label::createWithCharMap( "ui/number_player_damage.png", 33, 40, 43 );
+            }
+            else {
+                text_label = Label::createWithCharMap( "ui/number_enemy_damage.png", 33, 40, 43 );
+            }
+        }
+        if( !is_critical ) {
+            text_label->setScale( 0.6f );
+        }
+        text_label->setString( text );
+        container->addChild( text_label, 2 );
     }
-    if( !is_critical ) {
-        text_label->setScale( 0.6f );
-    }
-    text_label->setString( text );
-    if( !UnitNodeComponent::init( text_label, name, true ) ) {
+    if( !UnitNodeComponent::init( container, name, true ) ) {
         return false;
     }
     return true;

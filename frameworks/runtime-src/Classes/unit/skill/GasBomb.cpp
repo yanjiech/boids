@@ -69,7 +69,8 @@ void GasBomb::updateFrame( float delta ) {
                         _shoot_elapse = 0;
                         _stage = 1;
                         //add warning effect
-                        _shoot_pos = Utils::randomPositionInRange( _owner->getPosition(), _range );
+//                        _shoot_pos = Utils::randomPositionInRange( _owner->getPosition(), _range );
+                        _shoot_pos = _owner->getBattleLayer()->getLeaderUnit()->getPosition();
                         std::string resource = "effects/skeleton_king_skill_1/cross";
                         std::string name = Utils::stringFormat( "%s_%d", SKILL_NAME_GAS_BOMB, BulletNode::getNextBulletId() );
                         spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );

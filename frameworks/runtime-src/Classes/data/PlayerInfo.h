@@ -49,6 +49,8 @@ public:
     
     const cocos2d::ValueMap& getPlayerDeployedUnitsSlotIds();
     
+    int getDeployedUnitsCount();
+    
     cocos2d::ValueVector getPlayerDeployedUnitsInfo();
     
     cocos2d::ValueVector getPlayerDeployedUnitNames();

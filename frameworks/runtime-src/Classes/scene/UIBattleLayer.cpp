@@ -517,6 +517,12 @@ void UIBattleLayer::setBossHpPercent( float percent ) {
 
 void UIBattleLayer::setBossInfo( class UnitData* unit_data ) {
     _lb_boss_name->setString( unit_data->display_name );
+    _nd_boss_avatar->removeAllChildren();
+    SpriteFrame *frame = SpriteFrameCache::getInstance()->getSpriteFrameByName( Utils::stringFormat( "ui_boss_%s.png", unit_data->name.c_str() ) );
+    if( frame ) {
+        Sprite* sp_boss_avatar = Sprite::createWithSpriteFrame( frame );
+        _nd_boss_avatar->addChild( sp_boss_avatar );
+    }
     this->setBossHpPercent( 100 );
 }
 

@@ -199,6 +199,9 @@ private:
     bool _is_touch_down;
     bool _is_dragging;
     
+private:
+    int getDeployedSlotCount();
+    
 public:
     UIHeroManageLayer();
     virtual ~UIHeroManageLayer();

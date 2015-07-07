@@ -78,6 +78,7 @@ void ResourceManager::purgeMap( MapData* map_data ) {
 
 void ResourceManager::loadAllData() {
     this->loadDefaultData();
+    this->loadGameConfig();
     this->loadUnitData();
     this->loadTalentData();
     this->loadEquipData();
@@ -184,6 +185,7 @@ void ResourceManager::loadBattleResource() {
     frame_cache->addSpriteFramesWithFile( "maps/map_images/towers.plist", "maps/map_images/towers.png" );
     frame_cache->addSpriteFramesWithFile( "ui/map_common.plist", "ui/map_common.png" );
     frame_cache->addSpriteFramesWithFile( "ui/hero_avatars.plist", "ui/hero_avatars.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_boss_avatar.plist", "ui/ui_boss_avatar.png" );
     frame_cache->addSpriteFramesWithFile( "effects/bullets/bullets.plist", "effects/bullets/bullets.png" );
     frame_cache->addSpriteFramesWithFile( "effects/fx_unit_common.plist", "effects/fx_unit_common.png" );
 }
@@ -212,6 +214,7 @@ void ResourceManager::unloadBattleResource() {
     frame_cache->removeSpriteFramesFromFile( "maps/map_images/towers.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/map_common.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/hero_avatars.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_boss_avatar.plist" );
     frame_cache->removeSpriteFramesFromFile( "effects/bullets/bullets.plist" );
     frame_cache->removeSpriteFramesFromFile( "effects/fx_unit_common.plist" );
 }

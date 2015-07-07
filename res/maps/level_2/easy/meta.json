@@ -167,21 +167,20 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
-                    "source_value": "bomb_robot",
+                    "source_value": "bomb_goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "show_hp": false,
                     "position_name": "orange_01",
                     "unit_count": 2,
                     "unit_level": 1,
-                    "popup_type": "normal",
-                    "skill_1_level": 2
+                    "popup_type": "normal"
                 },
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
-                    "source_value": "bear",
+                    "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "show_hp": false,
@@ -194,7 +193,7 @@
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
-                    "source_value": "bee",
+                    "source_value": "goblin",
                     "unit_type": "enemy",
                     "unit_state": "unit_appear",
                     "show_hp": false,
@@ -794,10 +793,7 @@
         }
     ],
     "units": [
-        "bear",
-        "bee",
         "bomb_goblin",
-        "bomb_robot",
         "goblin",
         "goblin_shredder"
     ],

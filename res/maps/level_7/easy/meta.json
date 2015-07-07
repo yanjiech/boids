@@ -25,8 +25,7 @@
                 "y": 907.599,
                 "width": 118.156,
                 "height": 87.1661
-            },
-            "prev_pos": "villiger_start"
+            }
         },
         {
             "name": "route_2",
@@ -313,7 +312,7 @@
                         },
                         {
                             "left_or_right": true,
-                            "line": "小鹿：叫声在左上方，我们去那儿看看吧！",
+                            "line": "小鹿：叫声在右上方，我们去那儿看看吧！",
                             "speaker": "enchantress"
                         }
                     ],

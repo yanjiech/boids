@@ -1,6 +1,6 @@
 
 skeleton.png
-size: 512,128
+size: 256,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
@@ -12,16 +12,16 @@ baoxiang_02
   offset: 0, 0
   index: -1
 gai
-  rotate: false
-  xy: 270, 35
+  rotate: true
+  xy: 153, 130
   size: 108, 76
   orig: 108, 76
   offset: 0, 0
   index: -1
 xiang
   rotate: false
-  xy: 136, 8
-  size: 132, 103
-  orig: 132, 103
+  xy: 2, 113
+  size: 149, 125
+  orig: 149, 125
   offset: 0, 0
   index: -1

@@ -73,6 +73,7 @@ void SacrificeBomb::updateFrame( float delta ) {
                 unit->takeDamage( result, _owner );
             }
             
+            _owner->changeUnitState( eUnitState::Dying, true );
             this->end();
         }
     }
@@ -87,7 +88,6 @@ void SacrificeBomb::begin() {
 }
 
 void SacrificeBomb::end() {
-    _owner->changeUnitState( eUnitState::Dying, true );
     SkillNode::end();
 }
 

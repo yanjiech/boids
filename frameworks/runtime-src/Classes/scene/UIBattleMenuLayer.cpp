@@ -286,11 +286,12 @@ void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& resu
         
         int team_exp = player_info->getTeamExp();
         int need_exp = player_info->getExpForTeamLevel( _current_level + 1 );
+        int current_level_exp = player_info->getExpForTeamLevel( _current_level );
         if( need_exp == -1 ) {
             _pb_team_exp->setPercent( 100.0f );
         }
         else {
-            _pb_team_exp->setPercent( (float)team_exp / (float)need_exp * 100.0f );
+            _pb_team_exp->setPercent( (float)( team_exp - current_level_exp ) / (float)( need_exp - current_level_exp ) * 100.0f );
         }
         
         _target_percent = _pb_team_exp->getPercent();
@@ -307,12 +308,13 @@ void UIBattleMenuLayer::showResultPanel( bool win, const cocos2d::ValueMap& resu
                 
                 _target_level = player_info->getTeamLevel();
                 team_exp = player_info->getTeamExp();
-                need_exp = player_info->getExpForTeamLevel( _current_level + 1 );
+                current_level_exp = player_info->getExpForTeamLevel( _target_level );
+                need_exp = player_info->getExpForTeamLevel( _target_level + 1 );
                 if( need_exp == -1 ) {
                     _target_percent = 100.0f;
                 }
                 else {
-                    _target_percent = (float)team_exp / (float)need_exp * 100.0f;
+                    _target_percent = (float)( team_exp - current_level_exp ) / (float)( need_exp - current_level_exp ) * 100.0f;
                 }
                 
                 this->schedule( CC_CALLBACK_1( UIBattleMenuLayer::updateExpBar,this ), "update_exp_bar" );

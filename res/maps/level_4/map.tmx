@@ -129,7 +129,7 @@
   </tile>
  </tileset>
  <tileset firstgid="43" name="terrain" tilewidth="64" tileheight="64">
-  <image source="base_terrain.png" width="2048" height="2048"/>
+  <image source="base_terrain.png" width="2048" height="128"/>
  </tileset>
  <layer name="terrain" width="92" height="52">
   <data encoding="base64" compression="zlib">
@@ -166,7 +166,7 @@
   <object id="18" gid="16" x="606.788" y="2408.42"/>
   <object id="19" gid="17" x="469.909" y="2634.88"/>
   <object id="20" gid="18" x="596.182" y="2648.39"/>
-  <object id="21" gid="19" x="515.879" y="1370.27"/>
+  <object id="21" gid="19" x="566.217" y="1459.14"/>
   <object id="23" gid="21" x="4296" y="482"/>
   <object id="25" gid="2147483671" x="4920.36" y="916.091"/>
   <object id="26" gid="2147483672" x="5173.39" y="780.636"/>
@@ -352,7 +352,7 @@
   <object id="278" gid="2147483654" x="5080" y="3408"/>
   <object id="281" gid="6" x="1977.55" y="3692.18"/>
   <object id="285" gid="2147483654" x="1572" y="3649"/>
-  <object id="289" name="blue_stone_1" type="BuffBuildingNode" gid="15" x="322.784" y="1428.48">
+  <object id="289" name="blue_stone_1" type="BuffBuildingNode" gid="15" x="373.122" y="1517.35">
    <properties>
     <property name="buff_duration" value="-1"/>
     <property name="buff_name" value="blue_tag"/>
@@ -368,7 +368,7 @@
   </object>
   <object id="290" gid="16" x="5736" y="1748"/>
   <object id="291" gid="2147483665" x="210.636" y="1071.36"/>
-  <object id="292" gid="18" x="266" y="1371"/>
+  <object id="292" gid="18" x="316.338" y="1459.87"/>
   <object id="293" gid="2147483667" x="76.7879" y="1243.3"/>
   <object id="294" gid="24" x="3436" y="2369"/>
   <object id="295" gid="23" x="3834" y="299"/>
@@ -380,7 +380,7 @@
   <object id="303" gid="28" x="706" y="279"/>
   <object id="304" gid="33" x="4675.52" y="1898.79"/>
   <object id="305" gid="2147483680" x="695.273" y="1778.33"/>
-  <object id="306" gid="31" x="423.515" y="1365.67"/>
+  <object id="306" gid="31" x="473.853" y="1454.54"/>
   <object id="308" gid="30" x="3589.33" y="1647"/>
   <object id="312" gid="12" x="4001.27" y="3351.3"/>
   <object id="313" gid="11" x="1214.82" y="1943.18"/>
@@ -401,7 +401,7 @@
   <object id="331" gid="12" x="1920.61" y="770.15"/>
   <object id="332" gid="12" x="1254" y="1896"/>
   <object id="354" gid="2147483665" x="-96" y="1285.09"/>
-  <object id="355" gid="2147483663" x="336" y="1361.21"/>
+  <object id="355" gid="2147483663" x="386.338" y="1450.08"/>
   <object id="356" gid="17" x="836" y="1565.09"/>
   <object id="359" gid="2147483678" x="3925.55" y="1716.67"/>
   <object id="360" gid="2147483660" x="3218.36" y="2125.91"/>
@@ -640,7 +640,7 @@
   <object id="600" name="yellow_stone_2_collide" type="collide" x="4769.88" y="2244.91">
    <polygon points="-46,-38 -38,160 250,158 238,-36"/>
   </object>
-  <object id="602" name="blue_stone_1_collide" type="collide" x="310" y="1226">
+  <object id="602" name="blue_stone_1_collide" type="collide" x="360.338" y="1314.87">
    <polygon points="-46,-20 -46,210 320,212 320,-18"/>
   </object>
   <object id="605" name="yellow_stone_1_collide" type="collide" x="786" y="516">

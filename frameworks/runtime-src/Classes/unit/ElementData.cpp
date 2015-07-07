@@ -67,19 +67,19 @@ bool ElementData::init( const cocos2d::ValueMap& data ) {
         this->level = data.at( "level" ).asInt();
         this->name = data.at( "name" ).asString();
         this->display_name = data.at( "displayname" ).asString();
-        this->hp = data.at( "hp" ).asFloat() + this->level * (float)data.at( "hpgr" ).asFloat();
+        this->hp = data.at( "hp" ).asFloat() + ( this->level - 1 ) * (float)data.at( "hpgr" ).asFloat();
         this->current_hp = this->hp;
-        this->mp = data.at( "mp" ).asFloat() + this->level * (float)data.at( "mpgr" ).asFloat();
+        this->mp = data.at( "mp" ).asFloat() + ( this->level - 1 ) * (float)data.at( "mpgr" ).asFloat();
         this->current_mp = this->mp;
-        this->atk = data.at( "atk" ).asFloat() + this->level * data.at( "atkgr" ).asFloat();
-        this->def = data.at( "def" ).asFloat() + this->level * data.at( "defgr" ).asFloat();
+        this->atk = data.at( "atk" ).asFloat() + ( this->level - 1 ) * data.at( "atkgr" ).asFloat();
+        this->def = data.at( "def" ).asFloat() + ( this->level - 1 ) * data.at( "defgr" ).asFloat();
         this->move_speed = data.at( "movespeed" ).asFloat();
         this->atk_speed = data.at( "attackspeed" ).asFloat();
         this->collide = data.at( "collide" ).asFloat();
-        this->critical = data.at( "cri" ).asFloat() + this->level * data.at( "crigr" ).asFloat();
-        this->tenacity = data.at( "ten" ).asFloat() + this->level * data.at( "tengr" ).asFloat();
-        this->hit = data.at( "hit" ).asFloat() + this->level * data.at( "hitgr" ).asFloat();
-        this->dodge = data.at( "dodge" ).asFloat() + this->level * data.at( "dodge" ).asFloat();
+        this->critical = data.at( "cri" ).asFloat() + ( this->level - 1 ) * data.at( "crigr" ).asFloat();
+        this->tenacity = data.at( "ten" ).asFloat() + ( this->level - 1 ) * data.at( "tengr" ).asFloat();
+        this->hit = data.at( "hit" ).asFloat() + ( this->level - 1 ) * data.at( "hitgr" ).asFloat();
+        this->dodge = data.at( "dodge" ).asFloat() + ( this->level - 1 ) * data.at( "dodge" ).asFloat();
         this->atk_range = data.at( "range" ).asFloat();
         
         auto itr = data.find( "bullet_name" );
@@ -331,7 +331,7 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
     
     this->guard_radius = unit_config.at( "guard_radius" ).asFloat();
     
-    this->recover = unit_config.at( "rec" ).asFloat() + this->level * unit_config.at( "recgr" ).asFloat();
+    this->recover = unit_config.at( "rec" ).asFloat() + ( this->level - 1 ) * unit_config.at( "recgr" ).asFloat();
     this->scale = unit_config.at( "scale" ).asFloat();
     
     this->is_melee = unit_config.at( "is_melee" ).asBool();

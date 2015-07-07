@@ -55,8 +55,8 @@ bool OpenningAnimationLayer::init() {
     _sp_next = dynamic_cast<Sprite*>( _root_node->getChildByName( "sp_next_arrow" ) );
     _sp_next->setVisible( false );
     
-    ui::Button* btn_skip = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_skip" ) );
-    btn_skip->addTouchEventListener( CC_CALLBACK_2( OpenningAnimationLayer::onSkipTouched, this ) );
+    _btn_skip = dynamic_cast<ui::Button*>( _root_node->getChildByName( "btn_skip" ) );
+    _btn_skip->addTouchEventListener( CC_CALLBACK_2( OpenningAnimationLayer::onSkipTouched, this ) );
     
     Node* pn_last = _root_node->getChildByName( "movie8_panel" );
     
@@ -142,7 +142,7 @@ void OpenningAnimationLayer::onEnterTouched( cocos2d::Ref* sender, cocos2d::ui::
 
 void OpenningAnimationLayer::start( float delta ) {
     this->runAction( _panel_action );
-    _panel_action->play( "page1", false );
+    _panel_action->play( "all", false );
     _panel_action->setLastFrameCallFunc( CC_CALLBACK_0( OpenningAnimationLayer::onAnimationComplete, this ) );
 }
 
@@ -157,11 +157,13 @@ void OpenningAnimationLayer::onEnterTransitionDidFinish() {
 }
 
 void OpenningAnimationLayer::onAnimationComplete() {
-    if( _current_shot < _total_shot ) {
-        _btn_next->setVisible( true );
-        _sp_next->setVisible( true );
-    }
-    else {
-        _btn_enter->setEnabled( true );
-    }
+//    if( _current_shot < _total_shot ) {
+//        _btn_next->setVisible( true );
+//        _sp_next->setVisible( true );
+//    }
+//    else {
+//        _btn_enter->setEnabled( true );
+//    }
+    _btn_enter->setEnabled( true );
+    _btn_skip->setVisible( false );
 }

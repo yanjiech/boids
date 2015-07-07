@@ -11,6 +11,7 @@
 #include "UnitNodeComponent.h"
 #include "../Utils.h"
 #include "BulletNode.h"
+#include "skill/SkillCache.h"
 
 using namespace cocos2d;
 
@@ -217,7 +218,7 @@ void StunBuff::begin() {
     std::string name = Utils::stringFormat( "stunned" );
     _component = TimeLimitSpineComponent::create( _duration, skeleton, name, true );
     _owner->addUnitComponent( _component, _component->getName(), eComponentLayer::OverObject );
-    _component->setPosition( Point( _owner->getContentSize().width / 2, _owner->getContentSize().height ) );
+    _component->setPosition( _owner->getLocalHeadPos() );
     _component->setAnimation( 0, "animation", true );
     _owner->changeUnitState( eUnitState::UnderControl, true );
 }
@@ -225,7 +226,6 @@ void StunBuff::begin() {
 void StunBuff::end() {
     Buff::end();
     _component->setDuration( 0 );
-    _owner->changeUnitState( eUnitState::Idle, true );
 }
 
 
@@ -525,8 +525,6 @@ void PierceBuff::end() {
     _owner->falldown( 0, 30.0f );
     _owner->removeUnitComponent( _buff_id + "_b" );
     _owner->removeUnitComponent( _buff_id + "_f" );
-    
-    _owner->changeUnitState( eUnitState::Idle, true );
 }
 
 //tag buff

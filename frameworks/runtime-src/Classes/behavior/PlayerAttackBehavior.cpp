@@ -70,7 +70,7 @@ bool PlayerAttackBehavior::behave( float delta ) {
     float min_distance = ( chasing_target && chasing_target->isAttackable() ) ? chasing_target->getPosition().distance( unit_pos ) : INT_MAX;
     cocos2d::Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( unit_node->getTargetCamp(), unit_pos, unit_pos, unit_node->getUnitData()->guard_radius );
     for( auto unit : candidates ) {
-        if( unit->isAttackable() ) {
+        if( unit->isAttackable() && unit->isAlive() ) {
             float distance = unit_pos.distance( unit->getPosition() );
             if( distance < min_distance ) {
                 chasing_target = unit;
@@ -81,7 +81,7 @@ bool PlayerAttackBehavior::behave( float delta ) {
     
     cocos2d::Vector<TowerNode*> tower_candidates = battle_layer->getAliveTowersInRange( unit_node->getTargetCamp(), unit_pos, unit_pos, unit_node->getUnitData()->guard_radius );
     for( auto tower : tower_candidates ) {
-        if( tower->isAttackable() ) {
+        if( tower->isAttackable() && tower->isAlive() ) {
             float distance = unit_pos.distance( tower->getPosition() );
             if( distance < min_distance ) {
                 chasing_target = tower;

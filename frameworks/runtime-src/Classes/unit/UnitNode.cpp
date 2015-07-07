@@ -236,6 +236,21 @@ void UnitNode::updateFrame( float delta ) {
     
     ++_same_dir_frame_count;
     this->updateBuffs( delta );
+    
+    if( this->isUnderControl() ) {
+        bool under_control = false;
+        for( auto pair : _buffs ) {
+            Buff* buff = pair.second;
+            if( buff->getBuffType() == BUFF_TYPE_STUN || buff->getBuffType() == BUFF_TYPE_PIERCE ) {
+                under_control = true;
+                break;
+            }
+        }
+        if( !under_control ) {
+            this->changeUnitState( eUnitState::Idle, true );
+        }
+    }
+    
     TargetNode::updateFrame( delta );
     
     this->updateHintNode( delta );
@@ -250,7 +265,7 @@ void UnitNode::updateFrame( float delta ) {
     }
     
     ElementData* unit_data = this->getTargetData();
-    unit_data->current_hp = clampf( unit_data->current_hp + unit_data->recover * delta, 0, unit_data->hp );
+//    unit_data->current_hp = clampf( unit_data->current_hp + unit_data->recover * delta, 0, unit_data->hp );
     unit_data->current_mp = clampf( unit_data->current_mp + unit_data->recover * delta, 0, unit_data->mp );
 }
 
@@ -285,8 +300,7 @@ void UnitNode::onSkeletonAnimationCompleted( int track_index ) {
     else if( animation_name == "Cast" || animation_name == "Cast2" ) {
         if( _using_skill_params["multi_action"].asBool() ) {
             if( _using_skill_params["state"].asString() == "start" ) {
-                _unit_state_changed = true;
-                this->setNextUnitState( eUnitState::Casting );
+                this->changeUnitState( eUnitState::Casting, true );
                 _using_skill_params["state"] = Value( "continue" );
             }
         }
@@ -347,22 +361,28 @@ void UnitNode::setChasingTarget( TargetNode* target ) {
 }
 
 void UnitNode::changeUnitState( eUnitState new_state, bool force ) {
-    if( ( _state >= eUnitState::Dying || _next_state >= eUnitState::Dying ) && ( new_state < _state || new_state < _next_state ) ) {
+    if( ( _state >= eUnitState::Dying && new_state < _state ) || ( _next_state >= eUnitState::Dying && new_state < _next_state ) ) {
         return;
     }
     if( force || ( ( _next_state == eUnitState::Unknown_Unit_State && new_state != _state ) || new_state >= eUnitState::Dying ) ) {
+        if( _next_state == eUnitState::UnderControl && new_state < _next_state ) {
+            return;
+        }
         _next_state = new_state;
         _unit_state_changed = true;
+        if( _next_state != _state ) {
+            _current_skeleton->clearTrack();
+        }
+        if( _next_state == eUnitState::UnderControl ) {
+            SkillCache::getInstance()->removeSkillOfOwner( this );
+            this->endSkill();
+        }
     }
 }
 
 void UnitNode::applyUnitState() {
     if( _unit_state_changed ) {
         _unit_state_changed = false;
-        if( _state == Casting && _next_state != Casting && _next_state != Idle ) {
-            SkillCache::getInstance()->removeSkillOfOwner( this );
-            this->endSkill();
-        }
         _state = _next_state;
         _next_state = eUnitState::Unknown_Unit_State;
         switch( _state ) {
@@ -547,6 +567,10 @@ void UnitNode::appear() {
 }
 
 void UnitNode::disappear() {
+    _front->clearTrack();
+    if( _back ) {
+        _back->clearTrack();
+    }
     FadeTo* fadeout = FadeTo::create( 1.2f, 0 );
     CallFunc* callback = CallFunc::create( CC_CALLBACK_0( UnitNode::onDisappearEnd, this ) );
     Sequence* seq = Sequence::create( fadeout, callback, nullptr );
@@ -605,10 +629,10 @@ void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* 
         
         //dying
         if( unit_data->current_hp <= 0 ) {
-            this->changeUnitState( eUnitState::Dying, true );
             _battle_layer->clearChasingTarget( this );
             SkillCache::getInstance()->removeSkillOfOwner( this );
             this->endSkill();
+            this->changeUnitState( eUnitState::Dying, true );
         }
         else if( _chasing_target == nullptr ) {
             if( atker && atker->isAttackable() && atker->isAlive() ) {
@@ -767,7 +791,7 @@ bool UnitNode::hasItem( const std::string& item_name ) {
 }
 
 void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_per, float duration ) {
-    if( !this->isDying() && !this->isCasting() ) {
+    if( !this->isDying() && !this->isCasting() && !this->isUnderControl() ) {
         Point sk_dir = dir;
         if( sk_dir.x != 0 || sk_dir.y != 0 ) {
             this->changeUnitDirection( dir );
@@ -790,14 +814,12 @@ void UnitNode::useSkill( int skill_id, const cocos2d::Point& dir, float range_pe
 }
 
 void UnitNode::endSkill() {
-    if( this->isCasting() ) {
-        auto itr = _using_skill_params.find( "skill_id" );
-        if( itr != _using_skill_params.end() ) {
-            int sk_id = _using_skill_params.at( "skill_id" ).asInt();
-            _skills.at( sk_id )->reload();
-        }
-        _using_skill_params.clear();
+    auto itr = _using_skill_params.find( "skill_id" );
+    if( itr != _using_skill_params.end() ) {
+        int sk_id = _using_skill_params.at( "skill_id" ).asInt();
+        _skills.at( sk_id )->reload();
     }
+    _using_skill_params.clear();
 }
 
 void UnitNode::endCast() {
@@ -805,8 +827,7 @@ void UnitNode::endCast() {
         _using_skill_params["state"] = Value( "end" );
         int sk_id = _using_skill_params.at( "skill_id" ).asInt();
         _skills.at( sk_id )->setSkillNode( nullptr );
-        _unit_state_changed = true;
-        this->setNextUnitState( eUnitState::Casting );
+        this->changeUnitState( eUnitState::Casting, true );
     }
 }
 
@@ -994,10 +1015,13 @@ void UnitNode::evaluateCatchUp() {
     if( UnitNode* leader = _battle_layer->getLeaderUnit() ) {
         const Point& leader_pos = leader->getPosition();
         float distance = pos.distance( leader_pos );
-        if( !_should_catch_up && distance > DEFAULT_CATCH_UP_START_DISTANCE ) {
+        const ValueMap& game_config = ResourceManager::getInstance()->getGameConfig();
+        float catchup_start_distance = game_config.at( "catchup_start_distance" ).asFloat();
+        float catchup_stop_distance = game_config.at( "catchup_stop_distance" ).asFloat();
+        if( !_should_catch_up && distance > catchup_start_distance ) {
             this->setShouldCatchUp( true );
         }
-        else if( _should_catch_up && distance < DEFAULT_CATCH_UP_STOP_DISTANCE ) {
+        else if( _should_catch_up && distance < catchup_stop_distance ) {
             this->setShouldCatchUp( false );
         }
     }
@@ -1329,6 +1353,9 @@ void UnitNode::updateHintNode( float delta ) {
             }
             else if( this->hasUnitTag( BATTLE_HINT_MASTER ) ) {
                 _hint_node = BattleHintNode::create( BATTLE_HINT_MASTER );
+            }
+            else if( this->hasUnitTag( BATTLE_HINT_ITEM ) ) {
+                _hint_node = BattleHintNode::create( BATTLE_HINT_ITEM );
             }
             else {
                 _has_hint_node = false;

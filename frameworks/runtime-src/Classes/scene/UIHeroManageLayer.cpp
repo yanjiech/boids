@@ -516,6 +516,7 @@ bool UIHeroManageLayer::init() {
     
     Node* upgrade_effect_node = _root_node->getChildByName( "upgrade_effect_node" );
     _upgrade_effect = ArmatureManager::getInstance()->createArmature( "ui/effect_lvlup" );
+    _upgrade_effect->setScale( 1.5f );
     upgrade_effect_node->addChild( _upgrade_effect );
     
     _lb_hero_name = dynamic_cast<ui::Text*>( _root_node->getChildByName( "lb_hero_name" ) );
@@ -1078,10 +1079,12 @@ void UIHeroManageLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* eve
                 if( _selected_deploy_slot != nullptr && _selected_deploy_slot->getHeroId() != "0" ) {
                     //undeploy hero
                     if( slot == nullptr ) {
-                        _selected_deploy_slot->setHeroId( "0" );
-                        _selected_deploy_slot->setAvatar( nullptr );
-                        _selected_hero->setDeployed( false );
-                        this->setSelectedDeploySlot( nullptr );
+                        if( this->getDeployedSlotCount() > 1 ) {
+                            _selected_deploy_slot->setHeroId( "0" );
+                            _selected_deploy_slot->setAvatar( nullptr );
+                            _selected_hero->setDeployed( false );
+                            this->setSelectedDeploySlot( nullptr );
+                        }
                     }
                     //exchange hero
                     else if( slot != _selected_deploy_slot ) {
@@ -1167,4 +1170,15 @@ UIHeroDeploySlot* UIHeroManageLayer::deploySlotIntersectsRect( cocos2d::Touch* t
         }
     }
     return nullptr;
+}
+
+int UIHeroManageLayer::getDeployedSlotCount() {
+    int count = 0;
+    for( auto slot : _deploy_slots ) {
+        const std::string& hero_id = slot->getHeroId();
+        if( hero_id != "l" && hero_id != "0" ) {
+            count++;
+        }
+    }
+    return count;
 }

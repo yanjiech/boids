@@ -61,7 +61,8 @@ bool PlayerSkillBehavior::behave( float delta ) {
         return false;
     }
     
-    if( unit_node->getChasingTarget() != nullptr ) {
+    UnitNode* chasing_target = dynamic_cast<UnitNode*>( unit_node->getChasingTarget() );
+    if( chasing_target != nullptr ) {
         cocos2d::Point target_pos = unit_node->getChasingTarget()->getPosition();
         cocos2d::Point unit_pos = unit_node->getPosition();
         float distance = target_pos.distance( unit_pos );

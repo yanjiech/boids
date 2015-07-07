@@ -54,12 +54,14 @@ bool PlayerMoveBehavior::behave( float delta ) {
     float move_speed = unit_node->getUnitData()->move_speed;
     
     if( unit_node->shouldCatchUp() && !unit_node->isCharging() ) {
+        unit_node->setChasingTarget( nullptr );
         Point last_pos = unit_node->getPosition();
         unit_node->findPathToPosition( battle_layer->getLeaderUnit()->getPosition() );
         unit_node->walkAlongWalkPath( move_speed * DEFAULT_CATCH_UP_SPEED_FACTOR * delta );
         return true;
     }
     if( control_dir.x != 0 || control_dir.y != 0 ) {
+        unit_node->setChasingTarget( nullptr );
         Point new_pos = unit_node->getPosition() + control_dir * delta * move_speed;
         unit_node->walkTo( new_pos );
         return true;

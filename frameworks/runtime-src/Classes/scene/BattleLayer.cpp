@@ -224,51 +224,48 @@ void BattleLayer::reset() {
 
 void BattleLayer::updateFrame( float delta ) {
     if( _state == eBattleState::BattleRunning || _state == eBattleState::BattleWin || _state == eBattleState::BattleLose ) {
+        this->updateBuildings( delta );
+        this->updateTowers( delta );
+        this->updateBlocks( delta );
+        
         //update skill
         SkillCache::getInstance()->updateFrame( delta );
+        
+        //update bullets
+        this->updateBullets( delta );
+        
         _skill_ui_layer->updateFrame( delta );
         
-        //handle dead units which need to be removed from battle
         //handle directly disappear units
         UnitMap alive_units = this->getAliveUnits();
         for( auto pair : alive_units ) {
             UnitNode* unit = pair.second;
             
-            if( unit->getUnitState() == eUnitState::Dead ) {
+            if( unit->getUnitState() >= eUnitState::Dead ) {
                 this->onUnitDying( unit );
             }
         }
         
+        //handle dead units which need to be removed from battle
         UnitMap dead_unit_map = this->getDeadUnits();
         for( auto pair : dead_unit_map ) {
             UnitNode* unit = pair.second;
             
-            if( unit->getUnitState() == eUnitState::Dead ) {
+            if( unit->getUnitState() >= eUnitState::Dead ) {
                 this->onUnitDisappear( unit );
             }
         }
-        
-        this->updateBuildings( delta );
-        this->updateTowers( delta );
-        this->updateBlocks( delta );
         
         //handle newly dying units which need to be removed from alive list
         UnitMap unit_map = this->getAliveUnits();
         for( auto pair : unit_map ) {
             UnitNode* unit = pair.second;
-            
-            if( unit->getUnitState() == eUnitState::Dying ) {
+            if( unit->getUnitState() >= eUnitState::Dying ) {
                 this->onUnitDying( unit );
             }
-        }
-        
-        //update bullets
-        this->updateBullets( delta );
-        
-        //handle alive units
-        for( auto pair : _alive_units ) {
-            UnitNode* unit = pair.second;
-            unit->updateFrame( delta );
+            else {
+                unit->updateFrame( delta );
+            }
         }
         
         for( auto pair : _dead_units ) {
@@ -801,11 +798,6 @@ void BattleLayer::onUnitAppear( UnitNode* unit ) {
 }
 
 void BattleLayer::onUnitDying( UnitNode* unit ) {
-    for( auto pair : _alive_units ) {
-        if( pair.second->getChasingTarget() == unit ) {
-            pair.second->setChasingTarget( nullptr );
-        }
-    }
     std::string key = Utils::stringFormat( "%d", unit->getDeployId() );
     if( unit->getTargetCamp() == eTargetCamp::Player ) {
         _player_units.erase( key );
@@ -813,7 +805,6 @@ void BattleLayer::onUnitDying( UnitNode* unit ) {
     }
     _alive_units.erase( key );
     _dead_units.insert( key, unit );
-    this->clearChasingTarget(  unit );
     _map_logic->onTargetNodeDead( unit );
     
     if( unit->hasUnitTag( "leader" ) ) {

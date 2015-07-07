@@ -531,8 +531,8 @@ void MapLogic::dropItem( UnitNode* unit ) {
             DropItem* item = DropItem::create( item_data );
             _battle_layer->dropItem( item, pos, eBattleSubLayer::ObjectLayer );
             
-            Point drop_pos = Utils::randomPositionInRange( unit->getPosition(), 50.0f );
-            Rect region = Rect( drop_pos.x - 25.0f, drop_pos.y - 25.0f, 50.0f, 50.0 );
+            Point drop_pos = Utils::randomPositionInRange( unit->getPosition(), 30.0f );
+            Rect region = Rect( drop_pos.x - 15.0f, drop_pos.y - 15.0f, 30.0f, 30.0 );
             Point desired_pos = _battle_layer->getAvailablePosition( 50.0f, region );
             if( desired_pos.equals( Point::ZERO ) ) {
                 desired_pos = unit->getPosition();
@@ -558,8 +558,8 @@ void MapLogic::dropItem( UnitNode* unit ) {
                 DropItem* item = DropItem::create( item_data );
                 _battle_layer->dropItem( item, pos, eBattleSubLayer::ObjectLayer );
                 
-                Point drop_pos = Utils::randomPositionInRange( pos, 50.0f );
-                Rect region = Rect( drop_pos.x - 25.0f, drop_pos.y - 25.0f, 50.0f, 50.0 );
+                Point drop_pos = Utils::randomPositionInRange( pos, 30.0f );
+                Rect region = Rect( drop_pos.x - 15.0f, drop_pos.y - 15.0f, 30.0f, 30.0 );
                 Point desired_pos = _battle_layer->getAvailablePosition( 50.0f, region );
                 if( desired_pos.equals( Point::ZERO ) ) {
                     desired_pos = unit->getPosition();

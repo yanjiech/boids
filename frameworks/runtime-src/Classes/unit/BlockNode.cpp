@@ -10,6 +10,7 @@
 #include "../BoidsMath.h"
 #include "../AI/Terrain.h"
 #include "../scene/BattleLayer.h"
+#include "../manager/AudioManager.h"
 
 using namespace cocos2d;
 
@@ -92,7 +93,7 @@ bool BlockNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& grid_p
         
         std::string resource = "buildings/building_repairing";
         _repairing_component = ArmatureManager::getInstance()->createArmature( resource );
-        this->addChild( _repairing_component, 9 );
+        this->addChild( _repairing_component, 100 );
         _repairing_component->setAnimation( 0, "animation", true );
         _repairing_component->setVisible( false );
     }
@@ -175,6 +176,8 @@ void BlockNode::updateFrame( float delta ) {
                 _battle_layer->addToEffectLayer( component, repaired_pos, _battle_layer->zorderForPositionOnObjectLayer( repaired_pos ) );
                 component->setAnimation( 0, "animation", false );
                 
+//                AudioManager::getInstance()->playEffect( "audio/common/repaired.mp3" );
+                
                 _need_repair = false;
                 this->setEnabled( true );
                 this->updateEnabled();
@@ -220,7 +223,7 @@ void BlockNode::setRangeSprite( cocos2d::Sprite* image ) {
     }
     _range_sprite = image;
     if( _range_sprite ) {
-        _battle_layer->addToBelowObjectLayer( _range_sprite, _center, 100 );
+        _battle_layer->addToBelowObjectLayer( _range_sprite, _center, 50 );
     }
 }
 
