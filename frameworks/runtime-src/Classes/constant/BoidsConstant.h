@@ -150,4 +150,7 @@
 #define DEFAULT_HP_BAR_WIDTH 100.0
 #define DEFAULT_HP_BAR_HEIGHT 10.0
 
+#define BULLET_SHAPE_CIRCLE "circle"
+#define BULLET_SHAPE_LINE "line"
+
 #endif /* defined(__Boids__BoidsConstant__) */

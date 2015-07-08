@@ -193,6 +193,7 @@
         "name" : "penetrate_spear",
         "speed" : 1200.0,
         "move_type" : "straight",
+        "bullet_shape" : "line",
         "body_type" : "spine",
         "hit_type" : "spine",
         "hit_name" : "default",
@@ -260,7 +261,8 @@
         "hit_type" : "spine",
         "hit_name" : "blue_ball",
         "need_rotate": true,
-        "damage_radius" : 50.0
+        "bullet_shape" : "line",
+        "damage_radius" : 30.0
     },
     "zhadan": {
         "name": "zhadan",

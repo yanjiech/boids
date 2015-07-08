@@ -215,6 +215,16 @@ void UIBattleMenuLayer::onHomeTouched( cocos2d::Ref* sender, cocos2d::ui::Widget
 
 void UIBattleMenuLayer::onRestartTouched( cocos2d::Ref* sender, cocos2d::ui::Widget::TouchEventType type ) {
     if( type == ui::Widget::TouchEventType::ENDED ) {
+        cocos2d::Vector<cocos2d::Ref*> a_ref_params;
+        MapData* map_data = _battle_layer->getMapData();
+        a_ref_params.pushBack( map_data );
+        
+        cocos2d::ValueMap a_value_params;
+        a_value_params["is_pvp"] = Value( false );
+        a_value_params["level_id"] = Value( _battle_layer->getLevelId() );
+        
+        SceneConfig* scene_config = SceneConfig::create( a_ref_params, a_value_params );
+        SceneManager::getInstance()->transitToScene( eSceneName::SceneBattle, scene_config );
     }
 }
 

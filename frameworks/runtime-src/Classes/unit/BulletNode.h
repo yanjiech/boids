@@ -65,6 +65,8 @@ protected:
     
     bool _will_miss;
     
+    std::string _bullet_shape;
+    
 protected:
     void shoot( int emit_pos_type = 0 );
     
@@ -100,6 +102,9 @@ public:
     void setDuration( float duration ) { _duration = duration; }
     
     virtual void hitTarget( class TargetNode* target_unit, bool with_buff = false );
+    
+    const std::string& getBulletShape() { return _bullet_shape; }
+    void setBulletShape( const std::string& shape ) { _bullet_shape = shape; }
 };
 
 class DirectionalBulletNode : public BulletNode {

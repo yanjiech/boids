@@ -125,6 +125,14 @@ bool BulletNode::init( class TargetNode* unit_node, const cocos2d::ValueMap& bul
         _duration = 0;
     }
     
+    itr = _bullet_data.find( "bullet_shape" );
+    if( itr != _bullet_data.end() ) {
+        _bullet_shape = itr->second.asString();
+    }
+    else {
+        _bullet_shape = BULLET_SHAPE_CIRCLE;
+    }
+    
     _should_recycle = false;
     
     _hit_type = "";
@@ -444,15 +452,24 @@ void DirectionalBulletNode::updateFrame( float delta ) {
     else {
         Point new_pos = this->getPosition() + _dir * delta * _speed;
         this->setPosition( new_pos );
-        if( Terrain::getInstance()->isBlocked( _init_pos, new_pos ) ) {
-            this->setShouldRecycle( true );
-        }
-        else {
+//        if( Terrain::getInstance()->isBlocked( _init_pos, new_pos ) ) {
+//            this->setShouldRecycle( true );
+//        }
+//        else {
             if( _streak ) {
                 _streak->setPosition( new_pos );
             }
             
-            cocos2d::Vector<UnitNode*> alive_opponents = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), new_pos, _damage_radius );
+            cocos2d::Vector<UnitNode*> alive_opponents;
+            if( _bullet_shape == BULLET_SHAPE_CIRCLE ) {
+                alive_opponents = _battle_layer->getAliveOpponentsInRange( _source_unit->getTargetCamp(), new_pos, _damage_radius );
+
+            }
+            else if( _bullet_shape == BULLET_SHAPE_LINE ) {
+                Point pt1 = new_pos - _dir * _damage_radius;
+                Point pt2 = new_pos + _dir * _damage_radius;
+                alive_opponents = _battle_layer->getAliveOpponentsIntersectsLine( _source_unit->getTargetCamp(), pt1, pt2 );
+            }
             for( auto itr = alive_opponents.begin(); itr != alive_opponents.end(); ++itr ) {
                 UnitNode* target_unit = *itr;
                 int unit_id = target_unit->getDeployId();
@@ -461,7 +478,7 @@ void DirectionalBulletNode::updateFrame( float delta ) {
                     this->hitTarget( target_unit );
                 }
             }
-        }
+//        }
     }
 }
 

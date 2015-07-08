@@ -20,12 +20,14 @@ private:
     cocos2d::Sprite* _selected_sprite;
     cocos2d::Sprite* _equip_sprite;
     
+    cocos2d::Sprite* _placeholder;
+    
 public:
     UIEquipmentCell();
     virtual ~UIEquipmentCell();
     
-    static UIEquipmentCell* create( EquipmentData* equip_data, const std::string& bg_sprite_name = "" );
-    virtual bool init( EquipmentData* equip_data, const std::string& bg_sprite_name = "" );
+    static UIEquipmentCell* create( EquipmentData* equip_data, cocos2d::Sprite* placeholder = nullptr, const std::string& bg_sprite_name = "" );
+    virtual bool init( EquipmentData* equip_data, cocos2d::Sprite* placeholder = nullptr, const std::string& bg_sprite_name = "" );
     
     static UIEquipmentCell* create( const cocos2d::ValueMap& data, const std::string& bg_sprite_name = "" );
     virtual bool init( const cocos2d::ValueMap& data, const std::string& bg_sprite_name = "" );
@@ -38,6 +40,9 @@ public:
     
     bool isSelected();
     void setSelected( bool b );
+    
+    cocos2d::Sprite* getPlaceHoder() { return _placeholder; }
+    void setPlaceHolder( cocos2d::Sprite* placeholder ) { _placeholder = placeholder; }
 };
 
 class UIHeroDetailLayer : public TouchableLayer {

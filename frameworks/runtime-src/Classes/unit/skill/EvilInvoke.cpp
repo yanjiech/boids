@@ -64,6 +64,9 @@ void EvilInvoke::begin() {
     _owner->addUnitComponent( component, name, eComponentLayer::OverObject );
     component->setPosition( Point::ZERO );
     component->setAnimation( 0, "animation", true );
+    
+    //invoke monster
+    
 }
 
 void EvilInvoke::end() {

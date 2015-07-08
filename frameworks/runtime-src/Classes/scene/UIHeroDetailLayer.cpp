@@ -27,7 +27,8 @@ using namespace cocos2d;
 //equip cell
 UIEquipmentCell::UIEquipmentCell() :
 _equip_data( nullptr ),
-_equip_sprite( nullptr )
+_equip_sprite( nullptr ),
+_placeholder( nullptr )
 {
     
 }
@@ -36,9 +37,9 @@ UIEquipmentCell::~UIEquipmentCell() {
     
 }
 
-UIEquipmentCell* UIEquipmentCell::create( EquipmentData* equip_data, const std::string& bg_sprite_name ) {
+UIEquipmentCell* UIEquipmentCell::create( EquipmentData* equip_data, cocos2d::Sprite* placeholder, const std::string& bg_sprite_name ) {
     UIEquipmentCell* ret = new UIEquipmentCell();
-    if( ret && ret->init( equip_data, bg_sprite_name ) ) {
+    if( ret && ret->init( equip_data, placeholder, bg_sprite_name ) ) {
         ret->autorelease();
         return ret;
     }
@@ -48,11 +49,12 @@ UIEquipmentCell* UIEquipmentCell::create( EquipmentData* equip_data, const std::
     }
 }
 
-bool UIEquipmentCell::init( EquipmentData* equip_data, const std::string& bg_sprite_name ) {
+bool UIEquipmentCell::init( EquipmentData* equip_data, cocos2d::Sprite* placeholder, const std::string& bg_sprite_name ) {
     if( !Node::init() ) {
         return false;
     }
     
+    this->setPlaceHolder( placeholder );
     this->setContentSize( Size( EQUIP_CELL_WIDTH, EQUIP_CELL_HEIGHT ) );
     this->setAnchorPoint( Point( 0.5f, 0.5f ) );
     
@@ -147,6 +149,14 @@ void UIEquipmentCell::setEquipSprite( cocos2d::Sprite* icon ) {
         }
         else {
             _equip_sprite->setVisible( false );
+        }
+    }
+    if( _placeholder ) {
+        if( _equip_sprite ) {
+            _placeholder->setVisible( !_equip_sprite->isVisible() );
+        }
+        else {
+            _placeholder->setVisible( true );
         }
     }
 }
@@ -255,20 +265,28 @@ bool UIHeroDetailLayer::init( UIHeroManageHeroSlot* hero ) {
     
     UnitData* unit_data = _hero->getUnitData();
     
+    Sprite* sp_weapon_placeholder = dynamic_cast<Sprite*>( equip_panel->getChildByName( "sp_weapon" ) );
+    
     Node* weapon_node = equip_panel->getChildByName( "nd_weapon" );
-    _weapon_cell = UIEquipmentCell::create( unit_data->getEquipData( eEquipType::EquipTypeWeapon ) );
+    _weapon_cell = UIEquipmentCell::create( unit_data->getEquipData( eEquipType::EquipTypeWeapon ), sp_weapon_placeholder );
     weapon_node->addChild( _weapon_cell );
     
+    Sprite* sp_armor_placeholder = dynamic_cast<Sprite*>( equip_panel->getChildByName( "sp_armor" ) );
+    
     Node* armor_node = equip_panel->getChildByName( "nd_armor" );
-    _armor_cell = UIEquipmentCell::create( unit_data->getEquipData( eEquipType::EquipTypeArmor ) );
+    _armor_cell = UIEquipmentCell::create( unit_data->getEquipData( eEquipType::EquipTypeArmor ), sp_armor_placeholder );
     armor_node->addChild( _armor_cell );
     
+    Sprite* sp_boot_placeholder = dynamic_cast<Sprite*>( equip_panel->getChildByName( "sp_boot" ) );
+    
     Node* boot_node = equip_panel->getChildByName( "nd_boot" );
-    _boot_cell = UIEquipmentCell::create( unit_data->getEquipData( eEquipType::EquipTypeBoot ) );
+    _boot_cell = UIEquipmentCell::create( unit_data->getEquipData( eEquipType::EquipTypeBoot ), sp_boot_placeholder );
     boot_node->addChild( _boot_cell );
     
+    Sprite* sp_accessory_placeholder = dynamic_cast<Sprite*>( equip_panel->getChildByName( "sp_accessory" ) );
+    
     Node* accessory_node = equip_panel->getChildByName( "nd_accessory" );
-    _accessory_cell = UIEquipmentCell::create( unit_data->getEquipData( eEquipType::EquipTypeAccessory ) );
+    _accessory_cell = UIEquipmentCell::create( unit_data->getEquipData( eEquipType::EquipTypeAccessory ), sp_accessory_placeholder );
     accessory_node->addChild( _accessory_cell );
     
     _btn_prev = dynamic_cast<ui::Button*>( equip_panel->getChildByName( "leftButton" ) );
@@ -759,7 +777,7 @@ void UIHeroDetailLayer::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* eve
                         player_info->updateEquip( _target_equiped_cell->getEquipData()->obj_id, false );
                     }
                     
-                    //take on equip
+                    //put on equip
                     std::string obj_id = _selected_repo_cell->getEquipData()->obj_id;
                     player_info->updateEquip( obj_id, true );
                     ValueMap new_hero_data = player_info->updateUnitEquip( hero_id, EquipmentData::stringFromType( type ), obj_id );

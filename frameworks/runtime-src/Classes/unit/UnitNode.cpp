@@ -265,7 +265,7 @@ void UnitNode::updateFrame( float delta ) {
     }
     
     ElementData* unit_data = this->getTargetData();
-//    unit_data->current_hp = clampf( unit_data->current_hp + unit_data->recover * delta, 0, unit_data->hp );
+    unit_data->current_hp = clampf( unit_data->current_hp + unit_data->recover * delta, 0, unit_data->hp );
     unit_data->current_mp = clampf( unit_data->current_mp + unit_data->recover * delta, 0, unit_data->mp );
 }
 
@@ -1138,15 +1138,16 @@ cocos2d::Point UnitNode::getNextWanderPos() {
 }
 
 void UnitNode::setWalkPath( Path* path ) {
+    CC_SAFE_RETAIN( path );
     CC_SAFE_RELEASE( _walk_path );
     _walk_path = path;
-    CC_SAFE_RETAIN( _walk_path );
 }
 
 void UnitNode::setTourPath( Path* path ) {
+    CC_SAFE_RETAIN( path );
     CC_SAFE_RELEASE( _tour_path );
     _tour_path = path;
-    CC_SAFE_RETAIN( _tour_path );
+    
 }
 
 UnitData* UnitNode::getUnitData() {
