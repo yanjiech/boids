@@ -15,6 +15,7 @@
 #include "../manager/AudioManager.h"
 #include "../unit/skill/SkillCache.h"
 #include "../manager/AudioManager.h"
+#include "../manager/ResourceManager.h"
 
 #define FOG_TILE_SIZE 32
 #define FOG_TILE_SIZE_WIDTH 110
@@ -131,7 +132,7 @@ bool BattleLayer::init( MapData* map_data, const std::string& level_id, bool is_
         _skill_ui_layer = UIBattleLayer::create( this );
         this->addChild( _skill_ui_layer, eBattleSubLayer::BattleUILayer, eBattleSubLayer::BattleUILayer );
         
-        _control_layer = UIControlLayer::create();
+        _control_layer = UIControlLayer::create( this );
         this->addChild( _control_layer, eBattleSubLayer::ControlLayer, eBattleSubLayer::ControlLayer );
         
         _story_layer = UIStoryLayer::create( CC_CALLBACK_1( BattleLayer::endStory, this ) );
@@ -1094,6 +1095,114 @@ void BattleLayer::setHintVisibleByName( const std::string& name, bool visible ) 
         if( hint_name == name ) {
             hint->setVisible( visible );
         }
+    }
+}
+
+void BattleLayer::initFormation() {
+    int t = 0;
+    int m = 0;
+    int dps = 0;
+    int sup = 0;
+    for( auto pair : _player_units ) {
+        UnitNode* unit = pair.second;
+        int place = unit->getUnitData()->place;
+        if( place == 1 ) {
+            t++;
+        }
+        else if( place == 2 ) {
+            m++;
+        }
+        else if( place == 3 ) {
+            dps++;
+        }
+        else {
+            sup++;
+        }
+    }
+    sup = t + m + dps;
+    dps = t + m;
+    m = t;
+    t = 0;
+    for( auto pair : _player_units ) {
+        UnitNode* unit = pair.second;
+        int place = unit->getUnitData()->place;
+        if( place == 1 ) {
+            unit->setFormationPos( t++ );
+        }
+        else if( place == 2 ) {
+            unit->setFormationPos( m++ );
+        }
+        else if( place == 3 ) {
+            unit->setFormationPos( dps++ );
+        }
+        else if( place == 4 ) {
+            unit->setFormationPos( sup++ );
+        }
+    }
+}
+
+cocos2d::Point BattleLayer::getFormationPos( int pos_id ) {
+    UnitNode* leader_unit = this->getLeaderUnit();
+    Point leader_pos = leader_unit->getPosition();
+    int leader_pos_id = leader_unit->getFormationPos();
+    if( leader_pos_id == pos_id ) {
+        return leader_pos;
+    }
+    else {
+        Point dir = _control_layer->getJoyStickDirection();
+        if( dir == Point::ZERO ) {
+            dir = leader_unit->getUnitDirection();
+        }
+        const ValueMap& game_config = ResourceManager::getInstance()->getGameConfig();
+        float min_dis = game_config.at( "formation_distance" ).asFloat();
+        float d_angle = M_PI_2;
+        switch( leader_pos_id ) {
+            case 0:
+                d_angle = M_PI;
+                break;
+            case 1:
+                d_angle = -0.6 * M_PI;
+                break;
+            case 2:
+                d_angle = 0.6 * M_PI;
+                break;
+            case 3:
+                d_angle = -0.3 * M_PI;
+                break;
+            case 4:
+                d_angle = 0.3 * M_PI;
+                break;
+            default:
+                break;
+        }
+        float angle = dir.getAngle();
+        float c_angle = angle + d_angle;
+        Point c_dir = Point( cosf( c_angle ), sinf( c_angle ) );
+        Point center = leader_pos + c_dir * min_dis;
+        
+        switch( pos_id ) {
+            case 0:
+                d_angle = 0;
+                break;
+            case 1:
+                d_angle = 0.4 * M_PI;
+                break;
+            case 2:
+                d_angle = -0.4 * M_PI;
+                break;
+            case 3:
+                d_angle = 0.8 * M_PI;
+                break;
+            case 4:
+                d_angle = -0.8 * M_PI;
+                break;
+            default:
+                break;
+        }
+        
+        angle = d_angle + angle;
+        dir = Point( cosf( angle ), sinf( angle ) );
+        return center + dir * min_dis;
     }
 }
 

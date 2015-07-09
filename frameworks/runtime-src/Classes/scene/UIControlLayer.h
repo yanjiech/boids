@@ -35,13 +35,15 @@ private:
     
     JoyStick* _joystick;
     
+    class BattleLayer* _battle_layer;
+    
 public:
     UIControlLayer();
     ~UIControlLayer();
     
-    static UIControlLayer* create();
+    static UIControlLayer* create( class BattleLayer* battle_layer );
     
-    virtual bool init();
+    virtual bool init( class BattleLayer* battle_layer );
     
     virtual bool onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event );
     virtual void onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event );

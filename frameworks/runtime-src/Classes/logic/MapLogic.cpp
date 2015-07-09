@@ -123,6 +123,8 @@ void MapLogic::deployPlayerUnits() {
         cocos2d::Point pos = _battle_layer->getAvailablePosition( unit->getUnitData()->collide, player_start_area );
         _battle_layer->deployUnit( unit, pos, "player" );
     }
+    _battle_layer->setTeamCenter( Point( player_start_area.getMidX(), player_start_area.getMidY() ) );
+    _battle_layer->initFormation();
 }
 
 void MapLogic::onEventChanged( const std::string& event_name, const std::string& event_state ) {

@@ -7,6 +7,7 @@
 //
 
 #include "UIControlLayer.h"
+#include "BattleLayer.h"
 
 #define JOYSTICK_WHEEL_RADIUS 128.0
 
@@ -63,9 +64,9 @@ UIControlLayer::~UIControlLayer() {
     
 }
 
-UIControlLayer* UIControlLayer::create() {
+UIControlLayer* UIControlLayer::create( class BattleLayer* battle_layer ) {
     UIControlLayer* ret = new UIControlLayer();
-    if( ret && ret->init() ) {
+    if( ret && ret->init( battle_layer ) ) {
         ret->autorelease();
         return ret;
     }
@@ -75,11 +76,12 @@ UIControlLayer* UIControlLayer::create() {
     }
 }
 
-bool UIControlLayer::init() {
+bool UIControlLayer::init( class BattleLayer* battle_layer ) {
     if( !Layer::init() ) {
         return false;
     }
     
+    _battle_layer = battle_layer;
     _joystick = JoyStick::create( "joystick_back.png", "joystick_front.png", JOYSTICK_WHEEL_RADIUS );
     this->addChild( _joystick );
     _joystick->setVisible( false );

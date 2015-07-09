@@ -55,15 +55,22 @@ bool PlayerMoveBehavior::behave( float delta ) {
     
     if( unit_node->shouldCatchUp() && !unit_node->isCharging() ) {
         unit_node->setChasingTarget( nullptr );
-        Point last_pos = unit_node->getPosition();
-        unit_node->findPathToPosition( battle_layer->getLeaderUnit()->getPosition() );
-        unit_node->walkAlongWalkPath( move_speed * DEFAULT_CATCH_UP_SPEED_FACTOR * delta );
+        unit_node->walkToFormationPos( delta );
+//        unit_node->findPathToPosition( battle_layer->getLeaderUnit()->getPosition() );
+//        unit_node->walkAlongWalkPath( move_speed * DEFAULT_CATCH_UP_SPEED_FACTOR * delta );
         return true;
     }
     if( control_dir.x != 0 || control_dir.y != 0 ) {
         unit_node->setChasingTarget( nullptr );
-        Point new_pos = unit_node->getPosition() + control_dir * delta * move_speed;
-        unit_node->walkTo( new_pos );
+        //consider
+        UnitNode* leader_node = battle_layer->getLeaderUnit();
+        if( leader_node == unit_node || unit_node->isAtFormationPos() ) {
+            Point new_pos = unit_node->getPosition() + control_dir * delta * move_speed;
+            unit_node->walkTo( new_pos );
+        }
+        else {
+            unit_node->walkToFormationPos( delta );
+        }
         return true;
     }
     if( unit_node->isCharging() ) {
@@ -73,9 +80,12 @@ bool PlayerMoveBehavior::behave( float delta ) {
         return true;
     }
     if( unit_node->getChasingTarget() != nullptr ) {
-        Point last_pos = unit_node->getPosition();
         unit_node->findPathToPosition( unit_node->getChasingTarget()->getPosition() );
         unit_node->walkAlongWalkPath( move_speed * delta );
+        return true;
+    }
+    else if( !unit_node->isAtFormationPos() ) {
+        unit_node->walkToFormationPos( delta );
         return true;
     }
     return false;

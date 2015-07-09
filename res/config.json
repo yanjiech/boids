@@ -1,4 +1,5 @@
 {
     "catchup_start_distance" : 550,
-    "catchup_stop_distance" : 250
+    "catchup_stop_distance" : 250,
+    "formation_distance" : 150.0
 }

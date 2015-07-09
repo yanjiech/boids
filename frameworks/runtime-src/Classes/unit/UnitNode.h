@@ -108,6 +108,8 @@ private:
     
     float _desired_unit_scale;
     
+    int _formation_pos;
+    
 private:
     void updateBuffs( float delta );
     void updateSkills( float delta );
@@ -309,6 +311,11 @@ public:
     virtual void setAttackable( bool b );
     
     void updateHintNode( float delta );
+    
+    int getFormationPos() { return _formation_pos; }
+    void setFormationPos( int formation_pos );
+    bool isAtFormationPos();
+    void walkToFormationPos( float delta );
     
     //debug
     cocos2d::DrawNode* _custom_draw;

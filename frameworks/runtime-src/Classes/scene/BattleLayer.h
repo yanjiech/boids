@@ -125,6 +125,8 @@ private:
     
     cocos2d::Vector<HintNode*> _hint_node_vec;
     
+    cocos2d::Point _team_center;
+    
     //debug
     cocos2d::DrawNode* _draw_node;
 private:
@@ -281,6 +283,12 @@ public:
     void setHintVisibleByName( const std::string& name, bool visible );
     
     int zorderForPositionOnObjectLayer( const cocos2d::Point& pos );
+    
+    const cocos2d::Point& getTeamCenter() { return _team_center; }
+    void setTeamCenter( const cocos2d::Point& center ) { _team_center = center; }
+    
+    void initFormation();
+    cocos2d::Point getFormationPos( int pos_id );
 };
 
 #endif /* defined(__Boids__BattleLayer__) */

@@ -45,7 +45,8 @@ _weapon( nullptr ),
 _armor( nullptr ),
 _boot( nullptr ),
 _accessory( nullptr ),
-_hint_node( nullptr )
+_hint_node( nullptr ),
+_formation_pos( 0 )
 {
 }
 
@@ -1366,6 +1367,34 @@ void UnitNode::updateHintNode( float delta ) {
             }
         }
     }
+}
+
+void UnitNode::setFormationPos( int formation_pos ) {
+    _formation_pos = formation_pos;
+    Label* lb = Label::createWithSystemFont( Utils::stringFormat( "%d", formation_pos ), "arial", 48 );
+    this->addChild( lb, 100 );
+}
+
+bool UnitNode::isAtFormationPos() {
+    UnitNode* leader_unit = _battle_layer->getLeaderUnit();
+    if( leader_unit == this ) {
+        return true;
+    }
+    else {
+        //todo
+        Point formation_pos = _battle_layer->getFormationPos( _formation_pos );
+        if( this->getPosition().distance( formation_pos ) < 5.0f ) {
+            return true;
+        }
+        return false;
+    }
+}
+
+void UnitNode::walkToFormationPos( float delta ) {
+    Point formation_pos = _battle_layer->getFormationPos( _formation_pos );
+    this->findPathToPosition( formation_pos );
+    float mov_speed = this->getUnitData()->move_speed * 1.5f;
+    this->walkAlongWalkPath( mov_speed * delta );
 }
 
 //private methods
