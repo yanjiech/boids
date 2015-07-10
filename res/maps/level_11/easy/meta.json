@@ -695,7 +695,9 @@
                     "source_value": "footman",
                     "unit_type": "ally",
                     "unit_state": "unit_appear",
+                    "tag_name" : "soldier",
                     "position_name": "ally",
+                    "custom_change": "hp:2000",
                     "unit_count": 3,
                     "unit_level": 11
                 },
@@ -736,7 +738,7 @@
                     "event_state": "event_enable"
                 },
                 {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -761,19 +763,13 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "attacker",
-                    "unit_state": "unit_alive",
-                    "trigger_count": 0
+                    "unit_state": "unit_dead",
+                    "trigger_count": 3
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "wave_03",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -783,6 +779,12 @@
                     "position_name": "ally",
                     "unit_count": 3,
                     "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_03",
+                    "event_state": "event_enable"
                 }
             ]
         },
@@ -798,19 +800,13 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "attacker",
-                    "unit_state": "unit_alive",
-                    "trigger_count": 0
+                    "unit_state": "unit_dead",
+                    "trigger_count": 3
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "wave_04",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -820,6 +816,12 @@
                     "position_name": "ally",
                     "unit_count": 3,
                     "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_04",
+                    "event_state": "event_enable"
                 }
             ]
         },
@@ -835,19 +837,13 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "attacker",
-                    "unit_state": "unit_alive",
-                    "trigger_count": 0
+                    "unit_state": "unit_dead",
+                    "trigger_count": 3
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "wave_05",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -857,7 +853,14 @@
                     "position_name": "ally",
                     "unit_count": 3,
                     "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_05",
+                    "event_state": "event_enable"
                 }
+                
             ]
         },
         {
@@ -872,19 +875,13 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "attacker",
-                    "unit_state": "unit_alive",
-                    "trigger_count": 0
+                    "unit_state": "unit_dead",
+                    "trigger_count": 3
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "wave_06",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -894,6 +891,12 @@
                     "position_name": "ally",
                     "unit_count": 3,
                     "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_06",
+                    "event_state": "event_enable"
                 }
             ]
         },
@@ -909,19 +912,13 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "attacker",
-                    "unit_state": "unit_alive",
-                    "trigger_count": 0
+                    "unit_state": "unit_dead",
+                    "trigger_count": 3
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "wave_07",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -931,6 +928,12 @@
                     "position_name": "ally",
                     "unit_count": 3,
                     "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_07",
+                    "event_state": "event_enable"
                 }
             ]
         },
@@ -946,19 +949,13 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "attacker",
-                    "unit_state": "unit_alive",
-                    "trigger_count": 0
+                    "unit_state": "unit_dead",
+                    "trigger_count": 3
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "wave_08",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -968,6 +965,12 @@
                     "position_name": "ally",
                     "unit_count": 3,
                     "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_08",
+                    "event_state": "event_enable"
                 }
             ]
         },
@@ -983,19 +986,13 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "attacker",
-                    "unit_state": "unit_alive",
-                    "trigger_count": 0
+                    "unit_state": "unit_dead",
+                    "trigger_count": 3
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "wave_09",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -1005,6 +1002,12 @@
                     "position_name": "ally",
                     "unit_count": 3,
                     "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_09",
+                    "event_state": "event_enable"
                 }
             ]
         },
@@ -1020,19 +1023,13 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "attacker",
-                    "unit_state": "unit_alive",
-                    "trigger_count": 0
+                    "unit_state": "unit_dead",
+                    "trigger_count": 3
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "wave_10",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -1042,6 +1039,12 @@
                     "position_name": "ally",
                     "unit_count": 3,
                     "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "wave_10",
+                    "event_state": "event_enable"
                 }
             ]
         },
@@ -1057,19 +1060,13 @@
                     "trigger_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "attacker",
-                    "unit_state": "unit_alive",
-                    "trigger_count": 0
+                    "unit_state": "unit_dead",
+                    "trigger_count": 3
                 }
             ],
             "actions": [
                 {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "event_change",
-                    "event_name": "story_02",
-                    "event_state": "event_enable"
-                },
-                {
-                    "meta": "0,0.00,0.00",
+                    "meta": "0,10.00,0.00",
                     "action_type": "unit_change",
                     "source_type": "name_source",
                     "source_value": "goblin",
@@ -1079,6 +1076,12 @@
                     "position_name": "ally",
                     "unit_count": 3,
                     "unit_level": 11
+                },
+                {
+                    "meta": "0,0.00,0.00",
+                    "action_type": "event_change",
+                    "event_name": "story_02",
+                    "event_state": "event_enable"
                 }
             ]
         },
@@ -1226,7 +1229,7 @@
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "task_change",
-                    "task_name": "task_2",
+                    "task_name": "task_3",
                     "task_state": "task_progress",
                     "progress": 25
                 }
@@ -1261,7 +1264,7 @@
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "task_change",
-                    "task_name": "task_2",
+                    "task_name": "task_3",
                     "task_state": "task_progress",
                     "progress": 25
                 }
@@ -1290,13 +1293,12 @@
                     "action_type": "unit_change",
                     "source_type": "tag_source",
                     "source_value": "hostage_03",
-                    "unit_state": "unit_disappear",
-                    "unit_level": 1
+                    "unit_state": "unit_disappear"
                 },
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "task_change",
-                    "task_name": "task_2",
+                    "task_name": "task_3",
                     "task_state": "task_progress",
                     "progress": 25
                 }
@@ -1323,15 +1325,14 @@
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "unit_change",
-                    "source_type": "type_source",
-                    "source_value": "player",
-                    "unit_state": "unit_disappear",
-                    "unit_level": 1
+                    "source_type": "tag_source",
+                    "source_value": "hostage_04",
+                    "unit_state": "unit_disappear"
                 },
                 {
                     "meta": "0,0.00,0.00",
                     "action_type": "task_change",
-                    "task_name": "task_2",
+                    "task_name": "task_3",
                     "task_state": "task_progress",
                     "progress": 25
                 }
@@ -1373,7 +1374,7 @@
                 {
                     "trigger_type": "unit_change",
                     "source_type": "type_source",
-                    "source_value": "ally",
+                    "source_value": "soldier",
                     "unit_state": "unit_dead",
                     "trigger_count": 1
                 }
@@ -1384,31 +1385,6 @@
                     "action_type": "task_change",
                     "task_name": "task_2",
                     "task_state": "task_failed"
-                }
-            ]
-        },
-        {
-            "name": "trigger_task_3",
-            "enabled": true,
-            "trigger_meta": {
-                "is_repeated": false,
-                "trigger_relation": "then"
-            },
-            "triggers": [
-                {
-                    "trigger_type": "unit_change",
-                    "source_type": "tag_source",
-                    "source_value": "1",
-                    "unit_state": "unit_disappear",
-                    "trigger_count": 4
-                }
-            ],
-            "actions": [
-                {
-                    "meta": "0,0.00,0.00",
-                    "action_type": "task_change",
-                    "task_name": "task_3",
-                    "task_state": "task_finished"
                 }
             ]
         }
@@ -1430,8 +1406,8 @@
         {
             "type": "additional_win",
             "name": "task_2",
-            "desc": "至少存活1名士兵",
-            "title": "至少存活1名士兵"
+            "desc": "所有士兵存活",
+            "title": "所有士兵存活"
         },
         {
             "type": "additional_win",

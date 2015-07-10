@@ -67,6 +67,7 @@ void NaturesAttendants::updateFrame( float delta ) {
                 for( auto unit : candidates ) {
                     DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_NATURESATTENDANTS, _heal );
                     ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getTargetData(), unit->getTargetData() );
+                    result["cri"] = Value( false );
                     unit->takeHeal( result, _owner->getDeployId() );
                 }
             }

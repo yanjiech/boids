@@ -131,13 +131,7 @@ bool DamageCalculate::doesHit( float hit, float dodge, float atker_level, float 
 }
 
 bool DamageCalculate::doesCritical( float cri, float ten, float atker_level, float defer_level ) {
-    float chance = 0;
-    if( cri > ten ) {
-        chance = ( cri - ten ) / ( ten * 2.0f + 1.0f ) * 2.0 * atker_level / ( defer_level + atker_level );
-    }
-    else {
-        chance = 1.0 / ( ten * 2.0f * ( 80.0f - defer_level ) );
-    }
+    float chance = ( cri / ( 300.0f + cri ) ) * ( 1 - ten / ( 100.0f + ten ) ) * 2 * atker_level / ( atker_level + defer_level );
     float rand = Utils::randomFloat();
     return rand <= chance;
 }
