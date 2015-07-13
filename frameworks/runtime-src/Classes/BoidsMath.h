@@ -223,6 +223,11 @@ public:
         
         return false;
     }
+    
+    static bool doesCircleIntersectesCircle( const cocos2d::Point& c1, float r1, const cocos2d::Point& c2, float r2 ) {
+        float d = c1.distance( c2 );
+        return d <= r1 + r2;
+    }
 };
 
 class Geometry

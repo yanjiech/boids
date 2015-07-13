@@ -27,7 +27,7 @@ bool Border::willCollide(cocos2d::Point pos, float radius)
 	return (Fuzzy::_equalLess(Geometry::distanceSqrToLine(pos, src, dst), radius * radius));
 }
 
-bool Border::willCollide(TargetNode* unit, cocos2d::Point unit_new_pos)
+bool Border::willCollide(TargetNode* unit, cocos2d::Point unit_new_pos )
 {
 	//相切也算碰撞；但起点和角重合的情况比较特殊（终点和角重合的情况好像没关系。画了一些图觉得是这样的。如果发现有问题要优先检查这里）
 	//从障碍物里出到障碍物的情况要排除掉，这种情况是允许的。至于为什么进到障碍物里面了，这个方法就先不用考虑了，也许是误差吧
@@ -65,7 +65,7 @@ bool Border::willCollide(TargetNode* unit, cocos2d::Point unit_new_pos)
 	return false;
 }
 
-bool Border::getAdvisedNewDir(UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir)
+bool Border::getAdvisedNewDir(UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir, bool visited)
 {
 	cocos2d::Vec2 perpendicular_towards_outside = Geometry::clockwisePerpendicularVecToLine(vec);
 	if (Fuzzy::_greater(old_dir.cross(perpendicular_towards_outside), 0.0f))
@@ -74,11 +74,11 @@ bool Border::getAdvisedNewDir(UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Ve
 	}
 	else
 	{
-		new_dir = Geometry::anticlockwiseRotate1(vec); //再额外转一度，免得正好和边平行
+		new_dir = Geometry::anticlockwiseRotate1(vec);
 	}
 
-	//确认转向后和最初的向量没有超过90度
-	return Geometry::deviateLessThan90(old_dir, new_dir);
+//	return Geometry::deviateLessThan90(old_dir, new_dir);
+    return true;
 }
 
 segment Border::getBoostSeg()

@@ -21,6 +21,9 @@
 
 #define DEFAULT_RELAX_FRAMES 45
 
+#define UNIT_WEIGHT_BOSS 0xffff
+#define UNIT_WEIGHT_LEADER 0xfff
+
 enum eUnitState {
     Unknown_Unit_State = 0,
     Idle = 1,
@@ -54,6 +57,7 @@ private:
     
     bool _show_hp;
     bool _is_boss;
+    bool _is_leader;
     
     spine::SkeletonAnimation* _front;
     spine::SkeletonAnimation* _back;
@@ -109,6 +113,8 @@ private:
     float _desired_unit_scale;
     
     int _formation_pos;
+    
+    int _weight;
     
 private:
     void updateBuffs( float delta );
@@ -191,6 +197,9 @@ public:
     bool isBoss() { return _is_boss; }
     void setBoss( bool b ) { _is_boss = b; }
     
+    bool isLeader() { return _is_leader; }
+    void setLeader( bool b ) { _is_leader = b; }
+    
     void applyCustomChange( const std::string& content_string );
     
     void addBuff( const std::string& buff_id, Buff* buff, bool replace = false );
@@ -210,7 +219,7 @@ public:
     void endSkill();
     void endCast();
     
-    virtual bool getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir );
+    virtual bool getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir, bool visited = false );
     
     int getHesitateFrame() { return _hesitate_frame; }
     void setHesitateFrame( int hesitate_frame ) { _hesitate_frame = hesitate_frame; }
@@ -316,6 +325,9 @@ public:
     void setFormationPos( int formation_pos );
     bool isAtFormationPos();
     void walkToFormationPos( float delta );
+    
+    int getUnitWeight() { return _weight; }
+    void setUnitWeight( int weight ) { _weight = weight; }
     
     //debug
     cocos2d::DrawNode* _custom_draw;

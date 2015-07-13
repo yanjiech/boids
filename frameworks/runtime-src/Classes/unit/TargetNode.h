@@ -93,7 +93,7 @@ public:
     virtual bool willCollide( cocos2d::Point pos, float radius );
     virtual bool willCollide( TargetNode* unit);
     virtual bool willCollide( TargetNode* unit, cocos2d::Point unit_new_pos );
-    virtual bool getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir ) { return false; }
+    virtual bool getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir, bool visited = false ) { return false; }
     virtual int getPriority() const { return _priority; }
     
     bool isFoeOfCamp( eTargetCamp opponent_camp );

@@ -113,11 +113,15 @@ void MapLogic::deployPlayerUnits() {
         unit->addBehavior( BEHAVIOR_NAME_SKILL, skill_behavior );
         
         if( is_leader ) {
+            unit->setLeader( true );
+            unit->setUnitWeight( UNIT_WEIGHT_LEADER );
             is_leader = false;
             unit->setUnitTags( "player,leader" );
         }
         else {
             unit->setUnitTags( "player" );
+            unit->setLeader( false );
+            unit->setUnitWeight( UNIT_WEIGHT_LEADER - 100 );
         }
         
         cocos2d::Point pos = _battle_layer->getAvailablePosition( unit->getUnitData()->collide, player_start_area );

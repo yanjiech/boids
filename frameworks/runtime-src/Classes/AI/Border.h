@@ -15,7 +15,7 @@ public:
 
 	virtual bool willCollide(class TargetNode* unit, cocos2d::Point unit_new_pos);
 
-	virtual bool getAdvisedNewDir(class UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir);
+	virtual bool getAdvisedNewDir(class UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir, bool visited = false );
 
 	int getPriority() const;
 

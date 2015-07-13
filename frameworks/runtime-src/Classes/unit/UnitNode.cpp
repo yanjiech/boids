@@ -25,7 +25,7 @@
 #include "../unit/skill/SkillCache.h"
 
 #define DEFAULT_SHADOW_RADIUS 30.0
-#define DEFAULT_HESITATE_FRAMES 5
+#define DEFAULT_HESITATE_FRAMES 15
 #define DEFAULT_CATCH_UP_STOP_DISTANCE 250.0
 #define DEFAULT_CATCH_UP_START_DISTANCE 700.0
 #define DEFAULT_WANDER_RADIUS 200.0
@@ -46,7 +46,9 @@ _armor( nullptr ),
 _boot( nullptr ),
 _accessory( nullptr ),
 _hint_node( nullptr ),
-_formation_pos( 0 )
+_formation_pos( 0 ),
+_weight( 0 ),
+_is_leader( false )
 {
 }
 
@@ -226,6 +228,10 @@ bool UnitNode::init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_da
     }
     
     _has_hint_node = true;
+    
+    if( this->isBoss() ) {
+        this->setUnitWeight( UNIT_WEIGHT_BOSS );
+    }
     
     return true;
 }
@@ -832,33 +838,58 @@ void UnitNode::endCast() {
     }
 }
 
-bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir ) {
-    Vec2 unit_to_this = this->getPosition() - unit->getPosition();
+bool UnitNode::getAdvisedNewDir( UnitNode* unit, cocos2d::Vec2 old_dir, cocos2d::Vec2& new_dir, bool visited ) {
+//    Vec2 unit_to_this = this->getPosition() - unit->getPosition();
+//    Vec2 this_to_unit = unit->getPosition() - this->getPosition();
+//    Vec2 this_dir = this->getUnitDirection();
+//    int unit_weight = unit->getUnitWeight();
+//    float this_collide = _target_data->collide;
+//    float unit_collide = unit->getTargetData()->collide;
+//    if( Math::doesCircleIntersectesCircle( this->getPosition(), this_collide, unit->getPosition(), unit_collide ) ) {
+//        new_dir = this_to_unit;
+//        new_dir.normalize();
+//        return true;
+//    }
+//
+//    float this_dir_to_center = this_dir.cross( this_to_unit );
+//    float unit_dir_to_center = old_dir.cross( unit_to_this );
+//    
+//    if( _weight == unit_weight ) {
+//        _weight++;
+//    }
+//    if( _weight > unit_weight || !this->isWalking() ) {
+//        if( this_dir_to_center * unit_dir_to_center <= 0 ) {
+//            if( visited ) {
+//                new_dir = Geometry::anticlockwisePerpendicularVecToLine( unit_to_this );
+//            }
+//            else {
+//                new_dir = Geometry::clockwisePerpendicularVecToLine( unit_to_this );
+//            }
+//        }
+//        else {
+//            if( unit_dir_to_center > 0 ) {
+//                new_dir = Geometry::clockwisePerpendicularVecToLine( unit_to_this );
+//            }
+//            else {
+//                new_dir = Geometry::anticlockwisePerpendicularVecToLine( unit_to_this );
+//            }
+//        }
+//    }
+//    else {
+//        new_dir = old_dir;
+//    }
+//    new_dir.normalize();
     Vec2 this_to_unit = unit->getPosition() - this->getPosition();
-    Vec2 this_dir = this->getUnitDirection();
-    
-    float this_dir_to_center = this_dir.cross( this_to_unit );
-    float unit_dir_to_center = old_dir.cross( unit_to_this );
-    
-    if( this_dir_to_center * unit_dir_to_center <= 0 ) {
-        new_dir = Geometry::clockwisePerpendicularVecToLine( unit_to_this );
+    this_to_unit.normalize();
+    float this_collide = _target_data->collide;
+    float unit_collide = unit->getTargetData()->collide;
+    if( Math::doesCircleIntersectesCircle( this->getPosition(), this_collide, unit->getPosition(), unit_collide ) ) {
+        new_dir = this_to_unit + old_dir;
     }
     else {
-        if( unit_dir_to_center > 0 ) {
-//            new_dir = Geometry::anticlockwisePerpendicularVecToLine( unit_to_this );
-            new_dir = Geometry::clockwisePerpendicularVecToLine( unit_to_this );
-        }
-        else {
-            new_dir = Geometry::anticlockwisePerpendicularVecToLine( unit_to_this );
-//            new_dir = Geometry::clockwisePerpendicularVecToLine( unit_to_this );
-        }
+        new_dir = old_dir;
     }
     
-    new_dir.normalize();
-    
-    //debug
-//    _new_dir_draw->setRotation( -new_dir.getAngle() * 180 / M_PI );
-//end debug
     return true;
 }
 
@@ -922,24 +953,38 @@ void UnitNode::walkAlongTourPath( float distance ) {
 cocos2d::Point UnitNode::pushToward( const cocos2d::Point& dir, float distance ) {
     Point new_pos = dir * distance + this->getPosition();
     Point origin_dir = dir;
-    std::vector<Collidable*> collidables;
+    
     float max_walk_length = distance;
     Point new_dir = origin_dir;
     Point dest_pos = new_pos;
+    
+    //check units with round collide edge
+    const UnitMap& collidable_units = _battle_layer->getAliveUnits();
+    
+    for( auto pair : collidable_units ) {
+        UnitNode* c = pair.second;
+        if( c != this ) {
+            if( c->willCollide( this, dest_pos ) ) {
+                int unit_weight = c->getUnitWeight();
+                if( _weight == unit_weight ) {
+                    _weight++;
+                }
+                if( _weight < unit_weight || ( !c->isWalking() && !c->isIdle() ) ) {
+                    c->getAdvisedNewDir( this, new_dir, new_dir );
+                }
+            }
+        }
+    }
+    
+    new_dir.normalize();
+    dest_pos = this->getPosition() + new_dir.getNormalized() * max_walk_length;
+    
+    //check borders
+    std::vector<Collidable*> collidables;
     Terrain::getInstance()->getMeshByUnitRadius( _target_data->collide )->getNearbyBorders( this->getPosition(), max_walk_length, collidables );
     
-    for( auto id_u : _battle_layer->getAliveUnits() ) {
-        if( id_u.second == this)
-            continue;
-        collidables.push_back(id_u.second);
-    }
-    
-    for( auto pair : _battle_layer->getAllTowers() ) {
-        collidables.push_back( pair.second );
-    }
-    
     std::set<Collidable*> steered_collidables;
-    
+
     while( true ) {
         bool no_collide = true;
         
@@ -956,7 +1001,6 @@ cocos2d::Point UnitNode::pushToward( const cocos2d::Point& dir, float distance )
                     break;
                 }
                 else {
-                    steered_collidables.insert( c );
                     return origin_dir;
                 }
             }
@@ -966,6 +1010,7 @@ cocos2d::Point UnitNode::pushToward( const cocos2d::Point& dir, float distance )
             break;
         }
     }
+    
     this->setPosition( dest_pos );
     return new_dir;
 }
@@ -1383,7 +1428,7 @@ bool UnitNode::isAtFormationPos() {
     else {
         //todo
         Point formation_pos = _battle_layer->getFormationPos( _formation_pos );
-        if( this->getPosition().distance( formation_pos ) < 5.0f ) {
+        if( this->getPosition().distance( formation_pos ) < 50.0f ) {
             return true;
         }
         return false;

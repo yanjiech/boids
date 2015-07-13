@@ -172,11 +172,10 @@ void TowerNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode*
             if( _hp_bar ) {
                 _hp_bar->setVisible( false );
             }
+            this->removeAllUnitComponents();
             this->changeTowerState( eTowerState::TowerStateDie );
             _battle_layer->clearChasingTarget( this );
         }
-        
-        
     }
 }
 

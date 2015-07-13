@@ -25,7 +25,8 @@
                 "y": 907.599,
                 "width": 118.156,
                 "height": 87.1661
-            }
+            },
+                  "prev_pos": "villiger_start"
         },
         {
             "name": "route_2",

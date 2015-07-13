@@ -812,6 +812,8 @@ void BattleLayer::onUnitDying( UnitNode* unit ) {
         UnitNode* leader = this->getLeaderUnit();
         if( leader ) {
             leader->addUnitTag( "leader" );
+            leader->setLeader( true );
+            leader->setUnitWeight( UNIT_WEIGHT_LEADER );
             UnitNode::ItemMap& items = unit->getItems();
             for( auto pair : items ) {
                 leader->addItem( pair.second );
@@ -1186,9 +1188,11 @@ cocos2d::Point BattleLayer::getFormationPos( int pos_id ) {
                 break;
             case 1:
                 d_angle = 0.4 * M_PI;
+                min_dis *= 0.5f;
                 break;
             case 2:
                 d_angle = -0.4 * M_PI;
+                min_dis *= 0.5f;
                 break;
             case 3:
                 d_angle = 0.8 * M_PI;
