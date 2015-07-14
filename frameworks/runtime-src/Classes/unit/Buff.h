@@ -15,6 +15,17 @@
 class UnitNode;
 class TargetNode;
 
+typedef enum {
+    BuffGroupBuff = 1,
+    BuffGroupDebuff = 2
+}eBuffGroup;
+
+typedef enum {
+    BuffEffectPosOrigin = 0,
+    BuffEffectPosHead = 1,
+    BuffEffectPosBody = 2
+}eBuffEffectPos;
+
 class Buff : public cocos2d::Ref {
 protected:
     static int _global_buff_id;
@@ -30,6 +41,15 @@ protected:
     
     cocos2d::ValueMap _data;
     
+    eBuffGroup _buff_group;
+    
+    std::string _effect_resource;
+    float _effect_scale;
+    float _effect_scale_x;
+    float _effect_scale_y;
+    cocos2d::Color3B _effect_color;
+    
+    eBuffEffectPos _effect_pos;
 public:
     static int getNextBuffId();
     
@@ -67,6 +87,9 @@ public:
     
     const cocos2d::ValueMap& getBuffData() { return _data; }
     void setBuffData( const cocos2d::ValueMap& data ) { _data = data; }
+    
+    eBuffGroup getBuffGroup() { return _buff_group; }
+    void setBuffGroup( eBuffGroup group ) { _buff_group = group; }
 };
 
 class ElementData;
@@ -92,9 +115,6 @@ public:
 };
 
 class StunBuff : public Buff {
-private:
-    class TimeLimitSpineComponent* _component;
-    
 public:
     StunBuff();
     virtual ~StunBuff();
@@ -200,7 +220,6 @@ public:
 class TagBuff : public Buff {
 protected:
     std::string _tag;
-    class TimeLimitSpineComponent* _component;
     
 public:
     TagBuff();
@@ -225,6 +244,85 @@ public:
     
     virtual void updateFrame( float delta );
     virtual float filterDamage( float damage, TargetNode* atker );
+    
+    virtual void begin();
+    virtual void end();
+};
+
+class RecoverBuff : public Buff {
+private:
+    float _interval;
+    float _recover_elapse;
+    float _hp;
+    float _mp;
+    
+public:
+    RecoverBuff();
+    virtual ~RecoverBuff();
+    
+    static RecoverBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
+};
+
+class BlessBuff : public Buff {
+public:
+    float atk_fix;
+    float def_fix;
+    float hp_fix;
+    float mp_fix;
+    float cri_fix;
+    float ten_fix;
+    float hit_fix;
+    float dod_fix;
+    float mov_fix;
+    float range_fix;
+    float atk_speed_fix;
+    float guard_fix;
+    float view_range_fix;
+    float rec_fix;
+    
+    float atk_per;
+    float def_per;
+    float hp_per;
+    float mp_per;
+    float cri_per;
+    float ten_per;
+    float hit_per;
+    float dod_per;
+    float mov_per;
+    float range_per;
+    float atk_speed_per;
+    float guard_per;
+    float view_range_per;
+    float rec_per;
+    
+public:
+    BlessBuff();
+    virtual ~BlessBuff();
+    
+    static BlessBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
+    
+    virtual void begin();
+    virtual void end();
+};
+
+class CurseBuff : public BlessBuff {
+public:
+    CurseBuff();
+    virtual ~CurseBuff();
+    
+    static CurseBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+    
+    virtual void updateFrame( float delta );
     
     virtual void begin();
     virtual void end();

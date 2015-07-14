@@ -208,6 +208,7 @@ public:
     bool hasBuffOfType( const std::string& buff_type );
     Buff* getBuffOfType( const std::string& buff_type );
     void removeAllBuffs();
+    void removeAllDebuffs();
     
     ItemMap& getItems() { return _items; }
     void clearItems();
@@ -328,6 +329,10 @@ public:
     
     int getUnitWeight() { return _weight; }
     void setUnitWeight( int weight ) { _weight = weight; }
+    
+    void refreshHpAndMpBar();
+    
+    void calculateTargetData();
     
     //debug
     cocos2d::DrawNode* _custom_draw;

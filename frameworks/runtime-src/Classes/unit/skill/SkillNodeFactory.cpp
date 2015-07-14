@@ -96,5 +96,14 @@ SkillNode* SkillNodeFactory::createSkillNode( const std::string& name, UnitNode*
     else if( name == SKILL_NAME_EVIL_INVOKE ) {
         ret = EvilInvoke::create( owner, data, params );
     }
+    else if( name == SKILL_NAME_SHADOW_ASSAULT ) {
+        ret = ShadowAssault::create( owner, data, params );
+    }
+    else if( name == SKILL_NAME_TIME_REMOUNT ) {
+        ret = TimeRemount::create( owner, data, params );
+    }
+    else if( name == SKILL_NAME_SENILITY_CURSE ) {
+        ret = SenilityCurse::create( owner, data, params );
+    }
     return ret;
 }

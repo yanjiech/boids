@@ -847,7 +847,8 @@
                     "unit_state": "unit_appear",
                     "position_name": "orange_09",
                     "unit_count": 1,
-                    "unit_level": 6
+                    "unit_level": 6,
+                    "skill_1_level": 6
                 },
                 {
                     "meta": "0,0.00,0.00",
@@ -858,7 +859,8 @@
                     "unit_state": "unit_appear",
                     "position_name": "orange_02",
                     "unit_count": 1,
-                    "unit_level": 6
+                    "unit_level": 6,
+                    "skill_1_level": 6
                 }
             ]
         },

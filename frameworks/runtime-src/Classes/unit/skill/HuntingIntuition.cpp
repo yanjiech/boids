@@ -53,7 +53,7 @@ void HuntingIntuition::begin() {
     ValueMap data;
     data["duration"] = Value( _buff_duration );
     data["buff_type"] = Value( BUFF_TYPE_ATTRIBUTE );
-    data["buff_name"] = Value( "HuntingIntuition" );
+    data["buff_name"] = Value( SKILL_NAME_HUNTING_INTUITION );
     
     ElementData* unit_data = _owner->getTargetData();
     

@@ -45,11 +45,11 @@
         ], 
         "hero_id": "1", 
         "name": "dracula", 
-        "price": 600
+        "price": 0
     }, 
     "durarara": {
-        "cond_param": 5, 
-        "cond_type": 2, 
+        "cond_param": 1004, 
+        "cond_type": 1, 
         "costs": [
             100, 
             200, 
@@ -93,7 +93,7 @@
         ], 
         "hero_id": "7", 
         "name": "durarara", 
-        "price": 300
+        "price": 10000
     }, 
     "enchantress": {
         "cond_param": 0, 
@@ -141,7 +141,55 @@
         ], 
         "hero_id": "3", 
         "name": "enchantress", 
-        "price": 700
+        "price": 0
+    }, 
+    "gandalf": {
+        "cond_param": 15, 
+        "cond_type": 2, 
+        "costs": [
+            100, 
+            200, 
+            300, 
+            400, 
+            500, 
+            600, 
+            700, 
+            800, 
+            900, 
+            1000, 
+            1500, 
+            2000, 
+            2500, 
+            3000, 
+            3500, 
+            4000, 
+            4500, 
+            5000, 
+            5500, 
+            6000, 
+            7000, 
+            8000, 
+            9000, 
+            10000, 
+            11000, 
+            13000, 
+            15000, 
+            17000, 
+            19000, 
+            21000, 
+            24000, 
+            27000, 
+            30000, 
+            33000, 
+            36000, 
+            39000, 
+            42000, 
+            45000, 
+            48000
+        ], 
+        "hero_id": "9", 
+        "name": "gandalf", 
+        "price": 10000
     }, 
     "hippolyta": {
         "cond_param": 1002, 
@@ -189,7 +237,7 @@
         ], 
         "hero_id": "4", 
         "name": "hippolyta", 
-        "price": 10000
+        "price": 5000
     }, 
     "ice_witch": {
         "cond_param": 20, 
@@ -237,7 +285,7 @@
         ], 
         "hero_id": "10", 
         "name": "ice_witch", 
-        "price": 1000
+        "price": 5000
     }, 
     "kyle": {
         "cond_param": 0, 
@@ -285,7 +333,7 @@
         ], 
         "hero_id": "2", 
         "name": "kyle", 
-        "price": 1000
+        "price": 0
     }, 
     "saber": {
         "cond_param": 10, 
@@ -333,11 +381,11 @@
         ], 
         "hero_id": "8", 
         "name": "saber", 
-        "price": 400
+        "price": 5000
     }, 
     "vanhelsing": {
-        "cond_param": 1004, 
-        "cond_type": 1, 
+        "cond_param": 5, 
+        "cond_type": 2, 
         "costs": [
             100, 
             200, 
@@ -381,7 +429,7 @@
         ], 
         "hero_id": "6", 
         "name": "vanhelsing", 
-        "price": 200
+        "price": 10000
     }, 
     "zeus": {
         "cond_param": 1003, 
@@ -429,6 +477,6 @@
         ], 
         "hero_id": "5", 
         "name": "zeus", 
-        "price": 100000
+        "price": 5000
     }
 }

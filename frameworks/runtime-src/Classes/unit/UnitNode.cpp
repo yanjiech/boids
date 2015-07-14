@@ -764,6 +764,15 @@ void UnitNode::removeAllBuffs() {
     _buffs.clear();
 }
 
+void UnitNode::removeAllDebuffs() {
+    for( auto pair : _buffs ) {
+        Buff* buff = pair.second;
+        if( buff->getBuffGroup() == eBuffGroup::BuffGroupDebuff ) {
+            buff->end();
+        }
+    }
+}
+
 void UnitNode::clearItems() {
     _items.clear();
 }
@@ -1440,6 +1449,17 @@ void UnitNode::walkToFormationPos( float delta ) {
     this->findPathToPosition( formation_pos );
     float mov_speed = this->getUnitData()->move_speed * 1.5f;
     this->walkAlongWalkPath( mov_speed * delta );
+}
+
+void UnitNode::refreshHpAndMpBar() {
+    if( _hp_bar ) {
+        _hp_bar->setPercentage( 100.0f * _target_data->current_hp / _target_data->hp );
+
+    }
+}
+
+void UnitNode::calculateTargetData() {
+    
 }
 
 //private methods

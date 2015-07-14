@@ -37,6 +37,9 @@
 #include "IceDebris.h"
 #include "SacrificeBomb.h"
 #include "EvilInvoke.h"
+#include "ShadowAssault.h"
+#include "TimeRemount.h"
+#include "SenilityCurse.h"
 
 class SkillNodeFactory {
 public:

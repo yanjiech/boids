@@ -62,6 +62,12 @@
 		7606262E1AE78D1E00833342 /* GuardAttackBehavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7606262B1AE78D1D00833342 /* GuardAttackBehavior.cpp */; };
 		7608FB9F1AEE20EF00823499 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7608FB9D1AEE20EF00823499 /* Item.cpp */; };
 		7608FBA01AEE20EF00823499 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7608FB9D1AEE20EF00823499 /* Item.cpp */; };
+		761B5AA21B54BC710024F58F /* ShadowAssault.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761B5AA01B54BC710024F58F /* ShadowAssault.cpp */; };
+		761B5AA31B54BC710024F58F /* ShadowAssault.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761B5AA01B54BC710024F58F /* ShadowAssault.cpp */; };
+		761B5AA61B54E6980024F58F /* TimeRemount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761B5AA41B54E6980024F58F /* TimeRemount.cpp */; };
+		761B5AA71B54E6980024F58F /* TimeRemount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761B5AA41B54E6980024F58F /* TimeRemount.cpp */; };
+		761B5AAA1B54E6DA0024F58F /* SenilityCurse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761B5AA81B54E6DA0024F58F /* SenilityCurse.cpp */; };
+		761B5AAB1B54E6DA0024F58F /* SenilityCurse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 761B5AA81B54E6DA0024F58F /* SenilityCurse.cpp */; };
 		7631FA361AC2A92B00CAB9C8 /* LightShield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */; };
 		7631FA371AC2A92B00CAB9C8 /* LightShield.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */; };
 		7631FA3A1AC2A94000CAB9C8 /* GiantSword.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */; };
@@ -557,6 +563,12 @@
 		7608FB9D1AEE20EF00823499 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
 		7608FB9E1AEE20EF00823499 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		76148F211AC54D9300235C7B /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../lib/lib/libboost_system.a; sourceTree = "<group>"; };
+		761B5AA01B54BC710024F58F /* ShadowAssault.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShadowAssault.cpp; sourceTree = "<group>"; };
+		761B5AA11B54BC710024F58F /* ShadowAssault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowAssault.h; sourceTree = "<group>"; };
+		761B5AA41B54E6980024F58F /* TimeRemount.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeRemount.cpp; sourceTree = "<group>"; };
+		761B5AA51B54E6980024F58F /* TimeRemount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeRemount.h; sourceTree = "<group>"; };
+		761B5AA81B54E6DA0024F58F /* SenilityCurse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SenilityCurse.cpp; sourceTree = "<group>"; };
+		761B5AA91B54E6DA0024F58F /* SenilityCurse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenilityCurse.h; sourceTree = "<group>"; };
 		7631FA341AC2A92B00CAB9C8 /* LightShield.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightShield.cpp; sourceTree = "<group>"; };
 		7631FA351AC2A92B00CAB9C8 /* LightShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightShield.h; sourceTree = "<group>"; };
 		7631FA381AC2A94000CAB9C8 /* GiantSword.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GiantSword.cpp; sourceTree = "<group>"; };
@@ -1139,6 +1151,8 @@
 				76ED99D61AD4DB8F0047D5A9 /* DeathSlice.h */,
 				76E67B051B15D76300E7504C /* DreadLord.cpp */,
 				76E67B061B15D76300E7504C /* DreadLord.h */,
+				76DBFF251B29AA8600A454D5 /* EvilInvoke.cpp */,
+				76DBFF261B29AA8600A454D5 /* EvilInvoke.h */,
 				76EFF5BF1AD396C300690CFE /* FatalThrow.cpp */,
 				76EFF5C01AD396C300690CFE /* FatalThrow.h */,
 				76ED99D11AD4D0B60047D5A9 /* FireWhirl.cpp */,
@@ -1169,6 +1183,8 @@
 				76EF6B2F1ADE4CDF003E84EF /* PenetrateSpear.h */,
 				76F74B411B20006900A4C950 /* SacrificeBomb.cpp */,
 				76F74B421B20006900A4C950 /* SacrificeBomb.h */,
+				761B5AA01B54BC710024F58F /* ShadowAssault.cpp */,
+				761B5AA11B54BC710024F58F /* ShadowAssault.h */,
 				76E414711ACAA14F003DB126 /* SkillCache.cpp */,
 				76E414721ACAA14F003DB126 /* SkillCache.h */,
 				9871DBEC1ABADCEF009B8EC9 /* SkillNode.cpp */,
@@ -1179,8 +1195,10 @@
 				76E50B411B180D6F00DA0996 /* SnowStorm.h */,
 				9871DBF01ABADF68009B8EC9 /* WrathOfThunder.cpp */,
 				9871DBF11ABADF68009B8EC9 /* WrathOfThunder.h */,
-				76DBFF251B29AA8600A454D5 /* EvilInvoke.cpp */,
-				76DBFF261B29AA8600A454D5 /* EvilInvoke.h */,
+				761B5AA41B54E6980024F58F /* TimeRemount.cpp */,
+				761B5AA51B54E6980024F58F /* TimeRemount.h */,
+				761B5AA81B54E6DA0024F58F /* SenilityCurse.cpp */,
+				761B5AA91B54E6DA0024F58F /* SenilityCurse.h */,
 			);
 			path = skill;
 			sourceTree = "<group>";
@@ -1970,6 +1988,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				761B5AA31B54BC710024F58F /* ShadowAssault.cpp in Sources */,
 				98E3B6781A73A77A00B5BEBB /* common.cc in Sources */,
 				98E3B6481A73A77A00B5BEBB /* descriptor.cc in Sources */,
 				9871DBF71ABADF7F009B8EC9 /* LightningChain.cpp in Sources */,
@@ -2026,6 +2045,7 @@
 				76E21D961AC5373A006714AD /* BatSwarm.cpp in Sources */,
 				E874131E1A0B5647003EBD0B /* trees.c in Sources */,
 				76E414681ACA80F5003DB126 /* NaturesAttendants.cpp in Sources */,
+				761B5AA71B54E6980024F58F /* TimeRemount.cpp in Sources */,
 				E87413091A0B5629003EBD0B /* TmxPropertySet.cpp in Sources */,
 				98E67E211ABFB01C00076CE1 /* GameTask.cpp in Sources */,
 				98E3B66C1A73A77A00B5BEBB /* message_lite.cc in Sources */,
@@ -2149,6 +2169,7 @@
 				E87413101A0B5630003EBD0B /* tinyxmlparser.cpp in Sources */,
 				76009E821AF86414007DF026 /* CrazyScratch.cpp in Sources */,
 				98E3B64A1A73A77A00B5BEBB /* descriptor.pb.cc in Sources */,
+				761B5AAB1B54E6DA0024F58F /* SenilityCurse.cpp in Sources */,
 				987185971AAFF1BC00533C3E /* PlayerSkillBehavior.cpp in Sources */,
 				98E3B6701A73A77A00B5BEBB /* repeated_field.cc in Sources */,
 				98E3B6561A73A77A00B5BEBB /* generated_message_reflection.cc in Sources */,
@@ -2204,6 +2225,7 @@
 				E84197CF1A09226300F5DF36 /* TmxTile.cpp in Sources */,
 				985F4D241AAD532E008D2EF8 /* AudioManager.cpp in Sources */,
 				E84197CD1A09226300F5DF36 /* TmxPolyline.cpp in Sources */,
+				761B5AA61B54E6980024F58F /* TimeRemount.cpp in Sources */,
 				98E3B6751A73A77A00B5BEBB /* atomicops_internals_x86_msvc.cc in Sources */,
 				98E3B64F1A73A77A00B5BEBB /* dynamic_message.cc in Sources */,
 				E807DF301A4BDFE6004F76DA /* Replay.cpp in Sources */,
@@ -2327,6 +2349,7 @@
 				98EBBEF51AABF73B00ADB84A /* UIBattleFloatLayer.cpp in Sources */,
 				988B52F01AA44ABD00FB7B21 /* ResourceManager.cpp in Sources */,
 				E80750191A1369D500AD920F /* BoidsPolygonEx.cpp in Sources */,
+				761B5AAA1B54E6DA0024F58F /* SenilityCurse.cpp in Sources */,
 				98E3B64D1A73A77A00B5BEBB /* descriptor_database.cc in Sources */,
 				98E67E201ABFB01C00076CE1 /* GameTask.cpp in Sources */,
 				E89FE29F1A2708670099E36A /* BETypes.cpp in Sources */,
@@ -2358,6 +2381,7 @@
 				E87413481A0BBB39003EBD0B /* EditorModel.cpp in Sources */,
 				988283001A3019EA0071D233 /* Border.cpp in Sources */,
 				E84197D11A09226300F5DF36 /* TmxUtil.cpp in Sources */,
+				761B5AA21B54BC710024F58F /* ShadowAssault.cpp in Sources */,
 				988B52E61AA4461700FB7B21 /* UIControlLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

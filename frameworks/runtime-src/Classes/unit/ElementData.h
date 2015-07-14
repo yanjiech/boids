@@ -55,26 +55,38 @@ public:
     std::string display_name;
     int level;
     float hp;
-    float current_hp;
     float mp;
-    float current_mp;
     float atk;
     float def;
     float move_speed;
     float atk_speed;
-    float collide;
     float critical;
     float tenacity;
     float hit;
     float dodge;
-    
     float atk_range;
-    
     float recover;
-    float scale;
+    float guard_radius;
+    float collide;
+
+    float final_hp;
+    float final_mp;
+    float final_atk;
+    float final_def;
+    float final_move_speed;
+    float final_atk_speed;
+    float final_critical;
+    float final_tenacity;
+    float final_hit;
+    float final_dodge;
+    float final_atk_range;
+    float final_recover;
+    float final_guard_radius;
+    float final_collide;
     
     int view_range;
-    
+
+    float scale;
     std::string bullet_name;
     
 private:
@@ -104,8 +116,6 @@ public:
 
 class UnitData : public ElementData {
 public:
-    float guard_radius;
-    
     bool is_melee;
     bool is_double_face;
     int default_face_dir;

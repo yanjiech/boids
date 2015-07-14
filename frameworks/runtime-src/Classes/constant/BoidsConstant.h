@@ -62,6 +62,7 @@
 #define BUFF_TYPE_ATTRIBUTE "buff_attribute"
 #define BUFF_TYPE_TAG "buff_tag"
 #define BUFF_TYPE_TAG_PROTECT "buff_tag_protect"
+#define BUFF_TYPE_RECOVER "buff_recover"
 
 #define EVENT_TRIGGER_TYPE_MAP_INIT "map_init"
 #define EVENT_TRIGGER_TYPE_UNIT_CHANGE "unit_change"
@@ -144,6 +145,9 @@
 #define SKILL_NAME_GAS_BOMB "GasBomb"
 #define SKILL_NAME_SACRIFICE_BOMB "SacrificeBomb"
 #define SKILL_NAME_EVIL_INVOKE "EvilInvoke"
+#define SKILL_NAME_SHADOW_ASSAULT "ShadowAssault"
+#define SKILL_NAME_TIME_REMOUNT "TimeRemount"
+#define SKILL_NAME_SENILITY_CURSE "SenilityCurse"
 
 #define BULLET_NAME_GAS "gas"
 

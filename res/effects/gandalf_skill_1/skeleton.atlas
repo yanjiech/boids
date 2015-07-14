@@ -1,0 +1,62 @@
+
+skeleton.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+CHILUN
+  rotate: false
+  xy: 533, 153
+  size: 82, 81
+  orig: 82, 81
+  offset: 0, 0
+  index: -1
+FENZHEN
+  rotate: true
+  xy: 2, 2
+  size: 22, 128
+  orig: 22, 128
+  offset: 0, 0
+  index: -1
+NEIQUAN
+  rotate: false
+  xy: 417, 31
+  size: 101, 101
+  orig: 101, 101
+  offset: 0, 0
+  index: -1
+SANJIAO
+  rotate: false
+  xy: 417, 134
+  size: 114, 100
+  orig: 114, 100
+  offset: 0, 0
+  index: -1
+SHIZHEN
+  rotate: false
+  xy: 617, 200
+  size: 95, 34
+  orig: 95, 34
+  offset: 0, 0
+  index: -1
+WA-Q
+  rotate: false
+  xy: 212, 31
+  size: 203, 203
+  orig: 203, 203
+  offset: 0, 0
+  index: -1
+WA-Qmohu
+  rotate: false
+  xy: 2, 26
+  size: 208, 208
+  orig: 208, 208
+  offset: 0, 0
+  index: -1
+dian
+  rotate: false
+  xy: 617, 172
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1

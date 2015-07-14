@@ -1210,7 +1210,9 @@
         "rec": 0.5, 
         "recgr": 0.2, 
         "scale": 1.0, 
-        "skills": [], 
+        "skills": [
+            "ShadowAssault"
+        ], 
         "star": 1, 
         "ten": 10.0, 
         "tengr": 6.0, 
