@@ -633,6 +633,12 @@ std::string ResourceManager::getSkillDesc( const std::string& skill_name, int le
         ret.replace( i, 3, Utils::toStr( value ) );
     }
     
+    i = ret.find( "asp" );
+    if( i != std::string::npos ) {
+        int value = this->getSkillValueOfKey( "asp", skill_conf, level );
+        ret.replace( i, 3, Utils::toStr( value ) );
+    }
+    
     return ret;
 }
 

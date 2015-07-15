@@ -57,19 +57,20 @@ void DreadLord::updateFrame( float delta ) {
 
 void DreadLord::begin() {
     SkillNode::begin();
-    UnitData* unit_data = _owner->getUnitData();
-    unit_data->atk += _extra_atk;
-    unit_data->dodge += _extra_dod;
+    ValueMap buff_data;
+    buff_data["buff_type"] = Value( BUFF_TYPE_BLESS );
+    buff_data["buff_name"] = Value( SKILL_NAME_DREAD_LORD );
+    buff_data["duration"] = Value( _duration );
+    buff_data["atk_fix"] = Value( _extra_atk );
+    buff_data["dod_fix"] = Value( _extra_dod );
+    buff_data["effect_resource"] = Value( "effects/durarara_skill_2" );
+    buff_data["effect_scale_x"] = Value( 1.74f );
+    buff_data["atk_fix"] = Value( _extra_atk );
+    buff_data["dod_fix"] = Value( _extra_dod );
+    BlessBuff* buff = BlessBuff::create( _owner, buff_data );
+    _owner->addBuff( buff->getBuffId(), buff );
+    buff->begin();
     _owner->setUnitScale( _owner->getUnitScale() * 1.5f );
-    std::string resource = "effects/durarara_skill_2";
-    std::string name = Utils::stringFormat( "%s_effect", SKILL_NAME_DREAD_LORD );
-    spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( resource );
-    TimeLimitSpineComponent* component = TimeLimitSpineComponent::create( _duration, skeleton, name, true );
-    component->setPosition( Point( 0, 0 ) );
-    component->setAnimation( 0, "animation", true );
-    component->setScaleX( 1.74 );
-    _owner->addUnitComponent( component, component->getName(), eComponentLayer::BelowObject );
-    
     _owner->endCast();
 }
 

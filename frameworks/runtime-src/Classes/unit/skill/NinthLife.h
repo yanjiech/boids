@@ -14,6 +14,8 @@
 class NinthLife : public SkillNode {
 private:
     float _buff_duration;
+    float _asp_per;
+    float _cri;
     float _elapse;
     
 public:

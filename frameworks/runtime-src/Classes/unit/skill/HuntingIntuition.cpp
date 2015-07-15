@@ -50,19 +50,14 @@ void HuntingIntuition::updateFrame( float delta ) {
 }
 
 void HuntingIntuition::begin() {
-    ValueMap data;
-    data["duration"] = Value( _buff_duration );
-    data["buff_type"] = Value( BUFF_TYPE_ATTRIBUTE );
-    data["buff_name"] = Value( SKILL_NAME_HUNTING_INTUITION );
+    ValueMap buff_data;
+    buff_data["duration"] = Value( _buff_duration );
+    buff_data["buff_type"] = Value( BUFF_TYPE_BLESS );
+    buff_data["buff_name"] = Value( SKILL_NAME_HUNTING_INTUITION );
+    buff_data["cri_per"] = Value( _cri_up );
+    buff_data["hit_per"] = Value( _hit_up );
     
-    ElementData* unit_data = _owner->getTargetData();
-    
-    ValueMap attributes;
-    attributes["cri"] = Value( unit_data->critical * _cri_up );
-    attributes["hit"] = Value( unit_data->hit * _hit_up );
-    data["attributes"] = Value( attributes );
-    
-    AttributeBuff* buff = AttributeBuff::create( _owner, data );
+    BlessBuff* buff = BlessBuff::create( _owner, buff_data );
     _owner->addBuff( buff->getBuffId(), buff );
     buff->begin();
     

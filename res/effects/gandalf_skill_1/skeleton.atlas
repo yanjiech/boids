@@ -1,61 +1,68 @@
 
 skeleton.png
-size: 1024,256
+size: 1024,512
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 CHILUN
   rotate: false
-  xy: 533, 153
+  xy: 207, 124
   size: 82, 81
   orig: 82, 81
   offset: 0, 0
   index: -1
 FENZHEN
   rotate: true
-  xy: 2, 2
+  xy: 295, 254
   size: 22, 128
   orig: 22, 128
   offset: 0, 0
   index: -1
 NEIQUAN
   rotate: false
-  xy: 417, 31
+  xy: 517, 295
   size: 101, 101
   orig: 101, 101
   offset: 0, 0
   index: -1
 SANJIAO
   rotate: false
-  xy: 417, 134
+  xy: 517, 398
   size: 114, 100
   orig: 114, 100
   offset: 0, 0
   index: -1
 SHIZHEN
   rotate: false
-  xy: 617, 200
+  xy: 633, 464
   size: 95, 34
   orig: 95, 34
   offset: 0, 0
   index: -1
 WA-Q
   rotate: false
-  xy: 212, 31
+  xy: 2, 2
   size: 203, 203
   orig: 203, 203
   offset: 0, 0
   index: -1
 WA-Qmohu
   rotate: false
-  xy: 2, 26
-  size: 208, 208
-  orig: 208, 208
+  xy: 295, 278
+  size: 220, 220
+  orig: 220, 220
+  offset: 0, 0
+  index: -1
+cir
+  rotate: false
+  xy: 2, 207
+  size: 291, 291
+  orig: 291, 291
   offset: 0, 0
   index: -1
 dian
   rotate: false
-  xy: 617, 172
+  xy: 207, 96
   size: 26, 26
   orig: 26, 26
   offset: 0, 0

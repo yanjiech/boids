@@ -37,7 +37,7 @@ public:
     
     static float calculateDamage( const std::string calculator_name, float base_damage, class ElementData* atker_data, class ElementData* defer_data );
     
-    static float calculateResistance( float def, float negl, float neglp );
+    static float calculateResistance( float def, float negl, float neglp, int lvl );
     
     static bool doesHit( float hit, float dodge, float atker_level, float defer_level );
     

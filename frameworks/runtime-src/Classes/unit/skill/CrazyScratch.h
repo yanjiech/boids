@@ -10,16 +10,22 @@
 #define __Boids__CrazyScratch__
 
 #include "SkillNode.h"
+#include "spine/spine-cocos2dx.h"
 
 class CrazyScratch : public SkillNode {
 private:
     float _duration;
-    float _elapse;
     float _range;
     float _damage;
-    float _damage_interval;
-    float _damage_elapse;
-    cocos2d::Point _dir;
+    float _interval;
+    float _elapse;
+    int _count;
+    cocos2d::Point _origin_pos;
+    cocos2d::Point _last_pos;
+    
+    cocos2d::Map<int,UnitNode*> _excluded_targets;
+    
+    spine::SkeletonAnimation* _skeleton;
     
 public:
     CrazyScratch();
@@ -32,8 +38,6 @@ public:
     
     virtual void begin();
     virtual void end();
-    
-    virtual void refreshDamage();
 };
 
 #endif /* defined(__Boids__CrazyScratch__) */

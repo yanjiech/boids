@@ -37,7 +37,9 @@ bool NinthLife::init( UnitNode* owner, const cocos2d::ValueMap& data, const coco
     }
     
     int level = data.at( "level" ).asInt();
-    _buff_duration = data.at( "duration" ).asValueVector().at( level - 1 ).asFloat();
+    _buff_duration = data.at( "duration" ).asFloat();
+    _asp_per = data.at( "asp" ).asFloat();
+    _cri = data.at( "cri" ).asValueVector().at( level - 1 ).asFloat();
     _elapse = 0;
     
     return true;
@@ -56,11 +58,14 @@ void NinthLife::begin() {
     SkillNode::begin();
     ValueMap buff_data;
     buff_data["duration"] = Value( _buff_duration );
-    buff_data["buff_type"] = Value( BUFF_TYPE_UNDEAD );
-    buff_data["buff_name"] = Value( "NinthLife" );
+    buff_data["buff_type"] = Value( BUFF_TYPE_BLESS );
+    buff_data["buff_name"] = Value( SKILL_NAME_NINTH_LIFE );
     buff_data["effect_resource"] = Value( "effects/kyle_skill_2" );
+    buff_data["effect_layer"] = Value( 1 );
+    buff_data["atk_speed_per"] = Value( _asp_per );
+    buff_data["cri_fix"] = Value( _cri );
     
-    UndeadBuff* buff = UndeadBuff::create( _owner, buff_data );
+    BlessBuff* buff = BlessBuff::create( _owner, buff_data );
     _owner->addBuff( buff->getBuffId(), buff );
     buff->begin();
     

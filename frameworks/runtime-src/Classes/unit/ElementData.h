@@ -55,7 +55,9 @@ public:
     std::string display_name;
     int level;
     float hp;
+    float current_hp;
     float mp;
+    float current_mp;
     float atk;
     float def;
     float move_speed;
@@ -67,24 +69,24 @@ public:
     float atk_range;
     float recover;
     float guard_radius;
-    float collide;
+    float view_range;
 
-    float final_hp;
-    float final_mp;
-    float final_atk;
-    float final_def;
-    float final_move_speed;
-    float final_atk_speed;
-    float final_critical;
-    float final_tenacity;
-    float final_hit;
-    float final_dodge;
-    float final_atk_range;
-    float final_recover;
-    float final_guard_radius;
-    float final_collide;
+    float origin_hp;
+    float origin_mp;
+    float origin_atk;
+    float origin_def;
+    float origin_move_speed;
+    float origin_atk_speed;
+    float origin_critical;
+    float origin_tenacity;
+    float origin_hit;
+    float origin_dodge;
+    float origin_atk_range;
+    float origin_recover;
+    float origin_guard_radius;
+    float origin_view_range;
     
-    int view_range;
+    float collide;
 
     float scale;
     std::string bullet_name;
@@ -112,6 +114,8 @@ public:
     
     EquipmentData* getEquipData( eEquipType type );
     void setEquipData( eEquipType type, EquipmentData* data );
+    
+    void deriveFromOriginAttributes();
 };
 
 class UnitData : public ElementData {

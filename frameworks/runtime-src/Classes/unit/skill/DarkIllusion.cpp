@@ -93,7 +93,7 @@ void DarkIllusion::updateFrame( float delta ) {
                 ValueMap buff_data;
                 buff_data["duration"] = Value( _stun_duration );
                 buff_data["buff_type"] = Value( BUFF_TYPE_STUN );
-                buff_data["buff_name"] = Value( "DarkIllusion" );
+                buff_data["buff_name"] = Value( SKILL_NAME_DARK_ILLUSION );
                 
                 DamageCalculate* calculator = DamageCalculate::create( SKILL_NAME_DARK_ILLUSION, _damage );
                 for( auto unit : candidates ) {

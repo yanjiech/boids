@@ -61,6 +61,7 @@ void TimeRemount::begin() {
     buff_data["effect_resource"] = Value( "effects/gandalf_skill_1" );
     buff_data["effect_scale_y"] = Value( 0.574712f );
     buff_data["buff_group"] = Value( (int)eBuffGroup::BuffGroupBuff );
+    buff_data["effect_blend"] = Value( "additive" );
     
     Vector<UnitNode*> candidates = _owner->getBattleLayer()->getAliveUnitsByCamp( _owner->getTargetCamp() );
     for( auto unit : candidates ) {

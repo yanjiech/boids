@@ -63,6 +63,8 @@
 #define BUFF_TYPE_TAG "buff_tag"
 #define BUFF_TYPE_TAG_PROTECT "buff_tag_protect"
 #define BUFF_TYPE_RECOVER "buff_recover"
+#define BUFF_TYPE_BLESS "buff_bless"
+#define BUFF_TYPE_CURSE "buff_curse"
 
 #define EVENT_TRIGGER_TYPE_MAP_INIT "map_init"
 #define EVENT_TRIGGER_TYPE_UNIT_CHANGE "unit_change"

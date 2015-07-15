@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "../constant/BoidsConstant.h"
+#include "ElementData.h"
 
 class UnitNode;
 class TargetNode;
@@ -23,7 +24,8 @@ typedef enum {
 typedef enum {
     BuffEffectPosOrigin = 0,
     BuffEffectPosHead = 1,
-    BuffEffectPosBody = 2
+    BuffEffectPosBody = 2,
+    BuffEffectPosAboveHead = 3
 }eBuffEffectPos;
 
 class Buff : public cocos2d::Ref {
@@ -32,6 +34,7 @@ protected:
     
     std::string _buff_id;
     std::string _buff_type;
+    std::string _buff_name;
     bool _should_recycle;
     
     float _duration;
@@ -48,8 +51,11 @@ protected:
     float _effect_scale_x;
     float _effect_scale_y;
     cocos2d::Color3B _effect_color;
+    std::string _effect_blend;
     
     eBuffEffectPos _effect_pos;
+    int _effect_layer; //0 default, 1 over object, 2 below object
+    
 public:
     static int getNextBuffId();
     
@@ -92,27 +98,27 @@ public:
     void setBuffGroup( eBuffGroup group ) { _buff_group = group; }
 };
 
-class ElementData;
-
-class AttributeBuff : public Buff {
-private:
-    ElementData* _unit_data;
-    
-public:
-    AttributeBuff();
-    virtual ~AttributeBuff();
-    
-    static AttributeBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
-    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
-    
-    virtual void updateFrame( float delta );
-    
-    virtual void begin();
-    virtual void end();
-    
-    ElementData* getElementData();
-    void setElementData( ElementData* data );
-};
+//class ElementData;
+//
+//class AttributeBuff : public Buff {
+//private:
+//    ElementData* _unit_data;
+//    
+//public:
+//    AttributeBuff();
+//    virtual ~AttributeBuff();
+//    
+//    static AttributeBuff* create( UnitNode* owner, const cocos2d::ValueMap& data );
+//    virtual bool init( UnitNode* owner, const cocos2d::ValueMap& data );
+//    
+//    virtual void updateFrame( float delta );
+//    
+//    virtual void begin();
+//    virtual void end();
+//    
+//    ElementData* getElementData();
+//    void setElementData( ElementData* data );
+//};
 
 class StunBuff : public Buff {
 public:
@@ -312,6 +318,9 @@ public:
     
     virtual void begin();
     virtual void end();
+    
+    virtual void apply( ElementData* data );
+    virtual void unapply( ElementData* data );
 };
 
 class CurseBuff : public BlessBuff {
@@ -326,6 +335,9 @@ public:
     
     virtual void begin();
     virtual void end();
+    
+    virtual void apply( ElementData* data );
+    virtual void unapply( ElementData* data );
 };
 
 #endif /* defined(__Boids__Buff__) */

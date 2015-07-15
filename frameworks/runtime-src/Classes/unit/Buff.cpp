@@ -28,7 +28,11 @@ Buff::Buff() :
 _owner( nullptr ),
 _buff_id( "" ),
 _effect_resource( "" ),
-_effect_scale( 1.0f )
+_effect_scale( 0 ),
+_effect_scale_x( 0 ),
+_effect_scale_y( 0 ),
+_effect_layer( 0 ),
+_effect_blend( "" )
 {
     
 }
@@ -65,9 +69,9 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     else if( buff_type == BUFF_TYPE_SLOW ) {
         ret = SlowBuff::create( owner, data );
     }
-    else if( buff_type == BUFF_TYPE_ATTRIBUTE ) {
-        ret = AttributeBuff::create( owner, data );
-    }
+//    else if( buff_type == BUFF_TYPE_ATTRIBUTE ) {
+//        ret = AttributeBuff::create( owner, data );
+//    }
     else if( buff_type == BUFF_TYPE_TAG  ) {
         ret = TagBuff::create( owner, data );
     }
@@ -77,11 +81,18 @@ Buff* Buff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
     else if( buff_type == BUFF_TYPE_RECOVER ) {
         ret = RecoverBuff::create( owner, data );
     }
+    else if( buff_type == BUFF_TYPE_BLESS ) {
+        ret = RecoverBuff::create( owner, data );
+    }
+    else if( buff_type == BUFF_TYPE_CURSE ) {
+        ret = RecoverBuff::create( owner, data );
+    }
     return ret;
 }
 
 bool Buff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     _should_recycle = false;
+    _buff_name = data.at( "buff_name" ).asString();
     _buff_type = data.at( "buff_type" ).asString();
     _duration = data.at( "duration" ).asFloat();
     _elapse = 0;
@@ -99,7 +110,7 @@ bool Buff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
         _effect_scale = itr->second.asFloat();
     }
     else {
-        _effect_scale = 1.0f;
+        _effect_scale = 0;
     }
     
     itr = _data.find( "effect_pos" );
@@ -110,12 +121,20 @@ bool Buff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
         _effect_pos = BuffEffectPosOrigin;
     }
     
+    itr = _data.find( "effect_layer" );
+    if( itr != _data.end() ) {
+        _effect_layer = itr->second.asInt();
+    }
+    else {
+        _effect_layer = 0;
+    }
+    
     itr = _data.find( "effect_scale_x" );
     if( itr != _data.end() ) {
         _effect_scale_x = itr->second.asFloat();
     }
     else {
-        _effect_scale_x = 1.0f;
+        _effect_scale_x = 0;
     }
     
     itr = _data.find( "effect_scale_y" );
@@ -123,7 +142,7 @@ bool Buff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
         _effect_scale_y = itr->second.asFloat();
     }
     else {
-        _effect_scale_y = 1.0f;
+        _effect_scale_y = 0;
     }
     
     itr = _data.find( "buff_group" );
@@ -135,6 +154,11 @@ bool Buff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     }
     
     _effect_color = Color3B::WHITE;
+    
+    itr = _data.find( "effect_blend" );
+    if( itr != _data.end() ) {
+        _effect_blend = itr->second.asString();
+    }
     
     return true;
 }
@@ -148,24 +172,66 @@ void Buff::updateFrame( float delta ) {
 void Buff::begin() {
     if( !_effect_resource.empty() ) {
         spine::SkeletonAnimation* skeleton = ArmatureManager::getInstance()->createArmature( _effect_resource );
-        skeleton->setScale( _effect_scale );
-        skeleton->setScaleX( _effect_scale_x );
-        skeleton->setScaleY( _effect_scale_y );
+        if( !_effect_blend.empty() ) {
+            if( _effect_blend == "additive" ) {
+                skeleton->setBlendFunc( BlendFunc::ADDITIVE );
+            }
+        }
+        if( _effect_scale != 0 ) {
+            skeleton->setScale( _effect_scale );
+        }
+        if( _effect_scale_x != 0 ) {
+            skeleton->setScaleX( _effect_scale_x );
+        }
+        if( _effect_scale_y != 0 ) {
+            skeleton->setScaleY( _effect_scale_y );
+        }
         skeleton->setColor( _effect_color );
         TimeLimitSpineComponent* effect = TimeLimitSpineComponent::create( _duration, skeleton, _buff_id + "_effect", true );
         effect->setAnimation( 0, "animation", true );
         switch ( _effect_pos ) {
             case BuffEffectPosOrigin:
                 effect->setPosition( Point::ZERO );
-                _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::BelowObject );
+                if( _effect_layer == 0 || _effect_layer == 2 ) {
+                    _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::BelowObject );
+                }
+                else {
+                    _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::OverObject );
+                }
                 break;
             case BuffEffectPosBody:
                 effect->setPosition( _owner->getLocalHitPos() );
-                _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::OverObject );
+                if( _effect_layer == 0 || _effect_layer == 1 ) {
+                    _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::OverObject );
+                }
+                else {
+                    _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::BelowObject );
+                }
                 break;
             case BuffEffectPosHead:
                 effect->setPosition( _owner->getLocalHeadPos() );
-                _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::OverObject );
+                if( _effect_layer == 0 || _effect_layer == 1 ) {
+                    _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::OverObject );
+                }
+                else {
+                    _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::BelowObject );
+                }
+            case BuffEffectPosAboveHead:
+            {
+                Rect unit_rect = _owner->getCurrentSkeleton()->getBoundingBox();
+                Rect effect_rect = effect->getNode()->getBoundingBox();
+                if( effect_rect.size.height < 0 ) {
+                    effect_rect.size.height = 0;
+                }
+                Point pos = Point( 0, unit_rect.origin.y + unit_rect.size.height * _owner->getCurrentSkeleton()->getScale() + effect_rect.size.height / 2 );
+                effect->setPosition( pos );
+                if( _effect_layer == 0 || _effect_layer == 1 ) {
+                    _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::OverObject );
+                }
+                else {
+                    _owner->addUnitComponent( effect, effect->getName(), eComponentLayer::BelowObject );
+                }
+            }
                 break;
             default:
                 break;
@@ -189,69 +255,69 @@ void Buff::setOwner( UnitNode* owner ) {
 }
 
 //attribute buff
-AttributeBuff::AttributeBuff() :
-_unit_data( nullptr )
-{
-    
-}
-
-AttributeBuff::~AttributeBuff() {
-    CC_SAFE_RELEASE( _unit_data );
-}
-
-AttributeBuff* AttributeBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
-    AttributeBuff* ret = new AttributeBuff();
-    if( ret && ret->init( owner, data ) ) {
-        ret->autorelease();
-        return ret;
-    }
-    else {
-        CC_SAFE_DELETE( ret );
-        return nullptr;
-    }
-}
-
-bool AttributeBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
-    if( !Buff::init( owner, data ) ) {
-        return false;
-    }
-    
-    ElementData* unit_data = ElementData::create( ValueMap() );
-    const ValueMap& attributes = data.at( "attributes" ).asValueMap();
-    for( auto pair : attributes ) {
-        unit_data->setAttribute( pair.first, pair.second.asString() );
-    }
-    this->setElementData( unit_data );
-    
-    return true;
-}
-
-void AttributeBuff::updateFrame( float delta ) {
-    Buff::updateFrame( delta );
-    if( !this->isInfinite() && _elapse > _duration ) {
-        this->end();
-    }
-}
-
-void AttributeBuff::begin() {
-    _owner->getTargetData()->add( _unit_data );
-    Buff::begin();
-}
-
-void AttributeBuff::end() {
-    _owner->getTargetData()->sub( _unit_data );
-    Buff::end();
-}
-
-ElementData* AttributeBuff::getElementData() {
-    return _unit_data;
-}
-
-void AttributeBuff::setElementData( ElementData* data ) {
-    CC_SAFE_RELEASE( _unit_data );
-    _unit_data = data;
-    CC_SAFE_RETAIN( _unit_data );
-}
+//AttributeBuff::AttributeBuff() :
+//_unit_data( nullptr )
+//{
+//    
+//}
+//
+//AttributeBuff::~AttributeBuff() {
+//    CC_SAFE_RELEASE( _unit_data );
+//}
+//
+//AttributeBuff* AttributeBuff::create( UnitNode* owner, const cocos2d::ValueMap& data ) {
+//    AttributeBuff* ret = new AttributeBuff();
+//    if( ret && ret->init( owner, data ) ) {
+//        ret->autorelease();
+//        return ret;
+//    }
+//    else {
+//        CC_SAFE_DELETE( ret );
+//        return nullptr;
+//    }
+//}
+//
+//bool AttributeBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
+//    if( !Buff::init( owner, data ) ) {
+//        return false;
+//    }
+//    
+//    ElementData* unit_data = ElementData::create( ValueMap() );
+//    const ValueMap& attributes = data.at( "attributes" ).asValueMap();
+//    for( auto pair : attributes ) {
+//        unit_data->setAttribute( pair.first, pair.second.asString() );
+//    }
+//    this->setElementData( unit_data );
+//    
+//    return true;
+//}
+//
+//void AttributeBuff::updateFrame( float delta ) {
+//    Buff::updateFrame( delta );
+//    if( !this->isInfinite() && _elapse > _duration ) {
+//        this->end();
+//    }
+//}
+//
+//void AttributeBuff::begin() {
+//    _owner->getTargetData()->add( _unit_data );
+//    Buff::begin();
+//}
+//
+//void AttributeBuff::end() {
+//    _owner->getTargetData()->sub( _unit_data );
+//    Buff::end();
+//}
+//
+//ElementData* AttributeBuff::getElementData() {
+//    return _unit_data;
+//}
+//
+//void AttributeBuff::setElementData( ElementData* data ) {
+//    CC_SAFE_RELEASE( _unit_data );
+//    _unit_data = data;
+//    CC_SAFE_RETAIN( _unit_data );
+//}
 
 //stun buff
 StunBuff::StunBuff() {
@@ -278,6 +344,10 @@ bool StunBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     if( !Buff::init( owner, data ) ) {
         return false;
     }
+    
+    _effect_resource = "effects/stunned";
+    _effect_pos = eBuffEffectPos::BuffEffectPosAboveHead;
+    _effect_layer = 1;
     
     return true;
 }
@@ -784,7 +854,36 @@ void RecoverBuff::end() {
 }
 
 //bless buff
-BlessBuff::BlessBuff() {
+BlessBuff::BlessBuff() :
+atk_fix( 0 ),
+def_fix( 0 ),
+hp_fix( 0 ),
+mp_fix( 0 ),
+cri_fix( 0 ),
+ten_fix( 0 ),
+hit_fix( 0 ),
+dod_fix( 0 ),
+mov_fix( 0 ),
+range_fix( 0 ),
+atk_speed_fix( 0 ),
+guard_fix( 0 ),
+view_range_fix( 0 ),
+rec_fix( 0 ),
+atk_per( 0 ),
+def_per( 0 ),
+hp_per( 0 ),
+mp_per( 0 ),
+cri_per( 0 ),
+ten_per( 0 ),
+hit_per( 0 ),
+dod_per( 0 ),
+mov_per( 0 ),
+range_per( 0 ),
+atk_speed_per( 0 ),
+guard_per( 0 ),
+view_range_per( 0 ),
+rec_per( 0 )
+{
     
 }
 
@@ -808,6 +907,147 @@ bool BlessBuff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
     if( !Buff::init( owner, data ) ) {
         return false;
     }
+    
+    _buff_group = eBuffGroup::BuffGroupBuff;
+    
+    auto itr = data.find( "atk_fix" );
+    if( itr != data.end() ) {
+        this->atk_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "def_fix" );
+    if( itr != data.end() ) {
+        this->def_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "hp_fix" );
+    if( itr != data.end() ) {
+        this->hp_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "mp_fix" );
+    if( itr != data.end() ) {
+        this->mp_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "cri_fix" );
+    if( itr != data.end() ) {
+        this->cri_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "ten_fix" );
+    if( itr != data.end() ) {
+        this->ten_fix = itr->second.asFloat();
+    }
+    itr = data.find( "hit_fix" );
+    if( itr != data.end() ) {
+        this->hit_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "dod_fix" );
+    if( itr != data.end() ) {
+        this->dod_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "mov_fix" );
+    if( itr != data.end() ) {
+        this->mov_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "range_fix" );
+    if( itr != data.end() ) {
+        this->range_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "atk_speed_fix" );
+    if( itr != data.end() ) {
+        this->atk_speed_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "guard_fix" );
+    if( itr != data.end() ) {
+        this->guard_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "view_range_fix" );
+    if( itr != data.end() ) {
+        this->view_range_fix = itr->second.asFloat();
+    }
+    
+    itr = data.find( "rec_fix" );
+    if( itr != data.end() ) {
+        this->rec_fix = itr->second.asFloat();
+    }
+
+    itr = data.find( "atk_per" );
+    if( itr != data.end() ) {
+        this->atk_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "def_per" );
+    if( itr != data.end() ) {
+        this->def_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "hp_per" );
+    if( itr != data.end() ) {
+        this->hp_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "mp_per" );
+    if( itr != data.end() ) {
+        this->mp_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "cri_per" );
+    if( itr != data.end() ) {
+        this->cri_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "ten_per" );
+    if( itr != data.end() ) {
+        this->ten_per = itr->second.asFloat();
+    }
+    itr = data.find( "hit_per" );
+    if( itr != data.end() ) {
+        this->hit_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "dod_per" );
+    if( itr != data.end() ) {
+        this->dod_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "mov_per" );
+    if( itr != data.end() ) {
+        this->mov_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "range_per" );
+    if( itr != data.end() ) {
+        this->range_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "atk_speed_per" );
+    if( itr != data.end() ) {
+        this->atk_speed_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "guard_per" );
+    if( itr != data.end() ) {
+        this->guard_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "view_range_per" );
+    if( itr != data.end() ) {
+        this->view_range_per = itr->second.asFloat();
+    }
+    
+    itr = data.find( "rec_per" );
+    if( itr != data.end() ) {
+        this->rec_per = itr->second.asFloat();
+    }
+    
     return true;
 }
 
@@ -820,12 +1060,89 @@ void BlessBuff::updateFrame( float delta ) {
 
 void BlessBuff::begin() {
     Buff::begin();
-    _owner->calculateTargetData();
+    this->apply( _owner->getTargetData() );
 }
 
 void BlessBuff::end() {
     Buff::end();
-    _owner->calculateTargetData();
+    this->unapply( _owner->getTargetData() );
+}
+
+void BlessBuff::apply( ElementData* data ) {
+    data->atk += atk_fix;
+    data->def += def_fix;
+    data->hp += hp_fix;
+    data->current_hp += hp_fix;
+    data->mp += mp_fix;
+    data->current_mp += mp_fix;
+    data->critical += cri_fix;
+    data->tenacity += ten_fix;
+    data->hit += hit_fix;
+    data->dodge += dod_fix;
+    data->move_speed += mov_fix;
+    data->atk_range += range_fix;
+    data->atk_speed += atk_speed_fix;
+    data->guard_radius += guard_fix;
+    data->view_range += view_range_fix;
+    data->recover += rec_fix;
+    
+    data->atk += data->origin_atk * atk_per;
+    data->def += data->origin_def * def_per;
+    data->hp += data->origin_hp * hp_per;
+    data->current_hp += data->origin_hp * hp_per;
+    data->mp += data->origin_mp * mp_per;
+    data->current_mp += data->origin_mp * mp_per;
+    data->critical += data->origin_critical * cri_per;
+    data->tenacity += data->origin_tenacity * ten_per;
+    data->hit += data->origin_hit * hit_per;
+    data->dodge += data->origin_dodge * dod_per;
+    data->move_speed += data->origin_move_speed * mov_per;
+    data->atk_range += data->origin_atk_range * range_per;
+    data->atk_speed += data->origin_atk_speed * atk_speed_per;
+    data->guard_radius += data->origin_guard_radius * guard_per;
+    data->view_range += data->origin_view_range * view_range_per;
+    data->recover += data->origin_recover * rec_per;
+}
+
+void BlessBuff::unapply( ElementData* data ) {
+    data->atk -= atk_fix;
+    data->def -= def_fix;
+    data->hp -= hp_fix;
+    data->mp -= mp_fix;
+    data->critical -= cri_fix;
+    data->tenacity -= ten_fix;
+    data->hit -= hit_fix;
+    data->dodge -= dod_fix;
+    data->move_speed -= mov_fix;
+    data->atk_range -= range_fix;
+    data->atk_speed -= atk_speed_fix;
+    data->guard_radius -= guard_fix;
+    data->view_range -= view_range_fix;
+    data->recover -= rec_fix;
+    
+    data->atk -= data->origin_atk * atk_per;
+    data->def -= data->origin_def * def_per;
+    data->hp -= data->origin_hp * hp_per;
+    data->current_hp -= data->origin_hp * hp_per;
+    data->mp -= data->origin_mp * mp_per;
+    data->current_mp -= data->origin_mp * mp_per;
+    data->critical -= data->origin_critical * cri_per;
+    data->tenacity -= data->origin_tenacity * ten_per;
+    data->hit -= data->origin_hit * hit_per;
+    data->dodge -= data->origin_dodge * dod_per;
+    data->move_speed -= data->origin_move_speed * mov_per;
+    data->atk_range -= data->origin_atk_range * range_per;
+    data->atk_speed -= data->origin_atk_speed * atk_speed_per;
+    data->guard_radius -= data->origin_guard_radius * guard_per;
+    data->view_range -= data->origin_view_range * view_range_per;
+    data->recover -= data->origin_recover * rec_per;
+    
+    if( data->current_hp > data->hp ) {
+        data->current_hp = data->hp;
+    }
+    if( data->current_mp > data->mp ) {
+        data->current_mp = data->mp;
+    }
 }
 
 //curse buff
@@ -866,10 +1183,18 @@ void CurseBuff::updateFrame( float delta ) {
 
 void CurseBuff::begin() {
     Buff::begin();
-    _owner->calculateTargetData();
+    this->apply( _owner->getTargetData() );
 }
 
 void CurseBuff::end() {
     Buff::end();
-    _owner->calculateTargetData();
+    this->unapply( _owner->getTargetData() );
+}
+
+void CurseBuff::apply( ElementData* data ) {
+    BlessBuff::unapply( data );
+}
+
+void CurseBuff::unapply( ElementData* data ) {
+    BlessBuff::apply( data );
 }

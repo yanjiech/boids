@@ -606,44 +606,46 @@ void UnitNode::takeDamage( const cocos2d::ValueMap& result, TargetNode* atker ) 
 }
 
 void UnitNode::takeDamage( float amount, bool is_cri, bool is_miss, TargetNode* atker ) {
-    UnitData* unit_data = dynamic_cast<UnitData*>( _target_data );
-    if( this->isAttackable() && unit_data->current_hp > 0 ) {
-        float damage = amount;
-        for( auto itr = _buffs.begin(); itr != _buffs.end(); ++itr ) {
-            damage = itr->second->filterDamage( damage, atker );
-        }
-        unit_data->current_hp -= damage;
-        
-        //jump damage number
-        std::string jump_text_name = Utils::stringFormat( "damage_number_%d", BulletNode::getNextBulletId() );
-        this->jumpNumber( damage, "damage", is_cri, jump_text_name );
-        
-        //update blood bar
-        if( this->isBoss() ) {
-            float percent = 100.0f * _target_data->current_hp / _target_data->hp;
-            if( percent < 0 ) {
-                percent = 0;
+    if( this->isAlive() ) {
+        UnitData* unit_data = dynamic_cast<UnitData*>( _target_data );
+        if( this->isAttackable() && unit_data->current_hp > 0 ) {
+            float damage = amount;
+            for( auto itr = _buffs.begin(); itr != _buffs.end(); ++itr ) {
+                damage = itr->second->filterDamage( damage, atker );
             }
-            _battle_layer->getUIBattleLayer()->setBossHpPercent( percent );
-        }
-        else if( this->getTargetCamp() == eTargetCamp::Player ) {
-            float percent = _target_data->current_hp / _target_data->hp * 100.0f;
-            if( percent < 0 ) {
-                percent = 0;
+            unit_data->current_hp -= damage;
+            
+            //jump damage number
+            std::string jump_text_name = Utils::stringFormat( "damage_number_%d", BulletNode::getNextBulletId() );
+            this->jumpNumber( damage, "damage", is_cri, jump_text_name );
+            
+            //update blood bar
+            if( this->isBoss() ) {
+                float percent = 100.0f * _target_data->current_hp / _target_data->hp;
+                if( percent < 0 ) {
+                    percent = 0;
+                }
+                _battle_layer->getUIBattleLayer()->setBossHpPercent( percent );
             }
-            _hp_bar->setPercentage( percent );
-        }
-        
-        //dying
-        if( unit_data->current_hp <= 0 ) {
-            _battle_layer->clearChasingTarget( this );
-            SkillCache::getInstance()->removeSkillOfOwner( this );
-            this->endSkill();
-            this->changeUnitState( eUnitState::Dying, true );
-        }
-        else if( _chasing_target == nullptr ) {
-            if( atker && atker->isAttackable() && atker->isAlive() ) {
-                this->setChasingTarget( atker );
+            else if( this->getTargetCamp() == eTargetCamp::Player ) {
+                float percent = _target_data->current_hp / _target_data->hp * 100.0f;
+                if( percent < 0 ) {
+                    percent = 0;
+                }
+                _hp_bar->setPercentage( percent );
+            }
+            
+            //dying
+            if( unit_data->current_hp <= 0 ) {
+                _battle_layer->clearChasingTarget( this );
+                SkillCache::getInstance()->removeSkillOfOwner( this );
+                this->endSkill();
+                this->changeUnitState( eUnitState::Dying, true );
+            }
+            else if( _chasing_target == nullptr ) {
+                if( atker && atker->isAttackable() && atker->isAlive() ) {
+                    this->setChasingTarget( atker );
+                }
             }
         }
     }

@@ -15,8 +15,8 @@ class SenilityCurse : public SkillNode {
 private:
     float _duration;
     float _range;
-    float _atk_per;
-    float _def_per;
+    float _atk;
+    float _def;
     float _mov_per;
     
 public:

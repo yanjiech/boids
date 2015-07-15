@@ -100,38 +100,47 @@ cocos2d::ValueMap DamageCalculate::calculateDamageWithoutMiss( class ElementData
 }
 
 float DamageCalculate::calculateDamage( const std::string calculator_name, float base_damage, class ElementData* atker_data, class ElementData* defer_data ) {
+    float b_dmg = MAX( 0, base_damage );
+    float atk = MAX( 0, atker_data->atk );
     if( calculator_name == "normal" ) {
-        return ( base_damage + atker_data->atk ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+        
+        return ( b_dmg + atk ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0, defer_data->level );
     }
     else if( calculator_name == SKILL_NAME_WRATH_OF_THUNDER ) {
-        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+        return ( b_dmg ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0, defer_data->level );
     }
     else if( calculator_name == SKILL_NAME_LIGHTNING_CHAIN ) {
-        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+        return ( b_dmg ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0, defer_data->level );
     }
     else if( calculator_name == SKILL_NAME_BARRAGE_OF_ARROW ) {
-        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+        return ( b_dmg ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0, defer_data->level );
     }
     else if ( calculator_name == SKILL_NAME_CRAZYSHOOT ) {
-        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+        return ( b_dmg ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0, defer_data->level );
     }
     else {
-        return ( base_damage ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0 );
+        return ( b_dmg ) * DamageCalculate::calculateResistance( defer_data->def, 0, 0, defer_data->level );
     }
 }
 
-float DamageCalculate::calculateResistance( float def, float negl, float neglp ) {
-    return 1.0f - powf( ( def - negl ) * ( 1.0f - neglp ), 0.4f ) / 100.0f;
+float DamageCalculate::calculateResistance( float def, float negl, float neglp, int lvl ) {
+    float d = ( def - negl ) * ( 1.0f - neglp );
+    d = MAX( 0, d );
+    return 1.0f - d / ( d + 200.0f + 20.0f * lvl );
 }
 
 bool DamageCalculate::doesHit( float hit, float dodge, float atker_level, float defer_level ) {
-    float hit_chance = hit / ( hit + dodge ) * 2.0f * atker_level / ( atker_level + defer_level );
+    float h = MAX( 0, hit );
+    float d = MAX( 0, dodge );
+    float hit_chance = 1.0f - ( d / ( d + h ) * 2.0f * atker_level / ( atker_level + defer_level ) );
     float rand = Utils::randomFloat();
     return rand <= hit_chance;
 }
 
 bool DamageCalculate::doesCritical( float cri, float ten, float atker_level, float defer_level ) {
-    float chance = ( cri / ( 300.0f + cri ) ) * ( 1 - ten / ( 100.0f + ten ) ) * 2 * atker_level / ( atker_level + defer_level );
+    float c = MAX( 0, cri );
+    float t = MAX( 0 , ten );
+    float chance = ( c / ( 300.0f + c ) ) * ( 1 - t / ( 100.0f + t ) ) * 2 * atker_level / ( atker_level + defer_level );
     float rand = Utils::randomFloat();
     return rand <= chance;
 }

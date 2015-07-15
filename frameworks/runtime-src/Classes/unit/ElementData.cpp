@@ -67,20 +67,21 @@ bool ElementData::init( const cocos2d::ValueMap& data ) {
         this->level = data.at( "level" ).asInt();
         this->name = data.at( "name" ).asString();
         this->display_name = data.at( "displayname" ).asString();
-        this->hp = data.at( "hp" ).asFloat() + ( this->level - 1 ) * (float)data.at( "hpgr" ).asFloat();
-        this->current_hp = this->hp;
-        this->mp = data.at( "mp" ).asFloat() + ( this->level - 1 ) * (float)data.at( "mpgr" ).asFloat();
-        this->current_mp = this->mp;
-        this->atk = data.at( "atk" ).asFloat() + ( this->level - 1 ) * data.at( "atkgr" ).asFloat();
-        this->def = data.at( "def" ).asFloat() + ( this->level - 1 ) * data.at( "defgr" ).asFloat();
-        this->move_speed = data.at( "movespeed" ).asFloat();
-        this->atk_speed = data.at( "attackspeed" ).asFloat();
+        this->origin_hp = data.at( "hp" ).asFloat() + ( this->level - 1 ) * (float)data.at( "hpgr" ).asFloat();
+        this->current_hp = this->origin_hp;
+        this->origin_mp = data.at( "mp" ).asFloat() + ( this->level - 1 ) * (float)data.at( "mpgr" ).asFloat();
+        this->current_mp = this->origin_mp;
+        this->origin_atk = data.at( "atk" ).asFloat() + ( this->level - 1 ) * data.at( "atkgr" ).asFloat();
+        this->origin_def = data.at( "def" ).asFloat() + ( this->level - 1 ) * data.at( "defgr" ).asFloat();
+        this->origin_move_speed = data.at( "movespeed" ).asFloat();
+        this->origin_atk_speed = data.at( "attackspeed" ).asFloat();
+        this->origin_critical = data.at( "cri" ).asFloat() + ( this->level - 1 ) * data.at( "crigr" ).asFloat();
+        this->origin_tenacity = data.at( "ten" ).asFloat() + ( this->level - 1 ) * data.at( "tengr" ).asFloat();
+        this->origin_hit = data.at( "hit" ).asFloat() + ( this->level - 1 ) * data.at( "hitgr" ).asFloat();
+        this->origin_dodge = data.at( "dodge" ).asFloat() + ( this->level - 1 ) * data.at( "dodge" ).asFloat();
+        this->origin_atk_range = data.at( "range" ).asFloat();
+        
         this->collide = data.at( "collide" ).asFloat();
-        this->critical = data.at( "cri" ).asFloat() + ( this->level - 1 ) * data.at( "crigr" ).asFloat();
-        this->tenacity = data.at( "ten" ).asFloat() + ( this->level - 1 ) * data.at( "tengr" ).asFloat();
-        this->hit = data.at( "hit" ).asFloat() + ( this->level - 1 ) * data.at( "hitgr" ).asFloat();
-        this->dodge = data.at( "dodge" ).asFloat() + ( this->level - 1 ) * data.at( "dodge" ).asFloat();
-        this->atk_range = data.at( "range" ).asFloat();
         
         auto itr = data.find( "bullet_name" );
         if( itr != data.end() ) {
@@ -90,77 +91,111 @@ bool ElementData::init( const cocos2d::ValueMap& data ) {
             this->bullet_name = "";
         }
         
+        itr = data.find( "guard_radius" );
+        if( itr != data.end() ) {
+            this->origin_guard_radius = data.at( "guard_radius" ).asFloat();
+        }
+        
+        itr = data.find( "rec" );
+        if( itr != data.end() ) {
+            this->origin_recover = data.at( "rec" ).asFloat() + ( this->level - 1 ) * data.at( "recgr" ).asFloat();
+        }
+        
         itr = data.find( "view_range" );
         if( itr != data.end() ) {
-            this->view_range = itr->second.asInt();
+            this->origin_view_range = itr->second.asFloat();
         }
+        
+        this->deriveFromOriginAttributes();
     }
     
     return true;
 }
 
+void ElementData::deriveFromOriginAttributes() {
+    this->hp = this->origin_hp;
+    this->mp = this->origin_mp;
+    this->atk = this->origin_atk;
+    this->def = this->origin_def;
+    this->move_speed = this->origin_move_speed;
+    this->atk_speed = this->origin_atk_speed;
+    this->critical = this->origin_critical;
+    this->tenacity = this->origin_tenacity;
+    this->hit = this->origin_hit;
+    this->dodge = this->origin_dodge;
+    this->atk_range = this->origin_atk_range;
+    this->recover = this->origin_recover;
+    this->guard_radius = this->origin_guard_radius;
+    this->view_range = this->origin_view_range;
+}
+
 void ElementData::setAttribute( const std::string& key, const std::string& value ) {
-    if( key == "atk" ) {
-        this->atk = (float)Utils::toDouble( value );
+    if( key == "name" ) {
+        this->name = value;
+    }
+    else if( key == "atk" ) {
+        this->origin_atk = (float)Utils::toDouble( value );
     }
     else if( key == "attackspeed" ) {
-        this->atk_speed = (float)Utils::toDouble( value );
+        this->origin_atk_speed = (float)Utils::toDouble( value );
+    }
+    else if( key == "cri" ) {
+        this->origin_critical = (float)Utils::toDouble( value );
+    }
+    else if( key == "def" ) {
+        this->origin_def = (float)Utils::toDouble( value );
+    }
+    else if( key == "dodge" ) {
+        this->origin_dodge = (float)Utils::toDouble( value );
+    }
+    else if( key == "hit" ) {
+        this->origin_hit = (float)Utils::toDouble( value );
+    }
+    else if( key == "hp" ) {
+        this->origin_hp = (float)Utils::toDouble( value );
+        this->current_hp = this->origin_hp;
+    }
+    else if( key == "mp" ) {
+        this->origin_mp = (float)Utils::toDouble( value );
+        this->current_mp = this->origin_mp;
+    }
+    else if( key == "movespeed" ) {
+        this->origin_move_speed = (float)Utils::toDouble( value );
+    }
+    else if( key == "range" ) {
+        this->origin_atk_range = (float)Utils::toDouble( value );
+    }
+    else if( key == "rec" ) {
+        this->origin_recover = (float)Utils::toDouble( value );
+    }
+    else if( key == "ten") {
+        this->origin_tenacity = (float)Utils::toDouble( value );
+    }
+    else if( key == "view_range" ) {
+        this->origin_view_range = (float)Utils::toDouble( value );
+    }
+    else if( key == "guard_radius" ) {
+        this->origin_guard_radius = (float)Utils::toDouble( value );
     }
     else if( key == "collide" ) {
         this->collide = (float)Utils::toDouble( value );
     }
-    else if( key == "cri" ) {
-        this->critical = (float)Utils::toDouble( value );
-    }
-    else if( key == "def" ) {
-        this->def = (float)Utils::toDouble( value );
-    }
     else if( key == "displayname" ) {
         this->display_name = value;
-    }
-    else if( key == "dodge" ) {
-        this->dodge = (float)Utils::toDouble( value );
-    }
-    else if( key == "hit" ) {
-        this->hit = (float)Utils::toDouble( value );
-    }
-    else if( key == "hp" ) {
-        this->hp = (float)Utils::toDouble( value );
-        this->current_hp = this->hp;
-    }
-    else if( key == "mp" ) {
-        this->mp = (float)Utils::toDouble( value );
-        this->current_mp = this->mp;
     }
     else if( key == "id" ) {
         this->unit_id = Utils::toInt( value );
     }
-    else if( key == "movespeed" ) {
-        this->move_speed = (float)Utils::toDouble( value );
-    }
-    else if( key == "name" ) {
-        this->name = value;
-    }
-    else if( key == "range" ) {
-        this->atk_range = (float)Utils::toDouble( value );
-    }
-    else if( key == "rec" ) {
-        this->recover = (float)Utils::toDouble( value );
-    }
-    else if( key == "ten") {
-        this->tenacity = (float)Utils::toDouble( value );
-    }
-    else if( key == "view_range" ) {
-        this->view_range = Utils::toInt( value );
-    }
+    
+    this->deriveFromOriginAttributes();
 }
 
 void ElementData::add( ElementData* other ) {
     this->level += other->level;
     this->hp += other->hp;
-    this->current_hp += other->current_hp;
+    this->current_hp += other->hp;
     this->mp += other->mp;
-    this->current_mp += other->current_mp;
+    this->current_mp += other->mp;
     this->atk += other->atk;
     this->def += other->def;
     this->move_speed += other->move_speed;
@@ -199,9 +234,9 @@ void ElementData::sub( ElementData* other ) {
 
 void ElementData::add( class EquipmentData* data ) {
     this->hp += data->hp;
-    this->current_hp = this->hp;
+    this->current_hp += data->hp;
     this->mp += data->mp;
-    this->current_mp = this->mp;
+    this->current_mp += data->mp;
     this->atk += data->atk;
     this->def += data->def;
     this->hit += data->hit;
@@ -212,7 +247,13 @@ void ElementData::add( class EquipmentData* data ) {
 
 void ElementData::sub( class EquipmentData* data ) {
     this->hp -= data->hp;
+    if( this->current_hp > this->hp ) {
+        this->current_hp = this->hp;
+    }
     this->mp -= data->mp;
+    if( this->current_mp > this->mp ) {
+        this->current_mp = this->mp;
+    }
     this->atk -= data->atk;
     this->def -= data->def;
     this->hit -= data->hit;
@@ -329,9 +370,6 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
         return false;
     }
     
-    this->guard_radius = unit_config.at( "guard_radius" ).asFloat();
-    
-    this->recover = unit_config.at( "rec" ).asFloat() + ( this->level - 1 ) * unit_config.at( "recgr" ).asFloat();
     this->scale = unit_config.at( "scale" ).asFloat();
     
     this->is_melee = unit_config.at( "is_melee" ).asBool();
@@ -393,10 +431,7 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
 
 void UnitData::setAttribute( const std::string& key, const std::string& value ) {
     ElementData::setAttribute( key, value );
-    if( key == "guard_radius" ) {
-        this->guard_radius = (float)Utils::toDouble( value );
-    }
-    else if( key == "star" ) {
+    if( key == "star" ) {
         this->star = Utils::toInt( value );
     }
     else if( key == "price_type" ) {
