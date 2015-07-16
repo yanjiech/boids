@@ -63,7 +63,7 @@ bool CrazyScratch::init( UnitNode* owner, const cocos2d::ValueMap& data, const c
     
     _owner->getBattleLayer()->addToEffectLayer( _skeleton, _last_pos, _owner->getBattleLayer()->zorderForPositionOnObjectLayer( _last_pos ) );
     _skeleton->setAnimation( 0, "Cast_1", true );
-    
+    _skeleton->setBlendFunc( BlendFunc::ADDITIVE );
     return true;
 }
 

@@ -1,153 +1,209 @@
 
 skeleton.png
-size: 1024,128
+size: 2048,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 er-l
   rotate: false
-  xy: 717, 80
+  xy: 922, 100
   size: 41, 46
   orig: 41, 46
   offset: 0, 0
   index: -1
 er-r
-  rotate: true
-  xy: 811, 94
+  rotate: false
+  xy: 965, 111
   size: 32, 35
   orig: 32, 35
   offset: 0, 0
   index: -1
 fa-l
   rotate: true
-  xy: 379, 32
+  xy: 1614, 122
   size: 27, 51
   orig: 27, 51
   offset: 0, 0
   index: -1
 fa-r
-  rotate: true
-  xy: 760, 95
+  rotate: false
+  xy: 1777, 199
   size: 31, 49
   orig: 31, 49
   offset: 0, 0
   index: -1
 jiao-l
   rotate: false
-  xy: 865, 113
+  xy: 188, 33
   size: 15, 13
   orig: 15, 13
   offset: 0, 0
   index: -1
 jiao-r
   rotate: false
-  xy: 781, 80
+  xy: 1738, 156
   size: 13, 13
   orig: 13, 13
   offset: 0, 0
   index: -1
 shen
   rotate: true
-  xy: 35, 6
+  xy: 1777, 179
   size: 18, 28
   orig: 18, 28
   offset: 0, 0
   index: -1
 shou-l
   rotate: true
-  xy: 583, 55
+  xy: 128, 3
   size: 26, 35
   orig: 26, 35
   offset: 0, 0
   index: -1
 shou-r
-  rotate: true
-  xy: 2, 2
+  rotate: false
+  xy: 188, 48
   size: 22, 31
   orig: 22, 31
   offset: 0, 0
   index: -1
 shoubi-l
   rotate: false
-  xy: 65, 6
+  xy: 1667, 131
   size: 13, 18
   orig: 13, 18
   offset: 0, 0
   index: -1
 shoubi-r
   rotate: false
-  xy: 848, 108
+  xy: 1810, 230
   size: 15, 18
   orig: 15, 18
   offset: 0, 0
   index: -1
 tou
   rotate: false
-  xy: 657, 78
+  xy: 128, 31
   size: 58, 48
   orig: 58, 48
   offset: 0, 0
   index: -1
 toukui
   rotate: false
-  xy: 583, 83
+  xy: 1540, 106
   size: 72, 43
   orig: 72, 43
   offset: 0, 0
   index: -1
 tui-l
   rotate: true
-  xy: 760, 80
+  xy: 1614, 107
   size: 13, 19
   orig: 13, 19
   offset: 0, 0
   index: -1
 tui-r
-  rotate: false
-  xy: 432, 38
+  rotate: true
+  xy: 922, 84
   size: 14, 21
   orig: 14, 21
   offset: 0, 0
   index: -1
 wei
   rotate: false
-  xy: 620, 64
+  xy: 1701, 152
   size: 35, 17
   orig: 35, 17
   offset: 0, 0
   index: -1
 yao
   rotate: false
-  xy: 448, 45
+  xy: 165, 15
   size: 17, 14
   orig: 17, 14
   offset: 0, 0
   index: -1
 zhua01
   rotate: true
-  xy: 2, 26
+  xy: 797, 148
   size: 100, 214
   orig: 100, 214
   offset: 0, 0
   index: -1
 zhua02
   rotate: true
-  xy: 218, 29
+  xy: 1540, 151
   size: 97, 159
   orig: 97, 159
   offset: 0, 0
   index: -1
 zhuaxi01
-  rotate: true
-  xy: 504, 52
+  rotate: false
+  xy: 1701, 171
   size: 74, 77
   orig: 74, 77
   offset: 0, 0
   index: -1
 zhuaxi02
   rotate: true
-  xy: 379, 61
+  xy: 797, 81
   size: 65, 123
   orig: 65, 123
+  offset: 0, 0
+  index: -1
+zhuayin-da0005
+  rotate: true
+  xy: 2, 2
+  size: 77, 124
+  orig: 77, 124
+  offset: 0, 0
+  index: -1
+zhuayin-da0007
+  rotate: true
+  xy: 1013, 135
+  size: 113, 195
+  orig: 113, 195
+  offset: 0, 0
+  index: -1
+zhuayin-da0009
+  rotate: false
+  xy: 623, 78
+  size: 172, 170
+  orig: 172, 170
+  offset: 0, 0
+  index: -1
+zhuayin-xie0001
+  rotate: false
+  xy: 1210, 111
+  size: 167, 137
+  orig: 167, 137
+  offset: 0, 0
+  index: -1
+zhuayin-xie0002
+  rotate: false
+  xy: 217, 85
+  size: 209, 163
+  orig: 209, 163
+  offset: 0, 0
+  index: -1
+zhuayin-xie0003
+  rotate: false
+  xy: 2, 81
+  size: 213, 167
+  orig: 213, 167
+  offset: 0, 0
+  index: -1
+zhuayin-xie0004
+  rotate: false
+  xy: 428, 88
+  size: 193, 160
+  orig: 193, 160
+  offset: 0, 0
+  index: -1
+zhuayin-xie0005
+  rotate: false
+  xy: 1379, 102
+  size: 159, 146
+  orig: 159, 146
   offset: 0, 0
   index: -1
