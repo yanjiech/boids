@@ -63,7 +63,7 @@ bool UIStoryLayer::init( const StoryEndCallback& callback ) {
     dialog_frame->setPosition( Point( origin.x + size.width / 2, origin.y + dialog_frame->getContentSize().height / 2 + 50.0 ) );
     this->addChild( dialog_frame, 2 );
     
-    _lb_line = Label::createWithSystemFont( "", "Arial", 32.0f );
+    _lb_line = Label::createWithSystemFont( "", "Arial", 40.0f );
     _lb_line->setColor( Color3B::BLACK );
     _lb_line->setAnchorPoint( Point( 0.5f, 0 ) );
     _lb_line->setVerticalAlignment( cocos2d::TextVAlignment::TOP );

@@ -56,6 +56,8 @@ protected:
     eBuffEffectPos _effect_pos;
     int _effect_layer; //0 default, 1 over object, 2 below object
     
+    std::string _audio;
+    
 public:
     static int getNextBuffId();
     

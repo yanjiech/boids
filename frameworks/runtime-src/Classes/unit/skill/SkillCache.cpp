@@ -65,7 +65,7 @@ void SkillCache::removeSkill( SkillNode* skill ) {
 
 void SkillCache::removeSkillOfOwner( UnitNode* owner ) {
     for( auto itr = _skill_cache.begin(); itr != _skill_cache.end(); ++itr ) {
-        if( (*itr)->getOwner() == owner ) {
+        if( (*itr)->couldInterupt() && (*itr)->getOwner() == owner ) {
             (*itr)->end();
             break;
         }

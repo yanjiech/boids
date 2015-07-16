@@ -112,9 +112,6 @@ void EventAction::stop() {
 void EventAction::updateFrame( float delta ) {
     if( !_should_recycle && _is_running ) {
         _accumulator += delta;
-        if( _delay > 0 ) {
-            log( "delay: %f, accu: %f", _delay, _accumulator );
-        }
         if( ( _current_round == 0 && _accumulator > _delay ) || ( _current_round > 0 && _accumulator > _interval ) ) {
             _accumulator = 0;
             bool finish = false;

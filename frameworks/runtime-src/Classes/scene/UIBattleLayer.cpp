@@ -21,7 +21,81 @@ using namespace cocostudio::timeline;
 
 #define DEFAULT_SKILL_ICON_PADDING 50.0
 
-UISkillNode::UISkillNode() {
+UIItemSpot::UIItemSpot() {
+    
+}
+
+UIItemSpot::~UIItemSpot() {
+    
+}
+
+UIItemSpot* UIItemSpot::create( const cocos2d::Color3B& color ) {
+    UIItemSpot* ret = new UIItemSpot();
+    if( ret && ret->init( color ) ) {
+        ret->autorelease();
+        return ret;
+    }
+    else {
+        CC_SAFE_DELETE( ret );
+        return nullptr;
+    }
+}
+
+bool UIItemSpot::init( const cocos2d::Color3B& color ) {
+    if( !Node::init() ) {
+        return false;
+    }
+    
+    _color = color;
+    
+    _icon = Sprite::create( "effects/tuowei.png" );
+    _icon->setColor( color );
+    this->addChild( _icon, 2 );
+//    _icon->setScale( 0.5f );
+    
+    this->setScale( 0.5f );
+    this->setPosition( Point::ZERO );
+    
+    return true;
+}
+
+void UIItemSpot::flyAlong( const cocos2d::Point& start, const cocos2d::Point& end ) {
+    _icon->setPosition( start );
+    _streak = MotionStreak::create( 0.2f, 3, _icon->getContentSize().width, _color, "effects/tuowei.png" );
+    _streak->setPosition( start );
+    this->addChild( _streak, 1 );
+//    _streak->setScale( 0.5f );
+    
+    Point origin = Director::getInstance()->getVisibleOrigin();
+    Size size = Director::getInstance()->getVisibleSize();
+    float scale = this->getScale();
+    
+    ccBezierConfig config;
+    config.controlPoint_1 = Point( origin.x, origin.y + size.height / 2 ) / scale;
+    config.controlPoint_2 = Point( origin.x + size.width / 2, origin.y + size.height ) / scale;
+    config.endPosition = end / scale;
+    
+    BezierTo* fly = BezierTo::create( 0.5f, config );
+    CallFunc* callback = CallFunc::create( CC_CALLBACK_0( UIItemSpot::onReachDestination, this ) );
+    Sequence* seq = Sequence::create( fly, callback, nullptr );
+    _icon->runAction( seq );
+    
+    this->schedule( CC_CALLBACK_1( UIItemSpot::updateFrame, this ), "item_spot_update" );
+}
+
+void UIItemSpot::updateFrame( float delta ) {
+    _streak->setPosition( _icon->getPosition() );
+}
+
+void UIItemSpot::onReachDestination() {
+    _streak->removeFromParent();
+    this->removeFromParent();
+}
+
+UISkillNode::UISkillNode() :
+_hint_effect( nullptr ),
+_hint_effect_dyn( nullptr )
+{
     
 }
 
@@ -135,7 +209,8 @@ void UISkillNode::showHint( const cocos2d::Point& dir, float range_per ) {
         else if( _hint_type == "dyn_circle" ) {
             _range = _min_range + ( _max_range - _min_range ) * range_per;
             _hint_d_pos = skill_dir * _range;
-            _hint_effect->setPosition( _unit_node->getPosition() + _hint_d_pos );
+            _hint_d_pos = Point( _hint_d_pos.x, _hint_d_pos.y / 1.74f );
+            _hint_effect_dyn->setPosition( _unit_node->getPosition() + _hint_d_pos );
         }
     }
     else {
@@ -148,15 +223,20 @@ void UISkillNode::showHint( const cocos2d::Point& dir, float range_per ) {
         }
         else if( _hint_type == "circle" ) {
             _hint_effect = Sprite::createWithSpriteFrameName( "skillcircle.png" );
-            _hint_effect->setScale( _range / 200.0f );
+            _hint_effect->setScale( _range / 215.0f );
             _battle_layer->addToOnGroundLayer( _hint_effect, hint_pos, 0 );
         }
         else if( _hint_type == "dyn_circle" ) {
             _hint_effect = Sprite::createWithSpriteFrameName( "skillcircle.png" );
-            _hint_effect->setScale( _radius / 200.0f );
-            _hint_d_pos = skill_dir * _min_range;
-            hint_pos = hint_pos + _hint_d_pos;
+            _hint_effect->setScale( _max_range / 215.0f );
             _battle_layer->addToOnGroundLayer( _hint_effect, hint_pos, 0 );
+            
+            _hint_effect_dyn = Sprite::createWithSpriteFrameName( "skillcircle2.png" );
+            _hint_effect_dyn->setScale( _radius / 215.0f );
+            _hint_d_pos = skill_dir * _min_range;
+            _hint_d_pos = Point( _hint_d_pos.x, _hint_d_pos.y / 1.74f );
+            hint_pos = hint_pos + _hint_d_pos;
+            _battle_layer->addToOnGroundLayer( _hint_effect_dyn, hint_pos, 1 );
         }
     }
 }
@@ -165,6 +245,10 @@ void UISkillNode::hideHint() {
     if( _hint_effect ) {
         _hint_effect->removeFromParent();
         _hint_effect = nullptr;
+    }
+    if( _hint_effect_dyn ) {
+        _hint_effect_dyn->removeFromParent();
+        _hint_effect_dyn = nullptr;
     }
 }
 
@@ -187,7 +271,8 @@ void UISkillNode::updateFrame( float delta ) {
     }
     if( _hint_effect && _hint_effect->isVisible() ) {
         if( _hint_type == "dyn_circle" ) {
-            _hint_effect->setPosition( _unit_node->getPosition() + _hint_d_pos );
+            _hint_effect_dyn->setPosition( _unit_node->getPosition() + _hint_d_pos );
+            _hint_effect->setPosition( _unit_node->getPosition() );
         }
         else {
             _hint_effect->setPosition( _unit_node->getPosition() );
@@ -548,4 +633,32 @@ void UIBattleLayer::updateKillUI() {
     else {
         _lb_killed->setString( Utils::stringFormat( "%d", _already_killed ) );
     }
+}
+
+void UIBattleLayer::showItemSpot( const cocos2d::Point& start, int quality ) {
+    Color3B color = Color3B::YELLOW;
+    switch( quality ) {
+        case 1:
+            color = Color3B::WHITE;
+            break;
+        case 2:
+            color = Color3B( 51, 200, 3 );
+            break;
+        case 3:
+            color = Color3B( 0, 160, 255 );
+            break;
+        case 4:
+            color = Color3B( 208, 76, 253 );
+            break;
+        case 5:
+            color = Color3B::RED;
+            break;
+        default:
+            break;
+    }
+    
+    Point end = this->convertToNodeSpace( _lb_killed->getParent()->convertToWorldSpace( _lb_killed->getPosition() ) );
+    UIItemSpot* item_spot = UIItemSpot::create( color );
+    this->addChild( item_spot, 10000 );
+    item_spot->flyAlong( start, end );
 }

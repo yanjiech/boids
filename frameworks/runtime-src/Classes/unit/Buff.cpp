@@ -12,6 +12,7 @@
 #include "../Utils.h"
 #include "BulletNode.h"
 #include "skill/SkillCache.h"
+#include "../manager/AudioManager.h"
 
 using namespace cocos2d;
 
@@ -32,7 +33,8 @@ _effect_scale( 0 ),
 _effect_scale_x( 0 ),
 _effect_scale_y( 0 ),
 _effect_layer( 0 ),
-_effect_blend( "" )
+_effect_blend( "" ),
+_audio( "" )
 {
     
 }
@@ -160,6 +162,11 @@ bool Buff::init( UnitNode* owner, const cocos2d::ValueMap& data ) {
         _effect_blend = itr->second.asString();
     }
     
+    itr = _data.find( "audio" );
+    if( itr != _data.end() ) {
+        _audio = itr->second.asString();
+    }
+    
     return true;
 }
 
@@ -237,11 +244,17 @@ void Buff::begin() {
                 break;
         }
     }
+    if( !_audio.empty() ) {
+        AudioManager::getInstance()->playEffect( _audio, true );
+    }
 }
 
 void Buff::end() {
     this->setShouldRecycle( true );
     _owner->removeUnitComponent( _buff_id + "_effect" );
+    if( !_audio.empty() ) {
+        AudioManager::getInstance()->stopEffect( _audio );
+    }
 }
 
 UnitNode* Buff::getOwner() {

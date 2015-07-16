@@ -316,6 +316,10 @@ void BattleLayer::updateFrame( float delta ) {
                     Point local_pos = item->convertToNodeSpace( world_pos );
                     Rect rect = Rect( 0, 0, item->getContentSize().width, item->getContentSize().height );
                     if( rect.containsPoint( local_pos ) ) {
+                        int item_id = Utils::toInt( item->getItemId() );
+                        int quality = ( item_id / 1000000 ) % 10;
+                        Point start = _skill_ui_layer->convertToNodeSpace( item->getParent()->convertToWorldSpace( item->getPosition() ) );
+                        _skill_ui_layer->showItemSpot( start, quality );
                         _map_logic->obtainItem( item->getItemId(), item->getCount() );
                         itr = _drop_items.erase( itr );
                         item->removeFromParentAndCleanup( true );

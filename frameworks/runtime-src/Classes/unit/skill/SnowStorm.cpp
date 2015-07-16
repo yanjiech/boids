@@ -38,6 +38,8 @@ bool SnowStorm::init( UnitNode* owner, const cocos2d::ValueMap& data, const coco
         return false;
     }
 
+    _could_interupt = false;
+    
     int level = data.at( "level" ).asInt();
     _damage = data.at( "damage" ).asValueVector().at( level - 1 ).asFloat();
     _radius = data.at( "radius" ).asFloat();
@@ -49,7 +51,7 @@ bool SnowStorm::init( UnitNode* owner, const cocos2d::ValueMap& data, const coco
     float max_range = data.at( "max_range" ).asFloat();
     float range = params.at( "range_per" ).asFloat() * ( max_range - min_range ) + min_range;
     Point dir = Point( params.at( "dir_x" ).asFloat(), params.at( "dir_y" ).asFloat() );
-    _target_pos = _owner->getPosition() + dir * range;
+    _target_pos = _owner->getPosition() + Point( dir.x * range, dir.y * range / 1.74f );
     
     float buff_duration = data.at( "buff_duration" ).asFloat();
     float slow = data.at( "slow" ).asFloat();

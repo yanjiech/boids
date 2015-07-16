@@ -142,6 +142,7 @@ void ResourceManager::loadUIResource() {
     frame_cache->addSpriteFramesWithFile( "ui/ui_hero_f.plist", "ui/ui_hero_f.png" );
     frame_cache->addSpriteFramesWithFile( "ui/ui_equip_icon.plist", "ui/ui_equip_icon.png" );
     frame_cache->addSpriteFramesWithFile( "ui/map_common.plist", "ui/map_common.png" );
+    frame_cache->addSpriteFramesWithFile( "ui/ui_battle_hint.plist", "ui_battle_hint.png" );
 }
 
 void ResourceManager::unloadUIResource() {
@@ -158,6 +159,7 @@ void ResourceManager::unloadUIResource() {
     frame_cache->removeSpriteFramesFromFile( "ui/ui_hero_f.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/ui_equip_icon.plist" );
     frame_cache->removeSpriteFramesFromFile( "ui/map_common.plist" );
+    frame_cache->removeSpriteFramesFromFile( "ui/ui_battle_hint.plist" );
 }
 
 void ResourceManager::loadBattleResource() {

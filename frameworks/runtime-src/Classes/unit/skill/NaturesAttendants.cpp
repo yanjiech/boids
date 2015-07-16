@@ -38,6 +38,8 @@ bool NaturesAttendants::init( UnitNode* owner, const cocos2d::ValueMap& data, co
         return false;
     }
     
+    _could_interupt = false;
+    
     int level = data.at( "level" ).asInt();
     _heal = data.at( "hp" ).asValueVector().at( level - 1 ).asFloat();
     _range = data.at( "range" ).asFloat();

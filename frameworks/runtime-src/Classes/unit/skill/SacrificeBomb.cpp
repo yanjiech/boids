@@ -13,7 +13,9 @@
 using namespace cocos2d;
 
 SacrificeBomb::SacrificeBomb() :
-_calculator( nullptr ) {
+_calculator( nullptr ),
+_sp_range( nullptr )
+{
     
 }
 
@@ -82,13 +84,18 @@ void SacrificeBomb::updateFrame( float delta ) {
 void SacrificeBomb::begin() {
     SkillNode::begin();
     _owner->setAttackable( false );
-    Sprite* range_sp = Sprite::createWithSpriteFrameName( "skillcircle.png" );
-    range_sp->setScale( _range / 200.0f );
-    _owner->addChild( range_sp );
+    _sp_range = Sprite::createWithSpriteFrameName( "skillcircle.png" );
+    _sp_range->setScale( _range / 215.0f );
+    BattleLayer* battle_layer = _owner->getBattleLayer();
+    battle_layer->addToOnGroundLayer( _sp_range, _owner->getPosition(), battle_layer->zorderForPositionOnObjectLayer( _owner->getPosition() ) );
 }
 
 void SacrificeBomb::end() {
     SkillNode::end();
+    if( _sp_range ) {
+        _sp_range->removeFromParent();
+        _sp_range = nullptr;
+    }
 }
 
 class DamageCalculate* SacrificeBomb::getDamageCaculator() {

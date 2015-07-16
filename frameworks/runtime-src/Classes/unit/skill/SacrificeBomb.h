@@ -17,6 +17,8 @@ private:
     float _elapse;
     float _range;
     
+    cocos2d::Sprite* _sp_range;
+    
     class DamageCalculate* _calculator;
 public:
     SacrificeBomb();

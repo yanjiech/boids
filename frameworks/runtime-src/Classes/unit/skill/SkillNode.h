@@ -18,6 +18,8 @@ protected:
     bool _should_recycle;
     UnitNode* _owner;
     
+    bool _could_interupt;
+    
 public:
     SkillNode();
     virtual ~SkillNode();
@@ -37,6 +39,9 @@ public:
     virtual void end();
     
     virtual void refreshDamage() {}
+    
+    bool couldInterupt() { return _could_interupt; }
+    void setCouldInterupt( bool b ) { _could_interupt = b; }
 };
 
 #endif /* defined(__Boids__SkillNode__) */

@@ -13,7 +13,8 @@
 using namespace cocos2d;
 
 SkillNode::SkillNode() :
-_owner( nullptr )
+_owner( nullptr ),
+_could_interupt( true )
 {
     
 }

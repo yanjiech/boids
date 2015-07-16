@@ -13,9 +13,27 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
-
 class UnitNode;
 class BattleLayer;
+
+class UIItemSpot : public cocos2d::Node {
+private:
+    cocos2d::MotionStreak* _streak;
+    cocos2d::Color3B _color;
+    cocos2d::Sprite* _icon;
+    
+public:
+    UIItemSpot();
+    virtual ~UIItemSpot();
+    
+    static UIItemSpot* create( const cocos2d::Color3B& color );
+    virtual bool init( const cocos2d::Color3B& color );
+    
+    void flyAlong( const cocos2d::Point& start, const cocos2d::Point& end );
+    void onReachDestination();
+    
+    void updateFrame( float delta );
+};
 
 class UISkillNode : public cocos2d::Node {
 private:
@@ -34,6 +52,7 @@ private:
     cocos2d::Point _hint_d_pos;
     
     cocos2d::Node* _hint_effect;
+    cocos2d::Node* _hint_effect_dyn;
     
     bool _is_skill_ready;
     
@@ -140,6 +159,8 @@ public:
     void setKilled( int count );
     
     void updateKillUI();
+    
+    void showItemSpot( const cocos2d::Point& start, int quality );
     
 private:
     UISkillNode* skillNodeForTouch( cocos2d::Touch* touch );

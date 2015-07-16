@@ -53,6 +53,7 @@ void LightShield::begin() {
     data["buff_name"] = Value( "LightShield" );
     data["effect_resource"] = Value( "effects/saber_skill_2" );
     data["effect_scale"] = Value( 1.0f );
+    data["audio"] = Value( "audio/saber/saber_cast2_2.mp3" );
     ShieldBuff* buff = ShieldBuff::create( _owner, data );
     _owner->addBuff( buff->getBuffId(), buff );
     buff->begin();

@@ -11,6 +11,7 @@
 #include "BulletNode.h"
 #include "../Utils.h"
 #include "../scene/BattleLayer.h"
+#include "../manager/ResourceManager.h"
 
 using namespace cocos2d;
 
@@ -79,44 +80,51 @@ bool DropItem::init( const cocos2d::ValueMap& item_data ) {
     _state = eItemState::ItemStateFly;
     
     std::string resource = "";
+    float scale = 1.0f;
     if( _item_id == "gold" ) {
         resource = "ui_drop_jinbi.png";
     }
     else {
-        int item_id = item_data.at( "item_id" ).asInt();
-        int type = int( item_id / 1e7 );
-        int subtype = int( item_id / 1e5 ) % 10;
-        int quality = int( item_id / 1e6 ) % 10;
+        const ValueMap& item_config = ResourceManager::getInstance()->getEquipConfig().at( _item_id ).asValueMap();
+        std::string name = item_config.at( "name" ).asString();
+        resource = name + ".png";
+        scale = 0.5f;
         
-        if( type == 1 ) {
-            resource = "ui_drop_kuijia";
-        }
-        else if( type == 2 ) {
-            resource = "ui_drop_xie";
-        }
-        else if( type == 3 ) {
-            if( subtype == 3 ) {
-                resource = "ui_drop_jian";
-            }
-            else {
-                resource = "ui_drop_gong";
-            }
-        }
-        else if( type == 4 ) {
-            resource = "ui_drop_xianglian";
-        }
-        resource += Utils::stringFormat( "_%d.png", quality );
+//        int type = int( item_id / 1e7 );
+//        int subtype = int( item_id / 1e5 ) % 10;
+//        int quality = int( item_id / 1e6 ) % 10;
+//        
+//        if( type == 1 ) {
+//            resource = "ui_drop_kuijia";
+//        }
+//        else if( type == 2 ) {
+//            resource = "ui_drop_xie";
+//        }
+//        else if( type == 3 ) {
+//            if( subtype == 3 ) {
+//                resource = "ui_drop_jian";
+//            }
+//            else {
+//                resource = "ui_drop_gong";
+//            }
+//        }
+//        else if( type == 4 ) {
+//            resource = "ui_drop_xianglian";
+//        }
+//        resource += Utils::stringFormat( "_%d.png", quality );
     }
     Sprite* icon = Sprite::createWithSpriteFrameName( resource );
-    this->setContentSize( icon->getContentSize() );
+    icon->setAnchorPoint( Point( 0.5f, 0.2f ) );
+    icon->setScale( scale );
+    this->setContentSize( icon->getContentSize() * scale * 1.2f );
     this->setAnchorPoint( Point( 0.5f, 0.5f ) );
-    icon->setPosition( Point( this->getContentSize().width / 2, this->getContentSize().height / 2 ) );
+    icon->setPosition( Point( this->getContentSize().width / 2, 0 ) );
     this->addChild( icon, 2 );
     
     std::string effect_resource = "effects/common/drop_item";
     _effect = ArmatureManager::getInstance()->createArmature( effect_resource );
     _effect->setPosition( Point( this->getContentSize().width / 2, 0 ) );
-    this->addChild( _effect, 1 );
+    this->addChild( _effect, 3 );
     _effect->setAnimation( 0, "animation", true );
     
     _should_recycle = false;
