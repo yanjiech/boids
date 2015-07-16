@@ -126,6 +126,7 @@ public:
     virtual ~UnitNode();
     
     static eTargetCamp getCampByString( const std::string& camp_string );
+    static std::string getStringByCamp( eTargetCamp camp );
     
     static UnitNode* create( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_data );
     virtual bool init( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_data );

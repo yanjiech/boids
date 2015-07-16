@@ -85,6 +85,24 @@ eTargetCamp UnitNode::getCampByString( const std::string& camp_string ) {
     return eTargetCamp::Unknown_Camp;
 }
 
+std::string UnitNode::getStringByCamp( eTargetCamp camp ) {
+    switch( camp ) {
+        case eTargetCamp::Enemy:
+            return UNIT_CAMP_ENEMY;
+        case eTargetCamp::NPC:
+            return UNIT_CAMP_NEUTRAL;
+        case eTargetCamp::Ally:
+            return UNIT_CAMP_ALLY;
+        case eTargetCamp::Player:
+            return UNIT_CAMP_PLAYER;
+        case eTargetCamp::Wild:
+            return UNIT_CAMP_WILD;
+        default:
+            break;
+    }
+    return "";
+}
+
 UnitNode* UnitNode::create( BattleLayer* battle_layer, const cocos2d::ValueMap& unit_data ) {
     UnitNode* ret = new UnitNode();
     if( ret && ret->init( battle_layer, unit_data ) ) {

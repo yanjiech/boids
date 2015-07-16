@@ -414,16 +414,18 @@ bool UnitData::init( const cocos2d::ValueMap& data ) {
     //skills
     const ValueVector& skill_config = unit_config.at( "skills" ).asValueVector();
     itr = data.find( "skills" );
-    ValueVector skill_vector = itr->second.asValueVector();
-    for( auto sk : skill_vector ) {
-        ValueMap& vm = sk.asValueMap();
-        auto sitr = vm.find( "skill_id" );
-        if( sitr != vm.end() ) {
-            int skill_id = sitr->second.asInt();
-            std::string skill_name = skill_config.at( skill_id ).asString();
-            vm["name"] = Value( skill_name );
+        if( itr != data.end() ) {
+        ValueVector skill_vector = itr->second.asValueVector();
+        for( auto sk : skill_vector ) {
+            ValueMap& vm = sk.asValueMap();
+            auto sitr = vm.find( "skill_id" );
+            if( sitr != vm.end() ) {
+                int skill_id = sitr->second.asInt();
+                std::string skill_name = skill_config.at( skill_id ).asString();
+                vm["name"] = Value( skill_name );
+            }
+            skills.push_back( Value( vm ) );
         }
-        skills.push_back( Value( vm ) );
     }
     
     return true;
