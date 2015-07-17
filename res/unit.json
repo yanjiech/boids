@@ -2,7 +2,7 @@
     "anubies": {
         "atk": 20.0, 
         "atkgr": 9.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "pink_ball", 
         "collide": 30.0, 
         "cri": 10.0, 
@@ -44,7 +44,7 @@
     "archer": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "human_arrow", 
         "collide": 30.0, 
         "cri": 10.0, 
@@ -83,7 +83,7 @@
     "axe_orc": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -121,7 +121,7 @@
     "bear": {
         "atk": 13.0, 
         "atkgr": 5.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -159,7 +159,7 @@
     "bee": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -197,7 +197,7 @@
     "bomb_goblin": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "zhadan", 
         "collide": 30.0, 
         "cri": 10.0, 
@@ -236,7 +236,7 @@
     "bomb_robot": {
         "atk": 20.0, 
         "atkgr": 8.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 1.0, 
         "crigr": 1.4, 
@@ -276,7 +276,7 @@
     "chomper_blue": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -314,7 +314,7 @@
     "chomper_green": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -352,7 +352,7 @@
     "chomper_purple": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -390,7 +390,7 @@
     "dead_archer": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "arrow", 
         "collide": 30.0, 
         "cri": 10.0, 
@@ -429,7 +429,7 @@
     "desert_thief": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -467,7 +467,7 @@
     "desert_thief_leader": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 15.0, 
         "crigr": 5.0, 
@@ -507,7 +507,7 @@
     "dracula": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 15.0, 
         "crigr": 2.0, 
@@ -548,7 +548,7 @@
     "durarara": {
         "atk": 8.0, 
         "atkgr": 4.2, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 8.0, 
         "crigr": 2.2, 
@@ -589,7 +589,7 @@
     "elf_archer": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 3.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -627,7 +627,7 @@
     "elf_pikeman": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -665,7 +665,7 @@
     "enchantress": {
         "atk": 13.0, 
         "atkgr": 5.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "enchantress_javelin", 
         "collide": 30.0, 
         "cri": 10.0, 
@@ -707,7 +707,7 @@
     "evil_wizard": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "pink_ball", 
         "collide": 30.0, 
         "cri": 10.0, 
@@ -748,7 +748,7 @@
     "fat_vampire": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -786,7 +786,7 @@
     "flamingo": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -824,7 +824,7 @@
     "footman": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -862,7 +862,7 @@
     "gandalf": {
         "atk": 15.0, 
         "atkgr": 7.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "pink_ball", 
         "collide": 30.0, 
         "cri": 19.0, 
@@ -904,7 +904,7 @@
     "goblin": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -942,7 +942,7 @@
     "goblin_helicopter": {
         "atk": 25.0, 
         "atkgr": 11.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 50.0, 
         "cri": 30.0, 
         "crigr": 9.3, 
@@ -982,7 +982,7 @@
     "goblin_shredder": {
         "atk": 23.0, 
         "atkgr": 10.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 16.0, 
         "crigr": 7.0, 
@@ -1022,7 +1022,7 @@
     "hammer_warrior": {
         "atk": 15.0, 
         "atkgr": 5.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 15.0, 
         "crigr": 3.0, 
@@ -1060,7 +1060,7 @@
     "hippolyta": {
         "atk": 16.0, 
         "atkgr": 7.5, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "spear", 
         "collide": 30.0, 
         "cri": 22.0, 
@@ -1102,7 +1102,7 @@
     "human_assassin": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 15.0, 
         "crigr": 2.0, 
@@ -1140,7 +1140,7 @@
     "human_king": {
         "atk": 19.0, 
         "atkgr": 8.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 50.0, 
         "cri": 10.0, 
         "crigr": 6.0, 
@@ -1181,7 +1181,7 @@
     "human_master_assassin": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 15.0, 
         "crigr": 2.0, 
@@ -1221,7 +1221,7 @@
     "ice_witch": {
         "atk": 15.0, 
         "atkgr": 7.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "snow_ball", 
         "collide": 30.0, 
         "cri": 19.0, 
@@ -1263,7 +1263,7 @@
     "knight": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1301,7 +1301,7 @@
     "kobold": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1339,7 +1339,7 @@
     "kyle": {
         "atk": 13.0, 
         "atkgr": 5.5, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 24.0, 
         "crigr": 9.0, 
@@ -1380,7 +1380,7 @@
     "mummy": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1418,7 +1418,7 @@
     "poodle": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1456,7 +1456,7 @@
     "rattletrap": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1496,7 +1496,7 @@
     "red_axe_orc": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 15.0, 
         "crigr": 5.0, 
@@ -1534,7 +1534,7 @@
     "saber": {
         "atk": 8.0, 
         "atkgr": 5.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 8.0, 
         "crigr": 2.2, 
@@ -1575,7 +1575,7 @@
     "sandworm": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1613,7 +1613,7 @@
     "scarecrow": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1651,7 +1651,7 @@
     "skeleton": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1689,7 +1689,7 @@
     "skeleton_king": {
         "atk": 22.0, 
         "atkgr": 8.5, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 15.0, 
         "crigr": 2.0, 
@@ -1729,7 +1729,7 @@
     "skeleton_warrior": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1767,7 +1767,7 @@
     "tentacle": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1805,7 +1805,7 @@
     "thin_vampire": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1843,7 +1843,7 @@
     "vanhelsing": {
         "atk": 15.0, 
         "atkgr": 7.1, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "arrow", 
         "collide": 30.0, 
         "cri": 30.0, 
@@ -1885,7 +1885,7 @@
     "villager": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1923,7 +1923,7 @@
     "werewolf": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 15.0, 
         "crigr": 5.0, 
@@ -1961,7 +1961,7 @@
     "white_ghost": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -1999,7 +1999,7 @@
     "wild_wolf": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 
@@ -2037,7 +2037,7 @@
     "women_fire_wizard": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "pink_ball", 
         "collide": 30.0, 
         "cri": 10.0, 
@@ -2078,7 +2078,7 @@
     "women_wizard": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "pink_ball", 
         "collide": 30.0, 
         "cri": 10.0, 
@@ -2117,7 +2117,7 @@
     "zeus": {
         "atk": 15.0, 
         "atkgr": 7.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "bullet_name": "thunderbolt", 
         "collide": 30.0, 
         "cri": 20.0, 
@@ -2159,7 +2159,7 @@
     "zombie": {
         "atk": 10.0, 
         "atkgr": 4.0, 
-        "attackspeed": 2.0, 
+        "attackspeed": 1.0, 
         "collide": 30.0, 
         "cri": 10.0, 
         "crigr": 3.0, 

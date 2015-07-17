@@ -14,6 +14,7 @@
 #include "UIHeroManageLayer.h"
 #include "UITeamTalentLayer.h"
 #include "../util/CocosUtils.h"
+#include "../manager/AudioManager.h"
 
 #define MAIN_CSB_FILE "ui/page/ui_home_page.csb"
 #define LEVEL_CSB_FILE "ui/page/ui_home_detail.csb"
@@ -139,11 +140,13 @@ void UIHomeLayer::onEnterTransitionDidFinish() {
     Layer::onEnterTransitionDidFinish();
     PlayerInfo::getInstance()->registerListener( PLAYER_INFO_BASE_INFO, this );
     this->updatePlayerInfo( PlayerInfo::getInstance() );
+    AudioManager::getInstance()->playMusic( "audio/common/bg_home.mp3", true );
 }
 
 void UIHomeLayer::onExitTransitionDidStart() {
     Layer::onExitTransitionDidStart();
     PlayerInfo::getInstance()->unregisterListener( PLAYER_INFO_BASE_INFO, this );
+    AudioManager::getInstance()->stopMusic( "audio/common/bg_home.mp3" );
 }
 
 void UIHomeLayer::updatePlayerInfo( PlayerInfo* player_info ) {

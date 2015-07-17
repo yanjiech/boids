@@ -17,6 +17,7 @@ private:
     float _damage;
     float _range;
     float _duration;
+    cocos2d::Point _dir;
     
 public:
     DarkPierce();

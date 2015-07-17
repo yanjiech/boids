@@ -40,8 +40,11 @@ bool DarkPierce::init( UnitNode* owner, const cocos2d::ValueMap& data, const coc
     int level = data.at( "level" ).asInt();
     _damage = data.at( "damage" ).asValueVector().at( level - 1 ).asFloat();
     _count = data.at( "count" ).asInt();
-    _range = data.at( "range" ).asFloat();
     _duration = data.at( "stun" ).asFloat();
+    float min_range = data.at( "min_range" ).asFloat();
+    float max_range = data.at( "max_range" ).asFloat();
+    _range = params.at( "range_per" ).asFloat() * ( max_range - min_range ) + min_range;
+    _dir = Point( params.at( "dir_x" ).asFloat(), params.at( "dir_y" ).asFloat() );
     
     return true;
 }
@@ -51,7 +54,8 @@ void DarkPierce::updateFrame( float delta ) {
 
 void DarkPierce::begin() {
     BattleLayer* battle_layer = _owner->getBattleLayer();
-    Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getTargetCamp(), _owner->getPosition(), _owner->getPosition(), _range );
+    Point pos = _owner->getPosition() + Point( _dir.x * _range, _dir.y * _range / 1.74f );
+    Vector<UnitNode*> candidates = battle_layer->getAliveOpponentsInRange( _owner->getTargetCamp(), pos, _range );
     int size = (int)candidates.size();
     for( int i = 0; i < _count && size > 0; i++ ) {
         int rand = Utils::randomNumber( size ) - 1;

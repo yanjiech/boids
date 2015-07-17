@@ -55,24 +55,26 @@ bool UIItemSpot::init( const cocos2d::Color3B& color ) {
     
     this->setScale( 0.5f );
     this->setPosition( Point::ZERO );
+    this->setAnchorPoint( Point::ZERO );
+    this->ignoreAnchorPointForPosition( false );
     
     return true;
 }
 
 void UIItemSpot::flyAlong( const cocos2d::Point& start, const cocos2d::Point& end ) {
-    _icon->setPosition( start );
+    float scale = this->getScale();
+    _icon->setPosition( start / scale );
     _streak = MotionStreak::create( 0.2f, 3, _icon->getContentSize().width, _color, "effects/tuowei.png" );
-    _streak->setPosition( start );
+    _streak->setPosition( start / scale );
     this->addChild( _streak, 1 );
 //    _streak->setScale( 0.5f );
-    
+
     Point origin = Director::getInstance()->getVisibleOrigin();
     Size size = Director::getInstance()->getVisibleSize();
-    float scale = this->getScale();
     
     ccBezierConfig config;
-    config.controlPoint_1 = Point( origin.x, origin.y + size.height / 2 ) / scale;
-    config.controlPoint_2 = Point( origin.x + size.width / 2, origin.y + size.height ) / scale;
+    config.controlPoint_1 = Point( origin.x + size.width * 0.25f, origin.y + size.height * 0.5f ) / scale;
+    config.controlPoint_2 = Point( origin.x + size.width * 0.75f, origin.y + size.height * 0.75f ) / scale;
     config.endPosition = end / scale;
     
     BezierTo* fly = BezierTo::create( 0.5f, config );
@@ -657,8 +659,9 @@ void UIBattleLayer::showItemSpot( const cocos2d::Point& start, int quality ) {
             break;
     }
     
-    Point end = this->convertToNodeSpace( _lb_killed->getParent()->convertToWorldSpace( _lb_killed->getPosition() ) );
     UIItemSpot* item_spot = UIItemSpot::create( color );
+    item_spot->setPosition( Point::ZERO );
     this->addChild( item_spot, 10000 );
+    Point end = item_spot->convertToNodeSpace( _lb_killed->getParent()->convertToWorldSpace( _lb_killed->getPosition() ) );
     item_spot->flyAlong( start, end );
 }

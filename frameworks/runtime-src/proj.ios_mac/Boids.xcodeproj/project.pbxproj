@@ -2570,7 +2570,7 @@
 					/Users/chenyanjie/Documents/lib/lib,
 					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
-				PROVISIONING_PROFILE = "5ef532d9-94ea-4609-8fab-00dfff681418";
+				PROVISIONING_PROFILE = "7306ce1d-3cfc-4385-b129-6087b984840f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";
@@ -2582,8 +2582,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Yuyu Network & Technology Co., Ltd. (WMCTPSK858)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yanjie Chen (638693Y8GH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yanjie Chen (638693Y8GH)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2604,7 +2604,7 @@
 					/Users/chenyanjie/Documents/lib/lib,
 					"\"$(SRCROOT)/../../../../../Development/Lib/Boost/lib\"",
 				);
-				PROVISIONING_PROFILE = "5ef532d9-94ea-4609-8fab-00dfff681418";
+				PROVISIONING_PROFILE = "7306ce1d-3cfc-4385-b129-6087b984840f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../cocos2d-x/cocos/platform/ios";

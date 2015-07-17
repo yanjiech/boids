@@ -410,6 +410,18 @@ void UnitNode::applyUnitState() {
         _unit_state_changed = false;
         _state = _next_state;
         _next_state = eUnitState::Unknown_Unit_State;
+        if( _state == eUnitState::Attacking ) {
+            _front->setTimeScale( _target_data->atk_speed );
+            if( _back ) {
+                _back->setTimeScale( _target_data->atk_speed );
+            }
+        }
+        else {
+            _front->setTimeScale( 1.0f );
+            if( _back ) {
+                _back->setTimeScale( 1.0f );
+            }
+        }
         switch( _state ) {
             case eUnitState::Casting:
             {

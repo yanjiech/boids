@@ -96,6 +96,9 @@ bool BattleLayer::init( MapData* map_data, const std::string& level_id, bool is_
         cocos2d::Point origin = Director::getInstance()->getVisibleOrigin();
         cocos2d::Size size = Director::getInstance()->getVisibleSize();
     
+        _tmx_map_2 = map_data->generateTiledMapWithFlags( 7 );
+        this->addChild( _tmx_map_2 );
+        
         _tmx_map = map_data->generateTiledMapWithFlags( 1 );
         _tmx_map->setPosition( origin );
         this->addChild( _tmx_map, 0, eBattleSubLayer::MapLayer );
@@ -796,7 +799,8 @@ void BattleLayer::onUnitAppear( UnitNode* unit ) {
     if( unit->hasUnitTag( "boss" ) ) {
         //vibrate
         this->vibrate();
-        
+        AudioManager::getInstance()->stopMusic( "audio/common/bg_music_1.mp3" );
+        AudioManager::getInstance()->playMusic( "audio/common/bg_boss.mp3", true );
         _skill_ui_layer->showBossPanel();
         _skill_ui_layer->setBossInfo( unit->getUnitData() );
     }

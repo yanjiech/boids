@@ -122,7 +122,7 @@ void CrazyScratch::end() {
     for( auto pair : _excluded_targets ) {
         UnitNode* unit = pair.second;
         if( unit->isAlive() ) {
-            ValueMap result = calculator->calculateDamage( _owner->getTargetData(), unit->getTargetData() );
+            ValueMap result = calculator->calculateDamageWithoutMiss( _owner->getTargetData(), unit->getTargetData() );
             unit->takeDamage( result, _owner );
         }
     }

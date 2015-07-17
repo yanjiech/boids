@@ -92,6 +92,8 @@ private:
     cocos2d::TMXTiledMap* _tmx_map;
     UIStoryLayer* _story_layer;
     
+    cocos2d::TMXTiledMap* _tmx_map_2;
+    
     eBattleState _state;
     
     UnitMap _player_units;
